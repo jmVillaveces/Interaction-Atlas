@@ -2,7 +2,7 @@
   "name": "Interaction-Atlas",
   "version": "1.0.0",
   "description": "Interaction-Atlas =================",
-  "main": "index.js",
+  "main": "js/index.js",
   "scripts": {
     "test": "mocha"
   },
@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/jmVillaveces/Interaction-Atlas",
   "devDependencies": {
-    "grunt": "^0.4.5"
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0"
+  },
+  "dependencies": {
+    "handlebars": "^2.0.0"
   }
 }
