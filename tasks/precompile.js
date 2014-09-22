@@ -8,6 +8,7 @@ module.exports = function(grunt) {
             args: ['templates/*.hbs', '-f', 'js/templates.js'],
         }, function done(error, result, code) {
             
+            console.log(error);
             if(code == 127) {
                 return grunt.warn('The attempt precompile templates failed');
             }

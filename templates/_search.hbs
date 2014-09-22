@@ -1,0 +1,33 @@
+<form id='search-form' role="form">
+    <div class="jumbotron" style="margin-top:5%; background-color: transparent; *">  
+        <table style="width:100%; text-align:right;">
+              <tr>
+                  <td><div class='poiret logo'> iAtlas</div></td>
+              </tr>
+              <tr>
+                  <td class='poiret msg' style='font-size:20px;'>{{this.count}} unique interactions indexed</td>
+              </tr>
+              <tr id='loading'>
+                  <td style='width:90%'>
+                      <div class="input-group input-group-lg">
+                          <span class="input-group-addon glyphicon glyphicon-search"></span>
+                          <input id="query" type="text" class="form-control search-query" placeholder="identifiers..." required autofocus>
+                      </div>
+                  </td>
+                  <td style='width:10%'>
+                      <button class=" btn btn-lg btn-success" type="submit">GO</button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label style="color: #428bca;text-decoration: none;font-weight: normal;">
+                            <input id='expand' type="checkbox"> expand network
+                      </label> &middot; 
+                      <a id="explink" href="#">example</a> &middot; 
+                      <a id="advlink" href="#">about</a>
+                      <!--<a id="advlink" href="#">advanced options</a>-->
+                  </td>
+              </tr>
+        </table>
+    </div>
+</form>
