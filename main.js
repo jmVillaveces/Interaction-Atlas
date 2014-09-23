@@ -19,7 +19,7 @@ var _homeView = function(err, resp, data){
     var parts = data.split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     data = parts.join(".");
-    new HomeView({count:data}).render();
+    new HomeView({el:'body', count:data}).render();
 };
 
 var _init = function(){
