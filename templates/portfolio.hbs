@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-6">
+        {{#each features}}
+            <div class="GeneExpressionSummary_subtitle">{{this.label}}</div>
+            <div class="GeneExpressionSummary_feature">{{this.value}}</div>
+        {{else}}
+            <div>Sorry, we could not find data for your request</div>
+        {{/each}}
+    </div>
+    <div class="col-md-6">
+                
+        {{#compare PDBMappings "!=" null}}    
+            <select class="form-control input">
+                {{#each PDBMappings}}
+                    <option value="{{@key}} ({{this.1.start}}..{{this.1.end}})">{{@key}} ({{this.1.start}}..{{this.1.end}})</option>
+                {{/each}}
+            </select>
+
+            {{#if firstMapping}}
+                <img src="http://www.ebi.ac.uk/pdbe-srv/view/images/entry/{{firstMapping}}_cbc600.png" style="width: 100%; height: auto;">
+            {{else}}
+                <img src="" style="width: 100%; height: auto;">
+            {{/if}}
+                
+        {{/compare}}
+    </div>
+</div>

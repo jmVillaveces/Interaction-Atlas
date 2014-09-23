@@ -1,13 +1,10 @@
 module.exports = function(grunt) {
     
-    //Load Tasks
-    //grunt.loadTasks('tasks');
-    
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
-            files: ['gruntfile.js', 'tasks/*.js', 'main.js', 'js/**/*.js'],
+            files: ['gruntfile.js', 'main.js', 'js/**/*.js'],
             options: {
                 // options here to override JSHint defaults
                 globals: {
@@ -40,13 +37,24 @@ module.exports = function(grunt) {
         stylus: {
             'dist/css/iAtlas.css': ['css/*.styl'], // compile and concat into single file
             options: {
-                urlfunc: 'embedurl'
+                urlfunc: {
+                    name:'embedurl',
+                    limit:false
+                },
+                'include css':true
             }
         },
+        clean: ['dist'],
+        copy: [
+            { expand: true, flatten: true, src: ['img/favicon.ico'], dest: 'dist/' },
+            { expand: true, flatten: true, src: ['html/index.html'], dest: 'dist/' },
+            { expand: true, flatten: true, src: ['css/fonts/*'], dest: 'dist/fonts/' },
+            { expand: true, flatten: true, src: ['proxy/*'], dest: 'dist/proxy/' }
+        ],
         watch: {
             handlebars:{
                 files: ['<%= handlebars.compile.files %>'],
-                tasks: ['handlebars']
+                tasks: ['handlebars', 'browserify']
             },
             hinting:{
                 files: ['<%= jshint.files %>'],
@@ -55,10 +63,16 @@ module.exports = function(grunt) {
             browserify:{
                 files: ['<%= jshint.files %>', 'dist/main.js'],
                 tasks: ['browserify']
+            },
+            stylus:{
+                files: ['css/*.styl'],
+                tasks: ['stylus']
             }
         }
     });
-
+    
+    //Tasks
+    grunt.registerTask('dist', ['clean', 'jshint', 'handlebars', 'copy', 'browserify', 'stylus']); //Generates dist folder
     
     
     // Load the plugins
@@ -67,4 +81,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-handlebars');
     grunt.loadNpmTasks('grunt-contrib-stylus');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    
 };

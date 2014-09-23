@@ -1,0 +1,14 @@
+<h3 class="popover-title text-center"><strong>{{id}} </strong>{{#compare Status "reviewed"}}<span class="glyphicon glyphicon-star"></span>{{/compare}}{{#compare Status "!==" "reviewed"}}<span class="glyphicon glyphicon-question-sign"></span>{{/compare}}</h3>
+<div class="popover-content">
+    <dl>
+        {{#if Entry_name}}
+            <dt>Entry Name</dt><dd><p>{{Entry_name}}</p></dd>
+        {{/if}}
+        {{#if Gene_names}}
+            <dt>Gene Names</dt><dd><p>{{Gene_names}}</p></dd>
+        {{/if}}
+        {{#if taxonomy}}
+            <dt>Taxonomy</dt><dd><p>{{#join taxonomy ", "}}{{this}}{{/join}}</p></dd>
+        {{/if}}
+    </dl>
+</div>
