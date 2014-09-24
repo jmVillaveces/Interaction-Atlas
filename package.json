@@ -27,11 +27,13 @@
   },
   "dependencies": {
     "backbone": "^1.1.2",
-    "biojs-io-mitab": "0.0.1",
-    "biojs-rest-psicquic": "^1.0.0",
+    "biojs-io-mitab": "0.0.4",
+    "biojs-rest-psicquic": "^1.1.0",
     "bootstrap": "^3.2.0",
     "grunt-contrib-watch": "^0.6.1",
     "handlebars": "^1.0.0",
-    "jquery": "^2.1.1"
+    "jquery": "^2.1.1",
+    "nets": "^1.0.0",
+    "underscore": "^1.7.0"
   }
 }

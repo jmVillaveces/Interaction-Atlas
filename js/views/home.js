@@ -1,5 +1,5 @@
 var templates = require('../templates');
-var $ = window.jQuery;
+var $ = jQuery;
 
 module.exports = Backbone.View.extend({
     
@@ -10,7 +10,7 @@ module.exports = Backbone.View.extend({
     events:{
         'click #explink': 'example',
         'click #advlink': 'about',
-        'click button' : 'search'
+        'submit form' : 'search'
     },
 
     render: function(){
@@ -24,7 +24,7 @@ module.exports = Backbone.View.extend({
     },
     
     example : function(){
-        this.query.val("P49959,P25454,Q54KD8,O74773,Q8IV36,Q96B01,Q54CS9,P52701,Q9CXE6,Q7T6Y0,Q682D3");
+        this.query.val(this.options.example);
         return false;
     },
     
@@ -35,7 +35,9 @@ module.exports = Backbone.View.extend({
     
     search : function(e){
         e.preventDefault();
-        console.log('TODO: implement search');
+        
+        // trigger search event
+        iAtlas.vent.trigger('search', this.query.val(), $('#expand').prop("checked"));
     }
     
 });

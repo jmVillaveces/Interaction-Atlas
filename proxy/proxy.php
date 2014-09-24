@@ -87,7 +87,9 @@ if($allowUrl == "TRUE"){
 	$mimeType = "";
 	if ($mimeType == "")
 	{
-		if ( strpos($_SERVER['HTTP_ACCEPT'], "xml") ) {
+        if ( strpos($_SERVER['HTTP_ACCEPT'], "text") >= 0 ) {
+			$mimeType = "text/plain";
+		}else if ( strpos($_SERVER['HTTP_ACCEPT'], "xml") ) {
 			$mimeType = "application/xml";
 		} else if ( strpos($_SERVER['HTTP_ACCEPT'], "json") ) {
 			$mimeType = "application/json";

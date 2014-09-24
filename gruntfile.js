@@ -51,7 +51,7 @@ module.exports = function(grunt) {
             { expand: true, flatten: true, src: ['css/fonts/*'], dest: 'dist/fonts/' },
             { expand: true, flatten: true, src: ['proxy/*'], dest: 'dist/proxy/' }
         ],
-        watch: {
+        /*watch: {
             handlebars:{
                 files: ['<%= handlebars.compile.files %>'],
                 tasks: ['handlebars', 'browserify']
@@ -61,14 +61,14 @@ module.exports = function(grunt) {
                 tasks: ['jshint']
             },
             browserify:{
-                files: ['<%= jshint.files %>', 'dist/main.js'],
+                files: ['<%= jshint.files %>'],
                 tasks: ['browserify']
             },
             stylus:{
                 files: ['css/*.styl'],
                 tasks: ['stylus']
             }
-        }
+        }*/
     });
     
     //Tasks
