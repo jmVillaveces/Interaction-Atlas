@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
-            files: ['gruntfile.js', 'main.js', 'js/**/*.js'],
+            files: ['gruntfile.js', 'main.js', 'js/**/*.js', 'tests/**/*.js'],
             options: {
                 // options here to override JSHint defaults
                 globals: {
@@ -51,6 +51,15 @@ module.exports = function(grunt) {
             { expand: true, flatten: true, src: ['css/fonts/*'], dest: 'dist/fonts/' },
             { expand: true, flatten: true, src: ['proxy/*'], dest: 'dist/proxy/' }
         ],
+        simplemocha: {
+            options: {
+                globals: ['expect', '_', '$', 'jQuery', 'Backbone'],
+                timeout: 3000,
+                ignoreLeaks: true,
+                reporter: 'tap'
+            },
+            all: { src: ['tests/**/*.js'] }
+        }
         /*watch: {
             handlebars:{
                 files: ['<%= handlebars.compile.files %>'],
@@ -72,7 +81,7 @@ module.exports = function(grunt) {
     });
     
     //Tasks
-    grunt.registerTask('dist', ['clean', 'jshint', 'handlebars', 'copy', 'browserify', 'stylus']); //Generates dist folder
+    grunt.registerTask('dist', ['clean', 'jshint', 'simplemocha', 'handlebars', 'copy', 'browserify', 'stylus']); //Generates dist folder
     
     
     // Load the plugins
@@ -83,5 +92,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+     grunt.loadNpmTasks('grunt-simple-mocha');
     
 };

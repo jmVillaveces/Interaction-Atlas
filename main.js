@@ -1,10 +1,11 @@
-window.jQuery = require('jquery');
-window.Backbone = require('backbone');
+jQuery = require('jquery');
+Backbone = require('backbone');
 Backbone.$ = jQuery;
 
 window.Handlebars = require('handlebars');
 window._ = require('underscore');
 
+var Atlas = require('./js/models/atlas.js');
 
 require('./js/helpers.js'); // Handelbars helpers
 require('bootstrap/dist/js/bootstrap.min.js'); // bootsrrap
@@ -15,51 +16,21 @@ var psicquic = require('biojs-rest-psicquic');
 
 var _onSearch = function(){
     
+    //Init progress bar
     var progressBar = new Progressbar({el:'#loading'});
     progressBar.render();
     
-    var response = function(err, resp, body){
-        if(body){
-        
-            //var uniprot = require('./js/uniprot').getDataByIds(['P49959','P25454','Q54KD8','O74773'], { format:'tab', columns : 'id,reviewed,genes,keywords' }, function(){console.log(arguments);});
-            
-            var mitab = require('biojs-io-mitab').parse(body);
-            
-            var uniprot = require('./js/uniprot'), params = { format:'tab', columns : 'id,reviewed,genes,keywords' };
-            
-            var size = 100, arr = []; 
-            for(var i in mitab.ids){
-                if(arr.length === 0 || arr[arr.length-1].length === 250) arr.push([]);
-                arr[arr.length-1].push(mitab.ids[i]);
-            }
-            
-            var r = function(){
-                console.log(arguments[2]);
-            };
-            
-            for(i in arr){
-                uniprot.getDataByIds(arr[i], params, r);
-            }
-            /*var i = mitab.ids;
-            while (mitab.ids.length) {
-                var ids = i.splice(0, 250);
-                console.log(i.length, mitab.ids.length);
-                //uniprot.getDataByIds(ids, params, r);
-            }*/
-            
-            /*uniprot.getDataByIds(mitab.ids.slice(0,5),params, function(err, resp, body){
-                console.log(body);
-            });*/
-        
-        }
-    };
+    psicquic.getInteractionsForIds(arguments[0].split(','));
     
-    var params = {firstResult:0, maxResults:3000};
-    if(arguments[1] === false){
-        psicquic.getInteractionsForIds(arguments[0].split(','), params, response);
-    }else{
-        psicquic.getExpandedInteractionsForIds(arguments[0].split(','), params, response);
-    }
+    /*var atlas = new Atlas({query:arguments[0], expanded:arguments[1]});
+    atlas.fetch({
+        dataType: 'text',
+        error: function (errorResponse, a) {
+            console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
+        }
+    }).done(function(){
+        progressBar.update(100);
+    });*/
 };
 
 //Init Home View

@@ -15,5 +15,4 @@ module.exports = Backbone.View.extend({
     update : function(data){
         $('[role="progressbar"]').css('width',data+'%');
     }
-    
 });

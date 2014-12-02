@@ -1,14 +1,10 @@
-var xhr = require('nets');
+var $ = require('jQuery');
 
 var _url = 'http://www.uniprot.org/uniprot/', _proxy = null;
 
 //Private members
-var _fetch = function(url, callback){
-    xhr({
-        url: url,
-        method: 'GET'
-    }, 
-    callback);
+var _fetch = function(url, cb){
+    $.ajax({url:url, success: cb});
 };
 
 var _eval_params = function(params){
@@ -59,9 +55,7 @@ uniprot.getDataByIds = function(nodes, params, callback){
     params = (_.isObject(params)) ? params : {};
     params.query = 'accession:' + nodes.join(' OR ');
     
-    
     var url = encodeURI(_createUrl('', params));
-    console.log(url);
     _fetch(url, callback);
 };
 

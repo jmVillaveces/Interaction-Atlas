@@ -1,4 +1,137 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var Interaction = require('../models/interaction.js');
+module.exports = Backbone.Collection.extend({
+  model : Interaction
+});
+},{"../models/interaction.js":5}],2:[function(require,module,exports){
+var Interactor = require('../models/interactor.js');
+module.exports = Backbone.Collection.extend({
+  model : Interactor
+});
+},{"../models/interactor.js":6}],3:[function(require,module,exports){
+// helpers.js
+(function(Handlebars) {
+
+    //Join array
+    Handlebars.registerHelper( "join", function( array, sep, options ) {
+        return array.map(function( item ) {
+            return options.fn( item );
+        }).join( sep );
+    });
+    
+    //Comparator
+    Handlebars.registerHelper('compare', function (lvalue, operator, rvalue, options) {
+
+        var operators, result;
+
+        if (arguments.length < 3) {
+            throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
+        }
+
+        if (options === undefined) {
+            options = rvalue;
+            rvalue = operator;
+            operator = "===";
+        }
+
+        operators = {
+            '==': function (l, r) { return l == r; },
+            '===': function (l, r) { return l === r; },
+            '!=': function (l, r) { return l != r; },
+            '!==': function (l, r) { return l !== r; },
+            '<': function (l, r) { return l < r; },
+            '>': function (l, r) { return l > r; },
+            '<=': function (l, r) { return l <= r; },
+            '>=': function (l, r) { return l >= r; },
+            'typeof': function (l, r) { return typeof l == r; }
+        };
+
+        if (!operators[operator]) {
+            throw new Error("Handlerbars Helper 'compare' doesn't know the operator " + operator);
+        }
+
+        result = operators[operator](lvalue, rvalue);
+
+        if (result) {
+            return options.fn(this);
+        } else {
+            return options.inverse(this);
+        }
+
+    });
+
+}(window.Handlebars));
+},{}],4:[function(require,module,exports){
+var Interactors = require('../collections/interactors.js');
+var Interactions = require('../collections/interactions.js');
+
+module.exports = Backbone.Model.extend({
+    defaults: {
+        expanded : false,
+        query : ''
+    },
+    urlRoot: function() {
+        return  (iAtlas) ? (iAtlas.properties.proxy) ?  iAtlas.properties.proxy +'?url='+iAtlas.properties.psicquicServer + 'query/' : iAtlas.properties.psicquicServer + 'query/' : '';
+    },
+    url: function() {
+        
+        var url = '', ids = this.attributes.query.split(',').join(' OR ');
+        if(! this.attributes.expanded){
+            url += 'idA:(' + ids + ') AND idB:(' + ids + ')';
+        }else{
+            url += 'identifier:(' + ids + ')';
+        }
+        
+        url += '?firstResult=0&maxResults=3000';
+        
+        return this.urlRoot() + escape(url);
+    },
+    parse: function(response, xhr) {
+        var mitab = require('biojs-io-mitab').parse(response);
+        
+        var interactors = new Interactors(mitab.nodes);
+        var interactions = new Interactions(mitab.links);
+        
+        console.log(mitab);
+        return {
+            interactors : interactors,
+            interactions : interactions,
+            taxa : mitab.taxa,
+            scores : mitab.scores
+        };
+    }
+});
+},{"../collections/interactions.js":1,"../collections/interactors.js":2,"biojs-io-mitab":14}],5:[function(require,module,exports){
+module.exports = Backbone.Model.extend({
+    defaults : {
+        source : '',
+        target: '',
+        detMethods: [],
+        firstAuthor: [],
+        publications: [],
+        intTypes: [],
+        sourceDbs: [],
+        intIds : [],
+        scores: []
+    }
+});
+},{}],6:[function(require,module,exports){
+module.exports = Backbone.Model.extend({
+    defaults : {
+        id : '',
+        ids : [],
+        altIds : [],
+        taxonomy : []
+    }
+});
+},{}],7:[function(require,module,exports){
+module.exports = {
+    psicquicServer: 'http://www.ebi.ac.uk/Tools/webservices/psicquic/intact/webservices/current/search/',
+    //'http://dachstein.biochem.mpg.de:8080/iatlas/webservices/current/search/query/',
+    proxy : '../proxy/proxy.php',
+    example : 'P49959,P25454,Q54KD8,O74773,Q8IV36,Q96B01,Q54CS9,P52701,Q9CXE6,Q7T6Y0,Q682D3'
+};
+},{}],8:[function(require,module,exports){
 (function (global){
 var glob = ('undefined' === typeof window) ? global : window,
 
@@ -31,37 +164,438 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
   return buffer;
   });
 
+this["Templates"]["portfolio"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n            <div class=\"GeneExpressionSummary_subtitle\">"
+    + escapeExpression(((stack1 = (depth0 && depth0.label)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</div>\n            <div class=\"GeneExpressionSummary_feature\">"
+    + escapeExpression(((stack1 = (depth0 && depth0.value)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</div>\n        ";
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  
+  return "\n            <div>Sorry, we could not find data for your request</div>\n        ";
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "    \n            <select class=\"form-control input\">\n                ";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.PDBMappings), {hash:{},inverse:self.noop,fn:self.program(6, program6, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n            </select>\n\n            ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.firstMapping), {hash:{},inverse:self.program(10, program10, data),fn:self.program(8, program8, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                \n        ";
+  return buffer;
+  }
+function program6(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n                    <option value=\""
+    + escapeExpression(((stack1 = (data == null || data === false ? data : data.key)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + " ("
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0[1])),stack1 == null || stack1 === false ? stack1 : stack1.start)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + ".."
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0[1])),stack1 == null || stack1 === false ? stack1 : stack1.end)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + ")\">"
+    + escapeExpression(((stack1 = (data == null || data === false ? data : data.key)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + " ("
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0[1])),stack1 == null || stack1 === false ? stack1 : stack1.start)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + ".."
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0[1])),stack1 == null || stack1 === false ? stack1 : stack1.end)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + ")</option>\n                ";
+  return buffer;
+  }
+
+function program8(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                <img src=\"http://www.ebi.ac.uk/pdbe-srv/view/images/entry/";
+  if (helper = helpers.firstMapping) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.firstMapping); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "_cbc600.png\" style=\"width: 100%; height: auto;\">\n            ";
+  return buffer;
+  }
+
+function program10(depth0,data) {
+  
+  
+  return "\n                <img src=\"\" style=\"width: 100%; height: auto;\">\n            ";
+  }
+
+  buffer += "<div class=\"row\">\n    <div class=\"col-md-6\">\n        ";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.features), {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    </div>\n    <div class=\"col-md-6\">\n                \n        ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.PDBMappings), "!=", (depth0 && depth0.null), options) : helperMissing.call(depth0, "compare", (depth0 && depth0.PDBMappings), "!=", (depth0 && depth0.null), options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    </div>\n</div>";
+  return buffer;
+  });
+
+this["Templates"]["progressbar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<div class=\"progress progress-striped active\">\n    <div class=\"progress-bar progress-bar-success\" role=\"progressbar\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0%\">\n        <span class=\"sr-only\">40% Complete (success)</span>\n    </div>\n</div>";
+  });
+
+this["Templates"]["sidepanel"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  
+  return "\n                            <span class=\"glyphicon glyphicon-star\"></span><small> (Reviewed)</small>\n                          ";
+  }
+
+function program3(depth0,data) {
+  
+  
+  return "\n                            <span class=\"glyphicon glyphicon-question-sign\"></span><small> (Unreviewed)</small>\n                          ";
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                        <dt>Entry Name</dt><dd><p>";
+  if (helper = helpers.Entry_name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.Entry_name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p></dd>\n                        ";
+  return buffer;
+  }
+
+function program7(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                        <dt>Gene Names</dt><dd><p>";
+  if (helper = helpers.Gene_names) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.Gene_names); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p></dd>\n                        ";
+  return buffer;
+  }
+
+function program9(depth0,data) {
+  
+  var buffer = "", stack1, helper, options;
+  buffer += "\n                        <dt>Alternative Ids</dt><dd><p>";
+  stack1 = (helper = helpers.join || (depth0 && depth0.join),options={hash:{},inverse:self.noop,fn:self.program(10, program10, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.altIds), ", ", options) : helperMissing.call(depth0, "join", (depth0 && depth0.altIds), ", ", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</p></dd>\n                        ";
+  return buffer;
+  }
+function program10(depth0,data) {
+  
+  var stack1;
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.value), {hash:{},inverse:self.noop,fn:self.program(11, program11, data),data:data});
+  if(stack1 || stack1 === 0) { return stack1; }
+  else { return ''; }
+  }
+function program11(depth0,data) {
+  
+  var stack1;
+  return escapeExpression(((stack1 = (depth0 && depth0.value)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1));
+  }
+
+function program13(depth0,data) {
+  
+  var buffer = "", stack1, helper, options;
+  buffer += "\n                        <dt>Taxonomy</dt><dd><p>";
+  stack1 = (helper = helpers.join || (depth0 && depth0.join),options={hash:{},inverse:self.noop,fn:self.program(14, program14, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.taxonomy), ", ", options) : helperMissing.call(depth0, "join", (depth0 && depth0.taxonomy), ", ", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</p></dd>\n                        ";
+  return buffer;
+  }
+function program14(depth0,data) {
+  
+  
+  return escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0));
+  }
+
+function program16(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                        <dt>Protein names</dt><dd><p>";
+  if (helper = helpers.Protein_names) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.Protein_names); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p></dd>\n                        ";
+  return buffer;
+  }
+
+function program18(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                        <dt>Keywords:</dt><dd><p>";
+  if (helper = helpers.Keywords) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.Keywords); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p></dd>\n                        ";
+  return buffer;
+  }
+
+  buffer += " <button type=\"button\" class=\"trigger btn btn-info\">\n            <span class=\"glyphicon glyphicon-chevron-left\"></span> ";
+  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\n        </button>\n        \n        <div class=\"sidePanel panel panel-default\">\n          <div class=\"panel-body\">\n              \n              <!-- Nav tabs -->\n              <ul class=\"nav nav-tabs\">\n                  <li class=\"active\"><a href=\"#home\" data-toggle=\"tab\">General Info</a></li>\n                  <li><a href=\"#expression\" data-toggle=\"tab\">Expression</a></li>\n                  <li><a href=\"#sequence\" data-toggle=\"tab\">Sequence</a></li>\n                  <li><a href=\"#protPortfolio\" data-toggle=\"tab\">Protein Portfolio</a></li>\n              </ul>\n\n              <!-- Tab panes -->\n              <div class=\"tab-content\">\n                  <div class=\"tab-pane active\" id=\"home\">\n                      <h3>\n                          ";
+  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " \n                          ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.Status), "reviewed", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.Status), "reviewed", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                          ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.Status), "!==", "reviewed", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.Status), "!==", "reviewed", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                      </h3>\n                      <dl>\n                        ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Entry_name), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                        ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Gene_names), {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                        ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.altIds), {hash:{},inverse:self.noop,fn:self.program(9, program9, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                        ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.taxonomy), {hash:{},inverse:self.noop,fn:self.program(13, program13, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                        ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Protein_names), {hash:{},inverse:self.noop,fn:self.program(16, program16, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                        ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Keywords), {hash:{},inverse:self.noop,fn:self.program(18, program18, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                      </dl>\n                  </div>\n                  \n                  <div class=\"tab-pane\" id=\"expression\"></div>\n                  <div class=\"tab-pane\" id=\"sequence\"></div>\n                  <div class=\"tab-pane\" id=\"protPortfolio\"></div>\n              </div>\n              \n              \n          </div>\n        </div>\n";
+  return buffer;
+  });
+
+this["Templates"]["tooltip"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  
+  return "<span class=\"glyphicon glyphicon-star\"></span>";
+  }
+
+function program3(depth0,data) {
+  
+  
+  return "<span class=\"glyphicon glyphicon-question-sign\"></span>";
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n            <dt>Entry Name</dt><dd><p>";
+  if (helper = helpers.Entry_name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.Entry_name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p></dd>\n        ";
+  return buffer;
+  }
+
+function program7(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n            <dt>Gene Names</dt><dd><p>";
+  if (helper = helpers.Gene_names) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.Gene_names); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p></dd>\n        ";
+  return buffer;
+  }
+
+function program9(depth0,data) {
+  
+  var buffer = "", stack1, helper, options;
+  buffer += "\n            <dt>Taxonomy</dt><dd><p>";
+  stack1 = (helper = helpers.join || (depth0 && depth0.join),options={hash:{},inverse:self.noop,fn:self.program(10, program10, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.taxonomy), ", ", options) : helperMissing.call(depth0, "join", (depth0 && depth0.taxonomy), ", ", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</p></dd>\n        ";
+  return buffer;
+  }
+function program10(depth0,data) {
+  
+  
+  return escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0));
+  }
+
+  buffer += "<h3 class=\"popover-title text-center\"><strong>";
+  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " </strong>";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.Status), "reviewed", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.Status), "reviewed", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.Status), "!==", "reviewed", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.Status), "!==", "reviewed", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</h3>\n<div class=\"popover-content\">\n    <dl>\n        ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Entry_name), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n        ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Gene_names), {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n        ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.taxonomy), {hash:{},inverse:self.noop,fn:self.program(9, program9, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    </dl>\n</div>";
+  return buffer;
+  });
+
 if (typeof exports === 'object' && exports) {module.exports = this["Templates"];}
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"handlebars":22}],2:[function(require,module,exports){
+},{"handlebars":40}],9:[function(require,module,exports){
 var templates = require('../templates');
-var $ = window.jQuery;
+var $ = jQuery;
 
 module.exports = Backbone.View.extend({
     
-    initialize: function(){
-        this.render();
+    initialize: function(options){
+       this.options = options;
+    },
+    
+    events:{
+        'click #explink': 'example',
+        'click #advlink': 'about',
+        'submit form' : 'search'
     },
 
     render: function(){
-        var tpl = templates.home({"title":"bar", body:'body'});
-        $('body').html(tpl);
+        var tpl = templates.home(this.options);
+        $(this.options.el).html(tpl);
+        
+        this.query = $("#query");
+        
+        //Set focus on query
+        this.query.focus();
+    },
+    
+    example : function(){
+        this.query.val(this.options.example);
+        return false;
+    },
+    
+    about : function(){
+        console.log('TODO: implement about');
+        return false;
+    },
+    
+    search : function(e){
+        e.preventDefault();
+        
+        // trigger search event
+        iAtlas.vent.trigger('search', this.query.val(), $('#expand').prop("checked"));
     }
 });
-},{"../templates":1}],3:[function(require,module,exports){
-var $ = require('jquery');
-window.jQuery = $; // set as global
-window.Backbone = require('backbone');
-Backbone.$ = $;
+},{"../templates":8}],10:[function(require,module,exports){
+var templates = require('../templates');
+var $ = jQuery;
+
+module.exports = Backbone.View.extend({
+    
+    initialize: function(options){
+       this.options = options;
+    },
+
+    render: function(){
+        var tpl = templates.progressbar();
+        $(this.options.el).html(tpl);
+    },
+    
+    update : function(data){
+        $('[role="progressbar"]').css('width',data+'%');
+    }
+});
+},{"../templates":8}],11:[function(require,module,exports){
+jQuery = require('jquery');
+Backbone = require('backbone');
+Backbone.$ = jQuery;
 
 window.Handlebars = require('handlebars');
+window._ = require('underscore');
 
-require('bootstrap/dist/js/bootstrap.min.js');
+var Atlas = require('./js/models/atlas.js');
+
+require('./js/helpers.js'); // Handelbars helpers
+require('bootstrap/dist/js/bootstrap.min.js'); // bootsrrap
 
 var HomeView = require('./js/views/home');
+var Progressbar = require('./js/views/progressbar');
+var psicquic = require('biojs-rest-psicquic');
 
-var homeView = new HomeView();
-},{"./js/views/home":2,"backbone":4,"bootstrap/dist/js/bootstrap.min.js":6,"handlebars":22,"jquery":23}],4:[function(require,module,exports){
+var _onSearch = function(){
+    
+    //Init progress bar
+    var progressBar = new Progressbar({el:'#loading'});
+    progressBar.render();
+    
+    psicquic.getInteractionsForIds(arguments[0].split(','));
+    
+    /*var atlas = new Atlas({query:arguments[0], expanded:arguments[1]});
+    atlas.fetch({
+        dataType: 'text',
+        error: function (errorResponse, a) {
+            console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
+        }
+    }).done(function(){
+        progressBar.update(100);
+    });*/
+};
+
+//Init Home View
+var _homeView = function(err, resp, data){
+    var parts = data.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    data = parts.join(".");
+    new HomeView({el:'body', count:data, example: window.iAtlas.properties.example}).render();
+};
+
+// Init vent and register events
+var _events = function(){
+    // init properties
+    iAtlas.properties = require('./js/properties');
+
+    // init Events
+    iAtlas.vent = {};
+    _.extend(iAtlas.vent, window.Backbone.Events);
+    
+    iAtlas.vent.on('search', _onSearch);
+};
+
+// Initialize App
+var _init = function(){
+    
+    window.iAtlas = {};
+    
+    _events();
+    
+    // query server and render homeview
+    psicquic.url(iAtlas.properties.psicquicServer).proxy(iAtlas.properties.proxy).count('*', _homeView);
+}();
+
+
+},{"./js/helpers.js":3,"./js/models/atlas.js":4,"./js/properties":7,"./js/views/home":9,"./js/views/progressbar":10,"backbone":12,"biojs-rest-psicquic":15,"bootstrap/dist/js/bootstrap.min.js":24,"handlebars":40,"jquery":41,"underscore":42}],12:[function(require,module,exports){
 //     Backbone.js 1.1.2
 
 //     (c) 2010-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -1671,7 +2205,7 @@ var homeView = new HomeView();
 
 }));
 
-},{"underscore":5}],5:[function(require,module,exports){
+},{"underscore":13}],13:[function(require,module,exports){
 //     Underscore.js 1.7.0
 //     http://underscorejs.org
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -3088,16 +3622,573 @@ var homeView = new HomeView();
   }
 }.call(this));
 
-},{}],6:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
+var _ = require('underscore');
+
+module.exports = MITab = (function() {
+     
+    var nodes = {}; 
+    var links = [];
+    var scores = {};
+    var textInParenthesis = /\((.*?)\)/;
+    var textInQuotes = /\"(.*?)\"/;
+    var textInTax = /\:(.*?)\(/;
+    
+    // Creates a node from identifiers, alternative idenifiers,
+    // and taxonomy values
+    var _getNode = function(idStr, altIdsStr, taxStr){
+        
+        var ids = _.map(idStr.split('|'), _mapPub);
+        var node = {
+            id: ids[0].value,
+            ids: ids,
+            altIds: _.map(altIdsStr.split('|'), _mapPub),
+            taxonomy: _.uniq(_.map(taxStr.split('|'), _mapTaxonomy))
+        }
+        return node;
+    }
+    
+    // Parses a string and returns an interaction
+    var _parse = function(line, i){
+        
+        if (! _.isString(line)) {
+            console.warn('MITab cannot parse line ' + i);
+            return {};
+        }
+        
+        var fields = line.split('\t');
+        
+        if(fields.length < 15) {
+            console.warn('MITab cannot parse line ' + i);
+            return {};
+        }
+        
+        var nodeA = _getNode(fields[0], fields[2], fields[9]);
+        var nodeB = _getNode(fields[1], fields[3], fields[10]);
+        
+        
+        var interaction = {
+            source: nodeA.id,
+            target: nodeB.id,
+            detMethods: _.map(fields[6].split('|'), _mapField),
+            firstAuthor: fields[7].split('|'),
+            publications: _.map(fields[8].split('|'), _mapPub),
+            intTypes: _.map(fields[11].split('|'), _mapField),
+            sourceDbs: _.map(fields[12].split('|'), _mapField),
+            intIds : _.map(fields[13].split('|'), _mapPub),
+            scores: _.map(fields[14].split('|'), _mapScore)
+        };
+        
+        nodes[nodeA.id] = nodeA;
+        nodes[nodeB.id] = nodeB;
+        
+        return interaction;
+    }
+    
+    var _mapScore = function(scoreStr){
+        var arr = scoreStr.split(':'), score = {name:arr[0], score:+arr[1]};
+        
+        _addScore(score);
+        return score;
+    };
+    
+    var _mapField = function(fieldStr){
+        if(fieldStr.match(textInQuotes) == null || fieldStr.match(textInParenthesis) == null){
+            var arr = fieldStr.split(':');
+            return {name:arr[0], score:arr[1]};
+        }
+        return {name:fieldStr.match(textInQuotes)[1], value:fieldStr.match(textInParenthesis)[1]};
+    };
+    
+    var _mapPub = function(pubStr){
+        var arr = pubStr.split(':');
+        return {name:arr[0], value:arr[1]};
+    };
+    
+    var _mapTaxonomy = function(taxStr){
+        if(taxStr != '-'){
+            return (taxStr.match(textInTax) == null) ? taxStr.split(':')[1] : taxStr.match(textInTax)[1];
+        }
+    };
+    
+    var _addScore = function(score){
+        if( !_.isNaN(score.score) && _.isNumber(score.score)){
+            if(_.has(scores, score.name)){
+                if(scores[score.name].min > score.score) scores[score.name].min = score.score;
+                if(scores[score.name].max < score.score) scores[score.name].max = score.score;
+            }else{
+                scores[score.name] = {name:score.name, min:score.score, max:score.score};
+            }
+        }
+    };
+    
+    function MITab() {}
+    
+    MITab.parse = function(text) {
+        
+        if (! _.isString(text)) {
+            throw 'MITab cannot parse ' + typeof text;
+            return;
+        }
+        
+        // Initialize variables
+        nodes = {}; 
+        links = [];
+        scores = {};
+        
+        var lines = text.split('\n');
+        
+        var interactions = _.reject(_.map(lines, _parse), _.isEmpty);
+        var nodeval = _.values(nodes);
+        
+        return {
+            links: interactions,
+            nodes: nodeval,
+            ids: _.pluck(nodeval, 'id'),
+            taxa: _.compact(_.reduce(nodeval, function(memo,n){ return _.union(memo,n.taxonomy)},[])),
+            scores: _.values(scores)
+        };
+    };
+    
+    return MITab;
+})();
+},{"underscore":42}],15:[function(require,module,exports){
+var xhr = require('nets')
+
+var _url = '', _proxy = null, _method = 'query', _params = null;
+
+//Private members
+var _fetch = function(url, callback){
+    xhr({
+        url: url,
+        method: 'GET'
+    }, 
+    callback)
+}
+
+var _eval_params = function(params){
+    var str = '';
+    if(typeof params === 'string'){
+        return params;
+    }else if(typeof params === 'object'){
+        for(var key in params){
+            if (params.hasOwnProperty(key)) str += key+'='+params[key]+'&';
+        }
+    }
+    return str;
+}
+
+var _createUrl = function(method, query, params){
+    
+    var paramsStr = ''; 
+    if(params !== null)
+        paramsStr = '?'+_eval_params(params);
+    
+    var url = _url+'/'+method+'/'+query+paramsStr;
+    url = url.replace('//'+method, '/'+method)
+    
+    if(_proxy === null) return url;
+    
+    return _proxy +'?url='+url;
+}
+
+//Public members
+var psicquicServer = function(){}
+    
+psicquicServer.url = function(_){
+    if (!arguments.length)
+        return _url;
+    _url = _;
+    return psicquicServer;
+};
+
+psicquicServer.proxy = function(_){
+    if (!arguments.length)
+        return _proxy;
+    _proxy = _;
+    return psicquicServer;
+};
+
+psicquicServer.method = function(_){
+    if (!arguments.length)
+        return _method;
+    _method = _;
+    return psicquicServer;
+};
+
+psicquicServer.params = function(_){
+    if (!arguments.length)
+        return _params;
+    _params = _;
+    return psicquicServer;
+};
+
+psicquicServer.query = function(query, callback){
+    var url = _createUrl(_method, query, _params);
+    _fetch(url, callback);
+};
+
+psicquicServer.count = function(query, callback){
+    var url = _createUrl(_method, query, {format:'count'});
+    _fetch(url, callback);
+}
+
+psicquicServer.getInteractionsForIds = function(ids, params, callback){
+    var query = 'idA:('+ids.join(' OR ')+') AND idB:('+ids.join(' OR ')+')';
+        
+    var url = _createUrl('query', query, params);
+    _fetch(url, callback);
+};
+    
+psicquicServer.getExpandedInteractionsForIds = function(ids, params, callback){
+    var query = 'identifier:('+ids.join(' OR ')+')';
+    
+    var url = _createUrl('query', query, params);
+    _fetch(url, callback);
+};
+
+module.exports = psicquicServer;
+},{"nets":16}],16:[function(require,module,exports){
+var req = require('request')
+
+module.exports = Nets
+
+function Nets(uri, opts, cb) {
+  req(uri, opts, cb)
+}
+},{"request":17}],17:[function(require,module,exports){
+var window = require("global/window")
+var once = require("once")
+var parseHeaders = require('parse-headers')
+
+var messages = {
+    "0": "Internal XMLHttpRequest Error",
+    "4": "4xx Client Error",
+    "5": "5xx Server Error"
+}
+
+var XHR = window.XMLHttpRequest || noop
+var XDR = "withCredentials" in (new XHR()) ? XHR : window.XDomainRequest
+
+module.exports = createXHR
+
+function createXHR(options, callback) {
+    if (typeof options === "string") {
+        options = { uri: options }
+    }
+
+    options = options || {}
+    callback = once(callback)
+
+    var xhr = options.xhr || null
+
+    if (!xhr) {
+        if (options.cors || options.useXDR) {
+            xhr = new XDR()
+        }else{
+            xhr = new XHR()
+        }
+    }
+
+    var uri = xhr.url = options.uri || options.url
+    var method = xhr.method = options.method || "GET"
+    var body = options.body || options.data
+    var headers = xhr.headers = options.headers || {}
+    var sync = !!options.sync
+    var isJson = false
+    var key
+    var load = options.response ? loadResponse : loadXhr
+
+    if ("json" in options) {
+        isJson = true
+        headers["Accept"] = "application/json"
+        if (method !== "GET" && method !== "HEAD") {
+            headers["Content-Type"] = "application/json"
+            body = JSON.stringify(options.json)
+        }
+    }
+
+    xhr.onreadystatechange = readystatechange
+    xhr.onload = load
+    xhr.onerror = error
+    // IE9 must have onprogress be set to a unique function.
+    xhr.onprogress = function () {
+        // IE must die
+    }
+    // hate IE
+    xhr.ontimeout = noop
+    xhr.open(method, uri, !sync)
+                                    //backward compatibility
+    if (options.withCredentials || (options.cors && options.withCredentials !== false)) {
+        xhr.withCredentials = true
+    }
+
+    // Cannot set timeout with sync request
+    if (!sync) {
+        xhr.timeout = "timeout" in options ? options.timeout : 5000
+    }
+
+    if (xhr.setRequestHeader) {
+        for(key in headers){
+            if(headers.hasOwnProperty(key)){
+                xhr.setRequestHeader(key, headers[key])
+            }
+        }
+    } else if (options.headers) {
+        throw new Error("Headers cannot be set on an XDomainRequest object")
+    }
+
+    if ("responseType" in options) {
+        xhr.responseType = options.responseType
+    }
+    
+    if ("beforeSend" in options && 
+        typeof options.beforeSend === "function"
+    ) {
+        options.beforeSend(xhr)
+    }
+
+    xhr.send(body)
+
+    return xhr
+
+    function readystatechange() {
+        if (xhr.readyState === 4) {
+            load()
+        }
+    }
+
+    function getBody() {
+        // Chrome with requestType=blob throws errors arround when even testing access to responseText
+        var body = null
+
+        if (xhr.response) {
+            body = xhr.response
+        } else if (xhr.responseType === 'text' || !xhr.responseType) {
+            body = xhr.responseText || xhr.responseXML
+        }
+
+        if (isJson) {
+            try {
+                body = JSON.parse(body)
+            } catch (e) {}
+        }
+
+        return body
+    }
+
+    function getStatusCode() {
+        return xhr.status === 1223 ? 204 : xhr.status
+    }
+
+    // if we're getting a none-ok statusCode, build & return an error
+    function errorFromStatusCode(status) {
+        var error = null
+        if (status === 0 || (status >= 400 && status < 600)) {
+            var message = (typeof body === "string" ? body : false) ||
+                messages[String(status).charAt(0)]
+            error = new Error(message)
+            error.statusCode = status
+        }
+
+        return error
+    }
+
+    // will load the data & process the response in a special response object
+    function loadResponse() {
+        var status = getStatusCode()
+        var error = errorFromStatusCode(status)
+        var response = {
+            body: getBody(),
+            statusCode: status,
+            statusText: xhr.statusText,
+            raw: xhr
+        }
+        if(xhr.getAllResponseHeaders){ //remember xhr can in fact be XDR for CORS in IE
+            response.headers = parseHeaders(xhr.getAllResponseHeaders())
+        } else {
+            response.headers = {}
+        }
+
+        callback(error, response, response.body)
+    }
+
+    // will load the data and add some response properties to the source xhr
+    // and then respond with that
+    function loadXhr() {
+        var status = getStatusCode()
+        var error = errorFromStatusCode(status)
+
+        xhr.status = xhr.statusCode = status
+        xhr.body = getBody()
+        xhr.headers = parseHeaders(xhr.getAllResponseHeaders())
+
+        callback(error, xhr, xhr.body)
+    }
+
+    function error(evt) {
+        callback(evt, xhr)
+    }
+}
+
+
+function noop() {}
+
+},{"global/window":18,"once":19,"parse-headers":23}],18:[function(require,module,exports){
+(function (global){
+if (typeof window !== "undefined") {
+    module.exports = window;
+} else if (typeof global !== "undefined") {
+    module.exports = global;
+} else {
+    module.exports = {};
+}
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],19:[function(require,module,exports){
+module.exports = once
+
+once.proto = once(function () {
+  Object.defineProperty(Function.prototype, 'once', {
+    value: function () {
+      return once(this)
+    },
+    configurable: true
+  })
+})
+
+function once (fn) {
+  var called = false
+  return function () {
+    if (called) return
+    called = true
+    return fn.apply(this, arguments)
+  }
+}
+
+},{}],20:[function(require,module,exports){
+var isFunction = require('is-function')
+
+module.exports = forEach
+
+var toString = Object.prototype.toString
+var hasOwnProperty = Object.prototype.hasOwnProperty
+
+function forEach(list, iterator, context) {
+    if (!isFunction(iterator)) {
+        throw new TypeError('iterator must be a function')
+    }
+
+    if (arguments.length < 3) {
+        context = this
+    }
+    
+    if (toString.call(list) === '[object Array]')
+        forEachArray(list, iterator, context)
+    else if (typeof list === 'string')
+        forEachString(list, iterator, context)
+    else
+        forEachObject(list, iterator, context)
+}
+
+function forEachArray(array, iterator, context) {
+    for (var i = 0, len = array.length; i < len; i++) {
+        if (hasOwnProperty.call(array, i)) {
+            iterator.call(context, array[i], i, array)
+        }
+    }
+}
+
+function forEachString(string, iterator, context) {
+    for (var i = 0, len = string.length; i < len; i++) {
+        // no such thing as a sparse string.
+        iterator.call(context, string.charAt(i), i, string)
+    }
+}
+
+function forEachObject(object, iterator, context) {
+    for (var k in object) {
+        if (hasOwnProperty.call(object, k)) {
+            iterator.call(context, object[k], k, object)
+        }
+    }
+}
+
+},{"is-function":21}],21:[function(require,module,exports){
+module.exports = isFunction
+
+var toString = Object.prototype.toString
+
+function isFunction (fn) {
+  var string = toString.call(fn)
+  return string === '[object Function]' ||
+    (typeof fn === 'function' && string !== '[object RegExp]') ||
+    (typeof window !== 'undefined' &&
+     // IE8 and below
+     (fn === window.setTimeout ||
+      fn === window.alert ||
+      fn === window.confirm ||
+      fn === window.prompt))
+};
+
+},{}],22:[function(require,module,exports){
+
+exports = module.exports = trim;
+
+function trim(str){
+  return str.replace(/^\s*|\s*$/g, '');
+}
+
+exports.left = function(str){
+  return str.replace(/^\s*/, '');
+};
+
+exports.right = function(str){
+  return str.replace(/\s*$/, '');
+};
+
+},{}],23:[function(require,module,exports){
+var trim = require('trim')
+  , forEach = require('for-each')
+  , isArray = function(arg) {
+      return Object.prototype.toString.call(arg) === '[object Array]';
+    }
+
+module.exports = function (headers) {
+  if (!headers)
+    return {}
+
+  var result = {}
+
+  forEach(
+      trim(headers).split('\n')
+    , function (row) {
+        var index = row.indexOf(':')
+          , key = trim(row.slice(0, index)).toLowerCase()
+          , value = trim(row.slice(index + 1))
+
+        if (typeof(result[key]) === 'undefined') {
+          result[key] = value
+        } else if (isArray(result[key])) {
+          result[key].push(value)
+        } else {
+          result[key] = [ result[key], value ]
+        }
+      }
+  )
+
+  return result
+}
+},{"for-each":20,"trim":22}],24:[function(require,module,exports){
 /*!
  * Bootstrap v3.2.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires jQuery");+function(a){"use strict";function b(){var a=document.createElement("bootstrap"),b={WebkitTransition:"webkitTransitionEnd",MozTransition:"transitionend",OTransition:"oTransitionEnd otransitionend",transition:"transitionend"};for(var c in b)if(void 0!==a.style[c])return{end:b[c]};return!1}a.fn.emulateTransitionEnd=function(b){var c=!1,d=this;a(this).one("bsTransitionEnd",function(){c=!0});var e=function(){c||a(d).trigger(a.support.transition.end)};return setTimeout(e,b),this},a(function(){a.support.transition=b(),a.support.transition&&(a.event.special.bsTransitionEnd={bindType:a.support.transition.end,delegateType:a.support.transition.end,handle:function(b){return a(b.target).is(this)?b.handleObj.handler.apply(this,arguments):void 0}})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var c=a(this),e=c.data("bs.alert");e||c.data("bs.alert",e=new d(this)),"string"==typeof b&&e[b].call(c)})}var c='[data-dismiss="alert"]',d=function(b){a(b).on("click",c,this.close)};d.VERSION="3.2.0",d.prototype.close=function(b){function c(){f.detach().trigger("closed.bs.alert").remove()}var d=a(this),e=d.attr("data-target");e||(e=d.attr("href"),e=e&&e.replace(/.*(?=#[^\s]*$)/,""));var f=a(e);b&&b.preventDefault(),f.length||(f=d.hasClass("alert")?d:d.parent()),f.trigger(b=a.Event("close.bs.alert")),b.isDefaultPrevented()||(f.removeClass("in"),a.support.transition&&f.hasClass("fade")?f.one("bsTransitionEnd",c).emulateTransitionEnd(150):c())};var e=a.fn.alert;a.fn.alert=b,a.fn.alert.Constructor=d,a.fn.alert.noConflict=function(){return a.fn.alert=e,this},a(document).on("click.bs.alert.data-api",c,d.prototype.close)}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.button"),f="object"==typeof b&&b;e||d.data("bs.button",e=new c(this,f)),"toggle"==b?e.toggle():b&&e.setState(b)})}var c=function(b,d){this.$element=a(b),this.options=a.extend({},c.DEFAULTS,d),this.isLoading=!1};c.VERSION="3.2.0",c.DEFAULTS={loadingText:"loading..."},c.prototype.setState=function(b){var c="disabled",d=this.$element,e=d.is("input")?"val":"html",f=d.data();b+="Text",null==f.resetText&&d.data("resetText",d[e]()),d[e](null==f[b]?this.options[b]:f[b]),setTimeout(a.proxy(function(){"loadingText"==b?(this.isLoading=!0,d.addClass(c).attr(c,c)):this.isLoading&&(this.isLoading=!1,d.removeClass(c).removeAttr(c))},this),0)},c.prototype.toggle=function(){var a=!0,b=this.$element.closest('[data-toggle="buttons"]');if(b.length){var c=this.$element.find("input");"radio"==c.prop("type")&&(c.prop("checked")&&this.$element.hasClass("active")?a=!1:b.find(".active").removeClass("active")),a&&c.prop("checked",!this.$element.hasClass("active")).trigger("change")}a&&this.$element.toggleClass("active")};var d=a.fn.button;a.fn.button=b,a.fn.button.Constructor=c,a.fn.button.noConflict=function(){return a.fn.button=d,this},a(document).on("click.bs.button.data-api",'[data-toggle^="button"]',function(c){var d=a(c.target);d.hasClass("btn")||(d=d.closest(".btn")),b.call(d,"toggle"),c.preventDefault()})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.carousel"),f=a.extend({},c.DEFAULTS,d.data(),"object"==typeof b&&b),g="string"==typeof b?b:f.slide;e||d.data("bs.carousel",e=new c(this,f)),"number"==typeof b?e.to(b):g?e[g]():f.interval&&e.pause().cycle()})}var c=function(b,c){this.$element=a(b).on("keydown.bs.carousel",a.proxy(this.keydown,this)),this.$indicators=this.$element.find(".carousel-indicators"),this.options=c,this.paused=this.sliding=this.interval=this.$active=this.$items=null,"hover"==this.options.pause&&this.$element.on("mouseenter.bs.carousel",a.proxy(this.pause,this)).on("mouseleave.bs.carousel",a.proxy(this.cycle,this))};c.VERSION="3.2.0",c.DEFAULTS={interval:5e3,pause:"hover",wrap:!0},c.prototype.keydown=function(a){switch(a.which){case 37:this.prev();break;case 39:this.next();break;default:return}a.preventDefault()},c.prototype.cycle=function(b){return b||(this.paused=!1),this.interval&&clearInterval(this.interval),this.options.interval&&!this.paused&&(this.interval=setInterval(a.proxy(this.next,this),this.options.interval)),this},c.prototype.getItemIndex=function(a){return this.$items=a.parent().children(".item"),this.$items.index(a||this.$active)},c.prototype.to=function(b){var c=this,d=this.getItemIndex(this.$active=this.$element.find(".item.active"));return b>this.$items.length-1||0>b?void 0:this.sliding?this.$element.one("slid.bs.carousel",function(){c.to(b)}):d==b?this.pause().cycle():this.slide(b>d?"next":"prev",a(this.$items[b]))},c.prototype.pause=function(b){return b||(this.paused=!0),this.$element.find(".next, .prev").length&&a.support.transition&&(this.$element.trigger(a.support.transition.end),this.cycle(!0)),this.interval=clearInterval(this.interval),this},c.prototype.next=function(){return this.sliding?void 0:this.slide("next")},c.prototype.prev=function(){return this.sliding?void 0:this.slide("prev")},c.prototype.slide=function(b,c){var d=this.$element.find(".item.active"),e=c||d[b](),f=this.interval,g="next"==b?"left":"right",h="next"==b?"first":"last",i=this;if(!e.length){if(!this.options.wrap)return;e=this.$element.find(".item")[h]()}if(e.hasClass("active"))return this.sliding=!1;var j=e[0],k=a.Event("slide.bs.carousel",{relatedTarget:j,direction:g});if(this.$element.trigger(k),!k.isDefaultPrevented()){if(this.sliding=!0,f&&this.pause(),this.$indicators.length){this.$indicators.find(".active").removeClass("active");var l=a(this.$indicators.children()[this.getItemIndex(e)]);l&&l.addClass("active")}var m=a.Event("slid.bs.carousel",{relatedTarget:j,direction:g});return a.support.transition&&this.$element.hasClass("slide")?(e.addClass(b),e[0].offsetWidth,d.addClass(g),e.addClass(g),d.one("bsTransitionEnd",function(){e.removeClass([b,g].join(" ")).addClass("active"),d.removeClass(["active",g].join(" ")),i.sliding=!1,setTimeout(function(){i.$element.trigger(m)},0)}).emulateTransitionEnd(1e3*d.css("transition-duration").slice(0,-1))):(d.removeClass("active"),e.addClass("active"),this.sliding=!1,this.$element.trigger(m)),f&&this.cycle(),this}};var d=a.fn.carousel;a.fn.carousel=b,a.fn.carousel.Constructor=c,a.fn.carousel.noConflict=function(){return a.fn.carousel=d,this},a(document).on("click.bs.carousel.data-api","[data-slide], [data-slide-to]",function(c){var d,e=a(this),f=a(e.attr("data-target")||(d=e.attr("href"))&&d.replace(/.*(?=#[^\s]+$)/,""));if(f.hasClass("carousel")){var g=a.extend({},f.data(),e.data()),h=e.attr("data-slide-to");h&&(g.interval=!1),b.call(f,g),h&&f.data("bs.carousel").to(h),c.preventDefault()}}),a(window).on("load",function(){a('[data-ride="carousel"]').each(function(){var c=a(this);b.call(c,c.data())})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.collapse"),f=a.extend({},c.DEFAULTS,d.data(),"object"==typeof b&&b);!e&&f.toggle&&"show"==b&&(b=!b),e||d.data("bs.collapse",e=new c(this,f)),"string"==typeof b&&e[b]()})}var c=function(b,d){this.$element=a(b),this.options=a.extend({},c.DEFAULTS,d),this.transitioning=null,this.options.parent&&(this.$parent=a(this.options.parent)),this.options.toggle&&this.toggle()};c.VERSION="3.2.0",c.DEFAULTS={toggle:!0},c.prototype.dimension=function(){var a=this.$element.hasClass("width");return a?"width":"height"},c.prototype.show=function(){if(!this.transitioning&&!this.$element.hasClass("in")){var c=a.Event("show.bs.collapse");if(this.$element.trigger(c),!c.isDefaultPrevented()){var d=this.$parent&&this.$parent.find("> .panel > .in");if(d&&d.length){var e=d.data("bs.collapse");if(e&&e.transitioning)return;b.call(d,"hide"),e||d.data("bs.collapse",null)}var f=this.dimension();this.$element.removeClass("collapse").addClass("collapsing")[f](0),this.transitioning=1;var g=function(){this.$element.removeClass("collapsing").addClass("collapse in")[f](""),this.transitioning=0,this.$element.trigger("shown.bs.collapse")};if(!a.support.transition)return g.call(this);var h=a.camelCase(["scroll",f].join("-"));this.$element.one("bsTransitionEnd",a.proxy(g,this)).emulateTransitionEnd(350)[f](this.$element[0][h])}}},c.prototype.hide=function(){if(!this.transitioning&&this.$element.hasClass("in")){var b=a.Event("hide.bs.collapse");if(this.$element.trigger(b),!b.isDefaultPrevented()){var c=this.dimension();this.$element[c](this.$element[c]())[0].offsetHeight,this.$element.addClass("collapsing").removeClass("collapse").removeClass("in"),this.transitioning=1;var d=function(){this.transitioning=0,this.$element.trigger("hidden.bs.collapse").removeClass("collapsing").addClass("collapse")};return a.support.transition?void this.$element[c](0).one("bsTransitionEnd",a.proxy(d,this)).emulateTransitionEnd(350):d.call(this)}}},c.prototype.toggle=function(){this[this.$element.hasClass("in")?"hide":"show"]()};var d=a.fn.collapse;a.fn.collapse=b,a.fn.collapse.Constructor=c,a.fn.collapse.noConflict=function(){return a.fn.collapse=d,this},a(document).on("click.bs.collapse.data-api",'[data-toggle="collapse"]',function(c){var d,e=a(this),f=e.attr("data-target")||c.preventDefault()||(d=e.attr("href"))&&d.replace(/.*(?=#[^\s]+$)/,""),g=a(f),h=g.data("bs.collapse"),i=h?"toggle":e.data(),j=e.attr("data-parent"),k=j&&a(j);h&&h.transitioning||(k&&k.find('[data-toggle="collapse"][data-parent="'+j+'"]').not(e).addClass("collapsed"),e[g.hasClass("in")?"addClass":"removeClass"]("collapsed")),b.call(g,i)})}(jQuery),+function(a){"use strict";function b(b){b&&3===b.which||(a(e).remove(),a(f).each(function(){var d=c(a(this)),e={relatedTarget:this};d.hasClass("open")&&(d.trigger(b=a.Event("hide.bs.dropdown",e)),b.isDefaultPrevented()||d.removeClass("open").trigger("hidden.bs.dropdown",e))}))}function c(b){var c=b.attr("data-target");c||(c=b.attr("href"),c=c&&/#[A-Za-z]/.test(c)&&c.replace(/.*(?=#[^\s]*$)/,""));var d=c&&a(c);return d&&d.length?d:b.parent()}function d(b){return this.each(function(){var c=a(this),d=c.data("bs.dropdown");d||c.data("bs.dropdown",d=new g(this)),"string"==typeof b&&d[b].call(c)})}var e=".dropdown-backdrop",f='[data-toggle="dropdown"]',g=function(b){a(b).on("click.bs.dropdown",this.toggle)};g.VERSION="3.2.0",g.prototype.toggle=function(d){var e=a(this);if(!e.is(".disabled, :disabled")){var f=c(e),g=f.hasClass("open");if(b(),!g){"ontouchstart"in document.documentElement&&!f.closest(".navbar-nav").length&&a('<div class="dropdown-backdrop"/>').insertAfter(a(this)).on("click",b);var h={relatedTarget:this};if(f.trigger(d=a.Event("show.bs.dropdown",h)),d.isDefaultPrevented())return;e.trigger("focus"),f.toggleClass("open").trigger("shown.bs.dropdown",h)}return!1}},g.prototype.keydown=function(b){if(/(38|40|27)/.test(b.keyCode)){var d=a(this);if(b.preventDefault(),b.stopPropagation(),!d.is(".disabled, :disabled")){var e=c(d),g=e.hasClass("open");if(!g||g&&27==b.keyCode)return 27==b.which&&e.find(f).trigger("focus"),d.trigger("click");var h=" li:not(.divider):visible a",i=e.find('[role="menu"]'+h+', [role="listbox"]'+h);if(i.length){var j=i.index(i.filter(":focus"));38==b.keyCode&&j>0&&j--,40==b.keyCode&&j<i.length-1&&j++,~j||(j=0),i.eq(j).trigger("focus")}}}};var h=a.fn.dropdown;a.fn.dropdown=d,a.fn.dropdown.Constructor=g,a.fn.dropdown.noConflict=function(){return a.fn.dropdown=h,this},a(document).on("click.bs.dropdown.data-api",b).on("click.bs.dropdown.data-api",".dropdown form",function(a){a.stopPropagation()}).on("click.bs.dropdown.data-api",f,g.prototype.toggle).on("keydown.bs.dropdown.data-api",f+', [role="menu"], [role="listbox"]',g.prototype.keydown)}(jQuery),+function(a){"use strict";function b(b,d){return this.each(function(){var e=a(this),f=e.data("bs.modal"),g=a.extend({},c.DEFAULTS,e.data(),"object"==typeof b&&b);f||e.data("bs.modal",f=new c(this,g)),"string"==typeof b?f[b](d):g.show&&f.show(d)})}var c=function(b,c){this.options=c,this.$body=a(document.body),this.$element=a(b),this.$backdrop=this.isShown=null,this.scrollbarWidth=0,this.options.remote&&this.$element.find(".modal-content").load(this.options.remote,a.proxy(function(){this.$element.trigger("loaded.bs.modal")},this))};c.VERSION="3.2.0",c.DEFAULTS={backdrop:!0,keyboard:!0,show:!0},c.prototype.toggle=function(a){return this.isShown?this.hide():this.show(a)},c.prototype.show=function(b){var c=this,d=a.Event("show.bs.modal",{relatedTarget:b});this.$element.trigger(d),this.isShown||d.isDefaultPrevented()||(this.isShown=!0,this.checkScrollbar(),this.$body.addClass("modal-open"),this.setScrollbar(),this.escape(),this.$element.on("click.dismiss.bs.modal",'[data-dismiss="modal"]',a.proxy(this.hide,this)),this.backdrop(function(){var d=a.support.transition&&c.$element.hasClass("fade");c.$element.parent().length||c.$element.appendTo(c.$body),c.$element.show().scrollTop(0),d&&c.$element[0].offsetWidth,c.$element.addClass("in").attr("aria-hidden",!1),c.enforceFocus();var e=a.Event("shown.bs.modal",{relatedTarget:b});d?c.$element.find(".modal-dialog").one("bsTransitionEnd",function(){c.$element.trigger("focus").trigger(e)}).emulateTransitionEnd(300):c.$element.trigger("focus").trigger(e)}))},c.prototype.hide=function(b){b&&b.preventDefault(),b=a.Event("hide.bs.modal"),this.$element.trigger(b),this.isShown&&!b.isDefaultPrevented()&&(this.isShown=!1,this.$body.removeClass("modal-open"),this.resetScrollbar(),this.escape(),a(document).off("focusin.bs.modal"),this.$element.removeClass("in").attr("aria-hidden",!0).off("click.dismiss.bs.modal"),a.support.transition&&this.$element.hasClass("fade")?this.$element.one("bsTransitionEnd",a.proxy(this.hideModal,this)).emulateTransitionEnd(300):this.hideModal())},c.prototype.enforceFocus=function(){a(document).off("focusin.bs.modal").on("focusin.bs.modal",a.proxy(function(a){this.$element[0]===a.target||this.$element.has(a.target).length||this.$element.trigger("focus")},this))},c.prototype.escape=function(){this.isShown&&this.options.keyboard?this.$element.on("keyup.dismiss.bs.modal",a.proxy(function(a){27==a.which&&this.hide()},this)):this.isShown||this.$element.off("keyup.dismiss.bs.modal")},c.prototype.hideModal=function(){var a=this;this.$element.hide(),this.backdrop(function(){a.$element.trigger("hidden.bs.modal")})},c.prototype.removeBackdrop=function(){this.$backdrop&&this.$backdrop.remove(),this.$backdrop=null},c.prototype.backdrop=function(b){var c=this,d=this.$element.hasClass("fade")?"fade":"";if(this.isShown&&this.options.backdrop){var e=a.support.transition&&d;if(this.$backdrop=a('<div class="modal-backdrop '+d+'" />').appendTo(this.$body),this.$element.on("click.dismiss.bs.modal",a.proxy(function(a){a.target===a.currentTarget&&("static"==this.options.backdrop?this.$element[0].focus.call(this.$element[0]):this.hide.call(this))},this)),e&&this.$backdrop[0].offsetWidth,this.$backdrop.addClass("in"),!b)return;e?this.$backdrop.one("bsTransitionEnd",b).emulateTransitionEnd(150):b()}else if(!this.isShown&&this.$backdrop){this.$backdrop.removeClass("in");var f=function(){c.removeBackdrop(),b&&b()};a.support.transition&&this.$element.hasClass("fade")?this.$backdrop.one("bsTransitionEnd",f).emulateTransitionEnd(150):f()}else b&&b()},c.prototype.checkScrollbar=function(){document.body.clientWidth>=window.innerWidth||(this.scrollbarWidth=this.scrollbarWidth||this.measureScrollbar())},c.prototype.setScrollbar=function(){var a=parseInt(this.$body.css("padding-right")||0,10);this.scrollbarWidth&&this.$body.css("padding-right",a+this.scrollbarWidth)},c.prototype.resetScrollbar=function(){this.$body.css("padding-right","")},c.prototype.measureScrollbar=function(){var a=document.createElement("div");a.className="modal-scrollbar-measure",this.$body.append(a);var b=a.offsetWidth-a.clientWidth;return this.$body[0].removeChild(a),b};var d=a.fn.modal;a.fn.modal=b,a.fn.modal.Constructor=c,a.fn.modal.noConflict=function(){return a.fn.modal=d,this},a(document).on("click.bs.modal.data-api",'[data-toggle="modal"]',function(c){var d=a(this),e=d.attr("href"),f=a(d.attr("data-target")||e&&e.replace(/.*(?=#[^\s]+$)/,"")),g=f.data("bs.modal")?"toggle":a.extend({remote:!/#/.test(e)&&e},f.data(),d.data());d.is("a")&&c.preventDefault(),f.one("show.bs.modal",function(a){a.isDefaultPrevented()||f.one("hidden.bs.modal",function(){d.is(":visible")&&d.trigger("focus")})}),b.call(f,g,this)})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tooltip"),f="object"==typeof b&&b;(e||"destroy"!=b)&&(e||d.data("bs.tooltip",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.type=this.options=this.enabled=this.timeout=this.hoverState=this.$element=null,this.init("tooltip",a,b)};c.VERSION="3.2.0",c.DEFAULTS={animation:!0,placement:"top",selector:!1,template:'<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',trigger:"hover focus",title:"",delay:0,html:!1,container:!1,viewport:{selector:"body",padding:0}},c.prototype.init=function(b,c,d){this.enabled=!0,this.type=b,this.$element=a(c),this.options=this.getOptions(d),this.$viewport=this.options.viewport&&a(this.options.viewport.selector||this.options.viewport);for(var e=this.options.trigger.split(" "),f=e.length;f--;){var g=e[f];if("click"==g)this.$element.on("click."+this.type,this.options.selector,a.proxy(this.toggle,this));else if("manual"!=g){var h="hover"==g?"mouseenter":"focusin",i="hover"==g?"mouseleave":"focusout";this.$element.on(h+"."+this.type,this.options.selector,a.proxy(this.enter,this)),this.$element.on(i+"."+this.type,this.options.selector,a.proxy(this.leave,this))}}this.options.selector?this._options=a.extend({},this.options,{trigger:"manual",selector:""}):this.fixTitle()},c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.getOptions=function(b){return b=a.extend({},this.getDefaults(),this.$element.data(),b),b.delay&&"number"==typeof b.delay&&(b.delay={show:b.delay,hide:b.delay}),b},c.prototype.getDelegateOptions=function(){var b={},c=this.getDefaults();return this._options&&a.each(this._options,function(a,d){c[a]!=d&&(b[a]=d)}),b},c.prototype.enter=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),clearTimeout(c.timeout),c.hoverState="in",c.options.delay&&c.options.delay.show?void(c.timeout=setTimeout(function(){"in"==c.hoverState&&c.show()},c.options.delay.show)):c.show()},c.prototype.leave=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),clearTimeout(c.timeout),c.hoverState="out",c.options.delay&&c.options.delay.hide?void(c.timeout=setTimeout(function(){"out"==c.hoverState&&c.hide()},c.options.delay.hide)):c.hide()},c.prototype.show=function(){var b=a.Event("show.bs."+this.type);if(this.hasContent()&&this.enabled){this.$element.trigger(b);var c=a.contains(document.documentElement,this.$element[0]);if(b.isDefaultPrevented()||!c)return;var d=this,e=this.tip(),f=this.getUID(this.type);this.setContent(),e.attr("id",f),this.$element.attr("aria-describedby",f),this.options.animation&&e.addClass("fade");var g="function"==typeof this.options.placement?this.options.placement.call(this,e[0],this.$element[0]):this.options.placement,h=/\s?auto?\s?/i,i=h.test(g);i&&(g=g.replace(h,"")||"top"),e.detach().css({top:0,left:0,display:"block"}).addClass(g).data("bs."+this.type,this),this.options.container?e.appendTo(this.options.container):e.insertAfter(this.$element);var j=this.getPosition(),k=e[0].offsetWidth,l=e[0].offsetHeight;if(i){var m=g,n=this.$element.parent(),o=this.getPosition(n);g="bottom"==g&&j.top+j.height+l-o.scroll>o.height?"top":"top"==g&&j.top-o.scroll-l<0?"bottom":"right"==g&&j.right+k>o.width?"left":"left"==g&&j.left-k<o.left?"right":g,e.removeClass(m).addClass(g)}var p=this.getCalculatedOffset(g,j,k,l);this.applyPlacement(p,g);var q=function(){d.$element.trigger("shown.bs."+d.type),d.hoverState=null};a.support.transition&&this.$tip.hasClass("fade")?e.one("bsTransitionEnd",q).emulateTransitionEnd(150):q()}},c.prototype.applyPlacement=function(b,c){var d=this.tip(),e=d[0].offsetWidth,f=d[0].offsetHeight,g=parseInt(d.css("margin-top"),10),h=parseInt(d.css("margin-left"),10);isNaN(g)&&(g=0),isNaN(h)&&(h=0),b.top=b.top+g,b.left=b.left+h,a.offset.setOffset(d[0],a.extend({using:function(a){d.css({top:Math.round(a.top),left:Math.round(a.left)})}},b),0),d.addClass("in");var i=d[0].offsetWidth,j=d[0].offsetHeight;"top"==c&&j!=f&&(b.top=b.top+f-j);var k=this.getViewportAdjustedDelta(c,b,i,j);k.left?b.left+=k.left:b.top+=k.top;var l=k.left?2*k.left-e+i:2*k.top-f+j,m=k.left?"left":"top",n=k.left?"offsetWidth":"offsetHeight";d.offset(b),this.replaceArrow(l,d[0][n],m)},c.prototype.replaceArrow=function(a,b,c){this.arrow().css(c,a?50*(1-a/b)+"%":"")},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle();a.find(".tooltip-inner")[this.options.html?"html":"text"](b),a.removeClass("fade in top bottom left right")},c.prototype.hide=function(){function b(){"in"!=c.hoverState&&d.detach(),c.$element.trigger("hidden.bs."+c.type)}var c=this,d=this.tip(),e=a.Event("hide.bs."+this.type);return this.$element.removeAttr("aria-describedby"),this.$element.trigger(e),e.isDefaultPrevented()?void 0:(d.removeClass("in"),a.support.transition&&this.$tip.hasClass("fade")?d.one("bsTransitionEnd",b).emulateTransitionEnd(150):b(),this.hoverState=null,this)},c.prototype.fixTitle=function(){var a=this.$element;(a.attr("title")||"string"!=typeof a.attr("data-original-title"))&&a.attr("data-original-title",a.attr("title")||"").attr("title","")},c.prototype.hasContent=function(){return this.getTitle()},c.prototype.getPosition=function(b){b=b||this.$element;var c=b[0],d="BODY"==c.tagName;return a.extend({},"function"==typeof c.getBoundingClientRect?c.getBoundingClientRect():null,{scroll:d?document.documentElement.scrollTop||document.body.scrollTop:b.scrollTop(),width:d?a(window).width():b.outerWidth(),height:d?a(window).height():b.outerHeight()},d?{top:0,left:0}:b.offset())},c.prototype.getCalculatedOffset=function(a,b,c,d){return"bottom"==a?{top:b.top+b.height,left:b.left+b.width/2-c/2}:"top"==a?{top:b.top-d,left:b.left+b.width/2-c/2}:"left"==a?{top:b.top+b.height/2-d/2,left:b.left-c}:{top:b.top+b.height/2-d/2,left:b.left+b.width}},c.prototype.getViewportAdjustedDelta=function(a,b,c,d){var e={top:0,left:0};if(!this.$viewport)return e;var f=this.options.viewport&&this.options.viewport.padding||0,g=this.getPosition(this.$viewport);if(/right|left/.test(a)){var h=b.top-f-g.scroll,i=b.top+f-g.scroll+d;h<g.top?e.top=g.top-h:i>g.top+g.height&&(e.top=g.top+g.height-i)}else{var j=b.left-f,k=b.left+f+c;j<g.left?e.left=g.left-j:k>g.width&&(e.left=g.left+g.width-k)}return e},c.prototype.getTitle=function(){var a,b=this.$element,c=this.options;return a=b.attr("data-original-title")||("function"==typeof c.title?c.title.call(b[0]):c.title)},c.prototype.getUID=function(a){do a+=~~(1e6*Math.random());while(document.getElementById(a));return a},c.prototype.tip=function(){return this.$tip=this.$tip||a(this.options.template)},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".tooltip-arrow")},c.prototype.validate=function(){this.$element[0].parentNode||(this.hide(),this.$element=null,this.options=null)},c.prototype.enable=function(){this.enabled=!0},c.prototype.disable=function(){this.enabled=!1},c.prototype.toggleEnabled=function(){this.enabled=!this.enabled},c.prototype.toggle=function(b){var c=this;b&&(c=a(b.currentTarget).data("bs."+this.type),c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c))),c.tip().hasClass("in")?c.leave(c):c.enter(c)},c.prototype.destroy=function(){clearTimeout(this.timeout),this.hide().$element.off("."+this.type).removeData("bs."+this.type)};var d=a.fn.tooltip;a.fn.tooltip=b,a.fn.tooltip.Constructor=c,a.fn.tooltip.noConflict=function(){return a.fn.tooltip=d,this}}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.popover"),f="object"==typeof b&&b;(e||"destroy"!=b)&&(e||d.data("bs.popover",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.init("popover",a,b)};if(!a.fn.tooltip)throw new Error("Popover requires tooltip.js");c.VERSION="3.2.0",c.DEFAULTS=a.extend({},a.fn.tooltip.Constructor.DEFAULTS,{placement:"right",trigger:"click",content:"",template:'<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'}),c.prototype=a.extend({},a.fn.tooltip.Constructor.prototype),c.prototype.constructor=c,c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle(),c=this.getContent();a.find(".popover-title")[this.options.html?"html":"text"](b),a.find(".popover-content").empty()[this.options.html?"string"==typeof c?"html":"append":"text"](c),a.removeClass("fade top bottom left right in"),a.find(".popover-title").html()||a.find(".popover-title").hide()},c.prototype.hasContent=function(){return this.getTitle()||this.getContent()},c.prototype.getContent=function(){var a=this.$element,b=this.options;return a.attr("data-content")||("function"==typeof b.content?b.content.call(a[0]):b.content)},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".arrow")},c.prototype.tip=function(){return this.$tip||(this.$tip=a(this.options.template)),this.$tip};var d=a.fn.popover;a.fn.popover=b,a.fn.popover.Constructor=c,a.fn.popover.noConflict=function(){return a.fn.popover=d,this}}(jQuery),+function(a){"use strict";function b(c,d){var e=a.proxy(this.process,this);this.$body=a("body"),this.$scrollElement=a(a(c).is("body")?window:c),this.options=a.extend({},b.DEFAULTS,d),this.selector=(this.options.target||"")+" .nav li > a",this.offsets=[],this.targets=[],this.activeTarget=null,this.scrollHeight=0,this.$scrollElement.on("scroll.bs.scrollspy",e),this.refresh(),this.process()}function c(c){return this.each(function(){var d=a(this),e=d.data("bs.scrollspy"),f="object"==typeof c&&c;e||d.data("bs.scrollspy",e=new b(this,f)),"string"==typeof c&&e[c]()})}b.VERSION="3.2.0",b.DEFAULTS={offset:10},b.prototype.getScrollHeight=function(){return this.$scrollElement[0].scrollHeight||Math.max(this.$body[0].scrollHeight,document.documentElement.scrollHeight)},b.prototype.refresh=function(){var b="offset",c=0;a.isWindow(this.$scrollElement[0])||(b="position",c=this.$scrollElement.scrollTop()),this.offsets=[],this.targets=[],this.scrollHeight=this.getScrollHeight();var d=this;this.$body.find(this.selector).map(function(){var d=a(this),e=d.data("target")||d.attr("href"),f=/^#./.test(e)&&a(e);return f&&f.length&&f.is(":visible")&&[[f[b]().top+c,e]]||null}).sort(function(a,b){return a[0]-b[0]}).each(function(){d.offsets.push(this[0]),d.targets.push(this[1])})},b.prototype.process=function(){var a,b=this.$scrollElement.scrollTop()+this.options.offset,c=this.getScrollHeight(),d=this.options.offset+c-this.$scrollElement.height(),e=this.offsets,f=this.targets,g=this.activeTarget;if(this.scrollHeight!=c&&this.refresh(),b>=d)return g!=(a=f[f.length-1])&&this.activate(a);if(g&&b<=e[0])return g!=(a=f[0])&&this.activate(a);for(a=e.length;a--;)g!=f[a]&&b>=e[a]&&(!e[a+1]||b<=e[a+1])&&this.activate(f[a])},b.prototype.activate=function(b){this.activeTarget=b,a(this.selector).parentsUntil(this.options.target,".active").removeClass("active");var c=this.selector+'[data-target="'+b+'"],'+this.selector+'[href="'+b+'"]',d=a(c).parents("li").addClass("active");d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active")),d.trigger("activate.bs.scrollspy")};var d=a.fn.scrollspy;a.fn.scrollspy=c,a.fn.scrollspy.Constructor=b,a.fn.scrollspy.noConflict=function(){return a.fn.scrollspy=d,this},a(window).on("load.bs.scrollspy.data-api",function(){a('[data-spy="scroll"]').each(function(){var b=a(this);c.call(b,b.data())})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tab");e||d.data("bs.tab",e=new c(this)),"string"==typeof b&&e[b]()})}var c=function(b){this.element=a(b)};c.VERSION="3.2.0",c.prototype.show=function(){var b=this.element,c=b.closest("ul:not(.dropdown-menu)"),d=b.data("target");if(d||(d=b.attr("href"),d=d&&d.replace(/.*(?=#[^\s]*$)/,"")),!b.parent("li").hasClass("active")){var e=c.find(".active:last a")[0],f=a.Event("show.bs.tab",{relatedTarget:e});if(b.trigger(f),!f.isDefaultPrevented()){var g=a(d);this.activate(b.closest("li"),c),this.activate(g,g.parent(),function(){b.trigger({type:"shown.bs.tab",relatedTarget:e})})}}},c.prototype.activate=function(b,c,d){function e(){f.removeClass("active").find("> .dropdown-menu > .active").removeClass("active"),b.addClass("active"),g?(b[0].offsetWidth,b.addClass("in")):b.removeClass("fade"),b.parent(".dropdown-menu")&&b.closest("li.dropdown").addClass("active"),d&&d()}var f=c.find("> .active"),g=d&&a.support.transition&&f.hasClass("fade");g?f.one("bsTransitionEnd",e).emulateTransitionEnd(150):e(),f.removeClass("in")};var d=a.fn.tab;a.fn.tab=b,a.fn.tab.Constructor=c,a.fn.tab.noConflict=function(){return a.fn.tab=d,this},a(document).on("click.bs.tab.data-api",'[data-toggle="tab"], [data-toggle="pill"]',function(c){c.preventDefault(),b.call(a(this),"show")})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.affix"),f="object"==typeof b&&b;e||d.data("bs.affix",e=new c(this,f)),"string"==typeof b&&e[b]()})}var c=function(b,d){this.options=a.extend({},c.DEFAULTS,d),this.$target=a(this.options.target).on("scroll.bs.affix.data-api",a.proxy(this.checkPosition,this)).on("click.bs.affix.data-api",a.proxy(this.checkPositionWithEventLoop,this)),this.$element=a(b),this.affixed=this.unpin=this.pinnedOffset=null,this.checkPosition()};c.VERSION="3.2.0",c.RESET="affix affix-top affix-bottom",c.DEFAULTS={offset:0,target:window},c.prototype.getPinnedOffset=function(){if(this.pinnedOffset)return this.pinnedOffset;this.$element.removeClass(c.RESET).addClass("affix");var a=this.$target.scrollTop(),b=this.$element.offset();return this.pinnedOffset=b.top-a},c.prototype.checkPositionWithEventLoop=function(){setTimeout(a.proxy(this.checkPosition,this),1)},c.prototype.checkPosition=function(){if(this.$element.is(":visible")){var b=a(document).height(),d=this.$target.scrollTop(),e=this.$element.offset(),f=this.options.offset,g=f.top,h=f.bottom;"object"!=typeof f&&(h=g=f),"function"==typeof g&&(g=f.top(this.$element)),"function"==typeof h&&(h=f.bottom(this.$element));var i=null!=this.unpin&&d+this.unpin<=e.top?!1:null!=h&&e.top+this.$element.height()>=b-h?"bottom":null!=g&&g>=d?"top":!1;if(this.affixed!==i){null!=this.unpin&&this.$element.css("top","");var j="affix"+(i?"-"+i:""),k=a.Event(j+".bs.affix");this.$element.trigger(k),k.isDefaultPrevented()||(this.affixed=i,this.unpin="bottom"==i?this.getPinnedOffset():null,this.$element.removeClass(c.RESET).addClass(j).trigger(a.Event(j.replace("affix","affixed"))),"bottom"==i&&this.$element.offset({top:b-this.$element.height()-h}))}}};var d=a.fn.affix;a.fn.affix=b,a.fn.affix.Constructor=c,a.fn.affix.noConflict=function(){return a.fn.affix=d,this},a(window).on("load",function(){a('[data-spy="affix"]').each(function(){var c=a(this),d=c.data();d.offset=d.offset||{},d.offsetBottom&&(d.offset.bottom=d.offsetBottom),d.offsetTop&&(d.offset.top=d.offsetTop),b.call(c,d)})})}(jQuery);
-},{}],7:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 
-},{}],8:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 "use strict";
 /*globals Handlebars: true */
 var Handlebars = require("./handlebars.runtime")["default"];
@@ -3135,7 +4226,7 @@ Handlebars = create();
 Handlebars.create = create;
 
 exports["default"] = Handlebars;
-},{"./handlebars.runtime":9,"./handlebars/compiler/ast":11,"./handlebars/compiler/base":12,"./handlebars/compiler/compiler":13,"./handlebars/compiler/javascript-compiler":14}],9:[function(require,module,exports){
+},{"./handlebars.runtime":27,"./handlebars/compiler/ast":29,"./handlebars/compiler/base":30,"./handlebars/compiler/compiler":31,"./handlebars/compiler/javascript-compiler":32}],27:[function(require,module,exports){
 "use strict";
 /*globals Handlebars: true */
 var base = require("./handlebars/base");
@@ -3168,7 +4259,7 @@ var Handlebars = create();
 Handlebars.create = create;
 
 exports["default"] = Handlebars;
-},{"./handlebars/base":10,"./handlebars/exception":18,"./handlebars/runtime":19,"./handlebars/safe-string":20,"./handlebars/utils":21}],10:[function(require,module,exports){
+},{"./handlebars/base":28,"./handlebars/exception":36,"./handlebars/runtime":37,"./handlebars/safe-string":38,"./handlebars/utils":39}],28:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -3349,7 +4440,7 @@ exports.log = log;var createFrame = function(object) {
   return obj;
 };
 exports.createFrame = createFrame;
-},{"./exception":18,"./utils":21}],11:[function(require,module,exports){
+},{"./exception":36,"./utils":39}],29:[function(require,module,exports){
 "use strict";
 var Exception = require("../exception")["default"];
 
@@ -3577,7 +4668,7 @@ var AST = {
 // Must be exported as an object rather than the root of the module as the jison lexer
 // most modify the object to operate properly.
 exports["default"] = AST;
-},{"../exception":18}],12:[function(require,module,exports){
+},{"../exception":36}],30:[function(require,module,exports){
 "use strict";
 var parser = require("./parser")["default"];
 var AST = require("./ast")["default"];
@@ -3593,7 +4684,7 @@ function parse(input) {
 }
 
 exports.parse = parse;
-},{"./ast":11,"./parser":15}],13:[function(require,module,exports){
+},{"./ast":29,"./parser":33}],31:[function(require,module,exports){
 "use strict";
 var Exception = require("../exception")["default"];
 
@@ -4063,7 +5154,7 @@ exports.precompile = precompile;function compile(input, options, env) {
 }
 
 exports.compile = compile;
-},{"../exception":18}],14:[function(require,module,exports){
+},{"../exception":36}],32:[function(require,module,exports){
 "use strict";
 var COMPILER_REVISION = require("../base").COMPILER_REVISION;
 var REVISION_CHANGES = require("../base").REVISION_CHANGES;
@@ -5006,7 +6097,7 @@ JavaScriptCompiler.isValidJavaScriptVariableName = function(name) {
 };
 
 exports["default"] = JavaScriptCompiler;
-},{"../base":10,"../exception":18}],15:[function(require,module,exports){
+},{"../base":28,"../exception":36}],33:[function(require,module,exports){
 "use strict";
 /* jshint ignore:start */
 /* Jison generated parser */
@@ -5497,7 +6588,7 @@ function Parser () { this.yy = {}; }Parser.prototype = parser;parser.Parser = Pa
 return new Parser;
 })();exports["default"] = handlebars;
 /* jshint ignore:end */
-},{}],16:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 "use strict";
 var Visitor = require("./visitor")["default"];
 
@@ -5636,7 +6727,7 @@ PrintVisitor.prototype.content = function(content) {
 PrintVisitor.prototype.comment = function(comment) {
   return this.pad("{{! '" + comment.comment + "' }}");
 };
-},{"./visitor":17}],17:[function(require,module,exports){
+},{"./visitor":35}],35:[function(require,module,exports){
 "use strict";
 function Visitor() {}
 
@@ -5649,7 +6740,7 @@ Visitor.prototype = {
 };
 
 exports["default"] = Visitor;
-},{}],18:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 "use strict";
 
 var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
@@ -5678,7 +6769,7 @@ function Exception(message, node) {
 Exception.prototype = new Error();
 
 exports["default"] = Exception;
-},{}],19:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -5816,7 +6907,7 @@ exports.program = program;function invokePartial(partial, name, context, helpers
 exports.invokePartial = invokePartial;function noop() { return ""; }
 
 exports.noop = noop;
-},{"./base":10,"./exception":18,"./utils":21}],20:[function(require,module,exports){
+},{"./base":28,"./exception":36,"./utils":39}],38:[function(require,module,exports){
 "use strict";
 // Build out our basic SafeString type
 function SafeString(string) {
@@ -5828,7 +6919,7 @@ SafeString.prototype.toString = function() {
 };
 
 exports["default"] = SafeString;
-},{}],21:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 "use strict";
 /*jshint -W004 */
 var SafeString = require("./safe-string")["default"];
@@ -5905,7 +6996,7 @@ exports.escapeExpression = escapeExpression;function isEmpty(value) {
 }
 
 exports.isEmpty = isEmpty;
-},{"./safe-string":20}],22:[function(require,module,exports){
+},{"./safe-string":38}],40:[function(require,module,exports){
 // USAGE:
 // var handlebars = require('handlebars');
 
@@ -5932,7 +7023,7 @@ if (typeof require !== 'undefined' && require.extensions) {
   require.extensions[".hbs"] = extension;
 }
 
-},{"../dist/cjs/handlebars":8,"../dist/cjs/handlebars/compiler/printer":16,"../dist/cjs/handlebars/compiler/visitor":17,"fs":7}],23:[function(require,module,exports){
+},{"../dist/cjs/handlebars":26,"../dist/cjs/handlebars/compiler/printer":34,"../dist/cjs/handlebars/compiler/visitor":35,"fs":25}],41:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.1
  * http://jquery.com/
@@ -15124,4 +16215,6 @@ return jQuery;
 
 }));
 
-},{}]},{},[3]);
+},{}],42:[function(require,module,exports){
+module.exports=require(13)
+},{"/Users/jvillaveces/Sites/Interaction-Atlas/node_modules/backbone/node_modules/underscore/underscore.js":13}]},{},[11]);

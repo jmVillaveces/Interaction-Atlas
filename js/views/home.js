@@ -39,5 +39,4 @@ module.exports = Backbone.View.extend({
         // trigger search event
         iAtlas.vent.trigger('search', this.query.val(), $('#expand').prop("checked"));
     }
-    
 });
