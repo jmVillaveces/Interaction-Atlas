@@ -19,18 +19,11 @@ var _onSearch = function(){
     //Init progress bar
     var progressBar = new Progressbar({el:'#loading'});
     progressBar.render();
-    
-    psicquic.getInteractionsForIds(arguments[0].split(','));
-    
-    /*var atlas = new Atlas({query:arguments[0], expanded:arguments[1]});
-    atlas.fetch({
-        dataType: 'text',
-        error: function (errorResponse, a) {
-            console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
-        }
-    }).done(function(){
+
+    var atlas = new Atlas({query:arguments[0], expanded:arguments[1]});
+    atlas.fetch().done(function(){
         progressBar.update(100);
-    });*/
+    });
 };
 
 //Init Home View

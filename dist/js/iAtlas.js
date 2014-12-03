@@ -71,7 +71,7 @@ module.exports = Backbone.Model.extend({
         query : ''
     },
     urlRoot: function() {
-        return  (iAtlas) ? (iAtlas.properties.proxy) ?  iAtlas.properties.proxy +'?url='+iAtlas.properties.psicquicServer + 'query/' : iAtlas.properties.psicquicServer + 'query/' : '';
+        return  (iAtlas) ?  iAtlas.properties.psicquicServer + 'query/' : '';
     },
     url: function() {
         
@@ -84,7 +84,7 @@ module.exports = Backbone.Model.extend({
         
         url += '?firstResult=0&maxResults=3000';
         
-        return this.urlRoot() + escape(url);
+        return this.urlRoot() + url;
     },
     parse: function(response, xhr) {
         var mitab = require('biojs-io-mitab').parse(response);
@@ -92,13 +92,30 @@ module.exports = Backbone.Model.extend({
         var interactors = new Interactors(mitab.nodes);
         var interactions = new Interactions(mitab.links);
         
-        console.log(mitab);
         return {
             interactors : interactors,
             interactions : interactions,
             taxa : mitab.taxa,
             scores : mitab.scores
         };
+    },
+    fetch: function(opt) {
+
+        var options = opt || {};
+        
+        options.dataType = 'text';
+        options.error = function (errorResponse, a) {
+            console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
+        };
+        
+        if(iAtlas.properties.proxy){
+            var u = this.url();
+            this.url = iAtlas.properties.proxy;
+            console.log(u);
+            options.data = {url:u};
+        }
+        
+        return Backbone.Collection.prototype.fetch.call(this, options);
     }
 });
 },{"../collections/interactions.js":1,"../collections/interactors.js":2,"biojs-io-mitab":14}],5:[function(require,module,exports){
@@ -550,17 +567,12 @@ var _onSearch = function(){
     var progressBar = new Progressbar({el:'#loading'});
     progressBar.render();
     
-    psicquic.getInteractionsForIds(arguments[0].split(','));
     
-    /*var atlas = new Atlas({query:arguments[0], expanded:arguments[1]});
-    atlas.fetch({
-        dataType: 'text',
-        error: function (errorResponse, a) {
-            console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
-        }
-    }).done(function(){
+    
+    var atlas = new Atlas({query:arguments[0], expanded:arguments[1]});
+    atlas.fetch().done(function(){
         progressBar.update(100);
-    });*/
+    });
 };
 
 //Init Home View

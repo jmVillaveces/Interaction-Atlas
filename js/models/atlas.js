@@ -28,12 +28,30 @@ module.exports = Backbone.Model.extend({
         var interactors = new Interactors(mitab.nodes);
         var interactions = new Interactions(mitab.links);
         
-        console.log(mitab);
         return {
             interactors : interactors,
             interactions : interactions,
             taxa : mitab.taxa,
             scores : mitab.scores
         };
+    },
+    //Override fetch to deal with proxy if defined in properties
+    fetch: function(opt) {
+
+        var options = opt || {};
+        
+        options.dataType = 'text';
+        options.error = function (errorResponse, a) {
+            console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
+        };
+        
+        if(iAtlas.properties.proxy){
+            var u = this.url();
+            this.url = iAtlas.properties.proxy;
+            console.log(u);
+            options.data = {url:u};
+        }
+        
+        return Backbone.Collection.prototype.fetch.call(this, options);
     }
 });
