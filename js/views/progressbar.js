@@ -1,5 +1,4 @@
 var templates = require('../templates');
-var $ = jQuery;
 
 module.exports = Backbone.View.extend({
     
