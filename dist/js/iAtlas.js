@@ -68,7 +68,11 @@ var Interactions = require('../collections/interactions.js');
 module.exports = Backbone.Model.extend({
     defaults: {
         expanded : false,
-        query : ''
+        query : '',
+        interactors: new Interactors(),
+        interactions: new Interactions(),
+        taxa : [],
+        scores : []
     },
     urlRoot: function() {
         return  (iAtlas) ?  iAtlas.properties.psicquicServer + 'query/' : '';
@@ -99,23 +103,20 @@ module.exports = Backbone.Model.extend({
             scores : mitab.scores
         };
     },
+    //Override fetch to deal with proxy if defined in properties
     fetch: function(opt) {
-
+    
         var options = opt || {};
         
         options.dataType = 'text';
-        options.error = function (errorResponse, a) {
-            console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
-        };
         
         if(iAtlas.properties.proxy){
             var u = this.url();
             this.url = iAtlas.properties.proxy;
-            console.log(u);
             options.data = {url:u};
         }
         
-        return Backbone.Collection.prototype.fetch.call(this, options);
+        return Backbone.Model.prototype.fetch.call(this, options);
     }
 });
 },{"../collections/interactions.js":1,"../collections/interactors.js":2,"biojs-io-mitab":14}],5:[function(require,module,exports){
@@ -143,8 +144,8 @@ module.exports = Backbone.Model.extend({
 });
 },{}],7:[function(require,module,exports){
 module.exports = {
-    psicquicServer: 'http://www.ebi.ac.uk/Tools/webservices/psicquic/intact/webservices/current/search/',
-    //'http://dachstein.biochem.mpg.de:8080/iatlas/webservices/current/search/query/',
+    psicquicServer: //'http://www.ebi.ac.uk/Tools/webservices/psicquic/intact/webservices/current/search/',
+    'http://dachstein.biochem.mpg.de:8080/iatlas/webservices/current/search/',
     proxy : '../proxy/proxy.php',
     example : 'P49959,P25454,Q54KD8,O74773,Q8IV36,Q96B01,Q54CS9,P52701,Q9CXE6,Q7T6Y0,Q682D3'
 };
@@ -164,7 +165,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
   buffer += "<form id='search-form' role=\"form\">\n    <div class=\"jumbotron\" style=\"margin-top:5%; background-color: transparent; *\">  \n        <table style=\"width:100%; text-align:right;\">\n              <tr>\n                  <td><div class='poiret logo'> iAtlas</div></td>\n              </tr>\n              <tr>\n                  <td class='poiret msg' style='font-size:20px;'>"
     + escapeExpression(((stack1 = (depth0 && depth0.count)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + " unique interactions indexed</td>\n              </tr>\n              <tr id='loading'>\n                  <td style='width:90%'>\n                      <div class=\"input-group input-group-lg\">\n                          <span class=\"input-group-addon glyphicon glyphicon-search\"></span>\n                          <input id=\"query\" type=\"text\" class=\"form-control search-query\" placeholder=\"identifiers...\" required autofocus>\n                      </div>\n                  </td>\n                  <td style='width:10%'>\n                      <button class=\" btn btn-lg btn-success\" type=\"submit\">GO</button>\n                  </td>\n              </tr>\n              <tr>\n                  <td>\n                      <label style=\"color: #428bca;text-decoration: none;font-weight: normal;\">\n                            <input id='expand' type=\"checkbox\"> expand network\n                      </label> &middot; \n                      <a id=\"explink\" href=\"#\">example</a> &middot; \n                      <a id=\"advlink\" href=\"#\">about</a>\n                      <!--<a id=\"advlink\" href=\"#\">advanced options</a>-->\n                  </td>\n              </tr>\n        </table>\n    </div>\n</form>";
+    + " unique interactions indexed</td>\n              </tr>\n              <tr id='search'>\n                  <td style='width:90%'>\n                      <div class=\"input-group input-group-lg\">\n                          <span class=\"input-group-addon glyphicon glyphicon-search\"></span>\n                          <input id=\"query\" type=\"text\" class=\"form-control search-query\" placeholder=\"identifiers...\" required autofocus>\n                      </div>\n                  </td>\n                  <td style='width:10%'>\n                      <button class=\" btn btn-lg btn-success\" type=\"submit\">GO</button>\n                  </td>\n              </tr>\n              <tr id='loading'>\n              </tr>\n              <tr>\n                  <td>\n                      <label style=\"color: #428bca;text-decoration: none;font-weight: normal;\">\n                            <input id='expand' type=\"checkbox\"> expand network\n                      </label> &middot; \n                      <a id=\"explink\" href=\"#\">example</a> &middot; \n                      <a id=\"advlink\" href=\"#\">about</a>\n                      <!--<a id=\"advlink\" href=\"#\">advanced options</a>-->\n                  </td>\n              </tr>\n        </table>\n        <div id=\"msg\" class=\"alert alert-info\"></div>\n    </div>\n</form>";
   return buffer;
   }));
 
@@ -484,12 +485,14 @@ if (typeof exports === 'object' && exports) {module.exports = this["Templates"];
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"handlebars":40}],9:[function(require,module,exports){
 var templates = require('../templates');
-var $ = jQuery;
+var Progressbar = require('./progressbar');
 
+var progressBar = null;
+var clazz = 'alert-info';
 module.exports = Backbone.View.extend({
     
     initialize: function(options){
-       this.options = options;
+        this.options = options;
     },
     
     events:{
@@ -502,10 +505,18 @@ module.exports = Backbone.View.extend({
         var tpl = templates.home(this.options);
         $(this.options.el).html(tpl);
         
-        this.query = $("#query");
+        this.query = $('#query');
         
         //Set focus on query
         this.query.focus();
+        
+        //Hide msg
+        $('#msg').hide();
+        
+        //Init progress bar hidden
+        $('#loading').hide();
+        progressBar = new Progressbar({el:'#loading'});
+        progressBar.render();
     },
     
     example : function(){
@@ -521,13 +532,33 @@ module.exports = Backbone.View.extend({
     search : function(e){
         e.preventDefault();
         
+        $('#loading').show();
+        $('#search').hide();
+        
         // trigger search event
         iAtlas.vent.trigger('search', this.query.val(), $('#expand').prop("checked"));
+    },
+    
+    update : function(n){
+        progressBar.update(n);
+    },
+    
+    alert : function(msg, type){
+        var el = $('#msg').html(msg).show();
+        
+        if(type && type !== clazz){
+            el.toggleClass(clazz +' '+ type);
+            clazz = type;
+        }
+    },
+    
+    showSearch : function(){
+        $('#loading').hide();
+        $('#search').show();
     }
 });
-},{"../templates":8}],10:[function(require,module,exports){
+},{"../templates":8,"./progressbar":10}],10:[function(require,module,exports){
 var templates = require('../templates');
-var $ = jQuery;
 
 module.exports = Backbone.View.extend({
     
@@ -545,12 +576,12 @@ module.exports = Backbone.View.extend({
     }
 });
 },{"../templates":8}],11:[function(require,module,exports){
-jQuery = require('jquery');
+jQuery = $ = require('jquery');
 Backbone = require('backbone');
 Backbone.$ = jQuery;
 
-window.Handlebars = require('handlebars');
-window._ = require('underscore');
+Handlebars = require('handlebars');
+_ = require('underscore');
 
 var Atlas = require('./js/models/atlas.js');
 
@@ -558,29 +589,46 @@ require('./js/helpers.js'); // Handelbars helpers
 require('bootstrap/dist/js/bootstrap.min.js'); // bootsrrap
 
 var HomeView = require('./js/views/home');
-var Progressbar = require('./js/views/progressbar');
 var psicquic = require('biojs-rest-psicquic');
 
-var _onSearch = function(){
+var hView = null;
+
+var _search = function(){
     
-    //Init progress bar
-    var progressBar = new Progressbar({el:'#loading'});
-    progressBar.render();
-    
-    
+    hView.update(10);
     
     var atlas = new Atlas({query:arguments[0], expanded:arguments[1]});
-    atlas.fetch().done(function(){
-        progressBar.update(100);
+    atlas.fetch({
+            error: function (errorResponse, a) {
+                setTimeout(function(){
+                    hView.alert('<strong>Error</strong>, there was a problem with the request. Please try again later.', 'alert-error');
+                    console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
+                }, 200);
+            }
+        })
+        .done(function(){
+            hView.update(100);
+            
+            if(atlas.get('interactions').length > 0){
+                console.log(atlas.get('interactions').length);
+            }else{
+                // timeout so progress bar animation can be seen
+                setTimeout(function(){
+                    hView.alert('<strong>Sorry</strong>, we couldn\'t find interactions for your query', 'alert-warning');
+                    hView.showSearch();
+                }, 200);
+            }
     });
 };
 
 //Init Home View
 var _homeView = function(err, resp, data){
-    var parts = data.split(".");
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    data = parts.join(".");
-    new HomeView({el:'body', count:data, example: window.iAtlas.properties.example}).render();
+    var parts = data.split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    data = parts.join('.');
+    
+    hView = new HomeView({el:'body', count:data, example: window.iAtlas.properties.example});
+    hView.render();
 };
 
 // Init vent and register events
@@ -592,7 +640,7 @@ var _events = function(){
     iAtlas.vent = {};
     _.extend(iAtlas.vent, window.Backbone.Events);
     
-    iAtlas.vent.on('search', _onSearch);
+    iAtlas.vent.on('search', _search);
 };
 
 // Initialize App
@@ -607,7 +655,7 @@ var _init = function(){
 }();
 
 
-},{"./js/helpers.js":3,"./js/models/atlas.js":4,"./js/properties":7,"./js/views/home":9,"./js/views/progressbar":10,"backbone":12,"biojs-rest-psicquic":15,"bootstrap/dist/js/bootstrap.min.js":24,"handlebars":40,"jquery":41,"underscore":42}],12:[function(require,module,exports){
+},{"./js/helpers.js":3,"./js/models/atlas.js":4,"./js/properties":7,"./js/views/home":9,"backbone":12,"biojs-rest-psicquic":15,"bootstrap/dist/js/bootstrap.min.js":24,"handlebars":40,"jquery":41,"underscore":42}],12:[function(require,module,exports){
 //     Backbone.js 1.1.2
 
 //     (c) 2010-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors

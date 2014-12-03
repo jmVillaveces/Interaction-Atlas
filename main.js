@@ -1,9 +1,9 @@
-jQuery = require('jquery');
+jQuery = $ = require('jquery');
 Backbone = require('backbone');
 Backbone.$ = jQuery;
 
-window.Handlebars = require('handlebars');
-window._ = require('underscore');
+Handlebars = require('handlebars');
+_ = require('underscore');
 
 var Atlas = require('./js/models/atlas.js');
 
@@ -11,27 +11,46 @@ require('./js/helpers.js'); // Handelbars helpers
 require('bootstrap/dist/js/bootstrap.min.js'); // bootsrrap
 
 var HomeView = require('./js/views/home');
-var Progressbar = require('./js/views/progressbar');
 var psicquic = require('biojs-rest-psicquic');
 
-var _onSearch = function(){
-    
-    //Init progress bar
-    var progressBar = new Progressbar({el:'#loading'});
-    progressBar.render();
+var hView = null;
 
+var _search = function(){
+    
+    hView.update(10);
+    
     var atlas = new Atlas({query:arguments[0], expanded:arguments[1]});
-    atlas.fetch().done(function(){
-        progressBar.update(100);
+    atlas.fetch({
+            error: function (errorResponse, a) {
+                setTimeout(function(){
+                    hView.alert('<strong>Error</strong>, there was a problem with the request. Please try again later.', 'alert-error');
+                    console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
+                }, 200);
+            }
+        })
+        .done(function(){
+            hView.update(100);
+            
+            if(atlas.get('interactions').length > 0){
+                console.log(atlas.get('interactions').length);
+            }else{
+                // timeout so progress bar animation can be seen
+                setTimeout(function(){
+                    hView.alert('<strong>Sorry</strong>, we couldn\'t find interactions for your query', 'alert-warning');
+                    hView.showSearch();
+                }, 200);
+            }
     });
 };
 
 //Init Home View
 var _homeView = function(err, resp, data){
-    var parts = data.split(".");
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    data = parts.join(".");
-    new HomeView({el:'body', count:data, example: window.iAtlas.properties.example}).render();
+    var parts = data.split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    data = parts.join('.');
+    
+    hView = new HomeView({el:'body', count:data, example: window.iAtlas.properties.example});
+    hView.render();
 };
 
 // Init vent and register events
@@ -43,7 +62,7 @@ var _events = function(){
     iAtlas.vent = {};
     _.extend(iAtlas.vent, window.Backbone.Events);
     
-    iAtlas.vent.on('search', _onSearch);
+    iAtlas.vent.on('search', _search);
 };
 
 // Initialize App

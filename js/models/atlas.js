@@ -4,7 +4,11 @@ var Interactions = require('../collections/interactions.js');
 module.exports = Backbone.Model.extend({
     defaults: {
         expanded : false,
-        query : ''
+        query : '',
+        interactors: new Interactors(),
+        interactions: new Interactions(),
+        taxa : [],
+        scores : []
     },
     urlRoot: function() {
         return  (iAtlas) ?  iAtlas.properties.psicquicServer + 'query/' : '';
@@ -37,21 +41,17 @@ module.exports = Backbone.Model.extend({
     },
     //Override fetch to deal with proxy if defined in properties
     fetch: function(opt) {
-
+    
         var options = opt || {};
         
         options.dataType = 'text';
-        options.error = function (errorResponse, a) {
-            console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
-        };
         
         if(iAtlas.properties.proxy){
             var u = this.url();
             this.url = iAtlas.properties.proxy;
-            console.log(u);
             options.data = {url:u};
         }
         
-        return Backbone.Collection.prototype.fetch.call(this, options);
+        return Backbone.Model.prototype.fetch.call(this, options);
     }
 });
