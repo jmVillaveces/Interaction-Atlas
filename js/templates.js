@@ -4,6 +4,15 @@ Handlebars = glob.Handlebars || require('handlebars');
 
 this["Templates"] = this["Templates"] || {};
 
+Handlebars.registerPartial("navbar", this["Templates"]["navbar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<nav class='navbar navbar-default navbar-fixed-top' role='navigation'>\n    <div class='container'>\n        <div class='navbar-header'>\n            <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar' aria-expanded='false' aria-controls='navbar'>\n                <span class='sr-only'>Toggle navigation</span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n            </button>\n            <a class='navbar-brand poiret' href='.'><img src='favicon.ico'> iAtlas</a>\n        </div>\n        <div id='navbar' class='navbar-collapse collapse'>\n            <ul class='nav navbar-nav'>\n                <li class='active'><a href='#'>Home</a></li>\n                <li><a href='#about'>About</a></li>\n                <li><a href='#contact'>Contact</a></li>\n                <li class='dropdown'>\n                    <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-expanded='false'>Dropdown <span class='caret'></span></a>\n                    <ul class='dropdown-menu' role='menu'>\n                        <li><a href='#'>Action</a></li>\n                        <li><a href='#'>Another action</a></li>\n                        <li><a href='#'>Something else here</a></li>\n                        <li class='divider'></li>\n                        <li class='dropdown-header'>Nav header</li>\n                        <li><a href='#'>Separated link</a></li>\n                        <li><a href='#'>One more separated link</a></li>\n                    </ul>\n                </li>\n            </ul>\n            <ul class='nav navbar-nav navbar-right'>\n                <li><a href='../navbar/'>Default</a></li>\n                <li><a href='../navbar-static-top/'>Static top</a></li>\n                <li class='active'><a href='./'>Fixed top <span class='sr-only'>(current)</span></a></li>\n            </ul>\n        </div><!--/.nav-collapse -->\n    </div>\n</nav>";
+  }));
+
 Handlebars.registerPartial("search", this["Templates"]["search"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -26,6 +35,19 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
   stack1 = self.invokePartial(partials.search, 'search', depth0, helpers, partials, data);
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n</div> <!-- /container -->";
+  return buffer;
+  });
+
+this["Templates"]["network"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partials, Handlebars.partials); data = data || {};
+  var buffer = "", stack1, self=this;
+
+
+  buffer += "<div>\n    ";
+  stack1 = self.invokePartial(partials.navbar, 'navbar', depth0, helpers, partials, data);
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    <div>\n        <svg id='network' style='background-size: contain'></svg>\n    </div>\n</div>";
   return buffer;
   });
 
