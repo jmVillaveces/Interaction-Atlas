@@ -4,7 +4,8 @@ var _data = [],
     _width = 500,
     _height = 500,
     _layout = 'force',
-    _svg = null;
+    _svg = null,
+    _colors = d3.scale.category20c();
 
 var _tick = function(){
     _svg.selectAll('.link')
@@ -33,7 +34,11 @@ var _force = function(){
         }); 
     });
     
-     // start the force layout.
+    var max = _.max(nodes, function(d){ return d.weight; });
+    
+    var size = d3.scale.ordinal().domain([1, max]).range([2,6]);
+    
+    // start the force layout.
     var force = d3.layout.force()
         .size([_width, _height])
         .on('tick', _tick)
@@ -59,21 +64,22 @@ var _force = function(){
     nodes.enter().append('circle')
             .attr('class', 'node')
             .attr('stroke-width', 1.5)
-            .attr('stroke', function(d){return 'red';})
-            .attr('r', 5)
+            .attr('stroke', 'gray')
+            .attr('r', function(d){return size(d.weight);})
             .on('mouseover', function(d){
-                    
+                d3.select(this).style('cursor','pointer');    
             })
             .on('mouseout', function(d){
-                    
+                d3.select(this).style('cursor','default');    
             })
             .on('click', function(d){
+                console.log(d);
             })
             .call(force.drag);
     
     _svg.transition().attr('transform', '');
     
-    nodes.attr('fill', function(d){ return 'blue';})
+    nodes.attr('fill', function(d){return _colors(d.taxonomy ? d.taxonomy[0] : null);})
         .attr('cx', function(d) { return d.x; })
         .attr('cy', function(d) { return d.y; });
     
