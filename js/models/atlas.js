@@ -15,9 +15,9 @@ module.exports = Backbone.Model.extend({
     },
     url: function() {
         
-        var url = '', ids = this.attributes.query.split(',').join(' OR ');
+        var url = '', ids = this.attributes.query.split(',').join(' ');
         if(! this.attributes.expanded){
-            url += 'idA:(' + ids + ') AND idB:(' + ids + ')';
+            url += 'id:(' + ids + ') and id:(' + ids + ')';
         }else{
             url += 'identifier:(' + ids + ')';
         }

@@ -11,6 +11,7 @@ require('./js/helpers.js'); // Handelbars helpers
 require('bootstrap/dist/js/bootstrap.min.js'); // bootsrrap
 
 var HomeView = require('./js/views/home');
+var Network = require('./js/views/network');
 var psicquic = require('biojs-rest-psicquic');
 
 var hView = null;
@@ -32,7 +33,8 @@ var _search = function(){
             hView.update(100);
             
             if(atlas.get('interactions').length > 0){
-                console.log(atlas.get('interactions').length);
+                var network = new Network({el:'body', data: atlas});
+                network.render();
             }else{
                 // timeout so progress bar animation can be seen
                 setTimeout(function(){
