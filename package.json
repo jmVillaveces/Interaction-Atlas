@@ -33,6 +33,7 @@
     "biojs-io-mitab": "0.0.4",
     "biojs-rest-psicquic": "^1.1.0",
     "bootstrap": "^3.2.0",
+    "d3": "^3.4.13",
     "grunt-contrib-watch": "^0.6.1",
     "handlebars": "^1.0.0",
     "jquery": "^2.1.1",
