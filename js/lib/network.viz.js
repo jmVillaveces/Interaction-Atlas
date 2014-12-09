@@ -8,18 +8,31 @@ var _data = [],
     _g = null,
     _colors = d3.scale.category20c();
 
+var highlightLinks = function(d, b){
+    _g.selectAll('.link').attr('stroke', function(l){
+        if(b)
+            return (l.source == d || l.target == d) ? '#000' : '#ccc';
+       
+        return '#ccc';
+    });
+};
+
 var _mouseover = function(d){
     d3.select(this)
         .style('cursor','pointer')
         .attr('stroke', '#000')
         .attr('stroke-width', 2);
+    
+    highlightLinks(d, true);
 };
 
 var _mouseout = function(d){
     d3.select(this)
         .style('cursor','default')
         .attr('stroke', 'gray')
-        .attr('stroke-width', 1.5);  
+        .attr('stroke-width', 1.5);
+    
+    highlightLinks(d, false);
 };
 
 var _initSelector = function(_){
