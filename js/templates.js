@@ -10,7 +10,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<nav class='navbar navbar-default navbar-fixed-top' role='navigation'>\n    <div class='container'>\n        <div class='navbar-header'>\n            <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar' aria-expanded='false' aria-controls='navbar'>\n                <span class='sr-only'>Toggle navigation</span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n            </button>\n            <a class='navbar-brand poiret' href='.'><img src='favicon.ico'> iAtlas</a>\n        </div>\n        <div id='navbar' class='navbar-collapse collapse'>\n            <ul class='nav navbar-nav'>\n                <li><a href='#'><span class='glyphicon glyphicon-floppy-disk' aria-hidden='true'> Save </span></a></li>\n            </ul>\n            <form class='navbar-form navbar-left' role = 'search'>\n                <div class='input-group input-group-sm'>\n                    <input type='text' class='form-control' placeholder = 'id, name...'>\n                    <span class='input-group-addon glyphicon glyphicon-search'></span>\n                </div>\n            </form>\n            <ul class='nav navbar-nav navbar-right'>\n                <li><a href='#about'>About</a></li>\n                <li><a href='#contact'>Contact</a></li>\n            </ul>\n        </div><!--/.nav-collapse -->\n    </div>\n</nav>";
+  return "<nav class='navbar navbar-default navbar-fixed-top' role='navigation'>\n    <div class='container'>\n        <div class='navbar-header'>\n            <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar' aria-expanded='false' aria-controls='navbar'>\n                <span class='sr-only'>Toggle navigation</span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n            </button>\n            <a class='navbar-brand poiret' href='.'><img src='favicon.ico'> iAtlas</a>\n        </div>\n        <div id='navbar' class='navbar-collapse collapse'>\n            <ul class='nav navbar-nav'>\n                <li><a href='#'><span class='glyphicon glyphicon-floppy-disk' aria-hidden='true'> Save </span></a></li>\n            </ul>\n            <form class='navbar-form navbar-left' role = 'search'>\n                <div class='input-group input-group-sm'>\n                    <input id= 'search' type='text' class='form-control' placeholder = 'id...'>\n                    <span class='input-group-addon glyphicon glyphicon-search'></span>\n                </div>\n            </form>\n            <ul class='nav navbar-nav navbar-right'>\n                <li><a href='#about'>About</a></li>\n                <li><a href='#contact'>Contact</a></li>\n            </ul>\n        </div><!--/.nav-collapse -->\n    </div>\n</nav>";
   }));
 
 Handlebars.registerPartial("search", this["Templates"]["search"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -38,6 +38,15 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
   return buffer;
   });
 
+this["Templates"]["info"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<div class=\"modal fade\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\"><span aria-hidden=\"true\">&times;</span><span class=\"sr-only\">Close</span></button>\n        <h4 class=\"modal-title\">Modal title</h4>\n      </div>\n      <div class=\"modal-body\">\n        <p>One fine body&hellip;</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\">Save changes</button>\n      </div>\n    </div><!-- /.modal-content -->\n  </div><!-- /.modal-dialog -->\n</div><!-- /.modal -->";
+  });
+
 this["Templates"]["network"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partials, Handlebars.partials); data = data || {};
@@ -47,7 +56,7 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
   buffer += "<div>\n    ";
   stack1 = self.invokePartial(partials.navbar, 'navbar', depth0, helpers, partials, data);
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n    <div>\n        <svg id='network' style='background-size: contain'></svg>\n    </div>\n</div>";
+  buffer += "\n    <div id='info'></div>\n    <div>\n        <svg id='network' style='background-size: contain'></svg>\n    </div>\n</div>";
   return buffer;
   });
 
@@ -271,82 +280,6 @@ function program18(depth0,data) {
   stack1 = helpers['if'].call(depth0, (depth0 && depth0.Keywords), {hash:{},inverse:self.noop,fn:self.program(18, program18, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n                      </dl>\n                  </div>\n                  \n                  <div class=\"tab-pane\" id=\"expression\"></div>\n                  <div class=\"tab-pane\" id=\"sequence\"></div>\n                  <div class=\"tab-pane\" id=\"protPortfolio\"></div>\n              </div>\n              \n              \n          </div>\n        </div>\n";
-  return buffer;
-  });
-
-this["Templates"]["tooltip"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
-
-function program1(depth0,data) {
-  
-  
-  return "<span class=\"glyphicon glyphicon-star\"></span>";
-  }
-
-function program3(depth0,data) {
-  
-  
-  return "<span class=\"glyphicon glyphicon-question-sign\"></span>";
-  }
-
-function program5(depth0,data) {
-  
-  var buffer = "", stack1, helper;
-  buffer += "\n            <dt>Entry Name</dt><dd><p>";
-  if (helper = helpers.Entry_name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.Entry_name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</p></dd>\n        ";
-  return buffer;
-  }
-
-function program7(depth0,data) {
-  
-  var buffer = "", stack1, helper;
-  buffer += "\n            <dt>Gene Names</dt><dd><p>";
-  if (helper = helpers.Gene_names) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.Gene_names); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</p></dd>\n        ";
-  return buffer;
-  }
-
-function program9(depth0,data) {
-  
-  var buffer = "", stack1, helper, options;
-  buffer += "\n            <dt>Taxonomy</dt><dd><p>";
-  stack1 = (helper = helpers.join || (depth0 && depth0.join),options={hash:{},inverse:self.noop,fn:self.program(10, program10, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.taxonomy), ", ", options) : helperMissing.call(depth0, "join", (depth0 && depth0.taxonomy), ", ", options));
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</p></dd>\n        ";
-  return buffer;
-  }
-function program10(depth0,data) {
-  
-  
-  return escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0));
-  }
-
-  buffer += "<h3 class=\"popover-title text-center\"><strong>";
-  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + " </strong>";
-  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.Status), "reviewed", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.Status), "reviewed", options));
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.Status), "!==", "reviewed", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.Status), "!==", "reviewed", options));
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</h3>\n<div class=\"popover-content\">\n    <dl>\n        ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Entry_name), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n        ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Gene_names), {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n        ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.taxonomy), {hash:{},inverse:self.noop,fn:self.program(9, program9, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n    </dl>\n</div>";
   return buffer;
   });
 
