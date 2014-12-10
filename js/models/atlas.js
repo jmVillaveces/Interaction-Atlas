@@ -31,11 +31,24 @@ module.exports = Backbone.Model.extend({
         
         var interactors = new Interactors(mitab.nodes);
         var interactions = new Interactions(mitab.links);
+        var taxa = mitab.taxa;
+        
+        $.ajax({
+            type: 'GET',
+            url: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?retmode=json&db=taxonomy&id='+taxa.join(','),
+            async: false,
+            success : function(data) {
+                var results = data.result || {};
+                taxa = _.map(taxa, function(t){
+                    return results[t] || { scientificname: t, commonname: t, taxid: t };
+                });
+            }
+        });
         
         return {
             interactors : interactors,
             interactions : interactions,
-            taxa : mitab.taxa,
+            taxa : taxa,
             scores : mitab.scores
         };
     },
