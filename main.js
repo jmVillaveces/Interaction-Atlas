@@ -13,6 +13,7 @@ require('bootstrap/dist/js/bootstrap.min.js'); // bootsrrap
 var HomeView = require('./js/views/home');
 var Network = require('./js/views/network');
 var psicquic = require('biojs-rest-psicquic');
+var Info = require('./js/views/info'), info;
 
 var hView = null;
 
@@ -55,6 +56,14 @@ var _homeView = function(err, resp, data){
     hView.render();
 };
 
+var _onNodeClick = function(d){
+    console.log(d);
+    /*if(_.isUndefined(info)){
+        info = new Info({el:'#info', data: d});
+        info.render();
+    }*/
+};
+
 // Init vent and register events
 var _events = function(){
     // init properties
@@ -63,6 +72,8 @@ var _events = function(){
     // init Events
     iAtlas.vent = {};
     _.extend(iAtlas.vent, window.Backbone.Events);
+    
+    Backbone.on('nodeClick', _onNodeClick);
     
     iAtlas.vent.on('search', _search);
 };
