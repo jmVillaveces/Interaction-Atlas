@@ -1,4 +1,14 @@
-var d3 = require('d3');
+var d3 = require('d3'); 
+require('d3-tip')(d3);
+
+/* Initialize tooltip */
+var _tip = d3.tip().attr('class', 'd3-tip').direction('e').html(function(d) { 
+    //var tax = (d.taxonomy && d.taxonomy.length) ? d.taxonomy[0] : '';
+    return '<strong>'+d.id+'</strong> ';//+ tax; 
+});
+
+//Events
+var MOUSE_OVER = 'nodeMouseOver';
 
 var _data = [],
     _width = 500,
@@ -12,7 +22,6 @@ var highlightLinks = function(d, b){
     _g.selectAll('.link').attr('stroke', function(l){
         if(b)
             return (l.source == d || l.target == d) ? '#000' : '#ccc';
-       
         return '#ccc';
     });
 };
@@ -24,15 +33,18 @@ var _mouseover = function(d){
         .attr('stroke-width', 2);
     
     highlightLinks(d, true);
+    _tip.show(d);
 };
 
 var _mouseout = function(d){
-    d3.select(this)
-        .style('cursor','default')
-        .attr('stroke', 'gray')
-        .attr('stroke-width', 1.5);
+    if(!d.searched)
+        d3.select(this)
+            .style('cursor','default')
+            .attr('stroke', 'gray')
+            .attr('stroke-width', 1.5);
     
     highlightLinks(d, false);
+    _tip.hide(d);
 };
 
 var _initSelector = function(_){
@@ -43,7 +55,7 @@ var _initSelector = function(_){
             _g.attr('transform', 'translate(' + d3.event.translate + ')scale(' + d3.event.scale + ')');
         });
     
-    _g = _svg.call(zoom).append('g');
+    _g = _svg.call(zoom).call(_tip).append('g');
 };
 
 var _tick = function(){
@@ -108,7 +120,7 @@ var _force = function(){
             .on('mouseover', _mouseover)
             .on('mouseout', _mouseout)
             .on('click', function(d){
-                console.log(d);
+                Backbone.trigger(MOUSE_OVER, d);
             })
             .call(force.drag);
     
@@ -171,6 +183,27 @@ network.update = function(){
         _force();
     }
     return network;
+};
+
+network.search = function(searchTerm){
+    var searchRegEx = new RegExp(searchTerm.toLowerCase());
+    var nodes = _g.selectAll('.node');
+    
+    nodes.each(function(d){
+        var el = d3.select(this), match = d.id.toLowerCase().search(searchRegEx);
+        if (searchTerm.length > 0 && match >= 0) {
+            el.attr('stroke', '#000')
+                .attr('stroke-width', 2);
+            
+            d.searched = true;
+        } else {
+            el.attr('stroke', 'gray')
+                .attr('stroke-width', 1.5);
+            
+            d.searched = false;    
+        }
+    });
+    
 };
 
 module.exports = network;
