@@ -33,6 +33,7 @@
     "biojs-io-mitab": "0.0.4",
     "biojs-rest-psicquic": "^1.1.0",
     "biojs-vis-diseaseinfo": "0.0.2",
+    "biojs-vis-sequence": "^0.1.4-2",
     "bootstrap": "^3.2.0",
     "d3": "^3.4.13",
     "d3-tip": "^0.6.7",
