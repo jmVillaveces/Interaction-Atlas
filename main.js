@@ -6,6 +6,7 @@ Handlebars = require('handlebars');
 _ = require('underscore');
 
 var Atlas = require('./js/models/atlas.js');
+var UPprotein = require('./js/models/UPprotein');
 
 require('./js/helpers.js'); // Handelbars helpers
 require('bootstrap/dist/js/bootstrap.min.js'); // bootsrrap
@@ -13,16 +14,19 @@ require('bootstrap/dist/js/bootstrap.min.js'); // bootsrrap
 var HomeView = require('./js/views/home');
 var Network = require('./js/views/network');
 var psicquic = require('biojs-rest-psicquic');
-var Info = require('./js/views/info'), info;
+var Dialog = require('./js/views/dialog');
+var UPproteinView = require('./js/views/UPprotein');
+
 
 var hView = null;
+var _data;
 
 var _search = function(){
     
     hView.update(10);
     
-    var atlas = new Atlas({query:arguments[0], expanded:arguments[1]});
-    atlas.fetch({
+    _data = new Atlas({query:arguments[0], expanded:arguments[1]});
+    _data.fetch({
             error: function (errorResponse, a) {
                 setTimeout(function(){
                     hView.alert('<strong>Error</strong>, there was a problem with the request. Please try again later.', 'alert-error');
@@ -33,8 +37,8 @@ var _search = function(){
         .done(function(){
             hView.update(100);
             
-            if(atlas.get('interactions').length > 0){
-                var network = new Network({el:'body', data: atlas});
+            if(_data.get('interactions').length > 0){
+                var network = new Network({el:'body', data: _data});
                 network.render();
             }else{
                 // timeout so progress bar animation can be seen
@@ -57,11 +61,26 @@ var _homeView = function(err, resp, data){
 };
 
 var _onNodeClick = function(d){
-    console.log(d);
-    /*if(_.isUndefined(info)){
-        info = new Info({el:'#info', data: d});
-        info.render();
-    }*/
+    
+    var protein = new UPprotein({id:d.id});
+    protein.fetch({
+        error : function (errorResponse, a) {
+            console.error(errorResponse, a);
+        },
+        contentType : 'text/xml',
+        dataType : 'xml'
+    }).done(function(){
+        console.log(protein.toJSON());
+        
+        var proteinView = new UPproteinView({el : '.modal-body'});
+        proteinView.render();
+    });
+    
+    
+    var taxa = _.find(_data.get('taxa'), function(t){return t.taxid == d.taxonomy[0];});
+   
+    var dialog = new Dialog({el:'#dialog', data: d, taxa: taxa});
+    dialog.render();
 };
 
 // Init vent and register events
