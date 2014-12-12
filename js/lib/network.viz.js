@@ -8,7 +8,7 @@ var _tip = d3.tip().attr('class', 'd3-tip').direction('e').html(function(d) {
 });
 
 //Events
-var MOUSE_OVER = 'nodeMouseOver';
+var NODE_CLICK = 'nodeClick';
 
 var _data = [],
     _width = 500,
@@ -120,13 +120,13 @@ var _force = function(){
             .on('mouseover', _mouseover)
             .on('mouseout', _mouseout)
             .on('click', function(d){
-                Backbone.trigger(MOUSE_OVER, d);
+                Backbone.trigger(NODE_CLICK, d);
             })
             .call(force.drag);
     
     _g.transition().attr('transform', '');
     
-    nodes.attr('fill', function(d){return _colors(d.taxonomy ? d.taxonomy[0] : null);})
+    nodes.attr('fill', function(d){d.color = _colors(d.taxonomy ? d.taxonomy[0] : null); return d.color;})
         .attr('cx', function(d) { return d.x; })
         .attr('cy', function(d) { return d.y; });
     
