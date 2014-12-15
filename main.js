@@ -72,8 +72,8 @@ var _onNodeClick = function(d){
     }).done(function(){
         console.log(protein.toJSON());
         
-        var proteinView = new UPproteinView({el : '.modal-body'});
-        proteinView.render();
+        var proteinView = new UPproteinView({el : '.modal-body', data: protein.toJSON()});
+        proteinView.render(protein.toJSON());
     });
     
     
