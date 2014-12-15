@@ -5,7 +5,9 @@ module.exports = Backbone.Model.extend({
         fullName : '',
         shortName : '',
         lineage : [],
-        comment : {}
+        comment : {},
+        sequence : '',
+        features : []
         
     },
     urlRoot: function() {
@@ -39,10 +41,25 @@ module.exports = Backbone.Model.extend({
             if(children.length > 0){
                 comment[type] = (comment[type]) ? comment[type] : [];
                 comment[type].push(children.text());
-            }
-            
+            } 
         });
-        console.log(comment);
+        
+        //Feature
+        var features = [];
+        xml.find('feature').each(function(i, v){
+            var feat = {
+                type : $(this).attr('type'),
+                description : $(this).attr('description'),
+                original : $(this).find('original').text(),
+                variation : $(this).find('variation').text(),
+                start : $(this).find('begin').attr('position') || $(this).find('position').attr('position'),
+                end : $(this).find('end').attr('position') || $(this).find('position').attr('position'),
+            };
+            features.push(feat);
+        });
+        
+        //Sequence
+        var sequence = xml.find('sequence').text().replace(/(\r\n|\n|\r)/gm, '');
         
         //Names
         var fullName = xml.find('fullName').text();
@@ -53,7 +70,9 @@ module.exports = Backbone.Model.extend({
             fullName : fullName,
             shortName : shortName,
             accession : accession,
-            comment : comment
+            comment : comment,
+            sequence : sequence,
+            features : features,
         };
     }
 });
