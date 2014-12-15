@@ -1,4 +1,5 @@
-var Sequence = require("biojs-vis-sequence");
+var Sequence = require('biojs-vis-sequence');
+var Structure = require('bio-pv');
 var templates = require('../templates');
 
 var colors = d3.scale.category20c();
@@ -35,5 +36,31 @@ module.exports = Backbone.View.extend({
             });
         });
         
+        //Init structure
+        /*var structure = Structure.Viewer(
+            document.getElementById('structure'), 
+            { 
+                quality : 'high', 
+                width: 500, 
+                height : 500,
+                antialias : true, 
+                outline : false,
+                background : 'white',
+                slabMode : 'auto'
+            });
+        
+        
+        $.ajax({ 
+            url : 'http://cdn.rawgit.com/biasmv/pv/master/pdbs/1ake.pdb',
+            success : function(data) {
+                var str = io.pdb(data);
+                structure.clear();
+                
+                structure.cartoon('structure', str, { 
+                    color : color.ssSuccession(), showRelated : '1', 
+                });
+                structure.autoZoom();
+            }
+        });*/
     }
 });

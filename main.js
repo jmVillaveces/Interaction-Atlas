@@ -70,9 +70,7 @@ var _onNodeClick = function(d){
         contentType : 'text/xml',
         dataType : 'xml'
     }).done(function(){
-        console.log(protein.toJSON());
-        
-        var proteinView = new UPproteinView({el : '.modal-body', data: protein.toJSON()});
+        var proteinView = new UPproteinView({el : '.modal-body', d: d, data: protein.toJSON()});
         proteinView.render(protein.toJSON());
     });
     
