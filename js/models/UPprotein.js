@@ -7,7 +7,8 @@ module.exports = Backbone.Model.extend({
         lineage : [],
         comment : {},
         sequence : '',
-        features : []
+        features : [],
+        keyword : []
         
     },
     urlRoot: function() {
@@ -58,6 +59,12 @@ module.exports = Backbone.Model.extend({
             features.push(feat);
         });
         
+        //Keyword
+        var keyword = []; 
+        xml.find('keyword').each(function(i, v){
+            keyword.push($(v).text());
+        });
+        
         //Sequence
         var sequence = xml.find('sequence').text().replace(/(\r\n|\n|\r)/gm, '');
         
@@ -73,6 +80,7 @@ module.exports = Backbone.Model.extend({
             comment : comment,
             sequence : sequence,
             features : features,
+            keyword : keyword
         };
     }
 });
