@@ -32,7 +32,7 @@ module.exports = Backbone.Model.extend({
         //Accession
         var accession = [];
         xml.find('accession').each(function(i, v){
-            accession.push($(v).text());  
+            accession.push($(v).text());
         });
         
         //Comment
@@ -44,7 +44,7 @@ module.exports = Backbone.Model.extend({
             if(children.length > 0){
                 comment[type] = (comment[type]) ? comment[type] : [];
                 comment[type].push(children.text());
-            } 
+            }
         });
         
         //GO
@@ -86,7 +86,6 @@ module.exports = Backbone.Model.extend({
             ref.push(r);
             
         });
-        console.log(ref);
         
         //Feature
         var features = [];

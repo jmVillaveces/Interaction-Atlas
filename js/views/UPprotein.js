@@ -18,7 +18,7 @@ module.exports = Backbone.View.extend({
             sequence : this.options.data.sequence,
             target : 'sequence',
             format : 'FASTA',
-            columns: { size: 100, spacedEach: 10 },
+            columns: { size: 50, spacedEach: 5 },
             formatOptions : {
                 title:false,
                 footer:false
