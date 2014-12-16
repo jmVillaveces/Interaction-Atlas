@@ -1,8 +1,9 @@
 <div role='tabpanel'>
     <!-- Nav tabs -->
     <ul class='nav nav-tabs' role='tablist'>
-        <li role='presentation' class='active'><a href='#info' aria-controls='info' role='tab' data-toggle='tab'>Info</a></li>
-        <li role='presentation'><a href='#sequence' aria-controls='sequence' role='tab' data-toggle='tab'>Sequence</a></li>
+        <li role='presentation' class='active'><a href='#info' aria-controls='info' role='tab' data-toggle='tab'><span class='glyphicon glyphicon-info-sign'></span> Info</a></li>
+        <li role='presentation'><a href='#sequence' aria-controls='sequence' role='tab' data-toggle='tab'><span class='glyphicon glyphicon-align-center'></span> Sequence</a></li>
+        <li role='presentation'><a href='#reference' aria-controls='reference' role='tab' data-toggle='tab'><span class='glyphicon glyphicon-file'></span> Reference</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -28,7 +29,25 @@
                         </h4>
                     </div>
                     <div id='collapse_key' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading_key'>
-                        <p>{{keyword}}</p>
+                        <p style='margin-left: 5px;'>{{keyword}}</p>
+                    </div>
+                </div>
+                {{/compare}}
+                
+                {{#compare GO.length '>' 0 }}
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='heading_GO'>
+                        <h4 class='panel-title text-capitalize'>
+                            <a class='collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapse_GO' aria-expanded='false' aria-controls='collapse_GO'>
+                                Gene Ontology
+                                <span class='badge pull-right'>{{GO.length}}</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id='collapse_GO' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading_key'>
+                        {{#each GO}}
+                            <h5 style='margin-left: 5px;'>{{term}} <small>{{id}}</small></h5>
+                        {{/each}}
                     </div>
                 </div>
                 {{/compare}}
@@ -56,5 +75,24 @@
             </div>
         </div>
         <div role='tabpanel' class='tab-pane' id='sequence'></div>
+        <div role='tabpanel' class='tab-pane' id='reference'>
+            <br>
+            <ol>
+                {{#each reference}}
+                <li>
+                    <address>
+                    <a href='http://www.ncbi.nlm.nih.gov/pubmed/?term={{title}}' target='_blank'>{{title}}</a><br>
+                    {{#compare name '!=' ''}}
+                    <i>{{name}}</i> {{date}} {{volume}} {{first}}-{{last}}<br>
+                    {{/compare}}
+                    {{#compare db 'typeof' 'string'}}
+                    <i>{{db}}</i><br>
+                    {{/compare}}
+                    {{authors}}<br>
+                    </address>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
     </div>
 </div>

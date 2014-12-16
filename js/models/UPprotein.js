@@ -9,7 +9,8 @@ module.exports = Backbone.Model.extend({
         sequence : '',
         features : [],
         keyword : [],
-        GO : []
+        GO : [],
+        reference : []
         
     },
     urlRoot: function() {
@@ -60,6 +61,33 @@ module.exports = Backbone.Model.extend({
             }
         });
         
+        //Reference
+        var ref = [];
+        xml.find('reference').each(function(i, v){
+            var $v = $(v);
+            var $c = $(v).find('citation');
+            var r = {
+                scope : $v.find('scope').text(),
+                title : $v.find('title').text(),
+                type : $c.attr('type'),
+                date : $c.attr('date'),
+                name : $c.attr('name'),
+                volume : $c.attr('volume'),
+                first : $c.attr('first'),
+                last : $c.attr('last'),
+                db : $c.attr('db'),
+                authors : []
+            };
+            
+            $v.find('person').each(function(i, c){
+                r.authors.push($(c).attr('name'));
+            });
+            
+            ref.push(r);
+            
+        });
+        console.log(ref);
+        
         //Feature
         var features = [];
         xml.find('feature').each(function(i, v){
@@ -96,7 +124,8 @@ module.exports = Backbone.Model.extend({
             sequence : sequence,
             features : features,
             keyword : keyword,
-            GO : GO
+            GO : GO,
+            reference : ref
         };
     }
 });

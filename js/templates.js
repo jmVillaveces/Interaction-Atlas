@@ -28,7 +28,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 this["Templates"]["UPprotein"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
+  var buffer = "", stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
   
@@ -42,6 +42,45 @@ function program1(depth0,data) {
   }
 
 function program3(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                <div class='panel panel-default'>\n                    <div class='panel-heading' role='tab' id='heading_key'>\n                        <h4 class='panel-title text-capitalize'>\n                            <a class='collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapse_key' aria-expanded='false' aria-controls='collapse_key'>\n                                Keywords\n                                <span class='badge pull-right'>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.keyword)),stack1 == null || stack1 === false ? stack1 : stack1.length)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</span>\n                            </a>\n                        </h4>\n                    </div>\n                    <div id='collapse_key' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading_key'>\n                        <p style='margin-left: 5px;'>";
+  if (helper = helpers.keyword) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.keyword); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n                    </div>\n                </div>\n                ";
+  return buffer;
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n                <div class='panel panel-default'>\n                    <div class='panel-heading' role='tab' id='heading_GO'>\n                        <h4 class='panel-title text-capitalize'>\n                            <a class='collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapse_GO' aria-expanded='false' aria-controls='collapse_GO'>\n                                Gene Ontology\n                                <span class='badge pull-right'>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.GO)),stack1 == null || stack1 === false ? stack1 : stack1.length)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</span>\n                            </a>\n                        </h4>\n                    </div>\n                    <div id='collapse_GO' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading_key'>\n                        ";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.GO), {hash:{},inverse:self.noop,fn:self.program(6, program6, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                    </div>\n                </div>\n                ";
+  return buffer;
+  }
+function program6(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                            <h5 style='margin-left: 5px;'>";
+  if (helper = helpers.term) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.term); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " <small>";
+  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</small></h5>\n                        ";
+  return buffer;
+  }
+
+function program8(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n                <div class='panel panel-default'>\n                    <div class='panel-heading' role='tab' id='heading"
@@ -59,12 +98,12 @@ function program3(depth0,data) {
     + "' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading"
     + escapeExpression(((stack1 = (data == null || data === false ? data : data.key)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "'>\n                        <div class='panel-body'>\n                            <ul>\n                                ";
-  stack1 = helpers.each.call(depth0, depth0, {hash:{},inverse:self.noop,fn:self.program(4, program4, data),data:data});
+  stack1 = helpers.each.call(depth0, depth0, {hash:{},inverse:self.noop,fn:self.program(9, program9, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n                            </ul>\n                        </div>\n                    </div>\n                </div>\n                ";
   return buffer;
   }
-function program4(depth0,data) {
+function program9(depth0,data) {
   
   var buffer = "";
   buffer += "\n                                <li>"
@@ -73,13 +112,84 @@ function program4(depth0,data) {
   return buffer;
   }
 
-  buffer += "<div role='tabpanel'>\n    <!-- Nav tabs -->\n    <ul class='nav nav-tabs' role='tablist'>\n        <li role='presentation' class='active'><a href='#info' aria-controls='info' role='tab' data-toggle='tab'>Info</a></li>\n        <li role='presentation'><a href='#sequence' aria-controls='sequence' role='tab' data-toggle='tab'>Sequence</a></li>\n        <li role='presentation'><a href='#structure' aria-controls='structure' role='tab' data-toggle='tab'>Structure</a></li>\n    </ul>\n\n    <!-- Tab panes -->\n    <div class='tab-content'>\n        <div role='tabpanel' class='tab-pane active' id='info'>\n            <ol class='breadcrumb' style='font-size:12px'>\n                ";
+function program11(depth0,data) {
+  
+  var buffer = "", stack1, helper, options;
+  buffer += "\n                <li>\n                    <address>\n                    <a href='http://www.ncbi.nlm.nih.gov/pubmed/?term=";
+  if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "' target='_blank'>";
+  if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</a><br>\n                    ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(12, program12, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.name), "!=", "", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.name), "!=", "", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                    ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(14, program14, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.db), "typeof", "string", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.db), "typeof", "string", options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                    ";
+  if (helper = helpers.authors) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.authors); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "<br>\n                    </address>\n                </li>\n                ";
+  return buffer;
+  }
+function program12(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                    <i>";
+  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</i> ";
+  if (helper = helpers.date) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.date); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.volume) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.volume); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.first) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.first); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "-";
+  if (helper = helpers.last) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.last); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "<br>\n                    ";
+  return buffer;
+  }
+
+function program14(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                    <i>";
+  if (helper = helpers.db) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.db); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</i><br>\n                    ";
+  return buffer;
+  }
+
+  buffer += "<div role='tabpanel'>\n    <!-- Nav tabs -->\n    <ul class='nav nav-tabs' role='tablist'>\n        <li role='presentation' class='active'><a href='#info' aria-controls='info' role='tab' data-toggle='tab'><span class='glyphicon glyphicon-info-sign'></span> Info</a></li>\n        <li role='presentation'><a href='#sequence' aria-controls='sequence' role='tab' data-toggle='tab'><span class='glyphicon glyphicon-align-center'></span> Sequence</a></li>\n        <li role='presentation'><a href='#reference' aria-controls='reference' role='tab' data-toggle='tab'><span class='glyphicon glyphicon-file'></span> Reference</a></li>\n    </ul>\n\n    <!-- Tab panes -->\n    <div class='tab-content'>\n        <div role='tabpanel' class='tab-pane active' id='info'>\n            \n            <ol class='breadcrumb' style='font-size:12px'>\n                ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.lineage), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n            </ol>\n            <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>\n                ";
-  stack1 = helpers.each.call(depth0, (depth0 && depth0.comment), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  buffer += "\n            </ol>\n            \n            <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>\n                \n                ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.keyword)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options) : helperMissing.call(depth0, "compare", ((stack1 = (depth0 && depth0.keyword)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options));
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n            </div>\n        </div>\n        <div role='tabpanel' class='tab-pane' id='sequence'></div>\n        <div role='tabpanel' class='tab-pane' id='structure'></div>\n    </div>\n</div>";
+  buffer += "\n                \n                ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.GO)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options) : helperMissing.call(depth0, "compare", ((stack1 = (depth0 && depth0.GO)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                \n                ";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.comment), {hash:{},inverse:self.noop,fn:self.program(8, program8, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n            </div>\n        </div>\n        <div role='tabpanel' class='tab-pane' id='sequence'></div>\n        <div role='tabpanel' class='tab-pane' id='reference'>\n            <br>\n            <ol>\n                ";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.reference), {hash:{},inverse:self.noop,fn:self.program(11, program11, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n            </ol>\n        </div>\n    </div>\n</div>";
   return buffer;
   });
 
