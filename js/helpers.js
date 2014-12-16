@@ -2,7 +2,7 @@
 (function(Handlebars) {
 
     //Join array
-    Handlebars.registerHelper( "join", function( array, sep, options ) {
+    Handlebars.registerHelper( 'join', function( array, sep, options ) {
         return array.map(function( item ) {
             return options.fn( item );
         }).join( sep );
@@ -10,11 +10,11 @@
     
     //Comparator
     Handlebars.registerHelper('compare', function (lvalue, operator, rvalue, options) {
-
+        
         var operators, result;
 
         if (arguments.length < 3) {
-            throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
+            throw new Error('Handlerbars Helper \'compare\' needs 2 parameters');
         }
 
         if (options === undefined) {
@@ -36,7 +36,7 @@
         };
 
         if (!operators[operator]) {
-            throw new Error("Handlerbars Helper 'compare' doesn't know the operator " + operator);
+            throw new Error('Handlerbars Helper \'compare\' doesn\'t know the operator ' + operator);
         }
 
         result = operators[operator](lvalue, rvalue);
@@ -49,4 +49,4 @@
 
     });
 
-}(window.Handlebars));
+}(Handlebars));
