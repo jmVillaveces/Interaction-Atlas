@@ -8,7 +8,8 @@ module.exports = Backbone.Model.extend({
         comment : {},
         sequence : '',
         features : [],
-        keyword : []
+        keyword : [],
+        GO : []
         
     },
     urlRoot: function() {
@@ -43,6 +44,20 @@ module.exports = Backbone.Model.extend({
                 comment[type] = (comment[type]) ? comment[type] : [];
                 comment[type].push(children.text());
             } 
+        });
+        
+        //GO
+        var GO = [];
+        xml.find('dbReference').each(function(i, v){
+            var type = $(this).attr('type');
+            if(type == 'GO'){
+                var go = { id : $(this).attr('id')};
+                
+                $(this).find('property').each(function(i, v){
+                    go[$(this).attr('type')] = $(this).attr('value');
+                });
+                GO.push(go);
+            }
         });
         
         //Feature
@@ -80,7 +95,8 @@ module.exports = Backbone.Model.extend({
             comment : comment,
             sequence : sequence,
             features : features,
-            keyword : keyword
+            keyword : keyword,
+            GO : GO
         };
     }
 });
