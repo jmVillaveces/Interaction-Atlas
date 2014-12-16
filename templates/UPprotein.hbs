@@ -8,12 +8,31 @@
     <!-- Tab panes -->
     <div class='tab-content'>
         <div role='tabpanel' class='tab-pane active' id='info'>
+            
             <ol class='breadcrumb' style='font-size:12px'>
                 {{#each lineage}}
                 <li><a target='_blank' href='http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?name={{this}}'>{{this}}</a></li>
                 {{/each}}
             </ol>
+            
             <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>
+                
+                {{#compare keyword.length '>' 0 }}
+                <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='heading_key'>
+                        <h4 class='panel-title text-capitalize'>
+                            <a class='collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapse_key' aria-expanded='false' aria-controls='collapse_key'>
+                                Keywords
+                                <span class='badge pull-right'>{{keyword.length}}</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id='collapse_key' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading_key'>
+                        <p>{{keyword}}</p>
+                    </div>
+                </div>
+                {{/compare}}
+                
                 {{#each comment}}
                 <div class='panel panel-default'>
                     <div class='panel-heading' role='tab' id='heading{{@key}}'>
