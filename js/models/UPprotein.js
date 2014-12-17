@@ -11,7 +11,8 @@ module.exports = Backbone.Model.extend({
         keyword : [],
         GO : [],
         reference : [],
-        gene : ''
+        gene : '',
+        proteinExistence : ''
     },
     urlRoot: function() {
         return  'http://www.uniprot.org/uniprot/';
@@ -117,6 +118,9 @@ module.exports = Backbone.Model.extend({
         //Gene
         var gene = xml.find('gene name[type=\'primary\']').text();
         
+        //Protein existence
+        var proteinExistence = xml.find('proteinExistence').attr('type');
+        
         return {
             lineage : lineage,
             fullName : fullName,
@@ -128,7 +132,8 @@ module.exports = Backbone.Model.extend({
             keyword : keyword,
             GO : GO,
             reference : ref,
-            gene : gene
+            gene : gene,
+            proteinExistence : proteinExistence
         };
     }
 });
