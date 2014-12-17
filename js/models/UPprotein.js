@@ -11,7 +11,6 @@ module.exports = Backbone.Model.extend({
         keyword : [],
         GO : [],
         reference : []
-        
     },
     urlRoot: function() {
         return  'http://www.uniprot.org/uniprot/';
@@ -111,8 +110,8 @@ module.exports = Backbone.Model.extend({
         var sequence = xml.find('sequence').text().replace(/(\r\n|\n|\r)/gm, '');
         
         //Names
-        var fullName = xml.find('fullName').text();
-        var shortName = xml.find('shortName').text();
+        var fullName = xml.find('recommendedName').find('fullName').text();
+        var shortName = xml.find('recommendedName').find('shortName').text();
         
         return {
             lineage : lineage,
