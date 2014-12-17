@@ -10,7 +10,8 @@ module.exports = Backbone.Model.extend({
         features : [],
         keyword : [],
         GO : [],
-        reference : []
+        reference : [],
+        gene : ''
     },
     urlRoot: function() {
         return  'http://www.uniprot.org/uniprot/';
@@ -110,8 +111,11 @@ module.exports = Backbone.Model.extend({
         var sequence = xml.find('sequence').text().replace(/(\r\n|\n|\r)/gm, '');
         
         //Names
-        var fullName = xml.find('recommendedName').find('fullName').text();
-        var shortName = xml.find('recommendedName').find('shortName').text();
+        var fullName = xml.find('recommendedName fullName').text();
+        var shortName = xml.find('recommendedName shortName').text();
+        
+        //Gene
+        var gene = xml.find('gene name[type=\'primary\']').text();
         
         return {
             lineage : lineage,
@@ -123,7 +127,8 @@ module.exports = Backbone.Model.extend({
             features : features,
             keyword : keyword,
             GO : GO,
-            reference : ref
+            reference : ref,
+            gene : gene
         };
     }
 });
