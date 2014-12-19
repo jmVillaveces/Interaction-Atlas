@@ -60,6 +60,13 @@ module.exports = function(grunt) {
                 reporter: 'tap'
             },
             all: { src: ['tests/**/*.js'] }
+        },
+        uglify: {
+            my_target: {
+                files: {
+                    'dist/js/iAtlas.min.js': ['dist/js/iAtlas.js']
+                }
+            }
         }
         /*watch: {
             handlebars:{
@@ -82,7 +89,7 @@ module.exports = function(grunt) {
     });
     
     //Tasks
-    grunt.registerTask('dist', ['clean', 'jshint', 'simplemocha', 'handlebars', 'copy', 'browserify', 'stylus']); //Generates dist folder
+    grunt.registerTask('dist', ['clean', 'jshint', 'simplemocha', 'handlebars', 'copy', 'browserify', 'stylus', 'uglify']); //Generates dist folder
     
     
     // Load the plugins
@@ -93,6 +100,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-     grunt.loadNpmTasks('grunt-simple-mocha');
+    grunt.loadNpmTasks('grunt-simple-mocha');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     
 };
