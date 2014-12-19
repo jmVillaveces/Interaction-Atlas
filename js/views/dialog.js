@@ -7,9 +7,8 @@ module.exports = Backbone.View.extend({
     },
     
     render: function(){
-        var tpl = templates.dialog({el: this.options.data, taxa: this.options.taxa});
+        var tpl = templates.dialog(this.options.data);    
         $(this.options.el).html(tpl);
-        
         $('#myModal').modal('show');
     }
 });
