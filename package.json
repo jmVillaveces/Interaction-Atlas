@@ -26,6 +26,7 @@
     "grunt-contrib-handlebars": "^0.8.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-stylus": "^0.19.0",
+    "grunt-contrib-uglify": "^0.6.0",
     "grunt-simple-mocha": "^0.4.0"
   },
   "dependencies": {
