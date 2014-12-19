@@ -44,7 +44,6 @@ var _pathway = function(){
         contentType : 'text/plain',
         dataType : 'json',
         success : function(data){
-            console.log(data);
             var pathway = new Pathway({el : '.modal-body', data: data});
             pathway.render();
         }
