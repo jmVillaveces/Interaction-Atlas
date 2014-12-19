@@ -10,7 +10,8 @@ module.exports = Backbone.View.extend({
 
     events:{
         'keyup #search': 'keyAction',
-        'click #save' : 'save'
+        'click #save' : 'save',
+        'click #pathway' : 'pathway'
     },
     
     render: function(){
@@ -35,5 +36,9 @@ module.exports = Backbone.View.extend({
             l.download = 'sample.svg';
             l.href = 'data:image/svg+xml;base64,' + btoa(html);
             l.click();
+    },
+    
+    pathway : function(){
+        Backbone.trigger('pathway');
     }
 });
