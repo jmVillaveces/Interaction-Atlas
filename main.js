@@ -16,10 +16,40 @@ var Network = require('./js/views/network');
 var psicquic = require('biojs-rest-psicquic');
 var Dialog = require('./js/views/dialog');
 var UPproteinView = require('./js/views/UPprotein');
+var Pathway = require('./js/views/pathway');
 
 
 var hView = null;
 var _data;
+
+var _pathway = function(){
+    var ids = [];
+    _data.get('interactors').each(function(d) {
+        ids.push(d.get('id'));
+    });
+    
+    var data = {
+        color : '#449d44',
+        title : 'Pathway Analysys'
+    };
+    
+    var dialog = new Dialog({el:'#dialog', data: data});
+    dialog.render();
+    
+    var url = 'http://www.reactome.org:80/AnalysisService/identifiers/?pageSize=20&page=1&sortBy=ENTITIES_PVALUE&order=ASC&resource=TOTAL'; 
+    $.ajax({
+        url:url,
+        type : 'POST',
+        data : ids.join('\n'),
+        contentType : 'text/plain',
+        dataType : 'json',
+        success : function(data){
+            console.log(data);
+            var pathway = new Pathway({el : '.modal-body', data: data});
+            pathway.render();
+        }
+    });
+};
 
 var _search = function(){
     
@@ -77,7 +107,14 @@ var _onNodeClick = function(d){
     
     var taxa = _.find(_data.get('taxa'), function(t){return t.taxid == d.taxonomy[0];});
    
-    var dialog = new Dialog({el:'#dialog', data: d, taxa: taxa});
+    var subt = taxa.commonname ? ' ('+taxa.commonname+')' : '';
+    var data = {
+        color : d.color, 
+        title : d.id,
+        subtitle : taxa.scientificname + subt
+    };
+    
+    var dialog = new Dialog({el:'#dialog', data: data});
     dialog.render();
 };
 
@@ -91,6 +128,7 @@ var _events = function(){
     _.extend(iAtlas.vent, window.Backbone.Events);
     
     Backbone.on('nodeClick', _onNodeClick);
+    Backbone.on('pathway', _pathway);
     
     iAtlas.vent.on('search', _search);
 };
