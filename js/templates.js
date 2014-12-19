@@ -10,7 +10,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<nav class='navbar navbar-default navbar-fixed-top' role='navigation'>\n    <div class='container'>\n        <div class='navbar-header'>\n            <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar' aria-expanded='false' aria-controls='navbar'>\n                <span class='sr-only'>Toggle navigation</span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n            </button>\n            <a class='navbar-brand poiret' href='.'><img src='favicon.ico'> iAtlas</a>\n        </div>\n        <div id='navbar' class='navbar-collapse collapse'>\n            <ul class='nav navbar-nav'>\n                <li><a href='#'><span class='glyphicon glyphicon-floppy-disk' aria-hidden='true'> Save </span></a></li>\n            </ul>\n            <form class='navbar-form navbar-left' role = 'search'>\n                <div class='input-group input-group-sm'>\n                    <input id= 'search' type='text' class='form-control' placeholder = 'id...'>\n                    <span class='input-group-addon glyphicon glyphicon-search'></span>\n                </div>\n            </form>\n            <ul class='nav navbar-nav navbar-right'>\n                <li><a href='#about'>About</a></li>\n                <li><a href='#contact'>Contact</a></li>\n            </ul>\n        </div><!--/.nav-collapse -->\n    </div>\n</nav>";
+  return "<nav class='navbar navbar-default navbar-fixed-top' role='navigation'>\n    <div class='container'>\n        <div class='navbar-header'>\n            <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar' aria-expanded='false' aria-controls='navbar'>\n                <span class='sr-only'>Toggle navigation</span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n            </button>\n            <a class='navbar-brand poiret' href='.'><img src='favicon.ico'> iAtlas</a>\n        </div>\n        <div id='navbar' class='navbar-collapse collapse'>\n            <form class='navbar-form navbar-left' role = 'search'>\n                <div class='input-group input-group-sm'>\n                    <input id= 'search' type='text' class='form-control' placeholder = 'id...'>\n                    <span class='input-group-addon glyphicon glyphicon-search'></span>\n                </div>\n            </form>\n            <ul class='nav navbar-nav'>\n                <li><a id='save' href='#'><span class='glyphicon glyphicon-floppy-disk' aria-hidden='true'> Save</span></a></li>\n                <li><a id='pathway' href='#'><span class='glyphicon glyphicon-th-list' aria-hidden='true'> Pathway Analysys</span></a></li>\n            </ul>\n            \n            <ul class='nav navbar-nav navbar-right'>\n                <li><a href='#about'>About</a></li>\n                <li><a href='#contact'>Contact</a></li>\n            </ul>\n        </div><!--/.nav-collapse -->\n    </div>\n</nav>";
   }));
 
 Handlebars.registerPartial("search", this["Templates"]["search"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -44,6 +44,54 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   var buffer = "", stack1, helper;
+  buffer += " Name: <i>";
+  if (helper = helpers.fullName) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.fullName); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</i><br> ";
+  return buffer;
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += " Short Name: <i>";
+  if (helper = helpers.shortName) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.shortName); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</i> <br> ";
+  return buffer;
+  }
+
+function program7(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += " Gene: <a href='http://www.ncbi.nlm.nih.gov/gene/?term=";
+  if (helper = helpers.gene) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.gene); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "' target='_blank'><i>";
+  if (helper = helpers.gene) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.gene); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</i></a> <br> ";
+  return buffer;
+  }
+
+function program9(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += " Protein existence: <i>";
+  if (helper = helpers.proteinExistence) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.proteinExistence); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</i> <br> ";
+  return buffer;
+  }
+
+function program11(depth0,data) {
+  
+  var buffer = "", stack1, helper;
   buffer += "\n                <div class='panel panel-default'>\n                    <div class='panel-heading' role='tab' id='heading_key'>\n                        <h4 class='panel-title text-capitalize'>\n                            <a class='collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapse_key' aria-expanded='false' aria-controls='collapse_key'>\n                                Keywords\n                                <span class='badge pull-right'>"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.keyword)),stack1 == null || stack1 === false ? stack1 : stack1.length)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</span>\n                            </a>\n                        </h4>\n                    </div>\n                    <div id='collapse_key' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading_key'>\n                        <p style='margin-left: 5px;'>";
@@ -54,18 +102,18 @@ function program3(depth0,data) {
   return buffer;
   }
 
-function program5(depth0,data) {
+function program13(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n                <div class='panel panel-default'>\n                    <div class='panel-heading' role='tab' id='heading_GO'>\n                        <h4 class='panel-title text-capitalize'>\n                            <a class='collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapse_GO' aria-expanded='false' aria-controls='collapse_GO'>\n                                Gene Ontology\n                                <span class='badge pull-right'>"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.GO)),stack1 == null || stack1 === false ? stack1 : stack1.length)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</span>\n                            </a>\n                        </h4>\n                    </div>\n                    <div id='collapse_GO' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading_key'>\n                        ";
-  stack1 = helpers.each.call(depth0, (depth0 && depth0.GO), {hash:{},inverse:self.noop,fn:self.program(6, program6, data),data:data});
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.GO), {hash:{},inverse:self.noop,fn:self.program(14, program14, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n                    </div>\n                </div>\n                ";
   return buffer;
   }
-function program6(depth0,data) {
+function program14(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n                            <h5 style='margin-left: 5px;'>";
@@ -80,7 +128,7 @@ function program6(depth0,data) {
   return buffer;
   }
 
-function program8(depth0,data) {
+function program16(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n                <div class='panel panel-default'>\n                    <div class='panel-heading' role='tab' id='heading"
@@ -98,12 +146,12 @@ function program8(depth0,data) {
     + "' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading"
     + escapeExpression(((stack1 = (data == null || data === false ? data : data.key)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "'>\n                        <div class='panel-body'>\n                            <ul>\n                                ";
-  stack1 = helpers.each.call(depth0, depth0, {hash:{},inverse:self.noop,fn:self.program(9, program9, data),data:data});
+  stack1 = helpers.each.call(depth0, depth0, {hash:{},inverse:self.noop,fn:self.program(17, program17, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n                            </ul>\n                        </div>\n                    </div>\n                </div>\n                ";
   return buffer;
   }
-function program9(depth0,data) {
+function program17(depth0,data) {
   
   var buffer = "";
   buffer += "\n                                <li>"
@@ -112,7 +160,7 @@ function program9(depth0,data) {
   return buffer;
   }
 
-function program11(depth0,data) {
+function program19(depth0,data) {
   
   var buffer = "", stack1, helper, options;
   buffer += "\n                <li>\n                    <address>\n                    <a href='http://www.ncbi.nlm.nih.gov/pubmed/?term=";
@@ -124,10 +172,10 @@ function program11(depth0,data) {
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + "</a><br>\n                    ";
-  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(12, program12, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.name), "!=", "", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.name), "!=", "", options));
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(20, program20, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.name), "!=", "", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.name), "!=", "", options));
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n                    ";
-  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(14, program14, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.db), "typeof", "string", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.db), "typeof", "string", options));
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(22, program22, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.db), "typeof", "string", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.db), "typeof", "string", options));
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n                    ";
   if (helper = helpers.authors) { stack1 = helper.call(depth0, {hash:{},data:data}); }
@@ -136,7 +184,7 @@ function program11(depth0,data) {
     + "<br>\n                    </address>\n                </li>\n                ";
   return buffer;
   }
-function program12(depth0,data) {
+function program20(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n                    <i>";
@@ -163,7 +211,7 @@ function program12(depth0,data) {
   return buffer;
   }
 
-function program14(depth0,data) {
+function program22(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n                    <i>";
@@ -177,17 +225,29 @@ function program14(depth0,data) {
   buffer += "<div role='tabpanel'>\n    <!-- Nav tabs -->\n    <ul class='nav nav-tabs' role='tablist'>\n        <li role='presentation' class='active'><a href='#info' aria-controls='info' role='tab' data-toggle='tab'><span class='glyphicon glyphicon-info-sign'></span> Info</a></li>\n        <li role='presentation'><a href='#sequence' aria-controls='sequence' role='tab' data-toggle='tab'><span class='glyphicon glyphicon-align-center'></span> Sequence</a></li>\n        <li role='presentation'><a href='#reference' aria-controls='reference' role='tab' data-toggle='tab'><span class='glyphicon glyphicon-file'></span> Reference</a></li>\n    </ul>\n\n    <!-- Tab panes -->\n    <div class='tab-content'>\n        <div role='tabpanel' class='tab-pane active' id='info'>\n            \n            <ol class='breadcrumb' style='font-size:12px'>\n                ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.lineage), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n            </ol>\n            \n            <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>\n                \n                ";
-  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.keyword)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options) : helperMissing.call(depth0, "compare", ((stack1 = (depth0 && depth0.keyword)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options));
+  buffer += "\n            </ol>\n            \n            <br>\n            ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.fullName)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options) : helperMissing.call(depth0, "compare", ((stack1 = (depth0 && depth0.fullName)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += " \n            ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.shortName)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options) : helperMissing.call(depth0, "compare", ((stack1 = (depth0 && depth0.shortName)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n            ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.gene)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options) : helperMissing.call(depth0, "compare", ((stack1 = (depth0 && depth0.gene)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n            ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(9, program9, data),data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.proteinExistence)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options) : helperMissing.call(depth0, "compare", ((stack1 = (depth0 && depth0.proteinExistence)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options));
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n            <br>\n            <div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>\n                \n                ";
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(11, program11, data),data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.keyword)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options) : helperMissing.call(depth0, "compare", ((stack1 = (depth0 && depth0.keyword)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options));
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n                \n                ";
-  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.GO)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options) : helperMissing.call(depth0, "compare", ((stack1 = (depth0 && depth0.GO)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options));
+  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(13, program13, data),data:data},helper ? helper.call(depth0, ((stack1 = (depth0 && depth0.GO)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options) : helperMissing.call(depth0, "compare", ((stack1 = (depth0 && depth0.GO)),stack1 == null || stack1 === false ? stack1 : stack1.length), ">", 0, options));
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n                \n                ";
-  stack1 = helpers.each.call(depth0, (depth0 && depth0.comment), {hash:{},inverse:self.noop,fn:self.program(8, program8, data),data:data});
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.comment), {hash:{},inverse:self.noop,fn:self.program(16, program16, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n            </div>\n        </div>\n        <div role='tabpanel' class='tab-pane' id='sequence'></div>\n        <div role='tabpanel' class='tab-pane' id='reference'>\n            <br>\n            <ol>\n                ";
-  stack1 = helpers.each.call(depth0, (depth0 && depth0.reference), {hash:{},inverse:self.noop,fn:self.program(11, program11, data),data:data});
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.reference), {hash:{},inverse:self.noop,fn:self.program(19, program19, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n            </ol>\n        </div>\n    </div>\n</div>";
   return buffer;
@@ -196,23 +256,29 @@ function program14(depth0,data) {
 this["Templates"]["dialog"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
-  var buffer = "", stack1;
-  buffer += " - <small style='color:#fff'>"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.taxa)),stack1 == null || stack1 === false ? stack1 : stack1.scientificname)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+  var buffer = "", stack1, helper;
+  buffer += " - <small style='color:#fff'>";
+  if (helper = helpers.subtitle) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.subtitle); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
     + "</small> ";
   return buffer;
   }
 
-  buffer += "<div class='modal fade' id='myModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>\n  <div class='modal-dialog modal-lg'>\n    <div class='modal-content'>\n      <div class='modal-header' style='background:"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.el)),stack1 == null || stack1 === false ? stack1 : stack1.color)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "'>\n        <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>\n          <h4 style='color:#fff' class='modal-title' id='myModalLabel'><strong>"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.el)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+  buffer += "<div class='modal fade' id='myModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>\n  <div class='modal-dialog modal-lg'>\n    <div class='modal-content'>\n      <div class='modal-header' style='background:";
+  if (helper = helpers.color) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.color); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "'>\n        <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>\n          <h4 style='color:#fff' class='modal-title' id='myModalLabel'><strong>";
+  if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
     + "</strong> ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.taxa), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.subtitle), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</h4>\n      </div>\n      <div class='modal-body'>\n          <p><img src = 'loading.gif'></p>\n      </div>\n      <div class='modal-footer'>\n        <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>\n      </div>\n    </div>\n  </div>\n</div>";
   return buffer;
@@ -241,6 +307,81 @@ helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partial
   stack1 = self.invokePartial(partials.navbar, 'navbar', depth0, helpers, partials, data);
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    <div id='dialog'></div>\n    <div>\n        <svg id='network' style='background-size: contain'></svg>\n    </div>\n</div>";
+  return buffer;
+  });
+
+this["Templates"]["pathway"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n    <div class='panel panel-default'>\n        <div class='panel-heading' role='tab' id='heading"
+    + escapeExpression(((stack1 = (data == null || data === false ? data : data.key)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "'>\n            <h4 class='panel-title text-capitalize'>\n                <a class='collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapse";
+  if (helper = helpers.stId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.stId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "' aria-expanded='false' aria-controls='collapse";
+  if (helper = helpers.stId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.stId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "'>\n                    ";
+  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " <span class='badge pull-right'> "
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.entities)),stack1 == null || stack1 === false ? stack1 : stack1.found)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + " / "
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.entities)),stack1 == null || stack1 === false ? stack1 : stack1.total)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + " </span>\n                </a>\n            </h4>\n        </div>\n        <div id='collapse";
+  if (helper = helpers.stId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.stId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading";
+  if (helper = helpers.stId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.stId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "'>\n            <div class='panel-body'>\n                \n                <div class=\"row\">\n                    <div class=\"col-md-6\">\n                        <h5>Entities</h5>\n                        <p>\n                            <strong>Fdr:</strong> "
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.entities)),stack1 == null || stack1 === false ? stack1 : stack1.fdr)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<br>\n                            <strong>pValue:</strong> "
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.entities)),stack1 == null || stack1 === false ? stack1 : stack1.pValue)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<br>\n                            <strong>Ratio:</strong> "
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.entities)),stack1 == null || stack1 === false ? stack1 : stack1.ratio)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<br>\n                            Found <strong>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.entities)),stack1 == null || stack1 === false ? stack1 : stack1.found)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</strong> out of <strong>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.entities)),stack1 == null || stack1 === false ? stack1 : stack1.total)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</strong><br>\n                        </p>\n                    </div>\n                    <div class=\"col-md-6\">\n                        <h5>Reactions</h5>\n                        <p>\n                            <strong>Ratio:</strong> "
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.reactions)),stack1 == null || stack1 === false ? stack1 : stack1.ratio)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<br>\n                            Found <strong>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.reactions)),stack1 == null || stack1 === false ? stack1 : stack1.found)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</strong> out of <strong>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.reactions)),stack1 == null || stack1 === false ? stack1 : stack1.total)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</strong><br>\n                        </p>\n                    </div>\n                </div>\n                \n                <p>\n                    <a href='http://www.reactome.org/content/detail/";
+  if (helper = helpers.stId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.stId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "' target='_blank'>\n                        <button type='button' class='btn btn-info' aria-label='Left Align'>\n                          <span class='glyphicon glyphicon glyphicon-share-alt' aria-hidden='true'></span> See in Reactome\n                        </button>\n                    </a>\n                </p>\n            </div>\n        </div>\n    </div>\n    ";
+  return buffer;
+  }
+
+  buffer += "<div class='row'>\n    <div class='col-md-6'>\n        Displaying <strong>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.pathways)),stack1 == null || stack1 === false ? stack1 : stack1.length)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</strong> pathways out of <strong>";
+  if (helper = helpers.pathwaysFound) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.pathwaysFound); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</strong>.\n    </div>\n    <div class='col-md-6'>\n        <span style='color:red'><strong>";
+  if (helper = helpers.identifiersNotFound) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.identifiersNotFound); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</strong></span> identifiers not found.<br> \n    </div>\n</div>\n\n<div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>\n\n    ";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.pathways), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    \n</div>";
   return buffer;
   });
 
