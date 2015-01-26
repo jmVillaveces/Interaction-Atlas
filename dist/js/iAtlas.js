@@ -271,7 +271,7 @@ network.search = function(searchTerm){
 };
 
 module.exports = network;
-},{"d3":63,"d3-tip":62}],5:[function(require,module,exports){
+},{"d3":65,"d3-tip":64}],5:[function(require,module,exports){
 module.exports = Backbone.Model.extend({
     defaults: {
         accession : [],
@@ -482,7 +482,7 @@ module.exports = Backbone.Model.extend({
         return Backbone.Model.prototype.fetch.call(this, options);
     }
 });
-},{"../collections/interactions.js":1,"../collections/interactors.js":2,"biojs-io-mitab":44}],7:[function(require,module,exports){
+},{"../collections/interactions.js":1,"../collections/interactors.js":2,"biojs-io-mitab":45}],7:[function(require,module,exports){
 module.exports = Backbone.Model.extend({
     defaults : {
         source : '',
@@ -777,6 +777,17 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
+  buffer += "<span class='glyphicon ";
+  if (helper = helpers.icon) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.icon); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "'></span>";
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = "", stack1, helper;
   buffer += " - <small style='color:#fff'>";
   if (helper = helpers.subtitle) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.subtitle); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
@@ -789,12 +800,15 @@ function program1(depth0,data) {
   if (helper = helpers.color) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.color); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "'>\n        <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>\n          <h4 style='color:#fff' class='modal-title' id='myModalLabel'><strong>";
+    + "'>\n        <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>\n          <h4 style='color:#fff' class='modal-title' id='myModalLabel'>";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.icon), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "<strong> ";
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + "</strong> ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.subtitle), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.subtitle), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</h4>\n      </div>\n      <div class='modal-body'>\n          <p><img src = 'loading.gif'></p>\n      </div>\n      <div class='modal-footer'>\n        <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>\n      </div>\n    </div>\n  </div>\n</div>";
   return buffer;
@@ -990,6 +1004,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return "<div class=\"progress progress-striped active\">\n    <div class=\"progress-bar progress-bar-success\" role=\"progressbar\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0%\">\n        <span class=\"sr-only\">40% Complete (success)</span>\n    </div>\n</div>";
   });
 
+this["Templates"]["sidemenu"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<!-- Sliding div starts here -->\n<div id=\"sidemenu\" class=\"side_container\">\n    <div class=\"side_handle\">\n        <button type=\"button\" class=\"btn btn-success\" aria-label=\"Left Align\">\n            <span class=\"glyphicon glyphicon-cog\" aria-hidden=\"true\"></span> Settings\n        </button>\n    </div>\n    <div class=\"side_content\">\n        <div class=\"sidebox form-group\">\n            <label>Layout</label>\n            <select class=\"input-large\" style=\"margin-left:20px\">\n              <option value=\"force\">Force</option>\n              <option value=\"radial\">Radial</option>\n            </select>\n        </div>\n        <div class=\"sidebox\">\n            <label>Nodes</label>\n            <br>\n            <input id=\"node_slider\" type=\"text\">\n        </div>\n        <div class=\"sidebox\">\n            <label>Query type</label>\n        </div>\n    </div>\n</div>\n<!-- Sliding div ends here -->";
+  });
+
 this["Templates"]["sidepanel"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -1126,7 +1149,7 @@ function program18(depth0,data) {
 
 if (typeof exports === 'object' && exports) {module.exports = this["Templates"];}
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"handlebars":79}],11:[function(require,module,exports){
+},{"handlebars":81}],11:[function(require,module,exports){
 var Sequence = require('biojs-vis-sequence');
 var Structure = require('bio-pv');
 var templates = require('../templates');
@@ -1166,7 +1189,7 @@ module.exports = Backbone.View.extend({
         });
     }
 });
-},{"../templates":10,"bio-pv":20,"biojs-vis-sequence":54}],12:[function(require,module,exports){
+},{"../templates":10,"bio-pv":21,"biojs-vis-sequence":55}],12:[function(require,module,exports){
 var templates = require('../templates');
 
 module.exports = Backbone.View.extend({
@@ -1333,6 +1356,37 @@ module.exports = Backbone.View.extend({
     }
 });
 },{"../templates":10}],17:[function(require,module,exports){
+var templates = require('../templates');
+var Slider = require('bootstrap-slider');
+
+module.exports = Backbone.View.extend({
+    
+    initialize: function(options){
+        this.options = options;
+    },
+    
+    events:{
+        'click .side_handle': 'tooglevisible'
+    },
+    
+    render: function(){
+        var tpl = templates.sidemenu(this.options.data);
+        $(this.options.el).append(tpl);
+        
+        
+        var mySlider = new Slider('#node_slider');
+    },
+    
+    tooglevisible: function(e){
+        var hidden = $('.side_container');
+        if (hidden.hasClass('visible')){
+            hidden.animate({'right':'-342px'}, 'slow').removeClass('visible');
+        } else {
+            hidden.animate({'right':'0px'}, 'slow').addClass('visible');
+        }
+    }
+});
+},{"../templates":10,"bootstrap-slider":62}],18:[function(require,module,exports){
 jQuery = $ = require('jquery');
 Backbone = require('backbone');
 Backbone.$ = jQuery;
@@ -1352,6 +1406,7 @@ var psicquic = require('biojs-rest-psicquic');
 var Dialog = require('./js/views/dialog');
 var UPproteinView = require('./js/views/UPprotein');
 var Pathway = require('./js/views/pathway');
+var SideMenu = require('./js/views/sidemenu');
 
 
 var hView = null;
@@ -1365,7 +1420,8 @@ var _pathway = function(){
     
     var data = {
         color : '#449d44',
-        title : 'Pathway Analysys'
+        title : 'Pathway Analysys',
+        icon : 'glyphicon-th-list'
     };
     
     var dialog = new Dialog({el:'#dialog', data: data});
@@ -1379,7 +1435,6 @@ var _pathway = function(){
         contentType : 'text/plain',
         dataType : 'json',
         success : function(data){
-            console.log(data);
             var pathway = new Pathway({el : '.modal-body', data: data});
             pathway.render();
         }
@@ -1405,6 +1460,10 @@ var _search = function(){
             if(_data.get('interactions').length > 0){
                 var network = new Network({el:'body', data: _data});
                 network.render();
+                
+                var sm = new SideMenu({el:'body', data: {}}).render();
+                
+                
             }else{
                 // timeout so progress bar animation can be seen
                 setTimeout(function(){
@@ -1480,7 +1539,7 @@ var _init = function(){
 }();
 
 
-},{"./js/helpers.js":3,"./js/models/UPprotein":5,"./js/models/atlas.js":6,"./js/properties":9,"./js/views/UPprotein":11,"./js/views/dialog":12,"./js/views/home":13,"./js/views/network":14,"./js/views/pathway":15,"backbone":18,"biojs-rest-psicquic":45,"bootstrap/dist/js/bootstrap.min.js":61,"handlebars":79,"jquery":80,"underscore":81}],18:[function(require,module,exports){
+},{"./js/helpers.js":3,"./js/models/UPprotein":5,"./js/models/atlas.js":6,"./js/properties":9,"./js/views/UPprotein":11,"./js/views/dialog":12,"./js/views/home":13,"./js/views/network":14,"./js/views/pathway":15,"./js/views/sidemenu":17,"backbone":19,"biojs-rest-psicquic":46,"bootstrap/dist/js/bootstrap.min.js":63,"handlebars":81,"jquery":82,"underscore":83}],19:[function(require,module,exports){
 //     Backbone.js 1.1.2
 
 //     (c) 2010-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -3090,7 +3149,7 @@ var _init = function(){
 
 }));
 
-},{"underscore":19}],19:[function(require,module,exports){
+},{"underscore":20}],20:[function(require,module,exports){
 //     Underscore.js 1.7.0
 //     http://underscorejs.org
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -4507,7 +4566,7 @@ var _init = function(){
   }
 }.call(this));
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var glMatrix = require('./src/gl-matrix.js');
 
 window.vec3 = glMatrix.vec3;
@@ -4589,7 +4648,7 @@ require('./src/animation.js');
 var pv = require('./src/viewer.js');
 module.exports = pv;
 
-},{"./src/animation.js":21,"./src/buffer-allocators.js":22,"./src/cam.js":23,"./src/chain-data.js":24,"./src/core.js":25,"./src/framebuffer.js":26,"./src/geom-builders.js":27,"./src/geom.js":28,"./src/gl-matrix.js":29,"./src/indexed-vertex-array.js":30,"./src/io.js":31,"./src/mol.js":32,"./src/render.js":33,"./src/scene.js":34,"./src/shade.js":35,"./src/shaders.js":36,"./src/slab.js":37,"./src/symmetry.js":38,"./src/trace.js":39,"./src/vert-assoc.js":40,"./src/vertex-array-base.js":41,"./src/vertex-array.js":42,"./src/viewer.js":43}],21:[function(require,module,exports){
+},{"./src/animation.js":22,"./src/buffer-allocators.js":23,"./src/cam.js":24,"./src/chain-data.js":25,"./src/core.js":26,"./src/framebuffer.js":27,"./src/geom-builders.js":28,"./src/geom.js":29,"./src/gl-matrix.js":30,"./src/indexed-vertex-array.js":31,"./src/io.js":32,"./src/mol.js":33,"./src/render.js":34,"./src/scene.js":35,"./src/shade.js":36,"./src/shaders.js":37,"./src/slab.js":38,"./src/symmetry.js":39,"./src/trace.js":40,"./src/vert-assoc.js":41,"./src/vertex-array-base.js":42,"./src/vertex-array.js":43,"./src/viewer.js":44}],22:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -4726,7 +4785,7 @@ exports.Animation = Animation;
 return true;
 })(this);
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -4801,7 +4860,7 @@ exports.NativeAllocator = NativeAllocator;
 return true;
 })(this);
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -5080,7 +5139,7 @@ exports.Cam = Cam;
 })(this);
 
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -5146,7 +5205,7 @@ exports.MeshChainData = MeshChainData;
 return true;
 })(this);
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -5298,7 +5357,7 @@ exports.indexLastSmallerEqualThan = function(values, value, comp) {
 return true;
 })(this);
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -5405,7 +5464,7 @@ exports.FrameBuffer = FrameBuffer;
 })(this);
 
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -5640,7 +5699,7 @@ exports.ProtoCylinder = ProtoCylinder;
 })(this);
 
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -5844,7 +5903,7 @@ if(typeof(exports) !== 'undefined') {
   module.exports = geom;
 }
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 /**
  * @fileoverview gl-matrix - High performance matrix and vector operations
  * @author Brandon Jones
@@ -8903,7 +8962,7 @@ if(typeof(exports) !== 'undefined') {
   })(shim.exports);
 })(this);
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -9054,7 +9113,7 @@ exports.IndexedVertexArray = IndexedVertexArray;
 return true;
 })(this);
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -9290,7 +9349,7 @@ exports.io.Remark350Reader = Remark350Reader;
 
 
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -10434,7 +10493,7 @@ return true;
 
 })(this);
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -11385,7 +11444,7 @@ if(typeof(exports) !== 'undefined') {
   module.exports = render;
 }
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -12252,7 +12311,7 @@ exports.Range = Range;
 })(this);
 
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy 
@@ -12747,7 +12806,7 @@ exports.interpolateColor = function(colors, num) {
 return true;
 })(this);
 
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -12939,7 +12998,7 @@ void main(void) {\n\
 }';
 })(this);
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -13008,7 +13067,7 @@ exports.Slab = Slab;
 
 })(this);
 
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -13076,7 +13135,7 @@ return true;
 
 
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -13299,7 +13358,7 @@ TraceSubset.prototype.tangentAt = function(out, index) {
 };
 
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -13519,7 +13578,7 @@ TraceVertexAssoc.prototype.setOpacity = function( val, view) {
 };
 
 
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -13677,7 +13736,7 @@ exports.VertexArrayBase = VertexArrayBase;
 
 })(this);
 
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -13786,7 +13845,7 @@ exports.VertexArray = VertexArray;
 return true;
 })(this);
 
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 // Copyright (c) 2013-2014 Marco Biasini
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -14804,7 +14863,7 @@ if(typeof(exports) !== 'undefined') {
     module.exports = pv;
 }
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 var _ = require('underscore');
 
 module.exports = MITab = (function() {
@@ -14934,7 +14993,7 @@ module.exports = MITab = (function() {
     
     return MITab;
 })();
-},{"underscore":81}],45:[function(require,module,exports){
+},{"underscore":83}],46:[function(require,module,exports){
 var xhr = require('nets')
 
 var _url = '', _proxy = null, _method = 'query', _params = null;
@@ -15030,7 +15089,7 @@ psicquicServer.getExpandedInteractionsForIds = function(ids, params, callback){
 };
 
 module.exports = psicquicServer;
-},{"nets":46}],46:[function(require,module,exports){
+},{"nets":47}],47:[function(require,module,exports){
 var req = require('request')
 
 module.exports = Nets
@@ -15038,7 +15097,7 @@ module.exports = Nets
 function Nets(uri, opts, cb) {
   req(uri, opts, cb)
 }
-},{"request":47}],47:[function(require,module,exports){
+},{"request":48}],48:[function(require,module,exports){
 var window = require("global/window")
 var once = require("once")
 var parseHeaders = require('parse-headers')
@@ -15216,7 +15275,7 @@ function createXHR(options, callback) {
 
 function noop() {}
 
-},{"global/window":48,"once":49,"parse-headers":53}],48:[function(require,module,exports){
+},{"global/window":49,"once":50,"parse-headers":54}],49:[function(require,module,exports){
 (function (global){
 if (typeof window !== "undefined") {
     module.exports = window;
@@ -15227,7 +15286,7 @@ if (typeof window !== "undefined") {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 module.exports = once
 
 once.proto = once(function () {
@@ -15248,7 +15307,7 @@ function once (fn) {
   }
 }
 
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 var isFunction = require('is-function')
 
 module.exports = forEach
@@ -15296,7 +15355,7 @@ function forEachObject(object, iterator, context) {
     }
 }
 
-},{"is-function":51}],51:[function(require,module,exports){
+},{"is-function":52}],52:[function(require,module,exports){
 module.exports = isFunction
 
 var toString = Object.prototype.toString
@@ -15313,7 +15372,7 @@ function isFunction (fn) {
       fn === window.prompt))
 };
 
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 
 exports = module.exports = trim;
 
@@ -15329,7 +15388,7 @@ exports.right = function(str){
   return str.replace(/\s*$/, '');
 };
 
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 var trim = require('trim')
   , forEach = require('for-each')
   , isArray = function(arg) {
@@ -15361,7 +15420,7 @@ module.exports = function (headers) {
 
   return result
 }
-},{"for-each":50,"trim":52}],54:[function(require,module,exports){
+},{"for-each":51,"trim":53}],55:[function(require,module,exports){
 // legacy!!
 $.browser = require("jquery-browser-plugin");
 
@@ -16800,7 +16859,7 @@ Sequence = Class(
 require("biojs-events").mixin(Sequence.prototype);
 module.exports = Sequence;
 
-},{"biojs-events":55,"jquery-browser-plugin":58,"js-class":60}],55:[function(require,module,exports){
+},{"biojs-events":56,"jquery-browser-plugin":59,"js-class":61}],56:[function(require,module,exports){
 var events = require("backbone-events-standalone");
 
 events.onAll = function(callback,context){
@@ -16823,7 +16882,7 @@ events.mixin = function(proto) {
 
 module.exports = events;
 
-},{"backbone-events-standalone":57}],56:[function(require,module,exports){
+},{"backbone-events-standalone":58}],57:[function(require,module,exports){
 /**
  * Standalone extraction of Backbone.Events, no external dependency required.
  * Degrades nicely when Backone/underscore are already available in the current
@@ -17102,13 +17161,13 @@ module.exports = events;
   }
 })(this);
 
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 module.exports = require('./backbone-events-standalone');
 
-},{"./backbone-events-standalone":56}],58:[function(require,module,exports){
+},{"./backbone-events-standalone":57}],59:[function(require,module,exports){
 module.exports = require('./jquery.browser');
 
-},{"./jquery.browser":59}],59:[function(require,module,exports){
+},{"./jquery.browser":60}],60:[function(require,module,exports){
 /*!
  * jQuery Browser Plugin v0.0.6
  * https://github.com/gabceb/jquery-browser-plugin
@@ -17220,7 +17279,7 @@ browser.platform = matched.platform;
 
 module.exports = browser;
 
-},{}],60:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 (function (global){
 /** @preserve http://github.com/easeway/js-class */
 
@@ -17352,14 +17411,1232 @@ if (module) {
     global.Class = Class;   // for browser
 }
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],61:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
+/*! =========================================================
+ * bootstrap-slider.js
+ *
+ * Maintainers:
+ *		Kyle Kemp
+ *			- Twitter: @seiyria
+ *			- Github:  seiyria
+ *		Rohit Kalkur
+ *			- Twitter: @Rovolutionary
+ *			- Github:  rovolution
+ *
+ * =========================================================
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================= */
+
+
+/**
+ * Bridget makes jQuery widgets
+ * v1.0.1
+ * MIT license
+ */
+
+(function(root, factory) {
+	if(typeof define === "function" && define.amd) {
+		define(["jquery"], factory);
+	} else if(typeof module === "object" && module.exports) {
+		var jQuery;
+		try {
+			jQuery = require("jquery");
+		} catch (err) {
+			jQuery = null;
+		}
+		module.exports = factory(jQuery);
+	} else {
+		root.Slider = factory(root.jQuery);
+	}
+}(this, function($) {
+	// Reference to Slider constructor
+	var Slider;
+
+
+	(function( $ ) {
+
+		'use strict';
+
+		// -------------------------- utils -------------------------- //
+
+		var slice = Array.prototype.slice;
+
+		function noop() {}
+
+		// -------------------------- definition -------------------------- //
+
+		function defineBridget( $ ) {
+
+			// bail if no jQuery
+			if ( !$ ) {
+				return;
+			}
+
+			// -------------------------- addOptionMethod -------------------------- //
+
+			/**
+			 * adds option method -> $().plugin('option', {...})
+			 * @param {Function} PluginClass - constructor class
+			 */
+			function addOptionMethod( PluginClass ) {
+				// don't overwrite original option method
+				if ( PluginClass.prototype.option ) {
+					return;
+				}
+
+			  // option setter
+			  PluginClass.prototype.option = function( opts ) {
+			    // bail out if not an object
+			    if ( !$.isPlainObject( opts ) ){
+			      return;
+			    }
+			    this.options = $.extend( true, this.options, opts );
+			  };
+			}
+
+
+			// -------------------------- plugin bridge -------------------------- //
+
+			// helper function for logging errors
+			// $.error breaks jQuery chaining
+			var logError = typeof console === 'undefined' ? noop :
+			  function( message ) {
+			    console.error( message );
+			  };
+
+			/**
+			 * jQuery plugin bridge, access methods like $elem.plugin('method')
+			 * @param {String} namespace - plugin name
+			 * @param {Function} PluginClass - constructor class
+			 */
+			function bridge( namespace, PluginClass ) {
+			  // add to jQuery fn namespace
+			  $.fn[ namespace ] = function( options ) {
+			    if ( typeof options === 'string' ) {
+			      // call plugin method when first argument is a string
+			      // get arguments for method
+			      var args = slice.call( arguments, 1 );
+
+			      for ( var i=0, len = this.length; i < len; i++ ) {
+			        var elem = this[i];
+			        var instance = $.data( elem, namespace );
+			        if ( !instance ) {
+			          logError( "cannot call methods on " + namespace + " prior to initialization; " +
+			            "attempted to call '" + options + "'" );
+			          continue;
+			        }
+			        if ( !$.isFunction( instance[options] ) || options.charAt(0) === '_' ) {
+			          logError( "no such method '" + options + "' for " + namespace + " instance" );
+			          continue;
+			        }
+
+			        // trigger method with arguments
+			        var returnValue = instance[ options ].apply( instance, args);
+
+			        // break look and return first value if provided
+			        if ( returnValue !== undefined && returnValue !== instance) {
+			          return returnValue;
+			        }
+			      }
+			      // return this if no return value
+			      return this;
+			    } else {
+			      var objects = this.map( function() {
+			        var instance = $.data( this, namespace );
+			        if ( instance ) {
+			          // apply options & init
+			          instance.option( options );
+			          instance._init();
+			        } else {
+			          // initialize new instance
+			          instance = new PluginClass( this, options );
+			          $.data( this, namespace, instance );
+			        }
+			        return $(this);
+			      });
+
+			      if(!objects || objects.length > 1) {
+			      	return objects;
+			      } else {
+			      	return objects[0];
+			      }
+			    }
+			  };
+
+			}
+
+			// -------------------------- bridget -------------------------- //
+
+			/**
+			 * converts a Prototypical class into a proper jQuery plugin
+			 *   the class must have a ._init method
+			 * @param {String} namespace - plugin name, used in $().pluginName
+			 * @param {Function} PluginClass - constructor class
+			 */
+			$.bridget = function( namespace, PluginClass ) {
+			  addOptionMethod( PluginClass );
+			  bridge( namespace, PluginClass );
+			};
+
+			return $.bridget;
+
+		}
+
+	  	// get jquery from browser global
+	  	defineBridget( $ );
+
+	})( $ );
+
+
+	/*************************************************
+
+			BOOTSTRAP-SLIDER SOURCE CODE
+
+	**************************************************/
+
+	(function($) {
+
+		var ErrorMsgs = {
+			formatInvalidInputErrorMsg : function(input) {
+				return "Invalid input value '" + input + "' passed in";
+			},
+			callingContextNotSliderInstance : "Calling context element does not have instance of Slider bound to it. Check your code to make sure the JQuery object returned from the call to the slider() initializer is calling the method"
+		};
+
+
+
+		/*************************************************
+
+							CONSTRUCTOR
+
+		**************************************************/
+		Slider = function(element, options) {
+			createNewSlider.call(this, element, options);
+			return this;
+		};
+
+		function createNewSlider(element, options) {
+			/*************************************************
+
+							Create Markup
+
+			**************************************************/
+			if(typeof element === "string") {
+				this.element = document.querySelector(element);
+			} else if(element instanceof HTMLElement) {
+				this.element = element;
+			}
+
+			var origWidth = this.element.style.width;
+			var updateSlider = false;
+			var parent = this.element.parentNode;
+			var sliderTrackSelection;
+			var sliderMinHandle;
+			var sliderMaxHandle;
+
+			if (this.sliderElem) {
+				updateSlider = true;
+			} else {
+				/* Create elements needed for slider */
+				this.sliderElem = document.createElement("div");
+				this.sliderElem.className = "slider";
+
+				/* Create slider track elements */
+				var sliderTrack = document.createElement("div");
+				sliderTrack.className = "slider-track";
+
+				sliderTrackSelection = document.createElement("div");
+				sliderTrackSelection.className = "slider-selection";
+
+				sliderMinHandle = document.createElement("div");
+				sliderMinHandle.className = "slider-handle min-slider-handle";
+
+				sliderMaxHandle = document.createElement("div");
+				sliderMaxHandle.className = "slider-handle max-slider-handle";
+
+				sliderTrack.appendChild(sliderTrackSelection);
+				sliderTrack.appendChild(sliderMinHandle);
+				sliderTrack.appendChild(sliderMaxHandle);
+
+				var createAndAppendTooltipSubElements = function(tooltipElem) {
+					var arrow = document.createElement("div");
+					arrow.className = "tooltip-arrow";
+
+					var inner = document.createElement("div");
+					inner.className = "tooltip-inner";
+
+					tooltipElem.appendChild(arrow);
+					tooltipElem.appendChild(inner);
+				};
+
+				/* Create tooltip elements */
+				var sliderTooltip = document.createElement("div");
+				sliderTooltip.className = "tooltip tooltip-main";
+				createAndAppendTooltipSubElements(sliderTooltip);
+
+				var sliderTooltipMin = document.createElement("div");
+				sliderTooltipMin.className = "tooltip tooltip-min";
+				createAndAppendTooltipSubElements(sliderTooltipMin);
+
+				var sliderTooltipMax = document.createElement("div");
+				sliderTooltipMax.className = "tooltip tooltip-max";
+				createAndAppendTooltipSubElements(sliderTooltipMax);
+
+
+				/* Append components to sliderElem */
+				this.sliderElem.appendChild(sliderTrack);
+				this.sliderElem.appendChild(sliderTooltip);
+				this.sliderElem.appendChild(sliderTooltipMin);
+				this.sliderElem.appendChild(sliderTooltipMax);
+
+				/* Append slider element to parent container, right before the original <input> element */
+				parent.insertBefore(this.sliderElem, this.element);
+
+				/* Hide original <input> element */
+				this.element.style.display = "none";
+			}
+			/* If JQuery exists, cache JQ references */
+			if($) {
+				this.$element = $(this.element);
+				this.$sliderElem = $(this.sliderElem);
+			}
+
+			/*************************************************
+
+							Process Options
+
+			**************************************************/
+			options = options ? options : {};
+			var optionTypes = Object.keys(this.defaultOptions);
+
+			for(var i = 0; i < optionTypes.length; i++) {
+				var optName = optionTypes[i];
+
+				// First check if an option was passed in via the constructor
+				var val = options[optName];
+				// If no data attrib, then check data atrributes
+				val = (typeof val !== 'undefined') ? val : getDataAttrib(this.element, optName);
+				// Finally, if nothing was specified, use the defaults
+				val = (val !== null) ? val : this.defaultOptions[optName];
+
+				// Set all options on the instance of the Slider
+				if(!this.options) {
+					this.options = {};
+				}
+				this.options[optName] = val;
+			}
+
+			function getDataAttrib(element, optName) {
+				var dataName = "data-slider-" + optName;
+				var dataValString = element.getAttribute(dataName);
+
+				try {
+					return JSON.parse(dataValString);
+				}
+				catch(err) {
+					return dataValString;
+				}
+			}
+
+			/*************************************************
+
+								Setup
+
+			**************************************************/
+			this.eventToCallbackMap = {};
+			this.sliderElem.id = this.options.id;
+
+			this.touchCapable = 'ontouchstart' in window || (window.DocumentTouch && document instanceof window.DocumentTouch);
+
+			this.tooltip = this.sliderElem.querySelector('.tooltip-main');
+			this.tooltipInner = this.tooltip.querySelector('.tooltip-inner');
+
+			this.tooltip_min = this.sliderElem.querySelector('.tooltip-min');
+			this.tooltipInner_min = this.tooltip_min.querySelector('.tooltip-inner');
+
+			this.tooltip_max = this.sliderElem.querySelector('.tooltip-max');
+			this.tooltipInner_max= this.tooltip_max.querySelector('.tooltip-inner');
+
+			if (updateSlider === true) {
+				// Reset classes
+				this._removeClass(this.sliderElem, 'slider-horizontal');
+				this._removeClass(this.sliderElem, 'slider-vertical');
+				this._removeClass(this.tooltip, 'hide');
+				this._removeClass(this.tooltip_min, 'hide');
+				this._removeClass(this.tooltip_max, 'hide');
+
+				// Undo existing inline styles for track
+				["left", "top", "width", "height"].forEach(function(prop) {
+					this._removeProperty(this.trackSelection, prop);
+				}, this);
+
+				// Undo inline styles on handles
+				[this.handle1, this.handle2].forEach(function(handle) {
+					this._removeProperty(handle, 'left');
+					this._removeProperty(handle, 'top');
+				}, this);
+
+				// Undo inline styles and classes on tooltips
+				[this.tooltip, this.tooltip_min, this.tooltip_max].forEach(function(tooltip) {
+					this._removeProperty(tooltip, 'left');
+					this._removeProperty(tooltip, 'top');
+					this._removeProperty(tooltip, 'margin-left');
+					this._removeProperty(tooltip, 'margin-top');
+
+					this._removeClass(tooltip, 'right');
+					this._removeClass(tooltip, 'top');
+				}, this);
+			}
+
+			if(this.options.orientation === 'vertical') {
+				this._addClass(this.sliderElem,'slider-vertical');
+
+				this.stylePos = 'top';
+				this.mousePos = 'pageY';
+				this.sizePos = 'offsetHeight';
+
+				this._addClass(this.tooltip, 'right');
+				this.tooltip.style.left = '100%';
+
+				this._addClass(this.tooltip_min, 'right');
+				this.tooltip_min.style.left = '100%';
+
+				this._addClass(this.tooltip_max, 'right');
+				this.tooltip_max.style.left = '100%';
+			} else {
+				this._addClass(this.sliderElem, 'slider-horizontal');
+				this.sliderElem.style.width = origWidth;
+
+				this.options.orientation = 'horizontal';
+				this.stylePos = 'left';
+				this.mousePos = 'pageX';
+				this.sizePos = 'offsetWidth';
+
+				this._addClass(this.tooltip, 'top');
+				this.tooltip.style.top = -this.tooltip.outerHeight - 14 + 'px';
+
+				this._addClass(this.tooltip_min, 'top');
+				this.tooltip_min.style.top = -this.tooltip_min.outerHeight - 14 + 'px';
+
+				this._addClass(this.tooltip_max, 'top');
+				this.tooltip_max.style.top = -this.tooltip_max.outerHeight - 14 + 'px';
+			}
+
+			if (this.options.value instanceof Array) {
+				this.options.range = true;
+			} else if (this.options.range) {
+				// User wants a range, but value is not an array
+				this.options.value = [this.options.value, this.options.max];
+			}
+
+			this.trackSelection = sliderTrackSelection || this.trackSelection;
+			if (this.options.selection === 'none') {
+				this._addClass(this.trackSelection, 'hide');
+			}
+
+			this.handle1 = sliderMinHandle || this.handle1;
+			this.handle2 = sliderMaxHandle || this.handle2;
+
+			if (updateSlider === true) {
+				// Reset classes
+				this._removeClass(this.handle1, 'round triangle');
+				this._removeClass(this.handle2, 'round triangle hide');
+			}
+
+			var availableHandleModifiers = ['round', 'triangle', 'custom'];
+			var isValidHandleType = availableHandleModifiers.indexOf(this.options.handle) !== -1;
+			if (isValidHandleType) {
+				this._addClass(this.handle1, this.options.handle);
+				this._addClass(this.handle2, this.options.handle);
+			}
+
+			this.offset = this._offset(this.sliderElem);
+			this.size = this.sliderElem[this.sizePos];
+			this.setValue(this.options.value);
+
+			/******************************************
+
+						Bind Event Listeners
+
+			******************************************/
+
+			// Bind keyboard handlers
+			this.handle1Keydown = this._keydown.bind(this, 0);
+			this.handle1.addEventListener("keydown", this.handle1Keydown, false);
+
+			this.handle2Keydown = this._keydown.bind(this, 1);
+			this.handle2.addEventListener("keydown", this.handle2Keydown, false);
+
+			if (this.touchCapable) {
+				// Bind touch handlers
+				this.mousedown = this._mousedown.bind(this);
+				this.sliderElem.addEventListener("touchstart", this.mousedown, false);
+			} else {
+				// Bind mouse handlers
+				this.mousedown = this._mousedown.bind(this);
+				this.sliderElem.addEventListener("mousedown", this.mousedown, false);
+			}
+
+			// Bind tooltip-related handlers
+			if(this.options.tooltip === 'hide') {
+				this._addClass(this.tooltip, 'hide');
+				this._addClass(this.tooltip_min, 'hide');
+				this._addClass(this.tooltip_max, 'hide');
+			} else if(this.options.tooltip === 'always') {
+				this._showTooltip();
+				this._alwaysShowTooltip = true;
+			} else {
+				this.showTooltip = this._showTooltip.bind(this);
+				this.hideTooltip = this._hideTooltip.bind(this);
+
+				this.sliderElem.addEventListener("mouseenter", this.showTooltip, false);
+				this.sliderElem.addEventListener("mouseleave", this.hideTooltip, false);
+
+				this.handle1.addEventListener("focus", this.showTooltip, false);
+				this.handle1.addEventListener("blur", this.hideTooltip, false);
+
+				this.handle2.addEventListener("focus", this.showTooltip, false);
+				this.handle2.addEventListener("blur", this.hideTooltip, false);
+			}
+
+			if(this.options.enabled) {
+				this.enable();
+			} else {
+				this.disable();
+			}
+		}
+
+		/*************************************************
+
+					INSTANCE PROPERTIES/METHODS
+
+		- Any methods bound to the prototype are considered
+		part of the plugin's `public` interface
+
+		**************************************************/
+		Slider.prototype = {
+			_init: function() {}, // NOTE: Must exist to support bridget
+
+			constructor: Slider,
+
+			defaultOptions: {
+				id: "",
+			  	min: 0,
+				max: 10,
+				step: 1,
+				precision: 0,
+				orientation: 'horizontal',
+				value: 5,
+				range: false,
+				selection: 'before',
+				tooltip: 'show',
+				tooltip_split: false,
+				handle: 'round',
+				reversed: false,
+				enabled: true,
+				formatter: function(val) {
+					if(val instanceof Array) {
+						return val[0] + " : " + val[1];
+					} else {
+						return val;
+					}
+				},
+				natural_arrow_keys: false
+			},
+
+			over: false,
+
+			inDrag: false,
+
+			getValue: function() {
+				if (this.options.range) {
+					return this.options.value;
+				}
+				return this.options.value[0];
+			},
+
+			setValue: function(val, triggerSlideEvent) {
+				if (!val) {
+					val = 0;
+				}
+				var oldValue = this.getValue();
+				this.options.value = this._validateInputValue(val);
+				var applyPrecision = this._applyPrecision.bind(this);
+
+				if (this.options.range) {
+					this.options.value[0] = applyPrecision(this.options.value[0]);
+					this.options.value[1] = applyPrecision(this.options.value[1]);
+
+					this.options.value[0] = Math.max(this.options.min, Math.min(this.options.max, this.options.value[0]));
+					this.options.value[1] = Math.max(this.options.min, Math.min(this.options.max, this.options.value[1]));
+				} else {
+					this.options.value = applyPrecision(this.options.value);
+					this.options.value = [ Math.max(this.options.min, Math.min(this.options.max, this.options.value))];
+					this._addClass(this.handle2, 'hide');
+					if (this.options.selection === 'after') {
+						this.options.value[1] = this.options.max;
+					} else {
+						this.options.value[1] = this.options.min;
+					}
+				}
+
+				this.diff = this.options.max - this.options.min;
+				if (this.diff > 0) {
+					this.percentage = [
+						(this.options.value[0] - this.options.min) * 100 / this.diff,
+						(this.options.value[1] - this.options.min) * 100 / this.diff,
+						this.options.step * 100 / this.diff
+					];
+				} else {
+					this.percentage = [0, 0, 100];
+				}
+
+				this._layout();
+				var newValue = this.options.range ? this.options.value : this.options.value[0];
+
+				if(triggerSlideEvent === true) {
+					this._trigger('slide', newValue);
+				}
+				if(oldValue !== newValue) {
+					this._trigger('change', {
+						oldValue: oldValue,
+						newValue: newValue
+					});
+				}
+				this._setDataVal(newValue);
+
+				return this;
+			},
+
+			destroy: function(){
+				// Remove event handlers on slider elements
+				this._removeSliderEventHandlers();
+
+				// Remove the slider from the DOM
+				this.sliderElem.parentNode.removeChild(this.sliderElem);
+				/* Show original <input> element */
+				this.element.style.display = "";
+
+				// Clear out custom event bindings
+				this._cleanUpEventCallbacksMap();
+
+				// Remove data values
+				this.element.removeAttribute("data");
+
+				// Remove JQuery handlers/data
+				if($) {
+					this._unbindJQueryEventHandlers();
+					this.$element.removeData('slider');
+				}
+			},
+
+			disable: function() {
+				this.options.enabled = false;
+				this.handle1.removeAttribute("tabindex");
+				this.handle2.removeAttribute("tabindex");
+				this._addClass(this.sliderElem, 'slider-disabled');
+				this._trigger('slideDisabled');
+
+				return this;
+			},
+
+			enable: function() {
+				this.options.enabled = true;
+				this.handle1.setAttribute("tabindex", 0);
+				this.handle2.setAttribute("tabindex", 0);
+				this._removeClass(this.sliderElem, 'slider-disabled');
+				this._trigger('slideEnabled');
+
+				return this;
+			},
+
+			toggle: function() {
+				if(this.options.enabled) {
+					this.disable();
+				} else {
+					this.enable();
+				}
+
+				return this;
+			},
+
+			isEnabled: function() {
+				return this.options.enabled;
+			},
+
+			on: function(evt, callback) {
+				if($) {
+					this.$element.on(evt, callback);
+					this.$sliderElem.on(evt, callback);
+				} else {
+					this._bindNonQueryEventHandler(evt, callback);
+				}
+				return this;
+			},
+
+			getAttribute: function(attribute) {
+				if(attribute) {
+					return this.options[attribute];
+				} else {
+					return this.options;
+				}
+			},
+
+			setAttribute: function(attribute, value) {
+				this.options[attribute] = value;
+				return this;
+			},
+
+			refresh: function() {
+				this._removeSliderEventHandlers();
+				createNewSlider.call(this, this.element, this.options);
+				if($) {
+					// Bind new instance of slider to the element
+					$.data(this.element, 'slider', this);
+				}
+				return this;
+			},
+
+			relayout: function() {
+				this._layout();
+				return this;
+			},
+
+			/******************************+
+
+						HELPERS
+
+			- Any method that is not part of the public interface.
+			- Place it underneath this comment block and write its signature like so:
+
+			  					_fnName : function() {...}
+
+			********************************/
+			_removeSliderEventHandlers: function() {
+				// Remove event listeners from handle1
+				this.handle1.removeEventListener("keydown", this.handle1Keydown, false);
+				this.handle1.removeEventListener("focus", this.showTooltip, false);
+				this.handle1.removeEventListener("blur", this.hideTooltip, false);
+
+				// Remove event listeners from handle2
+				this.handle2.removeEventListener("keydown", this.handle2Keydown, false);
+				this.handle2.removeEventListener("focus", this.handle2Keydown, false);
+				this.handle2.removeEventListener("blur", this.handle2Keydown, false);
+
+				// Remove event listeners from sliderElem
+				this.sliderElem.removeEventListener("mouseenter", this.showTooltip, false);
+				this.sliderElem.removeEventListener("mouseleave", this.hideTooltip, false);
+				this.sliderElem.removeEventListener("touchstart", this.mousedown, false);
+				this.sliderElem.removeEventListener("mousedown", this.mousedown, false);
+			},
+			_bindNonQueryEventHandler: function(evt, callback) {
+				if(this.eventToCallbackMap[evt]===undefined) {
+					this.eventToCallbackMap[evt] = [];
+				}
+				this.eventToCallbackMap[evt].push(callback);
+			},
+			_cleanUpEventCallbacksMap: function() {
+				var eventNames = Object.keys(this.eventToCallbackMap);
+				for(var i = 0; i < eventNames.length; i++) {
+					var eventName = eventNames[i];
+					this.eventToCallbackMap[eventName] = null;
+				}
+			},
+			_showTooltip: function() {
+				if (this.options.tooltip_split === false ){
+	            	this._addClass(this.tooltip, 'in');
+		        } else {
+		            this._addClass(this.tooltip_min, 'in');
+		            this._addClass(this.tooltip_max, 'in');
+		        }
+				this.over = true;
+			},
+			_hideTooltip: function() {
+				if (this.inDrag === false && this.alwaysShowTooltip !== true) {
+					this._removeClass(this.tooltip, 'in');
+					this._removeClass(this.tooltip_min, 'in');
+					this._removeClass(this.tooltip_max, 'in');
+				}
+				this.over = false;
+			},
+			_layout: function() {
+				var positionPercentages;
+
+				if(this.options.reversed) {
+					positionPercentages = [ 100 - this.percentage[0], this.percentage[1] ];
+				} else {
+					positionPercentages = [ this.percentage[0], this.percentage[1] ];
+				}
+
+				this.handle1.style[this.stylePos] = positionPercentages[0]+'%';
+				this.handle2.style[this.stylePos] = positionPercentages[1]+'%';
+
+				if (this.options.orientation === 'vertical') {
+					this.trackSelection.style.top = Math.min(positionPercentages[0], positionPercentages[1]) +'%';
+					this.trackSelection.style.height = Math.abs(positionPercentages[0] - positionPercentages[1]) +'%';
+				} else {
+					this.trackSelection.style.left = Math.min(positionPercentages[0], positionPercentages[1]) +'%';
+					this.trackSelection.style.width = Math.abs(positionPercentages[0] - positionPercentages[1]) +'%';
+
+			        var offset_min = this.tooltip_min.getBoundingClientRect();
+			        var offset_max = this.tooltip_max.getBoundingClientRect();
+
+			        if (offset_min.right > offset_max.left) {
+			            this._removeClass(this.tooltip_max, 'top');
+			            this._addClass(this.tooltip_max, 'bottom');
+			            this.tooltip_max.style.top = 18 + 'px';
+			        } else {
+			            this._removeClass(this.tooltip_max, 'bottom');
+			            this._addClass(this.tooltip_max, 'top');
+			            this.tooltip_max.style.top = this.tooltip_min.style.top;
+			        }
+	 			}
+
+	 			var formattedTooltipVal;
+
+				if (this.options.range) {
+					formattedTooltipVal = this.options.formatter(this.options.value);
+					this._setText(this.tooltipInner, formattedTooltipVal);
+					this.tooltip.style[this.stylePos] = (positionPercentages[1] + positionPercentages[0])/2 + '%';
+
+					if (this.options.orientation === 'vertical') {
+						this._css(this.tooltip, 'margin-top', -this.tooltip.offsetHeight / 2 + 'px');
+					} else {
+						this._css(this.tooltip, 'margin-left', -this.tooltip.offsetWidth / 2 + 'px');
+					}
+
+					if (this.options.orientation === 'vertical') {
+						this._css(this.tooltip, 'margin-top', -this.tooltip.offsetHeight / 2 + 'px');
+					} else {
+						this._css(this.tooltip, 'margin-left', -this.tooltip.offsetWidth / 2 + 'px');
+					}
+
+					var innerTooltipMinText = this.options.formatter(this.options.value[0]);
+					this._setText(this.tooltipInner_min, innerTooltipMinText);
+
+					var innerTooltipMaxText = this.options.formatter(this.options.value[1]);
+					this._setText(this.tooltipInner_max, innerTooltipMaxText);
+
+					this.tooltip_min.style[this.stylePos] = positionPercentages[0] + '%';
+
+					if (this.options.orientation === 'vertical') {
+						this._css(this.tooltip_min, 'margin-top', -this.tooltip_min.offsetHeight / 2 + 'px');
+					} else {
+						this._css(this.tooltip_min, 'margin-left', -this.tooltip_min.offsetWidth / 2 + 'px');
+					}
+
+					this.tooltip_max.style[this.stylePos] = positionPercentages[1] + '%';
+
+					if (this.options.orientation === 'vertical') {
+						this._css(this.tooltip_max, 'margin-top', -this.tooltip_max.offsetHeight / 2 + 'px');
+					} else {
+						this._css(this.tooltip_max, 'margin-left', -this.tooltip_max.offsetWidth / 2 + 'px');
+					}
+				} else {
+					formattedTooltipVal = this.options.formatter(this.options.value[0]);
+					this._setText(this.tooltipInner, formattedTooltipVal);
+
+					this.tooltip.style[this.stylePos] = positionPercentages[0] + '%';
+					if (this.options.orientation === 'vertical') {
+						this._css(this.tooltip, 'margin-top', -this.tooltip.offsetHeight / 2 + 'px');
+					} else {
+						this._css(this.tooltip, 'margin-left', -this.tooltip.offsetWidth / 2 + 'px');
+					}
+				}
+			},
+			_removeProperty: function(element, prop) {
+				if (element.style.removeProperty) {
+				    element.style.removeProperty(prop);
+				} else {
+				    element.style.removeAttribute(prop);
+				}
+			},
+			_mousedown: function(ev) {
+				if(!this.options.enabled) {
+					return false;
+				}
+
+				this._triggerFocusOnHandle();
+
+				this.offset = this._offset(this.sliderElem);
+				this.size = this.sliderElem[this.sizePos];
+
+				var percentage = this._getPercentage(ev);
+
+				if (this.options.range) {
+					var diff1 = Math.abs(this.percentage[0] - percentage);
+					var diff2 = Math.abs(this.percentage[1] - percentage);
+					this.dragged = (diff1 < diff2) ? 0 : 1;
+				} else {
+					this.dragged = 0;
+				}
+
+				this.percentage[this.dragged] = this.options.reversed ? 100 - percentage : percentage;
+				this._layout();
+
+				if (this.touchCapable) {
+					document.removeEventListener("touchmove", this.mousemove, false);
+					document.removeEventListener("touchend", this.mouseup, false);
+				}
+
+				if(this.mousemove){
+					document.removeEventListener("mousemove", this.mousemove, false);
+				}
+				if(this.mouseup){
+					document.removeEventListener("mouseup", this.mouseup, false);
+				}
+
+				this.mousemove = this._mousemove.bind(this);
+				this.mouseup = this._mouseup.bind(this);
+
+				if (this.touchCapable) {
+					// Touch: Bind touch events:
+					document.addEventListener("touchmove", this.mousemove, false);
+					document.addEventListener("touchend", this.mouseup, false);
+				}
+				// Bind mouse events:
+				document.addEventListener("mousemove", this.mousemove, false);
+				document.addEventListener("mouseup", this.mouseup, false);
+
+				this.inDrag = true;
+				var newValue = this._calculateValue();
+
+				this._trigger('slideStart', newValue);
+
+				this._setDataVal(newValue);
+				this.setValue(newValue);
+
+				this._pauseEvent(ev);
+
+				return true;
+			},
+			_triggerFocusOnHandle: function(handleIdx) {
+				if(handleIdx === 0) {
+					this.handle1.focus();
+				}
+				if(handleIdx === 1) {
+					this.handle2.focus();
+				}
+			},
+			_keydown: function(handleIdx, ev) {
+				if(!this.options.enabled) {
+					return false;
+				}
+
+				var dir;
+				switch (ev.keyCode) {
+					case 37: // left
+					case 40: // down
+						dir = -1;
+						break;
+					case 39: // right
+					case 38: // up
+						dir = 1;
+						break;
+				}
+				if (!dir) {
+					return;
+				}
+
+				// use natural arrow keys instead of from min to max
+				if (this.options.natural_arrow_keys) {
+					var ifVerticalAndNotReversed = (this.options.orientation === 'vertical' && !this.options.reversed);
+					var ifHorizontalAndReversed = (this.options.orientation === 'horizontal' && this.options.reversed);
+
+					if (ifVerticalAndNotReversed || ifHorizontalAndReversed) {
+						dir = dir * -1;
+					}
+				}
+
+				var oneStepValuePercentageChange = dir * this.percentage[2];
+				var percentage = this.percentage[handleIdx] + oneStepValuePercentageChange;
+
+				if (percentage > 100) {
+					percentage = 100;
+				} else if (percentage < 0) {
+					percentage = 0;
+				}
+
+				this.dragged = handleIdx;
+				this._adjustPercentageForRangeSliders(percentage);
+				this.percentage[this.dragged] = percentage;
+				this._layout();
+
+				var val = this._calculateValue();
+
+				this._trigger('slideStart', val);
+				this._setDataVal(val);
+				this.setValue(val, true);
+
+				this._trigger('slideStop', val);
+				this._setDataVal(val);
+
+				this._pauseEvent(ev);
+
+				return false;
+			},
+			_pauseEvent: function(ev) {
+				if(ev.stopPropagation) {
+					ev.stopPropagation();
+				}
+			    if(ev.preventDefault) {
+			    	ev.preventDefault();
+			    }
+			    ev.cancelBubble=true;
+			    ev.returnValue=false;
+			},
+			_mousemove: function(ev) {
+				if(!this.options.enabled) {
+					return false;
+				}
+
+				var percentage = this._getPercentage(ev);
+				this._adjustPercentageForRangeSliders(percentage);
+				this.percentage[this.dragged] = this.options.reversed ? 100 - percentage : percentage;
+				this._layout();
+
+				var val = this._calculateValue();
+				this.setValue(val, true);
+
+				return false;
+			},
+			_adjustPercentageForRangeSliders: function(percentage) {
+				if (this.options.range) {
+					if (this.dragged === 0 && this.percentage[1] < percentage) {
+						this.percentage[0] = this.percentage[1];
+						this.dragged = 1;
+					} else if (this.dragged === 1 && this.percentage[0] > percentage) {
+						this.percentage[1] = this.percentage[0];
+						this.dragged = 0;
+					}
+				}
+			},
+			_mouseup: function() {
+				if(!this.options.enabled) {
+					return false;
+				}
+				if (this.touchCapable) {
+					// Touch: Unbind touch event handlers:
+					document.removeEventListener("touchmove", this.mousemove, false);
+					document.removeEventListener("touchend", this.mouseup, false);
+				}
+                // Unbind mouse event handlers:
+                document.removeEventListener("mousemove", this.mousemove, false);
+                document.removeEventListener("mouseup", this.mouseup, false);
+
+				this.inDrag = false;
+				if (this.over === false) {
+					this._hideTooltip();
+				}
+				var val = this._calculateValue();
+
+				this._layout();
+				this._trigger('slideStop', val);
+				this._setDataVal(val);
+
+				return false;
+			},
+			_calculateValue: function() {
+				var val;
+				if (this.options.range) {
+					val = [this.options.min,this.options.max];
+			        if (this.percentage[0] !== 0){
+			            val[0] = (Math.max(this.options.min, this.options.min + Math.round((this.diff * this.percentage[0]/100)/this.options.step)*this.options.step));
+			            val[0] = this._applyPrecision(val[0]);
+			        }
+			        if (this.percentage[1] !== 100){
+			            val[1] = (Math.min(this.options.max, this.options.min + Math.round((this.diff * this.percentage[1]/100)/this.options.step)*this.options.step));
+			            val[1] = this._applyPrecision(val[1]);
+			        }
+				} else {
+					val = (this.options.min + Math.round((this.diff * this.percentage[0]/100)/this.options.step)*this.options.step);
+					if (val < this.options.min) {
+						val = this.options.min;
+					}
+					else if (val > this.options.max) {
+						val = this.options.max;
+					}
+					val = parseFloat(val);
+					val = this._applyPrecision(val);
+				}
+				return val;
+			},
+			_applyPrecision: function(val) {
+				var precision = this.options.precision || this._getNumDigitsAfterDecimalPlace(this.options.step);
+				return this._applyToFixedAndParseFloat(val, precision);
+			},
+			_getNumDigitsAfterDecimalPlace: function(num) {
+				var match = (''+num).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
+				if (!match) { return 0; }
+				return Math.max(0, (match[1] ? match[1].length : 0) - (match[2] ? +match[2] : 0));
+			},
+			_applyToFixedAndParseFloat: function(num, toFixedInput) {
+				var truncatedNum = num.toFixed(toFixedInput);
+				return parseFloat(truncatedNum);
+			},
+			/*
+				Credits to Mike Samuel for the following method!
+				Source: http://stackoverflow.com/questions/10454518/javascript-how-to-retrieve-the-number-of-decimals-of-a-string-number
+			*/
+			_getPercentage: function(ev) {
+				if (this.touchCapable && (ev.type === 'touchstart' || ev.type === 'touchmove')) {
+					ev = ev.touches[0];
+				}
+				var percentage = (ev[this.mousePos] - this.offset[this.stylePos])*100/this.size;
+				percentage = Math.round(percentage/this.percentage[2])*this.percentage[2];
+				return Math.max(0, Math.min(100, percentage));
+			},
+			_validateInputValue: function(val) {
+				if(typeof val === 'number') {
+					return val;
+				} else if(val instanceof Array) {
+					this._validateArray(val);
+					return val;
+				} else {
+					throw new Error( ErrorMsgs.formatInvalidInputErrorMsg(val) );
+				}
+			},
+			_validateArray: function(val) {
+				for(var i = 0; i < val.length; i++) {
+					var input =  val[i];
+					if (typeof input !== 'number') { throw new Error( ErrorMsgs.formatInvalidInputErrorMsg(input) ); }
+				}
+			},
+			_setDataVal: function(val) {
+				var value = "value: '" + val + "'";
+				this.element.setAttribute('data', value);
+				this.element.setAttribute('value', val);
+			},
+			_trigger: function(evt, val) {
+				val = (val || val === 0) ? val : undefined;
+
+				var callbackFnArray = this.eventToCallbackMap[evt];
+				if(callbackFnArray && callbackFnArray.length) {
+					for(var i = 0; i < callbackFnArray.length; i++) {
+						var callbackFn = callbackFnArray[i];
+						callbackFn(val);
+					}
+				}
+
+				/* If JQuery exists, trigger JQuery events */
+				if($) {
+					this._triggerJQueryEvent(evt, val);
+				}
+			},
+			_triggerJQueryEvent: function(evt, val) {
+				var eventData = {
+					type: evt,
+					value: val
+				};
+				this.$element.trigger(eventData);
+				this.$sliderElem.trigger(eventData);
+			},
+			_unbindJQueryEventHandlers: function() {
+				this.$element.off();
+				this.$sliderElem.off();
+			},
+			_setText: function(element, text) {
+				if(typeof element.innerText !== "undefined") {
+			 		element.innerText = text;
+			 	} else if(typeof element.textContent !== "undefined") {
+			 		element.textContent = text;
+			 	}
+			},
+			_removeClass: function(element, classString) {
+				var classes = classString.split(" ");
+				var newClasses = element.className;
+
+				for(var i = 0; i < classes.length; i++) {
+					var classTag = classes[i];
+					var regex = new RegExp("(?:\\s|^)" + classTag + "(?:\\s|$)");
+					newClasses = newClasses.replace(regex, " ");
+				}
+
+				element.className = newClasses.trim();
+			},
+			_addClass: function(element, classString) {
+				var classes = classString.split(" ");
+				var newClasses = element.className;
+
+				for(var i = 0; i < classes.length; i++) {
+					var classTag = classes[i];
+					var regex = new RegExp("(?:\\s|^)" + classTag + "(?:\\s|$)");
+					var ifClassExists = regex.test(newClasses);
+
+					if(!ifClassExists) {
+						newClasses += " " + classTag;
+					}
+				}
+
+				element.className = newClasses.trim();
+			},
+			_offset: function (obj) {
+				var ol = 0;
+				var ot = 0;
+				var tr, mat;
+				if (obj.offsetParent) {
+					do {
+						ol += obj.offsetLeft;
+						ot += obj.offsetTop;
+						tr = $(obj).css("transform");
+						if (tr !== "none"){
+							mat = tr.substr(7, tr.length - 8).split(",");
+							ol += parseInt( mat[4], 10 );
+							ot += parseInt( mat[5], 10 );
+						}
+					} while (obj = obj.offsetParent);
+				}
+				return {
+					left: ol,
+					top: ot
+				};
+			},
+			_css: function(elementRef, styleName, value) {
+                if ($) {
+                    $.style(elementRef, styleName, value);
+                } else {
+                    var style = styleName.replace(/^-ms-/, "ms-").replace(/-([\da-z])/gi, function (all, letter) {
+                        return letter.toUpperCase();
+                    });
+                    elementRef.style[style] = value;
+                }
+			}
+		};
+
+		/*********************************
+
+			Attach to global namespace
+
+		*********************************/
+		if($) {
+			var namespace = $.fn.slider ? 'bootstrapSlider' : 'slider';
+			$.bridget(namespace, Slider);
+		}
+
+	})( $ );
+
+	return Slider;
+}));
+
+},{"jquery":82}],63:[function(require,module,exports){
 /*!
  * Bootstrap v3.2.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires jQuery");+function(a){"use strict";function b(){var a=document.createElement("bootstrap"),b={WebkitTransition:"webkitTransitionEnd",MozTransition:"transitionend",OTransition:"oTransitionEnd otransitionend",transition:"transitionend"};for(var c in b)if(void 0!==a.style[c])return{end:b[c]};return!1}a.fn.emulateTransitionEnd=function(b){var c=!1,d=this;a(this).one("bsTransitionEnd",function(){c=!0});var e=function(){c||a(d).trigger(a.support.transition.end)};return setTimeout(e,b),this},a(function(){a.support.transition=b(),a.support.transition&&(a.event.special.bsTransitionEnd={bindType:a.support.transition.end,delegateType:a.support.transition.end,handle:function(b){return a(b.target).is(this)?b.handleObj.handler.apply(this,arguments):void 0}})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var c=a(this),e=c.data("bs.alert");e||c.data("bs.alert",e=new d(this)),"string"==typeof b&&e[b].call(c)})}var c='[data-dismiss="alert"]',d=function(b){a(b).on("click",c,this.close)};d.VERSION="3.2.0",d.prototype.close=function(b){function c(){f.detach().trigger("closed.bs.alert").remove()}var d=a(this),e=d.attr("data-target");e||(e=d.attr("href"),e=e&&e.replace(/.*(?=#[^\s]*$)/,""));var f=a(e);b&&b.preventDefault(),f.length||(f=d.hasClass("alert")?d:d.parent()),f.trigger(b=a.Event("close.bs.alert")),b.isDefaultPrevented()||(f.removeClass("in"),a.support.transition&&f.hasClass("fade")?f.one("bsTransitionEnd",c).emulateTransitionEnd(150):c())};var e=a.fn.alert;a.fn.alert=b,a.fn.alert.Constructor=d,a.fn.alert.noConflict=function(){return a.fn.alert=e,this},a(document).on("click.bs.alert.data-api",c,d.prototype.close)}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.button"),f="object"==typeof b&&b;e||d.data("bs.button",e=new c(this,f)),"toggle"==b?e.toggle():b&&e.setState(b)})}var c=function(b,d){this.$element=a(b),this.options=a.extend({},c.DEFAULTS,d),this.isLoading=!1};c.VERSION="3.2.0",c.DEFAULTS={loadingText:"loading..."},c.prototype.setState=function(b){var c="disabled",d=this.$element,e=d.is("input")?"val":"html",f=d.data();b+="Text",null==f.resetText&&d.data("resetText",d[e]()),d[e](null==f[b]?this.options[b]:f[b]),setTimeout(a.proxy(function(){"loadingText"==b?(this.isLoading=!0,d.addClass(c).attr(c,c)):this.isLoading&&(this.isLoading=!1,d.removeClass(c).removeAttr(c))},this),0)},c.prototype.toggle=function(){var a=!0,b=this.$element.closest('[data-toggle="buttons"]');if(b.length){var c=this.$element.find("input");"radio"==c.prop("type")&&(c.prop("checked")&&this.$element.hasClass("active")?a=!1:b.find(".active").removeClass("active")),a&&c.prop("checked",!this.$element.hasClass("active")).trigger("change")}a&&this.$element.toggleClass("active")};var d=a.fn.button;a.fn.button=b,a.fn.button.Constructor=c,a.fn.button.noConflict=function(){return a.fn.button=d,this},a(document).on("click.bs.button.data-api",'[data-toggle^="button"]',function(c){var d=a(c.target);d.hasClass("btn")||(d=d.closest(".btn")),b.call(d,"toggle"),c.preventDefault()})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.carousel"),f=a.extend({},c.DEFAULTS,d.data(),"object"==typeof b&&b),g="string"==typeof b?b:f.slide;e||d.data("bs.carousel",e=new c(this,f)),"number"==typeof b?e.to(b):g?e[g]():f.interval&&e.pause().cycle()})}var c=function(b,c){this.$element=a(b).on("keydown.bs.carousel",a.proxy(this.keydown,this)),this.$indicators=this.$element.find(".carousel-indicators"),this.options=c,this.paused=this.sliding=this.interval=this.$active=this.$items=null,"hover"==this.options.pause&&this.$element.on("mouseenter.bs.carousel",a.proxy(this.pause,this)).on("mouseleave.bs.carousel",a.proxy(this.cycle,this))};c.VERSION="3.2.0",c.DEFAULTS={interval:5e3,pause:"hover",wrap:!0},c.prototype.keydown=function(a){switch(a.which){case 37:this.prev();break;case 39:this.next();break;default:return}a.preventDefault()},c.prototype.cycle=function(b){return b||(this.paused=!1),this.interval&&clearInterval(this.interval),this.options.interval&&!this.paused&&(this.interval=setInterval(a.proxy(this.next,this),this.options.interval)),this},c.prototype.getItemIndex=function(a){return this.$items=a.parent().children(".item"),this.$items.index(a||this.$active)},c.prototype.to=function(b){var c=this,d=this.getItemIndex(this.$active=this.$element.find(".item.active"));return b>this.$items.length-1||0>b?void 0:this.sliding?this.$element.one("slid.bs.carousel",function(){c.to(b)}):d==b?this.pause().cycle():this.slide(b>d?"next":"prev",a(this.$items[b]))},c.prototype.pause=function(b){return b||(this.paused=!0),this.$element.find(".next, .prev").length&&a.support.transition&&(this.$element.trigger(a.support.transition.end),this.cycle(!0)),this.interval=clearInterval(this.interval),this},c.prototype.next=function(){return this.sliding?void 0:this.slide("next")},c.prototype.prev=function(){return this.sliding?void 0:this.slide("prev")},c.prototype.slide=function(b,c){var d=this.$element.find(".item.active"),e=c||d[b](),f=this.interval,g="next"==b?"left":"right",h="next"==b?"first":"last",i=this;if(!e.length){if(!this.options.wrap)return;e=this.$element.find(".item")[h]()}if(e.hasClass("active"))return this.sliding=!1;var j=e[0],k=a.Event("slide.bs.carousel",{relatedTarget:j,direction:g});if(this.$element.trigger(k),!k.isDefaultPrevented()){if(this.sliding=!0,f&&this.pause(),this.$indicators.length){this.$indicators.find(".active").removeClass("active");var l=a(this.$indicators.children()[this.getItemIndex(e)]);l&&l.addClass("active")}var m=a.Event("slid.bs.carousel",{relatedTarget:j,direction:g});return a.support.transition&&this.$element.hasClass("slide")?(e.addClass(b),e[0].offsetWidth,d.addClass(g),e.addClass(g),d.one("bsTransitionEnd",function(){e.removeClass([b,g].join(" ")).addClass("active"),d.removeClass(["active",g].join(" ")),i.sliding=!1,setTimeout(function(){i.$element.trigger(m)},0)}).emulateTransitionEnd(1e3*d.css("transition-duration").slice(0,-1))):(d.removeClass("active"),e.addClass("active"),this.sliding=!1,this.$element.trigger(m)),f&&this.cycle(),this}};var d=a.fn.carousel;a.fn.carousel=b,a.fn.carousel.Constructor=c,a.fn.carousel.noConflict=function(){return a.fn.carousel=d,this},a(document).on("click.bs.carousel.data-api","[data-slide], [data-slide-to]",function(c){var d,e=a(this),f=a(e.attr("data-target")||(d=e.attr("href"))&&d.replace(/.*(?=#[^\s]+$)/,""));if(f.hasClass("carousel")){var g=a.extend({},f.data(),e.data()),h=e.attr("data-slide-to");h&&(g.interval=!1),b.call(f,g),h&&f.data("bs.carousel").to(h),c.preventDefault()}}),a(window).on("load",function(){a('[data-ride="carousel"]').each(function(){var c=a(this);b.call(c,c.data())})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.collapse"),f=a.extend({},c.DEFAULTS,d.data(),"object"==typeof b&&b);!e&&f.toggle&&"show"==b&&(b=!b),e||d.data("bs.collapse",e=new c(this,f)),"string"==typeof b&&e[b]()})}var c=function(b,d){this.$element=a(b),this.options=a.extend({},c.DEFAULTS,d),this.transitioning=null,this.options.parent&&(this.$parent=a(this.options.parent)),this.options.toggle&&this.toggle()};c.VERSION="3.2.0",c.DEFAULTS={toggle:!0},c.prototype.dimension=function(){var a=this.$element.hasClass("width");return a?"width":"height"},c.prototype.show=function(){if(!this.transitioning&&!this.$element.hasClass("in")){var c=a.Event("show.bs.collapse");if(this.$element.trigger(c),!c.isDefaultPrevented()){var d=this.$parent&&this.$parent.find("> .panel > .in");if(d&&d.length){var e=d.data("bs.collapse");if(e&&e.transitioning)return;b.call(d,"hide"),e||d.data("bs.collapse",null)}var f=this.dimension();this.$element.removeClass("collapse").addClass("collapsing")[f](0),this.transitioning=1;var g=function(){this.$element.removeClass("collapsing").addClass("collapse in")[f](""),this.transitioning=0,this.$element.trigger("shown.bs.collapse")};if(!a.support.transition)return g.call(this);var h=a.camelCase(["scroll",f].join("-"));this.$element.one("bsTransitionEnd",a.proxy(g,this)).emulateTransitionEnd(350)[f](this.$element[0][h])}}},c.prototype.hide=function(){if(!this.transitioning&&this.$element.hasClass("in")){var b=a.Event("hide.bs.collapse");if(this.$element.trigger(b),!b.isDefaultPrevented()){var c=this.dimension();this.$element[c](this.$element[c]())[0].offsetHeight,this.$element.addClass("collapsing").removeClass("collapse").removeClass("in"),this.transitioning=1;var d=function(){this.transitioning=0,this.$element.trigger("hidden.bs.collapse").removeClass("collapsing").addClass("collapse")};return a.support.transition?void this.$element[c](0).one("bsTransitionEnd",a.proxy(d,this)).emulateTransitionEnd(350):d.call(this)}}},c.prototype.toggle=function(){this[this.$element.hasClass("in")?"hide":"show"]()};var d=a.fn.collapse;a.fn.collapse=b,a.fn.collapse.Constructor=c,a.fn.collapse.noConflict=function(){return a.fn.collapse=d,this},a(document).on("click.bs.collapse.data-api",'[data-toggle="collapse"]',function(c){var d,e=a(this),f=e.attr("data-target")||c.preventDefault()||(d=e.attr("href"))&&d.replace(/.*(?=#[^\s]+$)/,""),g=a(f),h=g.data("bs.collapse"),i=h?"toggle":e.data(),j=e.attr("data-parent"),k=j&&a(j);h&&h.transitioning||(k&&k.find('[data-toggle="collapse"][data-parent="'+j+'"]').not(e).addClass("collapsed"),e[g.hasClass("in")?"addClass":"removeClass"]("collapsed")),b.call(g,i)})}(jQuery),+function(a){"use strict";function b(b){b&&3===b.which||(a(e).remove(),a(f).each(function(){var d=c(a(this)),e={relatedTarget:this};d.hasClass("open")&&(d.trigger(b=a.Event("hide.bs.dropdown",e)),b.isDefaultPrevented()||d.removeClass("open").trigger("hidden.bs.dropdown",e))}))}function c(b){var c=b.attr("data-target");c||(c=b.attr("href"),c=c&&/#[A-Za-z]/.test(c)&&c.replace(/.*(?=#[^\s]*$)/,""));var d=c&&a(c);return d&&d.length?d:b.parent()}function d(b){return this.each(function(){var c=a(this),d=c.data("bs.dropdown");d||c.data("bs.dropdown",d=new g(this)),"string"==typeof b&&d[b].call(c)})}var e=".dropdown-backdrop",f='[data-toggle="dropdown"]',g=function(b){a(b).on("click.bs.dropdown",this.toggle)};g.VERSION="3.2.0",g.prototype.toggle=function(d){var e=a(this);if(!e.is(".disabled, :disabled")){var f=c(e),g=f.hasClass("open");if(b(),!g){"ontouchstart"in document.documentElement&&!f.closest(".navbar-nav").length&&a('<div class="dropdown-backdrop"/>').insertAfter(a(this)).on("click",b);var h={relatedTarget:this};if(f.trigger(d=a.Event("show.bs.dropdown",h)),d.isDefaultPrevented())return;e.trigger("focus"),f.toggleClass("open").trigger("shown.bs.dropdown",h)}return!1}},g.prototype.keydown=function(b){if(/(38|40|27)/.test(b.keyCode)){var d=a(this);if(b.preventDefault(),b.stopPropagation(),!d.is(".disabled, :disabled")){var e=c(d),g=e.hasClass("open");if(!g||g&&27==b.keyCode)return 27==b.which&&e.find(f).trigger("focus"),d.trigger("click");var h=" li:not(.divider):visible a",i=e.find('[role="menu"]'+h+', [role="listbox"]'+h);if(i.length){var j=i.index(i.filter(":focus"));38==b.keyCode&&j>0&&j--,40==b.keyCode&&j<i.length-1&&j++,~j||(j=0),i.eq(j).trigger("focus")}}}};var h=a.fn.dropdown;a.fn.dropdown=d,a.fn.dropdown.Constructor=g,a.fn.dropdown.noConflict=function(){return a.fn.dropdown=h,this},a(document).on("click.bs.dropdown.data-api",b).on("click.bs.dropdown.data-api",".dropdown form",function(a){a.stopPropagation()}).on("click.bs.dropdown.data-api",f,g.prototype.toggle).on("keydown.bs.dropdown.data-api",f+', [role="menu"], [role="listbox"]',g.prototype.keydown)}(jQuery),+function(a){"use strict";function b(b,d){return this.each(function(){var e=a(this),f=e.data("bs.modal"),g=a.extend({},c.DEFAULTS,e.data(),"object"==typeof b&&b);f||e.data("bs.modal",f=new c(this,g)),"string"==typeof b?f[b](d):g.show&&f.show(d)})}var c=function(b,c){this.options=c,this.$body=a(document.body),this.$element=a(b),this.$backdrop=this.isShown=null,this.scrollbarWidth=0,this.options.remote&&this.$element.find(".modal-content").load(this.options.remote,a.proxy(function(){this.$element.trigger("loaded.bs.modal")},this))};c.VERSION="3.2.0",c.DEFAULTS={backdrop:!0,keyboard:!0,show:!0},c.prototype.toggle=function(a){return this.isShown?this.hide():this.show(a)},c.prototype.show=function(b){var c=this,d=a.Event("show.bs.modal",{relatedTarget:b});this.$element.trigger(d),this.isShown||d.isDefaultPrevented()||(this.isShown=!0,this.checkScrollbar(),this.$body.addClass("modal-open"),this.setScrollbar(),this.escape(),this.$element.on("click.dismiss.bs.modal",'[data-dismiss="modal"]',a.proxy(this.hide,this)),this.backdrop(function(){var d=a.support.transition&&c.$element.hasClass("fade");c.$element.parent().length||c.$element.appendTo(c.$body),c.$element.show().scrollTop(0),d&&c.$element[0].offsetWidth,c.$element.addClass("in").attr("aria-hidden",!1),c.enforceFocus();var e=a.Event("shown.bs.modal",{relatedTarget:b});d?c.$element.find(".modal-dialog").one("bsTransitionEnd",function(){c.$element.trigger("focus").trigger(e)}).emulateTransitionEnd(300):c.$element.trigger("focus").trigger(e)}))},c.prototype.hide=function(b){b&&b.preventDefault(),b=a.Event("hide.bs.modal"),this.$element.trigger(b),this.isShown&&!b.isDefaultPrevented()&&(this.isShown=!1,this.$body.removeClass("modal-open"),this.resetScrollbar(),this.escape(),a(document).off("focusin.bs.modal"),this.$element.removeClass("in").attr("aria-hidden",!0).off("click.dismiss.bs.modal"),a.support.transition&&this.$element.hasClass("fade")?this.$element.one("bsTransitionEnd",a.proxy(this.hideModal,this)).emulateTransitionEnd(300):this.hideModal())},c.prototype.enforceFocus=function(){a(document).off("focusin.bs.modal").on("focusin.bs.modal",a.proxy(function(a){this.$element[0]===a.target||this.$element.has(a.target).length||this.$element.trigger("focus")},this))},c.prototype.escape=function(){this.isShown&&this.options.keyboard?this.$element.on("keyup.dismiss.bs.modal",a.proxy(function(a){27==a.which&&this.hide()},this)):this.isShown||this.$element.off("keyup.dismiss.bs.modal")},c.prototype.hideModal=function(){var a=this;this.$element.hide(),this.backdrop(function(){a.$element.trigger("hidden.bs.modal")})},c.prototype.removeBackdrop=function(){this.$backdrop&&this.$backdrop.remove(),this.$backdrop=null},c.prototype.backdrop=function(b){var c=this,d=this.$element.hasClass("fade")?"fade":"";if(this.isShown&&this.options.backdrop){var e=a.support.transition&&d;if(this.$backdrop=a('<div class="modal-backdrop '+d+'" />').appendTo(this.$body),this.$element.on("click.dismiss.bs.modal",a.proxy(function(a){a.target===a.currentTarget&&("static"==this.options.backdrop?this.$element[0].focus.call(this.$element[0]):this.hide.call(this))},this)),e&&this.$backdrop[0].offsetWidth,this.$backdrop.addClass("in"),!b)return;e?this.$backdrop.one("bsTransitionEnd",b).emulateTransitionEnd(150):b()}else if(!this.isShown&&this.$backdrop){this.$backdrop.removeClass("in");var f=function(){c.removeBackdrop(),b&&b()};a.support.transition&&this.$element.hasClass("fade")?this.$backdrop.one("bsTransitionEnd",f).emulateTransitionEnd(150):f()}else b&&b()},c.prototype.checkScrollbar=function(){document.body.clientWidth>=window.innerWidth||(this.scrollbarWidth=this.scrollbarWidth||this.measureScrollbar())},c.prototype.setScrollbar=function(){var a=parseInt(this.$body.css("padding-right")||0,10);this.scrollbarWidth&&this.$body.css("padding-right",a+this.scrollbarWidth)},c.prototype.resetScrollbar=function(){this.$body.css("padding-right","")},c.prototype.measureScrollbar=function(){var a=document.createElement("div");a.className="modal-scrollbar-measure",this.$body.append(a);var b=a.offsetWidth-a.clientWidth;return this.$body[0].removeChild(a),b};var d=a.fn.modal;a.fn.modal=b,a.fn.modal.Constructor=c,a.fn.modal.noConflict=function(){return a.fn.modal=d,this},a(document).on("click.bs.modal.data-api",'[data-toggle="modal"]',function(c){var d=a(this),e=d.attr("href"),f=a(d.attr("data-target")||e&&e.replace(/.*(?=#[^\s]+$)/,"")),g=f.data("bs.modal")?"toggle":a.extend({remote:!/#/.test(e)&&e},f.data(),d.data());d.is("a")&&c.preventDefault(),f.one("show.bs.modal",function(a){a.isDefaultPrevented()||f.one("hidden.bs.modal",function(){d.is(":visible")&&d.trigger("focus")})}),b.call(f,g,this)})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tooltip"),f="object"==typeof b&&b;(e||"destroy"!=b)&&(e||d.data("bs.tooltip",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.type=this.options=this.enabled=this.timeout=this.hoverState=this.$element=null,this.init("tooltip",a,b)};c.VERSION="3.2.0",c.DEFAULTS={animation:!0,placement:"top",selector:!1,template:'<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',trigger:"hover focus",title:"",delay:0,html:!1,container:!1,viewport:{selector:"body",padding:0}},c.prototype.init=function(b,c,d){this.enabled=!0,this.type=b,this.$element=a(c),this.options=this.getOptions(d),this.$viewport=this.options.viewport&&a(this.options.viewport.selector||this.options.viewport);for(var e=this.options.trigger.split(" "),f=e.length;f--;){var g=e[f];if("click"==g)this.$element.on("click."+this.type,this.options.selector,a.proxy(this.toggle,this));else if("manual"!=g){var h="hover"==g?"mouseenter":"focusin",i="hover"==g?"mouseleave":"focusout";this.$element.on(h+"."+this.type,this.options.selector,a.proxy(this.enter,this)),this.$element.on(i+"."+this.type,this.options.selector,a.proxy(this.leave,this))}}this.options.selector?this._options=a.extend({},this.options,{trigger:"manual",selector:""}):this.fixTitle()},c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.getOptions=function(b){return b=a.extend({},this.getDefaults(),this.$element.data(),b),b.delay&&"number"==typeof b.delay&&(b.delay={show:b.delay,hide:b.delay}),b},c.prototype.getDelegateOptions=function(){var b={},c=this.getDefaults();return this._options&&a.each(this._options,function(a,d){c[a]!=d&&(b[a]=d)}),b},c.prototype.enter=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),clearTimeout(c.timeout),c.hoverState="in",c.options.delay&&c.options.delay.show?void(c.timeout=setTimeout(function(){"in"==c.hoverState&&c.show()},c.options.delay.show)):c.show()},c.prototype.leave=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),clearTimeout(c.timeout),c.hoverState="out",c.options.delay&&c.options.delay.hide?void(c.timeout=setTimeout(function(){"out"==c.hoverState&&c.hide()},c.options.delay.hide)):c.hide()},c.prototype.show=function(){var b=a.Event("show.bs."+this.type);if(this.hasContent()&&this.enabled){this.$element.trigger(b);var c=a.contains(document.documentElement,this.$element[0]);if(b.isDefaultPrevented()||!c)return;var d=this,e=this.tip(),f=this.getUID(this.type);this.setContent(),e.attr("id",f),this.$element.attr("aria-describedby",f),this.options.animation&&e.addClass("fade");var g="function"==typeof this.options.placement?this.options.placement.call(this,e[0],this.$element[0]):this.options.placement,h=/\s?auto?\s?/i,i=h.test(g);i&&(g=g.replace(h,"")||"top"),e.detach().css({top:0,left:0,display:"block"}).addClass(g).data("bs."+this.type,this),this.options.container?e.appendTo(this.options.container):e.insertAfter(this.$element);var j=this.getPosition(),k=e[0].offsetWidth,l=e[0].offsetHeight;if(i){var m=g,n=this.$element.parent(),o=this.getPosition(n);g="bottom"==g&&j.top+j.height+l-o.scroll>o.height?"top":"top"==g&&j.top-o.scroll-l<0?"bottom":"right"==g&&j.right+k>o.width?"left":"left"==g&&j.left-k<o.left?"right":g,e.removeClass(m).addClass(g)}var p=this.getCalculatedOffset(g,j,k,l);this.applyPlacement(p,g);var q=function(){d.$element.trigger("shown.bs."+d.type),d.hoverState=null};a.support.transition&&this.$tip.hasClass("fade")?e.one("bsTransitionEnd",q).emulateTransitionEnd(150):q()}},c.prototype.applyPlacement=function(b,c){var d=this.tip(),e=d[0].offsetWidth,f=d[0].offsetHeight,g=parseInt(d.css("margin-top"),10),h=parseInt(d.css("margin-left"),10);isNaN(g)&&(g=0),isNaN(h)&&(h=0),b.top=b.top+g,b.left=b.left+h,a.offset.setOffset(d[0],a.extend({using:function(a){d.css({top:Math.round(a.top),left:Math.round(a.left)})}},b),0),d.addClass("in");var i=d[0].offsetWidth,j=d[0].offsetHeight;"top"==c&&j!=f&&(b.top=b.top+f-j);var k=this.getViewportAdjustedDelta(c,b,i,j);k.left?b.left+=k.left:b.top+=k.top;var l=k.left?2*k.left-e+i:2*k.top-f+j,m=k.left?"left":"top",n=k.left?"offsetWidth":"offsetHeight";d.offset(b),this.replaceArrow(l,d[0][n],m)},c.prototype.replaceArrow=function(a,b,c){this.arrow().css(c,a?50*(1-a/b)+"%":"")},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle();a.find(".tooltip-inner")[this.options.html?"html":"text"](b),a.removeClass("fade in top bottom left right")},c.prototype.hide=function(){function b(){"in"!=c.hoverState&&d.detach(),c.$element.trigger("hidden.bs."+c.type)}var c=this,d=this.tip(),e=a.Event("hide.bs."+this.type);return this.$element.removeAttr("aria-describedby"),this.$element.trigger(e),e.isDefaultPrevented()?void 0:(d.removeClass("in"),a.support.transition&&this.$tip.hasClass("fade")?d.one("bsTransitionEnd",b).emulateTransitionEnd(150):b(),this.hoverState=null,this)},c.prototype.fixTitle=function(){var a=this.$element;(a.attr("title")||"string"!=typeof a.attr("data-original-title"))&&a.attr("data-original-title",a.attr("title")||"").attr("title","")},c.prototype.hasContent=function(){return this.getTitle()},c.prototype.getPosition=function(b){b=b||this.$element;var c=b[0],d="BODY"==c.tagName;return a.extend({},"function"==typeof c.getBoundingClientRect?c.getBoundingClientRect():null,{scroll:d?document.documentElement.scrollTop||document.body.scrollTop:b.scrollTop(),width:d?a(window).width():b.outerWidth(),height:d?a(window).height():b.outerHeight()},d?{top:0,left:0}:b.offset())},c.prototype.getCalculatedOffset=function(a,b,c,d){return"bottom"==a?{top:b.top+b.height,left:b.left+b.width/2-c/2}:"top"==a?{top:b.top-d,left:b.left+b.width/2-c/2}:"left"==a?{top:b.top+b.height/2-d/2,left:b.left-c}:{top:b.top+b.height/2-d/2,left:b.left+b.width}},c.prototype.getViewportAdjustedDelta=function(a,b,c,d){var e={top:0,left:0};if(!this.$viewport)return e;var f=this.options.viewport&&this.options.viewport.padding||0,g=this.getPosition(this.$viewport);if(/right|left/.test(a)){var h=b.top-f-g.scroll,i=b.top+f-g.scroll+d;h<g.top?e.top=g.top-h:i>g.top+g.height&&(e.top=g.top+g.height-i)}else{var j=b.left-f,k=b.left+f+c;j<g.left?e.left=g.left-j:k>g.width&&(e.left=g.left+g.width-k)}return e},c.prototype.getTitle=function(){var a,b=this.$element,c=this.options;return a=b.attr("data-original-title")||("function"==typeof c.title?c.title.call(b[0]):c.title)},c.prototype.getUID=function(a){do a+=~~(1e6*Math.random());while(document.getElementById(a));return a},c.prototype.tip=function(){return this.$tip=this.$tip||a(this.options.template)},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".tooltip-arrow")},c.prototype.validate=function(){this.$element[0].parentNode||(this.hide(),this.$element=null,this.options=null)},c.prototype.enable=function(){this.enabled=!0},c.prototype.disable=function(){this.enabled=!1},c.prototype.toggleEnabled=function(){this.enabled=!this.enabled},c.prototype.toggle=function(b){var c=this;b&&(c=a(b.currentTarget).data("bs."+this.type),c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c))),c.tip().hasClass("in")?c.leave(c):c.enter(c)},c.prototype.destroy=function(){clearTimeout(this.timeout),this.hide().$element.off("."+this.type).removeData("bs."+this.type)};var d=a.fn.tooltip;a.fn.tooltip=b,a.fn.tooltip.Constructor=c,a.fn.tooltip.noConflict=function(){return a.fn.tooltip=d,this}}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.popover"),f="object"==typeof b&&b;(e||"destroy"!=b)&&(e||d.data("bs.popover",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.init("popover",a,b)};if(!a.fn.tooltip)throw new Error("Popover requires tooltip.js");c.VERSION="3.2.0",c.DEFAULTS=a.extend({},a.fn.tooltip.Constructor.DEFAULTS,{placement:"right",trigger:"click",content:"",template:'<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'}),c.prototype=a.extend({},a.fn.tooltip.Constructor.prototype),c.prototype.constructor=c,c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle(),c=this.getContent();a.find(".popover-title")[this.options.html?"html":"text"](b),a.find(".popover-content").empty()[this.options.html?"string"==typeof c?"html":"append":"text"](c),a.removeClass("fade top bottom left right in"),a.find(".popover-title").html()||a.find(".popover-title").hide()},c.prototype.hasContent=function(){return this.getTitle()||this.getContent()},c.prototype.getContent=function(){var a=this.$element,b=this.options;return a.attr("data-content")||("function"==typeof b.content?b.content.call(a[0]):b.content)},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".arrow")},c.prototype.tip=function(){return this.$tip||(this.$tip=a(this.options.template)),this.$tip};var d=a.fn.popover;a.fn.popover=b,a.fn.popover.Constructor=c,a.fn.popover.noConflict=function(){return a.fn.popover=d,this}}(jQuery),+function(a){"use strict";function b(c,d){var e=a.proxy(this.process,this);this.$body=a("body"),this.$scrollElement=a(a(c).is("body")?window:c),this.options=a.extend({},b.DEFAULTS,d),this.selector=(this.options.target||"")+" .nav li > a",this.offsets=[],this.targets=[],this.activeTarget=null,this.scrollHeight=0,this.$scrollElement.on("scroll.bs.scrollspy",e),this.refresh(),this.process()}function c(c){return this.each(function(){var d=a(this),e=d.data("bs.scrollspy"),f="object"==typeof c&&c;e||d.data("bs.scrollspy",e=new b(this,f)),"string"==typeof c&&e[c]()})}b.VERSION="3.2.0",b.DEFAULTS={offset:10},b.prototype.getScrollHeight=function(){return this.$scrollElement[0].scrollHeight||Math.max(this.$body[0].scrollHeight,document.documentElement.scrollHeight)},b.prototype.refresh=function(){var b="offset",c=0;a.isWindow(this.$scrollElement[0])||(b="position",c=this.$scrollElement.scrollTop()),this.offsets=[],this.targets=[],this.scrollHeight=this.getScrollHeight();var d=this;this.$body.find(this.selector).map(function(){var d=a(this),e=d.data("target")||d.attr("href"),f=/^#./.test(e)&&a(e);return f&&f.length&&f.is(":visible")&&[[f[b]().top+c,e]]||null}).sort(function(a,b){return a[0]-b[0]}).each(function(){d.offsets.push(this[0]),d.targets.push(this[1])})},b.prototype.process=function(){var a,b=this.$scrollElement.scrollTop()+this.options.offset,c=this.getScrollHeight(),d=this.options.offset+c-this.$scrollElement.height(),e=this.offsets,f=this.targets,g=this.activeTarget;if(this.scrollHeight!=c&&this.refresh(),b>=d)return g!=(a=f[f.length-1])&&this.activate(a);if(g&&b<=e[0])return g!=(a=f[0])&&this.activate(a);for(a=e.length;a--;)g!=f[a]&&b>=e[a]&&(!e[a+1]||b<=e[a+1])&&this.activate(f[a])},b.prototype.activate=function(b){this.activeTarget=b,a(this.selector).parentsUntil(this.options.target,".active").removeClass("active");var c=this.selector+'[data-target="'+b+'"],'+this.selector+'[href="'+b+'"]',d=a(c).parents("li").addClass("active");d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active")),d.trigger("activate.bs.scrollspy")};var d=a.fn.scrollspy;a.fn.scrollspy=c,a.fn.scrollspy.Constructor=b,a.fn.scrollspy.noConflict=function(){return a.fn.scrollspy=d,this},a(window).on("load.bs.scrollspy.data-api",function(){a('[data-spy="scroll"]').each(function(){var b=a(this);c.call(b,b.data())})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tab");e||d.data("bs.tab",e=new c(this)),"string"==typeof b&&e[b]()})}var c=function(b){this.element=a(b)};c.VERSION="3.2.0",c.prototype.show=function(){var b=this.element,c=b.closest("ul:not(.dropdown-menu)"),d=b.data("target");if(d||(d=b.attr("href"),d=d&&d.replace(/.*(?=#[^\s]*$)/,"")),!b.parent("li").hasClass("active")){var e=c.find(".active:last a")[0],f=a.Event("show.bs.tab",{relatedTarget:e});if(b.trigger(f),!f.isDefaultPrevented()){var g=a(d);this.activate(b.closest("li"),c),this.activate(g,g.parent(),function(){b.trigger({type:"shown.bs.tab",relatedTarget:e})})}}},c.prototype.activate=function(b,c,d){function e(){f.removeClass("active").find("> .dropdown-menu > .active").removeClass("active"),b.addClass("active"),g?(b[0].offsetWidth,b.addClass("in")):b.removeClass("fade"),b.parent(".dropdown-menu")&&b.closest("li.dropdown").addClass("active"),d&&d()}var f=c.find("> .active"),g=d&&a.support.transition&&f.hasClass("fade");g?f.one("bsTransitionEnd",e).emulateTransitionEnd(150):e(),f.removeClass("in")};var d=a.fn.tab;a.fn.tab=b,a.fn.tab.Constructor=c,a.fn.tab.noConflict=function(){return a.fn.tab=d,this},a(document).on("click.bs.tab.data-api",'[data-toggle="tab"], [data-toggle="pill"]',function(c){c.preventDefault(),b.call(a(this),"show")})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.affix"),f="object"==typeof b&&b;e||d.data("bs.affix",e=new c(this,f)),"string"==typeof b&&e[b]()})}var c=function(b,d){this.options=a.extend({},c.DEFAULTS,d),this.$target=a(this.options.target).on("scroll.bs.affix.data-api",a.proxy(this.checkPosition,this)).on("click.bs.affix.data-api",a.proxy(this.checkPositionWithEventLoop,this)),this.$element=a(b),this.affixed=this.unpin=this.pinnedOffset=null,this.checkPosition()};c.VERSION="3.2.0",c.RESET="affix affix-top affix-bottom",c.DEFAULTS={offset:0,target:window},c.prototype.getPinnedOffset=function(){if(this.pinnedOffset)return this.pinnedOffset;this.$element.removeClass(c.RESET).addClass("affix");var a=this.$target.scrollTop(),b=this.$element.offset();return this.pinnedOffset=b.top-a},c.prototype.checkPositionWithEventLoop=function(){setTimeout(a.proxy(this.checkPosition,this),1)},c.prototype.checkPosition=function(){if(this.$element.is(":visible")){var b=a(document).height(),d=this.$target.scrollTop(),e=this.$element.offset(),f=this.options.offset,g=f.top,h=f.bottom;"object"!=typeof f&&(h=g=f),"function"==typeof g&&(g=f.top(this.$element)),"function"==typeof h&&(h=f.bottom(this.$element));var i=null!=this.unpin&&d+this.unpin<=e.top?!1:null!=h&&e.top+this.$element.height()>=b-h?"bottom":null!=g&&g>=d?"top":!1;if(this.affixed!==i){null!=this.unpin&&this.$element.css("top","");var j="affix"+(i?"-"+i:""),k=a.Event(j+".bs.affix");this.$element.trigger(k),k.isDefaultPrevented()||(this.affixed=i,this.unpin="bottom"==i?this.getPinnedOffset():null,this.$element.removeClass(c.RESET).addClass(j).trigger(a.Event(j.replace("affix","affixed"))),"bottom"==i&&this.$element.offset({top:b-this.$element.height()-h}))}}};var d=a.fn.affix;a.fn.affix=b,a.fn.affix.Constructor=c,a.fn.affix.noConflict=function(){return a.fn.affix=d,this},a(window).on("load",function(){a('[data-spy="affix"]').each(function(){var c=a(this),d=c.data();d.offset=d.offset||{},d.offsetBottom&&(d.offset.bottom=d.offsetBottom),d.offsetTop&&(d.offset.top=d.offsetTop),b.call(c,d)})})}(jQuery);
-},{}],62:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 // d3.tip
 // Copyright (c) 2013 Justin Palmer
 //
@@ -17665,7 +18942,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
 
 }));
 
-},{}],63:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 !function() {
   var d3 = {
     version: "3.4.13"
@@ -26881,9 +28158,9 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
   if (typeof define === "function" && define.amd) define(d3); else if (typeof module === "object" && module.exports) module.exports = d3;
   this.d3 = d3;
 }();
-},{}],64:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 
-},{}],65:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 "use strict";
 /*globals Handlebars: true */
 var Handlebars = require("./handlebars.runtime")["default"];
@@ -26921,7 +28198,7 @@ Handlebars = create();
 Handlebars.create = create;
 
 exports["default"] = Handlebars;
-},{"./handlebars.runtime":66,"./handlebars/compiler/ast":68,"./handlebars/compiler/base":69,"./handlebars/compiler/compiler":70,"./handlebars/compiler/javascript-compiler":71}],66:[function(require,module,exports){
+},{"./handlebars.runtime":68,"./handlebars/compiler/ast":70,"./handlebars/compiler/base":71,"./handlebars/compiler/compiler":72,"./handlebars/compiler/javascript-compiler":73}],68:[function(require,module,exports){
 "use strict";
 /*globals Handlebars: true */
 var base = require("./handlebars/base");
@@ -26954,7 +28231,7 @@ var Handlebars = create();
 Handlebars.create = create;
 
 exports["default"] = Handlebars;
-},{"./handlebars/base":67,"./handlebars/exception":75,"./handlebars/runtime":76,"./handlebars/safe-string":77,"./handlebars/utils":78}],67:[function(require,module,exports){
+},{"./handlebars/base":69,"./handlebars/exception":77,"./handlebars/runtime":78,"./handlebars/safe-string":79,"./handlebars/utils":80}],69:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -27135,7 +28412,7 @@ exports.log = log;var createFrame = function(object) {
   return obj;
 };
 exports.createFrame = createFrame;
-},{"./exception":75,"./utils":78}],68:[function(require,module,exports){
+},{"./exception":77,"./utils":80}],70:[function(require,module,exports){
 "use strict";
 var Exception = require("../exception")["default"];
 
@@ -27363,7 +28640,7 @@ var AST = {
 // Must be exported as an object rather than the root of the module as the jison lexer
 // most modify the object to operate properly.
 exports["default"] = AST;
-},{"../exception":75}],69:[function(require,module,exports){
+},{"../exception":77}],71:[function(require,module,exports){
 "use strict";
 var parser = require("./parser")["default"];
 var AST = require("./ast")["default"];
@@ -27379,7 +28656,7 @@ function parse(input) {
 }
 
 exports.parse = parse;
-},{"./ast":68,"./parser":72}],70:[function(require,module,exports){
+},{"./ast":70,"./parser":74}],72:[function(require,module,exports){
 "use strict";
 var Exception = require("../exception")["default"];
 
@@ -27849,7 +29126,7 @@ exports.precompile = precompile;function compile(input, options, env) {
 }
 
 exports.compile = compile;
-},{"../exception":75}],71:[function(require,module,exports){
+},{"../exception":77}],73:[function(require,module,exports){
 "use strict";
 var COMPILER_REVISION = require("../base").COMPILER_REVISION;
 var REVISION_CHANGES = require("../base").REVISION_CHANGES;
@@ -28792,7 +30069,7 @@ JavaScriptCompiler.isValidJavaScriptVariableName = function(name) {
 };
 
 exports["default"] = JavaScriptCompiler;
-},{"../base":67,"../exception":75}],72:[function(require,module,exports){
+},{"../base":69,"../exception":77}],74:[function(require,module,exports){
 "use strict";
 /* jshint ignore:start */
 /* Jison generated parser */
@@ -29283,7 +30560,7 @@ function Parser () { this.yy = {}; }Parser.prototype = parser;parser.Parser = Pa
 return new Parser;
 })();exports["default"] = handlebars;
 /* jshint ignore:end */
-},{}],73:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 "use strict";
 var Visitor = require("./visitor")["default"];
 
@@ -29422,7 +30699,7 @@ PrintVisitor.prototype.content = function(content) {
 PrintVisitor.prototype.comment = function(comment) {
   return this.pad("{{! '" + comment.comment + "' }}");
 };
-},{"./visitor":74}],74:[function(require,module,exports){
+},{"./visitor":76}],76:[function(require,module,exports){
 "use strict";
 function Visitor() {}
 
@@ -29435,7 +30712,7 @@ Visitor.prototype = {
 };
 
 exports["default"] = Visitor;
-},{}],75:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 "use strict";
 
 var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
@@ -29464,7 +30741,7 @@ function Exception(message, node) {
 Exception.prototype = new Error();
 
 exports["default"] = Exception;
-},{}],76:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -29602,7 +30879,7 @@ exports.program = program;function invokePartial(partial, name, context, helpers
 exports.invokePartial = invokePartial;function noop() { return ""; }
 
 exports.noop = noop;
-},{"./base":67,"./exception":75,"./utils":78}],77:[function(require,module,exports){
+},{"./base":69,"./exception":77,"./utils":80}],79:[function(require,module,exports){
 "use strict";
 // Build out our basic SafeString type
 function SafeString(string) {
@@ -29614,7 +30891,7 @@ SafeString.prototype.toString = function() {
 };
 
 exports["default"] = SafeString;
-},{}],78:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 "use strict";
 /*jshint -W004 */
 var SafeString = require("./safe-string")["default"];
@@ -29691,7 +30968,7 @@ exports.escapeExpression = escapeExpression;function isEmpty(value) {
 }
 
 exports.isEmpty = isEmpty;
-},{"./safe-string":77}],79:[function(require,module,exports){
+},{"./safe-string":79}],81:[function(require,module,exports){
 // USAGE:
 // var handlebars = require('handlebars');
 
@@ -29718,7 +30995,7 @@ if (typeof require !== 'undefined' && require.extensions) {
   require.extensions[".hbs"] = extension;
 }
 
-},{"../dist/cjs/handlebars":65,"../dist/cjs/handlebars/compiler/printer":73,"../dist/cjs/handlebars/compiler/visitor":74,"fs":64}],80:[function(require,module,exports){
+},{"../dist/cjs/handlebars":67,"../dist/cjs/handlebars/compiler/printer":75,"../dist/cjs/handlebars/compiler/visitor":76,"fs":66}],82:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.1
  * http://jquery.com/
@@ -38910,6 +40187,6 @@ return jQuery;
 
 }));
 
-},{}],81:[function(require,module,exports){
-module.exports=require(19)
-},{"/Users/jvillaveces/Sites/Interaction-Atlas/node_modules/backbone/node_modules/underscore/underscore.js":19}]},{},[17]);
+},{}],83:[function(require,module,exports){
+module.exports=require(20)
+},{"/Users/jvillaveces/Sites/Interaction-Atlas/node_modules/backbone/node_modules/underscore/underscore.js":20}]},{},[18]);
