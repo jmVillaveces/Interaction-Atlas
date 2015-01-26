@@ -17,6 +17,7 @@ var psicquic = require('biojs-rest-psicquic');
 var Dialog = require('./js/views/dialog');
 var UPproteinView = require('./js/views/UPprotein');
 var Pathway = require('./js/views/pathway');
+var SideMenu = require('./js/views/sidemenu');
 
 
 var hView = null;
@@ -30,7 +31,8 @@ var _pathway = function(){
     
     var data = {
         color : '#449d44',
-        title : 'Pathway Analysys'
+        title : 'Pathway Analysys',
+        icon : 'glyphicon-th-list'
     };
     
     var dialog = new Dialog({el:'#dialog', data: data});
@@ -69,6 +71,10 @@ var _search = function(){
             if(_data.get('interactions').length > 0){
                 var network = new Network({el:'body', data: _data});
                 network.render();
+                
+                var sm = new SideMenu({el:'body', data: {}}).render();
+                
+                
             }else{
                 // timeout so progress bar animation can be seen
                 setTimeout(function(){
