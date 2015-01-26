@@ -261,6 +261,17 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
+  buffer += "<span class='glyphicon ";
+  if (helper = helpers.icon) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.icon); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "'></span>";
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = "", stack1, helper;
   buffer += " - <small style='color:#fff'>";
   if (helper = helpers.subtitle) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.subtitle); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
@@ -273,12 +284,15 @@ function program1(depth0,data) {
   if (helper = helpers.color) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.color); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "'>\n        <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>\n          <h4 style='color:#fff' class='modal-title' id='myModalLabel'><strong>";
+    + "'>\n        <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>\n          <h4 style='color:#fff' class='modal-title' id='myModalLabel'>";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.icon), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "<strong> ";
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + "</strong> ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.subtitle), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.subtitle), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</h4>\n      </div>\n      <div class='modal-body'>\n          <p><img src = 'loading.gif'></p>\n      </div>\n      <div class='modal-footer'>\n        <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>\n      </div>\n    </div>\n  </div>\n</div>";
   return buffer;
@@ -472,6 +486,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
 
   return "<div class=\"progress progress-striped active\">\n    <div class=\"progress-bar progress-bar-success\" role=\"progressbar\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0%\">\n        <span class=\"sr-only\">40% Complete (success)</span>\n    </div>\n</div>";
+  });
+
+this["Templates"]["sidemenu"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<!-- Sliding div starts here -->\n<div id=\"sidemenu\" class=\"side_container\">\n    <div class=\"side_handle\">\n        <button type=\"button\" class=\"btn btn-success\" aria-label=\"Left Align\">\n            <span class=\"glyphicon glyphicon-cog\" aria-hidden=\"true\"></span> Settings\n        </button>\n    </div>\n    <div class=\"side_content\">\n        <div class=\"sidebox form-group\">\n            <label>Layout</label>\n            <select class=\"input-large\" style=\"margin-left:20px\">\n              <option value=\"force\">Force</option>\n              <option value=\"radial\">Radial</option>\n            </select>\n        </div>\n        <div class=\"sidebox\">\n            <label>Nodes</label>\n            <br>\n            <input id=\"node_slider\" type=\"text\">\n        </div>\n        <div class=\"sidebox\">\n            <label>Query type</label>\n        </div>\n    </div>\n</div>\n<!-- Sliding div ends here -->";
   });
 
 this["Templates"]["sidepanel"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
