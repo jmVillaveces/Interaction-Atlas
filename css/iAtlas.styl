@@ -1,7 +1,9 @@
 @import 'bootstrap.min.css'
+@import 'bootstrap-slider.css'
 
 body{
     background-image: embedurl('../img/bg-t.jpg');
+    overflow: hidden;
 }
 
 .logo {
@@ -150,3 +152,86 @@ div.GeneExpressionSummary_footer {
   top: 50%;
   left: 100%;
 }
+
+/* Side Menu */
+.side_container {
+    width:412px;
+    height:100%;
+    top:100px;
+    position:absolute;
+    right:-342px;
+}
+
+.side_handle {
+    top:50%;
+    position:fixed;
+    
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.side_content {
+    width:340px;
+    height:100%;
+    position:absolute;
+    right:0;
+    margin-left:40px;
+    padding: 20px 0px 20px 10px;
+}
+
+/*box  */
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.bs-callout-danger {
+    border-left-color: #ce4844;
+}
+
+.bs-callout-danger h4 {
+    color: #ce4844;
+}
+
+.bs-callout-info {
+    border-left-color: #1b809e;
+}
+
+.bs-callout-info h4 {
+    color: #1b809e;
+}
+
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+
+.bs-callout-success h4{
+    color: #5cb85c;
+}
+
+.sidebox {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    background-color:#f8f8f8;
+    box-shadow:0 0 8px gray;
+}
+.sidebox:hover {
+    border-left-color: #5cb85c;
+}
+
+
+ 
