@@ -3,6 +3,7 @@ module.exports = Backbone.Model.extend({
         id : '',
         ids : [],
         altIds : [],
-        taxonomy : []
+        taxonomy : [],
+        inQuery : false
     }
 });

@@ -29,6 +29,15 @@ module.exports = Backbone.Model.extend({
     parse: function(response, xhr) {
         var mitab = require('biojs-io-mitab').parse(response);
         
+        // Add in query attr for nodes in query
+        var ids = this.attributes.query.replace(/\s+/g, '').split(',');
+        _.each(ids, function(id){
+            var obj = _.find(mitab.nodes, function(n){
+                return n.id === id;
+            });
+            if(obj !== undefined) obj.inQuery = true;
+        });
+        
         var interactors = new Interactors(mitab.nodes);
         var interactions = new Interactions(mitab.links);
         var taxa = mitab.taxa;
