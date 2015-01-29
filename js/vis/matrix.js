@@ -185,6 +185,34 @@ matrix.update = function(){
             Backbone.trigger(NODE_CLICK, node);
         });
     
+    //Legend
+    var val = _.range(0, 1, 0.1);
+    var legend = _selector.append('g').attr('class', 'legend');
+    
+    var rects = legend.selectAll('rect').data(val);
+    rects.enter()
+        .append('rect')
+        .attr('x', function(d,i) { return (i+1) * _data.orderScale.rangeBand() * 0.6; })
+        .attr('width', _data.orderScale.rangeBand() * 0.6)
+        .attr('height', _data.orderScale.rangeBand()* 0.6)
+        .style('fill-opacity', function(d) { return d; })
+        .style('fill',  'blue');
+    
+    var ltext = legend.selectAll('text').data([
+        {val : 0, x: _data.orderScale.rangeBand() * 0.6, y: 7}, 
+        {val : 1, x: _data.orderScale.rangeBand() * 0.6 * 11, y: 7}, 
+        {val:'Interaction Score', x:7, y:20}
+    ]);
+    
+    ltext.enter()
+        .append('text')
+        .attr('x', function(d) { return d.x; })
+        .attr('y', function(d){return d.y; })
+        .attr('font-size','10px')
+        .text(function(d) { return d.val; });
+    
+    legend.attr('transform', 'translate(' + _width + ',' + _margin.top + ')');
+    
     return matrix;
 };
 
