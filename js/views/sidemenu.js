@@ -8,7 +8,8 @@ module.exports = Backbone.View.extend({
     },
     
     events:{
-        'click .side_handle': 'tooglevisible'
+        'click .side_handle': 'tooglevisible',
+        'change #layout_selector': 'layoutselected'
     },
     
     render: function(){
@@ -26,5 +27,10 @@ module.exports = Backbone.View.extend({
         } else {
             hidden.animate({'right':'0px'}, 'slow').addClass('visible');
         }
+    },
+    
+    layoutselected : function(e){
+        // trigger layout changed
+        iAtlas.vent.trigger('layoutchanged', this.$('#layout_selector').val());
     }
 });
