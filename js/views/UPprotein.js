@@ -2,6 +2,8 @@ var Sequence = require('biojs-vis-sequence');
 var Structure = require('bio-pv');
 var templates = require('../templates');
 
+var d3 = require('d3');
+
 var colors = d3.scale.category20c();
 module.exports = Backbone.View.extend({
     
