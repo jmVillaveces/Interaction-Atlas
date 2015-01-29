@@ -190,6 +190,11 @@ matrix.update = function(){
 
 matrix.destroy = function(){
     
+    //remove nodes and links
+    _selector.selectAll('g').remove();
+    _selector.selectAll('rect').remove();
+    _selector.attr('transform', '');
+    
     return matrix;
 };
 
