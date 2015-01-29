@@ -12,13 +12,12 @@ require('./js/helpers.js'); // Handelbars helpers
 require('bootstrap/dist/js/bootstrap.min.js'); // bootsrrap
 
 var HomeView = require('./js/views/home');
-var Network = require('./js/views/network');
 var psicquic = require('biojs-rest-psicquic');
 var Dialog = require('./js/views/dialog');
 var UPproteinView = require('./js/views/UPprotein');
 var Pathway = require('./js/views/pathway');
 var SideMenu = require('./js/views/sidemenu');
-
+var Network = require('./js/views/network');
 
 var hView = null;
 var _data;
@@ -69,12 +68,10 @@ var _search = function(){
             hView.update(100);
             
             if(_data.get('interactions').length > 0){
-                var network = new Network({el:'body', data: _data});
+                network = new Network({el:'body', data: _data});
                 network.render();
                 
                 var sm = new SideMenu({el:'body', data: {}}).render();
-                
-                
             }else{
                 // timeout so progress bar animation can be seen
                 setTimeout(function(){
@@ -123,6 +120,9 @@ var _onNodeClick = function(d){
     dialog.render();
 };
 
+var _onLayouChanged = function(e){
+};
+
 // Init vent and register events
 var _events = function(){
     // init properties
@@ -136,6 +136,7 @@ var _events = function(){
     Backbone.on('pathway', _pathway);
     
     iAtlas.vent.on('search', _search);
+    iAtlas.vent.on('layoutchanged', _onLayouChanged);
 };
 
 // Initialize App
