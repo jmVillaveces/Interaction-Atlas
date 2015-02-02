@@ -120,7 +120,7 @@ matrix.update = function(){
             .attr('width', _data.orderScale.rangeBand())
             .attr('height', _data.orderScale.rangeBand())
             .style('fill-opacity', function(d) { return z(d.z); })
-            .style('fill',  'blue')
+            .style('fill',  'steelblue')
             .on('mouseover', _rectmouseover)
             .on('mouseout', _rectmouseout);
     };
@@ -196,7 +196,7 @@ matrix.update = function(){
         .attr('width', _data.orderScale.rangeBand() * 0.6)
         .attr('height', _data.orderScale.rangeBand()* 0.6)
         .style('fill-opacity', function(d) { return d; })
-        .style('fill',  'blue');
+        .style('fill',  'steelblue');
     
     var ltext = legend.selectAll('text').data([
         {val : 0, x: _data.orderScale.rangeBand() * 0.6, y: 7}, 
