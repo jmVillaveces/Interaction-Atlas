@@ -6,21 +6,32 @@
         </button>
     </div>
     <div class="side_content">
+        
         <div class="sidebox form-group">
             <label>Layout</label>
             <select id="layout_selector" class="input-large" style="margin-left:20px">
-              <option value="force">Force</option>
-              <option value="radial">Radial</option>
+                <option value="force">Force</option>
+                <option value="radial">Radial</option>
+                <option value="matrix">Matrix</option>
             </select>
         </div>
-        <div class="sidebox form-group">
-            <label>Nodes</label>
+        
+        <div id="matrix_opt" class="sidebox form-group">
+            <label>Sort By</label>
+            <select id="matrix_sort" class="input-large" style="margin-left:20px">
+                <option value="id">Identifier</option>
+                <option value="taxa">Taxonomy</option>
+                <option value="weight">Weight</option>
+                <option value="inQuery">In Query</option>
+            </select>
+        </div>
+        
+        <div id="radial_opt" class="sidebox form-group">
+            <label>Tension</label>
             <br>
-            <input id="node_slider" type="text">
+            <input id="radial_slider" type="text">
         </div>
-        <div class="sidebox">
-            <label>Query type</label>
-        </div>
+        
     </div>
 </div>
 <!-- Sliding div ends here -->
