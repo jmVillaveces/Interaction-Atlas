@@ -121,6 +121,7 @@ var _onNodeClick = function(d){
 };
 
 var _onLayouChanged = function(e){
+    network.setLayout(e);
 };
 
 // Init vent and register events
