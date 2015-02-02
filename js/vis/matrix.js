@@ -9,7 +9,8 @@ var _data = null,
     _tooltip = null,
     _width = null,
     _height = null,
-    _margin = {top: 100, right: 0, bottom: 10, left: 100};
+    _margin = {top: 100, right: 0, bottom: 10, left: 100},
+    _order = 'id';
 
 var _formatdata = function(data){
 
@@ -126,7 +127,7 @@ matrix.update = function(){
     };
     
     // The default sort order.
-    _data.orderScale.domain(_data.orders.id);
+    _data.orderScale.domain(_data.orders[_order]);
 
     _selector.append('rect')
         .attr('class', 'background')
@@ -237,7 +238,9 @@ matrix.categories =  function(){
 };
 
 matrix.order = function(value) {
-    _data.orderScale.domain(_data.orders[value]);
+    
+    _order = value;
+    _data.orderScale.domain(_data.orders[_order]);
 
     var t = _selector.transition().duration(2500);
 
