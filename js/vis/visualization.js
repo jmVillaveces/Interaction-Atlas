@@ -4,6 +4,7 @@ require('d3-tip')(d3);
 
 var force = require('./forcegraph.js');
 var matrix = require('./matrix.js');
+var circle = require('./circle.js');
 
 //private varibles 
 var _data = null,
@@ -11,7 +12,9 @@ var _data = null,
     _width = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth,
     _height = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight,
     _svg = null,
-    _g = null;
+    _g = null,
+    _current = null,
+    _layout = null;
 
 /* Initialize tooltip */
 var _tip = d3.tip().attr('class', 'd3-tip').direction('e').html(function(d) { 
@@ -77,6 +80,16 @@ var _initSelector = function(_){
     _g = _svg.call(zoom).call(_tip).append('g');
 };
 
+//Listen to tension event
+Backbone.on('tension', function(t){
+    if(_.has(_current, 'tension')) _current.tension(t);
+});
+
+//Listen to sort event
+Backbone.on('sort', function(s){
+    if(_.has(_current, 'order')) _current.order(s);
+});
+
 // Public members
 var vis = function(){};
 
@@ -86,7 +99,7 @@ vis.data = function(_){
     return vis;
 };
 
-vis.view = function(_){
+vis.layout = function(_){
     if (!arguments.length) return _layout;
     _layout = _;
     return vis;
@@ -113,9 +126,15 @@ vis.height = function(_){
 vis.update = function(){
     _svg.attr('width', _width).attr('height', _height);
     
-    matrix.width(800).height(800).tooltip(_tip).selector(_g).data(_data).update();
-    //force.data(_data).width(_width).height(_height).tooltip(_tip).selector(_g).update();
+    if(_current !== null) _current.destroy();
     
+    if(_layout === 'radial'){
+        _current = circle.width(800).height(800).tooltip(_tip).selector(_g).data(_data).update();
+    }else if (_layout === 'matrix'){
+        _current = matrix.width(800).height(800).tooltip(_tip).selector(_g).data(_data).update();
+    }else{
+        _current = force.data(_data).width(_width).height(_height).tooltip(_tip).selector(_g).update();
+    }
     
     return vis;
 };
