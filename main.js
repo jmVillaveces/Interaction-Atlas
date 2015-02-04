@@ -10,6 +10,7 @@ var UPprotein = require('./js/models/UPprotein');
 
 require('./js/helpers.js'); // Handelbars helpers
 require('bootstrap/dist/js/bootstrap.min.js'); // bootsrrap
+require('./lib/jquery.tagsinput.min.js'); //Tags input
 
 var HomeView = require('./js/views/home');
 var psicquic = require('biojs-rest-psicquic');
