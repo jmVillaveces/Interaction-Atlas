@@ -38,12 +38,14 @@
     "biojs-vis-sequence": "^0.1.4-2",
     "bootstrap": "^3.2.0",
     "bootstrap-slider": "^4.4.1",
+    "bootstrap-tagsinput": "^0.4.2",
     "d3": "^3.4.13",
     "d3-tip": "^0.6.7",
     "grunt-contrib-watch": "^0.6.1",
     "handlebars": "^1.0.0",
     "jquery": "^2.1.1",
     "nets": "^1.0.0",
+    "typeahead": "^0.2.0",
     "underscore": "^1.7.0"
   }
 }
