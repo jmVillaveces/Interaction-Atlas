@@ -31,8 +31,9 @@
 .typeahead .active > a {
     color: white;
     text-decoration: none;
-    background-color: #0081C2;
     outline: 0;
+    border: 1px solid #4cae4c;
+    background: #5cb85c;
 }
 
 .typeahead.hidden {
