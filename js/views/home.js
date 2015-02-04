@@ -1,3 +1,4 @@
+var Typeahead = require('typeahead');
 var templates = require('../templates');
 var Progressbar = require('./progressbar');
 
@@ -20,10 +21,30 @@ module.exports = Backbone.View.extend({
         $(this.options.el).html(tpl);
         
         this.query = $('#query');
+        this.query.tagsInput({
+            width:'auto',
+            height:'49px',
+            defaultText:'ids...'
+        }); // init tags
         
-        //Set focus on query
-        this.query.focus();
-        
+        var qInput = $('#query_tag');
+        //set tags
+        var ta = Typeahead(qInput.get(0), {
+            source: function(query, result) {
+                
+                if(query.length >= 3){
+                    $.ajax({url: window.iAtlas.properties.autocomplete+query+'*', success: function(res){
+                        res = res.split('\n');
+                        
+                        if(res.length > 0){
+                            res.splice(0,1);
+                            result(res);
+                        }
+                    }});
+                }
+            }
+        });
+            
         //Hide msg
         $('#msg').hide();
         
@@ -31,10 +52,13 @@ module.exports = Backbone.View.extend({
         $('#loading').hide();
         progressBar = new Progressbar({el:'#loading'});
         progressBar.render();
+        
+        
     },
     
     example : function(){
-        this.query.val(this.options.example);
+        
+        this.query.importTags(this.options.example);
         return false;
     },
     
@@ -45,6 +69,11 @@ module.exports = Backbone.View.extend({
     
     search : function(e){
         e.preventDefault();
+        
+        if(this.query.val().length === 0) {
+            this.alert('<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Please add protein identifiers or click example', 'alert-info'); 
+            return;
+        }
         
         $('#loading').show();
         $('#search').hide();
