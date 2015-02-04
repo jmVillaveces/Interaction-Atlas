@@ -27,6 +27,9 @@ var highlightLinks = function(d, b){
     _selector.selectAll('.link').attr('stroke', function(l){
         if(b) return (l.source == d || l.target == d) ? '#000' : '#ccc';
         return '#ccc';
+    }).attr('stroke-opacity', function(l){
+        if(b) return (l.source == d || l.target == d) ? 1 : 0.4;
+        return 0.4;
     });
 };
 
@@ -91,6 +94,9 @@ force.update = function(){
     var links = _selector.selectAll('.link').data(_data.links);
     links.enter().append('line')
         .attr('class', 'link')
+        .attr('fill', 'none')
+        .attr('stroke', 'gray')
+        .attr('stroke-opacity', 0.4)
         .attr('fill', 'none')
         .attr('stroke', '#ccc')
         .attr('stroke-width', 1.5)
