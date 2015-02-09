@@ -48,6 +48,7 @@ module.exports = function(grunt) {
         copy: [
             { expand: true, flatten: true, src: ['img/favicon.ico'], dest: 'dist/' },
             { expand: true, flatten: true, src: ['img/loading.gif'], dest: 'dist/' },
+            { expand: true, flatten: true, src: ['img/LOGO-BIO-CMYK_100_en.jpg'], dest: 'dist/' },
             { expand: true, flatten: true, src: ['html/index.html'], dest: 'dist/' },
             { expand: true, flatten: true, src: ['css/fonts/*'], dest: 'dist/fonts/' },
             { expand: true, flatten: true, src: ['proxy/*'], dest: 'dist/proxy/' }
