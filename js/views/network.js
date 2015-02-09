@@ -61,7 +61,16 @@ module.exports = Backbone.View.extend({
     },
     
     addTag : function(tag){
-        console.log(arguments);
+        
+        data.set('query', tag);
+        data.fetch({
+            error: function (errorResponse, a) {
+               console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
+            }
+        })
+        .done(function(){
+            vis.data(data).update();
+        });
     },
     
     removeTag : function(tag){

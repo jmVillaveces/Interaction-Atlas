@@ -23,8 +23,11 @@ module.exports = Backbone.Model.extend({
     url: function() {
         
         var ids = this.attributes.query.split(',').join(' OR ');
+        var url = this.urlRoot() + ids + '?firstResult=0&maxResults=3000';
         
-        return this.urlRoot() + ids + '?firstResult=0&maxResults=3000';
+        url = (iAtlas.properties.proxy) ? iAtlas.properties.proxy + url : url;
+        
+        return url;
     },
     parse: function(response, xhr) {
         
@@ -71,10 +74,7 @@ module.exports = Backbone.Model.extend({
     fetch: function(opt) {
     
         var options = opt || {};
-        
         options.dataType = 'text';
-        
-        if(iAtlas.properties.proxy) this.url = iAtlas.properties.proxy+ this.url();
         
         return Backbone.Model.prototype.fetch.call(this, options);
     }
