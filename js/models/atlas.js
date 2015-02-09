@@ -1,9 +1,16 @@
 var Interactors = require('../collections/interactors.js');
 var Interactions = require('../collections/interactions.js');
 
+var data = {
+    query : '',
+    interactors: new Interactors(),
+    interactions: new Interactions(),
+    taxa : [],
+    scores : []
+};
+
 module.exports = Backbone.Model.extend({
     defaults: {
-        expanded : false,
         query : '',
         interactors: new Interactors(),
         interactions: new Interactions(),
@@ -11,22 +18,16 @@ module.exports = Backbone.Model.extend({
         scores : []
     },
     urlRoot: function() {
-        return  (iAtlas) ?  iAtlas.properties.psicquicServer + 'query/' : '';
+        return  (iAtlas) ?  iAtlas.properties.psicquicServer + 'interactor/' : '';
     },
     url: function() {
         
-        var url = '', ids = this.attributes.query.split(',').join(' ');
-        if(! this.attributes.expanded){
-            url += 'id:(' + ids + ') and id:(' + ids + ')';
-        }else{
-            url += 'identifier:(' + ids + ')';
-        }
+        var ids = this.attributes.query.split(',').join(' OR ');
         
-        url += '?firstResult=0&maxResults=3000';
-        
-        return this.urlRoot() + url;
+        return this.urlRoot() + ids + '?firstResult=0&maxResults=3000';
     },
     parse: function(response, xhr) {
+        
         var mitab = require('biojs-io-mitab').parse(response);
         
         // Add in query attr for nodes in query
@@ -38,27 +39,32 @@ module.exports = Backbone.Model.extend({
             if(obj !== undefined) obj.inQuery = true;
         });
         
-        var interactors = new Interactors(mitab.nodes);
-        var interactions = new Interactions(mitab.links);
-        var taxa = mitab.taxa;
+        data.interactors.add(mitab.nodes);
+        data.interactions.add(mitab.links);
+        data.scores = _.filter(mitab.scores, function(n){ return !_.findWhere(data.scores, n);});
         
-        $.ajax({
-            type: 'GET',
-            url: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?retmode=json&db=taxonomy&id='+taxa.join(','),
-            async: false,
-            success : function(data) {
-                var results = data.result || {};
-                taxa = _.map(taxa, function(t){
-                    return results[t] || { scientificname: t, commonname: t, taxid: t };
-                });
-            }
-        });
-        
+        var taxa = _.filter(mitab.taxa, function(n){ return !_.find(data.taxa, function(t){ return t.uid === n; });});
+        if(taxa.length > 0){
+            $.ajax({
+                type: 'GET',
+                url: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?retmode=json&db=taxonomy&id='+taxa.join(','),
+                async: false,
+                success : function(data) {
+                    var results = data.result || {};
+                    taxa = _.map(taxa, function(t){
+                        return results[t] || { scientificname: t, commonname: t, taxid: t };
+                    });
+                }
+            });
+            
+            data.taxa = data.taxa.concat(taxa);
+        }
+
         return {
-            interactors : interactors,
-            interactions : interactions,
-            taxa : taxa,
-            scores : mitab.scores
+            interactors : data.interactors,
+            interactions : data.interactions,
+            taxa : data.taxa,
+            scores : data.scores
         };
     },
     //Override fetch to deal with proxy if defined in properties
@@ -68,11 +74,7 @@ module.exports = Backbone.Model.extend({
         
         options.dataType = 'text';
         
-        if(iAtlas.properties.proxy){
-            var u = this.url();
-            this.url = iAtlas.properties.proxy;
-            options.data = {url:u};
-        }
+        if(iAtlas.properties.proxy) this.url = iAtlas.properties.proxy+ this.url();
         
         return Backbone.Model.prototype.fetch.call(this, options);
     }
