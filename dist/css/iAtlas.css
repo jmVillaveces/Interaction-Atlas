@@ -208,13 +208,6 @@
     outline: 0;
     border: 1px solid #4cae4c;
     background: #5cb85c;
-    /*-moz-border-radius:2px; 
-    -webkit-border-radius:2px; 
-    display: block; 
-    float: left; 
-    padding: 5px; 
-    text-decoration:none; 
-    background: #5cb85c; */
 }
 
 .typeahead.hidden {
