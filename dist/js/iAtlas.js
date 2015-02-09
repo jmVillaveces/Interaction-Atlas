@@ -227,8 +227,11 @@ module.exports = Backbone.Model.extend({
     url: function() {
         
         var ids = this.attributes.query.split(',').join(' OR ');
+        var url = this.urlRoot() + ids + '?firstResult=0&maxResults=3000';
         
-        return this.urlRoot() + ids + '?firstResult=0&maxResults=3000';
+        url = (iAtlas.properties.proxy) ? iAtlas.properties.proxy + url : url;
+        
+        return url;
     },
     parse: function(response, xhr) {
         
@@ -275,10 +278,7 @@ module.exports = Backbone.Model.extend({
     fetch: function(opt) {
     
         var options = opt || {};
-        
         options.dataType = 'text';
-        
-        if(iAtlas.properties.proxy) this.url = iAtlas.properties.proxy+ this.url();
         
         return Backbone.Model.prototype.fetch.call(this, options);
     }
@@ -1175,7 +1175,16 @@ module.exports = Backbone.View.extend({
     },
     
     addTag : function(tag){
-        console.log(arguments);
+        
+        data.set('query', tag);
+        data.fetch({
+            error: function (errorResponse, a) {
+               console.error('Ajax Error, could not fetch interactions from', window.iAtlas.properties.psicquicServer);
+            }
+        })
+        .done(function(){
+            vis.data(data).update();
+        });
     },
     
     removeTag : function(tag){
@@ -1987,7 +1996,6 @@ var _formatdata = function(data){
         }
         return false;
     });
-    
     
     var max = _.max(nodes, function(d){ return d.weight; }).weight;
     var size = d3.scale.log().domain([1, max]).range([2,7]);
