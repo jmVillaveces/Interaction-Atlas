@@ -83,6 +83,19 @@ var _search = function(){
     });
 };
 
+//Update data
+var _update = function(){
+    
+    _data.query = arguments[0];
+    _data.fetch()
+        .done(function(){
+            if(_data.get('interactions').length > 0){
+                network.data(_data);
+                network.update();
+            }
+        });
+};
+
 //Init Home View
 var _homeView = function(err, resp, data){
     var parts = data.split('.');
@@ -149,6 +162,7 @@ var _init = function(){
     _events();
     
     // query server and render homeview
-    psicquic.url(iAtlas.properties.psicquicServer).proxy(iAtlas.properties.proxy).count('*', _homeView);
+    var proxy = function(url){return iAtlas.properties.proxy+url;};
+    psicquic.url(iAtlas.properties.psicquicServer).proxy(proxy).count('*', _homeView);
 }();
 

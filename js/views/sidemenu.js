@@ -10,7 +10,9 @@ module.exports = Backbone.View.extend({
     events:{
         'click .side_handle': 'tooglevisible',
         'change #layout_selector': 'layoutselected',
-        'change #matrix_sort': 'sort'
+        'change #matrix_sort': 'sort',
+        'click #save' : 'save',
+        'click #pathway' : 'pathway'
     },
     
     render: function(){
@@ -57,5 +59,21 @@ module.exports = Backbone.View.extend({
     
     sort : function(e){
         Backbone.trigger('sort', this.$('#matrix_sort').val());
+    },
+    
+    save : function(){
+        
+        var svg = d3.selectAll('#network');
+        var html ='<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="'+svg.attr('width')+'" height="'+svg.attr('height')+'">' + 
+        svg.node().innerHTML +'</svg>';
+            
+        var l = document.createElement('a');
+            l.download = 'network.svg';
+            l.href = 'data:image/svg+xml;base64,' + btoa(html);
+            l.click();
+    },
+    
+    pathway : function(){
+        Backbone.trigger('pathway');
     }
 });

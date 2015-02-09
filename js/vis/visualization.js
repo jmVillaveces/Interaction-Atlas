@@ -25,18 +25,8 @@ var _formatdata = function(data){
     var nodes = data.get('interactors').toJSON();
     var links = data.get('interactions').toJSON();
     
-    //remove nodes with only one link
-    nodes = _.filter(nodes , function(n){
-        var tmp = _.filter(links, function(l){
-            return l.source === n.id || l.target === n.id;
-        });
-        
-        n.weight = 0;
-        return n.inQuery || tmp.length > 1;
-    });
-    
-    // Filter and Add souce and target references to links
-    links =  _.filter(links, function(l){
+    //Add source and target Obj to links
+    _.each(links, function(l){
 
         var target = _.find(nodes, function(n){
             return n.id === l.target;
@@ -44,6 +34,42 @@ var _formatdata = function(data){
         
         var source = _.find(nodes, function(n){
             return n.id === l.source;
+        });
+        
+        if(!_.isUndefined(target) && !_.isUndefined(source) && target.id !== source.id){
+            l.target = target;
+            l.source= source;
+        }
+    });
+    
+    nodes = _.filter(nodes , function(n){
+        
+        var hood = {};
+        _.each(links, function(l){
+            if(l.source.id === n.id){
+                hood[l.target.id] = l.target;
+            }else if(l.target.id === n.id){
+                hood[l.source.id] = l.source;
+            }
+        });
+        hood[n.id] = n;
+        
+        hood = _.values(hood);
+        flag = _.contains(_.uniq(_.pluck(_.values(hood), 'inQuery')), true);
+        
+        n.weight = 0;
+        return n.inQuery || (flag && hood.length > 2);
+    });
+    
+    //Filter and Add souce and target references to links
+    links =  _.filter(links, function(l){
+        
+        var target = _.find(nodes, function(n){
+            return n.id === l.target.id;
+        });
+        
+        var source = _.find(nodes, function(n){
+            return n.id === l.source.id;
         });
         
         if(!_.isUndefined(target) && !_.isUndefined(source)){

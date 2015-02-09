@@ -57,7 +57,6 @@ module.exports = Backbone.View.extend({
     },
     
     example : function(){
-        
         this.query.importTags(this.options.example);
         return false;
     },

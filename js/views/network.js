@@ -1,48 +1,73 @@
+var Typeahead = require('typeahead');
 var templates = require('../templates');
 var vis = require('../vis/visualization');
+
+var data = {};
 
 module.exports = Backbone.View.extend({
     
     initialize: function(options){
         this.options = options;
-        this.data = options.data;
-    },
-
-    events:{
-        'keyup #search': 'keyAction',
-        'click #save' : 'save',
-        'click #pathway' : 'pathway'
+        data = options.data;
     },
     
     render: function(){
         var tpl = templates.network();
         $(this.options.el).html(tpl);
-        this.network = vis.data(this.data).selector('#network').update();
-        //viz.selector('#network').data(this.data).width($(window).width()).height($(window).height()).update();
-    },
-    
-    keyAction: function(e){
-        var value = $('#search').val();
-        this.network.search(value);
-    },
-    
-    save : function(){
+        this.network = vis.data(data).selector('#network').update();
         
-        var svg = d3.selectAll('#network');
-        var html ='<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="'+svg.attr('width')+'" height="'+svg.attr('height')+'">' + 
-        svg.node().innerHTML +'</svg>';
-            
-        var l = document.createElement('a');
-            l.download = 'network.svg';
-            l.href = 'data:image/svg+xml;base64,' + btoa(html);
-            l.click();
-    },
-    
-    pathway : function(){
-        Backbone.trigger('pathway');
+        //Init searchBox
+        this.query = $('#search');
+        this.query.tagsInput({
+            width:'auto',
+            height:'49px',
+            defaultText:'ids...',
+            onAddTag : this.addTag,
+            onRemoveTag : this.removeTag,
+        }); // init tags
+        
+        var qInput = $('#search_tag');
+        //set tags
+        var ta = Typeahead(qInput.get(0), {
+            source: function(query, result) {
+                
+                if(query.length >= 3){
+                    $.ajax({url: window.iAtlas.properties.autocomplete+query+'*', success: function(res){
+                        res = res.split('\n');
+                        
+                        if(res.length > 0){
+                            res.splice(0,1);
+                            result(res);
+                        }
+                    }});
+                }
+            }
+        });
+        
+        this.query.importTags(data.attributes.query);
+
     },
     
     setLayout : function(l){
         this.network.layout(l).update();
+    },
+    
+    setData : function(_){
+        this.data = _;
+    },
+    
+    update : function(){
+        vis.data(this.data).update();
+    },
+    
+    addTag : function(tag){
+        console.log(arguments);
+    },
+    
+    removeTag : function(tag){
+        data.get('interactors').each(function(n){
+            if(n.id === tag) n.set('inQuery', false);
+        });
+        vis.data(data).update();
     }
 });
