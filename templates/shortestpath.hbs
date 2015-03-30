@@ -1,0 +1,54 @@
+<form>
+    <br>
+
+    <div class="form-group col-xs-12">                        
+        <select class="form-control" name="algorithm">
+            <option value="astar" selected>A*</option>
+            <option value="bellmanFord">Bellman-Ford</option>
+            <option value="breadthfirst">Breadth-First Search</option>
+            <option value="dijkstra">Dijkstra</option>
+            <option value="floydWarshall">Floyd–Warshall</option>
+            <!--<option value="kargerStein">Karger-Stein</option>-->
+            <option value="kruskal">Kruskal</option>
+        </select>
+    </div>
+    
+    <blockquote id="algoquote" class="form-group col-xs-12">
+        <footer name="astar" style="display: block;">The <mark>A*</mark> algorithm finds a least-cost path from a given initial node to one goal node.</footer>
+        <footer name="bellmanFord" style="display: none;">The <mark>Bellman–Ford</mark> algorithm is an algorithm that computes shortest paths from a single source vertex to all of the other vertices in a weighted digraph.</footer>
+        <footer name="breadthfirst" style="display: none;"><mark>Breadth-first search</mark> is an algorithm for traversing graphs. It starts at a given node and explores the neighbor nodes first, before moving to the next level neighbours.</footer>
+        <footer name="dijkstra" style="display: none;"><mark>Dijkstra's</mark> algorithm is an algorithm for finding the shortest paths between nodes in a graph.</footer>
+        <footer name="floydWarshall" style="display: none;">The <mark>Floyd–Warshall</mark> is a graph analysis algorithm for finding shortest paths in a weighted graph.</footer>
+        <!--<footer name="kargerStein" style="display: none;"><mark>Karger-Stein</mark> algorithm is a randomized algorithm to compute a minimum cut of a connected graph.</footer>-->
+        <footer name="kruskal" style="display: none;"><mark>Kruskal's</mark> algorithm finds the minimum spanning tree for the given graph.</footer>
+    </blockquote>
+    
+    <div id="source" class="form-group col-xs-12">                        
+        <label class="col-xs-3">Source</label>
+        <div class="col-xs-9">
+            <select class="form-control" name="source">
+                <option value="none" selected>None</option>
+                {{#each nodes}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+    
+    <div id="target" class="form-group col-xs-12">                        
+        <label class="col-xs-3">Target</label>
+        <div class="col-xs-9">
+            <select class="form-control" name="target">
+                <option value="none" selected>None</option>
+                {{#each nodes}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+    
+    <center>
+        <button id="play" type="button" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Calculate</button>
+    </center>
+    
+</form>       
