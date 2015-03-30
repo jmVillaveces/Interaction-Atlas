@@ -1,0 +1,84 @@
+
+<blockquote class="form-group col-xs-12">
+    <footer>The <mark>cose (Compound Spring Embedder)</mark> layout uses a force-directed simulation to lay out compound graphs.</footer>
+</blockquote>
+
+<div class="form-group col-xs-12">
+    <label class="checkbox-inline col-xs-6" data-toggle="tooltip" data-placement="bottom" title="Whether to transition the node positions">
+        <input name="animate" type="checkbox" value="true" checked="checked"> Animate
+    </label>
+    <input name="fit" type="hidden" value="false">
+    <label class="checkbox-inline col-xs-6" data-toggle="tooltip" data-placement="bottom" title="Whether to fit the viewport to the graph">
+        <input name="fit" type="checkbox" value="true" checked="checked"> Fit
+    </label>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="padding" data-toggle="tooltip" data-placement="bottom" title="Padding on fit">Padding</label>
+    <div class="col-xs-1">
+        <input type="number" name="padding" id="padding" value="30">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="nodeRepulsion" data-toggle="tooltip" data-placement="bottom" title="Node repulsion (non overlapping) multiplier">Node Repulsion</label>
+    <div class="col-xs-1">
+        <input type="number" name="nodeRepulsion" id="nodeRepulsion" value="400000">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="nodeOverlap" data-toggle="tooltip" data-placement="bottom" title="Node repulsion (overlapping) multiplier">Node Overlap</label>
+    <div class="col-xs-1">
+        <input type="number" name="nodeOverlap" id="nodeOverlap" value="10">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="idealEdgeLength" data-toggle="tooltip" data-placement="bottom" title="Ideal edge (non nested) length">Ideal Edge Length</label>
+    <div class="col-xs-1">
+        <input type="number" name="idealEdgeLength" id="idealEdgeLength" value="10">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="edgeElasticity" data-toggle="tooltip" data-placement="bottom" title="Divisor to compute edge forces">Edge Elasticity</label>
+    <div class="col-xs-1">
+        <input type="number" name="edgeElasticity" id="edgeElasticity" value="100">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="nestingFactor" data-toggle="tooltip" data-placement="bottom" title="Nesting factor (multiplier) to compute ideal edge length for nested edges">Nesting Factor</label>
+    <div class="col-xs-1">
+        <input type="number" name="nestingFactor" id="nestingFactor" value="10">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="gravity" data-toggle="tooltip" data-placement="bottom" title="Gravity force (constant)">Gravity</label>
+    <div class="col-xs-1">
+        <input type="number" name="gravity" id="gravity" value="250">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="initialTemp" data-toggle="tooltip" data-placement="bottom" title="Initial temperature (maximum node displacement)">Initial Temp</label>
+    <div class="col-xs-1">
+        <input type="number" name="initialTemp" id="initialTemp" value="200">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="coolingFactor" data-toggle="tooltip" data-placement="bottom" title="Cooling factor (how the temperature is reduced between consecutive iterations)">Cooling factor</label>
+    <div class="col-xs-1">
+        <input type="number" name="coolingFactor" id="coolingFactor" value="0.95">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="minTemp" data-toggle="tooltip" data-placement="bottom" title="Lower temperature threshold (below this point the layout will end)">Min Temp</label>
+    <div class="col-xs-1">
+        <input type="number" name="minTemp" id="minTemp" value="1.0">
+    </div>
+</div>
