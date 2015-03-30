@@ -1,45 +1,47 @@
 <!-- Sliding div starts here -->
-<div id="sidemenu" class="side_container">
-    <div class="side_handle">
-        <button type="button" class="btn btn-success" aria-label="Left Align">
-            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings
-        </button>
-    </div>
-    <div class="side_content">
+
+<div class="side_content">
+    
+    <div role="tabpanel">
+
+        <br>
         
-        <div class="sidebox form-group">
-            <label>Layout</label>
-            <select id="layout_selector" class="input-large" style="margin-left:20px">
-                <option value="force">Force</option>
-                <option value="radial">Radial</option>
-                <option value="matrix">Matrix</option>
-            </select>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#layout" aria-controls="home" role="tab" data-toggle="tab">Layout</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Options</a></li>
+            <li role="presentation"><a href="#algorithms" aria-controls="profile" role="tab" data-toggle="tab">Algorithms</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="layout">
+    
+                <form id = {{formId}}>
+                    <div class="form-group">
+                        
+                        <br>
+                        <select class="form-control" name="name">
+                            <option value="breadthfirst">Breadthfirst</option>
+                            <option value="circle">Circle</option>
+                            <option value="concentric" selected>Concentric</option>
+                            <option value="cose">Cose</option>
+                            <option value="grid">Grid</option>
+                            <option value="random">Random</option>
+                        </select>
+                    </div>
+                    <div id="{{layoutOptsId}}"></div>
+
+                    <center>
+                        <button id="{{refreshId}}" type="button" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh</button>
+                    </center>
+                </form>
+            
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile"></div>
+            <div role="tabpanel" class="tab-pane" id="algorithms"></div>
         </div>
-        
-        <div id="matrix_opt" class="sidebox form-group">
-            <label>Sort By</label>
-            <select id="matrix_sort" class="input-large" style="margin-left:20px">
-                <option value="id">Identifier</option>
-                <option value="taxa">Taxonomy</option>
-                <option value="weight">Weight</option>
-                <option value="inQuery">In Query</option>
-            </select>
-        </div>
-        
-        <div id="radial_opt" class="sidebox form-group">
-            <label>Tension</label>
-            <br>
-            <input id="radial_slider" type="text">
-        </div>
-        
-        <div class="sidebox form-group">
-            <a id='save' href='#'><span class='glyphicon glyphicon-floppy-disk' aria-hidden='true'> Save</span></a>
-        </div>
-        
-        <div class="sidebox form-group">
-            <a id='pathway' href='#'><span class='glyphicon glyphicon-th-list' aria-hidden='true'> Pathway Analysys</span></a>
-        </div>
-        
+
     </div>
 </div>
 <!-- Sliding div ends here -->
