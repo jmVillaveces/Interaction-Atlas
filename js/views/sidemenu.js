@@ -1,35 +1,36 @@
 var templates = require('../templates');
-var Slider = require('bootstrap-slider');
+
+var _refreshId = _.uniqueId('refresh_');
+var _layoutOptsId = _.uniqueId('layout_opts_');
+var _formId = _.uniqueId('form_');
 
 module.exports = Backbone.View.extend({
     
     initialize: function(options){
         this.options = options;
+        
+        // Update when graph is ready
+        this.listenTo(Backbone, 'graph_ready', this.onGraphReady);
+        
+        this.events['click #' + _refreshId] = 'refresh';
     },
     
     events:{
-        'click .side_handle': 'tooglevisible',
-        'change #layout_selector': 'layoutselected',
-        'change #matrix_sort': 'sort',
-        'click #save' : 'save',
-        'click #pathway' : 'pathway'
+        'change select[name=name]': 'onSelectChange',
+        'change select[name=algorithm]': 'onAlgorithmChange',
+        'click #play': 'onPlayClick'
     },
     
     render: function(){
-        var tpl = templates.sidemenu(this.options.data);
+        var tpl = templates.sidemenu({ refreshId: _refreshId, layoutOptsId : _layoutOptsId, formId : _formId });
         $(this.options.el).append(tpl);
+        this.setOptions('concentric');
         
-        $('#radial_opt').hide();
-        $('#matrix_opt').hide();
-        
-        var slider = new Slider('#radial_slider', { min: 0, max: 1, step: 0.01, value: 0.85 });
-        slider.on('slide', function(d){
-            var val = d.value;
-            Backbone.trigger('tension', val);
-        });
+        tpl = templates.shortestpath({});
+        $('#algorithms').html(tpl);
     },
     
-    tooglevisible: function(e){
+    tooglevisible: function(){
         var hidden = $('.side_container');
         if (hidden.hasClass('visible')){
             hidden.animate({'right':'-342px'}, 'slow').removeClass('visible');
@@ -38,42 +39,84 @@ module.exports = Backbone.View.extend({
         }
     },
     
-    layoutselected : function(e){
+    onSelectChange : function(e){
+        var layoutName = $('select[name=name]').val().toLowerCase();
+        this.setOptions(layoutName);
+    },
+    
+    setOptions : function(name){
+        var tpl = templates[name]();
+        $('#'+_layoutOptsId).html(tpl);
         
-        var val = this.$('#layout_selector').val();
+        //Init tooltips
+        $('[data-toggle="tooltip"]').tooltip();
+    },
+    
+    refresh : function(e){
+        App.views.graph.layout(this.serializeForm());
+    },
+    
+    onGraphReady : function(){
+        var nodes = arguments[1].nodes || [];
+        nodes = _.pluck(nodes, 'id').sort();
         
-        if(val === 'matrix'){ 
-            $('#matrix_opt').show();
-            $('#radial_opt').hide();
-        } else if(val === 'radial'){ 
-            $('#radial_opt').show();
-            $('#matrix_opt').hide();
-        }else{
-            $('#radial_opt').hide();
-            $('#matrix_opt').hide();
+        if(nodes.length){
+            tpl = templates.shortestpath({nodes : nodes});
+            $('#algorithms').html(tpl);
         }
-        
-        
-        iAtlas.vent.trigger('layoutchanged', val);
     },
     
-    sort : function(e){
-        Backbone.trigger('sort', this.$('#matrix_sort').val());
+    onPlayClick : function(e){
+       
+        var source = $('select[name=source]').val(), target  = $('select[name=target]').val(), algorithm = $('select[name=algorithm]').val();
+        
+        
+        App.views.graph.algorithm(algorithm, {source: source, target: target});
+        //if(source !== 'none' && target !== 'none')
+            //App.views.graph.dijkstra(source, target);
     },
     
-    save : function(){
+    onAlgorithmChange : function(){
+        var algorithm = $('select[name=algorithm]').val();
+        //var i = $('select[name=algorithm]')[0].selectedIndex;
         
-        var svg = d3.selectAll('#network');
-        var html ='<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="'+svg.attr('width')+'" height="'+svg.attr('height')+'">' + 
-        svg.node().innerHTML +'</svg>';
+        $('#algoquote footer').hide();
+        $('#algoquote footer[name='+algorithm+']').show();
+        
+        if(algorithm === 'kruskal' || algorithm === 'kargerStein'){
+            $('#source').hide();
+            $('#target').hide();
+        }else if (algorithm === 'breadthfirst'){
+            $('#source').show();
+            $('#target').hide();
+        }else{
+            $('#source').show();
+            $('#target').show();
+        }
+    },
+    
+    serializeForm : function(){
+        var serial = _.object($('#'+_formId).serializeArray().map(function(v) {return [v.name, v.value];} ));
+        
+        var blacklist = [];
+        _.each(serial, function(e,k){
             
-        var l = document.createElement('a');
-            l.download = 'network.svg';
-            l.href = 'data:image/svg+xml;base64,' + btoa(html);
-            l.click();
-    },
-    
-    pathway : function(){
-        Backbone.trigger('pathway');
+            if(e === 'true'){ 
+                serial[k] = true;
+            }else if(e === 'false'){ 
+                serial[k] = false;
+            }else if(k !== 'name'){
+                var i = parseInt(e);
+                if(_.isNaN(i)){ 
+                    blacklist.push(k);
+                }else{
+                    serial[k] = i;
+                }
+            }
+        });
+        
+        serial = _.omit(serial, blacklist);
+        return serial;
     }
+    
 });

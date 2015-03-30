@@ -1,0 +1,40 @@
+
+<blockquote class="form-group col-xs-12">
+    <footer>The <mark>grid</mark> layout puts nodes in a well-spaced grid.</footer>
+</blockquote>
+
+<div class="form-group col-xs-12">
+    <input name="animate" type="hidden" value="false">
+    <label class="checkbox-inline col-xs-6" data-toggle="tooltip" data-placement="bottom" title="Whether to transition the node positions">
+        <input name="animate" type="checkbox" value="true" checked="checked"> Animate
+    </label>
+    <input name="fit" type="hidden" value="false">
+    <label class="checkbox-inline col-xs-6" data-toggle="tooltip" data-placement="bottom" title="Whether to fit the viewport to the graph">
+        <input name="fit" type="checkbox" value="true" checked="checked"> Fit
+    </label>
+    <input name="avoidOverlap" type="hidden" value="false">
+    <label class="checkbox-inline col-xs-6" data-toggle="tooltip" data-placement="bottom" title="Prevents node overlap">
+        <input name="avoidOverlap" type="checkbox" value="true" checked="checked"> Avoid Overlap
+    </label>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="padding" data-toggle="tooltip" data-placement="bottom" title="Padding on fit">Padding</label>
+    <div class="col-xs-1">
+        <input type="number" name="padding" id="padding" value="30">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="rows" data-toggle="tooltip" data-placement="bottom" title="Force number of rows in the grid">Rows</label>
+    <div class="col-xs-1">
+        <input type="number" name="rows" id="rows"  min="1">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="cols" data-toggle="tooltip" data-placement="bottom" title="Force number of columns in the grid">Columns</label>
+    <div class="col-xs-1">
+        <input type="number" name="cols" id="cols"  min="1">
+    </div>
+</div>
