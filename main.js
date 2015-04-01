@@ -52,3 +52,6 @@ App.views.graph = new Graph({el:'network'});
 var Router = require('./js/router/router');
 App.router = new Router();
 Backbone.history.start();
+
+//Import additional layout libraries
+Springy = require('springy');
