@@ -5,6 +5,8 @@ var UPprotein = require('../models/UPprotein');
 
 var _map = {};
 
+var _dialId = _.uniqueId('dial_');
+
 module.exports = Backbone.View.extend({
     
     initialize: function(options){
@@ -23,9 +25,9 @@ module.exports = Backbone.View.extend({
         });
         
         
-        var tpl = templates.dialog({title : node.id, subtitle: tax.join(' - ')});    
+        var tpl = templates.dialog({title : node.id, subtitle: tax.join(' - '), dialId : _dialId});    
         $(this.options.el).html(tpl);
-        $('#myModal').modal('show');
+        $('#' + _dialId).modal('show');
         
         
         if(!_.has(_map, node.id)){
@@ -49,7 +51,7 @@ module.exports = Backbone.View.extend({
     },
     
     renderProteinInfo : function(protein){
-        tpl = templates.UPprotein(protein);
+        var tpl = templates.UPprotein(protein);
         $('.modal-body').html(tpl);
         
         //Init sequence
