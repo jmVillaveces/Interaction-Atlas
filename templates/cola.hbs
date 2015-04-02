@@ -1,0 +1,34 @@
+
+<blockquote class="form-group col-xs-12">
+    <footer>The <mark>cola</mark> layout uses a force-directed physics simulation</footer>
+</blockquote>
+
+<div class="form-group col-xs-12">
+    <input name="animate" type="hidden" value="false">
+    <label class="checkbox-inline col-xs-6" data-toggle="tooltip" data-placement="bottom" title="Whether to transition the node positions">
+        <input name="animate" type="checkbox" value="true" checked="checked"> Animate
+    </label>
+    <input name="fit" type="hidden" value="false">
+    <label class="checkbox-inline col-xs-6" data-toggle="tooltip" data-placement="bottom" title="Whether to fit the viewport to the graph">
+        <input name="fit" type="checkbox" value="true" checked="checked"> Fit
+    </label>
+    <input name="avoidOverlap" type="hidden" value="false">
+    <label class="checkbox-inline col-xs-6" data-toggle="tooltip" data-placement="bottom" title="Prevents node overlap">
+        <input name="avoidOverlap" type="checkbox" value="true"> Avoid Overlap
+    </label>
+    <input name="randomize" type="hidden" value="false">
+    <label class="checkbox-inline col-xs-6" data-toggle="tooltip" data-placement="bottom" title="Use random node positions at beginning of layout">
+        <input name="randomize" type="checkbox" value="true"> Randomize
+    </label>
+    <input name="handleDisconnected" type="hidden" value="false">
+    <label class="checkbox-inline col-xs-6" data-toggle="tooltip" data-placement="bottom" title="Avoids disconnected components from overlapping">
+        <input name="handleDisconnected" type="checkbox" value="true" checked="checked"> Handle Disconnected
+    </label>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-3" for="padding" data-toggle="tooltip" data-placement="bottom" title="Padding on fit">Padding</label>
+    <div class="col-xs-1">
+        <input type="number" name="padding" id="padding" value="30">
+    </div>
+</div>
