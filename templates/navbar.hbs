@@ -11,7 +11,21 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                
+              <!--<li class="active"><a href="#">Home</a></li>-->
+              <li><a href="#" id="{{importId}}" data-toggle="tooltip" data-placement="bottom" title="Import Network from database"><span class="glyphicon glyphicon-import" aria-hidden="true"></span> Import Network</a></li>
+              <li><a href="#">Contact</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -20,7 +34,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li><a id="{{saveId}}" href="#save"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Save" ></span></a></li>
-                <li class="dropdown">
+                <!--<li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span data-toggle="tooltip" data-placement="bottom" title="Search" class="glyphicon glyphicon-search"></span></a>
                     <div class="dropdown-menu" style="padding:12px;">
                         <div class="row">
@@ -34,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li>-->
                 <li><a id="{{pathwayId}}" href="#"><span class="glyphicon glyphicon-th-list" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Pathway Analysis" ></span></a></li>
                 <li><a id="{{settingsId}}" href="#"><span class="glyphicon glyphicon-transfer" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Settings" ></span></a></li>
             </ul>
