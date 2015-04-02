@@ -1,4 +1,4 @@
-<div class='modal fade' id='myModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+<div class='modal fade' id='{{dialId}}' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
     <div class='modal-dialog modal-lg'>
         <div class='modal-content'>
             <div class='modal-header' style='background:#5bc0de'>
@@ -12,7 +12,10 @@
                 </center>
             </div>
             <div class='modal-footer'>
-                <button type='button' class='btn btn-info' data-dismiss='modal'>Close</button>
+                {{#if okBtn}}
+                    <button id="{{okBtnId}}" type='button' class='btn btn-info'>{{#if okBtnIcon}}<span class='glyphicon {{okBtnIcon}}'></span> {{/if}}{{okBtn}}</button>
+                {{/if}}
+                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
             </div>
         </div>
     </div>

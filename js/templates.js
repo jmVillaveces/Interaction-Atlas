@@ -4,27 +4,6 @@ Handlebars = glob.Handlebars || require('handlebars');
 
 this["Templates"] = this["Templates"] || {};
 
-Handlebars.registerPartial("navbar", this["Templates"]["navbar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  
-
-
-  return "<nav class='navbar navbar-default navbar-fixed-top' role='navigation'>\n    <div class='container'>\n        <div class='navbar-header'>\n            <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar' aria-expanded='false' aria-controls='navbar'>\n                <span class='sr-only'>Toggle navigation</span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n                <span class='icon-bar'></span>\n            </button>\n            <a class='navbar-brand poiret' href='.'><img src='favicon.ico'> iAtlas</a>\n        </div>\n        <div id='navbar' class='navbar-collapse collapse'>\n            <form class='navbar-form navbar-left' role = 'search'>\n                <input id= 'search' type='text' class='form-control' placeholder = 'ids...'>\n            </form>\n        </div><!--/.nav-collapse -->\n    </div>\n</nav>";
-  }));
-
-Handlebars.registerPartial("search", this["Templates"]["search"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
-
-
-  buffer += "<!-- Begin Search -->\n<form id='search-form' role=\"form\">\n        <div class=\"jumbotron\">\n            <table style=\"width:100%; text-align:right;\">\n                  <tr>\n                      <td><div class='poiret logo'> iAtlas</div></td>\n                  </tr>\n                  <tr>\n                      <td class='poiret msg' style='font-size:20px;'>"
-    + escapeExpression(((stack1 = (depth0 && depth0.count)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + " unique interactions indexed</td>\n                  </tr>\n                  <tr id='search'>\n                      <td style='width:90%'>\n                          <input id=\"query\" type=\"text\" class=\"form-control\">\n                      </td>\n                      <td style='width:10%'>\n                          <button class=\" btn btn-lg btn-success\" type=\"submit\">GO</button>\n                      </td>\n                  </tr>\n                  <tr id='loading'>\n                  </tr>\n                  <tr>\n                      <td>\n                          <a id=\"explink\" href=\"#\">example</a>\n                      </td>\n                  </tr>\n            </table>\n            <div id=\"msg\" class=\"alert alert-info\"></div>\n          </div>\n</form>\n<!-- End Search -->";
-  return buffer;
-  }));
-
 this["Templates"]["UPprotein"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -271,6 +250,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return "\n<blockquote class=\"form-group col-xs-12\">\n    <footer>The <mark>circle</mark> layout positions nodes in a circle.</footer>\n</blockquote>\n\n<div class=\"form-group col-xs-12\">\n    <input name=\"animate\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Whether to transition the node positions\">\n        <input name=\"animate\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Animate\n    </label>\n    <input name=\"fit\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Whether to fit the viewport to the graph\">\n        <input name=\"fit\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Fit\n    </label>\n    <input name=\"avoidOverlap\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Prevents node overlap\">\n        <input name=\"avoidOverlap\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Avoid Overlap\n    </label>\n    <input name=\"counterclockwise\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Whether the layout should go counterclockwise\">\n        <input name=\"counterclockwise\" type=\"checkbox\" value=\"true\"> Counterclockwise\n    </label>\n</div>\n\n<div class=\"form-group col-xs-12\">\n    <label class=\"col-xs-3\" for=\"padding\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Padding on fit\">Padding</label>\n    <div class=\"col-xs-1\">\n        <input type=\"number\" name=\"padding\" id=\"padding\" value=\"30\">\n    </div>\n</div>";
   });
 
+this["Templates"]["cola"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "\n<blockquote class=\"form-group col-xs-12\">\n    <footer>The <mark>cola</mark> layout uses a force-directed physics simulation</footer>\n</blockquote>\n\n<div class=\"form-group col-xs-12\">\n    <input name=\"animate\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Whether to transition the node positions\">\n        <input name=\"animate\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Animate\n    </label>\n    <input name=\"fit\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Whether to fit the viewport to the graph\">\n        <input name=\"fit\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Fit\n    </label>\n    <input name=\"avoidOverlap\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Prevents node overlap\">\n        <input name=\"avoidOverlap\" type=\"checkbox\" value=\"true\"> Avoid Overlap\n    </label>\n    <input name=\"randomize\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Use random node positions at beginning of layout\">\n        <input name=\"randomize\" type=\"checkbox\" value=\"true\"> Randomize\n    </label>\n    <input name=\"handleDisconnected\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Avoids disconnected components from overlapping\">\n        <input name=\"handleDisconnected\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Handle Disconnected\n    </label>\n</div>\n\n<div class=\"form-group col-xs-12\">\n    <label class=\"col-xs-3\" for=\"padding\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Padding on fit\">Padding</label>\n    <div class=\"col-xs-1\">\n        <input type=\"number\" name=\"padding\" id=\"padding\" value=\"30\">\n    </div>\n</div>";
+  });
+
 this["Templates"]["concentric"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -316,7 +304,38 @@ function program3(depth0,data) {
   return buffer;
   }
 
-  buffer += "<div class='modal fade' id='myModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>\n    <div class='modal-dialog modal-lg'>\n        <div class='modal-content'>\n            <div class='modal-header' style='background:#5bc0de'>\n                <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>\n                <h4 style='color:#fff' class='modal-title'>";
+function program5(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                    <button id=\"";
+  if (helper = helpers.okBtnId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.okBtnId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" type='button' class='btn btn-info'>";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.okBtnIcon), {hash:{},inverse:self.noop,fn:self.program(6, program6, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  if (helper = helpers.okBtn) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.okBtn); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</button>\n                ";
+  return buffer;
+  }
+function program6(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "<span class='glyphicon ";
+  if (helper = helpers.okBtnIcon) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.okBtnIcon); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "'></span> ";
+  return buffer;
+  }
+
+  buffer += "<div class='modal fade' id='";
+  if (helper = helpers.dialId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.dialId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>\n    <div class='modal-dialog modal-lg'>\n        <div class='modal-content'>\n            <div class='modal-header' style='background:#5bc0de'>\n                <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>\n                <h4 style='color:#fff' class='modal-title'>";
   stack1 = helpers['if'].call(depth0, (depth0 && depth0.icon), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "<strong> ";
@@ -326,7 +345,10 @@ function program3(depth0,data) {
     + "</strong> ";
   stack1 = helpers['if'].call(depth0, (depth0 && depth0.subtitle), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</h4>\n            </div>\n            <div class='modal-body'>\n                <center>\n                    <br>\n                    <p><img width = \"32px\" height = \"32px\" src = 'loading.gif'></p>\n                </center>\n            </div>\n            <div class='modal-footer'>\n                <button type='button' class='btn btn-info' data-dismiss='modal'>Close</button>\n            </div>\n        </div>\n    </div>\n</div>";
+  buffer += "</h4>\n            </div>\n            <div class='modal-body'>\n                <center>\n                    <br>\n                    <p><img width = \"32px\" height = \"32px\" src = 'loading.gif'></p>\n                </center>\n            </div>\n            <div class='modal-footer'>\n                ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.okBtn), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>\n            </div>\n        </div>\n    </div>\n</div>";
   return buffer;
   });
 
@@ -339,16 +361,38 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return "\n<blockquote class=\"form-group col-xs-12\">\n    <footer>The <mark>grid</mark> layout puts nodes in a well-spaced grid.</footer>\n</blockquote>\n\n<div class=\"form-group col-xs-12\">\n    <input name=\"animate\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Whether to transition the node positions\">\n        <input name=\"animate\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Animate\n    </label>\n    <input name=\"fit\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Whether to fit the viewport to the graph\">\n        <input name=\"fit\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Fit\n    </label>\n    <input name=\"avoidOverlap\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Prevents node overlap\">\n        <input name=\"avoidOverlap\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Avoid Overlap\n    </label>\n</div>\n\n<div class=\"form-group col-xs-12\">\n    <label class=\"col-xs-3\" for=\"padding\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Padding on fit\">Padding</label>\n    <div class=\"col-xs-1\">\n        <input type=\"number\" name=\"padding\" id=\"padding\" value=\"30\">\n    </div>\n</div>\n\n<div class=\"form-group col-xs-12\">\n    <label class=\"col-xs-3\" for=\"rows\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Force number of rows in the grid\">Rows</label>\n    <div class=\"col-xs-1\">\n        <input type=\"number\" name=\"rows\" id=\"rows\"  min=\"1\">\n    </div>\n</div>\n\n<div class=\"form-group col-xs-12\">\n    <label class=\"col-xs-3\" for=\"cols\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Force number of columns in the grid\">Columns</label>\n    <div class=\"col-xs-1\">\n        <input type=\"number\" name=\"cols\" id=\"cols\"  min=\"1\">\n    </div>\n</div>";
   });
 
-this["Templates"]["home"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["import"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partials, Handlebars.partials); data = data || {};
-  var buffer = "", stack1, self=this;
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression, self=this;
 
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n                <option value=\"";
+  if (helper = helpers.url) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.url); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">";
+  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</option>\n            ";
+  return buffer;
+  }
 
-  buffer += "<!-- Begin Container -->\n<div class=\"container\">\n    ";
-  stack1 = self.invokePartial(partials.search, 'search', depth0, helpers, partials, data);
+  buffer += "\n    <div class=\"form-group\">\n        <label>Database</label>\n        <select class=\"form-control\" name=\"db\">\n            ";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.servers), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n    \n    <div class=\"row\">\n        <div class=\"col-lg-4\">\n            <h2><span class=\"glyphicon glyphicon-info-sign\"></span> About</h2>\n            <p>The Interaction Atlas is an open-source web-based network visualization tool that aids the exploration of portein interactions.</p>\n            <p>It collects and scores interactions from different databases.</p>\n            <p><a class=\"btn btn-primary\" href=\"#\" role=\"button\">More »</a></p>\n        </div>\n        <div class=\"col-lg-4\">\n          <h2><span class=\"glyphicon glyphicon-heart\"></span> Open Source</h2>\n          <p>The code to collect and generate the database as well as the front end visualization tool is open-source.</p>\n          <p><a class=\"btn btn-primary\" href=\"#\" role=\"button\">More »</a></p>\n       </div>\n        <div class=\"col-lg-4\">\n          <h2><span class=\"glyphicon glyphicon-cloud\"></span> Programmatic Access</h2>\n          <p>Programatic access to the Protein Interaction Atlas, is provided through <a href=\"https://code.google.com/p/psicquic/\">PSICQUIC</a>, a web service that retrieves interactions in PSI-MITAB format.</p>\n          <p><a class=\"btn btn-primary\" href=\"https://code.google.com/p/psicquic/\" role=\"button\">More »</a></p>\n        </div>\n      </div>\n    \n    <!-- Begin Footer -->\n    <footer class=\"footer\">\n        <p><a href=\"https://www.biochem.mpg.de\" ><img width=\"150\" height=\"36\" src=\"LOGO-BIO-CMYK_100_en.jpg\"></a></p>\n    </footer>\n    <!-- End Footer -->\n</div> \n<!-- End Container -->";
+  buffer += "\n        </select>\n    </div>\n    \n    \n    <div class=\"row\">\n        <div class=\"col-md-5\">\n        \n            <div class=\"form-group\">\n                <label>Query Type</label><br>\n                <label class=\"radio-inline\">\n                    <input type=\"radio\" name=\"queryType\" value=\"ids\" checked>Ids list\n                </label>\n                <label class=\"radio-inline\">\n                    <input type=\"radio\" name=\"queryType\" value=\"query\">Query\n                </label>\n            </div>\n            \n            \n            <div class=\"form-group\">\n                <label>Organism</label>\n                <select class=\"form-control\" name=\"org\" multiple>\n                    <option  value=\"\" selected>All</option>\n                    <option  value=\"9606\">Homo sapiens</option>\n                    <option  value=\"10090\">Mus musculus</option>\n                    <option  value=\"10116\">Rattus norvegicus</option>\n                    <option  value=\"9913\">Bos taurus</option>\n                    <option  value=\"9031\">Gallus gallus</option>\n                    <option  value=\"9823\">Sus scrofa</option>\n                    <option  value=\"9615\">Canis familiaris</option>\n                    <option  value=\"7227\">Drosophila melanogaster</option>\n                    <option  value=\"6239\">Caenorhabditis elegans</option>\n                    <option  value=\"4932\">Saccharomyces cerevisiae</option>\n                    <option  value=\"7955\">Danio rerio</option>\n                    <option  value=\"4896\">Schizosaccharomyces pombe</option>\n                    <option  value=\"592\">Escherichia coli</option>\n                    <option  value=\"11676\">Human immunodeficiency virus 1</option>\n                    <option  value=\"11320\">Influenza A virus</option>\n                    <option  value=\"1491\">Clostridium botulinum</option>\n                    <option  value=\"3702\">Arabidopsis thaliana</option>\n                    <option  value=\"5833\">Plasmodium falciparum</option>\n                    <option  value=\"44689\">Dictyostelium discoideum</option>\n                    <option  value=\"1773\">Mycobacterium tuberculosis</option>\n                    <option  value=\"491\">Neisseria meningitidis serogroup B</option>\n                    <option  value=\"813\">Chlamydia trachomatis</option>\n                    <option  value=\"4530\">Oryza sativa</option>\n                    <option  value=\"5811\">Toxoplasma gondii</option>\n                    <option  value=\"8364\">Xenopus tropicalis</option>\n                    <option  value=\"90371\">Salmonella typhimurium</option>\n                    <option  value=\"59729\">Taeniopygia guttata</option>\n                    <option  value=\"158879\">Staphylococcus aureus N315</option>\n                </select>\n            </div>\n        \n        </div>\n        <div class=\"col-md-7\">\n            <a href=\"#\" id=\"";
+  if (helper = helpers.exampleId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.exampleId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">Example</a><br>\n            <textarea class=\"form-control\" name=\"query\" placeholder=\"Comma separated list of identifiers\"></textarea>\n        </div>\n    </div>\n\n    <div class=\"row\">\n        <div id=\"";
+  if (helper = helpers.logId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.logId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" class=\"col-md-10\"></div>\n    </div>";
   return buffer;
   });
 
@@ -367,7 +411,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n    <div class=\"container\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\">Project name</a>\n        </div>\n        <div id=\"navbar\" class=\"navbar-collapse collapse\">\n            <ul class=\"nav navbar-nav\">\n                \n            </ul>\n            <form class=\"navbar-form navbar-left\" role=\"search\">\n                <div class=\"form-group\">\n                    <input type=\"text\" id=\"";
+  buffer += "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n    <div class=\"container\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" href=\"#\">Project name</a>\n        </div>\n        <div id=\"navbar\" class=\"navbar-collapse collapse\">\n            <ul class=\"nav navbar-nav\">\n              <!--<li class=\"active\"><a href=\"#\">Home</a></li>-->\n              <li><a href=\"#\" id=\"";
+  if (helper = helpers.importId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.importId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Import Network from database\"><span class=\"glyphicon glyphicon-import\" aria-hidden=\"true\"></span> Import Network</a></li>\n              <li><a href=\"#\">Contact</a></li>\n              <li class=\"dropdown\">\n                <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></a>\n                <ul class=\"dropdown-menu\" role=\"menu\">\n                  <li><a href=\"#\">Action</a></li>\n                  <li><a href=\"#\">Another action</a></li>\n                  <li><a href=\"#\">Something else here</a></li>\n                  <li class=\"divider\"></li>\n                  <li class=\"dropdown-header\">Nav header</li>\n                  <li><a href=\"#\">Separated link</a></li>\n                  <li><a href=\"#\">One more separated link</a></li>\n                </ul>\n              </li>\n            </ul>\n            <form class=\"navbar-form navbar-left\" role=\"search\">\n                <div class=\"form-group\">\n                    <input type=\"text\" id=\"";
   if (helper = helpers.findId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.findId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -375,7 +423,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.saveId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.saveId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" href=\"#save\"><span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Save\" ></span></a></li>\n                <li class=\"dropdown\">\n                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\"><span data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Search\" class=\"glyphicon glyphicon-search\"></span></a>\n                    <div class=\"dropdown-menu\" style=\"padding:12px;\">\n                        <div class=\"row\">\n                            <div class=\"col-md-12\">\n                                <form id=\"tagsform\" class=\"navbar-form navbar-left\">\n                                    <div class=\"form-group\">\n                                        <input id=\"";
+    + "\" href=\"#save\"><span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Save\" ></span></a></li>\n                <!--<li class=\"dropdown\">\n                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\"><span data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Search\" class=\"glyphicon glyphicon-search\"></span></a>\n                    <div class=\"dropdown-menu\" style=\"padding:12px;\">\n                        <div class=\"row\">\n                            <div class=\"col-md-12\">\n                                <form id=\"tagsform\" class=\"navbar-form navbar-left\">\n                                    <div class=\"form-group\">\n                                        <input id=\"";
   if (helper = helpers.tagId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.tagId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -383,7 +431,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.searchTagsId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.searchTagsId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" class=\"tagsbox\"></div>\n                                </form>\n                            </div>\n                        </div>\n                    </div>\n                </li>\n                <li><a id=\"";
+    + "\" class=\"tagsbox\"></div>\n                                </form>\n                            </div>\n                        </div>\n                    </div>\n                </li>-->\n                <li><a id=\"";
   if (helper = helpers.pathwayId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.pathwayId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -648,7 +696,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.formId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.formId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + ">\n                    <div class=\"form-group\">\n                        \n                        <br>\n                        <select class=\"form-control\" name=\"name\">\n                            <option value=\"breadthfirst\">Breadthfirst</option>\n                            <option value=\"circle\">Circle</option>\n                            <option value=\"concentric\" selected>Concentric</option>\n                            <option value=\"cose\">Cose</option>\n                            <option value=\"grid\">Grid</option>\n                            <option value=\"random\">Random</option>\n                        </select>\n                    </div>\n                    <div id=\"";
+    + ">\n                    <div class=\"form-group\">\n                        \n                        <br>\n                        <select class=\"form-control\" name=\"name\">\n                            <option value=\"breadthfirst\">Breadthfirst</option>\n                            <option value=\"circle\">Circle</option>\n                            <option value=\"cola\">Cola</option>\n                            <option value=\"concentric\" selected>Concentric</option>\n                            <option value=\"cose\">Cose</option>\n                            <option value=\"grid\">Grid</option>\n                            <option value=\"random\">Random</option>\n                            <option value=\"springy\">Springy</option>\n                        </select>\n                    </div>\n                    <div id=\"";
   if (helper = helpers.layoutOptsId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.layoutOptsId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -660,138 +708,13 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return buffer;
   });
 
-this["Templates"]["sidepanel"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["springy"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+  
 
-function program1(depth0,data) {
-  
-  
-  return "\n                            <span class=\"glyphicon glyphicon-star\"></span><small> (Reviewed)</small>\n                          ";
-  }
 
-function program3(depth0,data) {
-  
-  
-  return "\n                            <span class=\"glyphicon glyphicon-question-sign\"></span><small> (Unreviewed)</small>\n                          ";
-  }
-
-function program5(depth0,data) {
-  
-  var buffer = "", stack1, helper;
-  buffer += "\n                        <dt>Entry Name</dt><dd><p>";
-  if (helper = helpers.Entry_name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.Entry_name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</p></dd>\n                        ";
-  return buffer;
-  }
-
-function program7(depth0,data) {
-  
-  var buffer = "", stack1, helper;
-  buffer += "\n                        <dt>Gene Names</dt><dd><p>";
-  if (helper = helpers.Gene_names) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.Gene_names); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</p></dd>\n                        ";
-  return buffer;
-  }
-
-function program9(depth0,data) {
-  
-  var buffer = "", stack1, helper, options;
-  buffer += "\n                        <dt>Alternative Ids</dt><dd><p>";
-  stack1 = (helper = helpers.join || (depth0 && depth0.join),options={hash:{},inverse:self.noop,fn:self.program(10, program10, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.altIds), ", ", options) : helperMissing.call(depth0, "join", (depth0 && depth0.altIds), ", ", options));
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</p></dd>\n                        ";
-  return buffer;
-  }
-function program10(depth0,data) {
-  
-  var stack1;
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.value), {hash:{},inverse:self.noop,fn:self.program(11, program11, data),data:data});
-  if(stack1 || stack1 === 0) { return stack1; }
-  else { return ''; }
-  }
-function program11(depth0,data) {
-  
-  var stack1;
-  return escapeExpression(((stack1 = (depth0 && depth0.value)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1));
-  }
-
-function program13(depth0,data) {
-  
-  var buffer = "", stack1, helper, options;
-  buffer += "\n                        <dt>Taxonomy</dt><dd><p>";
-  stack1 = (helper = helpers.join || (depth0 && depth0.join),options={hash:{},inverse:self.noop,fn:self.program(14, program14, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.taxonomy), ", ", options) : helperMissing.call(depth0, "join", (depth0 && depth0.taxonomy), ", ", options));
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</p></dd>\n                        ";
-  return buffer;
-  }
-function program14(depth0,data) {
-  
-  
-  return escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0));
-  }
-
-function program16(depth0,data) {
-  
-  var buffer = "", stack1, helper;
-  buffer += "\n                        <dt>Protein names</dt><dd><p>";
-  if (helper = helpers.Protein_names) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.Protein_names); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</p></dd>\n                        ";
-  return buffer;
-  }
-
-function program18(depth0,data) {
-  
-  var buffer = "", stack1, helper;
-  buffer += "\n                        <dt>Keywords:</dt><dd><p>";
-  if (helper = helpers.Keywords) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.Keywords); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</p></dd>\n                        ";
-  return buffer;
-  }
-
-  buffer += " <button type=\"button\" class=\"trigger btn btn-info\">\n            <span class=\"glyphicon glyphicon-chevron-left\"></span> ";
-  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\n        </button>\n        \n        <div class=\"sidePanel panel panel-default\">\n          <div class=\"panel-body\">\n              \n              <!-- Nav tabs -->\n              <ul class=\"nav nav-tabs\">\n                  <li class=\"active\"><a href=\"#home\" data-toggle=\"tab\">General Info</a></li>\n                  <li><a href=\"#expression\" data-toggle=\"tab\">Expression</a></li>\n                  <li><a href=\"#sequence\" data-toggle=\"tab\">Sequence</a></li>\n                  <li><a href=\"#protPortfolio\" data-toggle=\"tab\">Protein Portfolio</a></li>\n              </ul>\n\n              <!-- Tab panes -->\n              <div class=\"tab-content\">\n                  <div class=\"tab-pane active\" id=\"home\">\n                      <h3>\n                          ";
-  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + " \n                          ";
-  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.Status), "reviewed", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.Status), "reviewed", options));
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n                          ";
-  stack1 = (helper = helpers.compare || (depth0 && depth0.compare),options={hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data},helper ? helper.call(depth0, (depth0 && depth0.Status), "!==", "reviewed", options) : helperMissing.call(depth0, "compare", (depth0 && depth0.Status), "!==", "reviewed", options));
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n                      </h3>\n                      <dl>\n                        ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Entry_name), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n                        ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Gene_names), {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n                        ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.altIds), {hash:{},inverse:self.noop,fn:self.program(9, program9, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n                        ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.taxonomy), {hash:{},inverse:self.noop,fn:self.program(13, program13, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n                        ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Protein_names), {hash:{},inverse:self.noop,fn:self.program(16, program16, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n                        ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.Keywords), {hash:{},inverse:self.noop,fn:self.program(18, program18, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n                      </dl>\n                  </div>\n                  \n                  <div class=\"tab-pane\" id=\"expression\"></div>\n                  <div class=\"tab-pane\" id=\"sequence\"></div>\n                  <div class=\"tab-pane\" id=\"protPortfolio\"></div>\n              </div>\n              \n              \n          </div>\n        </div>\n";
-  return buffer;
+  return "\n<blockquote class=\"form-group col-xs-12\">\n    <footer>The <mark>springy</mark> layout uses a force-directed physics simulation, written by <mark>Dennis Hotson.</mark></footer>\n</blockquote>\n\n<div class=\"form-group col-xs-12\">\n    <input name=\"animate\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Whether to transition the node positions\">\n        <input name=\"animate\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Animate\n    </label>\n    <input name=\"fit\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Whether to fit the viewport to the graph\">\n        <input name=\"fit\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Fit\n    </label>\n    <input name=\"random\" type=\"hidden\" value=\"false\">\n    <label class=\"checkbox-inline col-xs-6\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Whether to use random initial positions\">\n        <input name=\"random\" type=\"checkbox\" value=\"true\"> Random\n    </label>\n</div>\n\n<div class=\"form-group col-xs-12\">\n    <label class=\"col-xs-3\" for=\"padding\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Padding on fit\">Padding</label>\n    <div class=\"col-xs-1\">\n        <input type=\"number\" name=\"padding\" id=\"padding\" value=\"30\">\n    </div>\n</div>\n\n<div class=\"form-group col-xs-12\">\n    <label class=\"col-xs-3\" for=\"stiffness\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Tunes stiffness\">Stiffness</label>\n    <div class=\"col-xs-1\">\n        <input type=\"number\" name=\"stiffness\" id=\"stiffness\" value=\"400\">\n    </div>\n</div>\n\n<div class=\"form-group col-xs-12\">\n    <label class=\"col-xs-3\" for=\"repulsion\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Tunes node repulsion\">Repulsion</label>\n    <div class=\"col-xs-1\">\n        <input type=\"number\" name=\"repulsion\" id=\"repulsion\" value=\"400\">\n    </div>\n</div>\n\n<div class=\"form-group col-xs-12\">\n    <label class=\"col-xs-3\" for=\"damping\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Tunes damping\">Damping</label>\n    <div class=\"col-xs-1\">\n        <input type=\"number\" name=\"damping\" id=\"damping\" value=\"0.5\">\n    </div>\n</div>";
   });
 
 if (typeof exports === 'object' && exports) {module.exports = this["Templates"];}

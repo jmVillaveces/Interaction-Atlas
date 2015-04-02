@@ -41,6 +41,7 @@
     "handlebars": "^1.0.0",
     "jquery": "^2.1.1",
     "nets": "^1.0.0",
+    "springy": "^2.7.1",
     "underscore": "^1.7.0"
   }
 }

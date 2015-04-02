@@ -1,0 +1,70 @@
+
+    <div class="form-group">
+        <label>Database</label>
+        <select class="form-control" name="db">
+            {{#each servers}}
+                <option value="{{url}}">{{name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    
+    
+    <div class="row">
+        <div class="col-md-5">
+        
+            <div class="form-group">
+                <label>Query Type</label><br>
+                <label class="radio-inline">
+                    <input type="radio" name="queryType" value="ids" checked>Ids list
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="queryType" value="query">Query
+                </label>
+            </div>
+            
+            
+            <div class="form-group">
+                <label>Organism</label>
+                <select class="form-control" name="org" multiple>
+                    <option  value="" selected>All</option>
+                    <option  value="9606">Homo sapiens</option>
+                    <option  value="10090">Mus musculus</option>
+                    <option  value="10116">Rattus norvegicus</option>
+                    <option  value="9913">Bos taurus</option>
+                    <option  value="9031">Gallus gallus</option>
+                    <option  value="9823">Sus scrofa</option>
+                    <option  value="9615">Canis familiaris</option>
+                    <option  value="7227">Drosophila melanogaster</option>
+                    <option  value="6239">Caenorhabditis elegans</option>
+                    <option  value="4932">Saccharomyces cerevisiae</option>
+                    <option  value="7955">Danio rerio</option>
+                    <option  value="4896">Schizosaccharomyces pombe</option>
+                    <option  value="592">Escherichia coli</option>
+                    <option  value="11676">Human immunodeficiency virus 1</option>
+                    <option  value="11320">Influenza A virus</option>
+                    <option  value="1491">Clostridium botulinum</option>
+                    <option  value="3702">Arabidopsis thaliana</option>
+                    <option  value="5833">Plasmodium falciparum</option>
+                    <option  value="44689">Dictyostelium discoideum</option>
+                    <option  value="1773">Mycobacterium tuberculosis</option>
+                    <option  value="491">Neisseria meningitidis serogroup B</option>
+                    <option  value="813">Chlamydia trachomatis</option>
+                    <option  value="4530">Oryza sativa</option>
+                    <option  value="5811">Toxoplasma gondii</option>
+                    <option  value="8364">Xenopus tropicalis</option>
+                    <option  value="90371">Salmonella typhimurium</option>
+                    <option  value="59729">Taeniopygia guttata</option>
+                    <option  value="158879">Staphylococcus aureus N315</option>
+                </select>
+            </div>
+        
+        </div>
+        <div class="col-md-7">
+            <a href="#" id="{{exampleId}}">Example</a><br>
+            <textarea class="form-control" name="query" placeholder="Comma separated list of identifiers"></textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="{{logId}}" class="col-md-10"></div>
+    </div>

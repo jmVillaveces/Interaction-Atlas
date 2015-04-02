@@ -51,6 +51,7 @@ module.exports = function(grunt) {
             { expand: true, flatten: true, src: ['img/LOGO-BIO-CMYK_100_en.jpg'], dest: 'dist/' },
             { expand: true, flatten: true, src: ['html/index.html'], dest: 'dist/' },
             { expand: true, flatten: true, src: ['css/fonts/*'], dest: 'dist/fonts/' },
+            { expand: true, flatten: true, src: ['js/lib/*.js'], dest: 'dist/js/' },
             { expand: true, flatten: true, src: ['css/*.css'], dest: 'dist/css/' }
         ],
         simplemocha: {
