@@ -10,7 +10,11 @@ module.exports = Backbone.Model.extend({
     defaults: {
         server:'http://dachstein.biochem.mpg.de:8080/iatlas/webservices/current/search/query/',
         proxy : 'https://cors-anywhere.herokuapp.com/',
+        exampleIds: ['P49959','P25454','Q54KD8','O74773','Q8IV36','Q96B01','Q54CS9','P52701','Q9CXE6','Q7T6Y0','Q682D3'],
+        exampleQuery:'"physical association" AND identifier:(brca1 OR brca2) AND species:human',
         ids : [],
+        query : '',
+        orgs : [],
         interactors: new Interactors(),
         interactions: new Interactions(),
         taxa : {},
@@ -18,9 +22,12 @@ module.exports = Backbone.Model.extend({
     },
     
      url: function() {
-        
-        var ids = this.attributes.ids.join(' OR ');
-        var query = ids + '?firstResult=0&maxResults=3000';
+         
+         
+        var query = (this.attributes.ids.length) ? this.attributes.ids.join(' OR ') : this.attributes.query;
+         
+        query = (this.attributes.orgs.length) ? query + ' AND taxId:(' + this.attributes.orgs.join(' OR ') + ')' : query;
+        query += '?firstResult=0&maxResults=3000';
         
         url = (this.attributes.proxy) ? this.attributes.proxy + this.attributes.server + query : this.attributes.server + query;
         
