@@ -358,7 +358,7 @@ module.exports = Backbone.Model.extend({
         return Backbone.Model.prototype.fetch.call(this, options);
     }
 });
-},{"../collections/interactions.js":1,"../collections/interactors.js":2,"biojs-io-mitab":47}],9:[function(require,module,exports){
+},{"../collections/interactions.js":1,"../collections/interactors.js":2,"biojs-io-mitab":24}],9:[function(require,module,exports){
 module.exports = Backbone.Model.extend({
     defaults : {
         name:'',
@@ -799,6 +799,24 @@ function program1(depth0,data) {
   return buffer;
   });
 
+this["Templates"]["layout"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += " <form id = ";
+  if (helper = helpers.formId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.formId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + ">\r\n    <div class=\"form-group\">\r\n\r\n        <br>\r\n        <select class=\"form-control\" name=\"name\">\r\n            <option value=\"breadthfirst\">Breadthfirst</option>\r\n            <option value=\"circle\">Circle</option>\r\n            <option value=\"cola\">Cola</option>\r\n            <option value=\"concentric\" selected>Concentric</option>\r\n            <option value=\"cose\">Cose</option>\r\n            <option value=\"grid\">Grid</option>\r\n            <option value=\"random\">Random</option>\r\n            <option value=\"springy\">Springy</option>\r\n        </select>\r\n    </div>\r\n    <div id=\"";
+  if (helper = helpers.layoutOptsId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.layoutOptsId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\"><br><br><br><br></div>\r\n</form>\r\n     ";
+  return buffer;
+  });
+
 this["Templates"]["main"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -818,7 +836,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.importId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.importId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Import Network from database\"><span class=\"glyphicon glyphicon-import\" aria-hidden=\"true\"></span> Import Network</a></li>\n              <li><a href=\"#\">Contact</a></li>\n              <li class=\"dropdown\">\n                <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></a>\n                <ul class=\"dropdown-menu\" role=\"menu\">\n                  <li><a href=\"#\">Action</a></li>\n                  <li><a href=\"#\">Another action</a></li>\n                  <li><a href=\"#\">Something else here</a></li>\n                  <li class=\"divider\"></li>\n                  <li class=\"dropdown-header\">Nav header</li>\n                  <li><a href=\"#\">Separated link</a></li>\n                  <li><a href=\"#\">One more separated link</a></li>\n                </ul>\n              </li>\n            </ul>\n            <form class=\"navbar-form navbar-left\" role=\"search\">\n                <div class=\"form-group\">\n                    <input type=\"text\" id=\"";
+    + "\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Import Network from database\"><span class=\"glyphicon glyphicon-import\" aria-hidden=\"true\"></span> Import Network</a></li>\n              <li><a href=\"#\">Contact</a></li>\n              <li class=\"dropdown\">\n                <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Layout <span class=\"caret\"></span></a>\n                <ul id=";
+  if (helper = helpers.layoutId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.layoutId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " class=\"dropdown-menu\" role=\"menu\">\n                    <li><a href=\"breadthfirst\">Breadthfirst <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a href=\"circle\">Circle <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a href=\"cola\">Cola <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a href=\"concentric\">Concentric <span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a></li>\n                    <li><a href=\"cose\">Cose <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a href=\"grid\">Grid <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a href=\"random\">Random <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a href=\"springy\">Springy <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li class=\"divider\"></li>\n                    <li><a href=\"advanced\">Advanced</a></li>\n                </ul>\n              </li>\n            </ul>\n            <form class=\"navbar-form navbar-left\" role=\"search\">\n                <div class=\"form-group\">\n                    <input type=\"text\" id=\"";
   if (helper = helpers.findId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.findId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -1095,7 +1117,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<!-- Sliding div starts here -->\n\n<div class=\"side_content\">\n    \n    <div role=\"tabpanel\">\n\n        <br>\n        \n        <!-- Nav tabs -->\n        <ul class=\"nav nav-tabs\" role=\"tablist\">\n            <li role=\"presentation\" class=\"active\"><a href=\"#layout\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">Layout</a></li>\n            <li role=\"presentation\"><a href=\"#profile\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Options</a></li>\n            <li role=\"presentation\"><a href=\"#algorithms\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Algorithms</a></li>\n        </ul>\n\n        <!-- Tab panes -->\n        <div class=\"tab-content\">\n            <div role=\"tabpanel\" class=\"tab-pane active\" id=\"layout\">\n    \n                <form id = ";
+  buffer += "<!-- Sliding div starts here -->\n\n<div class=\"side_content\">\n    \n    <div role=\"tabpanel\">\n\n        <br>\n        \n        <!-- Nav tabs -->\n        <ul class=\"nav nav-tabs\" role=\"tablist\">\n            <li role=\"presentation\" class=\"active\"><a href=\"#layout\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">Layout</a></li>\n            <li role=\"presentation\"><a href=\"#profile\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Options</a></li>\n            <li role=\"presentation\"><a href=\"#algorithms\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Algorithms</a></li>\n        </ul>\n\n        <!-- Tab panes -->\n        <div class=\"tab-content\">\n            <div role=\"tabpanel\" class=\"tab-pane active\" id=\"layout\">\n    \n                <!--<form id = ";
   if (helper = helpers.formId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.formId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -1107,7 +1129,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.refreshId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.refreshId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" type=\"button\" class=\"btn btn-info btn-lg\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span> Refresh</button>\n                    </center>\n                </form>\n            \n            </div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\"></div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"algorithms\"></div>\n        </div>\n\n    </div>\n</div>\n<!-- Sliding div ends here -->";
+    + "\" type=\"button\" class=\"btn btn-info btn-lg\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span> Refresh</button>\n                    </center>\n                </form>-->\n            \n            </div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\"></div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"algorithms\"></div>\n        </div>\n\n    </div>\n</div>\n<!-- Sliding div ends here -->";
   return buffer;
   });
 
@@ -1122,7 +1144,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
 if (typeof exports === 'object' && exports) {module.exports = this["Templates"];}
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"handlebars":72}],12:[function(require,module,exports){
+},{"handlebars":51}],12:[function(require,module,exports){
 var Sequence = require('biojs-vis-sequence');
 var Structure = require('bio-pv');
 var templates = require('../templates');
@@ -1130,12 +1152,13 @@ var UPprotein = require('../models/UPprotein');
 
 var _map = {};
 
-var _dialId = _.uniqueId('dial_');
+var _dialId = _.uniqueId('dial_'), _containerId = _.uniqueId('UPcontainer_');
 
 module.exports = Backbone.View.extend({
     
     initialize: function(options){
         this.options = options;
+        this.container = $('<div id='+_containerId+'></div>').appendTo(this.options.el);
     },
     
     render: function(node){
@@ -1151,7 +1174,7 @@ module.exports = Backbone.View.extend({
         
         
         var tpl = templates.dialog({title : node.id, subtitle: tax.join(' - '), dialId : _dialId});    
-        $(this.options.el).html(tpl);
+        $(this.container).html(tpl);
         $('#' + _dialId).modal('show');
         
         
@@ -1177,7 +1200,7 @@ module.exports = Backbone.View.extend({
     
     renderProteinInfo : function(protein){
         var tpl = templates.UPprotein(protein);
-        $('.modal-body').html(tpl);
+        $('#' + _dialId+' .modal-body').html(tpl);
         
         //Init sequence
         var sequence = new Sequence({
@@ -1205,7 +1228,7 @@ module.exports = Backbone.View.extend({
         });*/
     }
 });
-},{"../models/UPprotein":5,"../templates":11,"bio-pv":23,"biojs-vis-sequence":48}],13:[function(require,module,exports){
+},{"../models/UPprotein":5,"../templates":11,"bio-pv":23,"biojs-vis-sequence":25}],13:[function(require,module,exports){
 var templates = require('../templates');
 var cytoscape = require('cytoscape');
 
@@ -1327,6 +1350,9 @@ module.exports = Backbone.View.extend({
         
         //update cy
         if(this.cy) this.cy.layout(_layout);
+        
+        //trigger layout changed
+        Backbone.trigger('layout_changed', _layout);
         
         return this;
     },
@@ -1558,7 +1584,7 @@ module.exports = Backbone.View.extend({
         //console.log(bfs.path.length);
     }
 });
-},{"../templates":11,"cytoscape":56}],14:[function(require,module,exports){
+},{"../templates":11,"cytoscape":35}],14:[function(require,module,exports){
 var templates = require('../templates');
 
 var _dialId = _.uniqueId('dial_'), _exampleId = _.uniqueId('example_'), _okBtnId = _.uniqueId('ok_'), _logId = _.uniqueId('log_');
@@ -1577,6 +1603,11 @@ module.exports = Backbone.View.extend({
     
     render: function(){
         
+        if ($('#' + _dialId).length){
+            $('#' + _dialId).modal('show');
+            return;
+        }
+        
         var options = {
             title : 'Import Network', 
             icon : 'glyphicon-import', 
@@ -1586,15 +1617,13 @@ module.exports = Backbone.View.extend({
             okBtnId : _okBtnId
         };
         
-        
-        
         var tpl = templates.dialog(options);    
         
-        $(this.options.el).html(tpl);
+        $(this.options.el).append(tpl);
         $('#' + _dialId).modal('show');
         
         tpl = templates.import({servers:App.model.servers.toJSON(), exampleId : _exampleId, logId : _logId});
-        $('.modal-body').html(tpl);
+        $('#' + _dialId + ' .modal-body').html(tpl);
     },
 
     onExampleClick : function(e){
@@ -1672,6 +1701,93 @@ module.exports = Backbone.View.extend({
 },{"../templates":11}],15:[function(require,module,exports){
 var templates = require('../templates');
 
+var _dialId = _.uniqueId('dial_'), _okBtnId = _.uniqueId('ok_'), _formId = _.uniqueId('form_'), _layoutOptsId = _.uniqueId('opts_');
+
+module.exports = Backbone.View.extend({
+    
+    initialize: function(options){
+        this.options = options;
+        
+        //On ok button clicked
+        this.events['click #' + _okBtnId ] = 'onOkButton';
+    },
+    
+    events : {
+        'change select[name=name]': 'onSelectChange'
+    },
+    
+    render: function(){
+        
+        if ($('#' + _dialId).length){
+            $('#' + _dialId).modal('show');
+            return;
+        }
+        
+        var options = {
+            title : 'Layout', 
+            icon : 'glyphicon-fullscreen', 
+            okBtn : 'Update', 
+            okBtnIcon : 'glyphicon-refresh',
+            dialId : _dialId,
+            okBtnId : _okBtnId
+        };
+        
+        var tpl = templates.dialog(options);    
+        
+        $(this.options.el).append(tpl);
+        
+        tpl = templates.layout({formId:_formId, layoutOptsId:_layoutOptsId});
+        $('#' + _dialId + ' .modal-body').html(tpl);
+        
+        this.setOptions('concentric');
+        $('#' + _dialId).modal('show');
+    },
+
+    onSelectChange : function(e){
+        var layoutName = $('select[name=name]').val().toLowerCase();
+        this.setOptions(layoutName);
+    },
+    
+    setOptions : function(name){
+        var tpl = templates[name]();
+        $('#'+_layoutOptsId).html(tpl);
+        
+        //Init tooltips
+        $('[data-toggle="tooltip"]').tooltip();
+    },
+    
+    onOkButton : function(e){
+        App.views.graph.layout(this.serializeForm());
+        $('#' + _dialId).modal('hide');
+    },
+        
+    serializeForm : function(){
+        var serial = _.object($('#'+_formId).serializeArray().map(function(v) {return [v.name, v.value];} ));
+        
+        var blacklist = [];
+        _.each(serial, function(e,k){
+            
+            if(e === 'true'){ 
+                serial[k] = true;
+            }else if(e === 'false'){ 
+                serial[k] = false;
+            }else if(k !== 'name'){
+                var i = parseInt(e);
+                if(_.isNaN(i)){ 
+                    blacklist.push(k);
+                }else{
+                    serial[k] = i;
+                }
+            }
+        });
+        
+        serial = _.omit(serial, blacklist);
+        return serial;
+    }
+});
+},{"../templates":11}],16:[function(require,module,exports){
+var templates = require('../templates');
+
 module.exports = Backbone.View.extend({
 
     initialize: function(options){
@@ -1695,7 +1811,7 @@ module.exports = Backbone.View.extend({
         $(this.options.el + ' p').removeClass('bg-info bg-success bg-danger').addClass('bg-warning').html(msg).show();
     }
 });
-},{"../templates":11}],16:[function(require,module,exports){
+},{"../templates":11}],17:[function(require,module,exports){
 var templates = require('../templates');
 
 module.exports = Backbone.View.extend({
@@ -1709,10 +1825,10 @@ module.exports = Backbone.View.extend({
         $(this.options.el).html(tpl);
     }
 });
-},{"../templates":11}],17:[function(require,module,exports){
+},{"../templates":11}],18:[function(require,module,exports){
 var templates = require('../templates');
 
-var _pathwayId = _.uniqueId('pathway_'), _settingsId = _.uniqueId('settings_'), _findId = _.uniqueId('find_'), _saveId = _.uniqueId('save_'), _importId = _.uniqueId('import_');
+var _pathwayId = _.uniqueId('pathway_'), _settingsId = _.uniqueId('settings_'), _findId = _.uniqueId('find_'), _saveId = _.uniqueId('save_'), _importId = _.uniqueId('import_'), _layoutId = _.uniqueId('layout_');
 
 module.exports = Backbone.View.extend({
     
@@ -1724,6 +1840,10 @@ module.exports = Backbone.View.extend({
         this.events['keyup #' + _findId ] = 'onFind';
         this.events['click #' + _saveId] = 'onSave';
         this.events['click #' + _importId] = 'onImport';
+        this.events['click #' + _layoutId + ' a'] = 'onLayout';
+        
+        // Update when graph is ready
+        this.listenTo(Backbone, 'layout_changed', this.onLayoutChanged);
     },
     
     events: {},
@@ -1735,7 +1855,8 @@ module.exports = Backbone.View.extend({
             pathwayId : _pathwayId,
             settingsId : _settingsId,
             findId : _findId,
-            saveId : _saveId
+            saveId : _saveId,
+            layoutId:_layoutId
         
         });
         $(this.options.el).append(tpl);
@@ -1772,9 +1893,35 @@ module.exports = Backbone.View.extend({
         e.preventDefault();
         
         App.views.import.render();
+    },
+    
+    onLayout: function(e){
+        e.preventDefault();
+        
+        var layout = $(e.target).text().toLowerCase().trim();
+        
+        if(layout !== 'advanced'){
+            App.views.graph.layout({name:layout});
+        }else{
+            App.views.layout.render();
+        }
+    },
+    
+    onLayoutChanged : function(l){
+        console.log(l);
+        $('#' + _layoutId + ' a').each(function(){
+            var link = $(this);
+            var layout = link.text().toLowerCase().trim();
+            
+            if(layout === l.name){
+                link.children().addClass('glyphicon-ok');
+            }else{
+                link.children().removeClass('glyphicon-ok');
+            }
+        });
     }
 });
-},{"../templates":11}],18:[function(require,module,exports){
+},{"../templates":11}],19:[function(require,module,exports){
 var templates = require('../templates');
 
 var _formId = _.uniqueId('form_');
@@ -1834,7 +1981,7 @@ module.exports = Backbone.View.extend({
         return serial;
     }
 });
-},{"../templates":11}],19:[function(require,module,exports){
+},{"../templates":11}],20:[function(require,module,exports){
 var templates = require('../templates');
 
 var _refreshId = _.uniqueId('refresh_');
@@ -1853,7 +2000,7 @@ module.exports = Backbone.View.extend({
     },
     
     events:{
-        'change select[name=name]': 'onSelectChange',
+        /*'change select[name=name]': 'onSelectChange',*/
         'change select[name=algorithm]': 'onAlgorithmChange',
         'click #play': 'onPlayClick'
     },
@@ -1957,7 +2104,7 @@ module.exports = Backbone.View.extend({
     }
     
 });
-},{"../templates":11}],20:[function(require,module,exports){
+},{"../templates":11}],21:[function(require,module,exports){
 jQuery = $ = require('jquery');
 Backbone = require('backbone');
 Backbone.$ = jQuery;
@@ -1993,6 +2140,7 @@ App.init = function(options){
     var Options = require('./js/views/options');
     var UPDialog = require('./js/views/UPdialog');
     var Import = require('./js/views/import');
+    var Layout = require('./js/views/layout');
 
     App.views = {};
 
@@ -2013,6 +2161,7 @@ App.init = function(options){
     //Dialogs
     App.views.UPDialog = new UPDialog({el:'#dialog'});
     App.views.import = new Import({el:'#dialog'});
+    App.views.layout = new Layout({el:'#dialog'});
 
     //Logger
     App.views.logger = new Logger({el:'#logger'});
@@ -2030,7 +2179,7 @@ App.init = function(options){
 };
 
 App.init();
-},{"./js/collections/psicquicServers.js":3,"./js/helpers.js":4,"./js/models/main.js":8,"./js/router/router":10,"./js/views/UPdialog":12,"./js/views/graph":13,"./js/views/import":14,"./js/views/logger":15,"./js/views/main":16,"./js/views/navbar":17,"./js/views/options":18,"./js/views/sidemenu":19,"backbone":21,"bootstrap/dist/js/bootstrap.min.js":55,"handlebars":72,"jquery":73,"springy":74,"underscore":75}],21:[function(require,module,exports){
+},{"./js/collections/psicquicServers.js":3,"./js/helpers.js":4,"./js/models/main.js":8,"./js/router/router":10,"./js/views/UPdialog":12,"./js/views/graph":13,"./js/views/import":14,"./js/views/layout":15,"./js/views/logger":16,"./js/views/main":17,"./js/views/navbar":18,"./js/views/options":19,"./js/views/sidemenu":20,"backbone":22,"bootstrap/dist/js/bootstrap.min.js":34,"handlebars":51,"jquery":52,"springy":53,"underscore":54}],22:[function(require,module,exports){
 //     Backbone.js 1.1.2
 
 //     (c) 2010-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -3640,11721 +3789,20 @@ App.init();
 
 }));
 
-},{"underscore":22}],22:[function(require,module,exports){
-//     Underscore.js 1.7.0
-//     http://underscorejs.org
-//     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-//     Underscore may be freely distributed under the MIT license.
-
-(function() {
-
-  // Baseline setup
-  // --------------
-
-  // Establish the root object, `window` in the browser, or `exports` on the server.
-  var root = this;
-
-  // Save the previous value of the `_` variable.
-  var previousUnderscore = root._;
-
-  // Save bytes in the minified (but not gzipped) version:
-  var ArrayProto = Array.prototype, ObjProto = Object.prototype, FuncProto = Function.prototype;
-
-  // Create quick reference variables for speed access to core prototypes.
-  var
-    push             = ArrayProto.push,
-    slice            = ArrayProto.slice,
-    concat           = ArrayProto.concat,
-    toString         = ObjProto.toString,
-    hasOwnProperty   = ObjProto.hasOwnProperty;
-
-  // All **ECMAScript 5** native function implementations that we hope to use
-  // are declared here.
-  var
-    nativeIsArray      = Array.isArray,
-    nativeKeys         = Object.keys,
-    nativeBind         = FuncProto.bind;
-
-  // Create a safe reference to the Underscore object for use below.
-  var _ = function(obj) {
-    if (obj instanceof _) return obj;
-    if (!(this instanceof _)) return new _(obj);
-    this._wrapped = obj;
-  };
-
-  // Export the Underscore object for **Node.js**, with
-  // backwards-compatibility for the old `require()` API. If we're in
-  // the browser, add `_` as a global object.
-  if (typeof exports !== 'undefined') {
-    if (typeof module !== 'undefined' && module.exports) {
-      exports = module.exports = _;
-    }
-    exports._ = _;
-  } else {
-    root._ = _;
-  }
-
-  // Current version.
-  _.VERSION = '1.7.0';
-
-  // Internal function that returns an efficient (for current engines) version
-  // of the passed-in callback, to be repeatedly applied in other Underscore
-  // functions.
-  var createCallback = function(func, context, argCount) {
-    if (context === void 0) return func;
-    switch (argCount == null ? 3 : argCount) {
-      case 1: return function(value) {
-        return func.call(context, value);
-      };
-      case 2: return function(value, other) {
-        return func.call(context, value, other);
-      };
-      case 3: return function(value, index, collection) {
-        return func.call(context, value, index, collection);
-      };
-      case 4: return function(accumulator, value, index, collection) {
-        return func.call(context, accumulator, value, index, collection);
-      };
-    }
-    return function() {
-      return func.apply(context, arguments);
-    };
-  };
-
-  // A mostly-internal function to generate callbacks that can be applied
-  // to each element in a collection, returning the desired result — either
-  // identity, an arbitrary callback, a property matcher, or a property accessor.
-  _.iteratee = function(value, context, argCount) {
-    if (value == null) return _.identity;
-    if (_.isFunction(value)) return createCallback(value, context, argCount);
-    if (_.isObject(value)) return _.matches(value);
-    return _.property(value);
-  };
-
-  // Collection Functions
-  // --------------------
-
-  // The cornerstone, an `each` implementation, aka `forEach`.
-  // Handles raw objects in addition to array-likes. Treats all
-  // sparse array-likes as if they were dense.
-  _.each = _.forEach = function(obj, iteratee, context) {
-    if (obj == null) return obj;
-    iteratee = createCallback(iteratee, context);
-    var i, length = obj.length;
-    if (length === +length) {
-      for (i = 0; i < length; i++) {
-        iteratee(obj[i], i, obj);
-      }
-    } else {
-      var keys = _.keys(obj);
-      for (i = 0, length = keys.length; i < length; i++) {
-        iteratee(obj[keys[i]], keys[i], obj);
-      }
-    }
-    return obj;
-  };
-
-  // Return the results of applying the iteratee to each element.
-  _.map = _.collect = function(obj, iteratee, context) {
-    if (obj == null) return [];
-    iteratee = _.iteratee(iteratee, context);
-    var keys = obj.length !== +obj.length && _.keys(obj),
-        length = (keys || obj).length,
-        results = Array(length),
-        currentKey;
-    for (var index = 0; index < length; index++) {
-      currentKey = keys ? keys[index] : index;
-      results[index] = iteratee(obj[currentKey], currentKey, obj);
-    }
-    return results;
-  };
-
-  var reduceError = 'Reduce of empty array with no initial value';
-
-  // **Reduce** builds up a single result from a list of values, aka `inject`,
-  // or `foldl`.
-  _.reduce = _.foldl = _.inject = function(obj, iteratee, memo, context) {
-    if (obj == null) obj = [];
-    iteratee = createCallback(iteratee, context, 4);
-    var keys = obj.length !== +obj.length && _.keys(obj),
-        length = (keys || obj).length,
-        index = 0, currentKey;
-    if (arguments.length < 3) {
-      if (!length) throw new TypeError(reduceError);
-      memo = obj[keys ? keys[index++] : index++];
-    }
-    for (; index < length; index++) {
-      currentKey = keys ? keys[index] : index;
-      memo = iteratee(memo, obj[currentKey], currentKey, obj);
-    }
-    return memo;
-  };
-
-  // The right-associative version of reduce, also known as `foldr`.
-  _.reduceRight = _.foldr = function(obj, iteratee, memo, context) {
-    if (obj == null) obj = [];
-    iteratee = createCallback(iteratee, context, 4);
-    var keys = obj.length !== + obj.length && _.keys(obj),
-        index = (keys || obj).length,
-        currentKey;
-    if (arguments.length < 3) {
-      if (!index) throw new TypeError(reduceError);
-      memo = obj[keys ? keys[--index] : --index];
-    }
-    while (index--) {
-      currentKey = keys ? keys[index] : index;
-      memo = iteratee(memo, obj[currentKey], currentKey, obj);
-    }
-    return memo;
-  };
-
-  // Return the first value which passes a truth test. Aliased as `detect`.
-  _.find = _.detect = function(obj, predicate, context) {
-    var result;
-    predicate = _.iteratee(predicate, context);
-    _.some(obj, function(value, index, list) {
-      if (predicate(value, index, list)) {
-        result = value;
-        return true;
-      }
-    });
-    return result;
-  };
-
-  // Return all the elements that pass a truth test.
-  // Aliased as `select`.
-  _.filter = _.select = function(obj, predicate, context) {
-    var results = [];
-    if (obj == null) return results;
-    predicate = _.iteratee(predicate, context);
-    _.each(obj, function(value, index, list) {
-      if (predicate(value, index, list)) results.push(value);
-    });
-    return results;
-  };
-
-  // Return all the elements for which a truth test fails.
-  _.reject = function(obj, predicate, context) {
-    return _.filter(obj, _.negate(_.iteratee(predicate)), context);
-  };
-
-  // Determine whether all of the elements match a truth test.
-  // Aliased as `all`.
-  _.every = _.all = function(obj, predicate, context) {
-    if (obj == null) return true;
-    predicate = _.iteratee(predicate, context);
-    var keys = obj.length !== +obj.length && _.keys(obj),
-        length = (keys || obj).length,
-        index, currentKey;
-    for (index = 0; index < length; index++) {
-      currentKey = keys ? keys[index] : index;
-      if (!predicate(obj[currentKey], currentKey, obj)) return false;
-    }
-    return true;
-  };
-
-  // Determine if at least one element in the object matches a truth test.
-  // Aliased as `any`.
-  _.some = _.any = function(obj, predicate, context) {
-    if (obj == null) return false;
-    predicate = _.iteratee(predicate, context);
-    var keys = obj.length !== +obj.length && _.keys(obj),
-        length = (keys || obj).length,
-        index, currentKey;
-    for (index = 0; index < length; index++) {
-      currentKey = keys ? keys[index] : index;
-      if (predicate(obj[currentKey], currentKey, obj)) return true;
-    }
-    return false;
-  };
-
-  // Determine if the array or object contains a given value (using `===`).
-  // Aliased as `include`.
-  _.contains = _.include = function(obj, target) {
-    if (obj == null) return false;
-    if (obj.length !== +obj.length) obj = _.values(obj);
-    return _.indexOf(obj, target) >= 0;
-  };
-
-  // Invoke a method (with arguments) on every item in a collection.
-  _.invoke = function(obj, method) {
-    var args = slice.call(arguments, 2);
-    var isFunc = _.isFunction(method);
-    return _.map(obj, function(value) {
-      return (isFunc ? method : value[method]).apply(value, args);
-    });
-  };
-
-  // Convenience version of a common use case of `map`: fetching a property.
-  _.pluck = function(obj, key) {
-    return _.map(obj, _.property(key));
-  };
-
-  // Convenience version of a common use case of `filter`: selecting only objects
-  // containing specific `key:value` pairs.
-  _.where = function(obj, attrs) {
-    return _.filter(obj, _.matches(attrs));
-  };
-
-  // Convenience version of a common use case of `find`: getting the first object
-  // containing specific `key:value` pairs.
-  _.findWhere = function(obj, attrs) {
-    return _.find(obj, _.matches(attrs));
-  };
-
-  // Return the maximum element (or element-based computation).
-  _.max = function(obj, iteratee, context) {
-    var result = -Infinity, lastComputed = -Infinity,
-        value, computed;
-    if (iteratee == null && obj != null) {
-      obj = obj.length === +obj.length ? obj : _.values(obj);
-      for (var i = 0, length = obj.length; i < length; i++) {
-        value = obj[i];
-        if (value > result) {
-          result = value;
-        }
-      }
-    } else {
-      iteratee = _.iteratee(iteratee, context);
-      _.each(obj, function(value, index, list) {
-        computed = iteratee(value, index, list);
-        if (computed > lastComputed || computed === -Infinity && result === -Infinity) {
-          result = value;
-          lastComputed = computed;
-        }
-      });
-    }
-    return result;
-  };
-
-  // Return the minimum element (or element-based computation).
-  _.min = function(obj, iteratee, context) {
-    var result = Infinity, lastComputed = Infinity,
-        value, computed;
-    if (iteratee == null && obj != null) {
-      obj = obj.length === +obj.length ? obj : _.values(obj);
-      for (var i = 0, length = obj.length; i < length; i++) {
-        value = obj[i];
-        if (value < result) {
-          result = value;
-        }
-      }
-    } else {
-      iteratee = _.iteratee(iteratee, context);
-      _.each(obj, function(value, index, list) {
-        computed = iteratee(value, index, list);
-        if (computed < lastComputed || computed === Infinity && result === Infinity) {
-          result = value;
-          lastComputed = computed;
-        }
-      });
-    }
-    return result;
-  };
-
-  // Shuffle a collection, using the modern version of the
-  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
-  _.shuffle = function(obj) {
-    var set = obj && obj.length === +obj.length ? obj : _.values(obj);
-    var length = set.length;
-    var shuffled = Array(length);
-    for (var index = 0, rand; index < length; index++) {
-      rand = _.random(0, index);
-      if (rand !== index) shuffled[index] = shuffled[rand];
-      shuffled[rand] = set[index];
-    }
-    return shuffled;
-  };
-
-  // Sample **n** random values from a collection.
-  // If **n** is not specified, returns a single random element.
-  // The internal `guard` argument allows it to work with `map`.
-  _.sample = function(obj, n, guard) {
-    if (n == null || guard) {
-      if (obj.length !== +obj.length) obj = _.values(obj);
-      return obj[_.random(obj.length - 1)];
-    }
-    return _.shuffle(obj).slice(0, Math.max(0, n));
-  };
-
-  // Sort the object's values by a criterion produced by an iteratee.
-  _.sortBy = function(obj, iteratee, context) {
-    iteratee = _.iteratee(iteratee, context);
-    return _.pluck(_.map(obj, function(value, index, list) {
-      return {
-        value: value,
-        index: index,
-        criteria: iteratee(value, index, list)
-      };
-    }).sort(function(left, right) {
-      var a = left.criteria;
-      var b = right.criteria;
-      if (a !== b) {
-        if (a > b || a === void 0) return 1;
-        if (a < b || b === void 0) return -1;
-      }
-      return left.index - right.index;
-    }), 'value');
-  };
-
-  // An internal function used for aggregate "group by" operations.
-  var group = function(behavior) {
-    return function(obj, iteratee, context) {
-      var result = {};
-      iteratee = _.iteratee(iteratee, context);
-      _.each(obj, function(value, index) {
-        var key = iteratee(value, index, obj);
-        behavior(result, value, key);
-      });
-      return result;
-    };
-  };
-
-  // Groups the object's values by a criterion. Pass either a string attribute
-  // to group by, or a function that returns the criterion.
-  _.groupBy = group(function(result, value, key) {
-    if (_.has(result, key)) result[key].push(value); else result[key] = [value];
-  });
-
-  // Indexes the object's values by a criterion, similar to `groupBy`, but for
-  // when you know that your index values will be unique.
-  _.indexBy = group(function(result, value, key) {
-    result[key] = value;
-  });
-
-  // Counts instances of an object that group by a certain criterion. Pass
-  // either a string attribute to count by, or a function that returns the
-  // criterion.
-  _.countBy = group(function(result, value, key) {
-    if (_.has(result, key)) result[key]++; else result[key] = 1;
-  });
-
-  // Use a comparator function to figure out the smallest index at which
-  // an object should be inserted so as to maintain order. Uses binary search.
-  _.sortedIndex = function(array, obj, iteratee, context) {
-    iteratee = _.iteratee(iteratee, context, 1);
-    var value = iteratee(obj);
-    var low = 0, high = array.length;
-    while (low < high) {
-      var mid = low + high >>> 1;
-      if (iteratee(array[mid]) < value) low = mid + 1; else high = mid;
-    }
-    return low;
-  };
-
-  // Safely create a real, live array from anything iterable.
-  _.toArray = function(obj) {
-    if (!obj) return [];
-    if (_.isArray(obj)) return slice.call(obj);
-    if (obj.length === +obj.length) return _.map(obj, _.identity);
-    return _.values(obj);
-  };
-
-  // Return the number of elements in an object.
-  _.size = function(obj) {
-    if (obj == null) return 0;
-    return obj.length === +obj.length ? obj.length : _.keys(obj).length;
-  };
-
-  // Split a collection into two arrays: one whose elements all satisfy the given
-  // predicate, and one whose elements all do not satisfy the predicate.
-  _.partition = function(obj, predicate, context) {
-    predicate = _.iteratee(predicate, context);
-    var pass = [], fail = [];
-    _.each(obj, function(value, key, obj) {
-      (predicate(value, key, obj) ? pass : fail).push(value);
-    });
-    return [pass, fail];
-  };
-
-  // Array Functions
-  // ---------------
-
-  // Get the first element of an array. Passing **n** will return the first N
-  // values in the array. Aliased as `head` and `take`. The **guard** check
-  // allows it to work with `_.map`.
-  _.first = _.head = _.take = function(array, n, guard) {
-    if (array == null) return void 0;
-    if (n == null || guard) return array[0];
-    if (n < 0) return [];
-    return slice.call(array, 0, n);
-  };
-
-  // Returns everything but the last entry of the array. Especially useful on
-  // the arguments object. Passing **n** will return all the values in
-  // the array, excluding the last N. The **guard** check allows it to work with
-  // `_.map`.
-  _.initial = function(array, n, guard) {
-    return slice.call(array, 0, Math.max(0, array.length - (n == null || guard ? 1 : n)));
-  };
-
-  // Get the last element of an array. Passing **n** will return the last N
-  // values in the array. The **guard** check allows it to work with `_.map`.
-  _.last = function(array, n, guard) {
-    if (array == null) return void 0;
-    if (n == null || guard) return array[array.length - 1];
-    return slice.call(array, Math.max(array.length - n, 0));
-  };
-
-  // Returns everything but the first entry of the array. Aliased as `tail` and `drop`.
-  // Especially useful on the arguments object. Passing an **n** will return
-  // the rest N values in the array. The **guard**
-  // check allows it to work with `_.map`.
-  _.rest = _.tail = _.drop = function(array, n, guard) {
-    return slice.call(array, n == null || guard ? 1 : n);
-  };
-
-  // Trim out all falsy values from an array.
-  _.compact = function(array) {
-    return _.filter(array, _.identity);
-  };
-
-  // Internal implementation of a recursive `flatten` function.
-  var flatten = function(input, shallow, strict, output) {
-    if (shallow && _.every(input, _.isArray)) {
-      return concat.apply(output, input);
-    }
-    for (var i = 0, length = input.length; i < length; i++) {
-      var value = input[i];
-      if (!_.isArray(value) && !_.isArguments(value)) {
-        if (!strict) output.push(value);
-      } else if (shallow) {
-        push.apply(output, value);
-      } else {
-        flatten(value, shallow, strict, output);
-      }
-    }
-    return output;
-  };
-
-  // Flatten out an array, either recursively (by default), or just one level.
-  _.flatten = function(array, shallow) {
-    return flatten(array, shallow, false, []);
-  };
-
-  // Return a version of the array that does not contain the specified value(s).
-  _.without = function(array) {
-    return _.difference(array, slice.call(arguments, 1));
-  };
-
-  // Produce a duplicate-free version of the array. If the array has already
-  // been sorted, you have the option of using a faster algorithm.
-  // Aliased as `unique`.
-  _.uniq = _.unique = function(array, isSorted, iteratee, context) {
-    if (array == null) return [];
-    if (!_.isBoolean(isSorted)) {
-      context = iteratee;
-      iteratee = isSorted;
-      isSorted = false;
-    }
-    if (iteratee != null) iteratee = _.iteratee(iteratee, context);
-    var result = [];
-    var seen = [];
-    for (var i = 0, length = array.length; i < length; i++) {
-      var value = array[i];
-      if (isSorted) {
-        if (!i || seen !== value) result.push(value);
-        seen = value;
-      } else if (iteratee) {
-        var computed = iteratee(value, i, array);
-        if (_.indexOf(seen, computed) < 0) {
-          seen.push(computed);
-          result.push(value);
-        }
-      } else if (_.indexOf(result, value) < 0) {
-        result.push(value);
-      }
-    }
-    return result;
-  };
-
-  // Produce an array that contains the union: each distinct element from all of
-  // the passed-in arrays.
-  _.union = function() {
-    return _.uniq(flatten(arguments, true, true, []));
-  };
-
-  // Produce an array that contains every item shared between all the
-  // passed-in arrays.
-  _.intersection = function(array) {
-    if (array == null) return [];
-    var result = [];
-    var argsLength = arguments.length;
-    for (var i = 0, length = array.length; i < length; i++) {
-      var item = array[i];
-      if (_.contains(result, item)) continue;
-      for (var j = 1; j < argsLength; j++) {
-        if (!_.contains(arguments[j], item)) break;
-      }
-      if (j === argsLength) result.push(item);
-    }
-    return result;
-  };
-
-  // Take the difference between one array and a number of other arrays.
-  // Only the elements present in just the first array will remain.
-  _.difference = function(array) {
-    var rest = flatten(slice.call(arguments, 1), true, true, []);
-    return _.filter(array, function(value){
-      return !_.contains(rest, value);
-    });
-  };
-
-  // Zip together multiple lists into a single array -- elements that share
-  // an index go together.
-  _.zip = function(array) {
-    if (array == null) return [];
-    var length = _.max(arguments, 'length').length;
-    var results = Array(length);
-    for (var i = 0; i < length; i++) {
-      results[i] = _.pluck(arguments, i);
-    }
-    return results;
-  };
-
-  // Converts lists into objects. Pass either a single array of `[key, value]`
-  // pairs, or two parallel arrays of the same length -- one of keys, and one of
-  // the corresponding values.
-  _.object = function(list, values) {
-    if (list == null) return {};
-    var result = {};
-    for (var i = 0, length = list.length; i < length; i++) {
-      if (values) {
-        result[list[i]] = values[i];
-      } else {
-        result[list[i][0]] = list[i][1];
-      }
-    }
-    return result;
-  };
-
-  // Return the position of the first occurrence of an item in an array,
-  // or -1 if the item is not included in the array.
-  // If the array is large and already in sort order, pass `true`
-  // for **isSorted** to use binary search.
-  _.indexOf = function(array, item, isSorted) {
-    if (array == null) return -1;
-    var i = 0, length = array.length;
-    if (isSorted) {
-      if (typeof isSorted == 'number') {
-        i = isSorted < 0 ? Math.max(0, length + isSorted) : isSorted;
-      } else {
-        i = _.sortedIndex(array, item);
-        return array[i] === item ? i : -1;
-      }
-    }
-    for (; i < length; i++) if (array[i] === item) return i;
-    return -1;
-  };
-
-  _.lastIndexOf = function(array, item, from) {
-    if (array == null) return -1;
-    var idx = array.length;
-    if (typeof from == 'number') {
-      idx = from < 0 ? idx + from + 1 : Math.min(idx, from + 1);
-    }
-    while (--idx >= 0) if (array[idx] === item) return idx;
-    return -1;
-  };
-
-  // Generate an integer Array containing an arithmetic progression. A port of
-  // the native Python `range()` function. See
-  // [the Python documentation](http://docs.python.org/library/functions.html#range).
-  _.range = function(start, stop, step) {
-    if (arguments.length <= 1) {
-      stop = start || 0;
-      start = 0;
-    }
-    step = step || 1;
-
-    var length = Math.max(Math.ceil((stop - start) / step), 0);
-    var range = Array(length);
-
-    for (var idx = 0; idx < length; idx++, start += step) {
-      range[idx] = start;
-    }
-
-    return range;
-  };
-
-  // Function (ahem) Functions
-  // ------------------
-
-  // Reusable constructor function for prototype setting.
-  var Ctor = function(){};
-
-  // Create a function bound to a given object (assigning `this`, and arguments,
-  // optionally). Delegates to **ECMAScript 5**'s native `Function.bind` if
-  // available.
-  _.bind = function(func, context) {
-    var args, bound;
-    if (nativeBind && func.bind === nativeBind) return nativeBind.apply(func, slice.call(arguments, 1));
-    if (!_.isFunction(func)) throw new TypeError('Bind must be called on a function');
-    args = slice.call(arguments, 2);
-    bound = function() {
-      if (!(this instanceof bound)) return func.apply(context, args.concat(slice.call(arguments)));
-      Ctor.prototype = func.prototype;
-      var self = new Ctor;
-      Ctor.prototype = null;
-      var result = func.apply(self, args.concat(slice.call(arguments)));
-      if (_.isObject(result)) return result;
-      return self;
-    };
-    return bound;
-  };
-
-  // Partially apply a function by creating a version that has had some of its
-  // arguments pre-filled, without changing its dynamic `this` context. _ acts
-  // as a placeholder, allowing any combination of arguments to be pre-filled.
-  _.partial = function(func) {
-    var boundArgs = slice.call(arguments, 1);
-    return function() {
-      var position = 0;
-      var args = boundArgs.slice();
-      for (var i = 0, length = args.length; i < length; i++) {
-        if (args[i] === _) args[i] = arguments[position++];
-      }
-      while (position < arguments.length) args.push(arguments[position++]);
-      return func.apply(this, args);
-    };
-  };
-
-  // Bind a number of an object's methods to that object. Remaining arguments
-  // are the method names to be bound. Useful for ensuring that all callbacks
-  // defined on an object belong to it.
-  _.bindAll = function(obj) {
-    var i, length = arguments.length, key;
-    if (length <= 1) throw new Error('bindAll must be passed function names');
-    for (i = 1; i < length; i++) {
-      key = arguments[i];
-      obj[key] = _.bind(obj[key], obj);
-    }
-    return obj;
-  };
-
-  // Memoize an expensive function by storing its results.
-  _.memoize = function(func, hasher) {
-    var memoize = function(key) {
-      var cache = memoize.cache;
-      var address = hasher ? hasher.apply(this, arguments) : key;
-      if (!_.has(cache, address)) cache[address] = func.apply(this, arguments);
-      return cache[address];
-    };
-    memoize.cache = {};
-    return memoize;
-  };
-
-  // Delays a function for the given number of milliseconds, and then calls
-  // it with the arguments supplied.
-  _.delay = function(func, wait) {
-    var args = slice.call(arguments, 2);
-    return setTimeout(function(){
-      return func.apply(null, args);
-    }, wait);
-  };
-
-  // Defers a function, scheduling it to run after the current call stack has
-  // cleared.
-  _.defer = function(func) {
-    return _.delay.apply(_, [func, 1].concat(slice.call(arguments, 1)));
-  };
-
-  // Returns a function, that, when invoked, will only be triggered at most once
-  // during a given window of time. Normally, the throttled function will run
-  // as much as it can, without ever going more than once per `wait` duration;
-  // but if you'd like to disable the execution on the leading edge, pass
-  // `{leading: false}`. To disable execution on the trailing edge, ditto.
-  _.throttle = function(func, wait, options) {
-    var context, args, result;
-    var timeout = null;
-    var previous = 0;
-    if (!options) options = {};
-    var later = function() {
-      previous = options.leading === false ? 0 : _.now();
-      timeout = null;
-      result = func.apply(context, args);
-      if (!timeout) context = args = null;
-    };
-    return function() {
-      var now = _.now();
-      if (!previous && options.leading === false) previous = now;
-      var remaining = wait - (now - previous);
-      context = this;
-      args = arguments;
-      if (remaining <= 0 || remaining > wait) {
-        clearTimeout(timeout);
-        timeout = null;
-        previous = now;
-        result = func.apply(context, args);
-        if (!timeout) context = args = null;
-      } else if (!timeout && options.trailing !== false) {
-        timeout = setTimeout(later, remaining);
-      }
-      return result;
-    };
-  };
-
-  // Returns a function, that, as long as it continues to be invoked, will not
-  // be triggered. The function will be called after it stops being called for
-  // N milliseconds. If `immediate` is passed, trigger the function on the
-  // leading edge, instead of the trailing.
-  _.debounce = function(func, wait, immediate) {
-    var timeout, args, context, timestamp, result;
-
-    var later = function() {
-      var last = _.now() - timestamp;
-
-      if (last < wait && last > 0) {
-        timeout = setTimeout(later, wait - last);
-      } else {
-        timeout = null;
-        if (!immediate) {
-          result = func.apply(context, args);
-          if (!timeout) context = args = null;
-        }
-      }
-    };
-
-    return function() {
-      context = this;
-      args = arguments;
-      timestamp = _.now();
-      var callNow = immediate && !timeout;
-      if (!timeout) timeout = setTimeout(later, wait);
-      if (callNow) {
-        result = func.apply(context, args);
-        context = args = null;
-      }
-
-      return result;
-    };
-  };
-
-  // Returns the first function passed as an argument to the second,
-  // allowing you to adjust arguments, run code before and after, and
-  // conditionally execute the original function.
-  _.wrap = function(func, wrapper) {
-    return _.partial(wrapper, func);
-  };
-
-  // Returns a negated version of the passed-in predicate.
-  _.negate = function(predicate) {
-    return function() {
-      return !predicate.apply(this, arguments);
-    };
-  };
-
-  // Returns a function that is the composition of a list of functions, each
-  // consuming the return value of the function that follows.
-  _.compose = function() {
-    var args = arguments;
-    var start = args.length - 1;
-    return function() {
-      var i = start;
-      var result = args[start].apply(this, arguments);
-      while (i--) result = args[i].call(this, result);
-      return result;
-    };
-  };
-
-  // Returns a function that will only be executed after being called N times.
-  _.after = function(times, func) {
-    return function() {
-      if (--times < 1) {
-        return func.apply(this, arguments);
-      }
-    };
-  };
-
-  // Returns a function that will only be executed before being called N times.
-  _.before = function(times, func) {
-    var memo;
-    return function() {
-      if (--times > 0) {
-        memo = func.apply(this, arguments);
-      } else {
-        func = null;
-      }
-      return memo;
-    };
-  };
-
-  // Returns a function that will be executed at most one time, no matter how
-  // often you call it. Useful for lazy initialization.
-  _.once = _.partial(_.before, 2);
-
-  // Object Functions
-  // ----------------
-
-  // Retrieve the names of an object's properties.
-  // Delegates to **ECMAScript 5**'s native `Object.keys`
-  _.keys = function(obj) {
-    if (!_.isObject(obj)) return [];
-    if (nativeKeys) return nativeKeys(obj);
-    var keys = [];
-    for (var key in obj) if (_.has(obj, key)) keys.push(key);
-    return keys;
-  };
-
-  // Retrieve the values of an object's properties.
-  _.values = function(obj) {
-    var keys = _.keys(obj);
-    var length = keys.length;
-    var values = Array(length);
-    for (var i = 0; i < length; i++) {
-      values[i] = obj[keys[i]];
-    }
-    return values;
-  };
-
-  // Convert an object into a list of `[key, value]` pairs.
-  _.pairs = function(obj) {
-    var keys = _.keys(obj);
-    var length = keys.length;
-    var pairs = Array(length);
-    for (var i = 0; i < length; i++) {
-      pairs[i] = [keys[i], obj[keys[i]]];
-    }
-    return pairs;
-  };
-
-  // Invert the keys and values of an object. The values must be serializable.
-  _.invert = function(obj) {
-    var result = {};
-    var keys = _.keys(obj);
-    for (var i = 0, length = keys.length; i < length; i++) {
-      result[obj[keys[i]]] = keys[i];
-    }
-    return result;
-  };
-
-  // Return a sorted list of the function names available on the object.
-  // Aliased as `methods`
-  _.functions = _.methods = function(obj) {
-    var names = [];
-    for (var key in obj) {
-      if (_.isFunction(obj[key])) names.push(key);
-    }
-    return names.sort();
-  };
-
-  // Extend a given object with all the properties in passed-in object(s).
-  _.extend = function(obj) {
-    if (!_.isObject(obj)) return obj;
-    var source, prop;
-    for (var i = 1, length = arguments.length; i < length; i++) {
-      source = arguments[i];
-      for (prop in source) {
-        if (hasOwnProperty.call(source, prop)) {
-            obj[prop] = source[prop];
-        }
-      }
-    }
-    return obj;
-  };
-
-  // Return a copy of the object only containing the whitelisted properties.
-  _.pick = function(obj, iteratee, context) {
-    var result = {}, key;
-    if (obj == null) return result;
-    if (_.isFunction(iteratee)) {
-      iteratee = createCallback(iteratee, context);
-      for (key in obj) {
-        var value = obj[key];
-        if (iteratee(value, key, obj)) result[key] = value;
-      }
-    } else {
-      var keys = concat.apply([], slice.call(arguments, 1));
-      obj = new Object(obj);
-      for (var i = 0, length = keys.length; i < length; i++) {
-        key = keys[i];
-        if (key in obj) result[key] = obj[key];
-      }
-    }
-    return result;
-  };
-
-   // Return a copy of the object without the blacklisted properties.
-  _.omit = function(obj, iteratee, context) {
-    if (_.isFunction(iteratee)) {
-      iteratee = _.negate(iteratee);
-    } else {
-      var keys = _.map(concat.apply([], slice.call(arguments, 1)), String);
-      iteratee = function(value, key) {
-        return !_.contains(keys, key);
-      };
-    }
-    return _.pick(obj, iteratee, context);
-  };
-
-  // Fill in a given object with default properties.
-  _.defaults = function(obj) {
-    if (!_.isObject(obj)) return obj;
-    for (var i = 1, length = arguments.length; i < length; i++) {
-      var source = arguments[i];
-      for (var prop in source) {
-        if (obj[prop] === void 0) obj[prop] = source[prop];
-      }
-    }
-    return obj;
-  };
-
-  // Create a (shallow-cloned) duplicate of an object.
-  _.clone = function(obj) {
-    if (!_.isObject(obj)) return obj;
-    return _.isArray(obj) ? obj.slice() : _.extend({}, obj);
-  };
-
-  // Invokes interceptor with the obj, and then returns obj.
-  // The primary purpose of this method is to "tap into" a method chain, in
-  // order to perform operations on intermediate results within the chain.
-  _.tap = function(obj, interceptor) {
-    interceptor(obj);
-    return obj;
-  };
-
-  // Internal recursive comparison function for `isEqual`.
-  var eq = function(a, b, aStack, bStack) {
-    // Identical objects are equal. `0 === -0`, but they aren't identical.
-    // See the [Harmony `egal` proposal](http://wiki.ecmascript.org/doku.php?id=harmony:egal).
-    if (a === b) return a !== 0 || 1 / a === 1 / b;
-    // A strict comparison is necessary because `null == undefined`.
-    if (a == null || b == null) return a === b;
-    // Unwrap any wrapped objects.
-    if (a instanceof _) a = a._wrapped;
-    if (b instanceof _) b = b._wrapped;
-    // Compare `[[Class]]` names.
-    var className = toString.call(a);
-    if (className !== toString.call(b)) return false;
-    switch (className) {
-      // Strings, numbers, regular expressions, dates, and booleans are compared by value.
-      case '[object RegExp]':
-      // RegExps are coerced to strings for comparison (Note: '' + /a/i === '/a/i')
-      case '[object String]':
-        // Primitives and their corresponding object wrappers are equivalent; thus, `"5"` is
-        // equivalent to `new String("5")`.
-        return '' + a === '' + b;
-      case '[object Number]':
-        // `NaN`s are equivalent, but non-reflexive.
-        // Object(NaN) is equivalent to NaN
-        if (+a !== +a) return +b !== +b;
-        // An `egal` comparison is performed for other numeric values.
-        return +a === 0 ? 1 / +a === 1 / b : +a === +b;
-      case '[object Date]':
-      case '[object Boolean]':
-        // Coerce dates and booleans to numeric primitive values. Dates are compared by their
-        // millisecond representations. Note that invalid dates with millisecond representations
-        // of `NaN` are not equivalent.
-        return +a === +b;
-    }
-    if (typeof a != 'object' || typeof b != 'object') return false;
-    // Assume equality for cyclic structures. The algorithm for detecting cyclic
-    // structures is adapted from ES 5.1 section 15.12.3, abstract operation `JO`.
-    var length = aStack.length;
-    while (length--) {
-      // Linear search. Performance is inversely proportional to the number of
-      // unique nested structures.
-      if (aStack[length] === a) return bStack[length] === b;
-    }
-    // Objects with different constructors are not equivalent, but `Object`s
-    // from different frames are.
-    var aCtor = a.constructor, bCtor = b.constructor;
-    if (
-      aCtor !== bCtor &&
-      // Handle Object.create(x) cases
-      'constructor' in a && 'constructor' in b &&
-      !(_.isFunction(aCtor) && aCtor instanceof aCtor &&
-        _.isFunction(bCtor) && bCtor instanceof bCtor)
-    ) {
-      return false;
-    }
-    // Add the first object to the stack of traversed objects.
-    aStack.push(a);
-    bStack.push(b);
-    var size, result;
-    // Recursively compare objects and arrays.
-    if (className === '[object Array]') {
-      // Compare array lengths to determine if a deep comparison is necessary.
-      size = a.length;
-      result = size === b.length;
-      if (result) {
-        // Deep compare the contents, ignoring non-numeric properties.
-        while (size--) {
-          if (!(result = eq(a[size], b[size], aStack, bStack))) break;
-        }
-      }
-    } else {
-      // Deep compare objects.
-      var keys = _.keys(a), key;
-      size = keys.length;
-      // Ensure that both objects contain the same number of properties before comparing deep equality.
-      result = _.keys(b).length === size;
-      if (result) {
-        while (size--) {
-          // Deep compare each member
-          key = keys[size];
-          if (!(result = _.has(b, key) && eq(a[key], b[key], aStack, bStack))) break;
-        }
-      }
-    }
-    // Remove the first object from the stack of traversed objects.
-    aStack.pop();
-    bStack.pop();
-    return result;
-  };
-
-  // Perform a deep comparison to check if two objects are equal.
-  _.isEqual = function(a, b) {
-    return eq(a, b, [], []);
-  };
-
-  // Is a given array, string, or object empty?
-  // An "empty" object has no enumerable own-properties.
-  _.isEmpty = function(obj) {
-    if (obj == null) return true;
-    if (_.isArray(obj) || _.isString(obj) || _.isArguments(obj)) return obj.length === 0;
-    for (var key in obj) if (_.has(obj, key)) return false;
-    return true;
-  };
-
-  // Is a given value a DOM element?
-  _.isElement = function(obj) {
-    return !!(obj && obj.nodeType === 1);
-  };
-
-  // Is a given value an array?
-  // Delegates to ECMA5's native Array.isArray
-  _.isArray = nativeIsArray || function(obj) {
-    return toString.call(obj) === '[object Array]';
-  };
-
-  // Is a given variable an object?
-  _.isObject = function(obj) {
-    var type = typeof obj;
-    return type === 'function' || type === 'object' && !!obj;
-  };
-
-  // Add some isType methods: isArguments, isFunction, isString, isNumber, isDate, isRegExp.
-  _.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp'], function(name) {
-    _['is' + name] = function(obj) {
-      return toString.call(obj) === '[object ' + name + ']';
-    };
-  });
-
-  // Define a fallback version of the method in browsers (ahem, IE), where
-  // there isn't any inspectable "Arguments" type.
-  if (!_.isArguments(arguments)) {
-    _.isArguments = function(obj) {
-      return _.has(obj, 'callee');
-    };
-  }
-
-  // Optimize `isFunction` if appropriate. Work around an IE 11 bug.
-  if (typeof /./ !== 'function') {
-    _.isFunction = function(obj) {
-      return typeof obj == 'function' || false;
-    };
-  }
-
-  // Is a given object a finite number?
-  _.isFinite = function(obj) {
-    return isFinite(obj) && !isNaN(parseFloat(obj));
-  };
-
-  // Is the given value `NaN`? (NaN is the only number which does not equal itself).
-  _.isNaN = function(obj) {
-    return _.isNumber(obj) && obj !== +obj;
-  };
-
-  // Is a given value a boolean?
-  _.isBoolean = function(obj) {
-    return obj === true || obj === false || toString.call(obj) === '[object Boolean]';
-  };
-
-  // Is a given value equal to null?
-  _.isNull = function(obj) {
-    return obj === null;
-  };
-
-  // Is a given variable undefined?
-  _.isUndefined = function(obj) {
-    return obj === void 0;
-  };
-
-  // Shortcut function for checking if an object has a given property directly
-  // on itself (in other words, not on a prototype).
-  _.has = function(obj, key) {
-    return obj != null && hasOwnProperty.call(obj, key);
-  };
-
-  // Utility Functions
-  // -----------------
-
-  // Run Underscore.js in *noConflict* mode, returning the `_` variable to its
-  // previous owner. Returns a reference to the Underscore object.
-  _.noConflict = function() {
-    root._ = previousUnderscore;
-    return this;
-  };
-
-  // Keep the identity function around for default iteratees.
-  _.identity = function(value) {
-    return value;
-  };
-
-  _.constant = function(value) {
-    return function() {
-      return value;
-    };
-  };
-
-  _.noop = function(){};
-
-  _.property = function(key) {
-    return function(obj) {
-      return obj[key];
-    };
-  };
-
-  // Returns a predicate for checking whether an object has a given set of `key:value` pairs.
-  _.matches = function(attrs) {
-    var pairs = _.pairs(attrs), length = pairs.length;
-    return function(obj) {
-      if (obj == null) return !length;
-      obj = new Object(obj);
-      for (var i = 0; i < length; i++) {
-        var pair = pairs[i], key = pair[0];
-        if (pair[1] !== obj[key] || !(key in obj)) return false;
-      }
-      return true;
-    };
-  };
-
-  // Run a function **n** times.
-  _.times = function(n, iteratee, context) {
-    var accum = Array(Math.max(0, n));
-    iteratee = createCallback(iteratee, context, 1);
-    for (var i = 0; i < n; i++) accum[i] = iteratee(i);
-    return accum;
-  };
-
-  // Return a random integer between min and max (inclusive).
-  _.random = function(min, max) {
-    if (max == null) {
-      max = min;
-      min = 0;
-    }
-    return min + Math.floor(Math.random() * (max - min + 1));
-  };
-
-  // A (possibly faster) way to get the current timestamp as an integer.
-  _.now = Date.now || function() {
-    return new Date().getTime();
-  };
-
-   // List of HTML entities for escaping.
-  var escapeMap = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#x27;',
-    '`': '&#x60;'
-  };
-  var unescapeMap = _.invert(escapeMap);
-
-  // Functions for escaping and unescaping strings to/from HTML interpolation.
-  var createEscaper = function(map) {
-    var escaper = function(match) {
-      return map[match];
-    };
-    // Regexes for identifying a key that needs to be escaped
-    var source = '(?:' + _.keys(map).join('|') + ')';
-    var testRegexp = RegExp(source);
-    var replaceRegexp = RegExp(source, 'g');
-    return function(string) {
-      string = string == null ? '' : '' + string;
-      return testRegexp.test(string) ? string.replace(replaceRegexp, escaper) : string;
-    };
-  };
-  _.escape = createEscaper(escapeMap);
-  _.unescape = createEscaper(unescapeMap);
-
-  // If the value of the named `property` is a function then invoke it with the
-  // `object` as context; otherwise, return it.
-  _.result = function(object, property) {
-    if (object == null) return void 0;
-    var value = object[property];
-    return _.isFunction(value) ? object[property]() : value;
-  };
-
-  // Generate a unique integer id (unique within the entire client session).
-  // Useful for temporary DOM ids.
-  var idCounter = 0;
-  _.uniqueId = function(prefix) {
-    var id = ++idCounter + '';
-    return prefix ? prefix + id : id;
-  };
-
-  // By default, Underscore uses ERB-style template delimiters, change the
-  // following template settings to use alternative delimiters.
-  _.templateSettings = {
-    evaluate    : /<%([\s\S]+?)%>/g,
-    interpolate : /<%=([\s\S]+?)%>/g,
-    escape      : /<%-([\s\S]+?)%>/g
-  };
-
-  // When customizing `templateSettings`, if you don't want to define an
-  // interpolation, evaluation or escaping regex, we need one that is
-  // guaranteed not to match.
-  var noMatch = /(.)^/;
-
-  // Certain characters need to be escaped so that they can be put into a
-  // string literal.
-  var escapes = {
-    "'":      "'",
-    '\\':     '\\',
-    '\r':     'r',
-    '\n':     'n',
-    '\u2028': 'u2028',
-    '\u2029': 'u2029'
-  };
-
-  var escaper = /\\|'|\r|\n|\u2028|\u2029/g;
-
-  var escapeChar = function(match) {
-    return '\\' + escapes[match];
-  };
-
-  // JavaScript micro-templating, similar to John Resig's implementation.
-  // Underscore templating handles arbitrary delimiters, preserves whitespace,
-  // and correctly escapes quotes within interpolated code.
-  // NB: `oldSettings` only exists for backwards compatibility.
-  _.template = function(text, settings, oldSettings) {
-    if (!settings && oldSettings) settings = oldSettings;
-    settings = _.defaults({}, settings, _.templateSettings);
-
-    // Combine delimiters into one regular expression via alternation.
-    var matcher = RegExp([
-      (settings.escape || noMatch).source,
-      (settings.interpolate || noMatch).source,
-      (settings.evaluate || noMatch).source
-    ].join('|') + '|$', 'g');
-
-    // Compile the template source, escaping string literals appropriately.
-    var index = 0;
-    var source = "__p+='";
-    text.replace(matcher, function(match, escape, interpolate, evaluate, offset) {
-      source += text.slice(index, offset).replace(escaper, escapeChar);
-      index = offset + match.length;
-
-      if (escape) {
-        source += "'+\n((__t=(" + escape + "))==null?'':_.escape(__t))+\n'";
-      } else if (interpolate) {
-        source += "'+\n((__t=(" + interpolate + "))==null?'':__t)+\n'";
-      } else if (evaluate) {
-        source += "';\n" + evaluate + "\n__p+='";
-      }
-
-      // Adobe VMs need the match returned to produce the correct offest.
-      return match;
-    });
-    source += "';\n";
-
-    // If a variable is not specified, place data values in local scope.
-    if (!settings.variable) source = 'with(obj||{}){\n' + source + '}\n';
-
-    source = "var __t,__p='',__j=Array.prototype.join," +
-      "print=function(){__p+=__j.call(arguments,'');};\n" +
-      source + 'return __p;\n';
-
-    try {
-      var render = new Function(settings.variable || 'obj', '_', source);
-    } catch (e) {
-      e.source = source;
-      throw e;
-    }
-
-    var template = function(data) {
-      return render.call(this, data, _);
-    };
-
-    // Provide the compiled source as a convenience for precompilation.
-    var argument = settings.variable || 'obj';
-    template.source = 'function(' + argument + '){\n' + source + '}';
-
-    return template;
-  };
-
-  // Add a "chain" function. Start chaining a wrapped Underscore object.
-  _.chain = function(obj) {
-    var instance = _(obj);
-    instance._chain = true;
-    return instance;
-  };
-
-  // OOP
-  // ---------------
-  // If Underscore is called as a function, it returns a wrapped object that
-  // can be used OO-style. This wrapper holds altered versions of all the
-  // underscore functions. Wrapped objects may be chained.
-
-  // Helper function to continue chaining intermediate results.
-  var result = function(obj) {
-    return this._chain ? _(obj).chain() : obj;
-  };
-
-  // Add your own custom functions to the Underscore object.
-  _.mixin = function(obj) {
-    _.each(_.functions(obj), function(name) {
-      var func = _[name] = obj[name];
-      _.prototype[name] = function() {
-        var args = [this._wrapped];
-        push.apply(args, arguments);
-        return result.call(this, func.apply(_, args));
-      };
-    });
-  };
-
-  // Add all of the Underscore functions to the wrapper object.
-  _.mixin(_);
-
-  // Add all mutator Array functions to the wrapper.
-  _.each(['pop', 'push', 'reverse', 'shift', 'sort', 'splice', 'unshift'], function(name) {
-    var method = ArrayProto[name];
-    _.prototype[name] = function() {
-      var obj = this._wrapped;
-      method.apply(obj, arguments);
-      if ((name === 'shift' || name === 'splice') && obj.length === 0) delete obj[0];
-      return result.call(this, obj);
-    };
-  });
-
-  // Add all accessor Array functions to the wrapper.
-  _.each(['concat', 'join', 'slice'], function(name) {
-    var method = ArrayProto[name];
-    _.prototype[name] = function() {
-      return result.call(this, method.apply(this._wrapped, arguments));
-    };
-  });
-
-  // Extracts the result from a wrapped and chained object.
-  _.prototype.value = function() {
-    return this._wrapped;
-  };
-
-  // AMD registration happens at the end for compatibility with AMD loaders
-  // that may not enforce next-turn semantics on modules. Even though general
-  // practice for AMD registration is to be anonymous, underscore registers
-  // as a named module because, like jQuery, it is a base library that is
-  // popular enough to be bundled in a third party lib, but not be part of
-  // an AMD load request. Those cases could generate an error when an
-  // anonymous define() is called outside of a loader request.
-  if (typeof define === 'function' && define.amd) {
-    define('underscore', [], function() {
-      return _;
-    });
-  }
-}.call(this));
-
-},{}],23:[function(require,module,exports){
-var glMatrix = require('./src/gl-matrix.js');
-
-window.vec3 = glMatrix.vec3;
-window.vec4 = glMatrix.vec4;
-window.mat3 = glMatrix.mat3;
-window.mat4 = glMatrix.mat4;
-window.quat = glMatrix.quat;
-
-var core = require('./src/core.js');
-window.derive = core.derive;
-window.copy = core.copy;
-
-var geo = require('./src/geom.js');
-window.geom = geo;
-var tracer = require('./src/trace.js');
-window.BackboneTrace = tracer.backboneTrace;
-var sym = require('./src/symmetry.js');
-window.Assembly = sym.Assembly;
-window.SymGenerator = sym.SymGenerator;
-var mol = require('./src/mol.js');
-window.mol = mol.mol;
-var io = require('./src/io.js');
-window.io = io.io;
-
-var vertAssoc = require('./src/vert-assoc.js');
-window.AtomVertexAssoc = vertAssoc.AtomVertexAssoc;
-window.TraceVertexAssoc = vertAssoc.TraceVertexAssoc;
-
-var bufferAlloc = require('./src/buffer-allocators.js');
-window.PoolAllocator = bufferAlloc.PoolAllocator;
-
-var VertexArrayBase = require('./src/vertex-array-base.js');
-window.VertexArrayBase = VertexArrayBase.VertexArrayBase; 
-
-var IndexedVertexArray = require('./src/indexed-vertex-array.js');
-window.IndexedVertexArray =  IndexedVertexArray.IndexedVertexArray;
-
-var VertexArray = require('./src/vertex-array.js');
-window.VertexArray = VertexArray.VertexArray; 
-
-var chain  = require('./src/chain-data.js');
-window.MeshChainData = chain.MeshChainData;
-window.LineChainData = chain.LineChainData;
-
-var geom = require('./src/geom-builders.js');
-window.TubeProfile = geom.TubeProfile;
-window.ProtoSphere = geom.ProtoSphere;
-window.ProtoCylinder = geom.ProtoCylinder;
-
-
-var scene = require('./src/scene.js');
-window.UniqueObjectIdPool = scene.UniqueObjectIdPool;
-window.MeshGeom = scene.MeshGeom;
-window.LineGeom = scene.LineGeom;
-window.Range = scene.Range;
-
-var render = require('./src/render.js');
-window.render = render;
-
-var shade = require('./src/shade.js');
-window.rgb = shade.rgb;
-window.forceRGB= shade.forceRGB;
-window.color = shade.color;
-window.interpolateColor = shade.interpolateColor;
-
-var cam = require('./src/cam.js');
-window.Cam = cam.Cam;
-var shaders = require('./src/shaders.js');
-window.shaders = shaders.shaders;
-
-var FrameBuffer = require('./src/framebuffer.js');
-window.FrameBuffer = FrameBuffer.FrameBuffer;
-
-var slab = require('./src/slab.js');
-window.AutoSlab = slab.AutoSlab;
-
-require('./src/animation.js');
-
-var pv = require('./src/viewer.js');
-module.exports = pv;
-
-},{"./src/animation.js":24,"./src/buffer-allocators.js":25,"./src/cam.js":26,"./src/chain-data.js":27,"./src/core.js":28,"./src/framebuffer.js":29,"./src/geom-builders.js":30,"./src/geom.js":31,"./src/gl-matrix.js":32,"./src/indexed-vertex-array.js":33,"./src/io.js":34,"./src/mol.js":35,"./src/render.js":36,"./src/scene.js":37,"./src/shade.js":38,"./src/shaders.js":39,"./src/slab.js":40,"./src/symmetry.js":41,"./src/trace.js":42,"./src/vert-assoc.js":43,"./src/vertex-array-base.js":44,"./src/vertex-array.js":45,"./src/viewer.js":46}],24:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-(function(exports) {
-"use strict";
-
-// base for all animations, e.g. position transitions, slerping etc.
-function Animation(from, to, duration) {
-  this._from = from;
-  this._to = to;
-  this._duration = duration;
-  this._left = duration;
-  this._start = Date.now();
-  this._looping = false;
-  this._finished = false;
-}
-
-Animation.prototype.setLooping = function(looping) {
-  this._looping = looping;
-};
-
-Animation.prototype.step = function() {
-  var now = Date.now();
-  var elapsed = now - this._start;
-  var t;
-  if (this._duration === 0) {
-    t = 1.0;
-  } else {
-    if (this._looping) {
-      var times = Math.floor(elapsed/this._duration);
-      t = (elapsed - times * this._duration)/this._duration;
-    } else {
-      elapsed = Math.min(this._duration, elapsed);
-      t = elapsed/this._duration;
-      this._finished = t === 1.0;
-    }
-  }
-  return this._setTo(t);
-};
-
-Animation.prototype._setTo = function(t) {
-  var smoothInterval = (1 - Math.cos(t * Math.PI ) ) / 2;
-  this._current = this._from * (1-smoothInterval) + this._to * smoothInterval;
-  return this._current;
-};
-
-Animation.prototype.finished = function() {
-  return this._finished;
-};
-
-
-
-function Move(from, to, duration) {
-  Animation.prototype.constructor.call(this, vec3.clone(from), 
-                                       vec3.clone(to), duration);
-  this._current = vec3.clone(from);
-}
-
-derive(Move, Animation);
-
-Move.prototype._setTo = function(t) {
-  var smoothInterval = (1 - Math.cos(t * Math.PI ) ) / 2;
-  vec3.lerp(this._current, this._from, this._to, smoothInterval);
-  return this._current;
-};
-
-function Rotate(initialRotation, destinationRotation, duration) {
-  var initial = mat3.create();
-  var to = mat3.create();
-  mat3.fromMat4(initial, initialRotation);
-  mat3.fromMat4(to, destinationRotation);
-  var initialQuat = quat.create();
-  var toQuat = quat.create();
-  quat.fromMat3(initialQuat, initial);
-  quat.fromMat3(toQuat, to);
-  this._current = mat3.create();
-  Animation.prototype.constructor.call(this, initialQuat, toQuat, duration);
-}
-
-derive(Rotate, Animation);
-
-Rotate.prototype._setTo = (function() {
-  var quatRot = quat.create();
-  
-  return function(t) {
-    quat.slerp(quatRot, this._from, this._to, t);
-    mat3.fromQuat(this._current, quatRot);
-    return this._current;
-  };
-})();
-
-function RockAndRoll(rotation, axis, duration) {
-  var initial = mat3.create();
-  mat3.fromMat4(initial, rotation);
-  Animation.prototype.constructor.call(this, initial, null, duration);
-  this._axis = vec3.clone(axis);
-  this.setLooping(true);
-  this._current = mat3.create();
-}
-
-derive(RockAndRoll, Animation);
-
-RockAndRoll.prototype._setTo = (function() {
-  var axisRot = mat3.create();
-  return function(t) {
-    var angle = 0.2 * Math.sin(2 * t * Math.PI);
-    geom.axisRotation(axisRot, this._axis, angle);
-    mat3.mul(this._current, this._from, axisRot);
-    return this._current;
-  };
-})();
-
-exports.Move = Move;
-exports.Rotate = Rotate;
-exports.RockAndRoll = RockAndRoll;
-exports.Animation = Animation;
-return true;
-})(this);
-
-},{}],25:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-(function(exports) {
-"use strict";
-
-// contains classes for two kinds of typed array allocation schemes. 
-// PoolAllocator stores every typed array allocation in a list and tries
-// to reuse unused buffers whenever possible. The NativeAllocator just
-// news the typed arrays every time they are used.
-function PoolAllocator(bufferType) {
-  this._freeArrays = [];
-  this._bufferType = bufferType;
-}
-
-PoolAllocator.prototype.request = function(requestedLength) {
-  var bestIndex = -1;
-  var bestLength = null;
-  for (var i = 0; i < this._freeArrays.length; ++i) {
-    var free = this._freeArrays[i];
-    var length = free.length;
-    if (length >= requestedLength && 
-        (bestLength === null || length < bestLength)) {
-      bestLength = length;
-      bestIndex = i;
-    }
-  }
-  if (bestIndex !== -1) {
-    var result = this._freeArrays[bestIndex];
-    this._freeArrays.splice(bestIndex, 1);
-    return result;
-  }
-  return new this._bufferType(requestedLength);
-
-};
-
-PoolAllocator.prototype.release = function(buffer) {
-  this._freeArrays.push(buffer);
-};
-
-function NativeAllocator(bufferType) {
-  this._bufferType = bufferType;
-}
-
-NativeAllocator.prototype.request = function(length) {
-  return new this._bufferType(length);
-};
-
-NativeAllocator.prototype.release = function(buffer) {
-};
-
-exports.PoolAllocator = PoolAllocator;
-exports.NativeAllocator = NativeAllocator;
-
-return true;
-})(this);
-
-},{}],26:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-(function(exports) {
-
-"use strict";
-
-// A camera, providing us with a view into the 3D worlds. Handles projection,
-// and modelview matrices and controls the global render parameters such as
-  // shader and fog.
-function Cam(gl) {
-  this._projection = mat4.create();
-  this._camModelView = mat4.create();
-    this._modelView = mat4.create();
-  this._rotation = mat4.create();
-  this._translation = mat4.create();
-  this._near = 0.10;
-  this._far = 4000.0;
-  this._fogNear = -5;
-  this._fogFar = 50;
-  this._fog = true;
-  this._fovY = Math.PI * 45.0 / 180.0;
-  this._paramsChanged = false;
-  this._fogColor = vec3.fromValues(1, 1, 1);
-  this._outlineColor = vec3.fromValues(0.1, 0.1, 0.1);
-  this._center = vec3.create();
-  this._zoom = 50;
-  this._updateMat = true;
-  this._gl = gl;
-  this._currentShader = null;
-  this.setViewportSize(gl.viewportWidth, gl.viewportHeight);
-}
-
-
-Cam.prototype.setRotation = function(rot) {
-  if (rot.length === 16) {
-    mat4.copy(this._rotation, rot);
-  } else {
-    this._rotation[0] = rot[0];
-    this._rotation[1] = rot[1];
-    this._rotation[2] = rot[2];
-    this._rotation[3] = 0.0;
-    this._rotation[4] = rot[3];
-    this._rotation[5] = rot[4];
-    this._rotation[6] = rot[5];
-    this._rotation[7] = 0.0;
-    this._rotation[8] = rot[6];
-    this._rotation[9] = rot[7];
-    this._rotation[10] = rot[8];
-    this._rotation[11] = 0.0;
-    this._rotation[12] = 0.0;
-    this._rotation[13] = 0.0;
-    this._rotation[14] = 0.0;
-    this._rotation[15] = 1.0;
-  }
-  this._updateMat = true;
-};
-
-// returns the 3 main axes of the current camera rotation
-Cam.prototype.mainAxes = function() {
-  return[
-    vec3.fromValues(this._rotation[0], this._rotation[4], this._rotation[8]),
-    vec3.fromValues(this._rotation[1], this._rotation[5], this._rotation[9]),
-    vec3.fromValues(this._rotation[2], this._rotation[6], this._rotation[10])
-  ];
-};
-
-Cam.prototype.fieldOfViewY = function() {
-  return this._fovY;
-};
-
-Cam.prototype.aspectRatio = function() {
-  return this._width / this._height;
-};
-
-Cam.prototype.rotation = function() {
-  return this._rotation;
-};
-
-Cam.prototype._updateIfRequired = function() {
-  if (!this._updateMat) {
-    return false;
-  }
-  mat4.identity(this._camModelView);
-  mat4.translate(this._camModelView, this._camModelView,
-                  [ -this._center[0], -this._center[1], -this._center[2] ]);
-  mat4.mul(this._camModelView, this._rotation, this._camModelView);
-  mat4.identity(this._translation);
-  mat4.translate(this._translation, this._translation, [ 0, 0, -this._zoom ]);
-  mat4.mul(this._camModelView, this._translation, this._camModelView);
-  mat4.identity(this._projection);
-  mat4.perspective(this._projection, this._fovY, this._width / this._height,
-                    this._near, this._far);
-  this._updateMat = false;
-  return true;
-};
-
-Cam.prototype.setViewportSize = function(width, height) {
-  this._updateMat = true;
-  this._width = width;
-  this._height = height;
-};
-
-Cam.prototype.setCenter = function(point) {
-  this._updateMat = true;
-  vec3.copy(this._center, point);
-};
-
-Cam.prototype.fog = function(value) {
-  if (value !== undefined) {
-    this._fog = value;
-    this._paramsChanged = true;
-  }
-  return this._fog;
-};
-
-Cam.prototype.rotateZ = (function() {
-    var tm = mat4.create();
-    return function(delta) {
-      mat4.identity(tm);
-    this._updateMat = true;
-    mat4.rotate(tm, tm, delta, [ 0, 0, 1 ]);
-    mat4.mul(this._rotation, tm, this._rotation);
-  };
-})();
-
-Cam.prototype.rotateX= (function(){
-  var tm = mat4.create();
-  return function(delta) {
-    mat4.identity(tm);
-  this._updateMat = true;
-  mat4.rotate(tm, tm, delta, [ 1, 0, 0 ]);
-  mat4.mul(this._rotation, tm, this._rotation);
-  };
-})();
-
-Cam.prototype.rotateY = (function() {
-  var tm = mat4.create();
-  return function(delta) {
-    mat4.identity(tm);
-  this._updateMat = true;
-  mat4.rotate(tm, tm, delta, [ 0, 1, 0 ]);
-  mat4.mul(this._rotation, tm, this._rotation);
-  };
-})();
-
-Cam.prototype.panX = function(delta) {
-  return this.panXY(delta, 0);
-};
-
-Cam.prototype.panY = function(delta) {
-  return this.panXY(0, delta);
-};
-
-Cam.prototype.panXY = (function () {
-  var invertRotation = mat4.create();
-  var newCenter = vec3.create();
-  return function(deltaX, deltaY) {
-    mat4.transpose(invertRotation, this._rotation);
-  this._updateMat = true;
-  vec3.set(newCenter, -deltaX, deltaY, 0);
-  vec3.transformMat4(newCenter, newCenter, invertRotation);
-  vec3.add(newCenter, newCenter, this._center);
-  this.setCenter(newCenter);
-  };
-})();
-
-Cam.prototype.nearOffset = function() { return this._near; };
-Cam.prototype.farOffset = function() { return this._far; };
-
-
-Cam.prototype.setNearFar = function(near, far) {
-  if (near === this._near && far === this._far) {
-    return;
-  }
-  this._near = near;
-  this._far = far;
-  this._updateMat = true;
-};
-
-Cam.prototype.setFogNearFar = function(near, far) {
-  this._fogNear = near;
-  this._fogFar = far;
-  this._updateMat = true;
-};
-
-Cam.prototype.setZoom = function(zoom) {
-  this._updateMat = true;
-  this._zoom = zoom;
-  return this._zoom;
-};
-
-Cam.prototype.zoom = function(delta) {
-  if (delta === undefined) {
-    return this._zoom;
-  }
-  this._updateMat = true;
-  var factor = 1.0 + delta * 0.1;
-  this._zoom = Math.min(1000.0, Math.max(2.0, factor * this._zoom));
-  return this._zoom;
-};
-
-Cam.prototype.center = function() {
-  return this._center;
-};
-
-Cam.prototype.currentShader = function() {
-  return this._currentShader;
-};
-
-// sets all OpenGL parameters to make this camera active.
-//
-// among other things, it sets the follow uniforms on the shader:
-//
-// - projectionMat   - the 4x4 projection matrix
-// - modelviewMat    - the 4x4 modelview matrix
-// - rotationMat     - the rotational part of the modelview matrix
-// - fog             - boolean indicating whether fog is enabled
-// - fogNear,fogFar  - near and far offset of fog
-// - fogColor        - the color of fog
-// - outlineColor    - color to be used for the outline shader
-Cam.prototype.bind = function(shader, additionalTransform) {
-  var shaderChanged = false;
-  if (this._currentShader !== shader) {
-    this._currentShader = shader;
-    this._gl.useProgram(shader);
-    shaderChanged = true;
-  }
-  shaderChanged = this._updateIfRequired() || shaderChanged;
-
-  // in case additionalTransform is given, multiply camera model view
-  // with the matrix and use the product as the model view matrix. 
-  if (additionalTransform) {
-    mat4.mul(this._modelView, this._camModelView, additionalTransform);
-    this._gl.uniformMatrix4fv(shader.modelview, false, this._modelView);
-  } else {
-    this._gl.uniformMatrix4fv(shader.modelview, false, this._camModelView);
-  }
-
-  // in case nothing changed, there is no need for us to set any other
-  // parameters.
-  if (!shaderChanged && !this._paramsChanged) {
-    return;
-  }
-  this._paramsChanged = false;
-  this._gl.uniformMatrix4fv(shader.projection, false, this._projection);
-  if (shader.rotation) {
-    this._gl.uniformMatrix4fv(shader.rotation, false, this._rotation);
-  }
-  this._gl.uniform1i(shader.fog, this._fog);
-  var nearOffset =   this._zoom ;
-  this._gl.uniform1f(shader.fogFar, this._fogFar + nearOffset);
-  this._gl.uniform1f(shader.fogNear, this._fogNear + nearOffset);
-  this._gl.uniform3fv(shader.fogColor, this._fogColor);
-  this._gl.uniform3fv(shader.outlineColor, this._outlineColor);
-};
-
-exports.Cam = Cam;
-})(this);
-
-
-},{}],27:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
-(function(exports) {
-"use strict";
-
-// LineChainData and MeshChainData are two internal classes that add molecule-
-// specific attributes and functionality to the IndexedVertexArray and 
-// VertexArray classes.
-function LineChainData(chain, gl, numVerts, float32Allocator) {
-  VertexArray.prototype.constructor.call(this, gl, numVerts, float32Allocator);
-  this._chain = chain;
-}
-
-derive(LineChainData, VertexArray);
-
-LineChainData.prototype.chain = function() { return this._chain; };
-
-
-function MeshChainData(chain, gl, numVerts, numIndices, float32Allocator, 
-                       uint16Allocator) {
-  IndexedVertexArray.prototype.constructor.call(this, gl, numVerts, numIndices, 
-                                                float32Allocator, 
-                                                uint16Allocator);
-  this._chain = chain;
-}
-
-MeshChainData.prototype.chain = function() { return this._chain; };
-
-LineChainData.prototype.drawSymmetryRelated = function(cam, shader, transforms) {
-  this.bind(shader);
-  for (var i = 0; i < transforms.length; ++i) {
-    this._gl.uniform1i(shader.symId, i);
-    cam.bind(shader, transforms[i]);
-    this.draw();
-  }
-  this.releaseAttribs(shader);
-};
-
-derive(MeshChainData, IndexedVertexArray);
-
-MeshChainData.prototype.drawSymmetryRelated = LineChainData.prototype.drawSymmetryRelated;
-exports.LineChainData = LineChainData;
-exports.MeshChainData = MeshChainData;
-
-return true;
-})(this);
-
-},{}],28:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-// 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to 
-// deal in the Software without restriction, including without limitation the 
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or 
-// sell copies of the Software, and to permit persons to whom the Software is 
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in 
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
-// DEALINGS IN THE SOFTWARE.
-
-(function(exports) {
-"use strict";
-
-exports.derive = function(subclass, baseclass) {
-  for (var prop in baseclass.prototype) {
-    subclass.prototype[prop] = baseclass.prototype[prop];
-  }
-};
-
-exports.copy = function(src) {
-  src = src || {};
-  var cloned = {};
-  for (var prop in src) {
-    if (src.hasOwnProperty(prop)) {
-      cloned[prop] = src[prop];
-    }
-  }
-  return cloned;
-};
-
-function defaultComp(lhs, rhs) {
-  return lhs < rhs;
-}
-
-// returns the index into the values array for the first value identical to
-// *value*.
-exports.binarySearch = function(values, value, comp) {
-  if (values.length === 0) {
-    return -1;
-  }
-  comp = comp || defaultComp;
-  var low = 0, high = values.length;
-  var mid  = (low + high) >> 1;
-  while (true) {
-    var midValue = values[mid];
-    if (comp(value, midValue)) {
-      high = mid;
-    } else if (comp(midValue, value)) {
-      low = mid;
-    } else {
-      return mid;
-    }
-    var newMid  = (low + high) >> 1;
-    if (newMid === mid) {
-      return -1;
-    }
-    mid = newMid;
-  }
-  return -1;
-};
-
-// returns the index of the first item in the list whose value is 
-// larger or equal than *value*.
-exports.indexFirstLargerEqualThan = function(values, value, comp) {
-  comp = comp || defaultComp;
-  if (values.length === 0 || comp(value, values[0])) {
-    return -1;
-  }
-  var low = 0, high = values.length;
-  var mid = (low + high) >> 1;
-  while (true) {
-    var midValue = values[mid];
-    if (comp(value, midValue)) {
-      // there might be other values larger than value with an index
-      // lower than mid.
-      high = mid;
-    } else if (comp(midValue, value)) {
-      low = mid;
-    } else {
-      high = mid+1;
-    }
-    var newMid  = (low + high) >> 1;
-    if (newMid === mid) {
-      return mid;
-    }
-    mid = newMid;
-  }
-};
-
-exports.indexLastSmallerThan = function(values, value, comp) {
-  comp = comp || defaultComp;
-  if (values.length === 0 || comp(values[values.length-1], value)) {
-    return values.length-1;
-  }
-  var low = 0, high = values.length;
-  var mid = (low + high) >> 1;
-  var cnt = 0;
-  while (true) {
-    var midValue = values[mid];
-    if (comp(value, midValue)) {
-      high = mid;
-    } else {
-      low = mid;
-    }
-    var newMid  = (low + high) >> 1;
-    if (newMid === mid) {
-      return mid-1;
-    }
-    mid = newMid;
-  }
-};
-
-exports.indexLastSmallerEqualThan = function(values, value, comp) {
-  comp = comp || defaultComp;
-  if (values.length === 0 || comp(values[values.length-1], value)) {
-    return values.length-1;
-  }
-  if (comp(value, values[0])) {
-    return -1;
-  }
-  var low = 0, high = values.length;
-  var mid = (low + high) >> 1;
-  var cnt = 0;
-  while (true) {
-    var midValue = values[mid];
-    if (comp(value, midValue)) {
-      high = mid;
-    } else {
-      low = mid;
-    }
-    var newMid  = (low + high) >> 1;
-    if (newMid === mid) {
-      return mid;
-    }
-    mid = newMid;
-  }
-};
-
-return true;
-})(this);
-
-},{}],29:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-(function(exports) {
-
-"use strict";
-
-function FrameBuffer(gl, options) {
-  this._width = options.width;
-  this._height = options.height;
-  this._colorBufferWidth = this._width;
-  this._colorBufferHeight = this._height;
-  this._gl = gl;
-  this._colorHandle = this._gl.createFramebuffer();
-  this._gl.bindFramebuffer(this._gl.FRAMEBUFFER, this._colorHandle);
-  this._depthHandle = this._gl.createRenderbuffer();
-  this._gl.bindRenderbuffer(this._gl.RENDERBUFFER, this._depthHandle);
-  this._gl.renderbufferStorage(this._gl.RENDERBUFFER, this._gl.DEPTH_COMPONENT16,
-                               this._width, this._height);
-  this._gl.framebufferRenderbuffer(this._gl.FRAMEBUFFER,
-                                     this._gl.DEPTH_ATTACHMENT,
-                                     this._gl.RENDERBUFFER, this._depthHandle);
-  this._colorTexture = this._gl.createTexture();
-  this._initColorBuffer();
-}
-
-FrameBuffer.prototype.width = function() { return this._width; };
-FrameBuffer.prototype.height = function() { return this._height; };
-
-FrameBuffer.prototype.bind = function() {
-  this._gl.bindFramebuffer(this._gl.FRAMEBUFFER, this._colorHandle);
-  this._gl.bindRenderbuffer(this._gl.RENDERBUFFER, this._depthHandle);
-  if (this._colorBufferWidth !== this._width ||
-      this._colorBufferHeight !== this._height) {
-    this._resizeBuffers();
-  }
-  this._gl.viewport(0, 0, this._width, this._height);
-};
-
-FrameBuffer.prototype._initColorBuffer = function() {
-  this.bind();
-  var gl = this._gl;
-  gl.bindTexture(gl.TEXTURE_2D, this._colorTexture);
-  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, this._width, this._height, 0, 
-                gl.RGBA, gl.UNSIGNED_BYTE, null);
-  gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
-                                gl.TEXTURE_2D, this._colorTexture, 0);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  gl.bindTexture(gl.TEXTURE_2D, null);
-
-  this.release();
-};
-
-FrameBuffer.prototype._resizeBuffers = function() {
-  this._gl.bindRenderbuffer(this._gl.RENDERBUFFER, this._depthHandle);
-  this._gl.renderbufferStorage(this._gl.RENDERBUFFER, this._gl.DEPTH_COMPONENT16,
-                               this._width, this._height);
-  this._gl.bindTexture(this._gl.TEXTURE_2D, this._colorTexture);
-  this._gl.texImage2D(this._gl.TEXTURE_2D, 0, this._gl.RGBA, this._width,
-                      this._height, 0, this._gl.RGBA, this._gl.UNSIGNED_BYTE, 
-                      null);
-  this._gl.framebufferTexture2D(this._gl.FRAMEBUFFER, this._gl.COLOR_ATTACHMENT0,
-                                this._gl.TEXTURE_2D, this._colorTexture, 0);
-  this._gl.framebufferRenderbuffer(this._gl.FRAMEBUFFER,
-                                     this._gl.DEPTH_ATTACHMENT,
-                                     this._gl.RENDERBUFFER, this._depthHandle);
-  this._gl.bindTexture(this._gl.TEXTURE_2D, null);
-  this._colorBufferWidth = this._width;
-  this._colorBufferHeight = this._height;
-};
-
-FrameBuffer.prototype.resize = function(width, height) {
-  this._width = width;
-  this._height = height;
-};
-
-FrameBuffer.prototype.release = function() {
-  this._gl.bindFramebuffer(this._gl.FRAMEBUFFER, null);
-  this._gl.bindRenderbuffer(this._gl.RENDERBUFFER, null);
-};
-
-exports.FrameBuffer = FrameBuffer;
-
-})(this);
-
-
-},{}],30:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
-// contains classes for constructing geometry for spheres, cylinders and tubes.
-(function(exports) {
-"use strict";
-
-function ProtoSphere(stacks, arcs) {
-  this._arcs = arcs;
-  this._stacks = stacks;
-  this._indices = new Uint16Array(3 * arcs * stacks * 2);
-  this._verts = new Float32Array(3 * arcs * stacks);
-  var vert_angle = Math.PI / (stacks - 1);
-  var horz_angle = Math.PI * 2.0 / arcs;
-  var i, j;
-  for (i = 0; i < this._stacks; ++i) {
-    var radius = Math.sin(i * vert_angle);
-    var z = Math.cos(i * vert_angle);
-    for (j = 0; j < this._arcs; ++j) {
-      var nx = radius * Math.cos(j * horz_angle);
-      var ny = radius * Math.sin(j * horz_angle);
-      this._verts[3 * (j + i * this._arcs)] = nx;
-      this._verts[3 * (j + i * this._arcs) + 1] = ny;
-      this._verts[3 * (j + i * this._arcs) + 2] = z;
-    }
-  }
-  var index = 0;
-  for (i = 0; i < this._stacks - 1; ++i) {
-    for (j = 0; j < this._arcs; ++j) {
-      this._indices[index] = (i) * this._arcs + j;
-      this._indices[index + 1] = (i) * this._arcs + ((j + 1) % this._arcs);
-      this._indices[index + 2] = (i + 1) * this._arcs + j;
-
-      index += 3;
-
-      this._indices[index] = (i) * this._arcs + ((j + 1) % this._arcs);
-      this._indices[index + 1] =
-          (i + 1) * this._arcs + ((j + 1) % this._arcs);
-      this._indices[index + 2] = (i + 1) * this._arcs + j;
-      index += 3;
-    }
-  }
-}
-
-ProtoSphere.prototype.addTransformed = (function() {
-
-    var pos = vec3.create(), normal = vec3.create();
-
-    return function(va, center, radius, color, objId) {
-      var baseIndex = va.numVerts();
-      for (var i = 0; i < this._stacks * this._arcs; ++i) {
-        vec3.set(normal, this._verts[3 * i], this._verts[3 * i + 1],
-                this._verts[3 * i + 2]);
-        vec3.copy(pos, normal);
-        vec3.scale(pos, pos, radius);
-        vec3.add(pos, pos, center);
-        va.addVertex(pos, normal, color, objId);
-      }
-      for (i = 0; i < this._indices.length / 3; ++i) {
-        va.addTriangle(baseIndex + this._indices[i * 3],
-                       baseIndex + this._indices[i * 3 + 1],
-                       baseIndex + this._indices[i * 3 + 2]);
-      }
-  };
-})();
-
-ProtoSphere.prototype.numIndices = function() {
-  return this._indices.length;
-};
-
-ProtoSphere.prototype.numVerts = function() {
-  return this._verts.length / 3;
-};
-
-// A tube profile is a cross-section of a tube, e.g. a circle or a 'flat'
-// square.
-// They are used to control the style of helices, strands and coils for the
-// cartoon render mode.
-function TubeProfile(points, num, strength) {
-  var interpolated =
-      geom.catmullRomSpline(points, points.length / 3, num, strength, true);
-
-  this._indices = new Uint16Array(interpolated.length * 2);
-  this._verts = interpolated;
-  this._normals = new Float32Array(interpolated.length);
-  this._arcs = interpolated.length / 3;
-
-  var normal = vec3.create(), pos = vec3.create();
-
-  for (var i = 0; i < this._arcs; ++i) {
-    var i_prev = i === 0 ? this._arcs - 1 : i - 1;
-    var i_next = i === this._arcs - 1 ? 0 : i + 1;
-    normal[0] = this._verts[3 * i_next + 1] - this._verts[3 * i_prev + 1];
-    normal[1] = this._verts[3 * i_prev] - this._verts[3 * i_next];
-    vec3.normalize(normal, normal);
-    this._normals[3 * i] = normal[0];
-    this._normals[3 * i + 1] = normal[1];
-    this._normals[3 * i + 2] = normal[2];
-  }
-
-  for (i = 0; i < this._arcs; ++i) {
-    this._indices[6 * i] = i;
-    this._indices[6 * i + 1] = i + this._arcs;
-    this._indices[6 * i + 2] = ((i + 1) % this._arcs) + this._arcs;
-    this._indices[6 * i + 3] = i;
-    this._indices[6 * i + 4] = ((i + 1) % this._arcs) + this._arcs;
-    this._indices[6 * i + 5] = (i + 1) % this._arcs;
-  }
-}
-
-TubeProfile.prototype.addTransformed = (function() {
-  var pos = vec3.create(), normal = vec3.create();
-  return function(vertArray, center, radius, rotation, color, first, offset, objId) {
-    var baseIndex = vertArray.numVerts() - this._arcs;
-    for (var i = 0; i < this._arcs; ++i) {
-      vec3.set(pos, radius * this._verts[3 * i], 
-               radius * this._verts[3 * i + 1], 0.0);
-      vec3.transformMat3(pos, pos, rotation);
-      vec3.add(pos, pos, center);
-      vec3.set(normal, this._normals[3 * i], this._normals[3 * i + 1], 0.0);
-      vec3.transformMat3(normal, normal, rotation);
-      vertArray.addVertex(pos, normal, color, objId);
-    }
-    if (first) {
-      return;
-    }
-    if (offset === 0) {
-      // that's what happens most of the time, thus is has been optimized.
-      for (i = 0; i < this._indices.length / 3; ++i) {
-        vertArray.addTriangle(baseIndex + this._indices[i * 3],
-                              baseIndex + this._indices[i * 3 + 1],
-                              baseIndex + this._indices[i * 3 + 2]);
-      }
-      return;
-    }
-    for (i = 0; i < this._arcs; ++i) {
-      vertArray.addTriangle(baseIndex + ((i + offset) % this._arcs),
-                            baseIndex + i + this._arcs,
-                            baseIndex + ((i + 1) % this._arcs) + this._arcs);
-      vertArray.addTriangle(baseIndex + (i + offset) % this._arcs,
-                            baseIndex + ((i + 1) % this._arcs) + this._arcs,
-                            baseIndex + ((i + 1 + offset) % this._arcs));
-    }
-
-  };
-})();
-
-function ProtoCylinder(arcs) {
-  this._arcs = arcs;
-  this._indices = new Uint16Array(arcs * 3 * 2);
-  this._verts = new Float32Array(3 * arcs * 2);
-  this._normals = new Float32Array(3 * arcs * 2);
-  var angle = Math.PI * 2 / this._arcs;
-  for (var i = 0; i < this._arcs; ++i) {
-    var cos_angle = Math.cos(angle * i);
-    var sin_angle = Math.sin(angle * i);
-    this._verts[3 * i] = cos_angle;
-    this._verts[3 * i + 1] = sin_angle;
-    this._verts[3 * i + 2] = -0.5;
-    this._verts[3 * arcs + 3 * i] = cos_angle;
-    this._verts[3 * arcs + 3 * i + 1] = sin_angle;
-    this._verts[3 * arcs + 3 * i + 2] = 0.5;
-    this._normals[3 * i] = cos_angle;
-    this._normals[3 * i + 1] = sin_angle;
-    this._normals[3 * arcs + 3 * i] = cos_angle;
-    this._normals[3 * arcs + 3 * i + 1] = sin_angle;
-  }
-  for (i = 0; i < this._arcs; ++i) {
-    this._indices[6 * i] = (i) % this._arcs;
-    this._indices[6 * i + 1] = arcs + ((i + 1) % this._arcs);
-    this._indices[6 * i + 2] = (i + 1) % this._arcs;
-
-    this._indices[6 * i + 3] = (i) % this._arcs;
-    this._indices[6 * i + 4] = arcs + ((i) % this._arcs);
-    this._indices[6 * i + 5] = arcs + ((i + 1) % this._arcs);
-  }
-}
-
-ProtoCylinder.prototype.numVerts = function() {
-  return this._verts.length / 3;
-};
-
-ProtoCylinder.prototype.numIndices = function() {
-  return this._indices.length;
-};
-
-ProtoCylinder.prototype.addTransformed = (function() {
-  var pos = vec3.create(), normal = vec3.create();
-  return function(va, center, length, radius, rotation, colorOne, colorTwo,
-                  idOne, idTwo) {
-    var baseIndex = va.numVerts();
-    for (var i = 0; i < 2 * this._arcs; ++i) {
-      vec3.set(pos, radius * this._verts[3 * i], radius * this._verts[3 * i + 1],
-              length * this._verts[3 * i + 2]);
-      vec3.transformMat3(pos, pos, rotation);
-      vec3.add(pos, pos, center);
-      vec3.set(normal, this._normals[3 * i], this._normals[3 * i + 1],
-              this._normals[3 * i + 2]);
-      vec3.transformMat3(normal, normal, rotation);
-      var objId = i < this._arcs ? idOne : idTwo;
-      va.addVertex(pos, normal, i < this._arcs ? colorOne : colorTwo, objId);
-    }
-    for (i = 0; i < this._indices.length / 3; ++i) {
-      va.addTriangle(baseIndex + this._indices[i * 3],
-                     baseIndex + this._indices[i * 3 + 1],
-                     baseIndex + this._indices[i * 3 + 2]);
-    }
-  };
-})();
-
-exports.TubeProfile = TubeProfile;
-exports.ProtoSphere = ProtoSphere;
-exports.ProtoCylinder = ProtoCylinder;
-
-})(this);
-
-
-},{}],31:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-var geom = (function() {
-  "use strict";
-  // calculates the signed angle of vectors a and b with respect to
-  // the reference normal c. 
-var signedAngle = (function() {
-    var tmp = vec3.create();
-    return function(a, b, c) {
-      vec3.cross(tmp, a, b);
-    return Math.atan2(vec3.dot(tmp, c), vec3.dot(a, b));
-  };
-})();
-
-// calculate a vector orthogonal to an input vector
-var ortho = (function() {
-  var tmp = vec3.create();
-  return function(out, vec) {
-    vec3.copy(tmp, vec);
-  if (Math.abs(vec[0]) < Math.abs(vec[1])) {
-    if (Math.abs(vec[0]) < Math.abs(vec[2])) {
-      tmp[0] += 1;
-    } else {
-      tmp[2] += 1;
-    }
-  } else {
-    if (Math.abs(vec[1]) < Math.abs(vec[2])) {
-      tmp[1] += 1;
-    } else {
-      tmp[2] += 1;
-    }
-  }
-  return vec3.cross(out, vec, tmp);
-  };
-})();
-
-// assumes that axis is normalized. don't expect  to get meaningful
-// results when it's not
-var axisRotation = function(out, axis, angle) {
-  var sa = Math.sin(angle), ca = Math.cos(angle), x = axis[0], y = axis[1],
-      z = axis[2], xx = x * x, xy = x * y, xz = x * z, yy = y * y, yz = y * z,
-      zz = z * z;
-
-  out[0] = xx + ca - xx * ca;
-  out[1] = xy - ca * xy - sa * z;
-  out[2] = xz - ca * xz + sa * y;
-  out[3] = xy - ca * xy + sa * z;
-  out[4] = yy + ca - ca * yy;
-  out[5] = yz - ca * yz - sa * x;
-  out[6] = xz - ca * xz - sa * y;
-  out[7] = yz - ca * yz + sa * x;
-  out[8] = zz + ca - ca * zz;
-  return out;
-};
-
-var cubicHermiteInterpolate = (function() {
-  var p = vec3.create();
-  return function(out, p_k, m_k, p_kp1, m_kp1, t, index) {
-    var tt = t * t;
-  var three_minus_two_t = 3.0 - 2.0 * t;
-  var h01 = tt * three_minus_two_t;
-  var h00 = 1.0 - h01;
-  var h10 = tt * (t - 2.0) + t;
-  var h11 = tt * (t - 1.0);
-  vec3.copy(p, p_k);
-  vec3.scale(p, p, h00);
-  vec3.scaleAndAdd(p, p, m_k, h10);
-  vec3.scaleAndAdd(p, p, p_kp1, h01);
-  vec3.scaleAndAdd(p, p, m_kp1, h11);
-  out[index] = p[0];
-  out[index + 1] = p[1];
-  out[index + 2] = p[2];
-};
-})();
-
-// returns the number of interpolation points for the given settings
-function catmullRomSplineNumPoints(numPoints, subdiv, circular) {
-  if (circular) {
-    return numPoints * subdiv;
-  } else {
-    return subdiv * (numPoints - 1) + 1;
-  }
-}
-// interpolates the given list of points (stored in a Float32Array) with a
-// Cubic Hermite spline using the method of Catmull and Rom to calculate the
-// tangents.
-function catmullRomSpline(points, numPoints, num, strength, circular,
-                          float32BufferPool) {
-  circular = circular || false;
-  strength = strength || 0.5;
-  var out = null;
-  var outLength = catmullRomSplineNumPoints(numPoints, num, circular) * 3;
-  if (float32BufferPool) {
-    out = float32BufferPool.request(outLength);
-  } else {
-    out = new Float32Array(outLength);
-  }
-  var index = 0;
-  var delta_t = 1.0 / num;
-  var m_k = vec3.create(), m_kp1 = vec3.create(); // tangents at k-1 and k+1
-  var p_k = vec3.create(), p_kp1 = vec3.create(), p_kp2 = vec3.create(),
-      p_kp3 = vec3.create();
-  var i, j, e;
-
-  vec3.set(p_kp1, points[0], points[1], points[2]);
-  vec3.set(p_kp2, points[3], points[4], points[5]);
-  if (circular) {
-    vec3.set(p_k, points[points.length - 3], points[points.length - 2],
-             points[points.length - 1]);
-    vec3.sub(m_k, p_kp2, p_k);
-    vec3.scale(m_k, m_k, strength);
-  } else {
-    vec3.set(p_k, points[0], points[1], points[2]);
-    vec3.set(m_k, 0, 0, 0);
-  }
-  for (i = 1, e = numPoints - 1; i < e; ++i) {
-    vec3.set(p_kp3, points[3 * (i + 1)], points[3 * (i + 1) + 1],
-             points[3 * (i + 1) + 2]);
-    vec3.sub(m_kp1, p_kp3, p_kp1);
-    vec3.scale(m_kp1, m_kp1, strength);
-    for (j = 0; j < num; ++j) {
-      cubicHermiteInterpolate(out, p_kp1, m_k, p_kp2, m_kp1, delta_t * j,
-                              index);
-      index += 3;
-    }
-    vec3.copy(p_k, p_kp1);
-    vec3.copy(p_kp1, p_kp2);
-    vec3.copy(p_kp2, p_kp3);
-    vec3.copy(m_k, m_kp1);
-  }
-  if (circular) {
-    vec3.set(p_kp3, points[0], points[1], points[3]);
-    vec3.sub(m_kp1, p_kp3, p_kp1);
-    vec3.scale(m_kp1, m_kp1, strength);
-  } else {
-    vec3.set(m_kp1, 0, 0, 0);
-  }
-  for (j = 0; j < num; ++j) {
-    cubicHermiteInterpolate(out, p_kp1, m_k, p_kp2, m_kp1, delta_t * j, index);
-    index += 3;
-  }
-  if (!circular) {
-    out[index] = points[3 * (numPoints - 1) + 0];
-    out[index + 1] = points[3 * (numPoints - 1) + 1];
-    out[index + 2] = points[3 * (numPoints - 1) + 2];
-    return out;
-  }
-  vec3.copy(p_k, p_kp1);
-  vec3.copy(p_kp1, p_kp2);
-  vec3.copy(p_kp2, p_kp3);
-  vec3.copy(m_k, m_kp1);
-  vec3.set(p_kp3, points[3], points[4], points[5]);
-  vec3.sub(m_kp1, p_kp3, p_kp1);
-  vec3.scale(m_kp1, m_kp1, strength);
-  for (j = 0; j < num; ++j) {
-    cubicHermiteInterpolate(out, p_kp1, m_k, p_kp2, m_kp1, delta_t * j, index);
-    index += 3;
-  }
-  return out;
-}
-
-function Sphere(center, radius) {
-  this._center = center || vec3.create();
-  this._radius = radius || 1.0;
-}
-
-Sphere.prototype.center = function() { return this._center; };
-Sphere.prototype.radius = function() { return this._radius; };
-
-return {
-  signedAngle : signedAngle,
-  axisRotation : axisRotation,
-  ortho : ortho,
-  catmullRomSpline : catmullRomSpline,
-  cubicHermiteInterpolate : cubicHermiteInterpolate,
-  catmullRomSplineNumPoints : catmullRomSplineNumPoints,
-  Sphere : Sphere
-};
-
-})();
-
-if(typeof(exports) !== 'undefined') {
-  module.exports = geom;
-}
-
-},{}],32:[function(require,module,exports){
-/**
- * @fileoverview gl-matrix - High performance matrix and vector operations
- * @author Brandon Jones
- * @author Colin MacKenzie IV
- * @version 2.2.0
- */
-
-/* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
-
-  * Redistributions of source code must retain the above copyright notice, this
-    list of conditions and the following disclaimer.
-  * Redistributions in binary form must reproduce the above copyright notice,
-    this list of conditions and the following disclaimer in the documentation 
-    and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
-
-
-(function(_global) {
-  "use strict";
-
-  var shim = {};
-  if (typeof(exports) === 'undefined') {
-    if(typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
-      shim.exports = {};
-      define(function() {
-        return shim.exports;
-      });
-    } else {
-      // gl-matrix lives in a browser, define its namespaces in global
-      shim.exports = typeof(window) !== 'undefined' ? window : _global;
-    }
-  }
-  else {
-    // gl-matrix lives in commonjs, define its namespaces in exports
-    shim.exports = exports;
-  }
-
-  (function(exports) {
-    /* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
-
-  * Redistributions of source code must retain the above copyright notice, this
-    list of conditions and the following disclaimer.
-  * Redistributions in binary form must reproduce the above copyright notice,
-    this list of conditions and the following disclaimer in the documentation 
-    and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
-
-
-if(!GLMAT_EPSILON) {
-    var GLMAT_EPSILON = 0.000001;
-}
-
-if(!GLMAT_ARRAY_TYPE) {
-    var GLMAT_ARRAY_TYPE = (typeof Float32Array !== 'undefined') ? Float32Array : Array;
-}
-
-if(!GLMAT_RANDOM) {
-    var GLMAT_RANDOM = Math.random;
-}
-
-/**
- * @class Common utilities
- * @name glMatrix
- */
-var glMatrix = {};
-
-/**
- * Sets the type of array used when creating new vectors and matricies
- *
- * @param {Type} type Array type, such as Float32Array or Array
- */
-glMatrix.setMatrixArrayType = function(type) {
-    GLMAT_ARRAY_TYPE = type;
-}
-
-if(typeof(exports) !== 'undefined') {
-    exports.glMatrix = glMatrix;
-}
-;
-/* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
-
-  * Redistributions of source code must retain the above copyright notice, this
-    list of conditions and the following disclaimer.
-  * Redistributions in binary form must reproduce the above copyright notice,
-    this list of conditions and the following disclaimer in the documentation 
-    and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
-
-/* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
-
-  * Redistributions of source code must retain the above copyright notice, this
-    list of conditions and the following disclaimer.
-  * Redistributions in binary form must reproduce the above copyright notice,
-    this list of conditions and the following disclaimer in the documentation 
-    and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
-
-/**
- * @class 3 Dimensional Vector
- * @name vec3
- */
-
-var vec3 = {};
-
-/**
- * Creates a new, empty vec3
- *
- * @returns {vec3} a new 3D vector
- */
-vec3.create = function() {
-    var out = new GLMAT_ARRAY_TYPE(3);
-    out[0] = 0;
-    out[1] = 0;
-    out[2] = 0;
-    return out;
-};
-
-/**
- * Creates a new vec3 initialized with values from an existing vector
- *
- * @param {vec3} a vector to clone
- * @returns {vec3} a new 3D vector
- */
-vec3.clone = function(a) {
-    var out = new GLMAT_ARRAY_TYPE(3);
-    out[0] = a[0];
-    out[1] = a[1];
-    out[2] = a[2];
-    return out;
-};
-
-/**
- * Creates a new vec3 initialized with the given values
- *
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @returns {vec3} a new 3D vector
- */
-vec3.fromValues = function(x, y, z) {
-    var out = new GLMAT_ARRAY_TYPE(3);
-    out[0] = x;
-    out[1] = y;
-    out[2] = z;
-    return out;
-};
-
-/**
- * Copy the values from one vec3 to another
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the source vector
- * @returns {vec3} out
- */
-vec3.copy = function(out, a) {
-    out[0] = a[0];
-    out[1] = a[1];
-    out[2] = a[2];
-    return out;
-};
-
-/**
- * Set the components of a vec3 to the given values
- *
- * @param {vec3} out the receiving vector
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @returns {vec3} out
- */
-vec3.set = function(out, x, y, z) {
-    out[0] = x;
-    out[1] = y;
-    out[2] = z;
-    return out;
-};
-
-/**
- * Adds two vec3's
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @returns {vec3} out
- */
-vec3.add = function(out, a, b) {
-    out[0] = a[0] + b[0];
-    out[1] = a[1] + b[1];
-    out[2] = a[2] + b[2];
-    return out;
-};
-
-/**
- * Subtracts vector b from vector a
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @returns {vec3} out
- */
-vec3.subtract = function(out, a, b) {
-    out[0] = a[0] - b[0];
-    out[1] = a[1] - b[1];
-    out[2] = a[2] - b[2];
-    return out;
-};
-
-/**
- * Alias for {@link vec3.subtract}
- * @function
- */
-vec3.sub = vec3.subtract;
-
-/**
- * Multiplies two vec3's
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @returns {vec3} out
- */
-vec3.multiply = function(out, a, b) {
-    out[0] = a[0] * b[0];
-    out[1] = a[1] * b[1];
-    out[2] = a[2] * b[2];
-    return out;
-};
-
-/**
- * Alias for {@link vec3.multiply}
- * @function
- */
-vec3.mul = vec3.multiply;
-
-/**
- * Divides two vec3's
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @returns {vec3} out
- */
-vec3.divide = function(out, a, b) {
-    out[0] = a[0] / b[0];
-    out[1] = a[1] / b[1];
-    out[2] = a[2] / b[2];
-    return out;
-};
-
-/**
- * Alias for {@link vec3.divide}
- * @function
- */
-vec3.div = vec3.divide;
-
-/**
- * Returns the minimum of two vec3's
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @returns {vec3} out
- */
-vec3.min = function(out, a, b) {
-    out[0] = Math.min(a[0], b[0]);
-    out[1] = Math.min(a[1], b[1]);
-    out[2] = Math.min(a[2], b[2]);
-    return out;
-};
-
-/**
- * Returns the maximum of two vec3's
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @returns {vec3} out
- */
-vec3.max = function(out, a, b) {
-    out[0] = Math.max(a[0], b[0]);
-    out[1] = Math.max(a[1], b[1]);
-    out[2] = Math.max(a[2], b[2]);
-    return out;
-};
-
-/**
- * Scales a vec3 by a scalar number
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the vector to scale
- * @param {Number} b amount to scale the vector by
- * @returns {vec3} out
- */
-vec3.scale = function(out, a, b) {
-    out[0] = a[0] * b;
-    out[1] = a[1] * b;
-    out[2] = a[2] * b;
-    return out;
-};
-
-/**
- * Adds two vec3's after scaling the second operand by a scalar value
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @param {Number} scale the amount to scale b by before adding
- * @returns {vec3} out
- */
-vec3.scaleAndAdd = function(out, a, b, scale) {
-    out[0] = a[0] + (b[0] * scale);
-    out[1] = a[1] + (b[1] * scale);
-    out[2] = a[2] + (b[2] * scale);
-    return out;
-};
-
-/**
- * Calculates the euclidian distance between two vec3's
- *
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @returns {Number} distance between a and b
- */
-vec3.distance = function(a, b) {
-    var x = b[0] - a[0],
-        y = b[1] - a[1],
-        z = b[2] - a[2];
-    return Math.sqrt(x*x + y*y + z*z);
-};
-
-/**
- * Alias for {@link vec3.distance}
- * @function
- */
-vec3.dist = vec3.distance;
-
-/**
- * Calculates the squared euclidian distance between two vec3's
- *
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @returns {Number} squared distance between a and b
- */
-vec3.squaredDistance = function(a, b) {
-    var x = b[0] - a[0],
-        y = b[1] - a[1],
-        z = b[2] - a[2];
-    return x*x + y*y + z*z;
-};
-
-/**
- * Alias for {@link vec3.squaredDistance}
- * @function
- */
-vec3.sqrDist = vec3.squaredDistance;
-
-/**
- * Calculates the length of a vec3
- *
- * @param {vec3} a vector to calculate length of
- * @returns {Number} length of a
- */
-vec3.length = function (a) {
-    var x = a[0],
-        y = a[1],
-        z = a[2];
-    return Math.sqrt(x*x + y*y + z*z);
-};
-
-/**
- * Alias for {@link vec3.length}
- * @function
- */
-vec3.len = vec3.length;
-
-/**
- * Calculates the squared length of a vec3
- *
- * @param {vec3} a vector to calculate squared length of
- * @returns {Number} squared length of a
- */
-vec3.squaredLength = function (a) {
-    var x = a[0],
-        y = a[1],
-        z = a[2];
-    return x*x + y*y + z*z;
-};
-
-/**
- * Alias for {@link vec3.squaredLength}
- * @function
- */
-vec3.sqrLen = vec3.squaredLength;
-
-/**
- * Negates the components of a vec3
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a vector to negate
- * @returns {vec3} out
- */
-vec3.negate = function(out, a) {
-    out[0] = -a[0];
-    out[1] = -a[1];
-    out[2] = -a[2];
-    return out;
-};
-
-/**
- * Normalize a vec3
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a vector to normalize
- * @returns {vec3} out
- */
-vec3.normalize = function(out, a) {
-    var x = a[0],
-        y = a[1],
-        z = a[2];
-    var len = x*x + y*y + z*z;
-    if (len > 0) {
-        //TODO: evaluate use of glm_invsqrt here?
-        len = 1 / Math.sqrt(len);
-        out[0] = a[0] * len;
-        out[1] = a[1] * len;
-        out[2] = a[2] * len;
-    }
-    return out;
-};
-
-/**
- * Calculates the dot product of two vec3's
- *
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @returns {Number} dot product of a and b
- */
-vec3.dot = function (a, b) {
-    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-};
-
-/**
- * Computes the cross product of two vec3's
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @returns {vec3} out
- */
-vec3.cross = function(out, a, b) {
-    var ax = a[0], ay = a[1], az = a[2],
-        bx = b[0], by = b[1], bz = b[2];
-
-    out[0] = ay * bz - az * by;
-    out[1] = az * bx - ax * bz;
-    out[2] = ax * by - ay * bx;
-    return out;
-};
-
-/**
- * Performs a linear interpolation between two vec3's
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the first operand
- * @param {vec3} b the second operand
- * @param {Number} t interpolation amount between the two inputs
- * @returns {vec3} out
- */
-vec3.lerp = function (out, a, b, t) {
-    var ax = a[0],
-        ay = a[1],
-        az = a[2];
-    out[0] = ax + t * (b[0] - ax);
-    out[1] = ay + t * (b[1] - ay);
-    out[2] = az + t * (b[2] - az);
-    return out;
-};
-
-/**
- * Generates a random vector with the given scale
- *
- * @param {vec3} out the receiving vector
- * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
- * @returns {vec3} out
- */
-vec3.random = function (out, scale) {
-    scale = scale || 1.0;
-
-    var r = GLMAT_RANDOM() * 2.0 * Math.PI;
-    var z = (GLMAT_RANDOM() * 2.0) - 1.0;
-    var zScale = Math.sqrt(1.0-z*z) * scale;
-
-    out[0] = Math.cos(r) * zScale;
-    out[1] = Math.sin(r) * zScale;
-    out[2] = z * scale;
-    return out;
-};
-
-/**
- * Transforms the vec3 with a mat4.
- * 4th vector component is implicitly '1'
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the vector to transform
- * @param {mat4} m matrix to transform with
- * @returns {vec3} out
- */
-vec3.transformMat4 = function(out, a, m) {
-    var x = a[0], y = a[1], z = a[2];
-    out[0] = m[0] * x + m[4] * y + m[8] * z + m[12];
-    out[1] = m[1] * x + m[5] * y + m[9] * z + m[13];
-    out[2] = m[2] * x + m[6] * y + m[10] * z + m[14];
-    return out;
-};
-
-/**
- * Transforms the vec3 with a mat3.
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the vector to transform
- * @param {mat4} m the 3x3 matrix to transform with
- * @returns {vec3} out
- */
-vec3.transformMat3 = function(out, a, m) {
-    var x = a[0], y = a[1], z = a[2];
-    out[0] = x * m[0] + y * m[3] + z * m[6];
-    out[1] = x * m[1] + y * m[4] + z * m[7];
-    out[2] = x * m[2] + y * m[5] + z * m[8];
-    return out;
-};
-
-/**
- * Transforms the vec3 with a quat
- *
- * @param {vec3} out the receiving vector
- * @param {vec3} a the vector to transform
- * @param {quat} q quaternion to transform with
- * @returns {vec3} out
- */
-vec3.transformQuat = function(out, a, q) {
-    // benchmarks: http://jsperf.com/quaternion-transform-vec3-implementations
-
-    var x = a[0], y = a[1], z = a[2],
-        qx = q[0], qy = q[1], qz = q[2], qw = q[3],
-
-        // calculate quat * vec
-        ix = qw * x + qy * z - qz * y,
-        iy = qw * y + qz * x - qx * z,
-        iz = qw * z + qx * y - qy * x,
-        iw = -qx * x - qy * y - qz * z;
-
-    // calculate result * inverse quat
-    out[0] = ix * qw + iw * -qx + iy * -qz - iz * -qy;
-    out[1] = iy * qw + iw * -qy + iz * -qx - ix * -qz;
-    out[2] = iz * qw + iw * -qz + ix * -qy - iy * -qx;
-    return out;
-};
-
-/**
- * Perform some operation over an array of vec3s.
- *
- * @param {Array} a the array of vectors to iterate over
- * @param {Number} stride Number of elements between the start of each vec3. If 0 assumes tightly packed
- * @param {Number} offset Number of elements to skip at the beginning of the array
- * @param {Number} count Number of vec3s to iterate over. If 0 iterates over entire array
- * @param {Function} fn Function to call for each vector in the array
- * @param {Object} [arg] additional argument to pass to fn
- * @returns {Array} a
- * @function
- */
-vec3.forEach = (function() {
-    var vec = vec3.create();
-
-    return function(a, stride, offset, count, fn, arg) {
-        var i, l;
-        if(!stride) {
-            stride = 3;
-        }
-
-        if(!offset) {
-            offset = 0;
-        }
-        
-        if(count) {
-            l = Math.min((count * stride) + offset, a.length);
-        } else {
-            l = a.length;
-        }
-
-        for(i = offset; i < l; i += stride) {
-            vec[0] = a[i]; vec[1] = a[i+1]; vec[2] = a[i+2];
-            fn(vec, vec, arg);
-            a[i] = vec[0]; a[i+1] = vec[1]; a[i+2] = vec[2];
-        }
-        
-        return a;
-    };
-})();
-
-/**
- * Returns a string representation of a vector
- *
- * @param {vec3} vec vector to represent as a string
- * @returns {String} string representation of the vector
- */
-vec3.str = function (a) {
-    return 'vec3(' + a[0] + ', ' + a[1] + ', ' + a[2] + ')';
-};
-
-if(typeof(exports) !== 'undefined') {
-    exports.vec3 = vec3;
-}
-;
-/* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
-
-  * Redistributions of source code must retain the above copyright notice, this
-    list of conditions and the following disclaimer.
-  * Redistributions in binary form must reproduce the above copyright notice,
-    this list of conditions and the following disclaimer in the documentation 
-    and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
-
-/**
- * @class 4 Dimensional Vector
- * @name vec4
- */
-
-var vec4 = {};
-
-/**
- * Creates a new, empty vec4
- *
- * @returns {vec4} a new 4D vector
- */
-vec4.create = function() {
-    var out = new GLMAT_ARRAY_TYPE(4);
-    out[0] = 0;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 0;
-    return out;
-};
-
-/**
- * Creates a new vec4 initialized with values from an existing vector
- *
- * @param {vec4} a vector to clone
- * @returns {vec4} a new 4D vector
- */
-vec4.clone = function(a) {
-    var out = new GLMAT_ARRAY_TYPE(4);
-    out[0] = a[0];
-    out[1] = a[1];
-    out[2] = a[2];
-    out[3] = a[3];
-    return out;
-};
-
-/**
- * Creates a new vec4 initialized with the given values
- *
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @param {Number} w W component
- * @returns {vec4} a new 4D vector
- */
-vec4.fromValues = function(x, y, z, w) {
-    var out = new GLMAT_ARRAY_TYPE(4);
-    out[0] = x;
-    out[1] = y;
-    out[2] = z;
-    out[3] = w;
-    return out;
-};
-
-/**
- * Copy the values from one vec4 to another
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the source vector
- * @returns {vec4} out
- */
-vec4.copy = function(out, a) {
-    out[0] = a[0];
-    out[1] = a[1];
-    out[2] = a[2];
-    out[3] = a[3];
-    return out;
-};
-
-/**
- * Set the components of a vec4 to the given values
- *
- * @param {vec4} out the receiving vector
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @param {Number} w W component
- * @returns {vec4} out
- */
-vec4.set = function(out, x, y, z, w) {
-    out[0] = x;
-    out[1] = y;
-    out[2] = z;
-    out[3] = w;
-    return out;
-};
-
-/**
- * Adds two vec4's
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
- * @returns {vec4} out
- */
-vec4.add = function(out, a, b) {
-    out[0] = a[0] + b[0];
-    out[1] = a[1] + b[1];
-    out[2] = a[2] + b[2];
-    out[3] = a[3] + b[3];
-    return out;
-};
-
-/**
- * Subtracts vector b from vector a
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
- * @returns {vec4} out
- */
-vec4.subtract = function(out, a, b) {
-    out[0] = a[0] - b[0];
-    out[1] = a[1] - b[1];
-    out[2] = a[2] - b[2];
-    out[3] = a[3] - b[3];
-    return out;
-};
-
-/**
- * Alias for {@link vec4.subtract}
- * @function
- */
-vec4.sub = vec4.subtract;
-
-/**
- * Multiplies two vec4's
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
- * @returns {vec4} out
- */
-vec4.multiply = function(out, a, b) {
-    out[0] = a[0] * b[0];
-    out[1] = a[1] * b[1];
-    out[2] = a[2] * b[2];
-    out[3] = a[3] * b[3];
-    return out;
-};
-
-/**
- * Alias for {@link vec4.multiply}
- * @function
- */
-vec4.mul = vec4.multiply;
-
-/**
- * Divides two vec4's
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
- * @returns {vec4} out
- */
-vec4.divide = function(out, a, b) {
-    out[0] = a[0] / b[0];
-    out[1] = a[1] / b[1];
-    out[2] = a[2] / b[2];
-    out[3] = a[3] / b[3];
-    return out;
-};
-
-/**
- * Alias for {@link vec4.divide}
- * @function
- */
-vec4.div = vec4.divide;
-
-/**
- * Returns the minimum of two vec4's
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
- * @returns {vec4} out
- */
-vec4.min = function(out, a, b) {
-    out[0] = Math.min(a[0], b[0]);
-    out[1] = Math.min(a[1], b[1]);
-    out[2] = Math.min(a[2], b[2]);
-    out[3] = Math.min(a[3], b[3]);
-    return out;
-};
-
-/**
- * Returns the maximum of two vec4's
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
- * @returns {vec4} out
- */
-vec4.max = function(out, a, b) {
-    out[0] = Math.max(a[0], b[0]);
-    out[1] = Math.max(a[1], b[1]);
-    out[2] = Math.max(a[2], b[2]);
-    out[3] = Math.max(a[3], b[3]);
-    return out;
-};
-
-/**
- * Scales a vec4 by a scalar number
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the vector to scale
- * @param {Number} b amount to scale the vector by
- * @returns {vec4} out
- */
-vec4.scale = function(out, a, b) {
-    out[0] = a[0] * b;
-    out[1] = a[1] * b;
-    out[2] = a[2] * b;
-    out[3] = a[3] * b;
-    return out;
-};
-
-/**
- * Adds two vec4's after scaling the second operand by a scalar value
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
- * @param {Number} scale the amount to scale b by before adding
- * @returns {vec4} out
- */
-vec4.scaleAndAdd = function(out, a, b, scale) {
-    out[0] = a[0] + (b[0] * scale);
-    out[1] = a[1] + (b[1] * scale);
-    out[2] = a[2] + (b[2] * scale);
-    out[3] = a[3] + (b[3] * scale);
-    return out;
-};
-
-/**
- * Calculates the euclidian distance between two vec4's
- *
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
- * @returns {Number} distance between a and b
- */
-vec4.distance = function(a, b) {
-    var x = b[0] - a[0],
-        y = b[1] - a[1],
-        z = b[2] - a[2],
-        w = b[3] - a[3];
-    return Math.sqrt(x*x + y*y + z*z + w*w);
-};
-
-/**
- * Alias for {@link vec4.distance}
- * @function
- */
-vec4.dist = vec4.distance;
-
-/**
- * Calculates the squared euclidian distance between two vec4's
- *
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
- * @returns {Number} squared distance between a and b
- */
-vec4.squaredDistance = function(a, b) {
-    var x = b[0] - a[0],
-        y = b[1] - a[1],
-        z = b[2] - a[2],
-        w = b[3] - a[3];
-    return x*x + y*y + z*z + w*w;
-};
-
-/**
- * Alias for {@link vec4.squaredDistance}
- * @function
- */
-vec4.sqrDist = vec4.squaredDistance;
-
-/**
- * Calculates the length of a vec4
- *
- * @param {vec4} a vector to calculate length of
- * @returns {Number} length of a
- */
-vec4.length = function (a) {
-    var x = a[0],
-        y = a[1],
-        z = a[2],
-        w = a[3];
-    return Math.sqrt(x*x + y*y + z*z + w*w);
-};
-
-/**
- * Alias for {@link vec4.length}
- * @function
- */
-vec4.len = vec4.length;
-
-/**
- * Calculates the squared length of a vec4
- *
- * @param {vec4} a vector to calculate squared length of
- * @returns {Number} squared length of a
- */
-vec4.squaredLength = function (a) {
-    var x = a[0],
-        y = a[1],
-        z = a[2],
-        w = a[3];
-    return x*x + y*y + z*z + w*w;
-};
-
-/**
- * Alias for {@link vec4.squaredLength}
- * @function
- */
-vec4.sqrLen = vec4.squaredLength;
-
-/**
- * Negates the components of a vec4
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a vector to negate
- * @returns {vec4} out
- */
-vec4.negate = function(out, a) {
-    out[0] = -a[0];
-    out[1] = -a[1];
-    out[2] = -a[2];
-    out[3] = -a[3];
-    return out;
-};
-
-/**
- * Normalize a vec4
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a vector to normalize
- * @returns {vec4} out
- */
-vec4.normalize = function(out, a) {
-    var x = a[0],
-        y = a[1],
-        z = a[2],
-        w = a[3];
-    var len = x*x + y*y + z*z + w*w;
-    if (len > 0) {
-        len = 1 / Math.sqrt(len);
-        out[0] = a[0] * len;
-        out[1] = a[1] * len;
-        out[2] = a[2] * len;
-        out[3] = a[3] * len;
-    }
-    return out;
-};
-
-/**
- * Calculates the dot product of two vec4's
- *
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
- * @returns {Number} dot product of a and b
- */
-vec4.dot = function (a, b) {
-    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3];
-};
-
-/**
- * Performs a linear interpolation between two vec4's
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the first operand
- * @param {vec4} b the second operand
- * @param {Number} t interpolation amount between the two inputs
- * @returns {vec4} out
- */
-vec4.lerp = function (out, a, b, t) {
-    var ax = a[0],
-        ay = a[1],
-        az = a[2],
-        aw = a[3];
-    out[0] = ax + t * (b[0] - ax);
-    out[1] = ay + t * (b[1] - ay);
-    out[2] = az + t * (b[2] - az);
-    out[3] = aw + t * (b[3] - aw);
-    return out;
-};
-
-/**
- * Generates a random vector with the given scale
- *
- * @param {vec4} out the receiving vector
- * @param {Number} [scale] Length of the resulting vector. If ommitted, a unit vector will be returned
- * @returns {vec4} out
- */
-vec4.random = function (out, scale) {
-    scale = scale || 1.0;
-
-    //TODO: This is a pretty awful way of doing this. Find something better.
-    out[0] = GLMAT_RANDOM();
-    out[1] = GLMAT_RANDOM();
-    out[2] = GLMAT_RANDOM();
-    out[3] = GLMAT_RANDOM();
-    vec4.normalize(out, out);
-    vec4.scale(out, out, scale);
-    return out;
-};
-
-/**
- * Transforms the vec4 with a mat4.
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the vector to transform
- * @param {mat4} m matrix to transform with
- * @returns {vec4} out
- */
-vec4.transformMat4 = function(out, a, m) {
-    var x = a[0], y = a[1], z = a[2], w = a[3];
-    out[0] = m[0] * x + m[4] * y + m[8] * z + m[12] * w;
-    out[1] = m[1] * x + m[5] * y + m[9] * z + m[13] * w;
-    out[2] = m[2] * x + m[6] * y + m[10] * z + m[14] * w;
-    out[3] = m[3] * x + m[7] * y + m[11] * z + m[15] * w;
-    return out;
-};
-
-/**
- * Transforms the vec4 with a quat
- *
- * @param {vec4} out the receiving vector
- * @param {vec4} a the vector to transform
- * @param {quat} q quaternion to transform with
- * @returns {vec4} out
- */
-vec4.transformQuat = function(out, a, q) {
-    var x = a[0], y = a[1], z = a[2],
-        qx = q[0], qy = q[1], qz = q[2], qw = q[3],
-
-        // calculate quat * vec
-        ix = qw * x + qy * z - qz * y,
-        iy = qw * y + qz * x - qx * z,
-        iz = qw * z + qx * y - qy * x,
-        iw = -qx * x - qy * y - qz * z;
-
-    // calculate result * inverse quat
-    out[0] = ix * qw + iw * -qx + iy * -qz - iz * -qy;
-    out[1] = iy * qw + iw * -qy + iz * -qx - ix * -qz;
-    out[2] = iz * qw + iw * -qz + ix * -qy - iy * -qx;
-    return out;
-};
-
-/**
- * Perform some operation over an array of vec4s.
- *
- * @param {Array} a the array of vectors to iterate over
- * @param {Number} stride Number of elements between the start of each vec4. If 0 assumes tightly packed
- * @param {Number} offset Number of elements to skip at the beginning of the array
- * @param {Number} count Number of vec2s to iterate over. If 0 iterates over entire array
- * @param {Function} fn Function to call for each vector in the array
- * @param {Object} [arg] additional argument to pass to fn
- * @returns {Array} a
- * @function
- */
-vec4.forEach = (function() {
-    var vec = vec4.create();
-
-    return function(a, stride, offset, count, fn, arg) {
-        var i, l;
-        if(!stride) {
-            stride = 4;
-        }
-
-        if(!offset) {
-            offset = 0;
-        }
-        
-        if(count) {
-            l = Math.min((count * stride) + offset, a.length);
-        } else {
-            l = a.length;
-        }
-
-        for(i = offset; i < l; i += stride) {
-            vec[0] = a[i]; vec[1] = a[i+1]; vec[2] = a[i+2]; vec[3] = a[i+3];
-            fn(vec, vec, arg);
-            a[i] = vec[0]; a[i+1] = vec[1]; a[i+2] = vec[2]; a[i+3] = vec[3];
-        }
-        
-        return a;
-    };
-})();
-
-/**
- * Returns a string representation of a vector
- *
- * @param {vec4} vec vector to represent as a string
- * @returns {String} string representation of the vector
- */
-vec4.str = function (a) {
-    return 'vec4(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ')';
-};
-
-if(typeof(exports) !== 'undefined') {
-    exports.vec4 = vec4;
-}
-;
-var mat3 = {};
-
-/**
- * Creates a new identity mat3
- *
- * @returns {mat3} a new 3x3 matrix
- */
-mat3.create = function() {
-    var out = new GLMAT_ARRAY_TYPE(9);
-    out[0] = 1;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 0;
-    out[4] = 1;
-    out[5] = 0;
-    out[6] = 0;
-    out[7] = 0;
-    out[8] = 1;
-    return out;
-};
-
-/**
- * Copies the upper-left 3x3 values into the given mat3.
- *
- * @param {mat3} out the receiving 3x3 matrix
- * @param {mat4} a   the source 4x4 matrix
- * @returns {mat3} out
- */
-mat3.fromMat4 = function(out, a) {
-    out[0] = a[0];
-    out[1] = a[1];
-    out[2] = a[2];
-    out[3] = a[4];
-    out[4] = a[5];
-    out[5] = a[6];
-    out[6] = a[8];
-    out[7] = a[9];
-    out[8] = a[10];
-    return out;
-};
-
-/**
- * Creates a new mat3 initialized with values from an existing matrix
- *
- * @param {mat3} a matrix to clone
- * @returns {mat3} a new 3x3 matrix
- */
-mat3.clone = function(a) {
-    var out = new GLMAT_ARRAY_TYPE(9);
-    out[0] = a[0];
-    out[1] = a[1];
-    out[2] = a[2];
-    out[3] = a[3];
-    out[4] = a[4];
-    out[5] = a[5];
-    out[6] = a[6];
-    out[7] = a[7];
-    out[8] = a[8];
-    return out;
-};
-
-/**
- * Copy the values from one mat3 to another
- *
- * @param {mat3} out the receiving matrix
- * @param {mat3} a the source matrix
- * @returns {mat3} out
- */
-mat3.copy = function(out, a) {
-    out[0] = a[0];
-    out[1] = a[1];
-    out[2] = a[2];
-    out[3] = a[3];
-    out[4] = a[4];
-    out[5] = a[5];
-    out[6] = a[6];
-    out[7] = a[7];
-    out[8] = a[8];
-    return out;
-};
-
-/**
- * Set a mat3 to the identity matrix
- *
- * @param {mat3} out the receiving matrix
- * @returns {mat3} out
- */
-mat3.identity = function(out) {
-    out[0] = 1;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 0;
-    out[4] = 1;
-    out[5] = 0;
-    out[6] = 0;
-    out[7] = 0;
-    out[8] = 1;
-    return out;
-};
-
-/**
- * Transpose the values of a mat3
- *
- * @param {mat3} out the receiving matrix
- * @param {mat3} a the source matrix
- * @returns {mat3} out
- */
-mat3.transpose = function(out, a) {
-    // If we are transposing ourselves we can skip a few steps but have to cache some values
-    if (out === a) {
-        var a01 = a[1], a02 = a[2], a12 = a[5];
-        out[1] = a[3];
-        out[2] = a[6];
-        out[3] = a01;
-        out[5] = a[7];
-        out[6] = a02;
-        out[7] = a12;
-    } else {
-        out[0] = a[0];
-        out[1] = a[3];
-        out[2] = a[6];
-        out[3] = a[1];
-        out[4] = a[4];
-        out[5] = a[7];
-        out[6] = a[2];
-        out[7] = a[5];
-        out[8] = a[8];
-    }
-    
-    return out;
-};
-
-/**
- * Inverts a mat3
- *
- * @param {mat3} out the receiving matrix
- * @param {mat3} a the source matrix
- * @returns {mat3} out
- */
-mat3.invert = function(out, a) {
-    var a00 = a[0], a01 = a[1], a02 = a[2],
-        a10 = a[3], a11 = a[4], a12 = a[5],
-        a20 = a[6], a21 = a[7], a22 = a[8],
-
-        b01 = a22 * a11 - a12 * a21,
-        b11 = -a22 * a10 + a12 * a20,
-        b21 = a21 * a10 - a11 * a20,
-
-        // Calculate the determinant
-        det = a00 * b01 + a01 * b11 + a02 * b21;
-
-    if (!det) { 
-        return null; 
-    }
-    det = 1.0 / det;
-
-    out[0] = b01 * det;
-    out[1] = (-a22 * a01 + a02 * a21) * det;
-    out[2] = (a12 * a01 - a02 * a11) * det;
-    out[3] = b11 * det;
-    out[4] = (a22 * a00 - a02 * a20) * det;
-    out[5] = (-a12 * a00 + a02 * a10) * det;
-    out[6] = b21 * det;
-    out[7] = (-a21 * a00 + a01 * a20) * det;
-    out[8] = (a11 * a00 - a01 * a10) * det;
-    return out;
-};
-
-/**
- * Calculates the adjugate of a mat3
- *
- * @param {mat3} out the receiving matrix
- * @param {mat3} a the source matrix
- * @returns {mat3} out
- */
-mat3.adjoint = function(out, a) {
-    var a00 = a[0], a01 = a[1], a02 = a[2],
-        a10 = a[3], a11 = a[4], a12 = a[5],
-        a20 = a[6], a21 = a[7], a22 = a[8];
-
-    out[0] = (a11 * a22 - a12 * a21);
-    out[1] = (a02 * a21 - a01 * a22);
-    out[2] = (a01 * a12 - a02 * a11);
-    out[3] = (a12 * a20 - a10 * a22);
-    out[4] = (a00 * a22 - a02 * a20);
-    out[5] = (a02 * a10 - a00 * a12);
-    out[6] = (a10 * a21 - a11 * a20);
-    out[7] = (a01 * a20 - a00 * a21);
-    out[8] = (a00 * a11 - a01 * a10);
-    return out;
-};
-
-/**
- * Calculates the determinant of a mat3
- *
- * @param {mat3} a the source matrix
- * @returns {Number} determinant of a
- */
-mat3.determinant = function (a) {
-    var a00 = a[0], a01 = a[1], a02 = a[2],
-        a10 = a[3], a11 = a[4], a12 = a[5],
-        a20 = a[6], a21 = a[7], a22 = a[8];
-
-    return a00 * (a22 * a11 - a12 * a21) + a01 * (-a22 * a10 + a12 * a20) + a02 * (a21 * a10 - a11 * a20);
-};
-
-/**
- * Multiplies two mat3's
- *
- * @param {mat3} out the receiving matrix
- * @param {mat3} a the first operand
- * @param {mat3} b the second operand
- * @returns {mat3} out
- */
-mat3.multiply = function (out, a, b) {
-    var a00 = a[0], a01 = a[1], a02 = a[2],
-        a10 = a[3], a11 = a[4], a12 = a[5],
-        a20 = a[6], a21 = a[7], a22 = a[8],
-
-        b00 = b[0], b01 = b[1], b02 = b[2],
-        b10 = b[3], b11 = b[4], b12 = b[5],
-        b20 = b[6], b21 = b[7], b22 = b[8];
-
-    out[0] = b00 * a00 + b01 * a10 + b02 * a20;
-    out[1] = b00 * a01 + b01 * a11 + b02 * a21;
-    out[2] = b00 * a02 + b01 * a12 + b02 * a22;
-
-    out[3] = b10 * a00 + b11 * a10 + b12 * a20;
-    out[4] = b10 * a01 + b11 * a11 + b12 * a21;
-    out[5] = b10 * a02 + b11 * a12 + b12 * a22;
-
-    out[6] = b20 * a00 + b21 * a10 + b22 * a20;
-    out[7] = b20 * a01 + b21 * a11 + b22 * a21;
-    out[8] = b20 * a02 + b21 * a12 + b22 * a22;
-    return out;
-};
-
-/**
- * Alias for {@link mat3.multiply}
- * @function
- */
-mat3.mul = mat3.multiply;
-
-/**
- * Translate a mat3 by the given vector
- *
- * @param {mat3} out the receiving matrix
- * @param {mat3} a the matrix to translate
- * @param {vec2} v vector to translate by
- * @returns {mat3} out
- */
-mat3.translate = function(out, a, v) {
-    var a00 = a[0], a01 = a[1], a02 = a[2],
-        a10 = a[3], a11 = a[4], a12 = a[5],
-        a20 = a[6], a21 = a[7], a22 = a[8],
-        x = v[0], y = v[1];
-
-    out[0] = a00;
-    out[1] = a01;
-    out[2] = a02;
-
-    out[3] = a10;
-    out[4] = a11;
-    out[5] = a12;
-
-    out[6] = x * a00 + y * a10 + a20;
-    out[7] = x * a01 + y * a11 + a21;
-    out[8] = x * a02 + y * a12 + a22;
-    return out;
-};
-
-/**
- * Rotates a mat3 by the given angle
- *
- * @param {mat3} out the receiving matrix
- * @param {mat3} a the matrix to rotate
- * @param {Number} rad the angle to rotate the matrix by
- * @returns {mat3} out
- */
-mat3.rotate = function (out, a, rad) {
-    var a00 = a[0], a01 = a[1], a02 = a[2],
-        a10 = a[3], a11 = a[4], a12 = a[5],
-        a20 = a[6], a21 = a[7], a22 = a[8],
-
-        s = Math.sin(rad),
-        c = Math.cos(rad);
-
-    out[0] = c * a00 + s * a10;
-    out[1] = c * a01 + s * a11;
-    out[2] = c * a02 + s * a12;
-
-    out[3] = c * a10 - s * a00;
-    out[4] = c * a11 - s * a01;
-    out[5] = c * a12 - s * a02;
-
-    out[6] = a20;
-    out[7] = a21;
-    out[8] = a22;
-    return out;
-};
-
-/**
-* Calculates a 3x3 matrix from the given quaternion
-*
-* @param {mat3} out mat3 receiving operation result
-* @param {quat} q Quaternion to create matrix from
-*
-* @returns {mat3} out
-*/
-mat3.fromQuat = function (out, q) {
-    var x = q[0], y = q[1], z = q[2], w = q[3],
-        x2 = x + x,
-        y2 = y + y,
-        z2 = z + z,
-
-        xx = x * x2,
-        xy = x * y2,
-        xz = x * z2,
-        yy = y * y2,
-        yz = y * z2,
-        zz = z * z2,
-        wx = w * x2,
-        wy = w * y2,
-        wz = w * z2;
-
-    out[0] = 1 - (yy + zz);
-    out[3] = xy + wz;
-    out[6] = xz - wy;
-
-    out[1] = xy - wz;
-    out[4] = 1 - (xx + zz);
-    out[7] = yz + wx;
-
-    out[2] = xz + wy;
-    out[5] = yz - wx;
-    out[8] = 1 - (xx + yy);
-
-    return out;
-};
-
-/**
-* Calculates a 3x3 normal matrix (transpose inverse) from the 4x4 matrix
-*
-* @param {mat3} out mat3 receiving operation result
-* @param {mat4} a Mat4 to derive the normal matrix from
-*
-* @returns {mat3} out
-*/
-mat3.normalFromMat4 = function (out, a) {
-    var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
-        a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
-        a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
-        a30 = a[12], a31 = a[13], a32 = a[14], a33 = a[15],
-
-        b00 = a00 * a11 - a01 * a10,
-        b01 = a00 * a12 - a02 * a10,
-        b02 = a00 * a13 - a03 * a10,
-        b03 = a01 * a12 - a02 * a11,
-        b04 = a01 * a13 - a03 * a11,
-        b05 = a02 * a13 - a03 * a12,
-        b06 = a20 * a31 - a21 * a30,
-        b07 = a20 * a32 - a22 * a30,
-        b08 = a20 * a33 - a23 * a30,
-        b09 = a21 * a32 - a22 * a31,
-        b10 = a21 * a33 - a23 * a31,
-        b11 = a22 * a33 - a23 * a32,
-
-        // Calculate the determinant
-        det = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
-
-    if (!det) { 
-        return null; 
-    }
-    det = 1.0 / det;
-
-    out[0] = (a11 * b11 - a12 * b10 + a13 * b09) * det;
-    out[1] = (a12 * b08 - a10 * b11 - a13 * b07) * det;
-    out[2] = (a10 * b10 - a11 * b08 + a13 * b06) * det;
-
-    out[3] = (a02 * b10 - a01 * b11 - a03 * b09) * det;
-    out[4] = (a00 * b11 - a02 * b08 + a03 * b07) * det;
-    out[5] = (a01 * b08 - a00 * b10 - a03 * b06) * det;
-
-    out[6] = (a31 * b05 - a32 * b04 + a33 * b03) * det;
-    out[7] = (a32 * b02 - a30 * b05 - a33 * b01) * det;
-    out[8] = (a30 * b04 - a31 * b02 + a33 * b00) * det;
-
-    return out;
-};
-
-/**
- * Returns a string representation of a mat3
- *
- * @param {mat3} mat matrix to represent as a string
- * @returns {String} string representation of the matrix
- */
-mat3.str = function (a) {
-    return 'mat3(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + 
-                    a[3] + ', ' + a[4] + ', ' + a[5] + ', ' + 
-                    a[6] + ', ' + a[7] + ', ' + a[8] + ')';
-};
-
-if(typeof(exports) !== 'undefined') {
-    exports.mat3 = mat3;
-}
-;
-/* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
-
-  * Redistributions of source code must retain the above copyright notice, this
-    list of conditions and the following disclaimer.
-  * Redistributions in binary form must reproduce the above copyright notice,
-    this list of conditions and the following disclaimer in the documentation 
-    and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
-
-/**
- * @class 4x4 Matrix
- * @name mat4
- */
-
-var mat4 = {};
-
-/**
- * Creates a new identity mat4
- *
- * @returns {mat4} a new 4x4 matrix
- */
-mat4.create = function() {
-    var out = new GLMAT_ARRAY_TYPE(16);
-    out[0] = 1;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 0;
-    out[4] = 0;
-    out[5] = 1;
-    out[6] = 0;
-    out[7] = 0;
-    out[8] = 0;
-    out[9] = 0;
-    out[10] = 1;
-    out[11] = 0;
-    out[12] = 0;
-    out[13] = 0;
-    out[14] = 0;
-    out[15] = 1;
-    return out;
-};
-
-mat4.fromValues = function(m00, m10, m20, m30, 
-                           m01, m11, m21, m31, 
-                           m02, m12, m22, m32, 
-                           m03, m13, m23, m33) {
-    var out = new GLMAT_ARRAY_TYPE(16);
-    out[ 0] = m00; out[ 1] = m10; out[ 2] = m20, out[ 3] = m30;
-    out[ 4] = m01; out[ 5] = m11; out[ 6] = m21; out[ 7] = m31;
-    out[ 8] = m02; out[ 9] = m12; out[10] = m22; out[11] = m32;
-    out[12] = m03; out[13] = m13; out[14] = m23; out[15] = m33;
-    return out;
-};
-/**
- * Creates a new mat4 initialized with values from an existing matrix
- *
- * @param {mat4} a matrix to clone
- * @returns {mat4} a new 4x4 matrix
- */
-mat4.clone = function(a) {
-    var out = new GLMAT_ARRAY_TYPE(16);
-    out[0] = a[0];
-    out[1] = a[1];
-    out[2] = a[2];
-    out[3] = a[3];
-    out[4] = a[4];
-    out[5] = a[5];
-    out[6] = a[6];
-    out[7] = a[7];
-    out[8] = a[8];
-    out[9] = a[9];
-    out[10] = a[10];
-    out[11] = a[11];
-    out[12] = a[12];
-    out[13] = a[13];
-    out[14] = a[14];
-    out[15] = a[15];
-    return out;
-};
-
-/**
- * Copy the values from one mat4 to another
- *
- * @param {mat4} out the receiving matrix
- * @param {mat4} a the source matrix
- * @returns {mat4} out
- */
-mat4.copy = function(out, a) {
-    out[0] = a[0];
-    out[1] = a[1];
-    out[2] = a[2];
-    out[3] = a[3];
-    out[4] = a[4];
-    out[5] = a[5];
-    out[6] = a[6];
-    out[7] = a[7];
-    out[8] = a[8];
-    out[9] = a[9];
-    out[10] = a[10];
-    out[11] = a[11];
-    out[12] = a[12];
-    out[13] = a[13];
-    out[14] = a[14];
-    out[15] = a[15];
-    return out;
-};
-
-/**
- * Set a mat4 to the identity matrix
- *
- * @param {mat4} out the receiving matrix
- * @returns {mat4} out
- */
-mat4.identity = function(out) {
-    out[0] = 1;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 0;
-    out[4] = 0;
-    out[5] = 1;
-    out[6] = 0;
-    out[7] = 0;
-    out[8] = 0;
-    out[9] = 0;
-    out[10] = 1;
-    out[11] = 0;
-    out[12] = 0;
-    out[13] = 0;
-    out[14] = 0;
-    out[15] = 1;
-    return out;
-};
-
-/**
- * Transpose the values of a mat4
- *
- * @param {mat4} out the receiving matrix
- * @param {mat4} a the source matrix
- * @returns {mat4} out
- */
-mat4.transpose = function(out, a) {
-    // If we are transposing ourselves we can skip a few steps but have to cache some values
-    if (out === a) {
-        var a01 = a[1], a02 = a[2], a03 = a[3],
-            a12 = a[6], a13 = a[7],
-            a23 = a[11];
-
-        out[1] = a[4];
-        out[2] = a[8];
-        out[3] = a[12];
-        out[4] = a01;
-        out[6] = a[9];
-        out[7] = a[13];
-        out[8] = a02;
-        out[9] = a12;
-        out[11] = a[14];
-        out[12] = a03;
-        out[13] = a13;
-        out[14] = a23;
-    } else {
-        out[0] = a[0];
-        out[1] = a[4];
-        out[2] = a[8];
-        out[3] = a[12];
-        out[4] = a[1];
-        out[5] = a[5];
-        out[6] = a[9];
-        out[7] = a[13];
-        out[8] = a[2];
-        out[9] = a[6];
-        out[10] = a[10];
-        out[11] = a[14];
-        out[12] = a[3];
-        out[13] = a[7];
-        out[14] = a[11];
-        out[15] = a[15];
-    }
-    
-    return out;
-};
-
-/**
- * Inverts a mat4
- *
- * @param {mat4} out the receiving matrix
- * @param {mat4} a the source matrix
- * @returns {mat4} out
- */
-mat4.invert = function(out, a) {
-    var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
-        a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
-        a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
-        a30 = a[12], a31 = a[13], a32 = a[14], a33 = a[15],
-
-        b00 = a00 * a11 - a01 * a10,
-        b01 = a00 * a12 - a02 * a10,
-        b02 = a00 * a13 - a03 * a10,
-        b03 = a01 * a12 - a02 * a11,
-        b04 = a01 * a13 - a03 * a11,
-        b05 = a02 * a13 - a03 * a12,
-        b06 = a20 * a31 - a21 * a30,
-        b07 = a20 * a32 - a22 * a30,
-        b08 = a20 * a33 - a23 * a30,
-        b09 = a21 * a32 - a22 * a31,
-        b10 = a21 * a33 - a23 * a31,
-        b11 = a22 * a33 - a23 * a32,
-
-        // Calculate the determinant
-        det = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
-
-    if (!det) { 
-        return null; 
-    }
-    det = 1.0 / det;
-
-    out[0] = (a11 * b11 - a12 * b10 + a13 * b09) * det;
-    out[1] = (a02 * b10 - a01 * b11 - a03 * b09) * det;
-    out[2] = (a31 * b05 - a32 * b04 + a33 * b03) * det;
-    out[3] = (a22 * b04 - a21 * b05 - a23 * b03) * det;
-    out[4] = (a12 * b08 - a10 * b11 - a13 * b07) * det;
-    out[5] = (a00 * b11 - a02 * b08 + a03 * b07) * det;
-    out[6] = (a32 * b02 - a30 * b05 - a33 * b01) * det;
-    out[7] = (a20 * b05 - a22 * b02 + a23 * b01) * det;
-    out[8] = (a10 * b10 - a11 * b08 + a13 * b06) * det;
-    out[9] = (a01 * b08 - a00 * b10 - a03 * b06) * det;
-    out[10] = (a30 * b04 - a31 * b02 + a33 * b00) * det;
-    out[11] = (a21 * b02 - a20 * b04 - a23 * b00) * det;
-    out[12] = (a11 * b07 - a10 * b09 - a12 * b06) * det;
-    out[13] = (a00 * b09 - a01 * b07 + a02 * b06) * det;
-    out[14] = (a31 * b01 - a30 * b03 - a32 * b00) * det;
-    out[15] = (a20 * b03 - a21 * b01 + a22 * b00) * det;
-
-    return out;
-};
-
-/**
- * Calculates the adjugate of a mat4
- *
- * @param {mat4} out the receiving matrix
- * @param {mat4} a the source matrix
- * @returns {mat4} out
- */
-mat4.adjoint = function(out, a) {
-    var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
-        a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
-        a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
-        a30 = a[12], a31 = a[13], a32 = a[14], a33 = a[15];
-
-    out[0]  =  (a11 * (a22 * a33 - a23 * a32) - a21 * (a12 * a33 - a13 * a32) + a31 * (a12 * a23 - a13 * a22));
-    out[1]  = -(a01 * (a22 * a33 - a23 * a32) - a21 * (a02 * a33 - a03 * a32) + a31 * (a02 * a23 - a03 * a22));
-    out[2]  =  (a01 * (a12 * a33 - a13 * a32) - a11 * (a02 * a33 - a03 * a32) + a31 * (a02 * a13 - a03 * a12));
-    out[3]  = -(a01 * (a12 * a23 - a13 * a22) - a11 * (a02 * a23 - a03 * a22) + a21 * (a02 * a13 - a03 * a12));
-    out[4]  = -(a10 * (a22 * a33 - a23 * a32) - a20 * (a12 * a33 - a13 * a32) + a30 * (a12 * a23 - a13 * a22));
-    out[5]  =  (a00 * (a22 * a33 - a23 * a32) - a20 * (a02 * a33 - a03 * a32) + a30 * (a02 * a23 - a03 * a22));
-    out[6]  = -(a00 * (a12 * a33 - a13 * a32) - a10 * (a02 * a33 - a03 * a32) + a30 * (a02 * a13 - a03 * a12));
-    out[7]  =  (a00 * (a12 * a23 - a13 * a22) - a10 * (a02 * a23 - a03 * a22) + a20 * (a02 * a13 - a03 * a12));
-    out[8]  =  (a10 * (a21 * a33 - a23 * a31) - a20 * (a11 * a33 - a13 * a31) + a30 * (a11 * a23 - a13 * a21));
-    out[9]  = -(a00 * (a21 * a33 - a23 * a31) - a20 * (a01 * a33 - a03 * a31) + a30 * (a01 * a23 - a03 * a21));
-    out[10] =  (a00 * (a11 * a33 - a13 * a31) - a10 * (a01 * a33 - a03 * a31) + a30 * (a01 * a13 - a03 * a11));
-    out[11] = -(a00 * (a11 * a23 - a13 * a21) - a10 * (a01 * a23 - a03 * a21) + a20 * (a01 * a13 - a03 * a11));
-    out[12] = -(a10 * (a21 * a32 - a22 * a31) - a20 * (a11 * a32 - a12 * a31) + a30 * (a11 * a22 - a12 * a21));
-    out[13] =  (a00 * (a21 * a32 - a22 * a31) - a20 * (a01 * a32 - a02 * a31) + a30 * (a01 * a22 - a02 * a21));
-    out[14] = -(a00 * (a11 * a32 - a12 * a31) - a10 * (a01 * a32 - a02 * a31) + a30 * (a01 * a12 - a02 * a11));
-    out[15] =  (a00 * (a11 * a22 - a12 * a21) - a10 * (a01 * a22 - a02 * a21) + a20 * (a01 * a12 - a02 * a11));
-    return out;
-};
-
-/**
- * Calculates the determinant of a mat4
- *
- * @param {mat4} a the source matrix
- * @returns {Number} determinant of a
- */
-mat4.determinant = function (a) {
-    var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
-        a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
-        a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
-        a30 = a[12], a31 = a[13], a32 = a[14], a33 = a[15],
-
-        b00 = a00 * a11 - a01 * a10,
-        b01 = a00 * a12 - a02 * a10,
-        b02 = a00 * a13 - a03 * a10,
-        b03 = a01 * a12 - a02 * a11,
-        b04 = a01 * a13 - a03 * a11,
-        b05 = a02 * a13 - a03 * a12,
-        b06 = a20 * a31 - a21 * a30,
-        b07 = a20 * a32 - a22 * a30,
-        b08 = a20 * a33 - a23 * a30,
-        b09 = a21 * a32 - a22 * a31,
-        b10 = a21 * a33 - a23 * a31,
-        b11 = a22 * a33 - a23 * a32;
-
-    // Calculate the determinant
-    return b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
-};
-
-/**
- * Multiplies two mat4's
- *
- * @param {mat4} out the receiving matrix
- * @param {mat4} a the first operand
- * @param {mat4} b the second operand
- * @returns {mat4} out
- */
-mat4.multiply = function (out, a, b) {
-    var a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3],
-        a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7],
-        a20 = a[8], a21 = a[9], a22 = a[10], a23 = a[11],
-        a30 = a[12], a31 = a[13], a32 = a[14], a33 = a[15];
-
-    // Cache only the current line of the second matrix
-    var b0  = b[0], b1 = b[1], b2 = b[2], b3 = b[3];  
-    out[0] = b0*a00 + b1*a10 + b2*a20 + b3*a30;
-    out[1] = b0*a01 + b1*a11 + b2*a21 + b3*a31;
-    out[2] = b0*a02 + b1*a12 + b2*a22 + b3*a32;
-    out[3] = b0*a03 + b1*a13 + b2*a23 + b3*a33;
-
-    b0 = b[4]; b1 = b[5]; b2 = b[6]; b3 = b[7];
-    out[4] = b0*a00 + b1*a10 + b2*a20 + b3*a30;
-    out[5] = b0*a01 + b1*a11 + b2*a21 + b3*a31;
-    out[6] = b0*a02 + b1*a12 + b2*a22 + b3*a32;
-    out[7] = b0*a03 + b1*a13 + b2*a23 + b3*a33;
-
-    b0 = b[8]; b1 = b[9]; b2 = b[10]; b3 = b[11];
-    out[8] = b0*a00 + b1*a10 + b2*a20 + b3*a30;
-    out[9] = b0*a01 + b1*a11 + b2*a21 + b3*a31;
-    out[10] = b0*a02 + b1*a12 + b2*a22 + b3*a32;
-    out[11] = b0*a03 + b1*a13 + b2*a23 + b3*a33;
-
-    b0 = b[12]; b1 = b[13]; b2 = b[14]; b3 = b[15];
-    out[12] = b0*a00 + b1*a10 + b2*a20 + b3*a30;
-    out[13] = b0*a01 + b1*a11 + b2*a21 + b3*a31;
-    out[14] = b0*a02 + b1*a12 + b2*a22 + b3*a32;
-    out[15] = b0*a03 + b1*a13 + b2*a23 + b3*a33;
-    return out;
-};
-
-/**
- * Alias for {@link mat4.multiply}
- * @function
- */
-mat4.mul = mat4.multiply;
-
-/**
- * Translate a mat4 by the given vector
- *
- * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to translate
- * @param {vec3} v vector to translate by
- * @returns {mat4} out
- */
-mat4.translate = function (out, a, v) {
-    var x = v[0], y = v[1], z = v[2],
-        a00, a01, a02, a03,
-        a10, a11, a12, a13,
-        a20, a21, a22, a23;
-
-    if (a === out) {
-        out[12] = a[0] * x + a[4] * y + a[8] * z + a[12];
-        out[13] = a[1] * x + a[5] * y + a[9] * z + a[13];
-        out[14] = a[2] * x + a[6] * y + a[10] * z + a[14];
-        out[15] = a[3] * x + a[7] * y + a[11] * z + a[15];
-    } else {
-        a00 = a[0]; a01 = a[1]; a02 = a[2]; a03 = a[3];
-        a10 = a[4]; a11 = a[5]; a12 = a[6]; a13 = a[7];
-        a20 = a[8]; a21 = a[9]; a22 = a[10]; a23 = a[11];
-
-        out[0] = a00; out[1] = a01; out[2] = a02; out[3] = a03;
-        out[4] = a10; out[5] = a11; out[6] = a12; out[7] = a13;
-        out[8] = a20; out[9] = a21; out[10] = a22; out[11] = a23;
-
-        out[12] = a00 * x + a10 * y + a20 * z + a[12];
-        out[13] = a01 * x + a11 * y + a21 * z + a[13];
-        out[14] = a02 * x + a12 * y + a22 * z + a[14];
-        out[15] = a03 * x + a13 * y + a23 * z + a[15];
-    }
-
-    return out;
-};
-
-/**
- * Scales the mat4 by the dimensions in the given vec3
- *
- * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to scale
- * @param {vec3} v the vec3 to scale the matrix by
- * @returns {mat4} out
- **/
-mat4.scale = function(out, a, v) {
-    var x = v[0], y = v[1], z = v[2];
-
-    out[0] = a[0] * x;
-    out[1] = a[1] * x;
-    out[2] = a[2] * x;
-    out[3] = a[3] * x;
-    out[4] = a[4] * y;
-    out[5] = a[5] * y;
-    out[6] = a[6] * y;
-    out[7] = a[7] * y;
-    out[8] = a[8] * z;
-    out[9] = a[9] * z;
-    out[10] = a[10] * z;
-    out[11] = a[11] * z;
-    out[12] = a[12];
-    out[13] = a[13];
-    out[14] = a[14];
-    out[15] = a[15];
-    return out;
-};
-
-/**
- * Rotates a mat4 by the given angle
- *
- * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to rotate
- * @param {Number} rad the angle to rotate the matrix by
- * @param {vec3} axis the axis to rotate around
- * @returns {mat4} out
- */
-mat4.rotate = function (out, a, rad, axis) {
-    var x = axis[0], y = axis[1], z = axis[2],
-        len = Math.sqrt(x * x + y * y + z * z),
-        s, c, t,
-        a00, a01, a02, a03,
-        a10, a11, a12, a13,
-        a20, a21, a22, a23,
-        b00, b01, b02,
-        b10, b11, b12,
-        b20, b21, b22;
-
-    if (Math.abs(len) < GLMAT_EPSILON) { return null; }
-    
-    len = 1 / len;
-    x *= len;
-    y *= len;
-    z *= len;
-
-    s = Math.sin(rad);
-    c = Math.cos(rad);
-    t = 1 - c;
-
-    a00 = a[0]; a01 = a[1]; a02 = a[2]; a03 = a[3];
-    a10 = a[4]; a11 = a[5]; a12 = a[6]; a13 = a[7];
-    a20 = a[8]; a21 = a[9]; a22 = a[10]; a23 = a[11];
-
-    // Construct the elements of the rotation matrix
-    b00 = x * x * t + c; b01 = y * x * t + z * s; b02 = z * x * t - y * s;
-    b10 = x * y * t - z * s; b11 = y * y * t + c; b12 = z * y * t + x * s;
-    b20 = x * z * t + y * s; b21 = y * z * t - x * s; b22 = z * z * t + c;
-
-    // Perform rotation-specific matrix multiplication
-    out[0] = a00 * b00 + a10 * b01 + a20 * b02;
-    out[1] = a01 * b00 + a11 * b01 + a21 * b02;
-    out[2] = a02 * b00 + a12 * b01 + a22 * b02;
-    out[3] = a03 * b00 + a13 * b01 + a23 * b02;
-    out[4] = a00 * b10 + a10 * b11 + a20 * b12;
-    out[5] = a01 * b10 + a11 * b11 + a21 * b12;
-    out[6] = a02 * b10 + a12 * b11 + a22 * b12;
-    out[7] = a03 * b10 + a13 * b11 + a23 * b12;
-    out[8] = a00 * b20 + a10 * b21 + a20 * b22;
-    out[9] = a01 * b20 + a11 * b21 + a21 * b22;
-    out[10] = a02 * b20 + a12 * b21 + a22 * b22;
-    out[11] = a03 * b20 + a13 * b21 + a23 * b22;
-
-    if (a !== out) { // If the source and destination differ, copy the unchanged last row
-        out[12] = a[12];
-        out[13] = a[13];
-        out[14] = a[14];
-        out[15] = a[15];
-    }
-    return out;
-};
-
-/**
- * Rotates a matrix by the given angle around the X axis
- *
- * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to rotate
- * @param {Number} rad the angle to rotate the matrix by
- * @returns {mat4} out
- */
-mat4.rotateX = function (out, a, rad) {
-    var s = Math.sin(rad),
-        c = Math.cos(rad),
-        a10 = a[4],
-        a11 = a[5],
-        a12 = a[6],
-        a13 = a[7],
-        a20 = a[8],
-        a21 = a[9],
-        a22 = a[10],
-        a23 = a[11];
-
-    if (a !== out) { // If the source and destination differ, copy the unchanged rows
-        out[0]  = a[0];
-        out[1]  = a[1];
-        out[2]  = a[2];
-        out[3]  = a[3];
-        out[12] = a[12];
-        out[13] = a[13];
-        out[14] = a[14];
-        out[15] = a[15];
-    }
-
-    // Perform axis-specific matrix multiplication
-    out[4] = a10 * c + a20 * s;
-    out[5] = a11 * c + a21 * s;
-    out[6] = a12 * c + a22 * s;
-    out[7] = a13 * c + a23 * s;
-    out[8] = a20 * c - a10 * s;
-    out[9] = a21 * c - a11 * s;
-    out[10] = a22 * c - a12 * s;
-    out[11] = a23 * c - a13 * s;
-    return out;
-};
-
-/**
- * Rotates a matrix by the given angle around the Y axis
- *
- * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to rotate
- * @param {Number} rad the angle to rotate the matrix by
- * @returns {mat4} out
- */
-mat4.rotateY = function (out, a, rad) {
-    var s = Math.sin(rad),
-        c = Math.cos(rad),
-        a00 = a[0],
-        a01 = a[1],
-        a02 = a[2],
-        a03 = a[3],
-        a20 = a[8],
-        a21 = a[9],
-        a22 = a[10],
-        a23 = a[11];
-
-    if (a !== out) { // If the source and destination differ, copy the unchanged rows
-        out[4]  = a[4];
-        out[5]  = a[5];
-        out[6]  = a[6];
-        out[7]  = a[7];
-        out[12] = a[12];
-        out[13] = a[13];
-        out[14] = a[14];
-        out[15] = a[15];
-    }
-
-    // Perform axis-specific matrix multiplication
-    out[0] = a00 * c - a20 * s;
-    out[1] = a01 * c - a21 * s;
-    out[2] = a02 * c - a22 * s;
-    out[3] = a03 * c - a23 * s;
-    out[8] = a00 * s + a20 * c;
-    out[9] = a01 * s + a21 * c;
-    out[10] = a02 * s + a22 * c;
-    out[11] = a03 * s + a23 * c;
-    return out;
-};
-
-/**
- * Rotates a matrix by the given angle around the Z axis
- *
- * @param {mat4} out the receiving matrix
- * @param {mat4} a the matrix to rotate
- * @param {Number} rad the angle to rotate the matrix by
- * @returns {mat4} out
- */
-mat4.rotateZ = function (out, a, rad) {
-    var s = Math.sin(rad),
-        c = Math.cos(rad),
-        a00 = a[0],
-        a01 = a[1],
-        a02 = a[2],
-        a03 = a[3],
-        a10 = a[4],
-        a11 = a[5],
-        a12 = a[6],
-        a13 = a[7];
-
-    if (a !== out) { // If the source and destination differ, copy the unchanged last row
-        out[8]  = a[8];
-        out[9]  = a[9];
-        out[10] = a[10];
-        out[11] = a[11];
-        out[12] = a[12];
-        out[13] = a[13];
-        out[14] = a[14];
-        out[15] = a[15];
-    }
-
-    // Perform axis-specific matrix multiplication
-    out[0] = a00 * c + a10 * s;
-    out[1] = a01 * c + a11 * s;
-    out[2] = a02 * c + a12 * s;
-    out[3] = a03 * c + a13 * s;
-    out[4] = a10 * c - a00 * s;
-    out[5] = a11 * c - a01 * s;
-    out[6] = a12 * c - a02 * s;
-    out[7] = a13 * c - a03 * s;
-    return out;
-};
-
-/**
- * Creates a matrix from a quaternion rotation and vector translation
- * This is equivalent to (but much faster than):
- *
- *     mat4.identity(dest);
- *     mat4.translate(dest, vec);
- *     var quatMat = mat4.create();
- *     quat4.toMat4(quat, quatMat);
- *     mat4.multiply(dest, quatMat);
- *
- * @param {mat4} out mat4 receiving operation result
- * @param {quat4} q Rotation quaternion
- * @param {vec3} v Translation vector
- * @returns {mat4} out
- */
-mat4.fromRotationTranslation = function (out, q, v) {
-    // Quaternion math
-    var x = q[0], y = q[1], z = q[2], w = q[3],
-        x2 = x + x,
-        y2 = y + y,
-        z2 = z + z,
-
-        xx = x * x2,
-        xy = x * y2,
-        xz = x * z2,
-        yy = y * y2,
-        yz = y * z2,
-        zz = z * z2,
-        wx = w * x2,
-        wy = w * y2,
-        wz = w * z2;
-
-    out[0] = 1 - (yy + zz);
-    out[1] = xy + wz;
-    out[2] = xz - wy;
-    out[3] = 0;
-    out[4] = xy - wz;
-    out[5] = 1 - (xx + zz);
-    out[6] = yz + wx;
-    out[7] = 0;
-    out[8] = xz + wy;
-    out[9] = yz - wx;
-    out[10] = 1 - (xx + yy);
-    out[11] = 0;
-    out[12] = v[0];
-    out[13] = v[1];
-    out[14] = v[2];
-    out[15] = 1;
-    
-    return out;
-};
-
-/**
-* Calculates a 4x4 matrix from the given quaternion
-*
-* @param {mat4} out mat4 receiving operation result
-* @param {quat} q Quaternion to create matrix from
-*
-* @returns {mat4} out
-*/
-mat4.fromQuat = function (out, q) {
-    var x = q[0], y = q[1], z = q[2], w = q[3],
-        x2 = x + x,
-        y2 = y + y,
-        z2 = z + z,
-
-        xx = x * x2,
-        xy = x * y2,
-        xz = x * z2,
-        yy = y * y2,
-        yz = y * z2,
-        zz = z * z2,
-        wx = w * x2,
-        wy = w * y2,
-        wz = w * z2;
-
-    out[0] = 1 - (yy + zz);
-    out[1] = xy + wz;
-    out[2] = xz - wy;
-    out[3] = 0;
-
-    out[4] = xy - wz;
-    out[5] = 1 - (xx + zz);
-    out[6] = yz + wx;
-    out[7] = 0;
-
-    out[8] = xz + wy;
-    out[9] = yz - wx;
-    out[10] = 1 - (xx + yy);
-    out[11] = 0;
-
-    out[12] = 0;
-    out[13] = 0;
-    out[14] = 0;
-    out[15] = 1;
-
-    return out;
-};
-
-/**
- * Generates a frustum matrix with the given bounds
- *
- * @param {mat4} out mat4 frustum matrix will be written into
- * @param {Number} left Left bound of the frustum
- * @param {Number} right Right bound of the frustum
- * @param {Number} bottom Bottom bound of the frustum
- * @param {Number} top Top bound of the frustum
- * @param {Number} near Near bound of the frustum
- * @param {Number} far Far bound of the frustum
- * @returns {mat4} out
- */
-mat4.frustum = function (out, left, right, bottom, top, near, far) {
-    var rl = 1 / (right - left),
-        tb = 1 / (top - bottom),
-        nf = 1 / (near - far);
-    out[0] = (near * 2) * rl;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 0;
-    out[4] = 0;
-    out[5] = (near * 2) * tb;
-    out[6] = 0;
-    out[7] = 0;
-    out[8] = (right + left) * rl;
-    out[9] = (top + bottom) * tb;
-    out[10] = (far + near) * nf;
-    out[11] = -1;
-    out[12] = 0;
-    out[13] = 0;
-    out[14] = (far * near * 2) * nf;
-    out[15] = 0;
-    return out;
-};
-
-/**
- * Generates a perspective projection matrix with the given bounds
- *
- * @param {mat4} out mat4 frustum matrix will be written into
- * @param {number} fovy Vertical field of view in radians
- * @param {number} aspect Aspect ratio. typically viewport width/height
- * @param {number} near Near bound of the frustum
- * @param {number} far Far bound of the frustum
- * @returns {mat4} out
- */
-mat4.perspective = function (out, fovy, aspect, near, far) {
-    var f = 1.0 / Math.tan(fovy / 2),
-        nf = 1 / (near - far);
-    out[0] = f / aspect;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 0;
-    out[4] = 0;
-    out[5] = f;
-    out[6] = 0;
-    out[7] = 0;
-    out[8] = 0;
-    out[9] = 0;
-    out[10] = (far + near) * nf;
-    out[11] = -1;
-    out[12] = 0;
-    out[13] = 0;
-    out[14] = (2 * far * near) * nf;
-    out[15] = 0;
-    return out;
-};
-
-/**
- * Generates a orthogonal projection matrix with the given bounds
- *
- * @param {mat4} out mat4 frustum matrix will be written into
- * @param {number} left Left bound of the frustum
- * @param {number} right Right bound of the frustum
- * @param {number} bottom Bottom bound of the frustum
- * @param {number} top Top bound of the frustum
- * @param {number} near Near bound of the frustum
- * @param {number} far Far bound of the frustum
- * @returns {mat4} out
- */
-mat4.ortho = function (out, left, right, bottom, top, near, far) {
-    var lr = 1 / (left - right),
-        bt = 1 / (bottom - top),
-        nf = 1 / (near - far);
-    out[0] = -2 * lr;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 0;
-    out[4] = 0;
-    out[5] = -2 * bt;
-    out[6] = 0;
-    out[7] = 0;
-    out[8] = 0;
-    out[9] = 0;
-    out[10] = 2 * nf;
-    out[11] = 0;
-    out[12] = (left + right) * lr;
-    out[13] = (top + bottom) * bt;
-    out[14] = (far + near) * nf;
-    out[15] = 1;
-    return out;
-};
-
-/**
- * Generates a look-at matrix with the given eye position, focal point, and up axis
- *
- * @param {mat4} out mat4 frustum matrix will be written into
- * @param {vec3} eye Position of the viewer
- * @param {vec3} center Point the viewer is looking at
- * @param {vec3} up vec3 pointing up
- * @returns {mat4} out
- */
-mat4.lookAt = function (out, eye, center, up) {
-    var x0, x1, x2, y0, y1, y2, z0, z1, z2, len,
-        eyex = eye[0],
-        eyey = eye[1],
-        eyez = eye[2],
-        upx = up[0],
-        upy = up[1],
-        upz = up[2],
-        centerx = center[0],
-        centery = center[1],
-        centerz = center[2];
-
-    if (Math.abs(eyex - centerx) < GLMAT_EPSILON &&
-        Math.abs(eyey - centery) < GLMAT_EPSILON &&
-        Math.abs(eyez - centerz) < GLMAT_EPSILON) {
-        return mat4.identity(out);
-    }
-
-    z0 = eyex - centerx;
-    z1 = eyey - centery;
-    z2 = eyez - centerz;
-
-    len = 1 / Math.sqrt(z0 * z0 + z1 * z1 + z2 * z2);
-    z0 *= len;
-    z1 *= len;
-    z2 *= len;
-
-    x0 = upy * z2 - upz * z1;
-    x1 = upz * z0 - upx * z2;
-    x2 = upx * z1 - upy * z0;
-    len = Math.sqrt(x0 * x0 + x1 * x1 + x2 * x2);
-    if (!len) {
-        x0 = 0;
-        x1 = 0;
-        x2 = 0;
-    } else {
-        len = 1 / len;
-        x0 *= len;
-        x1 *= len;
-        x2 *= len;
-    }
-
-    y0 = z1 * x2 - z2 * x1;
-    y1 = z2 * x0 - z0 * x2;
-    y2 = z0 * x1 - z1 * x0;
-
-    len = Math.sqrt(y0 * y0 + y1 * y1 + y2 * y2);
-    if (!len) {
-        y0 = 0;
-        y1 = 0;
-        y2 = 0;
-    } else {
-        len = 1 / len;
-        y0 *= len;
-        y1 *= len;
-        y2 *= len;
-    }
-
-    out[0] = x0;
-    out[1] = y0;
-    out[2] = z0;
-    out[3] = 0;
-    out[4] = x1;
-    out[5] = y1;
-    out[6] = z1;
-    out[7] = 0;
-    out[8] = x2;
-    out[9] = y2;
-    out[10] = z2;
-    out[11] = 0;
-    out[12] = -(x0 * eyex + x1 * eyey + x2 * eyez);
-    out[13] = -(y0 * eyex + y1 * eyey + y2 * eyez);
-    out[14] = -(z0 * eyex + z1 * eyey + z2 * eyez);
-    out[15] = 1;
-
-    return out;
-};
-
-/**
- * Returns a string representation of a mat4
- *
- * @param {mat4} mat matrix to represent as a string
- * @returns {String} string representation of the matrix
- */
-mat4.str = function (a) {
-    return 'mat4(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ', ' +
-                    a[4] + ', ' + a[5] + ', ' + a[6] + ', ' + a[7] + ', ' +
-                    a[8] + ', ' + a[9] + ', ' + a[10] + ', ' + a[11] + ', ' + 
-                    a[12] + ', ' + a[13] + ', ' + a[14] + ', ' + a[15] + ')';
-};
-
-if(typeof(exports) !== 'undefined') {
-    exports.mat4 = mat4;
-}
-;
-/* Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
-
-  * Redistributions of source code must retain the above copyright notice, this
-    list of conditions and the following disclaimer.
-  * Redistributions in binary form must reproduce the above copyright notice,
-    this list of conditions and the following disclaimer in the documentation 
-    and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
-
-/**
- * @class Quaternion
- * @name quat
- */
-
-var quat = {};
-
-/**
- * Creates a new identity quat
- *
- * @returns {quat} a new quaternion
- */
-quat.create = function() {
-    var out = new GLMAT_ARRAY_TYPE(4);
-    out[0] = 0;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 1;
-    return out;
-};
-
-/**
- * Sets a quaternion to represent the shortest rotation from one
- * vector to another.
- *
- * Both vectors are assumed to be unit length.
- *
- * @param {quat} out the receiving quaternion.
- * @param {vec3} a the initial vector
- * @param {vec3} b the destination vector
- * @returns {quat} out
- */
-quat.rotationTo = (function() {
-    var tmpvec3 = vec3.create();
-    var xUnitVec3 = vec3.fromValues(1,0,0);
-    var yUnitVec3 = vec3.fromValues(0,1,0);
-
-    return function(out, a, b) {
-        var dot = vec3.dot(a, b);
-        if (dot < -0.999999) {
-            vec3.cross(tmpvec3, xUnitVec3, a);
-            if (vec3.length(tmpvec3) < 0.000001)
-                vec3.cross(tmpvec3, yUnitVec3, a);
-            vec3.normalize(tmpvec3, tmpvec3);
-            quat.setAxisAngle(out, tmpvec3, Math.PI);
-            return out;
-        } else if (dot > 0.999999) {
-            out[0] = 0;
-            out[1] = 0;
-            out[2] = 0;
-            out[3] = 1;
-            return out;
-        } else {
-            vec3.cross(tmpvec3, a, b);
-            out[0] = tmpvec3[0];
-            out[1] = tmpvec3[1];
-            out[2] = tmpvec3[2];
-            out[3] = 1 + dot;
-            return quat.normalize(out, out);
-        }
-    };
-})();
-
-/**
- * Sets the specified quaternion with values corresponding to the given
- * axes. Each axis is a vec3 and is expected to be unit length and
- * perpendicular to all other specified axes.
- *
- * @param {vec3} view  the vector representing the viewing direction
- * @param {vec3} right the vector representing the local "right" direction
- * @param {vec3} up    the vector representing the local "up" direction
- * @returns {quat} out
- */
-quat.setAxes = (function() {
-    var matr = mat3.create();
-
-    return function(out, view, right, up) {
-        matr[0] = right[0];
-        matr[3] = right[1];
-        matr[6] = right[2];
-
-        matr[1] = up[0];
-        matr[4] = up[1];
-        matr[7] = up[2];
-
-        matr[2] = view[0];
-        matr[5] = view[1];
-        matr[8] = view[2];
-
-        return quat.normalize(out, quat.fromMat3(out, matr));
-    };
-})();
-
-/**
- * Creates a new quat initialized with values from an existing quaternion
- *
- * @param {quat} a quaternion to clone
- * @returns {quat} a new quaternion
- * @function
- */
-quat.clone = vec4.clone;
-
-/**
- * Creates a new quat initialized with the given values
- *
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @param {Number} w W component
- * @returns {quat} a new quaternion
- * @function
- */
-quat.fromValues = vec4.fromValues;
-
-/**
- * Copy the values from one quat to another
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a the source quaternion
- * @returns {quat} out
- * @function
- */
-quat.copy = vec4.copy;
-
-/**
- * Set the components of a quat to the given values
- *
- * @param {quat} out the receiving quaternion
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @param {Number} w W component
- * @returns {quat} out
- * @function
- */
-quat.set = vec4.set;
-
-/**
- * Set a quat to the identity quaternion
- *
- * @param {quat} out the receiving quaternion
- * @returns {quat} out
- */
-quat.identity = function(out) {
-    out[0] = 0;
-    out[1] = 0;
-    out[2] = 0;
-    out[3] = 1;
-    return out;
-};
-
-/**
- * Sets a quat from the given angle and rotation axis,
- * then returns it.
- *
- * @param {quat} out the receiving quaternion
- * @param {vec3} axis the axis around which to rotate
- * @param {Number} rad the angle in radians
- * @returns {quat} out
- **/
-quat.setAxisAngle = function(out, axis, rad) {
-    rad = rad * 0.5;
-    var s = Math.sin(rad);
-    out[0] = s * axis[0];
-    out[1] = s * axis[1];
-    out[2] = s * axis[2];
-    out[3] = Math.cos(rad);
-    return out;
-};
-
-/**
- * Adds two quat's
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @returns {quat} out
- * @function
- */
-quat.add = vec4.add;
-
-/**
- * Multiplies two quat's
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @returns {quat} out
- */
-quat.multiply = function(out, a, b) {
-    var ax = a[0], ay = a[1], az = a[2], aw = a[3],
-        bx = b[0], by = b[1], bz = b[2], bw = b[3];
-
-    out[0] = ax * bw + aw * bx + ay * bz - az * by;
-    out[1] = ay * bw + aw * by + az * bx - ax * bz;
-    out[2] = az * bw + aw * bz + ax * by - ay * bx;
-    out[3] = aw * bw - ax * bx - ay * by - az * bz;
-    return out;
-};
-
-/**
- * Alias for {@link quat.multiply}
- * @function
- */
-quat.mul = quat.multiply;
-
-/**
- * Scales a quat by a scalar number
- *
- * @param {quat} out the receiving vector
- * @param {quat} a the vector to scale
- * @param {Number} b amount to scale the vector by
- * @returns {quat} out
- * @function
- */
-quat.scale = vec4.scale;
-
-/**
- * Rotates a quaternion by the given angle about the X axis
- *
- * @param {quat} out quat receiving operation result
- * @param {quat} a quat to rotate
- * @param {number} rad angle (in radians) to rotate
- * @returns {quat} out
- */
-quat.rotateX = function (out, a, rad) {
-    rad *= 0.5; 
-
-    var ax = a[0], ay = a[1], az = a[2], aw = a[3],
-        bx = Math.sin(rad), bw = Math.cos(rad);
-
-    out[0] = ax * bw + aw * bx;
-    out[1] = ay * bw + az * bx;
-    out[2] = az * bw - ay * bx;
-    out[3] = aw * bw - ax * bx;
-    return out;
-};
-
-/**
- * Rotates a quaternion by the given angle about the Y axis
- *
- * @param {quat} out quat receiving operation result
- * @param {quat} a quat to rotate
- * @param {number} rad angle (in radians) to rotate
- * @returns {quat} out
- */
-quat.rotateY = function (out, a, rad) {
-    rad *= 0.5; 
-
-    var ax = a[0], ay = a[1], az = a[2], aw = a[3],
-        by = Math.sin(rad), bw = Math.cos(rad);
-
-    out[0] = ax * bw - az * by;
-    out[1] = ay * bw + aw * by;
-    out[2] = az * bw + ax * by;
-    out[3] = aw * bw - ay * by;
-    return out;
-};
-
-/**
- * Rotates a quaternion by the given angle about the Z axis
- *
- * @param {quat} out quat receiving operation result
- * @param {quat} a quat to rotate
- * @param {number} rad angle (in radians) to rotate
- * @returns {quat} out
- */
-quat.rotateZ = function (out, a, rad) {
-    rad *= 0.5; 
-
-    var ax = a[0], ay = a[1], az = a[2], aw = a[3],
-        bz = Math.sin(rad), bw = Math.cos(rad);
-
-    out[0] = ax * bw + ay * bz;
-    out[1] = ay * bw - ax * bz;
-    out[2] = az * bw + aw * bz;
-    out[3] = aw * bw - az * bz;
-    return out;
-};
-
-/**
- * Calculates the W component of a quat from the X, Y, and Z components.
- * Assumes that quaternion is 1 unit in length.
- * Any existing W component will be ignored.
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate W component of
- * @returns {quat} out
- */
-quat.calculateW = function (out, a) {
-    var x = a[0], y = a[1], z = a[2];
-
-    out[0] = x;
-    out[1] = y;
-    out[2] = z;
-    out[3] = -Math.sqrt(Math.abs(1.0 - x * x - y * y - z * z));
-    return out;
-};
-
-/**
- * Calculates the dot product of two quat's
- *
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @returns {Number} dot product of a and b
- * @function
- */
-quat.dot = vec4.dot;
-
-/**
- * Performs a linear interpolation between two quat's
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @param {Number} t interpolation amount between the two inputs
- * @returns {quat} out
- * @function
- */
-quat.lerp = vec4.lerp;
-
-/**
- * Performs a spherical linear interpolation between two quat
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a the first operand
- * @param {quat} b the second operand
- * @param {Number} t interpolation amount between the two inputs
- * @returns {quat} out
- */
-quat.slerp = function (out, a, b, t) {
-    // benchmarks:
-    //    http://jsperf.com/quaternion-slerp-implementations
-
-    var ax = a[0], ay = a[1], az = a[2], aw = a[3],
-        bx = b[0], by = b[1], bz = b[2], bw = b[3];
-
-    var        omega, cosom, sinom, scale0, scale1;
-
-    // calc cosine
-    cosom = ax * bx + ay * by + az * bz + aw * bw;
-    // adjust signs (if necessary)
-    if ( cosom < 0.0 ) {
-        cosom = -cosom;
-        bx = - bx;
-        by = - by;
-        bz = - bz;
-        bw = - bw;
-    }
-    // calculate coefficients
-    if ( (1.0 - cosom) > 0.000001 ) {
-        // standard case (slerp)
-        omega  = Math.acos(cosom);
-        sinom  = Math.sin(omega);
-        scale0 = Math.sin((1.0 - t) * omega) / sinom;
-        scale1 = Math.sin(t * omega) / sinom;
-    } else {        
-        // "from" and "to" quaternions are very close 
-        //  ... so we can do a linear interpolation
-        scale0 = 1.0 - t;
-        scale1 = t;
-    }
-    // calculate final values
-    out[0] = scale0 * ax + scale1 * bx;
-    out[1] = scale0 * ay + scale1 * by;
-    out[2] = scale0 * az + scale1 * bz;
-    out[3] = scale0 * aw + scale1 * bw;
-    
-    return out;
-};
-
-/**
- * Calculates the inverse of a quat
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate inverse of
- * @returns {quat} out
- */
-quat.invert = function(out, a) {
-    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3],
-        dot = a0*a0 + a1*a1 + a2*a2 + a3*a3,
-        invDot = dot ? 1.0/dot : 0;
-    
-    // TODO: Would be faster to return [0,0,0,0] immediately if dot == 0
-
-    out[0] = -a0*invDot;
-    out[1] = -a1*invDot;
-    out[2] = -a2*invDot;
-    out[3] = a3*invDot;
-    return out;
-};
-
-/**
- * Calculates the conjugate of a quat
- * If the quaternion is normalized, this function is faster than quat.inverse and produces the same result.
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate conjugate of
- * @returns {quat} out
- */
-quat.conjugate = function (out, a) {
-    out[0] = -a[0];
-    out[1] = -a[1];
-    out[2] = -a[2];
-    out[3] = a[3];
-    return out;
-};
-
-/**
- * Calculates the length of a quat
- *
- * @param {quat} a vector to calculate length of
- * @returns {Number} length of a
- * @function
- */
-quat.length = vec4.length;
-
-/**
- * Alias for {@link quat.length}
- * @function
- */
-quat.len = quat.length;
-
-/**
- * Calculates the squared length of a quat
- *
- * @param {quat} a vector to calculate squared length of
- * @returns {Number} squared length of a
- * @function
- */
-quat.squaredLength = vec4.squaredLength;
-
-/**
- * Alias for {@link quat.squaredLength}
- * @function
- */
-quat.sqrLen = quat.squaredLength;
-
-/**
- * Normalize a quat
- *
- * @param {quat} out the receiving quaternion
- * @param {quat} a quaternion to normalize
- * @returns {quat} out
- * @function
- */
-quat.normalize = vec4.normalize;
-
-/**
- * Creates a quaternion from the given 3x3 rotation matrix.
- *
- * NOTE: The resultant quaternion is not normalized, so you should be sure
- * to renormalize the quaternion yourself where necessary.
- *
- * @param {quat} out the receiving quaternion
- * @param {mat3} m rotation matrix
- * @returns {quat} out
- * @function
- */
-quat.fromMat3 = (function() {
-    // benchmarks:
-    //    http://jsperf.com/typed-array-access-speed
-    //    http://jsperf.com/conversion-of-3x3-matrix-to-quaternion
-
-    var s_iNext = (typeof(Int8Array) !== 'undefined' ? new Int8Array([1,2,0]) : [1,2,0]);
-
-    return function(out, m) {
-        // Algorithm in Ken Shoemake's article in 1987 SIGGRAPH course notes
-        // article "Quaternion Calculus and Fast Animation".
-        var fTrace = m[0] + m[4] + m[8];
-        var fRoot;
-
-        if ( fTrace > 0.0 ) {
-            // |w| > 1/2, may as well choose w > 1/2
-            fRoot = Math.sqrt(fTrace + 1.0);  // 2w
-            out[3] = 0.5 * fRoot;
-            fRoot = 0.5/fRoot;  // 1/(4w)
-            out[0] = (m[7]-m[5])*fRoot;
-            out[1] = (m[2]-m[6])*fRoot;
-            out[2] = (m[3]-m[1])*fRoot;
-        } else {
-            // |w| <= 1/2
-            var i = 0;
-            if ( m[4] > m[0] )
-              i = 1;
-            if ( m[8] > m[i*3+i] )
-              i = 2;
-            var j = s_iNext[i];
-            var k = s_iNext[j];
-            
-            fRoot = Math.sqrt(m[i*3+i]-m[j*3+j]-m[k*3+k] + 1.0);
-            out[i] = 0.5 * fRoot;
-            fRoot = 0.5 / fRoot;
-            out[3] = (m[k*3+j] - m[j*3+k]) * fRoot;
-            out[j] = (m[j*3+i] + m[i*3+j]) * fRoot;
-            out[k] = (m[k*3+i] + m[i*3+k]) * fRoot;
-        }
-        
-        return out;
-    };
-})();
-
-/**
- * Returns a string representation of a quatenion
- *
- * @param {quat} vec vector to represent as a string
- * @returns {String} string representation of the vector
- */
-quat.str = function (a) {
-    return 'quat(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + a[3] + ')';
-};
-
-if(typeof(exports) !== 'undefined') {
-    exports.quat = quat;
-}
-;
-
-  })(shim.exports);
-})(this);
-
-},{}],33:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
-(function(exports) {
-"use strict";
-
-function IndexedVertexArray(gl, numVerts, numIndices, 
-                            float32Allocator, uint16Allocator) {
-  VertexArrayBase.prototype.constructor.call(this, gl, numVerts, 
-                                             float32Allocator);
-  this._indexBuffer = gl.createBuffer();
-  this._uint16Allocator = uint16Allocator;
-  this._numVerts = 0;
-  this._maxVerts = numVerts;
-  this._numTriangles = 0;
-  this._indexData = uint16Allocator.request(numIndices);
-}
-
-derive(IndexedVertexArray, VertexArrayBase);
-
-IndexedVertexArray.prototype.destroy = function() {
-  VertexArrayBase.prototype.destroy.call(this);
-  this._gl.deleteBuffer(this._indexBuffer);
-  this._uint16Allocator.release(this._indexData);
-};
-
-IndexedVertexArray.prototype.numVerts = function() { return this._numVerts; };
-IndexedVertexArray.prototype.maxVerts = function() { return this._maxVerts; };
-IndexedVertexArray.prototype.numIndices = function() { return this._numTriangles * 3; };
-
-IndexedVertexArray.prototype.addVertex = function(pos, normal, color, objId) {
-  var i = this._numVerts * this._FLOATS_PER_VERT;
-  this._vertData[i++] = pos[0];
-  this._vertData[i++] = pos[1];
-  this._vertData[i++] = pos[2];
-  this._vertData[i++] = normal[0];
-  this._vertData[i++] = normal[1];
-  this._vertData[i++] = normal[2];
-  this._vertData[i++] = color[0];
-  this._vertData[i++] = color[1];
-  this._vertData[i++] = color[2];
-  this._vertData[i++] = color[3];
-  this._vertData[i++] = objId;
-  this._numVerts += 1;
-  this._ready = false;
-};
-
-IndexedVertexArray.prototype._FLOATS_PER_VERT = 11;
-IndexedVertexArray.prototype._OBJID_OFFSET = 10;
-IndexedVertexArray.prototype._COLOR_OFFSET = 6;
-IndexedVertexArray.prototype._NORMAL_OFFSET = 3;
-IndexedVertexArray.prototype._POS_OFFSET = 0;
-
-
-IndexedVertexArray.prototype.addTriangle = function(idx1, idx2, idx3) {
-  var index = 3 * this._numTriangles;
-  if (index >= this._indexData.length) {
-    return;
-  }
-  this._indexData[index++] = idx1;
-  this._indexData[index++] = idx2;
-  this._indexData[index++] = idx3;
-  this._numTriangles += 1;
-  this._ready = false;
-};
-
-IndexedVertexArray.prototype.bindBuffers = function() {
-  var ready = this._ready;
-  VertexArrayBase.prototype.bindBuffers.call(this);
-  this._gl.bindBuffer(this._gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-  if (ready) {
-    return;
-  }
-  this._gl.bufferData(this._gl.ELEMENT_ARRAY_BUFFER, this._indexData,
-                      this._gl.STATIC_DRAW);
-};
-
-IndexedVertexArray.prototype.bindAttribs = function(shader) {
-  this._gl.enableVertexAttribArray(shader.posAttrib);
-  this._gl.vertexAttribPointer(shader.posAttrib, 3, this._gl.FLOAT, false,
-                               this._FLOATS_PER_VERT * 4, this._POS_OFFSET * 4);
-
-  if (shader.normalAttrib !== -1) {
-    this._gl.enableVertexAttribArray(shader.normalAttrib);
-    this._gl.vertexAttribPointer(shader.normalAttrib, 3, this._gl.FLOAT, false,
-                                 this._FLOATS_PER_VERT * 4,
-                                 this._NORMAL_OFFSET * 4);
-  }
-
-  if (shader.colorAttrib !== -1) {
-    this._gl.vertexAttribPointer(shader.colorAttrib, 4, this._gl.FLOAT, false,
-                                 this._FLOATS_PER_VERT * 4,
-                                 this._COLOR_OFFSET * 4);
-    this._gl.enableVertexAttribArray(shader.colorAttrib);
-  }
-  if (shader.objIdAttrib !== -1) {
-    this._gl.vertexAttribPointer(shader.objIdAttrib, 1, this._gl.FLOAT, false,
-                                 this._FLOATS_PER_VERT * 4, this._OBJID_OFFSET * 4);
-    this._gl.enableVertexAttribArray(shader.objIdAttrib);
-  }
-};
-
-IndexedVertexArray.prototype.releaseAttribs = function(shader) {
-
-  this._gl.disableVertexAttribArray(shader.posAttrib);
-  if (shader.colorAttrib !== -1) {
-    this._gl.disableVertexAttribArray(shader.colorAttrib);
-  }
-  if (shader.normalAttrib !== -1) {
-    this._gl.disableVertexAttribArray(shader.normalAttrib);
-  }
-  if (shader.objIdAttrib !== -1) {
-    this._gl.disableVertexAttribArray(shader.objIdAttrib);
-  }
-};
-
-IndexedVertexArray.prototype.bind = function(shader) {
-  this.bindBuffers();
-  this.bindAttribs(shader);
-};
-
-// draws all triangles contained in the indexed vertex array using the provided
-// shader. requires a call to bind() first.
-IndexedVertexArray.prototype.draw = function() {
-  this._gl.drawElements(this._gl.TRIANGLES, this._numTriangles * 3,
-                        this._gl.UNSIGNED_SHORT, 0);
-};
-
-exports.IndexedVertexArray = IndexedVertexArray;
-
-return true;
-})(this);
-
-},{}],34:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-// 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to 
-// deal in the Software without restriction, including without limitation the 
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or 
-// sell copies of the Software, and to permit persons to whom the Software is 
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in 
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
-// DEALINGS IN THE SOFTWARE.
-
-(function(exports) {
-
-function PDBReader() {
-}
-
-function parseHelixRecord(line) {
-  var frstNum = parseInt(line.substr(21, 4), 10);
-  var frstInsCode = line[25] === ' ' ? '\0' : line[25];
-  var lastNum = parseInt(line.substr(33, 4), 10);
-  var lastInsCode = line[37] === ' ' ? '\0' : line[37];
-  var chainName = line[19];
-  return { first : [frstNum, frstInsCode], 
-           last : [lastNum, lastInsCode], chainName : chainName 
-  };
-}
-
-function parseSheetRecord(line) {
-  var frstNum = parseInt(line.substr(22, 4), 10);
-  var frstInsCode = line[26] === ' ' ? '\0' : line[26];
-  var lastNum = parseInt(line.substr(33, 4), 10);
-  var lastInsCode = line[37] === ' ' ? '\0' : line[37];
-  var chainName = line[21];
-  return { 
-    first : [frstNum, frstInsCode],
-    last : [lastNum, lastInsCode],
-    chainName : chainName
-  };
-}
-
-function Remark350Reader() {
-  this._assemblies = {};
-  this._current = null;
-}
-
-Remark350Reader.prototype.assemblies = function() { 
-  var assemblies = [];
-  for (var c in this._assemblies) {
-    assemblies.push(this._assemblies[c]);
-  }
-  return assemblies;
-};
-
-Remark350Reader.prototype.assembly = function(id) {
-  return this._assemblies[id];
-};
-
-
-Remark350Reader.prototype.nextLine = function(line) {
-  line = line.substr(11);
-  if (line[0] === 'B' && line.substr(0, 12) === 'BIOMOLECULE:') {
-    var name =  line.substr(13).trim();
-    this._currentAssembly = new Assembly(name); 
-    this._assemblies[name] =  this._currentAssembly;
-    return;
-  }
-  if (line.substr(0, 30) === 'APPLY THE FOLLOWING TO CHAINS:' ||
-      line.substr(0, 30) === '                   AND CHAINS:') {
-    var chains = line.substr(30).split(',');
-    if (line[0] === 'A') {
-      this._currentSymGen = new SymGenerator();
-      this._currentAssembly.addGenerator(this._currentSymGen);
-    }
-    this._currentMatrix = mat4.create();
-    for (var i = 0; i < chains.length; ++i) {
-      var trimmedChainName = chains[i].trim();
-      if (trimmedChainName.length) {
-        this._currentSymGen.addChain(trimmedChainName);
-      }
-    }
-    return;
-  }
-  if (line.substr(0, 7) === '  BIOMT') {
-    var col = parseInt(line[7], 10) - 1;
-    // FIXME: don't base matrix number of BIOMT1
-    var x = parseFloat(line.substr(13, 9));
-    var y = parseFloat(line.substr(23, 9));
-    var z = parseFloat(line.substr(33, 9));
-    var w = parseFloat(line.substr(46, 12).trim());
-    this._currentMatrix[4*0+col] = x;
-    this._currentMatrix[4*1+col] = y;
-    this._currentMatrix[4*2+col] = z;
-    this._currentMatrix[4*3+col] = w;
-    if (col === 2) {
-      this._currentSymGen.addMatrix(this._currentMatrix);
-      this._currentMatrix = mat4.create();
-    }
-    return;
-  }
-};
-
-// a truly minimalistic PDB parser. It will die as soon as the input is 
-// not well-formed. it only reads ATOM, HETATM, HELIX and SHEET records, 
-// everything else is ignored. in case of multi-model files, only the 
-// first model is read.
-//
-// FIXME: load PDB currently spends a substantial amount of time creating
-// the vec3 instances for the atom positions. it's possible that it's
-// cheaper to initialize a bulk buffer once and create buffer views to
-// that data for each atom position. since the atom's lifetime is bound to
-// the parent structure, the buffer could be managed on that level and
-// released once the structure is deleted.
-function pdb(text) {
-  console.time('pdb'); 
-  var structure = new mol.Mol();
-  var currChain = null;
-  var currRes = null;
-  var currAtom = null;
-  
-  var helices = [];
-  var sheets = [];
-  
-  function parseAndAddAtom(line, hetatm) {
-    var alt_loc = line[16];
-    if (alt_loc !== ' ' && alt_loc !== 'A') {
-      return;
-    }
-    var chainName = line[21];
-    var resName = line.substr(17, 3).trim();
-    var atomName = line.substr(12, 4).trim();
-    var rnumNum = parseInt(line.substr(22, 4), 10);
-    var insCode = line[26] === ' ' ? '\0' : line[26];
-    var updateResidue = false;
-    var updateChain = false;
-    if (!currChain || currChain.name() !== chainName) {
-      updateChain = true;
-      updateResidue = true;
-    }
-    if (!currRes || currRes.num() !== rnumNum || currRes.insCode() !== insCode) {
-      updateResidue = true;
-    }
-    if (updateChain) {
-      // residues of one chain might appear interspersed with residues from
-      // other chains.
-      currChain = structure.chain(chainName) || structure.addChain(chainName);
-    }
-    if (updateResidue) {
-      currRes = currChain.addResidue(resName, rnumNum, insCode);
-    }
-    var pos = vec3.create();
-    for (var i=0;i<3;++i) {
-      pos[i] = (parseFloat(line.substr(30+i*8, 8)));
-    }
-    currRes.addAtom(atomName, pos, line.substr(76, 2).trim());
-  }
-  var remark350Reader = new Remark350Reader();
-  var lines = text.split(/\r\n|\r|\n/g);
-  var i = 0;
-  for (i = 0; i < lines.length; i++) {
-    var line = lines[i];
-    var recordName = line.substr(0, 6);
-
-    if (recordName === 'ATOM  ') {
-      parseAndAddAtom(line, false);
-      continue;
-    }
-    if (recordName === 'HETATM') {
-      parseAndAddAtom(line, true);
-      continue;
-    }
-    if (recordName === 'REMARK') {
-      // for now we are only interested in the biological assembly information
-      // contained in remark 350.
-      var remarkNumber = line.substr(7, 3);
-      if (remarkNumber === '350') {
-        remark350Reader.nextLine(line);
-      }
-    }
-    if (recordName === 'HELIX ') {
-      helices.push(parseHelixRecord(line));
-      continue;
-    }
-    if (recordName === 'SHEET ') {
-      sheets.push(parseSheetRecord(line));
-      continue;
-    }
-    if (recordName === 'END') {
-      break;
-    }
-  }
-  var chain = null;
-  for (i = 0; i < sheets.length; ++i) {
-    var sheet = sheets[i];
-    chain = structure.chain(sheet.chainName);
-    if (chain) {
-      chain.assignSS(sheet.first, sheet.last, 'E');
-    }
-  }
-  for (i = 0; i < helices.length; ++i) {
-    var helix = helices[i];
-    chain = structure.chain(helix.chainName);
-    if (chain) {
-      chain.assignSS(helix.first, helix.last, 'H');
-    }
-  }
-  structure.setAssemblies(remark350Reader.assemblies());
-  structure.deriveConnectivity();
-  console.log('imported', structure.chains().length, 'chain(s),',
-              structure.residueCount(), 'residue(s)');
-  console.timeEnd('pdb');
-
-  return structure;
-}
-
-
-exports.io = {};
-exports.io.pdb = pdb;
-exports.io.Remark350Reader = Remark350Reader;
-
-
-}(this));
-
-
-
-
-
-},{}],35:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-// 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to 
-// deal in the Software without restriction, including without limitation the 
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or 
-// sell copies of the Software, and to permit persons to whom the Software is 
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in 
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
-// DEALINGS IN THE SOFTWARE.
-
-(function(exports) {
-"use strict";
-
-// atom covalent radii by element derived from Cambrige Structural Database. 
-// Source: http://profmokeur.ca/chemistry/covalent_radii.htm
-var ELEMENT_COVALENT_RADII = {
- H : 0.31, HE : 0.28, LI : 1.28, BE : 0.96,  B : 0.84,  C : 0.76,  N : 0.71, 
- O : 0.66,  F : 0.57, NE : 0.58, NA : 1.66, MG : 1.41, AL : 1.21, SI : 1.11, 
- P : 1.07,  S : 1.05, CL : 1.02, AR : 1.06,  K : 2.03, CA : 1.76, SC : 1.70, 
-TI : 1.60,  V : 1.53, CR : 1.39, MN : 1.39, FE : 1.32, CO : 1.26, NI : 1.24, 
-CU : 1.32, ZN : 1.22, GA : 1.22, GE : 1.20, AS : 1.19, SE : 1.20, BR : 1.20, 
-KR : 1.16, RB : 2.20, SR : 1.95,  Y : 1.90, ZR : 1.75, NB : 1.64, MO : 1.54, 
-TC : 1.47, RU : 1.46, RH : 1.42, PD : 1.39, AG : 1.45, CD : 1.44, IN : 1.42, 
-SN : 1.39, SB : 1.39, TE : 1.38,  I : 1.39, XE : 1.40, CS : 2.44, BA : 2.15, 
-LA : 2.07, CE : 2.04, PR : 2.03, ND : 2.01, PM : 1.99, SM : 1.98, EU : 1.98, 
-GD : 1.96, TB : 1.94, DY : 1.92, HO : 1.92, ER : 1.89, TM : 1.90, YB : 1.87, 
-LU : 1.87, HF : 1.75, TA : 1.70,  W : 1.62, RE : 1.51, OS : 1.44, IR : 1.41, 
-PT : 1.36, AU : 1.36, HG : 1.32, TL : 1.45, PB : 1.46, BI : 1.48, PO : 1.40, 
-AT : 1.50, RN : 1.50, FR : 2.60, RA : 2.21, AC : 2.15, TH : 2.06, PA : 2.00, 
- U : 1.96, NP : 1.90, PU : 1.87, AM : 1.80, CM : 1.69
-};
-
-function covalentRadius(ele) {
-  var r = ELEMENT_COVALENT_RADII[ele.toUpperCase()];
-  if (r !== undefined) {
-    return r;
-  }
-  return 1.5;
-}
-
-// combines the numeric part of the residue number with the insertion
-// code and returns a single number. Note that this is completely safe
-// and we do not have to worry about overflows, as for PDB files the 
-// range of permitted residue numbers is quite limited anyway.
-function rnumInsCodeHash(num, insCode) {
-  return num << 8 | insCode.charCodeAt(0);
-}
-
-//-----------------------------------------------------------------------------
-// MolBase, ChainBase, ResidueBase, AtomBase
-//-----------------------------------------------------------------------------
-
-function MolBase() {
-}
-
-MolBase.prototype.eachResidue = function(callback) {
-  for (var i = 0; i < this._chains.length; i+=1) {
-    if (this._chains[i].eachResidue(callback) === false) {
-      return false;
-    }
-  }
-};
-
-MolBase.prototype.eachAtom = function(callback, index) {
-  index |= 0;
-  for (var i = 0; i < this._chains.length; i+=1) {
-    index = this._chains[i].eachAtom(callback, index);
-    if (index === false) {
-      return false;
-    }
-  }
-};
-
-MolBase.prototype.residueCount = function () {
-  var chains = this.chains();
-  var count = 0;
-  for (var ci = 0; ci < chains.length; ++ci) {
-    count += chains[ci].residues().length;
-  }
-  return count;
-};
-
-MolBase.prototype.eachChain = function(callback) {
-  var chains = this.chains();
-  for (var i = 0; i < chains.length; ++i) {
-    if (callback(chains[i]) === false) {
-      return;
-    }
-  }
-};
-
-MolBase.prototype.atomCount = function() {
-  var chains = this.chains();
-  var count = 0;
-  for (var ci = 0; ci < chains.length; ++ci) {
-    count += chains[ci].atomCount();
-  }
-  return count;
-};
-
-MolBase.prototype.atoms = function() {
-  var atoms = [];
-  this.eachAtom(function(atom) { atoms.push(atom); });
-  return atoms;
-};
-
-MolBase.prototype.atom = function(name) {
-  var parts = name.split('.');
-  var chain = this.chain(parts[0]);
-  if (chain === null) {
-    return null;
-  }
-  var residue = chain.residueByRnum(parseInt(parts[1], 10));
-  if (residue === null) {
-    return null;
-  }
-  return residue.atom(parts[2]);
-};
-
-MolBase.prototype.center = function() {
-  var sum = vec3.create();
-  var count = 0;
-  this.eachAtom(function(atom) {
-    vec3.add(sum, sum, atom.pos());
-    count+=1;
-  });
-  if (count) {
-    vec3.scale(sum, sum, 1/count);
-  }
-  return sum;
-};
-
-// returns a sphere containing all atoms part of this structure. This will not 
-// calculate the minimal bounding sphere, just a good-enough approximation.
-MolBase.prototype.boundingSphere = function() {
-  var center = this.center();
-  var radiusSquare = 0.0;
-  this.eachAtom(function(atom) {
-    radiusSquare = Math.max(radiusSquare, vec3.sqrDist(center, atom.pos()));
-  });
-  return new Sphere(center, radiusSquare);
-};
-
-// returns all backbone traces of all chains of this structure
-MolBase.prototype.backboneTraces = function() {
-  var chains = this.chains();
-  var traces = [];
-  for (var i = 0; i < chains.length; ++i) {
-    Array.prototype.push.apply(traces, chains[i].backboneTraces());
-  }
-  return traces;
-};
-
-
-MolBase.prototype.select = function(what) {
-
-  if (what === 'protein') {
-    return this.residueSelect(function(r) { return r.isAminoacid(); });
-  }
-  if (what === 'water') {
-    return this.residueSelect(function(r) { return r.isWater(); });
-  }
-  if (what === 'ligand') {
-    return this.residueSelect(function(r) { 
-      return !r.isAminoacid() && !r.isWater();
-    });
-  }
-  // when what is not one of the simple strings above, we assume what
-  // is a dictionary containing predicates which have to be fulfilled.
-  return this._dictSelect(what);
-};
-
-MolBase.prototype.selectWithin = (function() {
-  var dist = vec3.create();
-  return function(mol, options) {
-    console.time('Mol.selectWithin');
-    options = options || {};
-    var radius = options.radius || 4.0;
-    var radiusSqr = radius*radius;
-    var matchResidues = !!options.matchResidues;
-    var targetAtoms = [];
-    mol.eachAtom(function(a) { targetAtoms.push(a); });
-
-    var view = new MolView(this.full());
-    var addedRes = null, addedChain = null;
-    var chains = this.chains();
-    var skipResidue = false;
-    for (var ci = 0; ci < chains.length; ++ci) {
-      var residues = chains[ci].residues();
-      addedChain = null;
-      for (var ri = 0; ri < residues.length; ++ri) {
-        addedRes = null;
-        skipResidue = false;
-        var atoms = residues[ri].atoms();
-        for (var ai = 0; ai < atoms.length; ++ai) {
-          if (skipResidue) {
-            break;
-          }
-          for (var wi = 0; wi < targetAtoms.length; ++wi) {
-            vec3.sub(dist, atoms[ai].pos(), targetAtoms[wi].pos());
-            if (vec3.sqrLen(dist) > radiusSqr) {
-              continue;
-            }
-            if (!addedChain) {
-              addedChain = view.addChain(chains[ci].full(), false);
-            }
-            if (!addedRes) {
-              addedRes =
-                  addedChain.addResidue(residues[ri].full(), matchResidues);
-            }
-            if (matchResidues) {
-              skipResidue = true;
-              break;
-            } 
-            addedRes.addAtom(atoms[ai].full());
-          }
-        }
-      }
-    }
-    console.timeEnd('Mol.selectWithin');
-    return view;
-  };
-})();
-
-MolBase.prototype.residueSelect = function(predicate) {
-  console.time('Mol.residueSelect');
-  var view = new MolView(this.full());
-  for (var ci = 0; ci < this._chains.length; ++ci) {
-    var chain = this._chains[ci];
-    var chainView = null;
-    var residues = chain.residues();
-    for (var ri = 0; ri < residues.length; ++ri) {
-      if (predicate(residues[ri])) {
-        if (!chainView) {
-          chainView = view.addChain(chain, false);
-        }
-        chainView.addResidue(residues[ri], true);
-      }
-    }
-  }
-  console.timeEnd('Mol.residueSelect');
-  return view;
-};
-
-MolBase.prototype._atomPredicates = function(dict) {
-
-  var predicates = [];
-  if (dict.aname !== undefined) {
-    predicates.push(function(a) { return a.name() === dict.aname; });
-  }
-  if (dict.anames !== undefined) {
-    predicates.push(function(a) { 
-      var n = a.name();
-      for (var k = 0; k < dict.anames.length; ++k) {
-        if (n === dict.anames[k]) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-  return predicates;
-};
-
-// extracts the residue predicates from the dictionary. 
-// ignores rindices, rindexRange because they are handled separately.
-MolBase.prototype._residuePredicates = function(dict) {
-
-  var predicates = [];
-  if (dict.rname !== undefined) {
-    predicates.push(function(r) { return r.name() === dict.rname; });
-  }
-  if (dict.rnames !== undefined) {
-    predicates.push(function(r) { 
-      var n = r.name();
-      for (var k = 0; k < dict.rnames.length; ++k) {
-        if (n === dict.rnames[k]) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-  if (dict.rnums !== undefined) {
-    var num_set = {};
-    for (var i = 0; i < dict.rnums.length; ++i) {
-      num_set[dict.rnums[i]] = true;
-    }
-    predicates.push(function(r) {
-      var n = r.num();
-      return num_set[n] === true;
-    });
-  }
-  return predicates;
-};
-
-MolBase.prototype._chainPredicates = function(dict) {
-  var predicates = [];
-  if (dict.cname !== undefined) {
-    dict.chain = dict.cname;
-  }
-  if (dict.cnames !== undefined) {
-    dict.chains = dict.cnames;
-  }
-  if (dict.chain !== undefined) {
-    predicates.push(function(c) { return c.name() === dict.chain; });
-  }
-  if (dict.chains !== undefined) {
-    predicates.push(function(c) { 
-      var n = c.name();
-      for (var k = 0; k < dict.chains.length; ++k) {
-        if (n === dict.chains[k]) {
-          return true;
-        }
-      }
-      return false;
-    });
-  }
-  return predicates;
-};
-
-function fulfillsPredicates(obj, predicates) {
-  for (var i = 0; i < predicates.length; ++i) {
-    if (!predicates[i](obj)) {
-      return false;
-    }
-  }
-  return true;
-}
-
-MolBase.prototype._dictSelect = function(dict) {
-  var view = new MolView(this);
-  var residuePredicates = this._residuePredicates(dict);
-  var atomPredicates = this._atomPredicates(dict);
-  var chainPredicates = this._chainPredicates(dict);
-
-  for (var ci = 0; ci < this._chains.length; ++ci) {
-    var chain = this._chains[ci];
-    if (!fulfillsPredicates(chain, chainPredicates)) {
-      continue;
-    }
-    var chainView = null;
-    var residues = chain.residues();
-    if (dict.rindex) {
-      dict.rindices = [dict.rindex];
-    }
-    if (dict.rnumRange) {
-      residues =
-          chain.residuesInRnumRange(dict.rnumRange[0], dict.rnumRange[1]);
-    }
-    var selResidues = [], i, e;
-    if (dict.rindexRange !== undefined) {
-      for (i = dict.rindexRange[0],
-          e = Math.min(residues.length, dict.rindexRange[1]);
-           i < e; ++i) {
-        selResidues.push(residues[i]);
-      }
-      residues = selResidues;
-    } else if (dict.rindices) {
-      if (dict.rindices.length !== undefined) {
-        selResidues = [];
-        for (i = 0; i < dict.rindices.length; ++i) {
-          selResidues.push(residues[dict.rindices[i]]);
-        }
-        residues = selResidues;
-      }
-    }
-    for (var ri = 0; ri < residues.length; ++ri) {
-      if (!fulfillsPredicates(residues[ri], residuePredicates)) {
-        continue;
-      }
-      if (!chainView) {
-        chainView = view.addChain(chain, false);
-      }
-      var residueView = null;
-      var atoms = residues[ri].atoms();
-      for (var ai = 0; ai < atoms.length; ++ai) {
-        if (!fulfillsPredicates(atoms[ai], atomPredicates)) {
-          continue;
-        }
-        if (!residueView) {
-          residueView = chainView.addResidue(residues[ri], false);
-        }
-        residueView.addAtom(atoms[ai]);
-      }
-    }
-  }
-  return view;
-};
-
-function rnumComp(lhs, rhs) {
-  return lhs.num() < rhs.num();
-}
-
-function numify(val) {
-  return { num : function() { return val; }};
-}
-
-
-
-MolBase.prototype.assembly = function(id) {
-  var assemblies = this.assemblies();
-  for (var i = 0; i < assemblies.length; ++i) {
-    if (assemblies[i].name() === id) {
-      return assemblies[i];
-    }
-  }
-  return null;
-};
-
-
-function ChainBase() {
-
-}
-
-ChainBase.prototype.eachAtom = function(callback, index) {
-  index |= 0;
-  for (var i = 0; i< this._residues.length; i+=1) {
-    index = this._residues[i].eachAtom(callback, index);
-    if (index === false) {
-      return false;
-    }
-  }
-  return index;
-};
-
-ChainBase.prototype.atomCount = function() {
-  var count = 0;
-  var residues = this.residues();
-  for (var ri = 0; ri < residues.length; ++ri) {
-    count+= residues[ri].atoms().length;
-  }
-  return count;
-};
-
-ChainBase.prototype.eachResidue = function(callback) {
-  for (var i = 0; i < this._residues.length; i+=1) {
-    if (callback(this._residues[i]) === false) {
-      return false;
-    }
-  }
-};
-
-
-
-ChainBase.prototype.residues = function() { return this._residues; };
-
-ChainBase.prototype.structure = function() { return this._structure; };
-
-
-ChainBase.prototype.asView = function() {
-  var view = new MolView(this.structure().full());
-  view.addChain(this, true);
-  return view;
-
-};
-
-ChainBase.prototype.residueByRnum = function(rnum) {
-  var residues = this.residues();
-  if (this._rnumsOrdered) {
-    var index = binarySearch(residues, numify(rnum), rnumComp);
-    if (index === -1) {
-      return null;
-    }
-    return residues[index];
-  } else {
-    for (var i = 0; i < residues.length; ++i) {
-      if (residues[i].num() === rnum) {
-        return residues[i];
-      }
-    }
-    return null;
-  }
-};
-
-
-ChainBase.prototype.prop = function(propName) { 
-  return this[propName]();
-};
-
-function ResidueBase() {
-
-}
-
-ResidueBase.prototype.prop = function(propName) { 
-  return this[propName]();
-};
-
-ResidueBase.prototype.isWater = function() {
-  return this.name() === 'HOH' || this.name() === 'DOD';
-};
-
-ResidueBase.prototype.eachAtom = function(callback, index) {
-  index |= 0;
-  for (var i =0; i< this._atoms.length; i+=1) {
-    if (callback(this._atoms[i], index) === false) {
-      return false;
-    }
-    index +=1;
-  }
-  return index;
-};
-
-ResidueBase.prototype.qualifiedName = function() {
-  return this.chain().name()+'.'+this.name()+this.num();
-};
-
-ResidueBase.prototype.atom = function(index_or_name) { 
-  if (typeof index_or_name === 'string') {
-    for (var i =0; i < this._atoms.length; ++i) {
-     if (this._atoms[i].name() === index_or_name) {
-       return this._atoms[i];
-     }
-    }
-  }
-  return this._atoms[index_or_name]; 
-};
-
-
-ResidueBase.prototype.center = function() {
-  var count = 0;
-  var c = vec3.create();
-  this.eachAtom(function(atom) {
-    vec3.add(c, c, atom.pos());
-    count += 1;
-  });
-  if (count > 0) {
-    vec3.scale(c, c, 1.0/count);
-  }
-  return c;
-};
-
-ResidueBase.prototype.isAminoacid = function() { 
-  return this.atom('N') && this.atom('CA') && this.atom('C') && this.atom('O');
-};
-function AtomBase() {
-}
-
-AtomBase.prototype.name = function() { return this._name; };
-AtomBase.prototype.pos = function() { return this._pos; };
-AtomBase.prototype.element = function() { return this._element; };
-AtomBase.prototype.index = function() { return this._index; };
-
-AtomBase.prototype.prop = function(propName) { 
-  return this[propName]();
-};
-
-AtomBase.prototype.bondCount = function() { return this.bonds().length; };
-AtomBase.prototype.eachBond = function(callback) {
-  var bonds = this.bonds();
-  for (var i = 0, e = bonds.length; i < e; ++i) {
-    callback(bonds[i]);
-  }
-};
-
-//-----------------------------------------------------------------------------
-// Mol, Chain, Residue, Atom, Bond
-//-----------------------------------------------------------------------------
-
-function Mol(pv) {
-  MolBase.prototype.constructor.call(this);
-  this._chains = [];
-  this._assemblies = [];
-  this._pv = pv;
-  this._nextAtomIndex = 0;
-}
-
-derive(Mol, MolBase);
-
-
-
-Mol.prototype.addAssembly = function(assembly) { 
-  this._assemblies.push(assembly); 
-};
-
-Mol.prototype.setAssemblies = function(assemblies) { 
-  this._assemblies = assemblies; 
-};
-
-Mol.prototype.assemblies = function() { return this._assemblies; };
-
-Mol.prototype.chains = function() { return this._chains; };
-
-Mol.prototype.full = function() { return this; };
-
-Mol.prototype.containsResidue = function(residue) {
-  return residue.full().structure() === this;
-};
-
-Mol.prototype.chain = function(name) { 
-  for (var i = 0; i < this._chains.length; ++i) {
-    if (this._chains[i].name() === name) {
-      return this._chains[i];
-    }
-  }
-  return null;
-};
-
-Mol.prototype.nextAtomIndex = function() {
-  var nextIndex = this._nextAtomIndex; 
-  this._nextAtomIndex+=1; 
-  return nextIndex; 
-};
-
-Mol.prototype.addChain = function(name) {
-  var chain = new Chain(this, name);
-  this._chains.push(chain);
-  return chain;
-};
-
-
-Mol.prototype.connect = function(atom_a, atom_b) {
-  var bond = new Bond(atom_a, atom_b);
-  atom_a.addBond(bond);
-  atom_b.addBond(bond);
-  return bond;
-};
-
-// determine connectivity structure. for simplicity only connects atoms of the 
-// same residue and peptide bonds
-Mol.prototype.deriveConnectivity = function() {
-  console.time('Mol.deriveConnectivity');
-  var this_structure = this;
-  var prev_residue;
-  this.eachResidue(function(res) {
-    var sqr_dist;
-    var d = vec3.create();
-    for (var i = 0; i < res.atoms().length; i+=1) {
-      var atomI = res.atom(i);
-      var covalentI = covalentRadius(atomI.element());
-      for (var j = 0; j < i; j+=1) {
-        var atomJ = res.atom(j);
-        var covalentJ = covalentRadius(atomJ.element());
-        sqr_dist = vec3.sqrDist(atomI.pos(), atomJ.pos());
-        var lower = covalentI+covalentJ-0.30;
-        var upper = covalentI+covalentJ+0.30;
-        if (sqr_dist < upper*upper && sqr_dist > lower*lower) {
-          this_structure.connect(res.atom(i), res.atom(j));
-        }
-      }
-    }
-    if (prev_residue) {
-    var c_atom = prev_residue.atom('C');
-    var n_atom = res.atom('N');
-    if (c_atom && n_atom) {
-      sqr_dist = vec3.sqrDist(c_atom.pos(), n_atom.pos());
-      if (sqr_dist < 1.6*1.6) {
-        this_structure.connect(n_atom, c_atom);
-      }
-    }
-    }
-    prev_residue = res;
-  });
-  console.timeEnd('Mol.deriveConnectivity');
-};
-
-function Chain(structure, name) {
-  ChainBase.prototype.constructor.call(this);
-  this._structure = structure;
-  this._name = name;
-  this._cachedTraces = [];
-  this._residues = [];
-  this._rnumsOrdered = true;
-}
-
-derive(Chain, ChainBase);
-
-Chain.prototype.name = function() { return this._name; };
-
-Chain.prototype.full = function() { return this; };
-
-Chain.prototype.addResidue = function(name, num, insCode) {
-  insCode = insCode || '\0';
-  var residue = new Residue(this, name, num, insCode);
-  if (this._residues.length > 0 && this._rnumsOrdered) {
-    var combinedRNum = rnumInsCodeHash(num, insCode);
-    var last = this._residues[this._residues.length-1];
-    var lastCombinedRNum = rnumInsCodeHash(last.num(),last.insCode());
-    this._rnumsOrdered = lastCombinedRNum < combinedRNum;
-  }
-  this._residues.push(residue);
-  return residue;
-};
-
-
-Chain.prototype.residuesInRnumRange = function(start, end) {
-  // FIXME: this currently only works with the numeric part, insertion
-  // codes are not honoured.
-  var matching = [];
-  var i, e;
-  if (this._rnumsOrdered === true) {
-    // binary search our way to heaven
-    var startIdx = indexFirstLargerEqualThan(this._residues, numify(start), 
-                                             rnumComp);
-    if (startIdx === -1) {
-      return matching;
-    }
-    var endIdx = indexLastSmallerEqualThan(this._residues, numify(end), 
-                                           rnumComp);
-    if (endIdx === -1) {
-      return matching;
-    }
-    for (i = startIdx; i <= endIdx; ++i) {
-      matching.push(this._residues[i]);
-    }
-  } else {
-    for (i = 0, e = this._residues.length; i !== e; ++i) {
-      var res = this._residues[i];
-      if (res.num() >= start && res.num() <= end) {
-        matching.push(res);
-      }
-    }
-  }
-  return matching;
-};
-
-// assigns secondary structure to residues in range from_num to to_num.
-Chain.prototype.assignSS = function(fromNumAndIns, toNumAndIns, ss) {
-  // FIXME: when the chain numbers are completely ordered, perform binary 
-  // search to identify range of residues to assign secondary structure to.
-  var from = rnumInsCodeHash(fromNumAndIns[0], fromNumAndIns[1]);
-  var to = rnumInsCodeHash(toNumAndIns[0], toNumAndIns[1]);
-  for (var i = 1; i < this._residues.length-1; ++i) {
-    var res = this._residues[i];
-    // FIXME: we currently don't set the secondary structure of the first and 
-    // last residue of helices and sheets. that takes care of better 
-    // transitions between coils and helices. ideally, this should be done
-    // in the cartoon renderer, NOT in this function.
-    var combined = rnumInsCodeHash(res.num(), res.insCode());
-    if (combined <=  from || combined >= to) {
-      continue;
-    }
-    res.setSS(ss);
-  }
-};
-
-// invokes a callback for each connected stretch of amino acids. these 
-// stretches are used for all trace-based rendering styles, e.g. sline, 
-// line_trace, tube, cartoon etc. 
-Chain.prototype.eachBackboneTrace = function(callback) {
-  this._cacheBackboneTraces();
-  for (var i=0; i < this._cachedTraces.length; ++i) {
-    callback(this._cachedTraces[i]);
-  }
-};
-
-Chain.prototype._cacheBackboneTraces = function() {
-  if (this._cachedTraces.length > 0) {
-    return;
-  }
-  var  stretch = new BackboneTrace();
-  for (var i = 0; i < this._residues.length; i+=1) {
-    var residue = this._residues[i];
-    if (!residue.isAminoacid()) {
-      if (stretch.length() > 1) {
-        this._cachedTraces.push(stretch);
-      }
-      stretch = new BackboneTrace();
-      continue;
-    }
-    if (stretch.length() === 0) {
-      stretch.push(residue);
-      continue;
-    }
-    var caPrev = this._residues[i-1].atom('C');
-    var nThis = residue.atom('N');
-    if (Math.abs(vec3.sqrDist(caPrev.pos(), nThis.pos()) - 1.5*1.5) < 1) {
-      stretch.push(residue);
-    } else {
-      if (stretch.length() > 1) {
-        this._cachedTraces.push(stretch);
-        stretch = new BackboneTrace();
-      }
-    }
-  }
-  if (stretch.length() > 1) {
-    this._cachedTraces.push(stretch);
-  }
-};
-
-
-// returns all connected stretches of amino acids found in this chain as 
-// a list.
-Chain.prototype.backboneTraces = function() {
-  var traces = [];
-  this.eachBackboneTrace(function(trace) { traces.push(trace); });
-  return traces;
-
-};
-
-function Residue(chain, name, num, insCode) {
-  ResidueBase.prototype.constructor.call(this);
-  this._name = name;
-  this._num = num;
-  this._insCode = insCode;
-  this._atoms = [];
-  this._ss = 'C';
-  this._chain = chain;
-  this._index = chain.residues().length;
-}
-
-derive(Residue, ResidueBase);
-
-Residue.prototype.name = function() { return this._name; };
-Residue.prototype.insCode = function() { return this._insCode; };
-
-Residue.prototype.num = function() { return this._num; };
-
-Residue.prototype.full = function() { return this; };
-
-Residue.prototype.addAtom = function(name, pos, element) {
-  var atom = new Atom(this, name, pos, element, this.structure().nextAtomIndex());
-  this._atoms.push(atom);
-  return atom;
-};
-
-Residue.prototype.ss = function() { return this._ss; };
-Residue.prototype.setSS = function(ss) { this._ss = ss; };
-Residue.prototype.index = function() { return this._index; };
-
-Residue.prototype.atoms = function() { return this._atoms; };
-Residue.prototype.chain = function() { return this._chain; };
-
-
-Residue.prototype.structure = function() { 
-  return this._chain.structure(); 
-};
-
-function Atom(residue, name, pos, element, index) {
-  AtomBase.prototype.constructor.call(this);
-  this._residue = residue;
-  this._bonds = [];
-  this._name = name;
-  this._pos = pos;
-  this._index = index;
-  this._element = element;
-}
-
-derive(Atom, AtomBase);
-
-Atom.prototype.addBond = function(bond) { this._bonds.push(bond); };
-Atom.prototype.name = function() { return this._name; };
-Atom.prototype.bonds = function() { return this._bonds; };
-Atom.prototype.residue = function() { return this._residue; };
-Atom.prototype.structure = function() { return this._residue.structure(); };
-Atom.prototype.full = function() { return this; };
-Atom.prototype.qualifiedName = function() {
-  return this.residue().qualifiedName()+'.'+this.name();
-};
-
-var Bond = function(atom_a, atom_b) {
-  var self = {
-    atom_one : atom_a,
-    atom_two : atom_b
-  };
-  return {
-    atom_one : function() { return self.atom_one; },
-    atom_two : function() { return self.atom_two; },
-
-    // calculates the mid-point between the two atom positions
-    mid_point : function(out) { 
-      if (!out) {
-        out = vec3.create();
-      }
-      vec3.add(out, self.atom_one.pos(), self.atom_two.pos());
-      vec3.scale(out, out, 0.5);
-      return out;
-    }
-  };
-};
-
-//-----------------------------------------------------------------------------
-// MolView, ChainView, ResidueView, AtomView
-//-----------------------------------------------------------------------------
-
-function MolView(mol) {
-  MolBase.prototype.constructor.call(this);
-  this._mol = mol; 
-  this._chains = [];
-}
-
-derive(MolView, MolBase);
-
-MolView.prototype.full = function() { return this._mol; };
-
-MolView.prototype.assemblies = function() { return this._mol.assemblies(); };
-
-// add chain to view
-MolView.prototype.addChain = function(chain, recurse) {
-  var chainView = new ChainView(this, chain.full());
-  this._chains.push(chainView);
-  if (recurse) {
-    var residues = chain.residues();
-    for (var i = 0; i< residues.length; ++i) {
-      chainView.addResidue(residues[i], true);
-    }
-  }
-  return chainView;
-};
-
-
-MolView.prototype.containsResidue = function(residue) {
-  if (!residue) {
-    return false;
-  }
-  var chain = this.chain(residue.chain().name());
-  if (!chain) {
-    return false;
-  }
-  return chain.containsResidue(residue);
-};
-
-
-MolView.prototype.chains = function() { return this._chains; };
-
-
-MolView.prototype.chain = function(name) {
-  for (var i = 0; i < this._chains.length; ++i) {
-    if (this._chains[i].name() === name) {
-      return this._chains[i];
-    }
-  }
-  return null;
-};
-
-function ChainView(molView, chain) {
-  ChainBase.prototype.constructor.call(this);
-  this._chain = chain;
-  this._residues = [];
-  this._molView = molView;
-  this._residueMap = {};
-}
-
-
-derive(ChainView, ChainBase);
-
-ChainView.prototype.addResidue = function(residue, recurse) {
-  var resView = new ResidueView(this, residue.full());
-  this._residues.push(resView);
-  this._residueMap[residue.full().index()] = resView;
-  if (recurse) {
-    var atoms = residue.atoms();
-    for (var i = 0; i < atoms.length; ++i) {
-      resView.addAtom(atoms[i].full());
-    }
-  }
-  return resView;
-};
-
-ChainView.prototype.containsResidue = function(residue) {
-  var resView = this._residueMap[residue.full().index()];
-  if (resView === undefined) {
-    return false;
-  }
-  return resView.full() === residue.full();
-};
-
-
-ChainView.prototype.eachBackboneTrace = function(callback) {
-  // backbone traces for the view must be based on the the full 
-  // traces for the following reasons:
-  //  - we must be able to display subsets with one residue in length,
-  //    when they are part of a larger trace. 
-  //  - when a trace residue is not at the end, e.g. the C-terminal or
-  //    N-terminal end of the full trace, the trace residue starts
-  //    midway between the residue and the previous, and ends midway
-  //    between the residue and the next.
-  //  - the tangents for the Catmull-Rom spline depend on the residues
-  //    before and after. Thus, to get the same curvature for a 
-  //    trace subset, the residues before and after must be taken
-  //    into account.
-  var fullTraces = this._chain.backboneTraces();
-  var traceSubsets = [];
-  for (var i = 0; i < fullTraces.length; ++i) {
-    var subsets = fullTraces[i].subsets(this._residues);
-    for (var j = 0; j < subsets.length; ++j) {
-      callback(subsets[j]);
-    }
-  }
-};
-
-ChainView.prototype.backboneTraces = function() {
-  var traces = [];
-  this.eachBackboneTrace(function(trace) { traces.push(trace); });
-  return traces;
-};
-
-ChainView.prototype.full = function() { return this._chain; };
-
-ChainView.prototype.name = function () { return this._chain.name(); };
-
-ChainView.prototype.structure = function() { return this._molView; };
-
-function ResidueView(chainView, residue) {
-  ResidueBase.prototype.constructor.call(this);
-  this._chainView = chainView;
-  this._atoms = [];
-  this._residue = residue;
-}
-
-
-derive(ResidueView, ResidueBase);
-
-ResidueView.prototype.addAtom = function(atom) {
-  var atomView = new AtomView(this, atom.full());
-  this._atoms.push(atomView);
-};
-
-ResidueView.prototype.full = function() { return this._residue; };
-ResidueView.prototype.num = function() { return this._residue.num(); };
-
-ResidueView.prototype.insCode = function() { 
-  return this._residue.insCode(); 
-};
-ResidueView.prototype.ss = function() { return this._residue.ss(); };
-ResidueView.prototype.index = function() { return this._residue.index(); };
-ResidueView.prototype.chain = function() { return this._chainView; };
-ResidueView.prototype.name = function() { return this._residue.name(); };
-
-ResidueView.prototype.atoms = function() { return this._atoms; };
-ResidueView.prototype.qualifiedName = function() {
-  return this._residue.qualifiedName();
-};
-
-ResidueView.prototype.containsResidue = function(residue) {
-  return this._residue.full() === residue.full();
-};
-
-
-
-function AtomView(resView, atom) {
-  AtomBase.prototype.constructor.call(this);
-  this._resView = resView;
-  this._atom = atom;
-  this._bonds = [];
-}
-
-
-derive(AtomView, AtomBase);
-
-AtomView.prototype.full = function() { return this._atom; };
-AtomView.prototype.name = function() { return this._atom.name(); };
-AtomView.prototype.pos = function() { return this._atom.pos(); };
-AtomView.prototype.element = function() { return this._atom.element(); };
-AtomView.prototype.residue = function() { return this._resView; };
-AtomView.prototype.bonds = function() { return this._atom.bonds(); };
-AtomView.prototype.index = function() { return this._atom.index(); };
-AtomView.prototype.qualifiedName = function() {
-  return this._atom.qualifiedName();
-};
-
-
-
-var zhangSkolnickSS = (function() {
-  var posOne = vec3.create();
-  var posTwo = vec3.create();
-  return function(trace, i, distances, delta) {
-    for (var j = Math.max(0, i-2); j <= i; ++j) {
-      for (var k = 2;  k < 5; ++k) {
-        if (j+k >= trace.length()) {
-          continue;
-        }
-        var d = vec3.dist(trace.posAt(posOne, j), 
-                          trace.posAt(posTwo, j+k));
-        if (Math.abs(d - distances[k-2]) > delta) {
-          return false;
-        }
-      }
-    }
-    return true;
-  };
-})();
-
-var isHelical = function(trace, i) {
-  var helixDistances = [5.45, 5.18, 6.37];
-  var helixDelta = 2.1;
-  return zhangSkolnickSS(trace, i, helixDistances, helixDelta);
-};
-
-var isSheet = function(trace, i) {
-  var sheetDistances = [6.1, 10.4, 13.0];
-  var sheetDelta = 1.42;
-  return zhangSkolnickSS(trace, i, sheetDistances, sheetDelta);
-};
-
-function traceAssignHelixSheet(trace) {
-  for (var i = 0; i < trace.length(); ++i) {
-    if (isHelical(trace, i)) {
-      trace.residueAt(i).setSS('H');
-      continue;
-    } 
-    if (isSheet(trace, i)) {
-      trace.residueAt(i).setSS('E');
-      continue;
-    }
-    trace.residueAt(i).setSS('C');
-  }
-}
-
-
-// assigns secondary structure information based on a simple and very fast 
-// algorithm published by Zhang and Skolnick in their TM-align paper. 
-// Reference:
-//
-// TM-align: a protein structure alignment algorithm based on the Tm-score 
-// (2005) NAR, 33(7) 2302-2309
-function assignHelixSheet(structure) {
-  console.time('mol.assignHelixSheet');
-  var chains = structure.chains();
-  for (var ci = 0; ci < chains.length; ++ci) {
-    var chain = chains[ci];
-    chain.eachBackboneTrace(traceAssignHelixSheet);
-  }
-  console.timeEnd('mol.assignHelixSheet');
-}
-
-exports.mol = {};
-
-exports.mol.Mol = Mol;
-exports.mol.Chain = Chain;
-exports.mol.Residue = Residue;
-exports.mol.Atom = Atom;
-
-exports.mol.MolView = MolView;
-exports.mol.ChainView = ChainView;
-exports.mol.ResidueView = ResidueView;
-exports.mol.AtomView = AtomView;
-exports.mol.assignHelixSheet = assignHelixSheet;
-
-return true;
-
-})(this);
-
-},{}],36:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
-var render = (function() {
-  "use strict";
-
-  var exports = {};
-
-  var R = 0.7071;
-  var COIL_POINTS = [ -R, -R, 0, R, -R, 0, R, R, 0, -R, R, 0 ];
-
-  var HELIX_POINTS = [
-    -6 * R,
-    -1.0 * R,
-    0,
-    6 * R,
-    -1.0 * R,
-    0,
-    6 * R,
-    1.0 * R,
-    0,
-    -6 * R,
-    1.0 * R,
-    0
-  ];
-  var ARROW_POINTS = [
-    -10 * R,
-    -1.0 * R,
-    0,
-    10 * R,
-    -1.0 * R,
-    0,
-    10 * R,
-    1.0 * R,
-    0,
-    -10 * R,
-    1.0 * R,
-    0
-  ];
-
-// performs an in-place smoothing over 3 consecutive positions.
-var inplaceStrandSmoothing = (function() {
-  var bf = vec3.create(), af = vec3.create(), cf = vec3.create();
-  return function(p, from, to) {
-    vec3.set(bf, p[3 * (from - 1)], p[3 * (from - 1) + 1], p[3 * (from - 1) + 2]);
-    vec3.set(cf, p[3 * from], p[3 * from + 1], p[3 * from + 2]);
-    for (var i = from; i <= to; ++i) {
-      vec3.set(af, p[3 * i], p[3 * i + 1], p[3 * i + 2]);
-      p[3 * (i - 1)] = af[0] * 0.25 + cf[0] * 0.50 + bf[0] * 0.25;
-      p[3 * (i - 1) + 1] = af[1] * 0.25 + cf[1] * 0.50 + bf[1] * 0.25;
-      p[3 * (i - 1) + 2] = af[2] * 0.25 + cf[2] * 0.50 + bf[2] * 0.25;
-      vec3.copy(bf, cf);
-      vec3.copy(cf, af);
-    }
-  };
-})();
-
-// derive a rotation matrix which rotates the z-axis onto tangent. when
-// left is given and use_hint is true, x-axis is chosen to be as close
-// as possible to left.
-//
-// upon returning, left will be modified to contain the updated left
-// direction.
-var buildRotation = (function() {
-  return function(rotation, tangent, left, up, use_left_hint) {
-    if (use_left_hint) { vec3.cross(up, tangent, left);
-    } else {
-  geom.ortho(up, tangent);
-    }
-
-    vec3.cross(left, up, tangent);
-    vec3.normalize(up, up);
-    vec3.normalize(left, left);
-    rotation[0] = left[0];
-    rotation[1] = left[1];
-    rotation[2] = left[2];
-
-    rotation[3] = up[0];
-    rotation[4] = up[1];
-    rotation[5] = up[2];
-
-    rotation[6] = tangent[0];
-    rotation[7] = tangent[1];
-    rotation[8] = tangent[2];
-}
-;
-})();
-
-var spheresForChain = (function() {
-  var color = vec4.fromValues(0.0, 0.0, 0.0, 1.0);
-
-  return function(meshGeom, vertAssoc, options, chain) {
-    var atomCount = chain.atomCount();
-    var idRange = options.idPool.getContinuousRange(atomCount);
-    var vertsPerSphere = options.protoSphere.numVerts();
-    var indicesPerSphere = options.protoSphere.numIndices();
-    var radius = 1.5 * options.radiusMultiplier;
-    meshGeom.addIdRange(idRange);
-    meshGeom.addChainVertArray(chain, vertsPerSphere*atomCount, 
-                              indicesPerSphere*atomCount);
-    chain.eachAtom(function(atom) {
-      var va = meshGeom.vertArrayWithSpaceFor(vertsPerSphere);
-      options.color.colorFor(atom, color, 0);
-      var vertStart = va.numVerts();
-      var objId = idRange.nextId({ geom: meshGeom, atom : atom });
-      options.protoSphere.addTransformed(va, atom.pos(), radius, color, objId);
-      var vertEnd = va.numVerts();
-      vertAssoc.addAssoc(atom, va, vertStart, vertEnd);
-    });
-  };
-})();
-
-exports.spheres = function(structure, gl, options) {
-  console.time('spheres');
-  var protoSphere = new ProtoSphere(options.sphereDetail, options.sphereDetail);
-  options.protoSphere = protoSphere;
-  var geom = new MeshGeom(gl, options.float32Allocator, options.uint16Allocator);
-  var vertAssoc = new AtomVertexAssoc(structure, true);
-  geom.setVertAssoc(vertAssoc);
-  geom.setShowRelated(options.showRelated);
-  options.color.begin(structure);
-  structure.eachChain(function(chain) {
-    spheresForChain(geom, vertAssoc, options, chain);
-  });
-  options.color.end(structure);
-  console.timeEnd('spheres');
-  return geom;
-};
-
-
-var ballsAndSticksForChain = (function() {
-  var midPoint = vec3.create(), dir = vec3.create();
-  var color = vec4.fromValues(0.0, 0.0, 0.0, 1.0);
-  var left = vec3.create(), up = vec3.create();
-  var rotation = mat3.create();
-  return function(meshGeom, vertAssoc, options, chain) {
-    // determine required number of vertices and indices for this chain
-    var atomCount = chain.atomCount();
-    var bondCount = 0;
-    chain.eachAtom(function(a) { bondCount += a.bonds().length; });
-    var numVerts = atomCount * options.protoSphere.numVerts() + 
-                   bondCount * options.protoCyl.numVerts();
-    var numIndices = atomCount * options.protoSphere.numIndices() + 
-                     bondCount * options.protoCyl.numIndices();
-    meshGeom.addChainVertArray(chain, numVerts, numIndices);
-    var idRange = options.idPool.getContinuousRange(atomCount);
-    meshGeom.addIdRange(idRange);
-    // generate geometry for each atom
-    chain.eachAtom(function(atom) {
-      var atomVerts = options.protoSphere.numVerts() + 
-                      atom.bondCount() * options.protoCyl.numVerts();
-      var va = meshGeom.vertArrayWithSpaceFor(atomVerts);
-      var vertStart = va.numVerts();
-      var objId = idRange.nextId({ geom: meshGeom, atom : atom });
-
-      options.color.colorFor(atom, color, 0);
-      options.protoSphere.addTransformed(va, atom.pos(), options.radius, color,
-                                         objId);
-      atom.eachBond(function(bond) {
-        bond.mid_point(midPoint);
-        vec3.sub(dir, atom.pos(), midPoint);
-        var length = vec3.length(dir);
-
-        vec3.scale(dir, dir, 1.0/length);
-
-        buildRotation(rotation, dir, left, up, false);
-
-        vec3.add(midPoint, midPoint, atom.pos());
-        vec3.scale(midPoint, midPoint, 0.5);
-        options.protoCyl.addTransformed(va, midPoint, length, options.radius, 
-                                        rotation, color, color, objId, objId);
-      });
-      var vertEnd = va.numVerts();
-      vertAssoc.addAssoc(atom, va, vertStart, vertEnd);
-    });
-  };
-})();
-
-exports.ballsAndSticks = function(structure, gl, options) {
-  console.time('ballsAndSticks');
-  var vertAssoc = new AtomVertexAssoc(structure, true);
-  var protoSphere = new ProtoSphere(options.sphereDetail, options.sphereDetail);
-  var protoCyl = new ProtoCylinder(options.arcDetail);
-  options.protoSphere = protoSphere;
-  options.protoCyl = protoCyl;
-  var meshGeom = new MeshGeom(gl, options.float32Allocator, 
-                              options.uint16Allocator);
-  meshGeom.setVertAssoc(vertAssoc);
-  meshGeom.setShowRelated(options.showRelated);
-  options.color.begin(structure);
-  structure.eachChain(function(chain) {
-    ballsAndSticksForChain(meshGeom, vertAssoc, options, chain);
-  });
-  options.color.end(structure);
-  console.timeEnd('ballsAndSticks');
-  return meshGeom;
-};
-
-var linesForChain = (function () {
-  var mp = vec3.create();
-  var clr = vec4.fromValues(0.0, 0.0, 0.0, 1.0);
-  return function(lineGeom, vertAssoc, chain, options) {
-    var lineCount = 0;
-    var atomCount = chain.atomCount();
-    var idRange = options.idPool.getContinuousRange(atomCount);
-    lineGeom.addIdRange(idRange);
-    // determine number of required lines to draw the full structure
-    chain.eachAtom(function(atom) {
-      var numBonds = atom.bonds().length;
-      if (numBonds) {
-        lineCount += numBonds;
-      } else {
-        lineCount += 3;
-      }
-    });
-    var va = lineGeom.addChainVertArray(chain, lineCount * 2);
-    chain.eachAtom(function(atom) {
-      // for atoms without bonds, we draw a small cross, otherwise these atoms
-      // would be invisible on the screen.
-      var vertStart = va.numVerts();
-      var objId = idRange.nextId({ geom : lineGeom, atom: atom });
-      if (atom.bonds().length) {
-        atom.eachBond(function(bond) {
-          bond.mid_point(mp);
-          options.color.colorFor(atom, clr, 0);
-          va.addLine(atom.pos(), clr, mp, clr, objId, objId);
-        });
-      } else {
-        var cs = 0.2;
-        var pos = atom.pos();
-        options.color.colorFor(atom, clr, 0);
-        va.addLine([ pos[0] - cs, pos[1], pos[2] ], clr,
-                   [ pos[0] + cs, pos[1], pos[2] ], clr, objId, objId);
-        va.addLine([ pos[0], pos[1] - cs, pos[2] ], clr,
-                   [ pos[0], pos[1] + cs, pos[2] ], clr, objId, objId);
-        va.addLine([ pos[0], pos[1], pos[2] - cs ], clr,
-                   [ pos[0], pos[1], pos[2] + cs ], clr, objId, objId);
-      }
-      var vertEnd = va.numVerts();
-      vertAssoc.addAssoc(atom, va, vertStart, vertEnd);
-    });
-
-  };
-})();
-
-
-exports.lines = function(structure, gl, options) {
-  console.time('lines');
-  var vertAssoc = new AtomVertexAssoc(structure, true);
-  options.color.begin(structure);
-  var lineCount = 0;
-  var lineGeom = new LineGeom(gl, options.float32Allocator);
-  lineGeom.setLineWidth(options.lineWidth);
-  var va = lineGeom.vertArray();
-  lineGeom.setVertAssoc(vertAssoc);
-  lineGeom.setShowRelated(options.showRelated);
-  structure.eachChain(function(chain) {
-    linesForChain(lineGeom, vertAssoc, chain, options);
-  });
-  options.color.end(structure);
-  console.timeEnd('lines');
-  return lineGeom;
-};
-
-var _lineTraceNumVerts = function(traces) {
-  var numVerts = 0;
-  for (var i = 0; i < traces.length; ++i) {
-    numVerts += 2 * (traces[i].length() - 1);
-  }
-  return numVerts;
-};
-
-var makeLineTrace = (function() {
-  var colorOne = vec4.fromValues(0.0, 0.0, 0.0, 1.0), 
-      colorTwo = vec4.fromValues(0.0, 0.0, 0.0, 1.0);
-  var posOne = vec3.create(), posTwo = vec3.create();
-
-  return function makeLineTrace(lineGeom, vertAssoc, va, traceIndex, 
-                                trace, options) {
-    vertAssoc.addAssoc(traceIndex, va, 0, va.numVerts(),
-                        va.numVerts() + 1);
-
-    var colors = options.float32Allocator.request(trace.length() * 4);
-    var idRange = options.idPool.getContinuousRange(trace.length());
-    var idOne = idRange.nextId({ geom: lineGeom, 
-                                 atom : trace.centralAtomAt(0) });
-    var idTwo;
-    lineGeom.addIdRange(idRange);
-    for (var i = 1; i < trace.length(); ++i) {
-
-      options.color.colorFor(trace.centralAtomAt(i - 1), colorOne, 0);
-      colors[(i - 1) * 4 + 0] = colorOne[0];
-      colors[(i - 1) * 4 + 1] = colorOne[1];
-      colors[(i - 1) * 4 + 2] = colorOne[2];
-      colors[(i - 1) * 4 + 3] = colorOne[3];
-      options.color.colorFor(trace.centralAtomAt(i), colorTwo, 0);
-      trace.posAt(posOne, i - 1);
-      trace.posAt(posTwo, i);
-      idTwo = idRange.nextId({ 
-        geom: lineGeom, atom : trace.centralAtomAt(i)});
-      va.addLine(posOne, colorOne, posTwo, colorTwo, idOne, idTwo);
-      idOne = idTwo;
-      idTwo = null;
-      var vertEnd = va.numVerts();
-      vertAssoc.addAssoc(traceIndex, va, i, vertEnd - 1,
-                          vertEnd + ((i === trace.length() - 1) ? 0 : 1));
-    }
-    colors[trace.length() * 4 - 4] = colorTwo[0];
-    colors[trace.length() * 4 - 3] = colorTwo[1];
-    colors[trace.length() * 4 - 2] = colorTwo[2];
-    colors[trace.length() * 4 - 1] = colorTwo[3];
-    vertAssoc.setPerResidueColors(traceIndex, colors);
-    return traceIndex + 1;
-  };
-})();
-
-var lineTraceForChain = function(lineGeom, vertAssoc, options, traceIndex, 
-                                 chain) {
-  var backboneTraces =  chain.backboneTraces();
-  var numVerts = _lineTraceNumVerts(backboneTraces);
-  var va = lineGeom.addChainVertArray(chain, numVerts);
-  for (var i = 0; i < backboneTraces.length; ++i) {
-    traceIndex = makeLineTrace(lineGeom, vertAssoc, va, traceIndex, 
-                               backboneTraces[i], options);
-  }
-  return traceIndex;
-
-
-};
-//--------------------------------------------------------------------------
-// Some thoughts on trace-based render styles
-//
-//  * Backbone traces must be determined from the complete structure (Chain
-//    as opposed to ChainView).
-//
-//  * For subsets, the trace must start midway between the residue before
-//    the visible part, and end midway after the last visible residue.
-//
-//  * Curvature of trace subsets must be based on the full backbone trace.
-//--------------------------------------------------------------------------
-exports.lineTrace = function(structure, gl, options) {
-
-
-  console.time('lineTrace');
-  var vertAssoc = new TraceVertexAssoc(structure, 1, true);
-  options.color.begin(structure);
-  var chains = structure.chains();
-  var lineGeom = new LineGeom(gl, options.float32Allocator);
-  lineGeom.setLineWidth(options.lineWidth);
-  var traceIndex = 0;
-  structure.eachChain(function(chain) { 
-    traceIndex = lineTraceForChain(lineGeom, vertAssoc, options, 
-                                   traceIndex, chain);
-  });
-  lineGeom.setVertAssoc(vertAssoc);
-  lineGeom.setShowRelated(options.showRelated);
-  options.color.end(structure);
-  console.timeEnd('lineTrace');
-  return lineGeom;
-};
-
-var _slineNumVerts = function(traces, splineDetail) {
-  var numVerts = 0;
-  for (var i = 0; i < traces.length; ++i) {
-    numVerts += 2 * (splineDetail * (traces[i].length() - 1) + 1);
-  }
-  return numVerts;
-};
-
-var slineMakeTrace = (function(trace) {
-  var posOne = vec3.create(), posTwo = vec3.create();
-  var colorOne = vec4.fromValues(0.0, 0.0, 0.0, 1.0), colorTwo = vec4.fromValues(0.0, 0.0, 0.0, 1.0);
-  return function(lineGeom, vertAssoc, va, options, traceIndex, trace) {
-    var firstSlice = trace.fullTraceIndex(0);
-    var positions = options.float32Allocator.request(trace.length() * 3);
-    var colors = options.float32Allocator.request(trace.length() * 4);
-    var objIds = [];
-    var i, e;
-    var idRange = options.idPool.getContinuousRange(trace.length());
-    lineGeom.addIdRange(idRange);
-    for (i = 0; i < trace.length(); ++i) {
-      var atom = trace.centralAtomAt(i);
-      trace.smoothPosAt(posOne, i, options.strength);
-      options.color.colorFor(atom, colors, 4 * i);
-      positions[i * 3] = posOne[0];
-      positions[i * 3 + 1] = posOne[1];
-      positions[i * 3 + 2] = posOne[2];
-      objIds.push(idRange.nextId({ geom : lineGeom, atom : atom }));
-    }
-    var idStart = objIds[0], idEnd = 0;
-    var sdiv = geom.catmullRomSpline(positions, trace.length(),
-                                     options.splineDetail, options.strength,
-                                     false, options.float32Allocator);
-    var interpColors = interpolateColor(colors, options.splineDetail);
-    var vertStart = va.numVerts();
-    vertAssoc.addAssoc(traceIndex, va, firstSlice, vertStart, vertStart + 1);
-    var halfSplineDetail = Math.floor(options.splineDetail / 2);
-    var steps = geom.catmullRomSplineNumPoints(trace.length(),
-                                               options.splineDetail, false);
-    for (i = 1; i < steps; ++i) {
-      posOne[0] = sdiv[3 * (i - 1)];
-      posOne[1] = sdiv[3 * (i - 1) + 1];
-      posOne[2] = sdiv[3 * (i - 1) + 2];
-      posTwo[0] = sdiv[3 * (i - 0)];
-      posTwo[1] = sdiv[3 * (i - 0) + 1];
-      posTwo[2] = sdiv[3 * (i - 0) + 2];
-
-      colorOne[0] = interpColors[4 * (i - 1) + 0];
-      colorOne[1] = interpColors[4 * (i - 1) + 1];
-      colorOne[2] = interpColors[4 * (i - 1) + 2];
-      colorOne[3] = interpColors[4 * (i - 1) + 3];
-
-      colorTwo[0] = interpColors[4 * (i - 0) + 0];
-      colorTwo[1] = interpColors[4 * (i - 0) + 1];
-      colorTwo[2] = interpColors[4 * (i - 0) + 2];
-      colorTwo[3] = interpColors[4 * (i - 0) + 3];
-      var index = Math.floor((i + halfSplineDetail) / options.splineDetail);
-      idEnd = objIds[Math.min(objIds.length - 1, index)];
-      va.addLine(posOne, colorOne, posTwo, colorTwo, idStart, idEnd);
-      idStart = idEnd;
-      var vertEnd = va.numVerts();
-      vertAssoc.addAssoc(traceIndex, va, firstSlice + i, vertEnd - 1,
-                         vertEnd + ((i === trace.length - 1) ? 0 : 1));
-    }
-    vertAssoc.setPerResidueColors(traceIndex, colors);
-    options.float32Allocator.release(positions);
-    options.float32Allocator.release(sdiv);
-    return traceIndex + 1;
-  };
-})();
-
-var slineForChain = function(lineGeom, vertAssoc, options, chain, traceIndex) {
-  var backboneTraces = chain.backboneTraces();
-  var numVerts = _slineNumVerts(backboneTraces, options.splineDetail);
-  var va = lineGeom.addChainVertArray(chain, numVerts);
-  for (var i = 0; i < backboneTraces.length; ++i) {
-    traceIndex = slineMakeTrace(lineGeom, vertAssoc, va, options, 
-                                traceIndex, backboneTraces[i]);
-  }
-  return traceIndex;
-};
-
-exports.sline = function(structure, gl, options) {
-  console.time('sline');
-  options.color.begin(structure);
-  var vertAssoc =
-      new TraceVertexAssoc(structure, options.splineDetail, 1, true);
-  var lineGeom = new LineGeom(gl, options.float32Allocator);
-  lineGeom.setLineWidth(options.lineWidth);
-  lineGeom.setShowRelated(options.showRelated);
-  var traceIndex = 0;
-  structure.eachChain(function(chain) {
-    traceIndex = slineForChain(lineGeom, vertAssoc, options, chain, traceIndex);
-  });
-  lineGeom.setVertAssoc(vertAssoc);
-  options.color.end(structure);
-  console.timeEnd('sline');
-  return lineGeom;
-};
-
-var _traceNumVerts = function(traces, sphereNumVerts, cylNumVerts) {
-  var numVerts = 0;
-  for (var i = 0; i < traces.length; ++i) {
-    numVerts += traces[i].length() * sphereNumVerts;
-    numVerts += (traces[i].length() - 1) * cylNumVerts;
-  }
-  return numVerts;
-};
-
-var _traceNumIndices = function(traces, sphereNumIndices, cylNumIndices) {
-  var numIndices = 0;
-  for (var i = 0; i < traces.length; ++i) {
-    numIndices += traces[i].length() * sphereNumIndices;
-    numIndices += (traces[i].length() - 1) * cylNumIndices;
-  }
-  return numIndices;
-};
-
-var traceForChain = function(meshGeom, vertAssoc, options, traceIndex, chain) {
-  // determine number of verts required to render the traces
-  var traces = chain.backboneTraces();
-  var numVerts = _traceNumVerts(traces, options.protoSphere.numVerts(),
-                                options.protoCyl.numVerts());
-  var numIndices = _traceNumIndices(traces, options.protoSphere.numIndices(),
-                                    options.protoCyl.numIndices());
-  meshGeom.addChainVertArray(chain, numVerts, numIndices);
-  for (var ti = 0; ti < traces.length; ++ti) {
-    _renderSingleTrace(meshGeom, vertAssoc, traces[ti], traceIndex, options);
-    traceIndex++;
-  }
-  return traceIndex;
-};
-
-exports.trace = function(structure, gl, options) {
-  console.time('trace');
-
-  options.protoCyl = new ProtoCylinder(options.arcDetail);
-  options.protoSphere =
-      new ProtoSphere(options.sphereDetail, options.sphereDetail);
-
-  var meshGeom = new MeshGeom(gl, options.float32Allocator, 
-                              options.uint16Allocator);
-  var vertAssoc = new TraceVertexAssoc(structure, 1, true);
-  meshGeom.setVertAssoc(vertAssoc);
-  meshGeom.setShowRelated(options.showRelated);
-
-  options.color.begin(structure);
-  var traceIndex = 0;
-  structure.eachChain(function(chain) {
-    traceIndex = traceForChain(meshGeom, vertAssoc, options, traceIndex, chain);
-  });
-  options.color.end(structure);
-
-  console.timeEnd('trace');
-  return meshGeom;
-};
-
-// calculates the number of vertices required for the cartoon and
-// tube render styles
-var _cartoonNumVerts = function(traces, vertsPerSlice, splineDetail) {
-  var numVerts = 0;
-  for (var i = 0; i < traces.length; ++i) {
-    numVerts += ((traces[i].length() - 1) * splineDetail + 1) * vertsPerSlice;
-  }
-  return numVerts;
-};
-
-var _cartoonNumIndices = function(traces, vertsPerSlice, splineDetail) {
-  var numIndices = 0;
-  for (var i = 0; i < traces.length; ++i) {
-    numIndices += (traces[i].length() * splineDetail - 1) * vertsPerSlice * 6;
-  }
-  return numIndices;
-};
-
-var cartoonForChain = function(meshGeom, vertAssoc, options, traceIndex, chain) {
-
-
-  var traces = chain.backboneTraces();
-  var numVerts = _cartoonNumVerts(traces, options.arcDetail * 4,
-                                  options.splineDetail);
-  var numIndices = _cartoonNumIndices(traces, options.arcDetail * 4,
-                                      options.splineDetail);
-  meshGeom.addChainVertArray(chain, numVerts, numIndices);
-  for (var ti = 0; ti < traces.length; ++ti) {
-    _cartoonForSingleTrace(meshGeom, vertAssoc, traces[ti], traceIndex, 
-                           options);
-    traceIndex++;
-  }
-  return traceIndex;
-};
-
-exports.cartoon = function(structure, gl, options) {
-  console.time('cartoon');
-  options.arrowSkip = Math.floor(options.splineDetail * 3 / 4);
-  options.coilProfile = new TubeProfile(COIL_POINTS, options.arcDetail, 1.0);
-  options.helixProfile = new TubeProfile(HELIX_POINTS, options.arcDetail, 0.1);
-  options.strandProfile = new TubeProfile(HELIX_POINTS, options.arcDetail, 0.1);
-  options.arrowProfile = new TubeProfile(ARROW_POINTS, options.arcDetail, 0.1);
-
-  var meshGeom = new MeshGeom(gl, options.float32Allocator, 
-                              options.uint16Allocator);
-  var vertAssoc = new TraceVertexAssoc(structure, options.splineDetail, true);
-  meshGeom.setVertAssoc(vertAssoc);
-  meshGeom.setShowRelated(options.showRelated);
-
-  options.color.begin(structure);
-
-  var traceIndex = 0;
-  structure.eachChain(function(chain) {
-    traceIndex = cartoonForChain(meshGeom, vertAssoc, options, traceIndex, 
-                                 chain);
-  });
-
-  options.color.end(structure);
-  console.timeEnd('cartoon');
-  return meshGeom;
-};
-
-exports.surface = (function() {
-  var pos = vec3.create(), normal = vec3.create(), 
-      color = vec4.fromValues(0.8, 0.8, 0.8, 1.0);
-  return function(data, gl, options) {
-    var offset = 0;
-    var version = data.getUint32(0);
-    offset += 4;
-    var numVerts = data.getUint32(offset);
-    offset += 4;
-    var vertexStride = 4 * 6;
-    var facesDataStart = vertexStride * numVerts + offset;
-    var numFaces = data.getUint32(facesDataStart);
-    var meshGeom = new MeshGeom(gl, options.float32Allocator,
-                                options.uint16Allocator);
-    meshGeom.setShowRelated('asym');
-    var va = meshGeom.addVertArray(numVerts, numFaces * 3);
-    var i;
-    for (i = 0 ; i < numVerts; ++i) {
-      vec3.set(pos, data.getFloat32(offset + 0), data.getFloat32(offset + 4),
-               data.getFloat32(offset + 8));
-      offset += 12;
-      vec3.set(normal, data.getFloat32(offset + 0), data.getFloat32(offset + 4),
-               data.getFloat32(offset + 8));
-      offset += 12;
-      va.addVertex(pos, normal, color, 0);
-    }
-    offset = facesDataStart + 4;
-    for (i = 0 ; i < numFaces; ++i) {
-      var idx0 = data.getUint32(offset + 0),
-          idx1 = data.getUint32(offset + 4),
-          idx2 = data.getUint32(offset + 8);
-      offset += 12;
-      va.addTriangle(idx0 - 1, idx2 -1, idx1 - 1);
-    }
-    return meshGeom;
-  };
-})();
-
-var _cartoonAddTube = (function() {
-  var rotation = mat3.create();
-  var up = vec3.create();
-
-  return function(vertArray, pos, left, ss, tangent, color, first, options, 
-                  offset, objId) {
-    var prof = options.coilProfile;
-    if (ss !== 'C' && !options.forceTube) {
-      if (ss === 'H') {
-        prof = options.helixProfile;
-      } else if (ss === 'E') {
-        prof = options.strandProfile;
-      } else if (ss === 'A') {
-        prof = options.arrowProfile;
-      } 
-    } else {
-      if (first) {
-        geom.ortho(left, tangent);
-      } else {
-        vec3.cross(left, up, tangent);
-      }
-    }
-
-    buildRotation(rotation, tangent, left, up, true);
-    prof.addTransformed(vertArray, pos, options.radius, rotation, color, first,
-                        offset, objId);
-  };
-})();
-
-// INTERNAL: fills positions, normals and colors from the information found in
-// trace. The 3 arrays must already have the correct size (3*trace.length).
-var _colorPosNormalsFromTrace = (function() {
-  var pos = vec3.create();
-  var normal = vec3.create(), lastNormal = vec3.create();
-
-  return function(meshGeom, trace, colors, positions, normals, objIds, pool, 
-                  options) {
-    var strand_start = null, strand_end = null;
-    vec3.set(lastNormal, 0.0, 0.0, 0.0);
-    for (var i = 0; i < trace.length(); ++i) {
-      objIds.push(pool.nextId({ geom : meshGeom, 
-                                atom : trace.centralAtomAt(i)}));
-      trace.smoothPosAt(pos, i, options.strength);
-      positions[i * 3] = pos[0];
-      positions[i * 3 + 1] = pos[1];
-      positions[i * 3 + 2] = pos[2];
-
-      trace.smoothNormalAt(normal, i, options.strength);
-
-      var atom = trace.centralAtomAt(i);
-      options.color.colorFor(atom, colors, i * 4);
-
-      if (vec3.dot(normal, lastNormal) < 0) {
-        vec3.scale(normal, normal, -1);
-      }
-      if (trace.residueAt(i).ss() === 'E' && !options.forceTube) {
-        if (strand_start === null) {
-          strand_start = i;
-        }
-        strand_end = i;
-      }
-      if (trace.residueAt(i).ss() === 'C' && strand_start !== null) {
-        inplaceStrandSmoothing(positions, strand_start, strand_end);
-        inplaceStrandSmoothing(normals, strand_start, strand_end);
-        strand_start = null;
-        strand_end = null;
-      }
-      normals[i * 3] = positions[3 * i] + normal[0] + lastNormal[0];
-      normals[i * 3 + 1] = positions[3 * i + 1] + normal[1] + lastNormal[1];
-      normals[i * 3 + 2] = positions[3 * i + 2] + normal[2] + lastNormal[2];
-      vec3.copy(lastNormal, normal);
-    }
-  };
-})();
-
-
-// constructs a cartoon representation for a single consecutive backbone
-// trace.
-var _cartoonForSingleTrace = (function() {
-
-  var tangent = vec3.create(), pos = vec3.create(), left = vec3.create(),
-      color = vec4.fromValues(0.0, 0.0, 0.0, 1.0), normal = vec3.create(), normal2 = vec3.create(),
-      rot = mat3.create();
-
-  return function(meshGeom, vertAssoc, trace, traceIndex, options) {
-    var numVerts =
-        _cartoonNumVerts([trace], options.arcDetail * 4, options.splineDetail);
-
-    var positions = options.float32Allocator.request(trace.length() * 3);
-    var colors = options.float32Allocator.request(trace.length() * 4);
-    var normals = options.float32Allocator.request(trace.length() * 3);
-
-    var objIds = [];
-    var idRange = options.idPool.getContinuousRange(trace.length());
-    _colorPosNormalsFromTrace(meshGeom, trace, colors, positions, normals, 
-                              objIds, idRange, options);
-    meshGeom.addIdRange(idRange);
-    var vertArray = meshGeom.vertArrayWithSpaceFor(numVerts);
-    var sdiv = geom.catmullRomSpline(positions, trace.length(),
-                                      options.splineDetail, options.strength,
-                                      false, options.float32Allocator);
-    var normalSdiv = geom.catmullRomSpline(
-        normals, trace.length(), options.splineDetail, options.strength, false,
-        options.float32Allocator);
-    vertAssoc.setPerResidueColors(traceIndex, colors);
-    var interpColors = interpolateColor(colors, options.splineDetail);
-    // handle start of trace. this could be moved inside the for-loop, but
-    // at the expense of a conditional inside the loop. unrolling is
-    // slightly faster.
-    //
-    // we repeat the following steps for the start, central section and end
-    // of the profile: (a) assign position, normal, tangent and color, (b)
-    // add tube (or rectangular profile for helices and strands).
-    vec3.set(tangent, sdiv[3] - sdiv[0], sdiv[4] - sdiv[1], sdiv[5] - sdiv[2]);
-    vec3.set(pos, sdiv[0], sdiv[1], sdiv[2]);
-    vec3.set(normal, normalSdiv[0] - sdiv[0], normalSdiv[1] - sdiv[0],
-              normalSdiv[2] - sdiv[2]);
-    vec3.normalize(tangent, tangent);
-    vec3.normalize(normal, normal);
-    vec4.set(color, interpColors[0], interpColors[1], interpColors[2], interpColors[3] );
-
-    var vertStart = vertArray.numVerts();
-    _cartoonAddTube(vertArray, pos, normal, trace.residueAt(0), tangent, color,
-                    true, options, 0, objIds[0]);
-    var vertEnd = vertArray.numVerts();
-    var slice = 0;
-    vertAssoc.addAssoc(traceIndex, vertArray, slice, vertStart, vertEnd);
-    slice += 1;
-    var halfSplineDetail = Math.floor(options.splineDetail / 2);
-
-    // handle the bulk of the trace
-    var steps = geom.catmullRomSplineNumPoints(trace.length(),
-                                                options.splineDetail, false);
-
-    for (var i = 1, e = steps; i < e; ++i) {
-      // compute 3*i, 3*(i-1), 3*(i+1) once and reuse
-      var ix3 = 3 * i, ix4 = 4 * i,  ipox3 = 3 * (i + 1), imox3 = 3 * (i - 1);
-
-      vec3.set(pos, sdiv[ix3], sdiv[ix3 + 1], sdiv[ix3 + 2]);
-
-      if (i === e -1) {
-        vec3.set(tangent, sdiv[ix3] - sdiv[imox3],
-                  sdiv[ix3 + 1] - sdiv[imox3 + 1],
-                  sdiv[ix3 + 2] - sdiv[imox3 + 2]);
-      } else {
-        vec3.set(tangent, sdiv[ipox3] - sdiv[imox3],
-                  sdiv[ipox3 + 1] - sdiv[imox3 + 1],
-                  sdiv[ipox3 + 2] - sdiv[imox3 + 2]);
-      }
-      vec3.normalize(tangent, tangent);
-      vec4.set(color, interpColors[ix4], interpColors[ix4 + 1],
-                interpColors[ix4 + 2], interpColors[ix4 + 3]);
-
-      var offset = 0; // <- set special handling of coil to helix,strand
-                      //    transitions.
-      var residueIndex = Math.floor(i / options.splineDetail);
-      var prevResidueIndex = Math.floor((i - 1) / options.splineDetail);
-
-      // used to determine whether we have to add an arrow profile. when the 
-      // current residue is the last strand residue, the arrow tip has to land 
-      // exactly on the first slice of the next residue. Because we would like 
-      // to have larger arrows we use multiple slices for the arrow (set to 
-      // 3/4 of splineDetail).
-      var arrowEndIndex = Math.floor((i + options.arrowSkip) / options.splineDetail);
-      var drawArrow = false;
-      var thisSS = trace.residueAt(residueIndex).ss();
-      if (!options.forceTube) {
-        if (residueIndex !== prevResidueIndex) {
-          // for helix and strand regions, we can't base the left vector
-          // of the current residue on the previous one, since it determines
-          // the orientation of the strand and helix profiles.
-          //
-          // frequently, the transition regions from coil to strand and helix
-          // contain strong twists which severely hamper visual quality. there
-          // is not problem however when transitioning from helix or strand
-          // to coil or inside a helix or strand.
-          //
-          // to avoid these visual artifacts, we calculate the best fit between
-          // the current normal and the normal "after" which gives us an offset
-          // for stitching the two parts together.
-          var prevSS = trace.residueAt(prevResidueIndex).ss();
-          if (prevSS === 'C' && (thisSS === 'H' || thisSS === 'E')) {
-            // we don't want to generate holes, so we have to make sure
-            // the vertices of the rotated profile align with the previous
-            // profile.
-            vec3.set(normal2, normalSdiv[imox3] - sdiv[imox3],
-                      normalSdiv[imox3 + 1] - sdiv[imox3 + 1],
-                      normalSdiv[imox3 + 2] - sdiv[imox3 + 2]);
-            vec3.normalize(normal2, normal2);
-            var argAngle = 2 * Math.PI / (options.arcDetail * 4);
-            var signedAngle = geom.signedAngle(normal, normal2, tangent);
-            offset = Math.round(signedAngle / argAngle);
-            offset = (offset + options.arcDetail * 4) % (options.arcDetail * 4);
-          }
-        }
-        // figure out if we have to draw an arrow head
-        if (arrowEndIndex !== residueIndex && arrowEndIndex < trace.length()) {
-          var nextSS = trace.residueAt(arrowEndIndex).ss();
-          if (nextSS === 'C' && thisSS === 'E') {
-            drawArrow = true;
-          }
-        }
-      }
-      // only set normal *after* handling the coil -> helix,strand
-      // transition, since we depend on the normal of the previous step.
-      vec3.set(normal, normalSdiv[3 * i] - sdiv[ix3],
-                normalSdiv[ix3 + 1] - sdiv[ix3 + 1],
-                normalSdiv[ix3 + 2] - sdiv[ix3 + 2]);
-      vec3.normalize(normal, normal);
-      vertStart = vertArray.numVerts();
-      var objIndex = Math.floor((i + halfSplineDetail) / options.splineDetail);
-      var objId = objIds[Math.min(objIds.length - 1, objIndex)];
-      _cartoonAddTube(vertArray, pos, normal, thisSS,
-                      tangent, color, false, options, offset, objId);
-      if (drawArrow) {
-        vertAssoc.addAssoc(traceIndex, vertArray, slice, vertStart, vertEnd);
-        // FIXME: arrow has completely wrong normals. Profile normals are 
-        // generate perpendicular to the direction of the tube. The arrow 
-        // normals are anti-parallel to the direction of the tube.
-        _cartoonAddTube(vertArray, pos, normal, 'A', 
-                        tangent, color, false, options, 0, objId);
-        // We skip a few profiles to get a larger arrow.
-        i += options.arrowSkip;
-      }
-      vertEnd = vertArray.numVerts();
-      vertAssoc.addAssoc(traceIndex, vertArray, slice, vertStart, vertEnd);
-      slice += 1;
-      if (drawArrow) {
-        slice += options.arrowSkip;
-      }
-    }
-    options.float32Allocator.release(normals);
-    options.float32Allocator.release(positions);
-  };
-})();
-
-
-var _renderSingleTrace = (function() {
-  var rotation = mat3.create();
-  var dir = vec3.create(), left = vec3.create(), up = vec3.create(),
-      midPoint = vec3.create(), caPrevPos = vec3.create(),
-      caThisPos = vec3.create();
-  var colorOne = vec4.fromValues(0.0, 0.0, 0.0, 1.0), colorTwo = vec4.fromValues(0.0, 0.0, 0.0, 1.0);
-
-  return function(meshGeom, vertAssoc, trace, traceIndex, options) {
-    if (trace.length() === 0) {
-      return;
-    }
-    var idRange = options.idPool.getContinuousRange(trace.length());
-    meshGeom.addIdRange(idRange);
-    options.color.colorFor(trace.centralAtomAt(0), colorOne, 0);
-    var numVerts = _traceNumVerts([trace], options.protoSphere.numVerts(), 
-                                  options.protoCyl.numVerts());
-    var va = meshGeom.vertArrayWithSpaceFor(numVerts);
-    var vertStart = va.numVerts();
-    trace.posAt(caPrevPos, 0);
-    var idStart = idRange.nextId({ geom : meshGeom, 
-                                   atom : trace.centralAtomAt(0)}), 
-        idEnd = 0;
-    options.protoSphere.addTransformed(va, caPrevPos, options.radius,
-                                       colorOne, idStart);
-    var vertEnd = null;
-    vertAssoc.addAssoc(traceIndex, va, 0, vertStart, vertEnd);
-    var colors = options.float32Allocator.request(trace.length() * 4);
-    colors[0] = colorOne[0];
-    colors[1] = colorOne[1];
-    colors[2] = colorOne[2];
-    colors[3] = colorOne[3];
-    for (var i = 1; i < trace.length(); ++i) {
-      idEnd = idRange.nextId({ geom : meshGeom, atom : trace.centralAtomAt(i)});
-      trace.posAt(caPrevPos, i - 1);
-      trace.posAt(caThisPos, i);
-      options.color.colorFor(trace.centralAtomAt(i), colorTwo, 0);
-      colors[i * 4 + 0] = colorTwo[0];
-      colors[i * 4 + 1] = colorTwo[1];
-      colors[i * 4 + 2] = colorTwo[2];
-      colors[i * 4 + 3] = colorTwo[3];
-
-      vec3.sub(dir, caThisPos, caPrevPos);
-      var length = vec3.length(dir);
-
-      vec3.scale(dir, dir, 1.0 / length);
-
-      buildRotation(rotation, dir, left, up, false);
-
-      vec3.copy(midPoint, caPrevPos);
-      vec3.add(midPoint, midPoint, caThisPos);
-      vec3.scale(midPoint, midPoint, 0.5);
-      var endSphere = va.numVerts();
-      options.protoCyl.addTransformed(va, midPoint, length,
-                                      options.radius, rotation, colorOne,
-                                      colorTwo, idStart, idEnd);
-      vertEnd = va.numVerts();
-      vertEnd = vertEnd - (vertEnd - endSphere) / 2;
-
-      options.protoSphere.addTransformed(va, caThisPos, options.radius,
-                                         colorTwo, idEnd);
-      idStart = idEnd;
-      vertAssoc.addAssoc(traceIndex, va, i, vertStart, vertEnd);
-      vertStart = vertEnd;
-      vec3.copy(colorOne, colorTwo);
-    }
-    vertAssoc.setPerResidueColors(traceIndex, colors);
-    vertAssoc.addAssoc(traceIndex, va, trace.length() - 1, vertStart,
-                        va.numVerts());
-  };
-})();
-
-
-return exports;
-})();
-
-if(typeof(exports) !== 'undefined') {
-  module.exports = render;
-}
-
-},{}],37:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
-(function(exports) {
-
-"use strict";
-
-function Range(min, max) {
-  if (min === undefined || max === undefined) {
-    this._empty = true;
-    this._min = this._max = null;
-  } else {
-    this._empty = false;
-    this._min = min;
-    this._max = max;
-  }
-}
-
-Range.prototype.min = function() {
-  return this._min;
-};
-Range.prototype.max = function() {
-  return this._max;
-};
-Range.prototype.length = function() {
-  return this._max - this._min;
-};
-Range.prototype.empty = function() {
-  return this._empty;
-};
-Range.prototype.center = function() {
-  return (this._max + this._min) * 0.5;
-};
-
-Range.prototype.extend = function(amount) {
-  this._min -= amount;
-  this._max += amount;
-};
-
-Range.prototype.update = function(val) {
-  if (!this._empty) {
-    if (val < this._min) {
-      this._min = val;
-    } else if (val > this._max) {
-      this._max = val;
-    }
-    return;
-  }
-  this._min = this._max = val;
-  this._empty = false;
-};
-
-// A scene node holds a set of child nodes to be rendered on screen. Later on,
-// the SceneNode might grow additional functionality commonly found in a scene
-// graph, e.g. coordinate transformations.
-function SceneNode(name) {
-  this._children = [];
-  this._visible = true;
-  this._name = name || '';
-  this._order = 1;
-}
-
-SceneNode.prototype.order = function(order) {
-  if (order !== undefined) {
-    this._order = order;
-  }
-  return this._order;
-};
-
-SceneNode.prototype.add = function(node) {
-  this._children.push(node);
-};
-
-SceneNode.prototype.draw = function(cam, shaderCatalog, style, pass) {
-  for (var i = 0, e = this._children.length; i !== e; ++i) {
-    this._children[i].draw(cam, shaderCatalog, style, pass);
-  }
-};
-
-SceneNode.prototype.show = function() {
-  this._visible = true;
-};
-
-SceneNode.prototype.hide = function() {
-  this._visible = false;
-};
-
-SceneNode.prototype.name = function(name) {
-  if (name !== undefined) {
-    this._name = name;
-  }
-  return this._name;
-};
-
-SceneNode.prototype.destroy = function() {
-  for (var i = 0; i < this._children.length; ++i) {
-    this._children[i].destroy();
-  }
-};
-
-SceneNode.prototype.visible = function() {
-  return this._visible;
-};
-
-function BaseGeom(gl) {
-  SceneNode.prototype.constructor.call(this, gl);
-  this._gl = gl;
-  this._idRanges = [];
-  this._showRelated = null;
-}
-
-derive(BaseGeom, SceneNode);
-
-BaseGeom.prototype.setShowRelated = function(rel) {
-  this._showRelated = rel;
-  return rel;
-};
-
-BaseGeom.prototype.symWithIndex = function(index) {
-  if (this.showRelated() === 'asym') {
-    return null;
-  }
-  var assembly = this.structure().assembly(this.showRelated());
-  if (!assembly) {
-    return null;
-  }
-  var gen = assembly.generators();
-  for (var i = 0 ; i < gen.length; ++i) {
-    if (gen[i].matrices().length > index) {
-      return gen[i].matrix(index);
-    }
-    index -= gen[i].matrices().length;
-  }
-  return null;
-};
-
-BaseGeom.prototype.showRelated = function() {
-  return this._showRelated;
-};
-
-BaseGeom.prototype.select = function(what) {
-  return this.structure().select(what);
-};
-
-BaseGeom.prototype.structure = function() {
-  return this._vertAssoc._structure;
-};
-
-BaseGeom.prototype.setVertAssoc = function(assoc) {
-  this._vertAssoc = assoc;
-};
-
-BaseGeom.prototype.getColorForAtom = function(atom, color) {
-  return this._vertAssoc.getColorForAtom(atom, color);
-};
-
-BaseGeom.prototype.addIdRange = function(range) {
-  this._idRanges.push(range);
-};
-
-BaseGeom.prototype.destroy = function() {
-  SceneNode.prototype.destroy.call(this);
-  for (var i = 0; i < this._idRanges.length; ++i) {
-    this._idRanges[i].recycle();
-  }
-};
-
-// returns all vertex arrays that contain geometry for one of the specified
-// chain names. Typically, there will only be one array for a given chain,
-// but for larger chains with mesh geometries a single chain may be split
-// across multiple vertex arrays.
-BaseGeom.prototype._vertArraysInvolving = function(chains) {
-  var vertArrays = this.vertArrays();
-  var selectedArrays = [];
-  var set = {};
-  for (var ci = 0; ci < chains.length; ++ci) {
-    set[chains[ci]] = true;
-  }
-  for (var i = 0; i < vertArrays.length; ++i) {
-    if (set[vertArrays[i].chain()] === true) {
-      selectedArrays.push(vertArrays[i]);
-    }
-  }
-  return selectedArrays;
-};
-
-
-// draws vertex arrays by using the symmetry generators contained in assembly
-BaseGeom.prototype._drawSymmetryRelated = function(cam, shader, assembly) {
-  var gens = assembly.generators();
-  for (var i = 0; i < gens.length; ++i) {
-    var gen = gens[i];
-    var affectedVertArrays = this._vertArraysInvolving(gen.chains());
-    this._drawVertArrays(cam, shader, affectedVertArrays, gen.matrices());
-  }
-};
-
-BaseGeom.prototype._updateProjectionIntervalsAsym = 
-     function(xAxis, yAxis, zAxis, xInterval, yInterval, zInterval) {
-    var vertArrays = this.vertArrays();
-    for (var i = 0; i < vertArrays.length; ++i) {
-      vertArrays[i].updateProjectionIntervals(xAxis, yAxis, zAxis, xInterval, 
-                                              yInterval, zInterval);
-    }
-};
-
-BaseGeom.prototype.updateProjectionIntervals =
-    function(xAxis, yAxis, zAxis, xInterval, yInterval, zInterval) {
-  if (!this._visible) {
-    return;
-  }
-  var showRelated = this.showRelated();
-  if (showRelated === 'asym') {
-    return this._updateProjectionIntervalsAsym(xAxis, yAxis, zAxis, xInterval, 
-                                               yInterval, zInterval);
-  } 
-  var assembly = this.structure().assembly(showRelated);
-  // in case there is no assembly, fallback to asymmetric unit and bail out.
-  if (!assembly) {
-    console.error('no assembly', showRelated, 
-                  'found. Falling back to asymmetric unit');
-    return this._updateProjectionIntervalsAsym(xAxis, yAxis, zAxis, xInterval, 
-                                               yInterval, zInterval);
-  }
-  var gens = assembly.generators();
-  for (var i = 0; i < gens.length; ++i) {
-    var gen = gens[i];
-    var affectedVertArrays = this._vertArraysInvolving(gen.chains());
-    for (var j = 0; j < gen.matrices().length; ++j) {
-      for (var k = 0; k < affectedVertArrays.length; ++k) {
-        var transform = gen.matrix(j);
-        affectedVertArrays[k].updateProjectionIntervals(xAxis, yAxis, zAxis, 
-                                                        xInterval, yInterval, 
-                                                        zInterval, transform);
-      }
-    }
-  }
-};
-
-
-// FIXME: investigate the performance cost of sharing code between updateSquaredSphereRadius
-// and updateProjectionIntervals 
-BaseGeom.prototype._updateSquaredSphereRadiusAsym = function(center, radius) {
-    var vertArrays = this.vertArrays();
-    for (var i = 0; i < vertArrays.length; ++i) {
-      radius = vertArrays[i].updateSquaredSphereRadius(center, radius);
-    }
-    return radius;
-};
-
-BaseGeom.prototype.updateSquaredSphereRadius = function(center, radius) {
-  if (!this._visible) {
-    return radius;
-  }
-  var showRelated = this.showRelated();
-  if (showRelated === 'asym') {
-    return this._updateSquaredSphereRadiusAsym(center, radius);
-  } 
-  var assembly = this.structure().assembly(showRelated);
-  // in case there is no assembly, fallback to asymmetric unit and bail out.
-  if (!assembly) {
-    console.error('no assembly', showRelated, 
-                  'found. Falling back to asymmetric unit');
-    return this._updateSquaredSphereRadiusAsym(center, radius);
-  }
-  var gens = assembly.generators();
-  for (var i = 0; i < gens.length; ++i) {
-    var gen = gens[i];
-    var affectedVertArrays = this._vertArraysInvolving(gen.chains());
-    for (var j = 0; j < gen.matrices().length; ++j) {
-      for (var k = 0; k < affectedVertArrays.length; ++k) {
-        var transform = gen.matrix(j);
-        radius = affectedVertArrays[k].updateSquaredSphereRadius(center, radius);
-      }
-    }
-  }
-  return radius;
-};
-
-BaseGeom.prototype.draw = function(cam, shaderCatalog, style, pass) {
-
-  if (!this._visible) {
-    return;
-  }
-
-  var shader = this.shaderForStyleAndPass(shaderCatalog, style, pass);
-
-  if (!shader) {
-    return;
-  }
-  var showRelated = this.showRelated();
-  if (showRelated === 'asym') {
-    return this._drawVertArrays(cam, shader, this.vertArrays(), null);
-  } 
-
-  var assembly = this.structure().assembly(showRelated);
-  // in case there is no assembly, fallback to asymmetric unit and bail out.
-  if (!assembly) {
-    console.error('no assembly', showRelated, 
-                  'found. Falling back to asymmetric unit');
-    return this._drawVertArrays(cam, shader, this.vertArrays(), null);
-  }
-  return this._drawSymmetryRelated(cam, shader, assembly);
-};
-
-// Holds geometrical data for objects rendered as lines. For each vertex,
-// the color and position is stored in an interleaved format.
-function LineGeom(gl, float32Allocator) {
-  BaseGeom.prototype.constructor.call(this, gl);
-  this._vertArrays = [];
-  this._float32Allocator = float32Allocator;
-  this._vertAssoc = null;
-  this._lineWidth = 1.0;
-}
-
-derive(LineGeom, BaseGeom);
-
-
-LineGeom.prototype.addChainVertArray = function(chain, numVerts) {
-  var va = new LineChainData(chain.name(), this._gl, numVerts, 
-                             this._float32Allocator);
-  this._vertArrays.push(va);
-  return va;
-};
-
-
-LineGeom.prototype.setLineWidth = function(width) {
-  this._lineWidth = width;
-};
-
-LineGeom.prototype.vertArrays = function() {
-  return this._vertArrays;
-};
-
-LineGeom.prototype.shaderForStyleAndPass =
-    function(shaderCatalog, style, pass) {
-  if (pass === 'outline') {
-    return null;
-  }
-  if (pass === 'select') {
-    return shaderCatalog.select;
-  }
-  return shaderCatalog.lines;
-};
-
-LineGeom.prototype.destroy = function() {
-  BaseGeom.prototype.destroy.call(this);
-  for (var i = 0; i < this._vertArrays.length; ++i) {
-    this._vertArrays[i].destroy();
-  }
-  this._vertArrays = [];
-};
-
-LineGeom.prototype._drawVertArrays = function(cam, shader, vertArrays, 
-                                              additionalTransforms) {
-  this._gl.lineWidth(this._lineWidth);
-  var i;
-  if (additionalTransforms) {
-    for (i = 0; i < vertArrays.length; ++i) {
-      vertArrays[i].drawSymmetryRelated(cam, shader, additionalTransforms);
-    }
-  } else {
-    this._gl.uniform1i(shader.symId, 255);
-    cam.bind(shader);
-    for (i = 0; i < vertArrays.length; ++i) {
-      vertArrays[i].bind(shader);
-      vertArrays[i].draw();
-      vertArrays[i].releaseAttribs(shader);
-    }
-  }
-};
-
-LineGeom.prototype.vertArray = function() { return this._va; };
-
-LineGeom.prototype.colorBy = function(colorFunc, view) {
-  console.time('LineGeom.colorBy');
-  this._ready = false;
-  view = view || this.structure();
-  this._vertAssoc.recolor(colorFunc, view);
-  console.timeEnd('LineGeom.colorBy');
-};
-
-LineGeom.prototype.setOpacity = function(val, view) {
-  console.time('LineGeom.setOpacity');
-  this._ready = false;
-  view = view || this.structure();
-  this._vertAssoc.setOpacity(val, view);
-  console.timeEnd('LineGeom.setOpacity');
-};
-
-
-// an (indexed) mesh geometry container
-// ------------------------------------------------------------------------
-//
-// stores the vertex data in interleaved format. not doing so has severe
-// performance penalties in WebGL, and severe means orders of magnitude
-// slower than using an interleaved array.
-//
-// the vertex data is stored in the following format;
-//
-// Px Py Pz Nx Ny Nz Cr Cg Cb Ca Id
-//
-// , where P is the position, N the normal and C the color information
-// of the vertex.
-// 
-// Uint16 index buffer limit
-// -----------------------------------------------------------------------
-//
-// In WebGL, index arrays are restricted to uint16. The largest possible
-// index value is smaller than the number of vertices required to display 
-// larger molecules. To work around this, MeshGeom allows to split the
-// render geometry across multiple indexed vertex arrays. 
-function MeshGeom(gl, float32Allocator, uint16Allocator) {
-  BaseGeom.prototype.constructor.call(this, gl);
-  this._indexedVertArrays = [ ];
-  this._float32Allocator = float32Allocator;
-  this._uint16Allocator = uint16Allocator;
-  this._remainingVerts = null;
-  this._remainingIndices = null;
-  this._vertAssoc = null;
-}
-
-MeshGeom.prototype._boundedVertArraySize = function(size) {
-  return Math.min(65536, size);
-};
-
-MeshGeom.prototype.addChainVertArray = function(chain, numVerts, numIndices) {
-  this._remainingVerts = numVerts;
-  this._remainingIndices = numIndices;
-  var newVa = new MeshChainData(chain.name(), this._gl, 
-                                this._boundedVertArraySize(numVerts), 
-                                numIndices,
-                                this._float32Allocator, 
-                                this._uint16Allocator);
-  this._indexedVertArrays.push(newVa);
-  return newVa;
-};
-
-MeshGeom.prototype.addVertArray = function(numVerts, numIndices) {
-  this._remainingVerts = numVerts;
-  this._remainingIndices = numIndices;
-  var newVa = new IndexedVertexArray(
-    this._gl, this._boundedVertArraySize(numVerts), numIndices,
-    this._float32Allocator, this._uint16Allocator);
-
-  this._indexedVertArrays.push(newVa);
-  return newVa;
-};
-
-MeshGeom.prototype.vertArrayWithSpaceFor = function(numVerts) {
-  var currentVa = this._indexedVertArrays[this._indexedVertArrays.length - 1];
-  var remaining = currentVa.maxVerts() - currentVa.numVerts();
-  if (remaining >= numVerts) {
-    return currentVa;
-  }
-  this._remainingVerts = this._remainingVerts - currentVa.numVerts();
-  this._remainingIndices = this._remainingIndices - currentVa.numIndices();
-  numVerts = this._boundedVertArraySize(this._remainingVerts);
-  var newVa = null;
-  if (currentVa instanceof MeshChainData) {
-    newVa = new MeshChainData(currentVa.chain(), this._gl, numVerts, 
-                              this._remainingIndices,
-                              this._float32Allocator, 
-                              this._uint16Allocator);
-  } else {
-    newVa = new IndexedVertexArray(this._gl, numVerts, this._remainingIndices,
-      this._float32Allocator, this._uint16Allocator);
-  } 
-  this._indexedVertArrays.push(newVa);
-  return newVa;
-};
-
-
-derive(MeshGeom, BaseGeom);
-
-MeshGeom.prototype.setVertAssoc = function(assoc) {
-  this._vertAssoc = assoc;
-};
-
-
-MeshGeom.prototype.vertArray = function(index) {
-  return this._indexedVertArrays[index];
-};
-
-MeshGeom.prototype.destroy = function() {
-  BaseGeom.prototype.destroy.call(this);
-  for (var i = 0; i < this._indexedVertArrays.length; ++i) {
-    this._indexedVertArrays[i].destroy();
-  }
-  this._indexedVertArrays = [];
-};
-
-MeshGeom.prototype.numVerts = function() {
-  return this._indexedVertArrays[0].numVerts();
-};
-
-MeshGeom.prototype.shaderForStyleAndPass =
-    function(shaderCatalog, style, pass) {
-  if (pass === 'outline') {
-    return shaderCatalog.outline;
-  }
-  if (pass === 'select') {
-    return shaderCatalog.select;
-  }
-  var shader = shaderCatalog[style];
-  return shader !== undefined ? shader : null;
-};
-
-MeshGeom.prototype.colorBy = function(colorFunc, view) {
-  console.time('MeshGeom.colorBy');
-  this._ready = false;
-  view = view || this.structure();
-  this._vertAssoc.recolor(colorFunc, view);
-  console.timeEnd('MeshGeom.colorBy');
-};
-
-MeshGeom.prototype.setOpacity = function(val, view) {
-  console.time('MeshGeom.setOpacity');
-  this._ready = false;
-  view = view || this.structure();
-  this._vertAssoc.setOpacity(val , view);
-  console.timeEnd('MeshGeom.setOpacity');
-};
-
-MeshGeom.prototype._drawVertArrays = function(cam, shader, indexedVertArrays, 
-                                              additionalTransforms) {
-  var i;
-  if (additionalTransforms) {
-    for (i = 0; i < indexedVertArrays.length; ++i) {
-      indexedVertArrays[i].drawSymmetryRelated(cam, shader, additionalTransforms);
-    }
-  } else {
-    cam.bind(shader);
-    this._gl.uniform1i(shader.symId, 255);
-    for (i = 0; i < indexedVertArrays.length; ++i) {
-      indexedVertArrays[i].bind(shader);
-      indexedVertArrays[i].draw();
-      indexedVertArrays[i].releaseAttribs(shader);
-    }
-  }
-};
-
-MeshGeom.prototype.vertArrays = function() {
-  return this._indexedVertArrays;
-};
-
-MeshGeom.prototype.addVertex = function(pos, normal, color, objId) {
-  var va = this._indexedVertArrays[0];
-  va.addVertex(pos, normal, color, objId);
-};
-
-MeshGeom.prototype.addTriangle = function(idx1, idx2, idx3) {
-  var va = this._indexedVertArrays[0];
-  va.addTriangle(idx1, idx2, idx3);
-};
-
-
-function TextLabel(gl, canvas, context, pos, text) {
-  SceneNode.prototype.constructor.call(this, gl);
-  this._gl = gl;
-  this._order = 100;
-  this._pos = pos;
-  this._interleavedBuffer = this._gl.createBuffer();
-  this._interleavedData = new Float32Array(5 * 6);
-
-  this._prepareText(canvas, context, text);
-
-  var halfWidth = this._width / 2;
-  var halfHeight = this._height / 2;
-  this._interleavedData[0] = pos[0];
-  this._interleavedData[1] = pos[1];
-  this._interleavedData[2] = pos[2];
-  this._interleavedData[3] = -halfWidth;
-  this._interleavedData[4] = -halfHeight;
-
-  this._interleavedData[5] = pos[0];
-  this._interleavedData[6] = pos[1];
-  this._interleavedData[7] = pos[2];
-  this._interleavedData[8] = halfWidth;
-  this._interleavedData[9] = halfHeight;
-
-  this._interleavedData[10] = pos[0];
-  this._interleavedData[11] = pos[1];
-  this._interleavedData[12] = pos[2];
-  this._interleavedData[13] = halfWidth;
-  this._interleavedData[14] = -halfHeight;
-
-  this._interleavedData[15] = pos[0];
-  this._interleavedData[16] = pos[1];
-  this._interleavedData[17] = pos[2];
-  this._interleavedData[18] = -halfWidth;
-  this._interleavedData[19] = -halfHeight;
-
-  this._interleavedData[20] = pos[0];
-  this._interleavedData[21] = pos[1];
-  this._interleavedData[22] = pos[2];
-  this._interleavedData[23] = -halfWidth;
-  this._interleavedData[24] = halfHeight;
-
-  this._interleavedData[25] = pos[0];
-  this._interleavedData[26] = pos[1];
-  this._interleavedData[27] = pos[2];
-  this._interleavedData[28] = halfWidth;
-  this._interleavedData[29] = halfHeight;
-}
-
-TextLabel.prototype.updateProjectionIntervals = function() {
-  // text labels don't affect the projection interval. Don't do anything.
-};
-
-derive(TextLabel, SceneNode);
-
-TextLabel.prototype._setupTextParameters = function(ctx) {
-  ctx.fillStyle = 'black';
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'bottom';
-  ctx.font = '24px Verdana';
-};
-
-function smallestPowerOfTwo(size) {
-  var s = 1;
-  while (s < size) {
-    s *= 2;
-  }
-  return s;
-}
-
-TextLabel.prototype._prepareText = function(canvas, ctx, text) {
-  this._setupTextParameters(ctx);
-  var estimatedWidth = ctx.measureText(text).width;
-  var estimatedHeight = 24;
-  canvas.width = smallestPowerOfTwo(estimatedWidth);
-  canvas.height = smallestPowerOfTwo(estimatedHeight);
-  this._setupTextParameters(ctx);
-  ctx.strokeStyle = 'black';
-  ctx.lineWidth = 0.5;
-  ctx.fillText(text, 0, canvas.height);
-  ctx.strokeText(text, 0, canvas.height);
-  this._texture = this._gl.createTexture();
-  this._textureFromCanvas(this._texture, canvas);
-  this._xScale = estimatedWidth / canvas.width;
-  this._yScale = estimatedHeight / canvas.height;
-  this._width = estimatedWidth * 0.002;
-  this._height = estimatedHeight * 0.002;
-};
-
-TextLabel.prototype._textureFromCanvas = function(targetTexture, srcCanvas) {
-  this._gl.pixelStorei(this._gl.UNPACK_FLIP_Y_WEBGL, true);
-  this._gl.bindTexture(this._gl.TEXTURE_2D, targetTexture);
-  this._gl.texImage2D(this._gl.TEXTURE_2D, 0, this._gl.RGBA, this._gl.RGBA,
-                      this._gl.UNSIGNED_BYTE, srcCanvas);
-  this._gl.texParameteri(this._gl.TEXTURE_2D, this._gl.TEXTURE_MAG_FILTER,
-                         this._gl.LINEAR);
-  this._gl.texParameteri(this._gl.TEXTURE_2D, this._gl.TEXTURE_MIN_FILTER,
-                         this._gl.LINEAR_MIPMAP_LINEAR);
-  this._gl.generateMipmap(this._gl.TEXTURE_2D);
-  this._gl.bindTexture(this._gl.TEXTURE_2D, null);
-};
-
-TextLabel.prototype.bind = function() {
-  this._gl.bindBuffer(this._gl.ARRAY_BUFFER, this._interleavedBuffer);
-  this._gl.activeTexture(this._gl.TEXTURE0);
-  this._gl.bindTexture(this._gl.TEXTURE_2D, this._texture);
-  if (this._ready) {
-    return;
-  }
-  this._gl.bufferData(this._gl.ARRAY_BUFFER, this._interleavedData,
-                      this._gl.STATIC_DRAW);
-  this._ready = true;
-};
-
-TextLabel.prototype.draw = function(cam, shaderCatalog, style, pass) {
-  if (!this._visible) {
-    return;
-  }
-
-  if (pass !== 'normal') {
-    return;
-  }
-  var shader = shaderCatalog.text;
-  cam.bind(shader);
-  this.bind();
-  this._gl.uniform1f(this._gl.getUniformLocation(shader, 'xScale'),
-                     this._xScale);
-  this._gl.uniform1f(this._gl.getUniformLocation(shader, 'yScale'),
-                     this._yScale);
-  this._gl.uniform1i(this._gl.getUniformLocation(shader, 'sampler'), 0);
-  var vertAttrib = this._gl.getAttribLocation(shader, 'attrCenter');
-  this._gl.enableVertexAttribArray(vertAttrib);
-  this._gl.vertexAttribPointer(vertAttrib, 3, this._gl.FLOAT, false, 5 * 4,
-                               0 * 4);
-  var texAttrib = this._gl.getAttribLocation(shader, 'attrCorner');
-  this._gl.vertexAttribPointer(texAttrib, 2, this._gl.FLOAT, false, 5 * 4,
-                               3 * 4);
-  this._gl.enableVertexAttribArray(texAttrib);
-  this._gl.enable(this._gl.BLEND);
-  this._gl.blendFunc(this._gl.SRC_ALPHA, this._gl.ONE_MINUS_SRC_ALPHA);
-  this._gl.drawArrays(this._gl.TRIANGLES, 0, 6);
-  this._gl.disableVertexAttribArray(vertAttrib);
-  this._gl.disableVertexAttribArray(texAttrib);
-  this._gl.disable(this._gl.BLEND);
-};
-
-// A continous range of object identifiers.
-function ContinuousIdRange(pool, start, end) {
-  this._pool = pool;
-  this._start = start;
-  this._next = start;
-  this._end = end;
-}
-
-ContinuousIdRange.prototype.nextId = function(obj) {
-  var id = this._next;
-  this._next++;
-  this._pool._objects[id] = obj;
-  return id;
-};
-ContinuousIdRange.prototype.recycle = function() {
-  this._pool.recycle(this);
-};
-ContinuousIdRange.prototype.length = function() {
-  return this._end - this._start;
-};
-
-function UniqueObjectIdPool() {
-  this._objects = {};
-  this._unusedRangeStart = 0;
-  this._free = [];
-}
-
-UniqueObjectIdPool.prototype.getContinuousRange = function(num) {
-  // FIXME: keep the "free" list sorted, so we can binary search it
-  // for a good match
-  var bestIndex = -1;
-  var bestLength = null;
-  for (var i = 0; i < this._free.length; ++i) {
-    var free = this._free[i];
-    var length = free.length();
-    if (length >= num && (bestLength === null || length < bestLength)) {
-      bestLength = length;
-      bestIndex = i;
-    }
-  }
-  if (bestIndex !== -1) {
-    var result = this._free[bestIndex];
-    this._free.splice(bestIndex, 1);
-    return result;
-  }
-  var start = this._unusedRangeStart;
-  var end = start + num;
-  if (end > 65536) {
-    console.log('not enough free object ids.');
-    return null;
-  }
-  this._unusedRangeStart = end;
-  return new ContinuousIdRange(this, start, end);
-};
-
-UniqueObjectIdPool.prototype.recycle = function(range) {
-  for (var i = range._start; i < range._next; ++i) {
-    delete this._objects[i];
-  }
-  range._next = range._start;
-  this._free.push(range);
-};
-
-UniqueObjectIdPool.prototype.objectForId = function(id) {
-  return this._objects[id];
-};
-
-function OrientedBoundingBox(gl, center, halfExtents, 
-                             float32Allocator, uint16Allocator) {
-  LineGeom.prototype.constructor.call(this, gl, 24, float32Allocator, 
-                                      uint16Allocator);
-  var red = rgb.fromValues(1.0, 0.0, 0.0);
-  var green = rgb.fromValues(0.0, 1.0, 0.0);
-  var blue = rgb.fromValues(0.0, 0.0, 1.0);
-  var tf = mat3.create();
-  tf[0] = halfExtents[0][0];
-  tf[1] = halfExtents[0][1];
-  tf[2] = halfExtents[0][2];
-
-  tf[3] = halfExtents[1][0];
-  tf[4] = halfExtents[1][1];
-  tf[5] = halfExtents[1][2];
-
-  tf[6] = halfExtents[2][0];
-  tf[7] = halfExtents[2][1];
-  tf[8] = halfExtents[2][2];
-  var a = vec3.create(), b = vec3.create();
-  this.addLine(
-      vec3.add(a, center, vec3.transformMat3(a, [ -1, -1, -1 ], tf)), red,
-      vec3.add(b, center, vec3.transformMat3(b, [ 1, -1, -1 ], tf)), red, -1);
-
-  this.addLine(
-      vec3.add(a, center, vec3.transformMat3(a, [ 1, -1, -1 ], tf)), green,
-      vec3.add(b, center, vec3.transformMat3(b, [ 1, 1, -1 ], tf)), green, -1);
-  this.addLine(
-      vec3.add(a, center, vec3.transformMat3(a, [ 1, 1, -1 ], tf)), red,
-      vec3.add(b, center, vec3.transformMat3(b, [ -1, 1, -1 ], tf)), red, -1);
-  this.addLine(vec3.add(a, center, vec3.transformMat3(a, [ -1, 1, -1 ], tf)),
-               green,
-               vec3.add(b, center, vec3.transformMat3(b, [ -1, -1, -1 ], tf)),
-               green, -1);
-
-  this.addLine(
-      vec3.add(a, center, vec3.transformMat3(a, [ -1, -1, 1 ], tf)), red,
-      vec3.add(b, center, vec3.transformMat3(b, [ 1, -1, 1 ], tf)), red, -1);
-  this.addLine(
-      vec3.add(a, center, vec3.transformMat3(a, [ 1, -1, 1 ], tf)), green,
-      vec3.add(b, center, vec3.transformMat3(b, [ 1, 1, 1 ], tf)), green, -1);
-  this.addLine(
-      vec3.add(a, center, vec3.transformMat3(a, [ 1, 1, 1 ], tf)), red,
-      vec3.add(b, center, vec3.transformMat3(b, [ -1, 1, 1 ], tf)), red, -1);
-  this.addLine(
-      vec3.add(a, center, vec3.transformMat3(a, [ -1, 1, 1 ], tf)), green,
-      vec3.add(b, center, vec3.transformMat3(b, [ -1, -1, 1 ], tf)), green, -1);
-
-  this.addLine(
-      vec3.add(a, center, vec3.transformMat3(a, [ -1, -1, -1 ], tf)), blue,
-      vec3.add(b, center, vec3.transformMat3(b, [ -1, -1, 1 ], tf)), blue, -1);
-  this.addLine(
-      vec3.add(a, center, vec3.transformMat3(a, [ 1, -1, -1 ], tf)), blue,
-      vec3.add(b, center, vec3.transformMat3(b, [ 1, -1, 1 ], tf)), blue, -1);
-  this.addLine(
-      vec3.add(a, center, vec3.transformMat3(a, [ 1, 1, -1 ], tf)), blue,
-      vec3.add(b, center, vec3.transformMat3(b, [ 1, 1, 1 ], tf)), blue, -1);
-  this.addLine(
-      vec3.add(a, center, vec3.transformMat3(a, [ -1, 1, -1 ], tf)), blue,
-      vec3.add(b, center, vec3.transformMat3(b, [ -1, 1, 1 ], tf)), blue, -1);
-}
-
-derive(OrientedBoundingBox, LineGeom);
-
-// don't do anything
-OrientedBoundingBox.prototype.updateProjectionIntervals = function() {};
-
-exports.SceneNode = SceneNode;
-exports.OrientedBoundingBox = OrientedBoundingBox;
-exports.AtomVertexAssoc = AtomVertexAssoc;
-exports.TraceVertexAssoc = TraceVertexAssoc;
-exports.MeshGeom = MeshGeom;
-exports.LineGeom = LineGeom;
-exports.TextLabel = TextLabel;
-exports.UniqueObjectIdPool = UniqueObjectIdPool;
-exports.Range = Range;
-})(this);
-
-
-},{}],38:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-// 
-// Permission is hereby granted, free of charge, to any person obtaining a copy 
-// of this software and associated documentation files (the "Software"), to deal 
-// in the Software without restriction, including without limitation the rights 
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
-// copies of the Software, and to permit persons to whom the Software is 
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
-// SOFTWARE.
-
-(function(exports) {
-"use strict";
-
-exports.rgb = {};
-var rgb = exports.rgb;
-
-exports.rgb.create = vec4.create;
-exports.rgb.scale = vec4.scale;
-exports.rgb.copy = vec4.copy;
-exports.rgb.fromValues = vec4.fromValues;
-
-exports.rgb.mix = function(out, colorOne, colorTwo, t) {
-  var oneMinusT = 1.0 - t;
-  out[0] = colorOne[0]*t+colorTwo[0]*oneMinusT;
-  out[1] = colorOne[1]*t+colorTwo[1]*oneMinusT;
-  out[2] = colorOne[2]*t+colorTwo[2]*oneMinusT;
-  out[3] = colorOne[3]*t+colorTwo[3]*oneMinusT;
-  return out;
-};
-
-var COLORS = {
-  white :        rgb.fromValues(1.0,1.0 ,1.0,1.0),
-  black :        rgb.fromValues(0.0,0.0 ,0.0,1.0),
-  grey :         rgb.fromValues(0.5,0.5 ,0.5,1.0),
-  lightgrey :    rgb.fromValues(0.8,0.8 ,0.8,1.0),
-  darkgrey :     rgb.fromValues(0.3,0.3 ,0.3,1.0),
-  red :          rgb.fromValues(1.0,0.0 ,0.0,1.0),
-  darkred :      rgb.fromValues(0.5,0.0 ,0.0,1.0),
-  lightred :     rgb.fromValues(1.0,0.5 ,0.5,1.0),
-  green :        rgb.fromValues(0.0,1.0 ,0.0,1.0),
-  darkgreen :    rgb.fromValues(0.0,0.5 ,0.0,1.0),
-  lightgreen :   rgb.fromValues(0.5,1.0 ,0.5,1.0),
-  blue :         rgb.fromValues(0.0,0.0 ,1.0,1.0),
-  darkblue :     rgb.fromValues(0.0,0.0 ,0.5,1.0),
-  lightblue :    rgb.fromValues(0.5,0.5 ,1.0,1.0),
-  yellow :       rgb.fromValues(1.0,1.0 ,0.0,1.0),
-  darkyellow :   rgb.fromValues(0.5,0.5 ,0.0,1.0),
-  lightyellow :  rgb.fromValues(1.0,1.0 ,0.5,1.0),
-  cyan :         rgb.fromValues(0.0,1.0 ,1.0,1.0),
-  darkcyan :     rgb.fromValues(0.0,0.5 ,0.5,1.0),
-  lightcyan :    rgb.fromValues(0.5,1.0 ,1.0,1.0),
-  magenta :      rgb.fromValues(1.0,0.0 ,1.0,1.0),
-  darkmagenta :  rgb.fromValues(0.5,0.0 ,0.5,1.0),
-  lightmagenta : rgb.fromValues(1.0,0.5 ,1.0,1.0),
-  orange :       rgb.fromValues(1.0,0.5 ,0.0,1.0),
-  darkorange :   rgb.fromValues(0.5,0.25,0.0,1.0),
-  lightorange :  rgb.fromValues(1.0,0.75,0.5,1.0)
-};
-
-// converts color strings to RGB. for now only supports color names. 
-// hex triples will need to be added.
-exports.forceRGB = function(color) {
-  if (typeof color === 'string') {
-    var lookup = COLORS[color];
-    if (lookup !== undefined) {
-      return lookup;
-    }
-    if (color.length > 0 && color[0] === '#') {
-      var r, g, b, a;
-      if (color.length === 4 || color.length === 5 ) {
-        r = parseInt(color[1], 16);
-        g = parseInt(color[2], 16);
-        b = parseInt(color[3], 16);
-        a = 15;
-        if(color.length===5) {
-          a = parseInt(color[4], 16);
-        }
-        var oneOver15 = 1/15.0;
-        return rgb.fromValues(oneOver15 * r, oneOver15 * g, oneOver15 * b, oneOver15 * a);
-      }
-      if (color.length === 7 || color.length === 9) {
-        r = parseInt(color.substr(1, 2), 16);
-        g = parseInt(color.substr(3, 2), 16);
-        b = parseInt(color.substr(5, 2), 16);
-        a = 255;
-        if(color.length===9) {
-          a = parseInt(color.substr(7, 2), 16);
-        }
-        var oneOver255 = 1/255.0;
-        return rgb.fromValues(oneOver255 * r, oneOver255 * g, oneOver255 * b, oneOver255 * a);
-      }
-    }
-  }
-  // in case no alpha component is provided, default alpha to 1.0
-  if (color.length === 3) {
-    return [color[0], color[1], color[2], 1.0];
-  }
-  return color;
-};
-
-function Gradient(colors, stops) {
-  this._colors = colors;
-  for (var i = 0; i < this._colors.length; ++i) {
-    this._colors[i] = exports.forceRGB(this._colors[i]);
-  }
-  this._stops = stops;
-}
-
-Gradient.prototype.colorAt = function(out, value) {
-  if (value <= this._stops[0]) {
-    return vec4.copy(out, this._colors[0]);
-  }
-  if (value >= this._stops[this._stops.length-1]) {
-    return vec4.copy(out, this._colors[this._stops.length-1]);
-  }
-  // could use a binary search here, but since most gradients
-  // have a really small number of stops, that's not going to
-  // help much.
-  var lowerIndex = 0;
-  for (var i = 0; i < this._stops.length; ++i) {
-    if (this._stops[i] > value) {
-      break;
-    }
-    lowerIndex = i;
-  }
-  var upperIndex = lowerIndex+1;
-  var lowerStop = this._stops[lowerIndex];
-  var upperStop = this._stops[upperIndex];
-  var t = (value - lowerStop)/ (upperStop - lowerStop);
-  return rgb.mix(out, this._colors[upperIndex], this._colors[lowerIndex], t);
-};
-var GRADIENTS = { };
-// creates a new gradient from the given set of colors. 
-// 
-// colors must be a valid list of colors.
-//
-// when stops is set to 'equal', then the color stops are
-// assumed to be equi distant on the interval 0,1. otherwise,
-// stops must be  a list of floating point numbers with the 
-// same length than colors.
-exports.gradient = function(colors, stops) {
-  if (typeof colors === 'string') {
-    return GRADIENTS[colors];
-  }
-  stops = stops || 'equal';
-  if (stops === 'equal') {
-    stops = [];
-    for (var i = 0; i < colors.length; ++i) {
-      stops.push(i*1.0/(colors.length-1));
-    }
-  }
-  return new Gradient(colors, stops);
-};
-var gradient = exports.gradient;
-
-GRADIENTS.rainbow =gradient(['red', 'yellow', 'green', 'blue']);
-GRADIENTS.reds = gradient(['lightred', 'darkred']);
-GRADIENTS.greens = gradient(['lightgreen', 'darkgreen']);
-GRADIENTS.blues = gradient(['lightblue', 'darkblue']);
-GRADIENTS.trafficlight = gradient(['green', 'yellow', 'red']);
-GRADIENTS.heatmap = gradient(['red', 'white', 'blue']);
-
-function ColorOp(colorFunc, beginFunc, endFunc) {
-  this.colorFor = colorFunc;
-  this._beginFunc = beginFunc;
-  this._endFunc = endFunc;
-}
-
-ColorOp.prototype.begin = function(obj) {
-  if (this._beginFunc) {
-    this._beginFunc(obj);
-  }
-};
-
-
-ColorOp.prototype.end = function(obj) {
-  if (this._endFunc) {
-    this._endFunc(obj);
-  }
-};
-
-exports.color = {};
-
-exports.ColorOp = ColorOp;
-
-exports.color.uniform = function(color) {
-  color = exports.forceRGB(color);
-  console.log(color);
-  return new ColorOp(function(atom, out, index) {
-    out[index+0] = color[0];
-    out[index+1] = color[1];
-    out[index+2] = color[2];
-    out[index+3] = color[3];
-  }, null, null);
-};
-
-exports.color.byElement = function() {
-  return new ColorOp(function(atom, out, index) {
-    var ele = atom.element();
-    if (ele === 'C') {
-      out[index] = 0.8; 
-      out[index+1] = 0.8; 
-      out[index+2] = 0.8; 
-      out[index+3] = 1.0;
-      return out;
-    }
-    if (ele === 'N') {
-      out[index] = 0; 
-      out[index+1] = 0; 
-      out[index+2] = 1;
-      out[index+3] = 1.0;
-      return out;
-    }
-    if (ele === 'O') {
-      out[index] = 1; 
-      out[index+1] = 0; 
-      out[index+2] = 0;
-      out[index+3] = 1.0;
-      return out;
-    }
-    if (ele === 'S') {
-      out[index] = 0.8; 
-      out[index+1] = 0.8; 
-      out[index+2] = 0;
-      out[index+3] = 1.0;
-      return out;
-    }
-    if (ele === 'CA') {
-      out[index] = 0.533; 
-      out[index+1] = 0.533; 
-      out[index+2] = 0.666;
-      out[index+3] = 1.0;
-      return out;
-    }
-    out[index] = 1; 
-    out[index+1] = 0; 
-    out[index+2] = 1;
-    out[index+3] = 1.0;
-    return out;
-  }, null, null);
-};
-
-exports.color.bySS = function() {
-
-  return new ColorOp(function(atom, out, index) {
-    switch (atom.residue().ss()) {
-      case 'C':
-        out[index] = 0.8;   out[index+1] = 0.8; 
-        out[index+2] = 0.8; out[index+3] = 1.0;
-        return;
-      case 'H':
-        out[index] = 0.6;   out[index+1] = 0.6; 
-        out[index+2] = 0.9; out[index+3] = 1.0;
-        return;
-      case 'E':
-        out[index] = 0.2;   out[index+1] = 0.8; 
-        out[index+2] = 0.2; out[index+3] = 1.0;
-        return;
-    }
-  }, null, null);
-};
-
-exports.color.rainbow = function(grad) {
-  if (!grad) {
-    grad = gradient('rainbow');
-  }
-  var colorFunc = new ColorOp(function(a, out, index) {
-    var idx = a.residue().index();
-    var limits = this.chainLimits[a.residue().chain().name()];
-    var t = 0.0;
-    if (limits !== undefined) {
-      t =  (idx - limits[0])/(limits[1]-limits[0]);
-    } 
-    var x = [1,1,1,1];
-    grad.colorAt(x, t);
-    out[index] = x[0];
-    out[index+1] = x[1];
-    out[index+2] = x[2];
-    out[index+3] = x[3];
-  }, function(obj) {
-    var chains = obj.chains();
-    this.chainLimits = {};
-    for (var i = 0; i < chains.length; ++i) {
-      var bb = chains[i].backboneTraces();
-      if (bb.length === 0) {
-        continue;
-      }
-      var minIndex = bb[0].residueAt(0).index(), 
-          maxIndex = bb[0].residueAt(bb[0].length()-1).index();
-      for (var j = 1; j < bb.length; ++j) {
-        var bbj = bb[j];
-        minIndex = Math.min(minIndex, bbj.residueAt(0).index());
-        maxIndex = Math.max(maxIndex, bbj.residueAt(bbj.length()-1).index());
-      }
-      this.chainLimits[chains[i].name()] = [minIndex, maxIndex];
-    }
-  },function(obj) {
-    this.chainLimits = null;
-  });
-  return colorFunc;
-};
-
-exports.color.ssSuccession = function(grad, coilColor) {
-  if (!grad) {
-    grad = gradient('rainbow');
-  }
-  if (!coilColor) {
-    coilColor = forceRGB('lightgrey');
-  }
-  var colorFunc = new ColorOp(function(a, out, index) {
-    var idx = a.residue().index();
-    var limits = this.chainLimits[a.residue().chain().name()];
-    var ssIndex = limits.indices[idx];
-    if (ssIndex === -1) {
-      out[index] = coilColor[0];
-      out[index+1] = coilColor[1];
-      out[index+2] = coilColor[2];
-      out[index+3] = coilColor[3];
-      return;
-    }
-    var t = 0.0;
-    if (limits.max === null) {
-    }
-    if (limits.max !== null) {
-      t =  ssIndex/(limits.max > 0 ? limits.max : 1);
-    } 
-    var x = [0,0,0,0];
-    grad.colorAt(x, t);
-    out[index] = x[0];
-    out[index+1] = x[1];
-    out[index+2] = x[2];
-    out[index+3] = x[3];
-  }, function(obj) {
-    var chains = obj.chains();
-    this.chainLimits = {};
-    for (var i = 0; i < chains.length; ++i) {
-      var residues = chains[i].residues();
-      var maxIndex = null;
-      var indices = {};
-      var ssIndex = 0;
-      var lastSS = 'C';
-      for (var j = 0; j < residues.length; ++j) {
-        var ss =  residues[j].ss();
-        if (ss === 'C') {
-          if (lastSS !== 'C') {
-            ssIndex++;
-          }
-          indices[residues[j].index()] = -1;
-        } else {
-          maxIndex = ssIndex;
-          indices[residues[j].index()] = ssIndex;
-        }
-        lastSS = ss;
-      }
-      this.chainLimits[chains[i].name()] = {
-        indices : indices,
-        max: maxIndex
-      };
-    }
-  },function(obj) {
-    this.chainLimits = null;
-  });
-  return colorFunc;
-};
-
-exports.color.byChain = function(grad) {
-  if (!grad) {
-    grad = gradient('rainbow');
-  }
-  var colorFunc = new ColorOp(function(a, out, index) {
-    var idx = a.residue().index();
-    var chainIndex = this.chainIndices[a.residue().chain().name()];
-    var t =  chainIndex*this.scale;
-    var x = [0,0,0,0];
-    grad.colorAt(x, t);
-    out[index+0] = x[0];
-    out[index+1] = x[1];
-    out[index+2] = x[2];
-    out[index+3] = x[3];
-  }, function(obj) {
-    var chains = obj.chains();
-    this.chainIndices = {};
-    for (var i = 0; i < chains.length; ++i) {
-      this.chainIndices[chains[i].name()] = i;
-    }
-    this.scale = chains.length > 1 ? 1.0/(chains.length-1) : 1.0;
-  },function(obj) {
-    this.chainIndices = null;
-  });
-  return colorFunc;
-};
-
-function getMinMaxRange(obj, iter, propName) {
-  var min = null;
-  var max = null;
-  obj[iter](function(item) {
-    var value = item.prop(propName);
-    if (min === null && max === null) {
-      min = max = value;
-      return;
-    }
-    min = Math.min(min, value);
-    max = Math.max(max, value);
-  });
-  return { min: min, max: max };
-}
-
-var gradColor = (function() {
-  var color = vec4.create();
-  return function(out, index, grad, t) {
-    grad.colorAt(color, t);
-    out[index+0] = color[0];
-    out[index+1] = color[1];
-    out[index+2] = color[2];
-    out[index+3] = color[3];
-  };
-})();
-
-function colorByItemProp(propName, grad, range, iter, item) {
-  if (!grad) {
-    grad = gradient('rainbow');
-  }
-  return new ColorOp(function(a, out, index) {
-      var t = 0.0;
-      if (this._min !== this._max) {
-        t = (item(a).prop(propName) - this._min)/(this._max - this._min);
-      }
-      gradColor(out, index, grad, t);
-    }, 
-    function(obj) {
-      if (range !== undefined) {
-        this._min = range[0];
-        this._max = range[1];
-        return;
-      }
-      range = getMinMaxRange(obj, iter, propName);
-      this._min = range.min;
-      this._max = range.max;
-    }, 
-    function(obj) { }
-  );
-}
-
-exports.color.byAtomProp = function(propName, grad, range) {
-  return colorByItemProp(propName, grad, range, 'eachAtom', 
-                         function(a) {return a;});
-};
-
-exports.color.byResidueProp = function(propName, grad, range) {
-  return colorByItemProp(propName, grad, range, 'eachResidue', 
-                         function(a) {return a.residue();});
-};
-
-// linearly interpolates the array of colors and returns it as a Float32Array
-// color must be an array containing a sequence of R,G,B triples.
-exports.interpolateColor = function(colors, num) {
-  var out = new Float32Array((num*(colors.length/4-1) + 1)*4);
-  var index = 0;
-  var bf = vec4.create(), af = vec4.create();
-  var delta = 1/num;
-  for (var i = 0; i < colors.length/4-1; ++i) {
-    vec4.set(bf, colors[4*i+0], colors[4*i+1], colors[4*i+2], colors[4*i+3]);
-    vec4.set(af, colors[4*i+4], colors[4*i+5], colors[4*i+6], colors[4*i+7]);
-    for (var j = 0; j < num; ++j) {
-      var t = delta * j;
-      out[index+0] = bf[0]*(1-t)+af[0]*t;
-      out[index+1] = bf[1]*(1-t)+af[1]*t;
-      out[index+2] = bf[2]*(1-t)+af[2]*t;
-      out[index+3] = bf[3]*(1-t)+af[3]*t;
-      index+=4;
-    }
-  }
-  out[index+0] = af[0];
-  out[index+1] = af[1];
-  out[index+2] = af[2];
-  out[index+3] = af[3];
-  return out;
-};
-
-
-
-return true;
-})(this);
-
-},{}],39:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-// 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to 
-// deal in the Software without restriction, including without limitation the 
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or 
-// sell copies of the Software, and to permit persons to whom the Software is 
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in 
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
-// DEALINGS IN THE SOFTWARE.
-
-(function(exports) {
-
-"use strict";
-
-exports.shaders = {};
-
-// line fragment shader, essentially uses the vertColor and adds some fog.
-exports.shaders.LINES_FS = '\n\
-precision mediump float;\n\
-\n\
-varying vec4 vertColor;\n\
-varying vec3 vertNormal;\n\
-uniform float fogNear;\n\
-uniform float fogFar;\n\
-uniform vec3 fogColor;\n\
-uniform bool fog;\n\
-\n\
-void main(void) {\n\
-  gl_FragColor = vec4(vertColor);\n\
-  float depth = gl_FragCoord.z / gl_FragCoord.w;\n\
-  if (fog) {\n\
-    float fog_factor = smoothstep(fogNear, fogFar, depth);\n\
-    gl_FragColor = mix(gl_FragColor, vec4(fogColor, gl_FragColor.w),\n\
-                        fog_factor);\n\
-  }\n\
-}';
-
-// hemilight fragment shader
-exports.shaders.HEMILIGHT_FS = '\n\
-precision mediump float;\n\
-\n\
-varying vec4 vertColor;\n\
-varying vec3 vertNormal;\n\
-uniform float fogNear;\n\
-uniform float fogFar;\n\
-uniform vec3 fogColor;\n\
-uniform bool fog;\n\
-\n\
-void main(void) {\n\
-  float dp = dot(vertNormal, vec3(0.0, 0.0, 1.0));\n\
-  float hemi = max(0.0, dp)*0.5+0.5;\n\
-  hemi *= vertColor.a;\n\
-  gl_FragColor = vec4(vertColor.rgb*hemi, vertColor.a);\n\
-  float depth = gl_FragCoord.z / gl_FragCoord.w;\n\
-  if (fog) {\n\
-    float fog_factor = smoothstep(fogNear, fogFar, depth);\n\
-    gl_FragColor = mix(gl_FragColor, vec4(fogColor, gl_FragColor.w),\n\
-                        fog_factor);\n\
-  }\n\
-}';
-
-// hemilight vertex shader
-exports.shaders.HEMILIGHT_VS = '\n\
-attribute vec3 attrPos;\n\
-attribute vec4 attrColor;\n\
-attribute vec3 attrNormal;\n\
-\n\
-uniform mat4 projectionMat;\n\
-uniform mat4 modelviewMat;\n\
-varying vec4 vertColor;\n\
-varying vec3 vertNormal;\n\
-void main(void) {\n\
-  gl_Position = projectionMat * modelviewMat * vec4(attrPos, 1.0);\n\
-  vec4 n = (modelviewMat * vec4(attrNormal, 0.0));\n\
-  vertNormal = n.xyz;\n\
-  vertColor = attrColor;\n\
-}';
-
-// outline shader. mixes outlineColor with fogColor
-exports.shaders.OUTLINE_FS = '\n\
-precision mediump float;\n\
-\n\
-uniform vec3 outlineColor;\n\
-uniform float fogNear;\n\
-uniform float fogFar;\n\
-uniform vec3 fogColor;\n\
-uniform bool fog;\n\
-\n\
-void main() {\n\
-  gl_FragColor = vec4(outlineColor, 1.0);\n\
-  float depth = gl_FragCoord.z / gl_FragCoord.w;\n\
-  if (fog) { \n\
-    float fog_factor = smoothstep(fogNear, fogFar, depth);\n\
-    gl_FragColor = mix(gl_FragColor, vec4(fogColor, gl_FragColor.w),\n\
-                        fog_factor);\n\
-  }\n\
-}';
-
-// outline vertex shader. Expands vertices along the (in-screen) xy
-// components of the normals.
-exports.shaders.OUTLINE_VS = '\n\
-precision mediump float;\n\
-\n\
-attribute vec3 attrPos;\n\
-attribute vec3 attrNormal;\n\
-                                                                       \n\
-uniform vec3 outlineColor;\n\
-uniform mat4 projectionMat;\n\
-uniform mat4 modelviewMat;\n\
-\n\
-void main(void) {\n\
-  gl_Position = projectionMat * modelviewMat * vec4(attrPos, 1.0);\n\
-  vec4 normal = modelviewMat * vec4(attrNormal, 0.0);\n\
-  gl_Position.xy += normal.xy*0.200;\n\
-}';
-
-exports.shaders.TEXT_VS = '\n\
-precision mediump float;\n\
-\n\
-attribute vec3 attrCenter;\n\
-attribute vec2 attrCorner;\n\
-uniform mat4 projectionMat;\n\
-uniform mat4 modelviewMat;\n\
-uniform mat4 rotationMat;\n\
-varying vec2 vertTex;\n\
-void main() { \n\
-  gl_Position = projectionMat* modelviewMat* vec4(attrCenter, 1.0);\n\
-  gl_Position.xy += attrCorner*gl_Position.w; \n\
-  gl_Position.z -= gl_Position.w*0.0005;\n\
-  vertTex = (attrCorner+abs(attrCorner))/(2.0*abs(attrCorner)); \n\
-}';
-
-exports.shaders.TEXT_FS = '\n\
-precision mediump float;\n\
-\n\
-uniform mat4 projectionMat;\n\
-uniform mat4 modelviewMat;\n\
-uniform sampler2D sampler;\n\
-uniform float xScale;\n\
-uniform float yScale;\n\
-varying vec2 vertTex;\n\
-void main() { \n\
-  gl_FragColor = texture2D(sampler, vec2(vertTex.x*xScale, vertTex.y*yScale));\n\
-}';
-
-exports.shaders.SELECT_VS = '\n\
-precision mediump float;\n\
-uniform mat4 projectionMat;\n\
-uniform mat4 modelviewMat;\n\
-attribute vec3 attrPos;\n\
-attribute float attrObjId;\n\
-\n\
-varying float objId;\n\
-\n\
-void main(void) {\n\
-  gl_Position = projectionMat * modelviewMat * vec4(attrPos, 1.0);\n\
-  objId = attrObjId;\n\
-}';
-
-exports.shaders.SELECT_FS = '\n\
-precision mediump float;\n\
-\n\
-varying float objId;\n\
-uniform int symId;\n\
-\n\
-int intMod(int x, int y) { \n\
-  int z = x/y;\n\
-  return x-y*z;\n\
-}\n\
-void main(void) {\n\
-  // ints are only required to be 7bit...\n\
-  int integralObjId = int(objId+0.5);\n\
-  int red = intMod(integralObjId, 256);\n\
-  integralObjId/=256;\n\
-  int green = intMod(integralObjId, 256);\n\
-  integralObjId/=256;\n\
-  int blue = symId;\n\
-  gl_FragColor = vec4(float(red), float(green), float(blue), 255.0)/255.0;\n\
-}';
-})(this);
-
-},{}],40:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-(function(exports) {
-"use strict";
-
-function Slab(near, far) {
-  this.near = near;
-  this.far = far;
-}
-
-function FixedSlab(options) {
-  options = options || {};
-  this._near = options.near || 0.1;
-  this._far = options.far || 400.0;
-}
-
-FixedSlab.prototype.update = function() {
-  return new Slab(this._near, this._far);
-};
-
-function AutoSlab(options) {
-  this._far = 100.0;
-}
-
-AutoSlab.prototype.update = function(objects, cam) {
-  var center = cam.center();
-  var radius = null;
-  for (var i = 0; i < objects.length; ++i) {
-    var obj = objects[i];
-    if (!obj.visible()) {
-      continue;
-    }
-    radius = obj.updateSquaredSphereRadius(center, radius);
-  }
-  if (radius === null) {
-    return null;
-  }
-  radius = Math.sqrt(radius);
-  var zoom = cam.zoom();
-  var newFar = (radius + zoom) * 1.05;
-  var newNear = 0.1;//Math.max(0.1, zoom - radius);
-  return new Slab(newNear, newFar);
-};
-
-exports.FixedSlab = FixedSlab;
-exports.AutoSlab = AutoSlab;
-exports.Slab = Slab;
-
-})(this);
-
-},{}],41:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-// 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to 
-// deal in the Software without restriction, including without limitation the 
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or 
-// sell copies of the Software, and to permit persons to whom the Software is 
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in 
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
-// DEALINGS IN THE SOFTWARE.
-
-(function(exports) {
-"use strict";
-
-// a list of rotation/translation operators to be applied to certain chains,
-// typically of the asymmetric unit.
-function SymGenerator(chains, matrices) {
-  this._chains = chains || [];
-  this._matrices = matrices || [];
-}
-
-SymGenerator.prototype.addChain = function(name) {
-  this._chains.push(name);
-};
-
-SymGenerator.prototype.chains = function() { return this._chains; };
-
-SymGenerator.prototype.addMatrix = function(matrix) {
-  this._matrices.push(matrix);
-};
-
-SymGenerator.prototype.matrices = function() { return this._matrices; };
-SymGenerator.prototype.matrix = function(index) { return this._matrices[index]; };
-
-// contains the definition for how to construct a biological assembly from
-// an asymmetric unit. Essentially a list of rotation/translation operators
-// to be applied to chains of the asymmetric unit.
-function Assembly(name) {
-  this._name = name;
-  this._generators = [];
-}
-
-Assembly.prototype.name = function() { return this._name; };
-
-Assembly.prototype.generators = function() { return this._generators; };
-Assembly.prototype.generator = function(index) { return this._generators[index]; };
-Assembly.prototype.addGenerator = function(gen) { 
-  this._generators.push(gen); 
-};
-
-exports.SymGenerator = SymGenerator;
-exports.Assembly = Assembly;
-
-return true;
-})(this);
-
-
-
-},{}],42:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-function BackboneTrace() { this._trace = []; }
-
-if(typeof(exports) !== 'undefined') {
-  exports.backboneTrace = BackboneTrace;
-}
-
-BackboneTrace.prototype.push = function(residue) {
-  this._trace.push(residue);
-};
-
-BackboneTrace.prototype.length = function() {
-  return this._trace.length;
-};
-
-BackboneTrace.prototype.residueAt = function(index) {
-  return this._trace[index];
-};
-
-BackboneTrace.prototype.posAt = function(out, index) {
-  vec3.copy(out, this._trace[index].atom('CA').pos());
-  return out;
-};
-
-BackboneTrace.prototype.normalAt = function(out, index) {
-  vec3.sub(out, this._trace[index].atom('O').pos(),
-           this._trace[index].atom('C').pos());
-  vec3.normalize(out, out);
-  return out;
-};
-
-// nothing needs to be done for the backbone trace.
-BackboneTrace.prototype.smoothPosAt = BackboneTrace.prototype.posAt;
-BackboneTrace.prototype.smoothNormalAt = BackboneTrace.prototype.normalAt;
-
-BackboneTrace.prototype.centralAtomAt = function(index) {
-  return this._trace[index].atom('CA');
-};
-
-BackboneTrace.prototype.tangentAt = (function() {
-  var posBefore = vec3.create();
-  var posAfter = vec3.create();
-  return function(out, index) {
-    if (index > 0) { this.posAt(posBefore, index - 1);
-    } else {
-  this.posAt(posBefore, index);
-    }
-    if (index < this._trace.length-1) {
-  this.posAt(posAfter, index + 1);
-    } else {
-  this.posAt(posAfter, index);
-    }
-    vec3.sub(out, posAfter, posBefore);
-}
-;
-})();
-
-BackboneTrace.prototype.fullTraceIndex = function(index) {
-  return index;
-};
-
-BackboneTrace.prototype.subsets = function(residues) {
-  // we assume that the residue list is ordered from N- to C-
-  // terminus and we can traverse it in one go.
-  var fullTraceIdx = 0, listIdx = 0;
-  var subsets = [];
-  while (listIdx < residues.length && fullTraceIdx < this._trace.length) {
-    // increase pointer until we residue indices match.
-    var residueIndex = residues[listIdx].full().index();
-    while (this._trace.length > fullTraceIdx &&
-           this._trace[fullTraceIdx].index() < residueIndex) {
-      ++fullTraceIdx;
-    }
-    if (fullTraceIdx >= this._trace.length) {
-      break;
-    }
-    var traceIndex = this._trace[fullTraceIdx].index();
-    while (residues.length > listIdx &&
-           residues[listIdx].full().index() < traceIndex) {
-      ++listIdx;
-    }
-    if (listIdx >= residues.length) {
-      break;
-    }
-    var fullTraceBegin = fullTraceIdx;
-    var residueListBegin = listIdx;
-    while (residues.length > listIdx && this._trace.length > fullTraceIdx &&
-           residues[listIdx].full().index() ===
-               this._trace[fullTraceIdx].index()) {
-      ++listIdx;
-      ++fullTraceIdx;
-    }
-    var residueListEnd = listIdx;
-    var fullTraceEnd = fullTraceIdx;
-    subsets.push(
-        new TraceSubset(this, fullTraceBegin, fullTraceEnd,
-                        residues.slice(residueListBegin, residueListEnd)));
-  }
-  return subsets;
-};
-
-// a trace subset, e.g. the part of a trace contained in a view. End regions
-// are handled automatically depending on whether the beginning/end of the
-// trace subset coincides with the C- and N-terminus of the full trace.
-function TraceSubset(fullTrace, fullTraceBegin, fullTraceEnd, trace) {
-  this._fullTrace = fullTrace;
-  this._fullTraceBegin = fullTraceBegin;
-  this._fullTraceEnd = fullTraceEnd;
-  this._trace = trace;
-  this._isNTerminal = this._fullTraceBegin === 0;
-  this._isCTerminal = this._fullTrace.length() === this._fullTraceEnd;
-  var length = this._fullTraceEnd - this._fullTraceBegin;
-  if (!this._isCTerminal) {
-    ++length;
-  }
-  if (!this._isNTerminal) {
-    ++length;
-    this._fullTraceBegin -= 1;
-  }
-  this._length = length;
-}
-
-TraceSubset.prototype.length = function() {
-  return this._length;
-};
-
-TraceSubset.prototype.residueAt = function(index) {
-  return this._fullTrace.residueAt(this._fullTraceBegin + index);
-};
-
-TraceSubset.prototype._interpolate = (function() {
-  var posOne = vec3.create();
-  var tangentOne = vec3.create();
-  var tangentTwo = vec3.create();
-  return function(out, indexOne, indexTwo, strength) {
-    this.tangentAt(tangentOne, indexOne);
-  this.tangentAt(tangentTwo, indexTwo);
-  vec3.scale(tangentOne, tangentOne, strength);
-  vec3.scale(tangentTwo, tangentTwo, strength);
-  geom.cubicHermiteInterpolate(out, this.centralAtomAt(indexOne).pos(),
-                               tangentOne, this.centralAtomAt(indexTwo).pos(),
-                               tangentTwo, 0.5, 0);
-  return out;
-  };
-})();
-
-// like posAt, but interpolates the position for the ends with a Catmull-Rom
-// spline.
-TraceSubset.prototype.smoothPosAt = (function() {
-  var posOne = vec3.create();
-  var tangentOne = vec3.create();
-  var tangentTwo = vec3.create();
-  return function(out, index, strength) {
-    if (index === 0 && !this._isNTerminal) {
-          return this._interpolate(out, index, index + 1, strength);
-    }
-    if (index === this._length-1 && !this._isCTerminal) {
-  return this._interpolate(out, index - 1, index, strength);
-    }
-    var atom = this.centralAtomAt(index);
-    vec3.copy(out, atom.pos()); 
-    return out;
-}
-;
-})();
-
-
-TraceSubset.prototype.smoothNormalAt = (function() {
-  return function(out, index, strength) {
-    this._fullTrace.normalAt(out, index + this._fullTraceBegin);
-  return out;
-  };
-})();
-
-TraceSubset.prototype.posAt = function(out, index) {
-  var atom = this.centralAtomAt(index);
-  var atom2 = null;
-  vec3.copy(out, atom.pos());
-  if (index === 0 && !this._isNTerminal) {
-    atom2 = this.centralAtomAt(index + 1);
-    vec3.add(out, out, atom2.pos());
-    vec3.scale(out, out, 0.5);
-  }
-  if (index === this._length - 1 && !this._isCTerminal) {
-    atom2 = this.centralAtomAt(index - 1);
-    vec3.add(out, out, atom2.pos());
-    vec3.scale(out, out, 0.5);
-  }
-  return out;
-};
-
-TraceSubset.prototype.centralAtomAt = function(index) {
-  return this.residueAt(index).atom('CA');
-};
-
-TraceSubset.prototype.fullTraceIndex = function(index) {
-  return this._fullTraceBegin + index;
-};
-TraceSubset.prototype.tangentAt = function(out, index) {
-  return this._fullTrace.tangentAt(out, index + this._fullTraceBegin);
-};
-
-
-},{}],43:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-// 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to 
-// deal in the Software without restriction, including without limitation the 
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or 
-// sell copies of the Software, and to permit persons to whom the Software is 
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in 
-// all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
-// DEALINGS IN THE SOFTWARE.
-
-
-// During recoloring of a render style, most of the vertex attributes, e.g.
-// normals and positions do not change. Only the color information for each
-// vertex needs to be adjusted. 
-//
-// To do that efficiently, we need store an association between ranges of
-// vertices and atoms in the original structure. Worse, we also need to 
-// support render styles for which colors need to be interpolated, e.g.
-// the smooth line trace, tube and cartoon render modes. 
-//
-// The vertex association data for the atom-based render styles is managed
-// by AtomVertexAssoc, whereas the trace-based render styles are managed 
-// by the TraceVertexAssoc class. 
-function AtomVertexAssoc(structure, callColoringBeginEnd) {
-  this._structure = structure;
-  this._assocs = [];
-  this._callBeginEnd = callColoringBeginEnd;
-
-}
-
-if(typeof(exports) !== 'undefined') {
-    exports.AtomVertexAssoc = AtomVertexAssoc;
-}
-
-AtomVertexAssoc.prototype.addAssoc = function(atom, va, vertStart, vertEnd)  {
-  this._assocs.push({ 
-    atom: atom, vertexArray : va, vertStart : vertStart, vertEnd : vertEnd 
-  });
-};
-
-AtomVertexAssoc.prototype.recolor = function(colorOp, view) {
-  // allocate buffer to hold all colors of the view.
-  var colorData = new Float32Array(view.atomCount()*4); 
-  if (this._callBeginEnd) {
-    // FIXME: does this need to be called on the complete structure or the 
-    // view?
-    colorOp.begin(this._structure);
-  }
-
-  var atomMap = {};
-  view.eachAtom(function(atom, index) {
-    atomMap[atom.index()] = index;
-    colorOp.colorFor(atom, colorData, index*4);
-  });
-  if (this._callBeginEnd) {
-    colorOp.end(this._structure);
-  }
-  // apply the color to the actual interleaved vertex array.
-  for (var i = 0; i < this._assocs.length; ++i) {
-    var assoc = this._assocs[i];
-    var ai = atomMap[assoc.atom.index()];
-    if (ai === undefined) {
-      continue;
-    }
-    var r = colorData[ai*4+0], g = colorData[ai*4+1], 
-        b = colorData[ai*4+2], a = colorData[ai*4+3];
-    var va = assoc.vertexArray;
-    for (var j = assoc.vertStart ; j < assoc.vertEnd; ++j) {
-      va.setColor(j, r, g, b, a);
-    }
-  }
-};
-
-AtomVertexAssoc.prototype.getColorForAtom = function(atom, color) {
-  // FIXME: this can potentially get slow when called for many atoms
-  for (var i = 0; i < this._assocs.length; ++i) {
-    var assoc = this._assocs[i];
-    if (assoc.atom.full() === atom.full()) {
-      // for atom-based color, the color for each atom is constant, so just 
-      // use any vertex to the determine color.
-      return assoc.vertexArray.getColor(assoc.vertStart, color);
-    }
-  }
-  return null;
-};
-
-AtomVertexAssoc.prototype.setOpacity = function( val, view) {
-  // apply the color to the actual interleaved vertex array.
-  for (var i = 0; i < this._assocs.length; ++i) {
-    var assoc = this._assocs[i];
-    var va = assoc.vertexArray;
-    for (var j = assoc.vertStart ; j < assoc.vertEnd; ++j) {
-      va.setOpacity(j, val);
-    }
-  }
-};
-
-// handles the association between a trace element, and sets of vertices.
-function TraceVertexAssoc(structure, interpolation, callColoringBeginEnd,
-                          perResidueColors) {
-  this._structure = structure;
-  this._assocs = [];
-  this._callBeginEnd = callColoringBeginEnd;
-  this._interpolation = interpolation || 1;
-  this._perResidueColors = {};
-}
-
-if(typeof(exports) !== 'undefined') {
-    exports.TraceVertexAssoc = TraceVertexAssoc;
-}
-
-TraceVertexAssoc.prototype.setPerResidueColors = function(traceIndex, colors) {
-  this._perResidueColors[traceIndex] = colors;
-};
-
-TraceVertexAssoc.prototype.addAssoc = 
-  function(traceIndex, vertexArray, slice, vertStart, vertEnd) {
-    this._assocs.push({ traceIndex: traceIndex, slice : slice, 
-                        vertStart : vertStart, vertEnd : vertEnd,
-                        vertexArray : vertexArray});
-};
-
-TraceVertexAssoc.prototype.recolor = function(colorOp, view) {
-  // FIXME: this function might create quite a few temporary buffers. Implement
-  // a buffer pool to avoid hitting the GC and having to go through the slow
-  // creation of typed arrays.
-  if (this._callBeginEnd) {
-    // FIXME: does this need to be called on the complete structure?
-    colorOp.begin(this._structure);
-  }
-  var colorData = [];
-  var i, j;
-  var traces = this._structure.backboneTraces();
-  console.assert(this._perResidueColors, 
-                 "per-residue colors must be set for recoloring to work");
-  for (i = 0; i < traces.length; ++i) {
-    // get current residue colors
-    var data = this._perResidueColors[i];
-    console.assert(data, "no per-residue colors. Seriously, man?");
-    var index = 0;
-    var trace = traces[i];
-    for (j = 0; j < trace.length(); ++j) {
-      if (!view.containsResidue(trace.residueAt(j))) {
-        index+=4;
-        continue;
-      }
-      colorOp.colorFor(trace.centralAtomAt(j), data, index);
-      index+=4;
-    }
-    if (this._interpolation > 1) {
-      colorData.push(interpolateColor(data, this._interpolation));
-    } else {
-      colorData.push(data);
-    }
-  }
-
-  // store the color in the actual interleaved vertex array.
-  for (i = 0; i < this._assocs.length; ++i) {
-    var assoc = this._assocs[i];
-    var ai = assoc.slice;
-    var newColors = colorData[assoc.traceIndex];
-    var r = newColors[ai*4], g = newColors[ai*4+1], b = newColors[ai*4+2], a=newColors[ai*4+3];
-    var va = assoc.vertexArray;
-    for (j = assoc.vertStart ; j < assoc.vertEnd; ++j) {
-      va.setColor(j, r, g, b, a);
-    }
-  }
-  if (this._callBeginEnd) {
-    colorOp.end(this._structure);
-  }
-};
-
-TraceVertexAssoc.prototype.getColorForAtom = function(atom, color) {
-  // FIXME: this can potentially get slow when called for many atoms
-  var i, j;
-  var traces = this._structure.backboneTraces();
-  var residue = atom.full().residue();
-  for (i = 0; i < traces.length; ++i) {
-    var data = this._perResidueColors[i];
-    var index = 0;
-    var trace = traces[i];
-    for (j = 0; j < trace.length(); ++j) {
-      if (residue === trace.residueAt(j).full()) {
-        color[0] = data[index + 0];
-        color[1] = data[index + 1];
-        color[2] = data[index + 2];
-        color[3] = data[index + 3];
-        return color;
-      }
-      index+=4;
-    }
-  }
-  return null;
-};
-
-
-TraceVertexAssoc.prototype.setOpacity = function( val, view) {
-  // store the color in the actual interleaved vertex array.
-  for (i = 0; i < this._assocs.length; ++i) {
-    var assoc = this._assocs[i];
-    var va = assoc.vertexArray;
-    for (j = assoc.vertStart ; j < assoc.vertEnd; ++j) {
-      va.setOpacity(j, val);
-    }
-  }
-
-};
-
-
-},{}],44:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-(function(exports) {
-"use strict";
-
-
-function VertexArrayBase(gl, numVerts, float32Allocator) {
-  this._gl = gl;
-  this._vertBuffer = gl.createBuffer();
-  this._float32Allocator = float32Allocator || null;
-  this._ready = false;
-  this._boundingSphere = null;
-  var numFloats = this._FLOATS_PER_VERT * numVerts;
-  this._vertData = float32Allocator.request(numFloats);
-}
-
-VertexArrayBase.prototype.setColor = function(index, r, g, b, a) {
-  var colorStart = index * this._FLOATS_PER_VERT + this._COLOR_OFFSET;
-  this._vertData[colorStart + 0] = r;
-  this._vertData[colorStart + 1] = g;
-  this._vertData[colorStart + 2] = b;
-  this._vertData[colorStart + 3] = a;
-  this._ready = false;
-};
-
-VertexArrayBase.prototype.getColor = function(index, color) {
-  var colorStart = index * this._FLOATS_PER_VERT + this._COLOR_OFFSET;
-  color[0] = this._vertData[colorStart + 0];
-  color[1] = this._vertData[colorStart + 1];
-  color[2] = this._vertData[colorStart + 2];
-  color[3] = this._vertData[colorStart + 3];
-  return color;
-};
-
-VertexArrayBase.prototype.setOpacity = function(index, a) {
-  var colorStart = index * this._FLOATS_PER_VERT + this._COLOR_OFFSET;
-  this._vertData[colorStart + 3] = a;
-  this._ready = false;
-};
-
-
-VertexArrayBase.prototype.boundingSphere = function() {
-  if (!this._boundingSphere) {
-    this._boundingSphere = this._calculateBoundingSphere();
-  }
-  return this._boundingSphere;
-};
-
-
-VertexArrayBase.prototype._calculateBoundingSphere = function() {
-  var numVerts = this.numVerts();
-  if (numVerts === 0) {
-    return null;
-  }
-  var center = vec3.create();
-  var index, i;
-  for (i = 0; i < numVerts; ++i) {
-    index = i * this._FLOATS_PER_VERT;
-    center[0] += this._vertData[index + 0];
-    center[1] += this._vertData[index + 1];
-    center[2] += this._vertData[index + 2];
-  }
-  vec3.scale(center, center, 1.0/numVerts);
-  var radiusSquare = 0.0;
-  for (i = 0; i < numVerts; ++i) {
-    index = i * this._FLOATS_PER_VERT;
-    var dx  = center[0] - this._vertData[index + 0];
-    var dy  = center[1] - this._vertData[index + 1];
-    var dz  = center[2] - this._vertData[index + 2];
-    radiusSquare = Math.max(radiusSquare, dx*dx + dy*dy + dz*dz);
-  }
-  return new geom.Sphere(center, Math.sqrt(radiusSquare));
-};
-
-VertexArrayBase.prototype.destroy = function() {
-  this._gl.deleteBuffer(this._vertBuffer);
-  this._float32Allocator.release(this._vertData);
-};
-
-VertexArrayBase.prototype.bindBuffers = function() {
-  this._gl.bindBuffer(this._gl.ARRAY_BUFFER, this._vertBuffer);
-  if (this._ready) {
-    return;
-  }
-  this._gl.bufferData(this._gl.ARRAY_BUFFER, this._vertData,
-                      this._gl.STATIC_DRAW);
-  this._ready = true;
-};
-
-// Helper method to calculate the squared bounding sphere radius of the sphere 
-// centered on "sphereCenter" over multiple vertex arrays. 
-VertexArrayBase.prototype.updateSquaredSphereRadius =  (function() {
-
-  var transformedCenter = vec3.create();
-  return function(sphereCenter, radius, transform) {
-    var bounds = this.boundingSphere();
-    if (!bounds) {
-      return radius;
-    }
-    // Note: Math.max(radius, null) returns the radius for positive values 
-    // of radius, which is exactly what we want.
-    if (transform) {
-      vec3.transformMat4(transformedCenter, bounds.center(), transform);
-      return Math.max(vec3.sqrDist(transformedCenter, sphereCenter), radius);
-    } 
-
-    var sphereRadSquare = bounds.radius() * bounds.radius();
-    return Math.max(vec3.sqrDist(bounds.center(), sphereCenter) + sphereRadSquare, radius);
-  };
-})();
-
-VertexArrayBase.prototype.updateProjectionIntervals =  (function() {
-
-  var transformedCenter = vec3.create();
-  return function(xAxis, yAxis, zAxis, xInterval, yInterval, 
-                  zInterval, transform) {
-    var bounds = this.boundingSphere();
-    if (!bounds) {
-      return;
-    }
-    if (transform) {
-      vec3.transformMat4(transformedCenter, bounds.center(), transform);
-    } else {
-      vec3.copy(transformedCenter, bounds.center());
-    }
-    var xProjected = vec3.dot(xAxis, transformedCenter);
-    var yProjected = vec3.dot(yAxis, transformedCenter);
-    var zProjected = vec3.dot(zAxis, transformedCenter);
-    xInterval.update(xProjected - bounds.radius());
-    xInterval.update(xProjected + bounds.radius());
-    yInterval.update(yProjected - bounds.radius());
-    yInterval.update(yProjected + bounds.radius());
-    zInterval.update(zProjected - bounds.radius());
-    zInterval.update(zProjected + bounds.radius());
-  };
-})();
-exports.VertexArrayBase = VertexArrayBase;
-
-})(this);
-
-},{}],45:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-
-(function(exports) {
-"use strict";
-
-// (unindexed) vertex array for line-based geometries
-function VertexArray(gl, numVerts, float32Allocator)  {
-  VertexArrayBase.prototype.constructor.call(this, gl, numVerts, 
-                                             float32Allocator);
-  this._numLines = 0;
-}
-
-derive(VertexArray, VertexArrayBase);
-
-VertexArray.prototype._FLOATS_PER_VERT = 8;
-VertexArray.prototype._POS_OFFSET = 0;
-VertexArray.prototype._COLOR_OFFSET = 3;
-VertexArray.prototype._ID_OFFSET = 7;
-
-VertexArray.prototype.numVerts = function() { return this._numLines * 2; };
-
-VertexArray.prototype.addLine = function(startPos, startColor, endPos, 
-                                         endColor, idOne, idTwo) {
-  var index = this._FLOATS_PER_VERT * this._numLines * 2;
-  this._vertData[index++] = startPos[0];
-  this._vertData[index++] = startPos[1];
-  this._vertData[index++] = startPos[2];
-  this._vertData[index++] = startColor[0];
-  this._vertData[index++] = startColor[1];
-  this._vertData[index++] = startColor[2];
-  this._vertData[index++] = startColor[3];
-  this._vertData[index++] = idOne;
-  this._vertData[index++] = endPos[0];
-  this._vertData[index++] = endPos[1];
-  this._vertData[index++] = endPos[2];
-  this._vertData[index++] = endColor[0];
-  this._vertData[index++] = endColor[1];
-  this._vertData[index++] = endColor[2];
-  this._vertData[index++] = endColor[3];
-  this._vertData[index++] = idTwo;
-
-  this._numLines += 1;
-  this._ready = false;
-  this._boundingSpehre = null;
-};
-
-
-VertexArray.prototype.bindAttribs = function(shader) {
-  this._gl.vertexAttribPointer(shader.posAttrib, 3, this._gl.FLOAT, false,
-                                this._FLOATS_PER_VERT * 4,
-                                this._POS_OFFSET * 4);
-  this._gl.vertexAttribPointer(shader.colorAttrib, 4, this._gl.FLOAT, false,
-                                this._FLOATS_PER_VERT * 4,
-                                this._COLOR_OFFSET * 4);
-  this._gl.enableVertexAttribArray(shader.colorAttrib);
-  this._gl.enableVertexAttribArray(shader.posAttrib);
-  if (shader.objIdAttrib !== -1) {
-    this._gl.vertexAttribPointer(shader.objIdAttrib, 1, this._gl.FLOAT, false,
-                                  this._FLOATS_PER_VERT * 4,
-                                  this._ID_OFFSET * 4);
-    this._gl.enableVertexAttribArray(shader.objIdAttrib);
-  }
-};
-
-VertexArray.prototype.releaseAttribs = function(shader) {
-  this._gl.disableVertexAttribArray(shader.posAttrib);
-  this._gl.disableVertexAttribArray(shader.colorAttrib);
-  if (shader.objIdAttrib !== -1) {
-    this._gl.disableVertexAttribArray(shader.objIdAttrib);
-  }
-};
-
-VertexArray.prototype.bind = function(shader) {
-  this.bindBuffers();
-  this.bindAttribs(shader);
-};
-
-// draws all triangles contained in the indexed vertex array using the provided
-// shader.
-VertexArray.prototype.draw = function(symId) {
-  this._gl.drawArrays(this._gl.LINES, 0, this._numLines * 2);
-};
-
-
-
-exports.VertexArray = VertexArray;
-
-return true;
-})(this);
-
-},{}],46:[function(require,module,exports){
-// Copyright (c) 2013-2014 Marco Biasini
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-// DEALINGS IN THE SOFTWARE.
-
-var pv = (function(){
-  "use strict";
-
-  // FIXME: Browser vendors tend to block quite a few graphic cards. Instead
-  //   of showing this very generic message, implement a per-browser
-  //   diagnostic. For example, when we detect that we are running a recent
-  //   Chrome and Webgl is not available, we should say that the user is
-  //   supposed to check chrome://gpu for details on why WebGL is not
-  //   available. Similar troubleshooting pages are available for other
-  //   browsers.
-  var WEBGL_NOT_SUPPORTED = '\
-<div style="vertical-align:middle; text-align:center;">\
-<h1>Oink</h1><p>Your browser does not support WebGL. \
-You might want to try Chrome, Firefox, IE 11, or newer versions of Safari\
-</p>\
-<p>If you are using a recent version of one of the above browsers, your \
-graphic card might be blocked. Check the browser documentation for details\
-</p>\
-</div>';
-
-  function bind(obj, fn) {
-    return function() {
-      return fn.apply(obj, arguments);
-  };
-}
-
-
-var requestAnimFrame = (function(){
-  return window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
-         window.mozRequestAnimationFrame ||
-         function(callback) {
-           window.setTimeout(callback, 1000 / 60);
-          };
-})();
-
-function slabModeToStrategy(mode, options) {
-  mode = mode || 'auto';
-  if (mode === 'fixed') {
-    return new FixedSlab(options);
-  }
-  if (mode === 'auto') {
-    return new AutoSlab(options);
-  }
-  return null;
-}
-
-function PV(domElement, opts) {
-  opts = opts || {};
-  this._options = {
-    width : (opts.width || 500),
-    height : (opts.height || 500),
-    animateTime : (opts.animateTime || 0),
-    antialias : opts.antialias,
-    quality : opts.quality || 'low',
-    style : opts.style || 'hemilight',
-    background : opts.background ? forceRGB(opts.background) : vec3.fromValues(1,1,1),
-    slabMode : slabModeToStrategy(opts.slabMode),
-    atomClick: opts.atomClick || null,
-    atomDoubleClick : 'center', // option is handled below
-  };
-  this._objects = [];
-  this._domElement = domElement;
-  this._redrawRequested = false;
-  this._resize = false;
-  this._lastTimestamp = null;
-  this.listenerMap = {};
-  // NOTE: make sure to only request features supported by all browsers,
-  // not only browsers that support WebGL in this constructor. WebGL
-  // detection only happens in PV._initGL. Once this happened, we are
-  // save to use whatever feature pleases us, e.g. typed arrays, 2D 
-  // contexts etc.
-  this._canvas = document.createElement('canvas');
-  this._textureCanvas = document.createElement('canvas');
-  this._textureCanvas.style.display = 'none';
-  this._objectIdManager = new UniqueObjectIdPool();
-  var parentRect = domElement.getBoundingClientRect();
-  if (this._options.width === 'auto') {
-    this._options.width = parentRect.width;
-  }
-  if (this._options.height === 'auto') {
-    this._options.height = parentRect.height;
-  }
-  if ('outline' in opts) {
-    this._options.outline = opts.outline;
-  } else {
-    this._options.outline = true;
-  }
-  if ('atomDoubleClicked' in opts) {
-    this._options.atomDoubleClick = opts.atomDoubleClick;
-  }
-  this._ok = false;
-  this._camAnim = { 
-      center : null, zoom : null, 
-      rotation : null 
-  };
-  this.quality(this._options.quality);
-  this._canvas.width = this._options.width;
-  this._canvas.height = this._options.height;
-  this._domElement.appendChild(this._canvas);
-  this._domElement.appendChild(this._textureCanvas);
-
-  if (document.readyState === "complete" ||  
-    document.readyState === "loaded" ||  
-      document.readyState === "interactive") {
-    this._initPV();
-  } else {
-    document.addEventListener('DOMContentLoaded', bind(this, this._initPV));
-  }
-  if (this._options.atomDoubleClick !== null) {
-    this.addListener('atomDoubleClicked', this._options.atomDoubleClick);
-  }
-  if (this._options.atomClick !== null) {
-    this.addListener('atomClicked', this._options.atomClick);
-  }
-}
-
-PV.prototype._centerOnClicked = function(picked, originalEvent) {
-  if (picked === null) {
-    return;
-  }
-  var transformedPos = vec3.create();
-  var newAtom = picked.object().atom;
-  var pos = newAtom.pos();
-  if (picked.transform()) {
-    vec3.transformMat4(transformedPos, pos, picked.transform());
-    this.setCenter(transformedPos, this._options.animateTime);
-  } else {
-    this.setCenter(pos, this._options.animateTime);
-  }
-};
-  
-
-// resizes the canvas, separated out from PV.resize because we want
-// to call this function directly in a requestAnimationFrame together
-// with rendering to avoid flickering.
-PV.prototype._ensureSize = function() {
-  if (!this._resize) {
-    return;
-  }
-  this._resize = false;
-  this._options.realWidth = this._options.width * this._options.samples;
-  this._options.realHeight = this._options.height * this._options.samples;
-  this._gl.viewport(0, 0, this._options.realWidth, this._options._realHeight);
-  this._canvas.width = this._options.realWidth;
-  this._canvas.height = this._options.realHeight;
-  this._cam.setViewportSize(this._options.realWidth, this._options.realHeight);
-  if (this._options.samples > 1) {
-    this._initManualAntialiasing(this._options.samples);
-  }
-  this._pickBuffer.resize(this._options.width, this._options.height);
-};
-
-PV.prototype.resize = function(width, height) {
-  if (width === this._options.width && height === this._options.height) {
-    return;
-  }
-  this._resize = true;
-  this._options.width = width;
-  this._options.height = height;
-  this.requestRedraw();
-};
-
-PV.prototype.fitParent = function() {
-  var parentRect = this._domElement.getBoundingClientRect();
-  this.resize(parentRect.width, parentRect.height);
-};
-
-PV.prototype.gl = function() {
-  return this._gl;
-};
-
-PV.prototype.ok = function() {
-  return this._ok;
-};
-
-PV.prototype.options = function(optName, value) {
-  if (value !== undefined) {
-    if (optName === 'fog') {
-      this._cam.fog(value);
-      this.requestRedraw();
-    } else {
-      this._options[optName] = value;
-    }
-    return value;
-  }
-  return this._options[optName];
-};
-
-PV.prototype.quality = function(qual) {
-  this._options.quality = qual;
-  if (qual === 'high') {
-    this._options.arcDetail = 4;
-    this._options.sphereDetail = 16;
-    this._options.splineDetail = 8;
-    return;
-  }
-  if (qual === 'medium') {
-    this._options.arcDetail = 3;
-    this._options.sphereDetail = 10;
-    this._options.splineDetail = 4;
-    return;
-  }
-  if (qual === 'low') {
-    this._options.arcDetail = 2;
-    this._options.sphereDetail = 8;
-    this._options.splineDetail = 2;
-    return;
-  }
-  console.error('invalid quality argument', qual);
-};
-
-// returns the content of the WebGL context as a data URL element which can be
-// inserted into an img element. This allows users to save a picture to disk
-PV.prototype.imageData = function() {
-  return this._canvas.toDataURL();
-};
-
-PV.prototype._initContext = function() {
-  try {
-    var contextOpts = {
-      antialias : this._options.antialias,
-      preserveDrawingBuffer : true // for image export
-    };
-    this._gl = this._canvas.getContext('experimental-webgl', contextOpts);
-  }
-  catch (err) {
-    console.error('WebGL not supported', err);
-    return false;
-  }
-  if (!this._gl) {
-    console.error('WebGL not supported');
-    return false;
-  }
-  return true;
-};
-
-PV.prototype._initManualAntialiasing = function(samples) {
-  var scale_factor = 1.0 / samples;
-  var trans_x = -(1 - scale_factor) * 0.5 * this._options.realWidth;
-  var trans_y = -(1 - scale_factor) * 0.5 * this._options.realHeight;
-  var translate = 'translate(' + trans_x + 'px, ' + trans_y + 'px)';
-  var scale = 'scale(' + scale_factor + ', ' + scale_factor + ')';
-  var transform = translate + ' ' + scale;
-
-  this._canvas.style.webkitTransform = transform;
-  this._canvas.style.transform = transform;
-  this._canvas.style.ieTransform = transform;
-  this._canvas.width = this._options.realWidth;
-  this._canvas.height = this._options.realHeight;
-};
-
-PV.prototype._initPickBuffer = function() {
-  var fbOptions = {
-    width : this._options.width, height : this._options.height
-  };
-  this._pickBuffer = new FrameBuffer(this._gl, fbOptions);
-};
-
-PV.prototype._initGL = function() {
-  var samples = 1;
-  if (!this._initContext()) {
-    return false;
-  }
-
-  if (!this._gl.getContextAttributes().antialias && this._options.antialias) {
-    samples = 2;
-  }
-  this._options.realWidth = this._options.width * samples;
-  this._options.realHeight = this._options.height * samples;
-  this._options.samples = samples;
-  if (samples > 1) {
-    this._initManualAntialiasing(samples);
-  }
-  this._gl.viewportWidth = this._options.realWidth;
-  this._gl.viewportHeight = this._options.realHeight;
-
-  this._gl.clearColor(this._options.background[0], this._options.background[1], this._options.background[2], 1.0);
-  this._gl.lineWidth(2.0);
-  this._gl.cullFace(this._gl.FRONT);
-  this._gl.enable(this._gl.CULL_FACE);
-  this._gl.enable(this._gl.DEPTH_TEST);
-  this._initPickBuffer();
-  return true;
-};
-
-PV.prototype._shaderFromString = function(shader_code, type) {
-  var shader;
-  if (type === 'fragment') {
-    shader = this._gl.createShader(this._gl.FRAGMENT_SHADER);
-  } else if (type === 'vertex') {
-    shader = this._gl.createShader(this._gl.VERTEX_SHADER);
-  } else {
-    console.error('could not determine type for shader');
-    return null;
-  }
-  this._gl.shaderSource(shader, shader_code);
-  this._gl.compileShader(shader);
-  if (!this._gl.getShaderParameter(shader, this._gl.COMPILE_STATUS)) {
-    console.error(this._gl.getShaderInfoLog(shader));
-    return null;
-  }
-  return shader;
-};
-
-PV.prototype._initShader = function(vert_shader, frag_shader) {
-  var fs = this._shaderFromString(frag_shader, 'fragment');
-  var vs = this._shaderFromString(vert_shader, 'vertex');
-  var shaderProgram = this._gl.createProgram();
-  this._gl.attachShader(shaderProgram, vs);
-  this._gl.attachShader(shaderProgram, fs);
-  this._gl.linkProgram(shaderProgram);
-  if (!this._gl.getProgramParameter(shaderProgram, this._gl.LINK_STATUS)) {
-    console.error('could not initialise shaders');
-    console.error(this._gl.getShaderInfoLog(shaderProgram));
-    return null;
-  }
-  this._gl.clearColor(this._options.background[0], this._options.background[1], this._options.background[2], 1.0);
-  this._gl.enable(this._gl.BLEND);
-  this._gl.blendFunc(this._gl.SRC_ALPHA, this._gl.ONE_MINUS_SRC_ALPHA);
-  this._gl.enable(this._gl.CULL_FACE);
-  this._gl.enable(this._gl.DEPTH_TEST);
-
-  // get vertex attribute location for the shader once to
-  // avoid repeated calls to getAttribLocation/getUniformLocation
-  var getAttribLoc = bind(this._gl, this._gl.getAttribLocation);
-  var getUniformLoc = bind(this._gl, this._gl.getUniformLocation);
-  shaderProgram.posAttrib = getAttribLoc(shaderProgram, 'attrPos');
-  shaderProgram.colorAttrib = getAttribLoc(shaderProgram, 'attrColor');
-  shaderProgram.normalAttrib = getAttribLoc(shaderProgram, 'attrNormal');
-  shaderProgram.objIdAttrib = getAttribLoc(shaderProgram, 'attrObjId');
-  shaderProgram.symId = getUniformLoc(shaderProgram, 'symId');
-  shaderProgram.projection = getUniformLoc(shaderProgram, 'projectionMat');
-  shaderProgram.modelview = getUniformLoc(shaderProgram, 'modelviewMat');
-  shaderProgram.rotation = getUniformLoc(shaderProgram, 'rotationMat');
-  shaderProgram.fog = getUniformLoc(shaderProgram, 'fog');
-  shaderProgram.fogFar = getUniformLoc(shaderProgram, 'fogFar');
-  shaderProgram.fogNear = getUniformLoc(shaderProgram, 'fogNear');
-  shaderProgram.fogColor = getUniformLoc(shaderProgram, 'fogColor');
-  shaderProgram.outlineColor = getUniformLoc(shaderProgram, 'outlineColor');
-
-  return shaderProgram;
-};
-
-PV.prototype._mouseUp = function(event) {
-  this._canvas.removeEventListener('mousemove', this._mouseRotateListener, false);
-  this._canvas.removeEventListener('mousemove', this._mousePanListener, false);
-  this._canvas.removeEventListener('mouseup', this._mouseUpListener, false);
-  document.removeEventListener('mouseup', this._mouseUpListener, false);
-  document.removeEventListener('mousemove', this._mouseRotateListener);
-  document.removeEventListener('mousemove', this._mousePanListener);
-};
-
-PV.prototype._initPV = function() {
-  if (!this._initGL()) {
-    this._domElement.removeChild(this._canvas);
-    this._domElement.innerHTML = WEBGL_NOT_SUPPORTED;
-    this._domElement.style.width = this._options.width + 'px';
-    this._domElement.style.height = this._options.height + 'px';
-    return false;
-  }
-  this._ok = true;
-  this._2dcontext = this._textureCanvas.getContext('2d');
-  this._float32Allocator = new PoolAllocator(Float32Array);
-  this._uint16Allocator = new PoolAllocator(Uint16Array);
-  this._cam = new Cam(this._gl);
-  this._shaderCatalog = {
-    hemilight : this._initShader(shaders.HEMILIGHT_VS, shaders.HEMILIGHT_FS),
-    outline : this._initShader(shaders.OUTLINE_VS, shaders.OUTLINE_FS),
-    lines : this._initShader(shaders.HEMILIGHT_VS, shaders.LINES_FS),
-    text : this._initShader(shaders.TEXT_VS, shaders.TEXT_FS),
-    select : this._initShader(shaders.SELECT_VS, shaders.SELECT_FS)
-  };
-
-  this._boundDraw = bind(this, this._draw);
-
-  this._mousePanListener = bind(this, this._mousePan);
-  this._mouseRotateListener = bind(this, this._mouseRotate);
-  this._mouseUpListener = bind(this, this._mouseUp);
-
-  // Firefox responds to the wheel event, whereas other browsers listen to
-  // the mousewheel event. Register different event handlers, depending on
-  // what properties are available.
-  if ('onwheel' in this._canvas) {
-  this._canvas.addEventListener('wheel', bind(this, this._mouseWheelFF),
-                              false);
-  } else {
-  this._canvas.addEventListener('mousewheel', bind(this, this._mouseWheel),
-                              false);
-  }
-  this._canvas.addEventListener('dblclick', bind(this, this._mouseDoubleClick),
-                            false);
-  this._canvas.addEventListener('mousedown', bind(this, this._mouseDown),
-                            false);
-
-  return true;
-};
-
-PV.prototype.requestRedraw = function() {
-  if (this._redrawRequested) {
-    return;
-  }
-  this._redrawRequested = true;
-  requestAnimFrame(this._boundDraw);
-};
-
-PV.prototype._drawWithPass = function(pass) {
-  for (var i = 0, e = this._objects.length; i !== e; ++i) {
-    this._objects[i]
-        .draw(this._cam, this._shaderCatalog, this._options.style, pass);
-  }
-};
-
-PV.prototype.setCamera = function(rotation, center, zoom, ms) {
-  
-  ms |= 0;
-  if (ms === 0) {
-    this._cam.setCenter(center);
-    this._cam.setRotation(rotation);
-    this._cam.setZoom(zoom);
-    this.requestRedraw();
-    return;
-  }
-  this._camAnim.center = new Move(this._cam.center(), 
-                                  vec3.clone(center), ms);
-  this._camAnim.rotation = new Rotate(this._cam.rotation(), 
-      mat4.clone(rotation), ms);
-
-  this._camAnim.zoom = new Animation(this._cam.zoom(), 
-      zoom, ms);
-  this.requestRedraw();
-};
-
-// performs interpolation of current camera position
-PV.prototype._animateCam = function() {
-  var anotherRedraw = false;
-  if (this._camAnim.center) {
-    this._cam.setCenter(this._camAnim.center.step());
-    if (this._camAnim.center.finished()) {
-      this._camAnim.center = null;
-    }
-    anotherRedraw = true;
-  }
-  if (this._camAnim.rotation) {
-    this._cam.setRotation(this._camAnim.rotation.step());
-    if (this._camAnim.rotation.finished()) {
-      this._camAnim.rotation = null;
-    }
-    anotherRedraw = true;
-  }
-  if (this._camAnim.zoom) {
-    this._cam.setZoom(this._camAnim.zoom.step());
-    if (this._camAnim.zoom.finished()) {
-      this._camAnim.zoom = null;
-    }
-    anotherRedraw = true;
-  }
-  if (anotherRedraw) {
-    this.requestRedraw();
-  }
-};
-
-PV.prototype._draw = function() {
-  this._redrawRequested = false;
-  this._ensureSize();
-  this._animateCam();
-  var newSlab = this._options.slabMode.update(this._objects, this._cam);
-  this._cam.setNearFar(newSlab.near, newSlab.far);
-
-  this._gl.clear(this._gl.COLOR_BUFFER_BIT | this._gl.DEPTH_BUFFER_BIT);
-  this._gl.viewport(0, 0, this._options.realWidth, this._options.realHeight);
-  this._gl.cullFace(this._gl.FRONT);
-  this._gl.enable(this._gl.CULL_FACE);
-  this._gl.enable(this._gl.BLEND);
-  this._drawWithPass('normal');
-  if (!this._options.outline) {
-    return;
-  }
-  this._gl.cullFace(this._gl.BACK);
-  this._gl.enable(this._gl.CULL_FACE);
-  this._drawWithPass('outline');
-};
-
-PV.prototype.setCenter = function(center, ms) {
-  ms |= 0;
-  if (ms === 0) {
-    this._cam.setCenter(center);
-    return;
-  }
-  this._camAnim.center = new Move(this._cam.center(), 
-                                  vec3.clone(center), ms);
-  this.requestRedraw();
-};
-
-PV.prototype.centerOn = function(what, ms) {
-  this.setCenter(what.center(), ms);
-};
-
-
-PV.prototype.clear = function() {
-  for (var i = 0; i < this._objects.length; ++i) {
-    this._objects[i].destroy();
-  }
-  this._objects = [];
-};
-
-PV.prototype._mouseWheel = function(event) {
-  this._cam.zoom(event.wheelDelta < 0 ? -1 : 1);
-  event.preventDefault();
-  this.requestRedraw();
-};
-
-PV.prototype._mouseWheelFF = function(event) {
-  this._cam.zoom(event.deltaY < 0 ? 1 : -1);
-  event.preventDefault();
-  this.requestRedraw();
-};
-
-PV.prototype._mouseDoubleClick = (function() {
-  return function(event) {
-    var rect = this._canvas.getBoundingClientRect();
-    var picked = this.pick(
-        { x : event.clientX - rect.left, y : event.clientY - rect.top });
-    this._dispatchPickedEvent(event, 'atomDoubleClicked', picked);
-    this.requestRedraw();
-  };
-})();
-
-
-PV.prototype.addListener = function(eventName, callback) {
-  var callbacks = this.listenerMap[eventName];
-  if (typeof callbacks === 'undefined') {
-    callbacks = [];
-    this.listenerMap[eventName] = callbacks;
-  }
-  if (callback === 'center') {
-    callbacks.push(bind(this, this._centerOnClicked));
-  } else {
-    callbacks.push(callback);
-  }
-};
-
-PV.prototype._dispatchPickedEvent = function(event, newEventName, picked) {
-  var callbacks = this.listenerMap[newEventName];
-  if (callbacks) {
-    
-    callbacks.forEach(function (callback) {
-      callback(picked, event);
-    });
-  }
-};
-
-PV.prototype._mouseDown = function(event) {
-  if (event.button !== 0) {
-    return;
-  }
-  var currentTime = (new Date()).getTime();
-  // make sure it isn't a double click
-  if (typeof this.lastClickTime === 'undefined' || (currentTime - this.lastClickTime > 300)) {
-    this.lastClickTime = currentTime;
-    var rect = this._canvas.getBoundingClientRect();
-    var picked = this.pick(
-        { x : event.clientX - rect.left, y : event.clientY - rect.top });
-    this._dispatchPickedEvent(event, 'atomClicked', picked);
-  }
-  event.preventDefault();
-  if (event.shiftKey === true) {
-    this._canvas.addEventListener('mousemove', this._mousePanListener, false);
-    document.addEventListener('mousemove', this._mousePanListener, false);
-  } else {
-    this._canvas.addEventListener('mousemove', this._mouseRotateListener,
-                                  false);
-    document.addEventListener('mousemove', this._mouseRotateListener, false);
-  }
-  this._canvas.addEventListener('mouseup', this._mouseUpListener, false);
-  document.addEventListener('mouseup', this._mouseUpListener, false);
-  this._lastMousePos = { x : event.pageX, y : event.pageY };
-};
-
-PV.prototype._mouseRotate = function(event) {
-  var newMousePos = { x : event.pageX, y : event.pageY };
-  var delta = {
-    x : newMousePos.x - this._lastMousePos.x,
-    y : newMousePos.y - this._lastMousePos.y
-  };
-
-  var speed = 0.005;
-  this._cam.rotateX(speed * delta.y);
-  this._cam.rotateY(speed * delta.x);
-  this._lastMousePos = newMousePos;
-  this.requestRedraw();
-};
-
-PV.prototype._mousePan = function(event) {
-  var newMousePos = { x : event.pageX, y : event.pageY };
-  var delta = {
-    x : newMousePos.x - this._lastMousePos.x,
-    y : newMousePos.y - this._lastMousePos.y
-  };
-
-  var speed = 0.05;
-  this._cam.panXY(speed * delta.x, speed * delta.y);
-  this._lastMousePos = newMousePos;
-  this.requestRedraw();
-};
-
-PV.prototype.RENDER_MODES =
-    [ 'sline', 'line', 'trace', 'lineTrace', 'cartoon', 'tube', 'spheres' ];
-
-/// simple dispatcher which allows to render using a certain style.
-//  will bail out if the render mode does not exist.
-PV.prototype.renderAs = function(name, structure, mode, opts) {
-  var found = false;
-  for (var i = 0; i < this.RENDER_MODES.length; ++i) {
-    if (this.RENDER_MODES[i] === mode) {
-      found = true;
-      break;
-    }
-  }
-  if (!found) {
-    console.error('render mode', mode, 'not supported');
-    return;
-  }
-  return this[mode](name, structure, opts);
-};
-
-
-PV.prototype._handleStandardOptions = function(opts) {
-  opts = copy(opts);
-  opts.float32Allocator = this._float32Allocator;
-  opts.uint16Allocator = this._uint16Allocator;
-  opts.idPool = this._objectIdManager;
-  opts.showRelated = opts.showRelated || 'asym';
-  return opts;
-};
-
-
-PV.prototype.lineTrace = function(name, structure, opts) {
-  var options = this._handleStandardOptions(opts);
-  options.color = options.color || color.uniform([ 1, 0, 1 ]);
-  options.lineWidth = options.lineWidth || 4.0;
-
-  var obj = render.lineTrace(structure, this._gl, options);
-  return this.add(name, obj);
-};
-
-PV.prototype.spheres = function(name, structure, opts) {
-  var options = this._handleStandardOptions(opts);
-  options.color = options.color || color.byElement();
-  options.sphereDetail = this.options('sphereDetail');
-  options.radiusMultiplier = options.radiusMultiplier || 1.0;
-
-  var obj = render.spheres(structure, this._gl, options);
-  return this.add(name, obj);
-};
-
-PV.prototype.sline = function(name, structure, opts) {
-  var options = this._handleStandardOptions(opts);
-  options.color = options.color || color.uniform([ 1, 0, 1 ]);
-  options.splineDetail = options.splineDetail || this.options('splineDetail');
-  options.strength = options.strength || 1.0;
-  options.lineWidth = options.lineWidth || 4.0;
-
-  var obj = render.sline(structure, this._gl, options);
-  return this.add(name, obj);
-};
-
-// internal method for debugging the auto-slabbing code. 
-// not meant to be used otherwise. Will probably be removed again.
-PV.prototype.boundingSpheres = function(gl, obj, options) {
-  var vertArrays = obj.vertArrays();
-  var mg = new MeshGeom(gl, options.float32Allocator, 
-                        options.uint16Allocator);
-  mg.order(100);
-  var protoSphere = new ProtoSphere(16, 16);
-  var vertsPerSphere = protoSphere.numVerts();
-  var indicesPerSphere = protoSphere.numIndices();
-  var vertAssoc = new AtomVertexAssoc(obj.structure());
-  mg.setVertAssoc(vertAssoc);
-  mg.addChainVertArray({ name : function() { return "a"; }}, 
-                       vertArrays.length * vertsPerSphere,
-                       indicesPerSphere * vertArrays.length);
-  mg.setShowRelated('asym');
-  var color = [0.5, 0.5, 0.5, 0.2];
-  var va = mg.vertArrayWithSpaceFor(vertsPerSphere * vertArrays.length);
-  for (var i = 0; i < vertArrays.length; ++i) {
-    var bs = vertArrays[i].boundingSphere();
-    protoSphere.addTransformed(va, bs.center(), bs.radius(), color, 0);
-  }
-  return mg;
-};
-
-PV.prototype.cartoon = function(name, structure, opts) {
-  var options = this._handleStandardOptions(opts);
-  options.color = options.color || color.bySS();
-  options.strength = options.strength || 1.0;
-  options.splineDetail = options.splineDetail || this.options('splineDetail');
-  options.arcDetail = options.arcDetail || this.options('arcDetail');
-  options.radius = options.radius || 0.3;
-  options.forceTube = options.forceTube || false;
-  var obj = render.cartoon(structure, this._gl, options);
-  var added = this.add(name, obj);
-  if (options.boundingSpheres) {
-    var boundingSpheres = this.boundingSpheres(this._gl, obj, options);
-    this.add(name+'.bounds', boundingSpheres);
-  }
-  return added;
-};
-
-
-PV.prototype.surface = function(name, data, opts) {
-  var options = this._handleStandardOptions(opts);
-  var obj = render.surface(data, this._gl, options);
-  return this.add(name, obj);
-};
-
-// renders the protein using a smoothly interpolated tube, essentially
-// identical to the cartoon render mode, but without special treatment for
-// helices and strands.
-PV.prototype.tube = function(name, structure, opts) {
-  opts = opts || {};
-  opts.forceTube = true;
-  return this.cartoon(name, structure, opts);
-};
-
-PV.prototype.ballsAndSticks = function(name, structure, opts) {
-  var options = this._handleStandardOptions(opts);
-
-  options.color = options.color || color.byElement();
-  options.radius = options.radius || 0.3;
-  options.arcDetail = (options.arcDetail || this.options('arcDetail')) * 2;
-  options.sphereDetail = options.sphereDetail || this.options('sphereDetail');
-
-  var obj = render.ballsAndSticks(structure, this._gl, options);
-  return this.add(name, obj);
-};
-
-PV.prototype.lines = function(name, structure, opts) {
-  var options = this._handleStandardOptions(opts);
-  options.color = options.color || color.byElement();
-  options.lineWidth = options.lineWidth || 4.0;
-  var obj = render.lines(structure, this._gl, options);
-  return this.add(name, obj);
-};
-
-PV.prototype.trace = function(name, structure, opts) {
-  var options = this._handleStandardOptions(opts);
-  options.color = options.color || color.uniform([ 1, 0, 0 ]);
-  options.radius = options.radius || 0.3;
-  options.arcDetail = (options.arcDetail || this.options('arcDetail')) * 2;
-  options.sphereDetail = options.sphereDetail || this.options('sphereDetail');
-
-  var obj = render.trace(structure, this._gl, options);
-  return this.add(name, obj);
-};
-
-PV.prototype.fitTo = function(what, slabMode) {
-  var axes = this._cam.mainAxes();
-  slabMode = slabMode || this._options.slabMode;
-  var intervals = [ new Range(), new Range(), new Range() ];
-  if (what instanceof SceneNode) {
-    what.updateProjectionIntervals(axes[0], axes[1], axes[2], intervals[0],
-                                   intervals[1], intervals[2]);
-  } else if (what.eachAtom !== undefined) {
-    what.eachAtom(function(atom) {
-      var pos = atom.pos();
-      for (var i = 0; i < 3; ++i) {
-        intervals[i].update(vec3.dot(pos, axes[i]));
-      }
-    });
-    for (var i = 0; i < 3; ++i) {
-      intervals[i].extend(1.5);
-    }
-  }
-  this._fitToIntervals(axes, intervals, slabMode);
-};
-
-PV.prototype._fitToIntervals = function(axes, intervals) {
-  if (intervals[0].empty() || intervals[1].empty() || intervals[2].empty()) {
-    console.error('could not determine interval. No objects shown?');
-    return;
-  }
-  var cx = intervals[0].center();
-  var cy = intervals[1].center();
-  var cz = intervals[2].center();
-  var center = [
-    cx * axes[0][0] + cy * axes[1][0] + cz * axes[2][0],
-    cx * axes[0][1] + cy * axes[1][1] + cz * axes[2][1],
-    cx * axes[0][2] + cy * axes[1][2] + cz * axes[2][2]
-  ];
-  var fovY = this._cam.fieldOfViewY();
-  var aspect = this._cam.aspectRatio();
-  var inPlaneX = intervals[0].length() / aspect;
-  var inPlaneY = intervals[1].length();
-  var inPlane = Math.max(inPlaneX, inPlaneY) * 0.5;
-  var distanceToFront =  inPlane / Math.tan(0.5 * fovY);
-  var newZoom =
-      (distanceToFront + 0.5*intervals[2].length());
-  var grace = 0.5;
-  var near = Math.max(distanceToFront - grace, 0.1);
-  var far = 2 * grace + distanceToFront + intervals[2].length();
-  this._cam.setNearFar(near,  far);
-  this.setCamera(this._cam.rotation(), center, newZoom, this._options.animateTime);
-  this.requestRedraw();
-};
-
-// adapt the zoom level to fit the viewport to all visible objects.
-PV.prototype.autoZoom = function() {
-  var axes = this._cam.mainAxes();
-  var intervals = [ new Range(), new Range(), new Range() ];
-  this.forEach(function(obj) {
-    if (!obj.visible()) {
-      return;
-    }
-    obj.updateProjectionIntervals(axes[0], axes[1], axes[2], intervals[0],
-                                  intervals[1], intervals[2]);
-  });
-  this._fitToIntervals(axes, intervals);
-};
-
-PV.prototype.slabInterval = function() {
-};
-
-PV.prototype.autoSlab = function() {
-  var slab = this._options._slabMode.update(this._objects, this._cam);
-  if (slab !== null) {
-    this._cam.setNearFar(slab.near, slab.far);
-  }
-  this.requestRedraw();
-};
-
-// enable disable rock and rolling of camera
-PV.prototype.rockAndRoll = function(enable) {
-  if (enable === true) {
-    this._camAnim.rotation = new RockAndRoll(this._cam.rotation(), 
-                                             [0, 1, 0], 2000);
-    this.requestRedraw();
-  } else if (enable === false) {
-    this._camAnim.rotation = null;
-    this.requestRedraw();
-  }
-  return this._camAnim.rotation !== null;
-};
-
-PV.prototype.slabMode = function(mode, options) {
-  options = options || {};
-  var strategy = slabModeToStrategy(mode, options);
-  var slab = strategy.update(this._objects, this._cam);
-  this._cam.setNearFar(slab.near, slab.far);
-  this._options.slabMode = strategy;
-  this.requestRedraw();
-};
-
-PV.prototype.label = function(name, text, pos) {
-  var label =
-      new TextLabel(this._gl, this._textureCanvas, this._2dcontext, pos, text);
-  this.add(name, label);
-  return label;
-};
-
-// INTERNAL: draws scene into offscreen pick buffer with the "select"
-// shader.
-PV.prototype._drawPickingScene = function() {
-  this._gl.clearColor(0.0, 0.0, 0.0, 0.0);
-  this._gl.disable(this._gl.BLEND);
-  this._gl.clear(this._gl.COLOR_BUFFER_BIT | this._gl.DEPTH_BUFFER_BIT);
-  this._gl.clearColor(this._options.background[0], this._options.background[1], this._options.background[2], 1.0);
-  this._gl.cullFace(this._gl.FRONT);
-  this._gl.enable(this._gl.CULL_FACE);
-  this._drawWithPass('select');
-};
-
-function PickingResult(obj, symIndex, transform) {
-  this._obj = obj;
-  this._symIndex = symIndex;
-  this._transform = transform;
-}
-
-PickingResult.prototype.object = function() { 
-  return this._obj; 
-};
-
-PickingResult.prototype.symIndex = function() { 
-  return this._symIndex; 
-};
-
-PickingResult.prototype.transform = function() { 
-  return this._transform; 
-};
-
-PV.prototype.pick = function(pos) {
-  this._pickBuffer.bind();
-  this._drawPickingScene();
-  var pixels = new Uint8Array(4);
-  this._gl.readPixels(pos.x, this._options.height - pos.y, 1, 1,
-                      this._gl.RGBA, this._gl.UNSIGNED_BYTE, pixels);
-  this._pickBuffer.release();
-  if (pixels.data) {
-    pixels = pixels.data;
-  }
-  var pickedIds = {};
-  if (pixels[3] === 0) {
-    return null;
-  }
-  var objId = pixels[0] | pixels[1] << 8;
-  var symIndex = pixels[2];
-
-  var obj = this._objectIdManager.objectForId(objId);
-  if (obj === undefined) {
-    return null;
-  }
-  var transform = null;
-  if (symIndex !== 255) {
-    transform = obj.geom.symWithIndex(symIndex);
-  }
-  return new PickingResult(obj, symIndex < 255 ? symIndex : null,
-                           transform);
-};
-
-PV.prototype.add = function(name, obj) {
-  obj.name(name);
-  this._objects.push(obj);
-  this._objects.sort(function(lhs, rhs) { return lhs.order() - rhs.order(); });
-  this.requestRedraw();
-  return obj;
-};
-
-PV.prototype._globToRegex = function(glob) {
-  var r = glob.replace('.', '\\.').replace('*', '.*');
-  return new RegExp('^' + r + '$');
-};
-
-PV.prototype.forEach = function() {
-  var callback, pattern = '*';
-  if (arguments.length === 2) {
-    callback = arguments[1];
-    pattern = arguments[0];
-  } else {
-    callback = arguments[0];
-  }
-  var regex = this._globToRegex(pattern);
-  for (var i = 0; i < this._objects.length; ++i) {
-    var obj = this._objects[i];
-    if (regex.test(obj.name())) {
-      callback(obj, i);
-    }
-  }
-};
-
-PV.prototype.get = function(name) {
-  for (var i = 0; i < this._objects.length; ++i) {
-    if (this._objects[i].name() === name) {
-      return this._objects[i];
-    }
-  }
-  console.error('could not find object with name', name);
-  return null;
-};
-
-PV.prototype.hide = function(glob) {
-  this.forEach(glob, function(obj) { obj.hide(); });
-};
-
-PV.prototype.show = function(glob) {
-  this.forEach(glob, function(obj) { obj.show(); });
-};
-
-// remove all objects whose names match the provided glob pattern from
-// the viewer.
-PV.prototype.rm = function(glob) {
-  var newObjects = [];
-  var regex = this._globToRegex(glob);
-  for (var i = 0; i < this._objects.length; ++i) {
-    var obj = this._objects[i];
-    if (!regex.test(obj.name())) {
-      newObjects.push(obj);
-    } else {
-      obj.destroy();
-    }
-  }
-  this._objects = newObjects;
-};
-
-PV.prototype.all = function() {
-  return this._objects;
-};
-
-
-return { Viewer : function(elem, options) { return new PV(elem, options);
-}
-}
-;
-})();
-
-if(typeof(exports) !== 'undefined') {
-    module.exports = pv;
-}
-
-},{}],47:[function(require,module,exports){
+},{"underscore":54}],23:[function(require,module,exports){
+/**
+ * PV - WebGL protein viewer v1.5.0
+ * http://biasmv.github.io/pv
+ * 
+ * Copyright 2013-2015 Marco Biasini
+ * Released under the MIT license
+ */
+!function(a,b){if("function"==typeof define&&define.amd)define([],b);else{var c=b();a.pv=c,a.io=c.io,a.mol=c.mol,a.color=c.color,a.rgb=c.rgb,a.viewpoint=c.viewpoint,a.vec3=c.vec3,a.vec4=c.vec4,a.mat3=c.mat3,a.mat4=c.mat4,a.quat=c.quat}}(this,function(){var a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S;return a=function(){var a={};if(!b)var b=1e-6;if(!c)var c="undefined"!=typeof Float32Array?Float32Array:Array;if(!d)var d=Math.random;var e={};e.setMatrixArrayType=function(a){c=a},a.glMatrix=e;var f={};f.create=function(){var a=new c(3);return a[0]=0,a[1]=0,a[2]=0,a},f.clone=function(a){var b=new c(3);return b[0]=a[0],b[1]=a[1],b[2]=a[2],b},f.fromValues=function(a,b,d){var e=new c(3);return e[0]=a,e[1]=b,e[2]=d,e},f.copy=function(a,b){return a[0]=b[0],a[1]=b[1],a[2]=b[2],a},f.set=function(a,b,c,d){return a[0]=b,a[1]=c,a[2]=d,a},f.add=function(a,b,c){return a[0]=b[0]+c[0],a[1]=b[1]+c[1],a[2]=b[2]+c[2],a},f.subtract=function(a,b,c){return a[0]=b[0]-c[0],a[1]=b[1]-c[1],a[2]=b[2]-c[2],a},f.sub=f.subtract,f.multiply=function(a,b,c){return a[0]=b[0]*c[0],a[1]=b[1]*c[1],a[2]=b[2]*c[2],a},f.mul=f.multiply,f.divide=function(a,b,c){return a[0]=b[0]/c[0],a[1]=b[1]/c[1],a[2]=b[2]/c[2],a},f.div=f.divide,f.min=function(a,b,c){return a[0]=Math.min(b[0],c[0]),a[1]=Math.min(b[1],c[1]),a[2]=Math.min(b[2],c[2]),a},f.max=function(a,b,c){return a[0]=Math.max(b[0],c[0]),a[1]=Math.max(b[1],c[1]),a[2]=Math.max(b[2],c[2]),a},f.scale=function(a,b,c){return a[0]=b[0]*c,a[1]=b[1]*c,a[2]=b[2]*c,a},f.scaleAndAdd=function(a,b,c,d){return a[0]=b[0]+c[0]*d,a[1]=b[1]+c[1]*d,a[2]=b[2]+c[2]*d,a},f.distance=function(a,b){var c=b[0]-a[0],d=b[1]-a[1],e=b[2]-a[2];return Math.sqrt(c*c+d*d+e*e)},f.dist=f.distance,f.squaredDistance=function(a,b){var c=b[0]-a[0],d=b[1]-a[1],e=b[2]-a[2];return c*c+d*d+e*e},f.sqrDist=f.squaredDistance,f.length=function(a){var b=a[0],c=a[1],d=a[2];return Math.sqrt(b*b+c*c+d*d)},f.len=f.length,f.squaredLength=function(a){var b=a[0],c=a[1],d=a[2];return b*b+c*c+d*d},f.sqrLen=f.squaredLength,f.negate=function(a,b){return a[0]=-b[0],a[1]=-b[1],a[2]=-b[2],a},f.normalize=function(a,b){var c=b[0],d=b[1],e=b[2],f=c*c+d*d+e*e;return f>0&&(f=1/Math.sqrt(f),a[0]=b[0]*f,a[1]=b[1]*f,a[2]=b[2]*f),a},f.dot=function(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]},f.cross=function(a,b,c){var d=b[0],e=b[1],f=b[2],g=c[0],h=c[1],i=c[2];return a[0]=e*i-f*h,a[1]=f*g-d*i,a[2]=d*h-e*g,a},f.lerp=function(a,b,c,d){var e=b[0],f=b[1],g=b[2];return a[0]=e+d*(c[0]-e),a[1]=f+d*(c[1]-f),a[2]=g+d*(c[2]-g),a},f.random=function(a,b){b=b||1;var c=2*d()*Math.PI,e=2*d()-1,f=Math.sqrt(1-e*e)*b;return a[0]=Math.cos(c)*f,a[1]=Math.sin(c)*f,a[2]=e*b,a},f.transformMat4=function(a,b,c){var d=b[0],e=b[1],f=b[2];return a[0]=c[0]*d+c[4]*e+c[8]*f+c[12],a[1]=c[1]*d+c[5]*e+c[9]*f+c[13],a[2]=c[2]*d+c[6]*e+c[10]*f+c[14],a},f.transformMat3=function(a,b,c){var d=b[0],e=b[1],f=b[2];return a[0]=d*c[0]+e*c[3]+f*c[6],a[1]=d*c[1]+e*c[4]+f*c[7],a[2]=d*c[2]+e*c[5]+f*c[8],a},f.transformQuat=function(a,b,c){var d=b[0],e=b[1],f=b[2],g=c[0],h=c[1],i=c[2],j=c[3],k=j*d+h*f-i*e,l=j*e+i*d-g*f,m=j*f+g*e-h*d,n=-g*d-h*e-i*f;return a[0]=k*j+n*-g+l*-i-m*-h,a[1]=l*j+n*-h+m*-g-k*-i,a[2]=m*j+n*-i+k*-h-l*-g,a},f.forEach=function(){var a=f.create();return function(b,c,d,e,f,g){var h,i;for(c||(c=3),d||(d=0),i=e?Math.min(e*c+d,b.length):b.length,h=d;i>h;h+=c)a[0]=b[h],a[1]=b[h+1],a[2]=b[h+2],f(a,a,g),b[h]=a[0],b[h+1]=a[1],b[h+2]=a[2];return b}}(),f.str=function(a){return"vec3("+a[0]+", "+a[1]+", "+a[2]+")"},a.vec3=f;var g={};g.create=function(){var a=new c(4);return a[0]=0,a[1]=0,a[2]=0,a[3]=0,a},g.clone=function(a){var b=new c(4);return b[0]=a[0],b[1]=a[1],b[2]=a[2],b[3]=a[3],b},g.fromValues=function(a,b,d,e){var f=new c(4);return f[0]=a,f[1]=b,f[2]=d,f[3]=e,f},g.copy=function(a,b){return a[0]=b[0],a[1]=b[1],a[2]=b[2],a[3]=b[3],a},g.set=function(a,b,c,d,e){return a[0]=b,a[1]=c,a[2]=d,a[3]=e,a},g.add=function(a,b,c){return a[0]=b[0]+c[0],a[1]=b[1]+c[1],a[2]=b[2]+c[2],a[3]=b[3]+c[3],a},g.subtract=function(a,b,c){return a[0]=b[0]-c[0],a[1]=b[1]-c[1],a[2]=b[2]-c[2],a[3]=b[3]-c[3],a},g.sub=g.subtract,g.multiply=function(a,b,c){return a[0]=b[0]*c[0],a[1]=b[1]*c[1],a[2]=b[2]*c[2],a[3]=b[3]*c[3],a},g.mul=g.multiply,g.divide=function(a,b,c){return a[0]=b[0]/c[0],a[1]=b[1]/c[1],a[2]=b[2]/c[2],a[3]=b[3]/c[3],a},g.div=g.divide,g.min=function(a,b,c){return a[0]=Math.min(b[0],c[0]),a[1]=Math.min(b[1],c[1]),a[2]=Math.min(b[2],c[2]),a[3]=Math.min(b[3],c[3]),a},g.max=function(a,b,c){return a[0]=Math.max(b[0],c[0]),a[1]=Math.max(b[1],c[1]),a[2]=Math.max(b[2],c[2]),a[3]=Math.max(b[3],c[3]),a},g.scale=function(a,b,c){return a[0]=b[0]*c,a[1]=b[1]*c,a[2]=b[2]*c,a[3]=b[3]*c,a},g.scaleAndAdd=function(a,b,c,d){return a[0]=b[0]+c[0]*d,a[1]=b[1]+c[1]*d,a[2]=b[2]+c[2]*d,a[3]=b[3]+c[3]*d,a},g.distance=function(a,b){var c=b[0]-a[0],d=b[1]-a[1],e=b[2]-a[2],f=b[3]-a[3];return Math.sqrt(c*c+d*d+e*e+f*f)},g.dist=g.distance,g.squaredDistance=function(a,b){var c=b[0]-a[0],d=b[1]-a[1],e=b[2]-a[2],f=b[3]-a[3];return c*c+d*d+e*e+f*f},g.sqrDist=g.squaredDistance,g.length=function(a){var b=a[0],c=a[1],d=a[2],e=a[3];return Math.sqrt(b*b+c*c+d*d+e*e)},g.len=g.length,g.squaredLength=function(a){var b=a[0],c=a[1],d=a[2],e=a[3];return b*b+c*c+d*d+e*e},g.sqrLen=g.squaredLength,g.negate=function(a,b){return a[0]=-b[0],a[1]=-b[1],a[2]=-b[2],a[3]=-b[3],a},g.normalize=function(a,b){var c=b[0],d=b[1],e=b[2],f=b[3],g=c*c+d*d+e*e+f*f;return g>0&&(g=1/Math.sqrt(g),a[0]=b[0]*g,a[1]=b[1]*g,a[2]=b[2]*g,a[3]=b[3]*g),a},g.dot=function(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]+a[3]*b[3]},g.lerp=function(a,b,c,d){var e=b[0],f=b[1],g=b[2],h=b[3];return a[0]=e+d*(c[0]-e),a[1]=f+d*(c[1]-f),a[2]=g+d*(c[2]-g),a[3]=h+d*(c[3]-h),a},g.random=function(a,b){return b=b||1,a[0]=d(),a[1]=d(),a[2]=d(),a[3]=d(),g.normalize(a,a),g.scale(a,a,b),a},g.transformMat4=function(a,b,c){var d=b[0],e=b[1],f=b[2],g=b[3];return a[0]=c[0]*d+c[4]*e+c[8]*f+c[12]*g,a[1]=c[1]*d+c[5]*e+c[9]*f+c[13]*g,a[2]=c[2]*d+c[6]*e+c[10]*f+c[14]*g,a[3]=c[3]*d+c[7]*e+c[11]*f+c[15]*g,a},g.transformQuat=function(a,b,c){var d=b[0],e=b[1],f=b[2],g=c[0],h=c[1],i=c[2],j=c[3],k=j*d+h*f-i*e,l=j*e+i*d-g*f,m=j*f+g*e-h*d,n=-g*d-h*e-i*f;return a[0]=k*j+n*-g+l*-i-m*-h,a[1]=l*j+n*-h+m*-g-k*-i,a[2]=m*j+n*-i+k*-h-l*-g,a},g.forEach=function(){var a=g.create();return function(b,c,d,e,f,g){var h,i;for(c||(c=4),d||(d=0),i=e?Math.min(e*c+d,b.length):b.length,h=d;i>h;h+=c)a[0]=b[h],a[1]=b[h+1],a[2]=b[h+2],a[3]=b[h+3],f(a,a,g),b[h]=a[0],b[h+1]=a[1],b[h+2]=a[2],b[h+3]=a[3];return b}}(),g.str=function(a){return"vec4("+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+")"},a.vec4=g;var h={};h.create=function(){var a=new c(9);return a[0]=1,a[1]=0,a[2]=0,a[3]=0,a[4]=1,a[5]=0,a[6]=0,a[7]=0,a[8]=1,a},h.fromMat4=function(a,b){return a[0]=b[0],a[1]=b[1],a[2]=b[2],a[3]=b[4],a[4]=b[5],a[5]=b[6],a[6]=b[8],a[7]=b[9],a[8]=b[10],a},h.clone=function(a){var b=new c(9);return b[0]=a[0],b[1]=a[1],b[2]=a[2],b[3]=a[3],b[4]=a[4],b[5]=a[5],b[6]=a[6],b[7]=a[7],b[8]=a[8],b},h.copy=function(a,b){return a[0]=b[0],a[1]=b[1],a[2]=b[2],a[3]=b[3],a[4]=b[4],a[5]=b[5],a[6]=b[6],a[7]=b[7],a[8]=b[8],a},h.identity=function(a){return a[0]=1,a[1]=0,a[2]=0,a[3]=0,a[4]=1,a[5]=0,a[6]=0,a[7]=0,a[8]=1,a},h.transpose=function(a,b){if(a===b){var c=b[1],d=b[2],e=b[5];a[1]=b[3],a[2]=b[6],a[3]=c,a[5]=b[7],a[6]=d,a[7]=e}else a[0]=b[0],a[1]=b[3],a[2]=b[6],a[3]=b[1],a[4]=b[4],a[5]=b[7],a[6]=b[2],a[7]=b[5],a[8]=b[8];return a},h.invert=function(a,b){var c=b[0],d=b[1],e=b[2],f=b[3],g=b[4],h=b[5],i=b[6],j=b[7],k=b[8],l=k*g-h*j,m=-k*f+h*i,n=j*f-g*i,o=c*l+d*m+e*n;return o?(o=1/o,a[0]=l*o,a[1]=(-k*d+e*j)*o,a[2]=(h*d-e*g)*o,a[3]=m*o,a[4]=(k*c-e*i)*o,a[5]=(-h*c+e*f)*o,a[6]=n*o,a[7]=(-j*c+d*i)*o,a[8]=(g*c-d*f)*o,a):null},h.adjoint=function(a,b){var c=b[0],d=b[1],e=b[2],f=b[3],g=b[4],h=b[5],i=b[6],j=b[7],k=b[8];return a[0]=g*k-h*j,a[1]=e*j-d*k,a[2]=d*h-e*g,a[3]=h*i-f*k,a[4]=c*k-e*i,a[5]=e*f-c*h,a[6]=f*j-g*i,a[7]=d*i-c*j,a[8]=c*g-d*f,a},h.determinant=function(a){var b=a[0],c=a[1],d=a[2],e=a[3],f=a[4],g=a[5],h=a[6],i=a[7],j=a[8];return b*(j*f-g*i)+c*(-j*e+g*h)+d*(i*e-f*h)},h.multiply=function(a,b,c){var d=b[0],e=b[1],f=b[2],g=b[3],h=b[4],i=b[5],j=b[6],k=b[7],l=b[8],m=c[0],n=c[1],o=c[2],p=c[3],q=c[4],r=c[5],s=c[6],t=c[7],u=c[8];return a[0]=m*d+n*g+o*j,a[1]=m*e+n*h+o*k,a[2]=m*f+n*i+o*l,a[3]=p*d+q*g+r*j,a[4]=p*e+q*h+r*k,a[5]=p*f+q*i+r*l,a[6]=s*d+t*g+u*j,a[7]=s*e+t*h+u*k,a[8]=s*f+t*i+u*l,a},h.mul=h.multiply,h.translate=function(a,b,c){var d=b[0],e=b[1],f=b[2],g=b[3],h=b[4],i=b[5],j=b[6],k=b[7],l=b[8],m=c[0],n=c[1];return a[0]=d,a[1]=e,a[2]=f,a[3]=g,a[4]=h,a[5]=i,a[6]=m*d+n*g+j,a[7]=m*e+n*h+k,a[8]=m*f+n*i+l,a},h.rotate=function(a,b,c){var d=b[0],e=b[1],f=b[2],g=b[3],h=b[4],i=b[5],j=b[6],k=b[7],l=b[8],m=Math.sin(c),n=Math.cos(c);return a[0]=n*d+m*g,a[1]=n*e+m*h,a[2]=n*f+m*i,a[3]=n*g-m*d,a[4]=n*h-m*e,a[5]=n*i-m*f,a[6]=j,a[7]=k,a[8]=l,a},h.fromQuat=function(a,b){var c=b[0],d=b[1],e=b[2],f=b[3],g=c+c,h=d+d,i=e+e,j=c*g,k=c*h,l=c*i,m=d*h,n=d*i,o=e*i,p=f*g,q=f*h,r=f*i;return a[0]=1-(m+o),a[3]=k+r,a[6]=l-q,a[1]=k-r,a[4]=1-(j+o),a[7]=n+p,a[2]=l+q,a[5]=n-p,a[8]=1-(j+m),a},h.normalFromMat4=function(a,b){var c=b[0],d=b[1],e=b[2],f=b[3],g=b[4],h=b[5],i=b[6],j=b[7],k=b[8],l=b[9],m=b[10],n=b[11],o=b[12],p=b[13],q=b[14],r=b[15],s=c*h-d*g,t=c*i-e*g,u=c*j-f*g,v=d*i-e*h,w=d*j-f*h,x=e*j-f*i,y=k*p-l*o,z=k*q-m*o,A=k*r-n*o,B=l*q-m*p,C=l*r-n*p,D=m*r-n*q,E=s*D-t*C+u*B+v*A-w*z+x*y;return E?(E=1/E,a[0]=(h*D-i*C+j*B)*E,a[1]=(i*A-g*D-j*z)*E,a[2]=(g*C-h*A+j*y)*E,a[3]=(e*C-d*D-f*B)*E,a[4]=(c*D-e*A+f*z)*E,a[5]=(d*A-c*C-f*y)*E,a[6]=(p*x-q*w+r*v)*E,a[7]=(q*u-o*x-r*t)*E,a[8]=(o*w-p*u+r*s)*E,a):null},h.str=function(a){return"mat3("+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+", "+a[4]+", "+a[5]+", "+a[6]+", "+a[7]+", "+a[8]+")"},a.mat3=h;var i={};i.create=function(){var a=new c(16);return a[0]=1,a[1]=0,a[2]=0,a[3]=0,a[4]=0,a[5]=1,a[6]=0,a[7]=0,a[8]=0,a[9]=0,a[10]=1,a[11]=0,a[12]=0,a[13]=0,a[14]=0,a[15]=1,a},i.fromValues=function(a,b,d,e,f,g,h,i,j,k,l,m,n,o,p,q){var r=new c(16);return r[0]=a,r[1]=b,r[2]=d,r[3]=e,r[4]=f,r[5]=g,r[6]=h,r[7]=i,r[8]=j,r[9]=k,r[10]=l,r[11]=m,r[12]=n,r[13]=o,r[14]=p,r[15]=q,r},i.clone=function(a){var b=new c(16);return b[0]=a[0],b[1]=a[1],b[2]=a[2],b[3]=a[3],b[4]=a[4],b[5]=a[5],b[6]=a[6],b[7]=a[7],b[8]=a[8],b[9]=a[9],b[10]=a[10],b[11]=a[11],b[12]=a[12],b[13]=a[13],b[14]=a[14],b[15]=a[15],b},i.copy=function(a,b){return a[0]=b[0],a[1]=b[1],a[2]=b[2],a[3]=b[3],a[4]=b[4],a[5]=b[5],a[6]=b[6],a[7]=b[7],a[8]=b[8],a[9]=b[9],a[10]=b[10],a[11]=b[11],a[12]=b[12],a[13]=b[13],a[14]=b[14],a[15]=b[15],a},i.identity=function(a){return a[0]=1,a[1]=0,a[2]=0,a[3]=0,a[4]=0,a[5]=1,a[6]=0,a[7]=0,a[8]=0,a[9]=0,a[10]=1,a[11]=0,a[12]=0,a[13]=0,a[14]=0,a[15]=1,a},i.transpose=function(a,b){if(a===b){var c=b[1],d=b[2],e=b[3],f=b[6],g=b[7],h=b[11];a[1]=b[4],a[2]=b[8],a[3]=b[12],a[4]=c,a[6]=b[9],a[7]=b[13],a[8]=d,a[9]=f,a[11]=b[14],a[12]=e,a[13]=g,a[14]=h}else a[0]=b[0],a[1]=b[4],a[2]=b[8],a[3]=b[12],a[4]=b[1],a[5]=b[5],a[6]=b[9],a[7]=b[13],a[8]=b[2],a[9]=b[6],a[10]=b[10],a[11]=b[14],a[12]=b[3],a[13]=b[7],a[14]=b[11],a[15]=b[15];return a},i.invert=function(a,b){var c=b[0],d=b[1],e=b[2],f=b[3],g=b[4],h=b[5],i=b[6],j=b[7],k=b[8],l=b[9],m=b[10],n=b[11],o=b[12],p=b[13],q=b[14],r=b[15],s=c*h-d*g,t=c*i-e*g,u=c*j-f*g,v=d*i-e*h,w=d*j-f*h,x=e*j-f*i,y=k*p-l*o,z=k*q-m*o,A=k*r-n*o,B=l*q-m*p,C=l*r-n*p,D=m*r-n*q,E=s*D-t*C+u*B+v*A-w*z+x*y;return E?(E=1/E,a[0]=(h*D-i*C+j*B)*E,a[1]=(e*C-d*D-f*B)*E,a[2]=(p*x-q*w+r*v)*E,a[3]=(m*w-l*x-n*v)*E,a[4]=(i*A-g*D-j*z)*E,a[5]=(c*D-e*A+f*z)*E,a[6]=(q*u-o*x-r*t)*E,a[7]=(k*x-m*u+n*t)*E,a[8]=(g*C-h*A+j*y)*E,a[9]=(d*A-c*C-f*y)*E,a[10]=(o*w-p*u+r*s)*E,a[11]=(l*u-k*w-n*s)*E,a[12]=(h*z-g*B-i*y)*E,a[13]=(c*B-d*z+e*y)*E,a[14]=(p*t-o*v-q*s)*E,a[15]=(k*v-l*t+m*s)*E,a):null},i.adjoint=function(a,b){var c=b[0],d=b[1],e=b[2],f=b[3],g=b[4],h=b[5],i=b[6],j=b[7],k=b[8],l=b[9],m=b[10],n=b[11],o=b[12],p=b[13],q=b[14],r=b[15];return a[0]=h*(m*r-n*q)-l*(i*r-j*q)+p*(i*n-j*m),a[1]=-(d*(m*r-n*q)-l*(e*r-f*q)+p*(e*n-f*m)),a[2]=d*(i*r-j*q)-h*(e*r-f*q)+p*(e*j-f*i),a[3]=-(d*(i*n-j*m)-h*(e*n-f*m)+l*(e*j-f*i)),a[4]=-(g*(m*r-n*q)-k*(i*r-j*q)+o*(i*n-j*m)),a[5]=c*(m*r-n*q)-k*(e*r-f*q)+o*(e*n-f*m),a[6]=-(c*(i*r-j*q)-g*(e*r-f*q)+o*(e*j-f*i)),a[7]=c*(i*n-j*m)-g*(e*n-f*m)+k*(e*j-f*i),a[8]=g*(l*r-n*p)-k*(h*r-j*p)+o*(h*n-j*l),a[9]=-(c*(l*r-n*p)-k*(d*r-f*p)+o*(d*n-f*l)),a[10]=c*(h*r-j*p)-g*(d*r-f*p)+o*(d*j-f*h),a[11]=-(c*(h*n-j*l)-g*(d*n-f*l)+k*(d*j-f*h)),a[12]=-(g*(l*q-m*p)-k*(h*q-i*p)+o*(h*m-i*l)),a[13]=c*(l*q-m*p)-k*(d*q-e*p)+o*(d*m-e*l),a[14]=-(c*(h*q-i*p)-g*(d*q-e*p)+o*(d*i-e*h)),a[15]=c*(h*m-i*l)-g*(d*m-e*l)+k*(d*i-e*h),a},i.determinant=function(a){var b=a[0],c=a[1],d=a[2],e=a[3],f=a[4],g=a[5],h=a[6],i=a[7],j=a[8],k=a[9],l=a[10],m=a[11],n=a[12],o=a[13],p=a[14],q=a[15],r=b*g-c*f,s=b*h-d*f,t=b*i-e*f,u=c*h-d*g,v=c*i-e*g,w=d*i-e*h,x=j*o-k*n,y=j*p-l*n,z=j*q-m*n,A=k*p-l*o,B=k*q-m*o,C=l*q-m*p;return r*C-s*B+t*A+u*z-v*y+w*x},i.multiply=function(a,b,c){var d=b[0],e=b[1],f=b[2],g=b[3],h=b[4],i=b[5],j=b[6],k=b[7],l=b[8],m=b[9],n=b[10],o=b[11],p=b[12],q=b[13],r=b[14],s=b[15],t=c[0],u=c[1],v=c[2],w=c[3];return a[0]=t*d+u*h+v*l+w*p,a[1]=t*e+u*i+v*m+w*q,a[2]=t*f+u*j+v*n+w*r,a[3]=t*g+u*k+v*o+w*s,t=c[4],u=c[5],v=c[6],w=c[7],a[4]=t*d+u*h+v*l+w*p,a[5]=t*e+u*i+v*m+w*q,a[6]=t*f+u*j+v*n+w*r,a[7]=t*g+u*k+v*o+w*s,t=c[8],u=c[9],v=c[10],w=c[11],a[8]=t*d+u*h+v*l+w*p,a[9]=t*e+u*i+v*m+w*q,a[10]=t*f+u*j+v*n+w*r,a[11]=t*g+u*k+v*o+w*s,t=c[12],u=c[13],v=c[14],w=c[15],a[12]=t*d+u*h+v*l+w*p,a[13]=t*e+u*i+v*m+w*q,a[14]=t*f+u*j+v*n+w*r,a[15]=t*g+u*k+v*o+w*s,a},i.fromMat3=function(a,b){return a[0]=b[0],a[1]=b[1],a[2]=b[2],a[3]=0,a[4]=b[3],a[5]=b[4],a[6]=b[5],a[7]=0,a[8]=b[6],a[9]=b[7],a[10]=b[8],a[11]=0,a[12]=0,a[13]=0,a[14]=0,a[15]=1,a},i.mul=i.multiply,i.translate=function(a,b,c){var d,e,f,g,h,i,j,k,l,m,n,o,p=c[0],q=c[1],r=c[2];return b===a?(a[12]=b[0]*p+b[4]*q+b[8]*r+b[12],a[13]=b[1]*p+b[5]*q+b[9]*r+b[13],a[14]=b[2]*p+b[6]*q+b[10]*r+b[14],a[15]=b[3]*p+b[7]*q+b[11]*r+b[15]):(d=b[0],e=b[1],f=b[2],g=b[3],h=b[4],i=b[5],j=b[6],k=b[7],l=b[8],m=b[9],n=b[10],o=b[11],a[0]=d,a[1]=e,a[2]=f,a[3]=g,a[4]=h,a[5]=i,a[6]=j,a[7]=k,a[8]=l,a[9]=m,a[10]=n,a[11]=o,a[12]=d*p+h*q+l*r+b[12],a[13]=e*p+i*q+m*r+b[13],a[14]=f*p+j*q+n*r+b[14],a[15]=g*p+k*q+o*r+b[15]),a},i.scale=function(a,b,c){var d=c[0],e=c[1],f=c[2];return a[0]=b[0]*d,a[1]=b[1]*d,a[2]=b[2]*d,a[3]=b[3]*d,a[4]=b[4]*e,a[5]=b[5]*e,a[6]=b[6]*e,a[7]=b[7]*e,a[8]=b[8]*f,a[9]=b[9]*f,a[10]=b[10]*f,a[11]=b[11]*f,a[12]=b[12],a[13]=b[13],a[14]=b[14],a[15]=b[15],a},i.rotate=function(a,c,d,e){var f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D=e[0],E=e[1],F=e[2],G=Math.sqrt(D*D+E*E+F*F);return Math.abs(G)<b?null:(G=1/G,D*=G,E*=G,F*=G,f=Math.sin(d),g=Math.cos(d),h=1-g,i=c[0],j=c[1],k=c[2],l=c[3],m=c[4],n=c[5],o=c[6],p=c[7],q=c[8],r=c[9],s=c[10],t=c[11],u=D*D*h+g,v=E*D*h+F*f,w=F*D*h-E*f,x=D*E*h-F*f,y=E*E*h+g,z=F*E*h+D*f,A=D*F*h+E*f,B=E*F*h-D*f,C=F*F*h+g,a[0]=i*u+m*v+q*w,a[1]=j*u+n*v+r*w,a[2]=k*u+o*v+s*w,a[3]=l*u+p*v+t*w,a[4]=i*x+m*y+q*z,a[5]=j*x+n*y+r*z,a[6]=k*x+o*y+s*z,a[7]=l*x+p*y+t*z,a[8]=i*A+m*B+q*C,a[9]=j*A+n*B+r*C,a[10]=k*A+o*B+s*C,a[11]=l*A+p*B+t*C,c!==a&&(a[12]=c[12],a[13]=c[13],a[14]=c[14],a[15]=c[15]),a)},i.rotateX=function(a,b,c){var d=Math.sin(c),e=Math.cos(c),f=b[4],g=b[5],h=b[6],i=b[7],j=b[8],k=b[9],l=b[10],m=b[11];return b!==a&&(a[0]=b[0],a[1]=b[1],a[2]=b[2],a[3]=b[3],a[12]=b[12],a[13]=b[13],a[14]=b[14],a[15]=b[15]),a[4]=f*e+j*d,a[5]=g*e+k*d,a[6]=h*e+l*d,a[7]=i*e+m*d,a[8]=j*e-f*d,a[9]=k*e-g*d,a[10]=l*e-h*d,a[11]=m*e-i*d,a},i.rotateY=function(a,b,c){var d=Math.sin(c),e=Math.cos(c),f=b[0],g=b[1],h=b[2],i=b[3],j=b[8],k=b[9],l=b[10],m=b[11];return b!==a&&(a[4]=b[4],a[5]=b[5],a[6]=b[6],a[7]=b[7],a[12]=b[12],a[13]=b[13],a[14]=b[14],a[15]=b[15]),a[0]=f*e-j*d,a[1]=g*e-k*d,a[2]=h*e-l*d,a[3]=i*e-m*d,a[8]=f*d+j*e,a[9]=g*d+k*e,a[10]=h*d+l*e,a[11]=i*d+m*e,a},i.rotateZ=function(a,b,c){var d=Math.sin(c),e=Math.cos(c),f=b[0],g=b[1],h=b[2],i=b[3],j=b[4],k=b[5],l=b[6],m=b[7];return b!==a&&(a[8]=b[8],a[9]=b[9],a[10]=b[10],a[11]=b[11],a[12]=b[12],a[13]=b[13],a[14]=b[14],a[15]=b[15]),a[0]=f*e+j*d,a[1]=g*e+k*d,a[2]=h*e+l*d,a[3]=i*e+m*d,a[4]=j*e-f*d,a[5]=k*e-g*d,a[6]=l*e-h*d,a[7]=m*e-i*d,a},i.fromRotationTranslation=function(a,b,c){var d=b[0],e=b[1],f=b[2],g=b[3],h=d+d,i=e+e,j=f+f,k=d*h,l=d*i,m=d*j,n=e*i,o=e*j,p=f*j,q=g*h,r=g*i,s=g*j;return a[0]=1-(n+p),a[1]=l+s,a[2]=m-r,a[3]=0,a[4]=l-s,a[5]=1-(k+p),a[6]=o+q,a[7]=0,a[8]=m+r,a[9]=o-q,a[10]=1-(k+n),a[11]=0,a[12]=c[0],a[13]=c[1],a[14]=c[2],a[15]=1,a},i.fromQuat=function(a,b){var c=b[0],d=b[1],e=b[2],f=b[3],g=c+c,h=d+d,i=e+e,j=c*g,k=c*h,l=c*i,m=d*h,n=d*i,o=e*i,p=f*g,q=f*h,r=f*i;return a[0]=1-(m+o),a[1]=k+r,a[2]=l-q,a[3]=0,a[4]=k-r,a[5]=1-(j+o),a[6]=n+p,a[7]=0,a[8]=l+q,a[9]=n-p,a[10]=1-(j+m),a[11]=0,a[12]=0,a[13]=0,a[14]=0,a[15]=1,a},i.frustum=function(a,b,c,d,e,f,g){var h=1/(c-b),i=1/(e-d),j=1/(f-g);return a[0]=2*f*h,a[1]=0,a[2]=0,a[3]=0,a[4]=0,a[5]=2*f*i,a[6]=0,a[7]=0,a[8]=(c+b)*h,a[9]=(e+d)*i,a[10]=(g+f)*j,a[11]=-1,a[12]=0,a[13]=0,a[14]=g*f*2*j,a[15]=0,a},i.perspective=function(a,b,c,d,e){var f=1/Math.tan(b/2),g=1/(d-e);return a[0]=f/c,a[1]=0,a[2]=0,a[3]=0,a[4]=0,a[5]=f,a[6]=0,a[7]=0,a[8]=0,a[9]=0,a[10]=(e+d)*g,a[11]=-1,a[12]=0,a[13]=0,a[14]=2*e*d*g,a[15]=0,a},i.ortho=function(a,b,c,d,e,f,g){var h=1/(b-c),i=1/(d-e),j=1/(f-g);return a[0]=-2*h,a[1]=0,a[2]=0,a[3]=0,a[4]=0,a[5]=-2*i,a[6]=0,a[7]=0,a[8]=0,a[9]=0,a[10]=2*j,a[11]=0,a[12]=(b+c)*h,a[13]=(e+d)*i,a[14]=(g+f)*j,a[15]=1,a},i.lookAt=function(a,c,d,e){var f,g,h,j,k,l,m,n,o,p,q=c[0],r=c[1],s=c[2],t=e[0],u=e[1],v=e[2],w=d[0],x=d[1],y=d[2];return Math.abs(q-w)<b&&Math.abs(r-x)<b&&Math.abs(s-y)<b?i.identity(a):(m=q-w,n=r-x,o=s-y,p=1/Math.sqrt(m*m+n*n+o*o),m*=p,n*=p,o*=p,f=u*o-v*n,g=v*m-t*o,h=t*n-u*m,p=Math.sqrt(f*f+g*g+h*h),p?(p=1/p,f*=p,g*=p,h*=p):(f=0,g=0,h=0),j=n*h-o*g,k=o*f-m*h,l=m*g-n*f,p=Math.sqrt(j*j+k*k+l*l),p?(p=1/p,j*=p,k*=p,l*=p):(j=0,k=0,l=0),a[0]=f,a[1]=j,a[2]=m,a[3]=0,a[4]=g,a[5]=k,a[6]=n,a[7]=0,a[8]=h,a[9]=l,a[10]=o,a[11]=0,a[12]=-(f*q+g*r+h*s),a[13]=-(j*q+k*r+l*s),a[14]=-(m*q+n*r+o*s),a[15]=1,a)},i.str=function(a){return"mat4("+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+", "+a[4]+", "+a[5]+", "+a[6]+", "+a[7]+", "+a[8]+", "+a[9]+", "+a[10]+", "+a[11]+", "+a[12]+", "+a[13]+", "+a[14]+", "+a[15]+")"},a.mat4=i;var j={};return j.create=function(){var a=new c(4);return a[0]=0,a[1]=0,a[2]=0,a[3]=1,a},j.rotationTo=function(){var a=f.create(),b=f.fromValues(1,0,0),c=f.fromValues(0,1,0);return function(d,e,g){var h=f.dot(e,g);return-.999999>h?(f.cross(a,b,e),f.length(a)<1e-6&&f.cross(a,c,e),f.normalize(a,a),j.setAxisAngle(d,a,Math.PI),d):h>.999999?(d[0]=0,d[1]=0,d[2]=0,d[3]=1,d):(f.cross(a,e,g),d[0]=a[0],d[1]=a[1],d[2]=a[2],d[3]=1+h,j.normalize(d,d))}}(),j.setAxes=function(){var a=h.create();return function(b,c,d,e){return a[0]=d[0],a[3]=d[1],a[6]=d[2],a[1]=e[0],a[4]=e[1],a[7]=e[2],a[2]=c[0],a[5]=c[1],a[8]=c[2],j.normalize(b,j.fromMat3(b,a))}}(),j.clone=g.clone,j.fromValues=g.fromValues,j.copy=g.copy,j.set=g.set,j.identity=function(a){return a[0]=0,a[1]=0,a[2]=0,a[3]=1,a},j.setAxisAngle=function(a,b,c){c=.5*c;var d=Math.sin(c);return a[0]=d*b[0],a[1]=d*b[1],a[2]=d*b[2],a[3]=Math.cos(c),a},j.add=g.add,j.multiply=function(a,b,c){var d=b[0],e=b[1],f=b[2],g=b[3],h=c[0],i=c[1],j=c[2],k=c[3];return a[0]=d*k+g*h+e*j-f*i,a[1]=e*k+g*i+f*h-d*j,a[2]=f*k+g*j+d*i-e*h,a[3]=g*k-d*h-e*i-f*j,a},j.mul=j.multiply,j.scale=g.scale,j.rotateX=function(a,b,c){c*=.5;var d=b[0],e=b[1],f=b[2],g=b[3],h=Math.sin(c),i=Math.cos(c);return a[0]=d*i+g*h,a[1]=e*i+f*h,a[2]=f*i-e*h,a[3]=g*i-d*h,a},j.rotateY=function(a,b,c){c*=.5;var d=b[0],e=b[1],f=b[2],g=b[3],h=Math.sin(c),i=Math.cos(c);return a[0]=d*i-f*h,a[1]=e*i+g*h,a[2]=f*i+d*h,a[3]=g*i-e*h,a},j.rotateZ=function(a,b,c){c*=.5;var d=b[0],e=b[1],f=b[2],g=b[3],h=Math.sin(c),i=Math.cos(c);return a[0]=d*i+e*h,a[1]=e*i-d*h,a[2]=f*i+g*h,a[3]=g*i-f*h,a},j.calculateW=function(a,b){var c=b[0],d=b[1],e=b[2];return a[0]=c,a[1]=d,a[2]=e,a[3]=-Math.sqrt(Math.abs(1-c*c-d*d-e*e)),a},j.dot=g.dot,j.lerp=g.lerp,j.slerp=function(a,b,c,d){var e,f,g,h,i,j=b[0],k=b[1],l=b[2],m=b[3],n=c[0],o=c[1],p=c[2],q=c[3];return f=j*n+k*o+l*p+m*q,0>f&&(f=-f,n=-n,o=-o,p=-p,q=-q),1-f>1e-6?(e=Math.acos(f),g=Math.sin(e),h=Math.sin((1-d)*e)/g,i=Math.sin(d*e)/g):(h=1-d,i=d),a[0]=h*j+i*n,a[1]=h*k+i*o,a[2]=h*l+i*p,a[3]=h*m+i*q,a},j.invert=function(a,b){var c=b[0],d=b[1],e=b[2],f=b[3],g=c*c+d*d+e*e+f*f,h=g?1/g:0;return a[0]=-c*h,a[1]=-d*h,a[2]=-e*h,a[3]=f*h,a},j.conjugate=function(a,b){return a[0]=-b[0],a[1]=-b[1],a[2]=-b[2],a[3]=b[3],a},j.length=g.length,j.len=j.length,j.squaredLength=g.squaredLength,j.sqrLen=j.squaredLength,j.normalize=g.normalize,j.fromMat3=function(){var a="undefined"!=typeof Int8Array?new Int8Array([1,2,0]):[1,2,0];return function(b,c){var d,e=c[0]+c[4]+c[8];if(e>0)d=Math.sqrt(e+1),b[3]=.5*d,d=.5/d,b[0]=(c[7]-c[5])*d,b[1]=(c[2]-c[6])*d,b[2]=(c[3]-c[1])*d;else{var f=0;c[4]>c[0]&&(f=1),c[8]>c[3*f+f]&&(f=2);var g=a[f],h=a[g];d=Math.sqrt(c[3*f+f]-c[3*g+g]-c[3*h+h]+1),b[f]=.5*d,d=.5/d,b[3]=(c[3*h+g]-c[3*g+h])*d,b[g]=(c[3*g+f]+c[3*f+g])*d,b[h]=(c[3*h+f]+c[3*f+h])*d}return b}}(),j.str=function(a){return"quat("+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+")"},a.quat=j,a}(),b=function(){function b(a,b){this._3=a;for(var c=0;c<this._3.length;++c)this._3[c]=g.forceRGB(this._3[c]);this._O=b}function c(a,b,c){this.colorFor=a,this._di=b,this._db=c}function d(a,b,c){var d=null,e=null;return a[b](function(a){var b=a.prop(c);return null===d&&null===e?void(d=e=b):(d=Math.min(d,b),void(e=Math.max(e,b)))}),{min:d,max:e}}function e(a,b,e,f,g){return b||(b=k("rainbow")),new c(function(c,d,e){var f=0;this._u!==this._y&&(f=(g(c).prop(a)-this._u)/(this._y-this._u)),m(d,e,b,f)},function(b){return void 0!==e?(this._u=e[0],void(this._y=e[1])):(e=d(b,f,a),this._u=e.min,void(this._y=e.max))},function(){})}var f=a.vec4,g={};g.rgb={};var h=g.rgb;g.rgb.create=f.create,g.rgb.scale=f.scale,g.rgb.copy=f.copy,g.rgb.fromValues=f.fromValues,g.rgb.mix=function(a,b,c,d){var e=1-d;return a[0]=b[0]*d+c[0]*e,a[1]=b[1]*d+c[1]*e,a[2]=b[2]*d+c[2]*e,a[3]=b[3]*d+c[3]*e,a};var i={white:h.fromValues(1,1,1,1),black:h.fromValues(0,0,0,1),grey:h.fromValues(.5,.5,.5,1),lightgrey:h.fromValues(.8,.8,.8,1),darkgrey:h.fromValues(.3,.3,.3,1),red:h.fromValues(1,0,0,1),darkred:h.fromValues(.5,0,0,1),lightred:h.fromValues(1,.5,.5,1),green:h.fromValues(0,1,0,1),darkgreen:h.fromValues(0,.5,0,1),lightgreen:h.fromValues(.5,1,.5,1),blue:h.fromValues(0,0,1,1),darkblue:h.fromValues(0,0,.5,1),lightblue:h.fromValues(.5,.5,1,1),yellow:h.fromValues(1,1,0,1),darkyellow:h.fromValues(.5,.5,0,1),lightyellow:h.fromValues(1,1,.5,1),cyan:h.fromValues(0,1,1,1),darkcyan:h.fromValues(0,.5,.5,1),lightcyan:h.fromValues(.5,1,1,1),magenta:h.fromValues(1,0,1,1),darkmagenta:h.fromValues(.5,0,.5,1),lightmagenta:h.fromValues(1,.5,1,1),orange:h.fromValues(1,.5,0,1),darkorange:h.fromValues(.5,.25,0,1),lightorange:h.fromValues(1,.75,.5,1)};g.hex2rgb=function(a){var b,c,d,e;if(4===a.length||5===a.length){b=parseInt(a[1],16),c=parseInt(a[2],16),d=parseInt(a[3],16),e=15,5===a.length&&(e=parseInt(a[4],16));var f=1/15;return h.fromValues(f*b,f*c,f*d,f*e)}if(7===a.length||9===a.length){b=parseInt(a.substr(1,2),16),c=parseInt(a.substr(3,2),16),d=parseInt(a.substr(5,2),16),e=255,9===a.length&&(e=parseInt(a.substr(7,2),16));var g=1/255;return h.fromValues(g*b,g*c,g*d,g*e)}},g.setColorPalette=function(a){i=a,g.initGradients()},g.forceRGB=function(a){if("string"==typeof a){var b=i[a];if(void 0!==b)return b;if(a.length>0&&"#"===a[0])return g.hex2rgb(a)}return 3===a.length?[a[0],a[1],a[2],1]:a},b.prototype={colorAt:function(a,b){if(b<=this._O[0])return f.copy(a,this._3[0]);if(b>=this._O[this._O.length-1])return f.copy(a,this._3[this._O.length-1]);for(var c=0,d=1;d<this._O.length&&!(this._O[d]>b);++d)c=d;var e=c+1,g=this._O[c],i=this._O[e],j=(b-g)/(i-g);return h.mix(a,this._3[e],this._3[c],j)}};var j={};g.gradient=function(a,c){if("string"==typeof a)return j[a];if(c=c||"equal","equal"===c){c=[];for(var d=0;d<a.length;++d)c.push(1*d/(a.length-1))}return new b(a,c)};var k=g.gradient;g.initGradients=function(){j.rainbow=k(["red","yellow","green","blue"]),j.reds=k(["lightred","darkred"]),j.greens=k(["lightgreen","darkgreen"]),j.blues=k(["lightblue","darkblue"]),j.trafficlight=k(["green","yellow","red"]),j.heatmap=k(["red","white","blue"])},c.prototype={begin:function(a){this._di&&this._di(a)},end:function(a){this._db&&this._db(a)}},g.ColorOp=c,g.uniform=function(a){return a=g.forceRGB(a||"white"),new c(function(b,c,d){c[d+0]=a[0],c[d+1]=a[1],c[d+2]=a[2],c[d+3]=a[3]},null,null)};var l={H:[1,1,1],C:[.83,.83,.83],N:[.13,.2,1],O:[1,.13,0],F:[.12,.94,.12],CL:[.12,.94,.12],BR:[.6,.13,0],I:[.4,0,.73],HE:[0,1,1],NE:[0,1,1],AR:[0,1,1],XE:[0,1,1],KR:[0,1,1],P:[1,.6,0],S:[.87,.87,0],B:[1,.67,.47],LI:[.47,0,1],NA:[.47,0,1],K:[.47,0,1],RB:[.47,0,1],CS:[.47,0,1],FR:[.47,0,1],BE:[0,.47,0],MG:[0,.47,0],SR:[0,.47,0],BA:[0,.47,0],RA:[0,.47,0],TI:[.6,.6,.6],FE:[.87,.47,0]};g.byElement=function(){return new c(function(a,b,c){var d=a.element(),e=l[d];return void 0!==e?(b[c]=e[0],b[c+1]=e[1],b[c+2]=e[2],b[c+3]=1,b):(b[c]=1,b[c+1]=0,b[c+2]=1,b[c+3]=1,b)},null,null)},g.bySS=function(){return new c(function(a,b,c){switch(a.residue().ss()){case"C":return b[c]=.8,b[c+1]=.8,b[c+2]=.8,void(b[c+3]=1);case"H":return b[c]=.6,b[c+1]=.6,b[c+2]=.9,void(b[c+3]=1);case"E":return b[c]=.2,b[c+1]=.8,b[c+2]=.2,void(b[c+3]=1)}},null,null)},g.rainbow=function(a){a||(a=k("rainbow"));var b=new c(function(b,c,d){var e=0,f=this.chainLimits[b.residue().chain().name()];if(void 0!==f){var g=b.residue().index();e=(g-f[0])/(f[1]-f[0])}var h=[1,1,1,1];a.colorAt(h,e),c[d]=h[0],c[d+1]=h[1],c[d+2]=h[2],c[d+3]=h[3]},function(a){var b=a.chains();this.chainLimits={};for(var c=0;c<b.length;++c){var d=b[c].backboneTraces();if(0!==d.length){for(var e=d[0].residueAt(0).index(),f=d[0].residueAt(d[0].length()-1).index(),g=1;g<d.length;++g){var h=d[g];e=Math.min(e,h.residueAt(0).index()),f=Math.max(f,h.residueAt(h.length()-1).index())}e!==f&&(this.chainLimits[b[c].name()]=[e,f])}}},function(){this.chainLimits=null});return b},g.ssSuccession=function(a,b){a||(a=k("rainbow")),b||(b=g.forceRGB("lightgrey"));var d=new c(function(c,d,e){var f=c.residue().index(),g=this.chainLimits[c.residue().chain().name()],h=g.indices[f];if(-1===h)return d[e]=b[0],d[e+1]=b[1],d[e+2]=b[2],void(d[e+3]=b[3]);var i=0;null===g.max,null!==g.max&&(i=h/(g.max>0?g.max:1));var j=[0,0,0,0];a.colorAt(j,i),d[e]=j[0],d[e+1]=j[1],d[e+2]=j[2],d[e+3]=j[3]},function(a){var b=a.chains();this.chainLimits={};for(var c=0;c<b.length;++c){for(var d=b[c].residues(),e=null,f={},g=0,h="C",i=0;i<d.length;++i){var j=d[i].ss();"C"===j?("C"!==h&&g++,f[d[i].index()]=-1):(e=g,f[d[i].index()]=g),h=j}this.chainLimits[b[c].name()]={indices:f,max:e}}},function(){this.chainLimits=null});return d},g.byChain=function(a){a||(a=k("rainbow"));var b=new c(function(b,c,d){var e=this.chainIndices[b.residue().chain().name()],f=e*this.scale,g=[0,0,0,0];a.colorAt(g,f),c[d+0]=g[0],c[d+1]=g[1],c[d+2]=g[2],c[d+3]=g[3]},function(a){var b=a.chains();this.chainIndices={};for(var c=0;c<b.length;++c)this.chainIndices[b[c].name()]=c;this.scale=b.length>1?1/(b.length-1):1},function(){this.chainIndices=null});return b};var m=function(){var a=f.create();return function(b,c,d,e){d.colorAt(a,e),b[c+0]=a[0],b[c+1]=a[1],b[c+2]=a[2],b[c+3]=a[3]}}();return g.byAtomProp=function(a,b,c){return e(a,b,c,"eachAtom",function(a){return a})},g.byResidueProp=function(a,b,c){return e(a,b,c,"eachResidue",function(a){return a.residue()})},g.interpolateColor=function(a,b){for(var c=new Float32Array(4*(b*(a.length/4-1)+1)),d=0,e=f.create(),g=f.create(),h=1/b,i=0;i<a.length/4-1;++i){f.set(e,a[4*i+0],a[4*i+1],a[4*i+2],a[4*i+3]),f.set(g,a[4*i+4],a[4*i+5],a[4*i+6],a[4*i+7]);for(var j=0;b>j;++j){var k=h*j;c[d+0]=e[0]*(1-k)+g[0]*k,c[d+1]=e[1]*(1-k)+g[1]*k,c[d+2]=e[2]*(1-k)+g[2]*k,c[d+3]=e[3]*(1-k)+g[3]*k,d+=4}}return c[d+0]=g[0],c[d+1]=g[1],c[d+2]=g[2],c[d+3]=g[3],c},g.initGradients(),g}(),c=function(){function a(a,b,c){this._cI=a,this._bj=b,this._bC=b,this._d3=c}function b(){this.clear()}return a.prototype={nextId:function(a){var b=this._bC;return this._bC++,this._cI._l[b]=a,b},recycle:function(){this._cI.recycle(this)},length:function(){return this._d3-this._bj}},b.prototype={MAX_ID:16777216,getContinuousRange:function(b){for(var c=-1,d=null,e=0;e<this._ba.length;++e){var f=this._ba[e],g=f.length();g>=b&&(null===d||d>g)&&(d=g,c=e)}if(-1!==c){var h=this._ba[c];return this._ba.splice(c,1),this._bw++,h}var i=this._cu,j=i+b;if(j>this.MAX_ID)return null;this._cu=j;var k=new a(this,i,j);return this._bw++,k},clear:function(){this._l={},this._cu=0,this._ba=[],this._bw=0},recycle:function(a){for(var b=a._bj;b<a._bC;++b)delete this._l[b];a._bC=a._bj,this._ba.push(a),this._bw--,this._ba.length>0&&0===this._bw&&this.clear()},objectForId:function(a){return this._l[a]}},b}(),d=function(){function a(a,b){return b>a}function b(a,b){void 0===a||void 0===b?(this._bL=!0,this._u=this._y=null):(this._bL=!1,this._u=a,this._y=b)}var c={};return c.derive=function(a,b,c){for(var d in b.prototype)a.prototype[d]=b.prototype[d];if(void 0!==c)for(var e in c)a.prototype[e]=c[e]},c.bind=function(a,b){return function(){return b.apply(a,arguments)}},c.copy=function(a){a=a||{};var b={};for(var c in a)a.hasOwnProperty(c)&&(b[c]=a[c]);return b},c.binarySearch=function(b,c,d){if(0===b.length)return-1;d=d||a;for(var e=0,f=b.length,g=e+f>>1;;){var h=b[g];if(d(c,h))f=g;else{if(!d(h,c))return g;e=g}var i=e+f>>1;if(i===g)return-1;g=i}return-1},c.indexFirstLargerEqualThan=function(b,c,d){if(d=d||a,0===b.length||d(b[b.length-1],c))return-1;for(var e=0,f=b.length,g=e+f>>1;;){var h=b[g];d(c,h)?f=g:d(h,c)?e=g+1:f=g;var i=e+f>>1;if(i===g)return g;g=i}},c.indexLastSmallerThan=function(b,c,d){if(d=d||a,0===b.length||d(b[b.length-1],c))return b.length-1;if(d(c,b[0])||!d(b[0],c))return-1;for(var e=0,f=b.length,g=e+f>>1;;){var h=b[g];d(c,h)||!d(h,c)?f=g:e=g;var i=e+f>>1;if(i===g)return g;g=i}},c.indexLastSmallerEqualThan=function(b,c,d){if(d=d||a,0===b.length||d(b[b.length-1],c))return b.length-1;if(d(c,b[0]))return-1;for(var e=0,f=b.length,g=e+f>>1;;){var h=b[g];d(c,h)?f=g:e=g;var i=e+f>>1;if(i===g)return g;g=i}},b.prototype={min:function(){return this._u},max:function(){return this._y},length:function(){return this._y-this._u},empty:function(){return this._bL},center:function(){return.5*(this._y+this._u)},extend:function(a){this._u-=a,this._y+=a},update:function(a){return this._bL?(this._u=this._y=a,void(this._bL=!1)):void(a<this._u?this._u=a:a>this._y&&(this._y=a))}},c.Range=b,c}(),e=function(){function a(a){if("complete"!==document.readyState&&"loaded"!==document.readyState&&"interactive"!==document.readyState)return!1;if(void 0===a)try{var b=document.createElement("canvas");return!(!window.WebGLRenderingContext||!b.getContext("experimental-webgl"))}catch(c){return!1}return!!a}function b(a,b){this._k=b.width,this._dk=b.antialias,this._m=b.height,this._W=!1,this._dR=null,this._H=a,this._b5(),this._cp=b.backgroundColor,this._c4=b.forceManualAntialiasing}return b.prototype={_ce:function(){if(this._W){this._W=!1;var a=this._k*this._bl,b=this._m*this._bl;this._6=a,this._7=b,this._c.viewport(0,0,a,b),this._.width=a,this._.height=b,this._bl>1&&this._cV(this._bl)}},resize:function(a,b){(a!==this._k||b!==this._m)&&(this._W=!0,this._k=a,this._m=b)},fitParent:function(){var a=this._H.getBoundingClientRect();this.resize(a.width,a.height)},gl:function(){return this._c},imageData:function(){return this._.toDataURL()},_d0:function(){try{var a={antialias:this._dk&&!this._c4,preserveDrawingBuffer:!0};this._c=this._.getContext("experimental-webgl",a)
+}catch(b){return!1}return this._c?!0:!1},_cV:function(a){var b=1/a,c=.5*-(1-b)*this._6,d=.5*-(1-b)*this._7,e="translate("+c+"px, "+d+"px)",f="scale("+b+", "+b+")",g=e+" "+f;this._.style.webkitTransform=g,this._.style.transform=g,this._.style.ieTransform=g,this._.width=this._6,this._.height=this._7},initGL:function(){var a=1;if(!this._d0())return!1;var b=this._c;return b.getContextAttributes().antialias&&!this._c4||!this._dk||(a=2),this._6=this._k*a,this._7=this._m*a,this._bl=a,a>1&&this._cV(a),b.viewportWidth=this._6,b.viewportHeight=this._7,b.clearColor(this._cp[0],this._cp[1],this._cp[2],1),b.lineWidth(2),b.cullFace(b.FRONT),b.enable(b.CULL_FACE),b.enable(b.DEPTH_TEST),!0},_cA:function(a,b,c){var d,e=this._c;if("fragment"===b)d=e.createShader(e.FRAGMENT_SHADER);else{if("vertex"!==b)return null;d=e.createShader(e.VERTEX_SHADER)}var f=a.replace("${PRECISION}",c);return e.shaderSource(d,f),e.compileShader(d),e.getShaderParameter(d,e.COMPILE_STATUS)?d:null},initShader:function(a,b,c){var e=this._c,f=this._cA(b,"fragment",c),g=this._cA(a,"vertex",c),h=e.createProgram();if(e.attachShader(h,g),e.attachShader(h,f),e.linkProgram(h),!e.getProgramParameter(h,e.LINK_STATUS))return null;var i=d.bind(e,e.getAttribLocation),j=d.bind(e,e.getUniformLocation);return h.posAttrib=i(h,"attrPos"),h.colorAttrib=i(h,"attrColor"),h.normalAttrib=i(h,"attrNormal"),h.objIdAttrib=i(h,"attrObjId"),h.symId=j(h,"symId"),h.projection=j(h,"projectionMat"),h.modelview=j(h,"modelviewMat"),h.rotation=j(h,"rotationMat"),h.fog=j(h,"fog"),h.fogFar=j(h,"fogFar"),h.fogNear=j(h,"fogNear"),h.fogColor=j(h,"fogColor"),h.outlineColor=j(h,"outlineColor"),h},on:function(a,b){this._.addEventListener(a,b,!1)},removeEventListener:function(a,b){this._.removeEventListener(a,b,!1)},onWheel:function(a,b){"onwheel"in this._?this.on("wheel",a):this.on("mousewheel",b)},domElement:function(){return this._},bind:function(){this._ce(),this._c.viewport(0,0,this._6,this._7)},superSamplingFactor:function(){return this._bl},viewportWidth:function(){return this._6},viewportHeight:function(){return this._7},width:function(){return this._k},height:function(){return this._m},_b5:function(){this._=document.createElement("canvas"),this._.width=this._k,this._.height=this._m,this._H.appendChild(this._)},isWebGLSupported:function(){return a(this._c)},destroy:function(){this._.width=1,this._.height=1,this._.parentElement.removeChild(this._),this._=null}},{Canvas:b,isWebGLSupported:a}}(),f=function(){function a(a,b){this._k=b.width,this._m=b.height,this._df=this._k,this._dg=this._m,this._c=a,this._de=a.createFramebuffer(),a.bindFramebuffer(a.FRAMEBUFFER,this._de),this._bq=a.createRenderbuffer(),a.bindRenderbuffer(a.RENDERBUFFER,this._bq),a.renderbufferStorage(a.RENDERBUFFER,a.DEPTH_COMPONENT16,this._k,this._m),a.framebufferRenderbuffer(a.FRAMEBUFFER,a.DEPTH_ATTACHMENT,a.RENDERBUFFER,this._bq),this._bs=a.createTexture(),this._d1()}return a.prototype={width:function(){return this._k},height:function(){return this._m},bind:function(){var a=this._c;a.bindFramebuffer(a.FRAMEBUFFER,this._de),a.bindRenderbuffer(a.RENDERBUFFER,this._bq),(this._df!==this._k||this._dg!==this._m)&&this._dz(),a.viewport(0,0,this._k,this._m)},colorTexture:function(){return this._bs},_d1:function(){this.bind();var a=this._c;a.bindTexture(a.TEXTURE_2D,this._bs),a.texImage2D(a.TEXTURE_2D,0,a.RGBA,this._k,this._m,0,a.RGBA,a.UNSIGNED_BYTE,null),a.framebufferTexture2D(a.FRAMEBUFFER,a.COLOR_ATTACHMENT0,a.TEXTURE_2D,this._bs,0),a.texParameteri(a.TEXTURE_2D,a.TEXTURE_MIN_FILTER,a.LINEAR),a.texParameteri(a.TEXTURE_2D,a.TEXTURE_MAG_FILTER,a.LINEAR),a.texParameteri(a.TEXTURE_2D,a.TEXTURE_WRAP_S,a.CLAMP_TO_EDGE),a.texParameteri(a.TEXTURE_2D,a.TEXTURE_WRAP_T,a.CLAMP_TO_EDGE),a.bindTexture(a.TEXTURE_2D,null),this.release()},_dz:function(){var a=this._c;a.bindRenderbuffer(a.RENDERBUFFER,this._bq),a.renderbufferStorage(a.RENDERBUFFER,a.DEPTH_COMPONENT16,this._k,this._m),a.bindTexture(a.TEXTURE_2D,this._bs),a.texImage2D(a.TEXTURE_2D,0,a.RGBA,this._k,this._m,0,a.RGBA,a.UNSIGNED_BYTE,null),a.framebufferTexture2D(a.FRAMEBUFFER,a.COLOR_ATTACHMENT0,a.TEXTURE_2D,this._bs,0),a.framebufferRenderbuffer(a.FRAMEBUFFER,a.DEPTH_ATTACHMENT,a.RENDERBUFFER,this._bq),a.bindTexture(a.TEXTURE_2D,null),this._df=this._k,this._dg=this._m},resize:function(a,b){this._k=a,this._m=b},release:function(){var a=this._c;a.bindFramebuffer(a.FRAMEBUFFER,null),a.bindRenderbuffer(a.RENDERBUFFER,null)}},a}(),g=function(){function a(a){this._bp=[],this._ec=a}return a.prototype.request=function(a){for(var b=-1,c=null,d=0;d<this._bp.length;++d){var e=this._bp[d],f=e.length;f>=a&&(null===c||c>f)&&(c=f,b=d)}if(-1!==b){var g=this._bp[b];return this._bp.splice(b,1),g}return new this._ec(a)},a.prototype.release=function(a){this._bp.push(a)},a}(),h=function(){function b(a){this._bU=d.create(),this._K=d.create(),this._cN=d.create(),this._o=d.create(),this._bx=d.create(),this._8=.1,this._2=4e3,this._c5=-5,this._c6=50,this._bK=!0,this._c3=45*Math.PI/180,this._c7=c.fromValues(1,1,1),this._dG=c.fromValues(.1,.1,.1),this._R=c.create(),this._M=50,this._bh=!0,this._D=!0,this._ct=1,this._c=a,this._cj=null,this._bi=0,this.setViewportSize(a.viewportWidth,a.viewportHeight)}var c=a.vec3,d=a.mat4;return b.prototype={_c0:function(){this._bi+=1,this._bi>68719476735&&(this._bi=0)},setRotation:function(a){16===a.length?d.copy(this._o,a):d.fromMat3(this._o,a),this._D=!0},upsamplingFactor:function(){return this._ct},setUpsamplingFactor:function(a){this._ct=a},mainAxes:function(){return[c.fromValues(this._o[0],this._o[4],this._o[8]),c.fromValues(this._o[1],this._o[5],this._o[9]),c.fromValues(this._o[2],this._o[6],this._o[10])]},fieldOfViewY:function(){return this._c3},aspectRatio:function(){return this._k/this._m},rotation:function(){return this._o},_dr:function(){var a=!1;return this._D&&(d.identity(this._K),d.translate(this._K,this._K,[-this._R[0],-this._R[1],-this._R[2]]),d.mul(this._K,this._o,this._K),d.identity(this._bx),d.translate(this._bx,this._bx,[0,0,-this._M]),d.mul(this._K,this._bx,this._K),a=!0),this._bh&&(d.identity(this._bU),d.perspective(this._bU,this._c3,this._k/this._m,this._8,this._2),a=!0),this._bh=!1,this._D=!1,a&&this._c0(),a},setViewportSize:function(a,b){this._bh=!0,this._k=a,this._m=b},viewportWidth:function(){return this._k},viewportHeight:function(){return this._m},setCenter:function(a){this._D=!0,c.copy(this._R,a)},fog:function(a){return void 0!==a&&a!==this._bK&&(this._bK=a,this._c0()),this._bK},rotateZ:function(){var a=d.create();return function(b){d.identity(a),this._D=!0,d.rotate(a,a,b,[0,0,1]),d.mul(this._o,a,this._o)}}(),rotateX:function(){var a=d.create();return function(b){d.identity(a),this._D=!0,d.rotate(a,a,b,[1,0,0]),d.mul(this._o,a,this._o)}}(),rotateY:function(){var a=d.create();return function(b){d.identity(a),this._D=!0,d.rotate(a,a,b,[0,1,0]),d.mul(this._o,a,this._o)}}(),panX:function(a){return this.panXY(a,0)},panY:function(a){return this.panXY(0,a)},panXY:function(){var a=d.create(),b=c.create();return function(e,f){d.transpose(a,this._o),this._D=!0,c.set(b,-e,f,0),c.transformMat4(b,b,a),c.add(b,b,this._R),this.setCenter(b)}}(),nearOffset:function(){return this._8},farOffset:function(){return this._2},setNearFar:function(a,b){(a!==this._8||b!==this._2)&&(this._8=a,this._2=b,this._bh=!0)},setFogNearFar:function(a,b){this._c5=a,this._c6=b,this._bh=!0},setZoom:function(a){return this._D=!0,this._M=a,this._M},zoom:function(a){if(void 0===a)return this._M;this._D=!0;var b=1+.1*a;return this._M=Math.min(1e3,Math.max(2,b*this._M)),this._M},center:function(){return this._R},setFogColor:function(a){this._c7=c.clone(a)},currentShader:function(){return this._cj},bind:function(a,b){var c=!1,e=this._c;if(this._cj!==a&&(this._cj=a,e.useProgram(a),c=!0),c=this._dr()||c,b?(d.mul(this._cN,this._K,b),e.uniformMatrix4fv(a.modelview,!1,this._cN)):e.uniformMatrix4fv(a.modelview,!1,this._K),this._bi!==a.stateId){a.stateId=this._bi,e.uniformMatrix4fv(a.projection,!1,this._bU),a.rotation&&e.uniformMatrix4fv(a.rotation,!1,this._o),e.uniform1i(a.fog,this._bK);var f=this._M;e.uniform1f(a.fogFar,this._c6+f),e.uniform1f(a.fogNear,this._c5+f),e.uniform3fv(a.fogColor,this._c7),e.uniform3fv(a.outlineColor,this._dG)}}},b}(),i={LINES_FS:"\nprecision ${PRECISION} float;\n\nvarying vec4 vertColor;\nvarying vec3 vertNormal;\nuniform float fogNear;\nuniform float fogFar;\nuniform vec3 fogColor;\nuniform bool fog;\n\nvoid main(void) {\n  gl_FragColor = vec4(vertColor);\n  if (gl_FragColor.a == 0.0) { discard; }\n  float depth = gl_FragCoord.z / gl_FragCoord.w;\n  if (fog) {\n    float fog_factor = smoothstep(fogNear, fogFar, depth);\n    gl_FragColor = mix(gl_FragColor, vec4(fogColor, gl_FragColor.w),\n                        fog_factor);\n  }\n}",HEMILIGHT_FS:"\nprecision ${PRECISION} float;\n\nvarying vec4 vertColor;\nvarying vec3 vertNormal;\nuniform float fogNear;\nuniform float fogFar;\nuniform vec3 fogColor;\nuniform bool fog;\n\nvoid main(void) {\n  float dp = dot(vertNormal, vec3(0.0, 0.0, 1.0));\n  float hemi = max(0.0, dp)*0.5+0.5;\n  hemi *= vertColor.a;\n  gl_FragColor = vec4(vertColor.rgb*hemi, vertColor.a);\n  if (gl_FragColor.a == 0.0) { discard; }\n  float depth = gl_FragCoord.z / gl_FragCoord.w;\n  if (fog) {\n    float fog_factor = smoothstep(fogNear, fogFar, depth);\n    gl_FragColor = mix(gl_FragColor, vec4(fogColor, gl_FragColor.w),\n                        fog_factor);\n  }\n}",HEMILIGHT_VS:"\nattribute vec3 attrPos;\nattribute vec4 attrColor;\nattribute vec3 attrNormal;\n\nuniform mat4 projectionMat;\nuniform mat4 modelviewMat;\nvarying vec4 vertColor;\nvarying vec3 vertNormal;\nvoid main(void) {\n  gl_Position = projectionMat * modelviewMat * vec4(attrPos, 1.0);\n  vec4 n = (modelviewMat * vec4(attrNormal, 0.0));\n  vertNormal = n.xyz;\n  vertColor = attrColor;\n}",OUTLINE_FS:"\nprecision ${PRECISION} float;\nvarying float vertAlpha;\n\nuniform vec3 outlineColor;\nuniform float fogNear;\nuniform float fogFar;\nuniform vec3 fogColor;\nuniform bool fog;\n\nvoid main() {\n  gl_FragColor = vec4(outlineColor, vertAlpha);\n  if (gl_FragColor.a == 0.0) { discard; }\n  float depth = gl_FragCoord.z / gl_FragCoord.w;\n  if (fog) { \n    float fog_factor = smoothstep(fogNear, fogFar, depth);\n    gl_FragColor = mix(gl_FragColor, vec4(fogColor, vertAlpha),\n                        fog_factor);\n  }\n}",OUTLINE_VS:"\nprecision ${PRECISION} float;\n\nattribute vec3 attrPos;\nattribute vec3 attrNormal;\nattribute vec4 attrColor;\n                                                                       \nuniform vec3 outlineColor;\nuniform mat4 projectionMat;\nuniform mat4 modelviewMat;\nvarying float vertAlpha;\n\nvoid main(void) {\n  gl_Position = projectionMat * modelviewMat * vec4(attrPos, 1.0);\n  vec4 normal = modelviewMat * vec4(attrNormal, 0.0);\n  vertAlpha = attrColor.a;\n  gl_Position.xy += normal.xy*0.200;\n}",TEXT_VS:"\nprecision ${PRECISION} float;\n\nattribute vec3 attrCenter;\nattribute vec2 attrCorner;\nuniform mat4 projectionMat;\nuniform mat4 modelviewMat;\nuniform mat4 rotationMat;\nvarying vec2 vertTex;\nuniform float width;\nuniform float height;\nvoid main() { \n  vec4 pos = modelviewMat* vec4(attrCenter, 1.0);\n  pos.z += 4.0;\n  gl_Position = projectionMat * pos;\n  gl_Position.xy += vec2(width,height)*attrCorner*gl_Position.w; \n  vertTex = (attrCorner+abs(attrCorner))/(2.0*abs(attrCorner)); \n}",TEXT_FS:"\nprecision ${PRECISION} float;\n\nuniform mat4 projectionMat;\nuniform mat4 modelviewMat;\nuniform sampler2D sampler;\nuniform float xScale;\nuniform float yScale;\nvarying vec2 vertTex;\nvoid main() { \n  vec2 texCoord = vec2(vertTex.x*xScale, vertTex.y*yScale);\n  gl_FragColor = texture2D(sampler, texCoord);\n  if (gl_FragColor.a == 0.0) { discard; }\n}",SELECT_VS:"\nprecision ${PRECISION} float;\nuniform mat4 projectionMat;\nuniform mat4 modelviewMat;\nattribute vec3 attrPos;\nattribute float attrObjId;\n\nvarying float objId;\n\nvoid main(void) {\n  gl_Position = projectionMat * modelviewMat * vec4(attrPos, 1.0);\n  objId = attrObjId;\n}",SELECT_FS:"\nprecision ${PRECISION} float;\n\nvarying float objId;\nuniform int symId;\n\nint intMod(int x, int y) { \n  int z = x/y;\n  return x-y*z;\n}\nvoid main(void) {\n  // ints are only required to be 7bit...\n  int integralObjId = int(objId+0.5);\n  int red = intMod(integralObjId, 256);\n  integralObjId/=256;\n  int green = intMod(integralObjId, 256);\n  integralObjId/=256;\n  int blue = intMod(integralObjId, 256);\n  int alpha = symId;\n  gl_FragColor = vec4(float(red), float(green), \n                      float(blue), float(alpha))/255.0;\n}"},j=function(){function a(a,b,c){this._bb=a,this._bb.addEventListener("touchmove",d.bind(this,this._du)),this._bb.addEventListener("touchstart",d.bind(this,this._dt)),this._bb.addEventListener("touchend",d.bind(this,this._cv)),this._bb.addEventListener("touchcancel",d.bind(this,this._cv)),this._4={scale:1,rotation:0,center:null},this._bG=null,this._r=b,this._e=c}function b(a){for(var b=0,c=0,d=0;d<a.length;++d)b+=a[d].clientX,c+=a[d].clientY;return b/=a.length,c/=a.length,{x:b,y:c}}function c(a,b){var c=b.x-a.x,d=b.y-a.y;return Math.sqrt(c*c+d*d)}function e(a,b){var d=c(a[0],a[1]),e=c(b[0],b[1]);return e/(0===d?1:d)}function f(a,b){var c=b.x-a.x,d=b.y-a.y;return Math.atan2(d,c)}function g(a,b){return f(b[1],b[0])-f(a[1],a[0])}return a.prototype={_c9:function(a,c){var d={};d.center=b(c.targetTouches),d.pointers=[];for(var f=0;f<c.targetTouches.length;++f){var h=c.targetTouches[f];d.pointers.push({x:h.clientX,y:h.clientY})}return d.numTouches=c.targetTouches.length,d.rotation=0,d.scale=1,d.deltaScale=0,d.deltaRotation=0,a.center&&(d.deltaCenter={x:d.center.x-a.center.x,y:d.center.y-a.center.y}),2!==a.numTouches||2!==d.numTouches?d:(d.initialPointers=a.initialPointers?a.initialPointers:a.pointers,d.scale=e(d.initialPointers,d.pointers),d.deltaScale=d.scale-a.scale,d.rotation=g(d.initialPointers,d.pointers),d.deltaRotation=d.rotation-a.rotation,d)},_du:function(a){a.preventDefault();var b=this._c9(this._4,a),c=4*-b.deltaScale;0!==c&&this._e.zoom(c),2===b.numTouches&&2===this._4.numTouches&&this._e.panXY(.001*b.deltaCenter.x*this._e.zoom(),.001*b.deltaCenter.y*this._e.zoom());var d=-b.deltaRotation;this._e.rotateZ(d),1===b.numTouches&&1===this._4.numTouches&&(this._e.rotateX(.005*b.deltaCenter.y),this._e.rotateY(.005*b.deltaCenter.x)),this._r.requestRedraw(),this._4=b},_dt:function(a){if(a.preventDefault(),1===a.targetTouches.length){var b=(new Date).getTime();if(null!==this._bG){var c=b-this._bG;500>c&&this._r._cL({clientX:a.targetTouches[0].clientX,clientY:a.targetTouches[0].clientY})}this._bG=b}else this._bG=null;this._4=this._c9(this._4,a)},_cv:function(a){a.preventDefault()}},a}(),k=function(){function b(a,b,c,d){this._r=b,this._=a,this._e=c,this._=a,this._dl=d,this._d2()}var c=a.vec3;return b.prototype={_d9:function(a){if(null!==a){var b=c.create(),d=a.object().atom,e=d.pos();a.transform()?(c.transformMat4(b,e,a.transform()),this._r.setCenter(b,this._dl)):this._r.setCenter(e,this._dl)}},_dM:function(){var a=this._;a.removeEventListener("mousemove",this._bE),a.removeEventListener("mousemove",this._bF),a.removeEventListener("mouseup",this._bD),document.removeEventListener("mouseup",this._bD),document.removeEventListener("mousemove",this._bE),document.removeEventListener("mousemove",this._bF)},setCam:function(a){this._e=a},_d2:function(){return this._bF=d.bind(this,this._dO),this._bE=d.bind(this,this._dN),this._bD=d.bind(this,this._dM),this._.onWheel(d.bind(this,this._dK),d.bind(this,this._dL)),this._.on("dblclick",d.bind(this,this._cL)),this._.on("mousedown",d.bind(this,this._dP)),!0},_dL:function(a){this._e.zoom(a.wheelDelta<0?-1:1),a.preventDefault(),this._r.requestRedraw()},_dK:function(a){this._e.zoom(a.deltaY<0?1:-1),a.preventDefault(),this._r.requestRedraw()},_cL:function(){return function(a){var b=this._.domElement().getBoundingClientRect(),c=this._r.pick({x:a.clientX-b.left,y:a.clientY-b.top});this._r._ch(a,"atomDoubleClicked",c),this._r.requestRedraw()}}(),_dP:function(a){if(0===a.button){var b=(new Date).getTime();if("undefined"==typeof this.lastClickTime||b-this.lastClickTime>300){this.lastClickTime=b;var c=this._.domElement().getBoundingClientRect(),d=this._r.pick({x:a.clientX-c.left,y:a.clientY-c.top});this._r._ch(a,"atomClicked",d)}a.preventDefault(),a.shiftKey===!0?(this._.on("mousemove",this._bF),document.addEventListener("mousemove",this._bF,!1)):(this._.on("mousemove",this._bE),document.addEventListener("mousemove",this._bE,!1)),this._.on("mouseup",this._bD),document.addEventListener("mouseup",this._bD,!1),this._9={x:a.pageX,y:a.pageY}}},_dN:function(a){var b={x:a.pageX,y:a.pageY},c={x:b.x-this._9.x,y:b.y-this._9.y},d=.005;this._e.rotateX(d*c.y),this._e.rotateY(d*c.x),this._9=b,this._r.requestRedraw()},_dO:function(a){var b={x:a.pageX,y:a.pageY},c={x:b.x-this._9.x,y:b.y-this._9.y},d=.001*this._e.zoom();this._e.panXY(d*c.x,d*c.y),this._9=b,this._r.requestRedraw()}},b}(),l=function(){function b(a,b,c){return c?a*b:b*(a-1)+1}function c(a,c,d,f,g,h){g=g||!1,f=f||.5;var i=null,j=3*b(c,d,g);i=h?h.request(j):new Float32Array(j);var l,m,n,o=0,p=1/d,q=e.create(),r=e.create(),s=e.create(),t=e.create(),u=e.create(),v=e.create();for(e.set(t,a[0],a[1],a[2]),e.set(u,a[3],a[4],a[5]),g?(e.set(s,a[a.length-3],a[a.length-2],a[a.length-1]),e.sub(q,u,s),e.scale(q,q,f)):(e.set(s,a[0],a[1],a[2]),e.set(q,0,0,0)),l=1,n=c-1;n>l;++l){for(e.set(v,a[3*(l+1)],a[3*(l+1)+1],a[3*(l+1)+2]),e.sub(r,v,t),e.scale(r,r,f),m=0;d>m;++m)k(i,t,q,u,r,p*m,o),o+=3;e.copy(s,t),e.copy(t,u),e.copy(u,v),e.copy(q,r)}for(g?(e.set(v,a[0],a[1],a[3]),e.sub(r,v,t),e.scale(r,r,f)):e.set(r,0,0,0),m=0;d>m;++m)k(i,t,q,u,r,p*m,o),o+=3;if(!g)return i[o]=a[3*(c-1)+0],i[o+1]=a[3*(c-1)+1],i[o+2]=a[3*(c-1)+2],i;for(e.copy(s,t),e.copy(t,u),e.copy(u,v),e.copy(q,r),e.set(v,a[3],a[4],a[5]),e.sub(r,v,t),e.scale(r,r,f),m=0;d>m;++m)k(i,t,q,u,r,p*m,o),o+=3;return i}function d(a,b){this._R=a||e.create(),this._dB=b||1}var e=a.vec3,f=a.mat3,g=a.quat,h=function(){var a=e.create();return function(b,c,d){return e.cross(a,b,c),Math.atan2(e.dot(a,d),e.dot(b,c))}}(),i=function(){var a=e.create();return function(b,c){return e.copy(a,c),Math.abs(c[0])<Math.abs(c[1])?Math.abs(c[0])<Math.abs(c[2])?a[0]+=1:a[2]+=1:Math.abs(c[1])<Math.abs(c[2])?a[1]+=1:a[2]+=1,e.cross(b,c,a)}}(),j=function(a,b,c){var d=Math.sin(c),e=Math.cos(c),f=b[0],g=b[1],h=b[2],i=f*f,j=f*g,k=f*h,l=g*g,m=g*h,n=h*h;return a[0]=i+e-i*e,a[1]=j-e*j-d*h,a[2]=k-e*k+d*g,a[3]=j-e*j+d*h,a[4]=l+e-e*l,a[5]=m-e*m-d*f,a[6]=k-e*k-d*g,a[7]=m-e*m+d*f,a[8]=n+e-e*n,a},k=function(){var a=e.create();return function(b,c,d,f,g,h,i){var j=h*h,k=3-2*h,l=j*k,m=1-l,n=j*(h-2)+h,o=j*(h-1);e.copy(a,c),e.scale(a,a,m),e.scaleAndAdd(a,a,d,n),e.scaleAndAdd(a,a,f,l),e.scaleAndAdd(a,a,g,o),b[i]=a[0],b[i+1]=a[1],b[i+2]=a[2]}}(),l=function(){var a=f.create(),b=f.create(),c=f.create(),d=f.create(),h=g.create(),i=e.create(),j=e.create();return function(k){for(var l=24,m=g.fromValues(0,0,0,1),n=0;l>n;++n){f.fromQuat(a,m);var o=f.transpose(c,a);f.mul(b,a,f.mul(d,k,o)),e.set(i,b[5],b[2],b[1]),e.set(j,Math.abs(i[0]),Math.abs(i[1]),Math.abs(i[2]));var p=j[0]>j[1]&&j[0]>j[2]?0:j[1]>j[2]?1:2,q=(p+1)%3,r=(p+2)%3;if(0===i[p])break;var s=(b[3*r+r]-b[3*q+q])/(2*i[p]),t=s>0?1:-1;s*=t;var u=s+(1e6>s?Math.sqrt(s*s+1):s),v=t/u,w=1/Math.sqrt(v*v+1);if(1===w)break;if(e.set(h,0,0,0,0),h[p]=t*Math.sqrt((1-w)/2),h[p]*=-1,h[3]=Math.sqrt(1-h[p]*h[p]),1===h[3])break;m=g.mul(m,m,h),g.normalize(m,m)}return m}}();d.prototype.center=function(){return this._R},d.prototype.radius=function(){return this._dB};var m=function(){return function(a,b,c,d,f){f?e.cross(d,b,c):i(d,b),e.cross(c,d,b),e.normalize(d,d),e.normalize(c,c),a[0]=c[0],a[1]=c[1],a[2]=c[2],a[3]=d[0],a[4]=d[1],a[5]=d[2],a[6]=b[0],a[7]=b[1],a[8]=b[2]}}();return{signedAngle:h,axisRotation:j,ortho:i,diagonalizer:l,catmullRomSpline:c,cubicHermiteInterpolate:k,catmullRomSplineNumPoints:b,Sphere:d,buildRotation:m}}(),m=function(){function b(a,b){this._f=b,this._bP=a,this._h=new Uint16Array(3*b*a*2),this._n=new Float32Array(3*b*a);var c,d,e=Math.PI/(a-1),f=2*Math.PI/b;for(c=0;c<this._bP;++c){var g=Math.sin(c*e),h=Math.cos(c*e);for(d=0;d<this._f;++d){var i=g*Math.cos(d*f),j=g*Math.sin(d*f);this._n[3*(d+c*this._f)]=i,this._n[3*(d+c*this._f)+1]=j,this._n[3*(d+c*this._f)+2]=h}}var k=0;for(c=0;c<this._bP-1;++c)for(d=0;d<this._f;++d)this._h[k]=c*this._f+d,this._h[k+1]=c*this._f+(d+1)%this._f,this._h[k+2]=(c+1)*this._f+d,k+=3,this._h[k]=c*this._f+(d+1)%this._f,this._h[k+1]=(c+1)*this._f+(d+1)%this._f,this._h[k+2]=(c+1)*this._f+d,k+=3}function c(a,b,c){var d=l.catmullRomSpline(a,a.length/3,b,c,!0);this._h=new Uint16Array(2*d.length),this._n=d,this._F=new Float32Array(d.length),this._f=d.length/3;for(var f=e.create(),g=0;g<this._f;++g){var h=0===g?this._f-1:g-1,i=g===this._f-1?0:g+1;f[0]=this._n[3*i+1]-this._n[3*h+1],f[1]=this._n[3*h]-this._n[3*i],e.normalize(f,f),this._F[3*g]=f[0],this._F[3*g+1]=f[1],this._F[3*g+2]=f[2]}for(g=0;g<this._f;++g)this._h[6*g]=g,this._h[6*g+1]=g+this._f,this._h[6*g+2]=(g+1)%this._f+this._f,this._h[6*g+3]=g,this._h[6*g+4]=(g+1)%this._f+this._f,this._h[6*g+5]=(g+1)%this._f}function d(a){this._f=a,this._h=new Uint16Array(3*a*2),this._n=new Float32Array(3*a*2),this._F=new Float32Array(3*a*2);for(var b=2*Math.PI/this._f,c=0;c<this._f;++c){var d=Math.cos(b*c),e=Math.sin(b*c);this._n[3*c]=d,this._n[3*c+1]=e,this._n[3*c+2]=-.5,this._n[3*a+3*c]=d,this._n[3*a+3*c+1]=e,this._n[3*a+3*c+2]=.5,this._F[3*c]=d,this._F[3*c+1]=e,this._F[3*a+3*c]=d,this._F[3*a+3*c+1]=e}for(c=0;c<this._f;++c)this._h[6*c]=c%this._f,this._h[6*c+1]=a+(c+1)%this._f,this._h[6*c+2]=(c+1)%this._f,this._h[6*c+3]=c%this._f,this._h[6*c+4]=a+c%this._f,this._h[6*c+5]=a+(c+1)%this._f}var e=a.vec3;return b.prototype={addTransformed:function(){var a=e.create(),b=e.create();return function(c,d,f,g,h){for(var i=c.numVerts(),j=0;j<this._bP*this._f;++j)e.set(b,this._n[3*j],this._n[3*j+1],this._n[3*j+2]),e.copy(a,b),e.scale(a,a,f),e.add(a,a,d),c.addVertex(a,b,g,h);for(j=0;j<this._h.length/3;++j)c.addTriangle(i+this._h[3*j],i+this._h[3*j+1],i+this._h[3*j+2])}}(),numIndices:function(){return this._h.length},numVerts:function(){return this._n.length/3}},c.prototype={addTransformed:function(){var a=e.create(),b=e.create();return function(c,d,f,g,h,i,j,k){for(var l=this._f,m=this._F,n=this._n,o=c.numVerts()-l,p=0;l>p;++p)e.set(a,f*n[3*p],f*n[3*p+1],0),e.transformMat3(a,a,g),e.add(a,a,d),e.set(b,m[3*p],m[3*p+1],0),e.transformMat3(b,b,g),c.addVertex(a,b,h,k);if(!i)if(0!==j)for(p=0;l>p;++p)c.addTriangle(o+(p+j)%l,o+p+l,o+(p+1)%l+l),c.addTriangle(o+(p+j)%l,o+(p+1)%l+l,o+(p+1+j)%l);else for(p=0;p<this._h.length/3;++p)c.addTriangle(o+this._h[3*p],o+this._h[3*p+1],o+this._h[3*p+2])}}()},d.prototype={numVerts:function(){return this._n.length/3},numIndices:function(){return this._h.length},addTransformed:function(){var a=e.create(),b=e.create();return function(c,d,f,g,h,i,j,k,l){for(var m=c.numVerts(),n=this._n,o=this._F,p=this._f,q=0;2*p>q;++q){e.set(a,g*n[3*q],g*n[3*q+1],f*n[3*q+2]),e.transformMat3(a,a,h),e.add(a,a,d),e.set(b,o[3*q],o[3*q+1],o[3*q+2]),e.transformMat3(b,b,h);var r=p>q?k:l;c.addVertex(a,b,p>q?i:j,r)}var s=this._h;for(q=0;q<s.length/3;++q)c.addTriangle(m+s[3*q],m+s[3*q+1],m+s[3*q+2])}}()},{TubeProfile:c,ProtoCylinder:d,ProtoSphere:b}}(),n=O=function(){function a(a){this._bt=[],this._N=!0,this._G=name||"",this._c=a,this._bW=1}return a.prototype={order:function(a){return void 0!==a&&(this._bW=a),this._bW},add:function(a){this._bt.push(a)},draw:function(a,b,c,d){for(var e=0,f=this._bt.length;e!==f;++e)this._bt[e].draw(a,b,c,d)},show:function(){this._N=!0},hide:function(){this._N=!1},name:function(a){return void 0!==a&&(this._G=a),this._G},destroy:function(){for(var a=0;a<this._bt.length;++a)this._bt[a].destroy()},visible:function(){return this._N}},a}(),o=R=function(){function b(a,b){a.eachResidue(function(a){var c=a.centralAtom();null!==c&&b(c,c.pos())})}function c(a){O.call(this,a),this._b7=[],this._T=[],this._cz=null}var e=a.vec3,f=function(){var a=e.create();return function(b,c,d){for(var f=0;f<c.length;++f)for(var g=c[f],h=b.chainsByName(g.chains()),i=0;i<g.matrices().length;++i)for(var j=g.matrix(i),k=0;k<h.length;++k)for(var l=h[k],m=0;m<l.residues().length;++m){var n=l.residues()[m].centralAtom();null!==n&&(e.transformMat4(a,n.pos(),j),d(n,a))}}}();return d.derive(c,O,{setShowRelated:function(a){return a&&"asym"!==a&&null===this.structure().assembly(a)?void 0:(this._cz=a,a)},symWithIndex:function(a){if("asym"===this.showRelated())return null;var b=this.structure().assembly(this.showRelated());if(!b)return null;for(var c=b.generators(),d=0;d<c.length;++d){if(c[d].matrices().length>a)return c[d].matrix(a);a-=c[d].matrices().length}return null},showRelated:function(){return this._cz},select:function(a){return this.structure().select(a)},structure:function(){return this._T[0]._i},getColorForAtom:function(a,b){return this._T[0].getColorForAtom(a,b)},addIdRange:function(a){this._b7.push(a)},destroy:function(){O.prototype.destroy.call(this);for(var a=0;a<this._b7.length;++a)this._b7[a].recycle()},eachCentralAtom:function(a){var c=this,d=c.structure(),e=d.assembly(c.showRelated());return null===e?b(d,a):f(d,e.generators(),a)},addVertAssoc:function(a){this._T.push(a)},_bN:function(a){for(var b=this.vertArrays(),c=[],d={},e=0;e<a.length;++e)d[a[e]]=!0;for(var f=0;f<b.length;++f)d[b[f].chain()]===!0&&c.push(b[f]);return c},_d4:function(a,b,c){for(var d=c.generators(),e=0;e<d.length;++e){var f=d[e],g=this._bN(f.chains());this._cg(a,b,g,f.matrices())}},_dq:function(a,b,c,d,e,f){for(var g=this.vertArrays(),h=0;h<g.length;++h)g[h].updateProjectionIntervals(a,b,c,d,e,f)},updateProjectionIntervals:function(a,b,c,d,e,f){if(this._N){var g=this.showRelated();if("asym"===g)return this._dq(a,b,c,d,e,f);for(var h=this.structure().assembly(g),i=h.generators(),j=0;j<i.length;++j)for(var k=i[j],l=this._bN(k.chains()),m=0;m<k.matrices().length;++m)for(var n=0;n<l.length;++n){var o=k.matrix(m);l[n].updateProjectionIntervals(a,b,c,d,e,f,o)}}},_dp:function(a,b){for(var c=this.vertArrays(),d=0;d<c.length;++d)b=c[d].updateSquaredSphereRadius(a,b);return b},updateSquaredSphereRadius:function(a,b){if(!this._N)return b;var c=this.showRelated();if("asym"===c)return this._dp(a,b);for(var d=this.structure().assembly(c),e=d.generators(),f=0;f<e.length;++f)for(var g=e[f],h=this._bN(g.chains()),i=0;i<g.matrices().length;++i)for(var j=0;j<h.length;++j)b=h[j].updateSquaredSphereRadius(a,b);return b},draw:function(a,b,c,d){if(this._N){var e=this.shaderForStyleAndPass(b,c,d);if(e){var f=this.showRelated();if("asym"===f)return this._cg(a,e,this.vertArrays(),null);var g=this.structure().assembly(f);return this._d4(a,e,g)}}},colorBy:function(a,b){this._p=!1,b=b||this.structure();for(var c=0;c<this._T.length;++c)this._T[c].recolor(a,b)},setOpacity:function(a,b){this._p=!1,b=b||this.structure();for(var c=0;c<this._T.length;++c)this._T[c].setOpacity(a,b)}}),c}(),p=P=function(){function b(a,b,c){this._c=a,this._cs=a.createBuffer(),this._z=c||null,this._p=!1,this._cm=null;var d=this._x*b;this._d=c.request(d)}var c=a.vec3;return b.prototype={setColor:function(a,b,c,d,e){var f=a*this._x+this._bv;this._d[f+0]=b,this._d[f+1]=c,this._d[f+2]=d,this._d[f+3]=e,this._p=!1},getColor:function(a,b){var c=a*this._x+this._bv;return b[0]=this._d[c+0],b[1]=this._d[c+1],b[2]=this._d[c+2],b[3]=this._d[c+3],b},setOpacity:function(a,b){var c=a*this._x+this._bv;this._d[c+3]=b,this._p=!1},boundingSphere:function(){return this._cm||(this._cm=this._ea()),this._cm},_ea:function(){var a=this.numVerts();if(0===a)return null;var b,d,e=c.create();for(d=0;a>d;++d)b=d*this._x,e[0]+=this._d[b+0],e[1]+=this._d[b+1],e[2]+=this._d[b+2],isNaN(e[0]),isNaN(e[2]),isNaN(e[2]);c.scale(e,e,1/a);var f=0;for(d=0;a>d;++d){b=d*this._x;var g=e[0]-this._d[b+0],h=e[1]-this._d[b+1],i=e[2]-this._d[b+2];
+f=Math.max(f,g*g+h*h+i*i)}return new l.Sphere(e,Math.sqrt(f))},destroy:function(){this._c.deleteBuffer(this._cs),this._z.release(this._d)},bindBuffers:function(){this._c.bindBuffer(this._c.ARRAY_BUFFER,this._cs),this._p||(this._c.bufferData(this._c.ARRAY_BUFFER,this._d,this._c.STATIC_DRAW),this._p=!0)},updateSquaredSphereRadius:function(){var a=c.create();return function(b,d,e){var f=this.boundingSphere();if(!f)return d;if(e)return c.transformMat4(a,f.center(),e),Math.max(c.sqrDist(a,b),d);var g=f.radius()*f.radius();return Math.max(c.sqrDist(f.center(),b)+g,d)}}(),updateProjectionIntervals:function(){var a=c.create();return function(b,d,e,f,g,h,i){var j=this.boundingSphere();if(j){i?c.transformMat4(a,j.center(),i):c.copy(a,j.center());var k=c.dot(b,a),l=c.dot(d,a),m=c.dot(e,a);f.update(k-j.radius()),f.update(k+j.radius()),g.update(l-j.radius()),g.update(l+j.radius()),h.update(m-j.radius()),h.update(m+j.radius())}}}()},b}(),q=function(){function a(a,b,c){P.call(this,a,b,c),this._bB=0}return d.derive(a,P,{_x:8,_dm:0,_bv:3,_ej:7,numVerts:function(){return 2*this._bB},addLine:function(a,b,c,d,e,f){var g=this._x*this._bB*2;this._d[g++]=a[0],this._d[g++]=a[1],this._d[g++]=a[2],this._d[g++]=b[0],this._d[g++]=b[1],this._d[g++]=b[2],this._d[g++]=b[3],this._d[g++]=e,this._d[g++]=c[0],this._d[g++]=c[1],this._d[g++]=c[2],this._d[g++]=d[0],this._d[g++]=d[1],this._d[g++]=d[2],this._d[g++]=d[3],this._d[g++]=f,this._bB+=1,this._p=!1,this._et=null},bindAttribs:function(a){this._c.vertexAttribPointer(a.posAttrib,3,this._c.FLOAT,!1,4*this._x,4*this._dm),-1!==a.colorAttrib&&(this._c.vertexAttribPointer(a.colorAttrib,4,this._c.FLOAT,!1,4*this._x,4*this._bv),this._c.enableVertexAttribArray(a.colorAttrib)),this._c.enableVertexAttribArray(a.posAttrib),-1!==a.objIdAttrib&&(this._c.vertexAttribPointer(a.objIdAttrib,1,this._c.FLOAT,!1,4*this._x,4*this._ej),this._c.enableVertexAttribArray(a.objIdAttrib))},releaseAttribs:function(a){this._c.disableVertexAttribArray(a.posAttrib),-1!==a.colorAttrib&&this._c.disableVertexAttribArray(a.colorAttrib),-1!==a.objIdAttrib&&this._c.disableVertexAttribArray(a.objIdAttrib)},bind:function(a){this.bindBuffers(),this.bindAttribs(a)},draw:function(){this._c.drawArrays(this._c.LINES,0,2*this._bB)}}),a}(),r=Q=function(){function a(a,b,c,d,e){P.call(this,a,b,d),this._cW=a.createBuffer(),this._E=e,this._P=0,this._cO=b,this._bo=0,this._C=e.request(c)}return d.derive(a,P,{destroy:function(){P.prototype.destroy.call(this),this._c.deleteBuffer(this._cW),this._E.release(this._C)},setIndexData:function(a){this._p=!1,this._bo=a.length/3;for(var b=0;b<a.length;++b)this._C[b]=a[b]},setVertData:function(a){this._p=!1,this._P=a.length/this._x;for(var b=0;b<a.length;++b)this._d[b]=a[b]},numVerts:function(){return this._P},maxVerts:function(){return this._cO},numIndices:function(){return 3*this._bo},addVertex:function(a,b,c,d){if(this._P!==this._cO){var e=this._P*this._x;this._d[e++]=a[0],this._d[e++]=a[1],this._d[e++]=a[2],this._d[e++]=b[0],this._d[e++]=b[1],this._d[e++]=b[2],this._d[e++]=c[0],this._d[e++]=c[1],this._d[e++]=c[2],this._d[e++]=c[3],this._d[e++]=d,this._P+=1,this._p=!1}},_x:11,_el:44,_eu:10,_eh:40,_bv:6,_ek:24,_ev:3,_ei:12,_dm:0,_eg:0,addTriangle:function(a,b,c){var d=3*this._bo;d+2>=this._C.length||(this._C[d++]=a,this._C[d++]=b,this._C[d++]=c,this._bo+=1,this._p=!1)},bindBuffers:function(){var a=this._p,b=this._c;P.prototype.bindBuffers.call(this),b.bindBuffer(b.ELEMENT_ARRAY_BUFFER,this._cW),a||b.bufferData(b.ELEMENT_ARRAY_BUFFER,this._C,b.STATIC_DRAW)},bindAttribs:function(a){var b=this._c,c=this._el;b.enableVertexAttribArray(a.posAttrib),b.vertexAttribPointer(a.posAttrib,3,b.FLOAT,!1,c,this._eg),-1!==a.normalAttrib&&(b.enableVertexAttribArray(a.normalAttrib),b.vertexAttribPointer(a.normalAttrib,3,b.FLOAT,!1,c,this._ei)),-1!==a.colorAttrib&&(b.vertexAttribPointer(a.colorAttrib,4,b.FLOAT,!1,c,this._ek),b.enableVertexAttribArray(a.colorAttrib)),-1!==a.objIdAttrib&&(b.vertexAttribPointer(a.objIdAttrib,1,b.FLOAT,!1,c,this._eh),b.enableVertexAttribArray(a.objIdAttrib))},releaseAttribs:function(a){var b=this._c;b.disableVertexAttribArray(a.posAttrib),-1!==a.colorAttrib&&b.disableVertexAttribArray(a.colorAttrib),-1!==a.normalAttrib&&b.disableVertexAttribArray(a.normalAttrib),-1!==a.objIdAttrib&&b.disableVertexAttribArray(a.objIdAttrib)},bind:function(a){this.bindBuffers(),this.bindAttribs(a)},draw:function(){var a=this._c;a.drawElements(a.TRIANGLES,3*this._bo,a.UNSIGNED_SHORT,0)}}),a}(),s=function(a){function b(b,c,d,e){a.call(this,c,d,e),this._I=b}function c(a,b,c,d,e,f){Q.call(this,b,c,d,e,f),this._I=a}return d.derive(b,a,{chain:function(){return this._I},drawSymmetryRelated:function(a,b,c){this.bind(b);for(var d=0;d<c.length;++d)a.bind(b,c[d]),this._c.uniform1i(b.symId,d),this.draw();this.releaseAttribs(b)}}),d.derive(c,Q,{chain:function(){return this._I}}),c.prototype.drawSymmetryRelated=b.prototype.drawSymmetryRelated,{LineChainData:b,MeshChainData:c}}(q),t=function(a,b){function c(a,b,c){R.call(this,a),this._v=[],this._z=b,this._E=c,this._bz=null,this._bn=null}var e=a.MeshChainData;return d.derive(c,R,{_cn:function(a){return Math.min(65536,a)},addChainVertArray:function(a,b,c){this._bz=b,this._bn=c;var d=new e(a.name(),this._c,this._cn(b),c,this._z,this._E);return this._v.push(d),d},addVertArray:function(a,c){this._bz=a,this._bn=c;var d=new b(this._c,this._cn(a),c,this._z,this._E);return this._v.push(d),d},vertArrayWithSpaceFor:function(a){var c=this._v[this._v.length-1],d=c.maxVerts()-c.numVerts();if(d>=a)return c;this._bz-=c.numVerts(),this._bn-=c.numIndices(),a=this._cn(this._bz);var f=null;return f=c instanceof e?new e(c.chain(),this._c,a,this._bn,this._z,this._E):new b(this._c,a,this._bn,this._z,this._E),this._v.push(f),f},vertArray:function(a){return this._v[a]},destroy:function(){R.prototype.destroy.call(this);for(var a=0;a<this._v.length;++a)this._v[a].destroy();this._v=[]},numVerts:function(){return this._v[0].numVerts()},shaderForStyleAndPass:function(a,b,c){if("normal"===c)return a.hemilight;if("select"===c)return a.select;if("outline"===c)return a.outline;var d=a[c];return void 0!==d?d:null},_cg:function(a,b,c,d){var e;if(d)for(e=0;e<c.length;++e)c[e].drawSymmetryRelated(a,b,d);else for(a.bind(b),this._c.uniform1i(b.symId,255),e=0;e<c.length;++e)c[e].bind(b),c[e].draw(),c[e].releaseAttribs(b)},vertArrays:function(){return this._v},addVertex:function(a,b,c,d){var e=this._v[0];e.addVertex(a,b,c,d)},addTriangle:function(a,b,c){var d=this._v[0];d.addTriangle(a,b,c)}}),c}(s,r),u=function(a){function b(a,b){R.call(this,a),this._bg=[],this._z=b,this._cQ=1}var c=a.LineChainData;return d.derive(b,R,{addChainVertArray:function(a,b){var d=new c(a.name(),this._c,b,this._z);return this._bg.push(d),d},setLineWidth:function(a){this._cQ=a},vertArrays:function(){return this._bg},shaderForStyleAndPass:function(a,b,c){return"outline"===c?null:"select"===c?a.select:a.lines},destroy:function(){R.prototype.destroy.call(this);for(var a=0;a<this._bg.length;++a)this._bg[a].destroy();this._bg=[]},_cg:function(a,b,c,d){this._c.lineWidth(this._cQ*a.upsamplingFactor());var e;if(d)for(e=0;e<c.length;++e)c[e].drawSymmetryRelated(a,b,d);else for(this._c.uniform1i(b.symId,255),a.bind(b),e=0;e<c.length;++e)c[e].bind(b),c[e].draw(),c[e].releaseAttribs(b)},vertArray:function(){return this._U}}),b}(s),v=function(){function a(a,b){this._i=a,this._w=[],this._bu=b}function c(a,b,c){this._i=a,this._w=[],this._bu=c,this._bH=b||1,this._bA={}}return a.prototype={addAssoc:function(a,b,c,d){this._w.push({atom:a,vertexArray:b,vertStart:c,vertEnd:d})},recolor:function(a,b){var c=new Float32Array(4*b.atomCount());this._bu&&a.begin(this._i);var d={};b.eachAtom(function(b,e){d[b.index()]=e,a.colorFor(b,c,4*e)}),this._bu&&a.end(this._i);for(var e=0;e<this._w.length;++e){var f=this._w[e],g=d[f.atom.index()];if(void 0!==g)for(var h=c[4*g+0],i=c[4*g+1],j=c[4*g+2],k=c[4*g+3],l=f.vertexArray,m=f.vertStart;m<f.vertEnd;++m)l.setColor(m,h,i,j,k)}},getColorForAtom:function(a,b){for(var c=0;c<this._w.length;++c){var d=this._w[c];if(d.atom.full()===a.full())return d.vertexArray.getColor(d.vertStart,b)}return null},setOpacity:function(a,b){var c={};b.eachAtom(function(a){c[a.index()]=!0});for(var d=0;d<this._w.length;++d){var e=this._w[d],f=c[e.atom.index()];if(f===!0)for(var g=e.vertexArray,h=e.vertStart;h<e.vertEnd;++h)g.setOpacity(h,a)}}},c.prototype={setPerResidueColors:function(a,b){this._bA[a]=b},addAssoc:function(a,b,c,d,e){this._w.push({traceIndex:a,slice:c,vertStart:d,vertEnd:e,vertexArray:b})},recolor:function(a,c){this._bu&&a.begin(this._i);var d,e,f=[],g=this._i.backboneTraces();for(d=0;d<g.length;++d){var h=this._bA[d],i=0,j=g[d];for(e=0;e<j.length();++e)c.containsResidue(j.residueAt(e))?(a.colorFor(j.centralAtomAt(e),h,i),i+=4):i+=4;f.push(this._bH>1?b.interpolateColor(h,this._bH):h)}for(d=0;d<this._w.length;++d){var k=this._w[d],l=k.slice,m=f[k.traceIndex],n=m[4*l],o=m[4*l+1],p=m[4*l+2],q=m[4*l+3],r=k.vertexArray;for(e=k.vertStart;e<k.vertEnd;++e)r.setColor(e,n,o,p,q)}this._bu&&a.end(this._i)},getColorForAtom:function(a,b){var c,d,e=this._i.backboneTraces(),f=a.full().residue();for(c=0;c<e.length;++c){var g=this._bA[c],h=0,i=e[c];for(d=0;d<i.length();++d){if(f===i.residueAt(d).full())return b[0]=g[h+0],b[1]=g[h+1],b[2]=g[h+2],b[3]=g[h+3],b;h+=4}}return null},setOpacity:function(a,c){var d,e,f=[],g=this._i.backboneTraces();for(d=0;d<g.length;++d){var h=this._bA[d],i=0,j=g[d];for(e=0;e<j.length();++e)c.containsResidue(j.residueAt(e))?(h[i+3]=a,i+=4):i+=4;f.push(this._bH>1?b.interpolateColor(h,this._bH):h)}for(d=0;d<this._w.length;++d){var k=this._w[d],l=k.slice,m=f[k.traceIndex],n=m[4*l+3],o=k.vertexArray;for(e=k.vertStart;e<k.vertEnd;++e)o.setOpacity(e,n)}}},{TraceVertexAssoc:c,AtomVertexAssoc:a}}(),w=function(c,d,e,f){function g(a,b,c){for(var d=0;c-1>d;++d)a.addTriangle(b,b+1+d,b+2+d);a.addTriangle(b,b+c,b+1)}function h(a,b,c){for(var d=b+c,e=0;c-1>e;++e)a.addTriangle(d,b+e+1,b+e);a.addTriangle(d,b,b+c-1)}var i=a.vec3,j=a.vec4,k=a.mat3,m=c.TubeProfile,n=c.ProtoSphere,o=c.ProtoCylinder,p=f.TraceVertexAssoc,q=f.AtomVertexAssoc,r=b.interpolateColor,s={},t=.7071,u=[-t,-t,0,t,-t,0,t,t,0,-t,t,0],v=[-6*t,-1*t,0,6*t,-1*t,0,6*t,1*t,0,-6*t,1*t,0],w=[-10*t,-1*t,0,10*t,-1*t,0,10*t,1*t,0,-10*t,1*t,0],x=function(){var a=i.create(),b=i.create(),c=i.create();return function(d,e,f,g){e=Math.max(e,1),f=Math.min(g-1,f);var h=3*(e-1);i.set(a,d[h],d[h+1],d[h+2]),i.set(c,d[3*e],d[3*e+1],d[3*e+2]);for(var j=e;f>j;++j)h=3*(j+1),i.set(b,d[h],d[h+1],d[h+2]),d[3*j+0]=.25*b[0]+.5*c[0]+.25*a[0],d[3*j+1]=.25*b[1]+.5*c[1]+.25*a[1],d[3*j+2]=.25*b[2]+.5*c[2]+.25*a[2],i.copy(a,c),i.copy(c,b)}}(),y=function(){var a=j.fromValues(0,0,0,1);return function(b,c,d,e){var f=e.atomCount(),g=d.idPool.getContinuousRange(f);b.addIdRange(g);var h=d.protoSphere.numVerts(),i=d.protoSphere.numIndices(),j=1.5*d.radiusMultiplier;b.addChainVertArray(e,h*f,i*f),e.eachAtom(function(e){var f=b.vertArrayWithSpaceFor(h);d.color.colorFor(e,a,0);var i=f.numVerts(),k=g.nextId({geom:b,atom:e});d.protoSphere.addTransformed(f,e.pos(),j,a,k);var l=f.numVerts();c.addAssoc(e,f,i,l)})}}();s.spheres=function(a,b,c){var e=new n(c.sphereDetail,c.sphereDetail);c.protoSphere=e;var f=new d(b,c.float32Allocator,c.uint16Allocator),g=new q(a,!0);return f.addVertAssoc(g),f.setShowRelated(c.showRelated),c.color.begin(a),a.eachChain(function(a){y(f,g,c,a)}),c.color.end(a),f};var z=function(){var a=i.create(),b=i.create(),c=j.fromValues(0,0,0,1),d=i.create(),e=i.create(),f=k.create();return function(g,h,j,k){var m=k.atomCount(),n=0;k.eachAtom(function(a){n+=a.bonds().length});var o=m*j.protoSphere.numVerts()+n*j.protoCyl.numVerts(),p=m*j.protoSphere.numIndices()+n*j.protoCyl.numIndices();g.addChainVertArray(k,o,p);var q=j.idPool.getContinuousRange(m);g.addIdRange(q),k.eachAtom(function(k){var m=j.protoSphere.numVerts()+k.bondCount()*j.protoCyl.numVerts(),n=g.vertArrayWithSpaceFor(m),o=n.numVerts(),p=q.nextId({geom:g,atom:k});j.color.colorFor(k,c,0),j.protoSphere.addTransformed(n,k.pos(),j.radius,c,p),k.eachBond(function(g){g.mid_point(a),i.sub(b,k.pos(),a);var h=i.length(b);i.scale(b,b,1/h),l.buildRotation(f,b,d,e,!1),i.add(a,a,k.pos()),i.scale(a,a,.5),j.protoCyl.addTransformed(n,a,h,j.radius,f,c,c,p,p)});var r=n.numVerts();h.addAssoc(k,n,o,r)})}}();s.ballsAndSticks=function(a,b,c){var e=new q(a,!0),f=new n(c.sphereDetail,c.sphereDetail),g=new o(c.arcDetail);c.protoSphere=f,c.protoCyl=g;var h=new d(b,c.float32Allocator,c.uint16Allocator);return h.addVertAssoc(e),h.setShowRelated(c.showRelated),c.color.begin(a),a.eachChain(function(a){z(h,e,c,a)}),c.color.end(a),h};var A=function(){var a=i.create(),b=j.fromValues(0,0,0,1);return function(c,d,e,f){var g=0,h=e.atomCount(),i=f.idPool.getContinuousRange(h);c.addIdRange(i),e.eachAtom(function(a){var b=a.bonds().length;g+=b?b:3});var j=c.addChainVertArray(e,2*g);e.eachAtom(function(e){var g=j.numVerts(),h=i.nextId({geom:c,atom:e});if(e.bonds().length)e.eachBond(function(c){c.mid_point(a),f.color.colorFor(e,b,0),j.addLine(e.pos(),b,a,b,h,h)});else{var k=.2,l=e.pos();f.color.colorFor(e,b,0),j.addLine([l[0]-k,l[1],l[2]],b,[l[0]+k,l[1],l[2]],b,h,h),j.addLine([l[0],l[1]-k,l[2]],b,[l[0],l[1]+k,l[2]],b,h,h),j.addLine([l[0],l[1],l[2]-k],b,[l[0],l[1],l[2]+k],b,h,h)}var m=j.numVerts();d.addAssoc(e,j,g,m)})}}();s.lines=function(a,b,c){var d=new q(a,!0);c.color.begin(a);var f=new e(b,c.float32Allocator);return f.setLineWidth(c.lineWidth),f.addVertAssoc(d),f.setShowRelated(c.showRelated),a.eachChain(function(a){A(f,d,a,c)}),c.color.end(a),f};var B=function(a){for(var b=0,c=0;c<a.length;++c)b+=2*(a[c].length()-1);return b},C=function(){var a=j.fromValues(0,0,0,1),b=j.fromValues(0,0,0,1),c=i.create(),d=i.create();return function(e,f,g,h,i,j){f.addAssoc(h,g,0,g.numVerts(),g.numVerts()+1);var k=j.float32Allocator.request(4*i.length()),l=j.idPool.getContinuousRange(i.length());e.addIdRange(l);for(var m,n=l.nextId({geom:e,atom:i.centralAtomAt(0)}),o=1;o<i.length();++o){j.color.colorFor(i.centralAtomAt(o-1),a,0),k[4*(o-1)+0]=a[0],k[4*(o-1)+1]=a[1],k[4*(o-1)+2]=a[2],k[4*(o-1)+3]=a[3],j.color.colorFor(i.centralAtomAt(o),b,0),i.posAt(c,o-1),i.posAt(d,o),m=l.nextId({geom:e,atom:i.centralAtomAt(o)}),g.addLine(c,a,d,b,n,m),n=m,m=null;var p=g.numVerts();f.addAssoc(h,g,o,p-1,p+(o===i.length()-1?0:1))}return k[4*i.length()-4]=b[0],k[4*i.length()-3]=b[1],k[4*i.length()-2]=b[2],k[4*i.length()-1]=b[3],f.setPerResidueColors(h,k),h+1}}(),D=function(a,b,c,d,e){for(var f=e.backboneTraces(),g=B(f),h=a.addChainVertArray(e,g),i=0;i<f.length;++i)d=C(a,b,h,d,f[i],c);return d};s.lineTrace=function(a,b,c){var d=new p(a,1,!0);c.color.begin(a);var f=new e(b,c.float32Allocator);f.setLineWidth(c.lineWidth);var g=0;return a.eachChain(function(a){g=D(f,d,c,g,a)}),f.addVertAssoc(d),f.setShowRelated(c.showRelated),c.color.end(a),f};var E=function(a,b){for(var c=0,d=0;d<a.length;++d)c+=2*(b*(a[d].length()-1)+1);return c},F=function(){var a=i.create(),b=i.create(),c=j.fromValues(0,0,0,1),d=j.fromValues(0,0,0,1);return function(e,f,g,h,i,j){var k,m=j.fullTraceIndex(0),n=h.float32Allocator.request(3*j.length()),o=h.float32Allocator.request(4*j.length()),p=[],q=h.idPool.getContinuousRange(j.length());for(e.addIdRange(q),k=0;k<j.length();++k){var s=j.centralAtomAt(k);j.smoothPosAt(a,k,h.strength),h.color.colorFor(s,o,4*k),n[3*k]=a[0],n[3*k+1]=a[1],n[3*k+2]=a[2],p.push(q.nextId({geom:e,atom:s}))}var t=p[0],u=0,v=l.catmullRomSpline(n,j.length(),h.splineDetail,h.strength,!1,h.float32Allocator),w=r(o,h.splineDetail),x=g.numVerts();f.addAssoc(i,g,m,x,x+1);var y=Math.floor(h.splineDetail/2),z=l.catmullRomSplineNumPoints(j.length(),h.splineDetail,!1);for(k=1;z>k;++k){a[0]=v[3*(k-1)],a[1]=v[3*(k-1)+1],a[2]=v[3*(k-1)+2],b[0]=v[3*(k-0)],b[1]=v[3*(k-0)+1],b[2]=v[3*(k-0)+2],c[0]=w[4*(k-1)+0],c[1]=w[4*(k-1)+1],c[2]=w[4*(k-1)+2],c[3]=w[4*(k-1)+3],d[0]=w[4*(k-0)+0],d[1]=w[4*(k-0)+1],d[2]=w[4*(k-0)+2],d[3]=w[4*(k-0)+3];var A=Math.floor((k+y)/h.splineDetail);u=p[Math.min(p.length-1,A)],g.addLine(a,c,b,d,t,u),t=u;var B=g.numVerts();f.addAssoc(i,g,m+k,B-1,B+(k===j.length-1?0:1))}return f.setPerResidueColors(i,o),h.float32Allocator.release(n),h.float32Allocator.release(v),i+1}}(),G=function(a,b,c,d,e){for(var f=d.backboneTraces(),g=E(f,c.splineDetail),h=a.addChainVertArray(d,g),i=0;i<f.length;++i)e=F(a,b,h,c,e,f[i]);return e};s.sline=function(a,b,c){c.color.begin(a);var d=new p(a,c.splineDetail,1,!0),f=new e(b,c.float32Allocator);f.addVertAssoc(d),f.setLineWidth(c.lineWidth),f.setShowRelated(c.showRelated);var g=0;return a.eachChain(function(a){g=G(f,d,c,a,g)}),c.color.end(a),f};var H=function(a,b,c){for(var d=0,e=0;e<a.length;++e)d+=a[e].length()*b,d+=(a[e].length()-1)*c;return d},I=function(a,b,c){for(var d=0,e=0;e<a.length;++e)d+=a[e].length()*b,d+=(a[e].length()-1)*c;return d},J=function(a,b,c,d,e){var f=e.backboneTraces(),g=H(f,c.protoSphere.numVerts(),c.protoCyl.numVerts()),h=I(f,c.protoSphere.numIndices(),c.protoCyl.numIndices());a.addChainVertArray(e,g,h);for(var i=0;i<f.length;++i)R(a,b,f[i],d,c),d++;return d};s.trace=function(a,b,c){c.protoCyl=new o(c.arcDetail),c.protoSphere=new n(c.sphereDetail,c.sphereDetail);var e=new d(b,c.float32Allocator,c.uint16Allocator),f=new p(a,1,!0);e.addVertAssoc(f),e.setShowRelated(c.showRelated),c.color.begin(a);var g=0;return a.eachChain(function(a){g=J(e,f,c,g,a)}),c.color.end(a),e};var K=function(a,b,c){for(var d=0,e=0;e<a.length;++e){var f=((a[e].length()-1)*c+1)*b,g=Math.ceil((f+2)/65536);d+=f+(g-1)*b,d+=2}return d},L=function(a,b,c){for(var d=0,e=0;e<a.length;++e)d+=(a[e].length()*c-1)*b*6,d+=6*b;return d},M=function(){var a=k.create(),b=i.create(),c=i.create(),d=i.create(),e=i.create(),f=j.create();return function(g,h,j,k){for(var m=1.8*k.radius,n=k.protoCyl.numVerts()+2*k.protoSphere.numVerts(),o=0;o<j.length;++o){var p=j[o],q=k.idPool.getContinuousRange(p.length());g.addIdRange(q);for(var r=0;r<p.length();++r){var s=g.vertArrayWithSpaceFor(n),t=s.numVerts(),u=p.residueAt(r),v=u.name(),w=u.atom("C3'"),x=null;if(x=u.atom("A"===v||"G"===v||"DA"===v||"DG"===v?"N1":"N3"),null!==x&&null!==w){var y=q.nextId({geom:g,atom:x});i.add(e,w.pos(),x.pos()),i.scale(e,e,.5),k.color.colorFor(x,f,0),i.sub(d,x.pos(),w.pos());var z=i.length(d);i.scale(d,d,1/z),l.buildRotation(a,d,c,b,!1),k.protoCyl.addTransformed(s,e,z,m,a,f,f,y,y),k.protoSphere.addTransformed(s,x.pos(),m,f,y),k.protoSphere.addTransformed(s,w.pos(),m,f,y);var A=s.numVerts();h.addAssoc(x,s,t,A)}}}}}(),N=function(a,b,c,d,e,f){for(var g=f.backboneTraces(),h=K(g,4*d.arcDetail,d.splineDetail),i=L(g,4*d.arcDetail,d.splineDetail),j=[],k=d.protoCyl.numVerts()+2*d.protoSphere.numVerts(),l=d.protoCyl.numIndices()+2*d.protoSphere.numIndices(),m=0;m<g.length;++m){var n=g[m];n.residueAt(0).isNucleotide()&&(j.push(n),h+=n.length()*k,i+=n.length()*l)}a.addChainVertArray(f,h,i);for(var o=0;o<g.length;++o)e=Q(a,b,g[o],e,d);return M(a,c,j,d),e};s.cartoon=function(a,b,c){c.arrowSkip=Math.floor(3*c.splineDetail/4),c.coilProfile=new m(u,c.arcDetail,1),c.helixProfile=new m(v,c.arcDetail,.1),c.strandProfile=new m(v,c.arcDetail,.1),c.arrowProfile=new m(w,c.arcDetail,.1),c.protoCyl=new o(4*c.arcDetail),c.protoSphere=new n(4*c.arcDetail,4*c.arcDetail);var e=new d(b,c.float32Allocator,c.uint16Allocator),f=new p(a,c.splineDetail,!0);e.addVertAssoc(f),e.setShowRelated(c.showRelated),c.color.begin(a);var g=0,h=a.select({anames:["N1","N3"]}),i=new q(h,!0);return e.addVertAssoc(i),a.eachChain(function(a){g=N(e,f,i,c,g,a)}),c.color.end(a),e},s.surface=function(){var a=i.create(),b=i.create(),c=j.fromValues(.8,.8,.8,1);return function(e,f,g){var h=0;e.getUint32(0),h+=4;var j=e.getUint32(h);h+=4;var k=24,l=k*j+h,m=e.getUint32(l),n=new d(f,g.float32Allocator,g.uint16Allocator);n.setShowRelated("asym");var o,p=n.addVertArray(j,3*m);for(o=0;j>o;++o)i.set(a,e.getFloat32(h+0),e.getFloat32(h+4),e.getFloat32(h+8)),h+=12,i.set(b,e.getFloat32(h+0),e.getFloat32(h+4),e.getFloat32(h+8)),h+=12,p.addVertex(a,b,c,0);for(h=l+4,o=0;m>o;++o){var q=e.getUint32(h+0),r=e.getUint32(h+4),s=e.getUint32(h+8);h+=12,p.addTriangle(q-1,s-1,r-1)}return n}}();var O=function(){var a=k.create(),b=i.create();return function(c,d,e,f,g,h,j,k,m,n,o){var p=m.coilProfile;"C"===f||m.forceTube?k?l.ortho(e,g):i.cross(e,b,g):"H"===f?p=m.helixProfile:"E"===f?p=m.strandProfile:"A"===f&&(p=m.arrowProfile),l.buildRotation(a,g,e,b,!0),p.addTransformed(c,d,j,a,h,k,n,o)}}(),P=function(){var a=i.create(),b=i.create(),c=i.create();return function(d,e,f,g,h,j,k,l){var m=null,n=null,o=e.length();i.set(c,0,0,0);for(var p=0;o>p;++p){j.push(k.nextId({geom:d,atom:e.centralAtomAt(p)})),e.smoothPosAt(a,p,l.strength),g[3*p]=a[0],g[3*p+1]=a[1],g[3*p+2]=a[2],e.smoothNormalAt(b,p,l.strength);var q=e.centralAtomAt(p);l.color.colorFor(q,f,4*p),i.dot(b,c)<0&&i.scale(b,b,-1),"E"!==e.residueAt(p).ss()||l.forceTube||(null===m&&(m=p),n=p),"C"===e.residueAt(p).ss()&&null!==m&&(x(g,m,n,o),x(h,m,n,o),m=null,n=null),h[3*p]=g[3*p]+b[0]+c[0],h[3*p+1]=g[3*p+1]+b[1]+c[1],h[3*p+2]=g[3*p+2]+b[2]+c[2],i.copy(c,b)}}}(),Q=function(){var a=i.create(),b=i.create(),c=j.fromValues(0,0,0,1),d=i.create(),e=i.create();return function(f,k,m,n,o){var p=K([m],4*o.arcDetail,o.splineDetail),q=o.float32Allocator.request(3*m.length()),s=o.float32Allocator.request(4*m.length()),t=o.float32Allocator.request(3*m.length()),u=[],v=o.idPool.getContinuousRange(m.length());f.addIdRange(v),P(f,m,s,q,t,u,v,o);var w=f.vertArrayWithSpaceFor(p),x=l.catmullRomSpline(q,m.length(),o.splineDetail,o.strength,!1,o.float32Allocator),y=l.catmullRomSpline(t,m.length(),o.splineDetail,o.strength,!1,o.float32Allocator);k.setPerResidueColors(n,s);var z=o.radius*(m.residueAt(0).isAminoacid()?1:1.8),A=r(s,o.splineDetail);i.set(a,x[3]-x[0],x[4]-x[1],x[5]-x[2]),i.set(b,x[0],x[1],x[2]),i.set(d,y[0]-x[0],y[1]-x[0],y[2]-x[2]),i.normalize(a,a),i.normalize(d,d),j.set(c,A[0],A[1],A[2],A[3]);var B=w.numVerts();w.addVertex(b,[-a[0],-a[1],-a[2]],c,u[0]),O(w,b,d,m.residueAt(0).ss(),a,c,z,!0,o,0,u[0]),g(w,B,4*o.arcDetail);var C=w.numVerts(),D=0;k.addAssoc(n,w,D,B,C),D+=1;for(var E=Math.floor(o.splineDetail/2),F=l.catmullRomSplineNumPoints(m.length(),o.splineDetail,!1),G=4*o.arcDetail,H=1,I=F;I>H;++H){var J=3*H,L=4*H,M=3*(H+1),N=3*(H-1);i.set(b,x[J],x[J+1],x[J+2]),H===I-1?i.set(a,x[J]-x[N],x[J+1]-x[N+1],x[J+2]-x[N+2]):i.set(a,x[M]-x[N],x[M+1]-x[N+1],x[M+2]-x[N+2]),i.normalize(a,a),j.set(c,A[L],A[L+1],A[L+2],A[L+3]);var Q=0,R=Math.floor(H/o.splineDetail),S=Math.floor((H-1)/o.splineDetail),T=Math.floor((H+o.arrowSkip)/o.splineDetail),U=!1,V=m.residueAt(R).ss();if(!o.forceTube){if(R!==S){var W=m.residueAt(S).ss();if("C"===W&&("H"===V||"E"===V)){i.set(e,y[N]-x[N],y[N+1]-x[N+1],y[N+2]-x[N+2]),i.normalize(e,e);var X=2*Math.PI/(4*o.arcDetail),Y=l.signedAngle(d,e,a);Q=Math.round(Y/X),Q=(Q+4*o.arcDetail)%(4*o.arcDetail)}}if(T!==R&&T<m.length()){var Z=m.residueAt(T).ss();"C"===Z&&"E"===V&&(U=!0)}}i.set(d,y[3*H]-x[J],y[J+1]-x[J+1],y[J+2]-x[J+2]),i.normalize(d,d),B=w.numVerts();var $=Math.floor((H+E)/o.splineDetail),_cr=u[Math.min(u.length-1,$)];O(w,b,d,V,a,c,z,!1,o,Q,_cr);var ab=H===I-1?1:G;w.numVerts()+ab>w.maxVerts()&&(C=w.numVerts(),k.addAssoc(n,w,D,B,C),w=f.vertArrayWithSpaceFor(ab),B=0,O(w,b,d,V,a,c,z,!0,o,0,_cr)),U&&(k.addAssoc(n,w,D,B,C),O(w,b,d,"A",a,c,z,!1,o,0,_cr),H+=o.arrowSkip),C=w.numVerts(),H===I-1&&(C+=1),k.addAssoc(n,w,D,B,C),D+=1,U&&(D+=o.arrowSkip)}return w.addVertex(b,a,c,u[u.length-1]),h(w,B,4*o.arcDetail),o.float32Allocator.release(t),o.float32Allocator.release(q),n+1}}(),R=function(){var a=k.create(),b=i.create(),c=i.create(),d=i.create(),e=i.create(),f=i.create(),g=i.create(),h=j.fromValues(0,0,0,1),m=j.fromValues(0,0,0,1);return function(j,k,n,o,p){if(0!==n.length()){var q=p.idPool.getContinuousRange(n.length());j.addIdRange(q),p.color.colorFor(n.centralAtomAt(0),h,0);var r=H([n],p.protoSphere.numVerts(),p.protoCyl.numVerts()),s=r,t=j.vertArrayWithSpaceFor(r),u=t.maxVerts(),v=t.numVerts();n.posAt(f,0);var w=q.nextId({geom:j,atom:n.centralAtomAt(0)}),x=0;p.protoSphere.addTransformed(t,f,p.radius,h,w);var y=null;k.addAssoc(o,t,0,v,y);var z=p.float32Allocator.request(4*n.length());z[0]=h[0],z[1]=h[1],z[2]=h[2],z[3]=h[3];for(var A=p.protoCyl.numVerts()+p.protoSphere.numVerts(),B=1;B<n.length();++B){x=q.nextId({geom:j,atom:n.centralAtomAt(B)}),n.posAt(f,B-1),n.posAt(g,B),p.color.colorFor(n.centralAtomAt(B),m,0),z[4*B+0]=m[0],z[4*B+1]=m[1],z[4*B+2]=m[2],z[4*B+3]=m[3],i.sub(b,g,f);var C=i.length(b);i.scale(b,b,1/C),l.buildRotation(a,b,c,d,!1),i.copy(e,f),i.add(e,e,g),i.scale(e,e,.5),A>u-t.numVerts()&&(t=j.vertArrayWithSpaceFor(s)),s-=A;var D=t.numVerts();p.protoCyl.addTransformed(t,e,C,p.radius,a,h,m,w,x),y=t.numVerts(),y-=(y-D)/2,p.protoSphere.addTransformed(t,g,p.radius,m,x),w=x,k.addAssoc(o,t,B,v,y),v=y,i.copy(h,m)}k.setPerResidueColors(o,z),k.addAssoc(o,t,n.length()-1,v,t.numVerts())}}}();return s}(m,t,u,v),x=function(){function a(a,b,c,d,e,f){O.call(this,a);var g=f||{};this._b={},this._b.fillStyle=g.fillStyle||"#000",this._b.backgroundAlpha=g.backgroundAlpha||0,this._b.fontSize=g.fontSize||24,this._b.font=g.font||"Verdana",this._b.fontStyle=g.fontStyle||"normal",this._b.fontColor=g.fontColor||"#000",this._bW=100,this._cH=d,this._dT=this._c.createBuffer(),this._g=new Float32Array(30),this._dF(b,c,e);var h=.5,i=.5;this._g[0]=d[0],this._g[1]=d[1],this._g[2]=d[2],this._g[3]=-h,this._g[4]=-i,this._g[5]=d[0],this._g[6]=d[1],this._g[7]=d[2],this._g[8]=h,this._g[9]=i,this._g[10]=d[0],this._g[11]=d[1],this._g[12]=d[2],this._g[13]=h,this._g[14]=-i,this._g[15]=d[0],this._g[16]=d[1],this._g[17]=d[2],this._g[18]=-h,this._g[19]=-i,this._g[20]=d[0],this._g[21]=d[1],this._g[22]=d[2],this._g[23]=-h,this._g[24]=i,this._g[25]=d[0],this._g[26]=d[1],this._g[27]=d[2],this._g[28]=h,this._g[29]=i}function b(a){for(var b=1;a>b;)b*=2;return b}return d.derive(a,O,{updateProjectionIntervals:function(){},updateSquaredSphereRadius:function(a,b){return b},_cB:function(a){a.fillStyle=this._b.fontColor,a.textAlign="left",a.textBaseline="bottom",a.font=this._b.fontStyle+" "+this._b.fontSize+"px "+this._b.font},_dF:function(a,c,d){this._cB(c);var e=c.measureText(d).width,f=24;a.width=b(e),a.height=b(f),c.fillStyle=this._b.fillStyle,c.globalAlpha=this._b.backgroundAlpha,c.fillRect(0,0,a.width,a.height),this._cB(c),c.globalAlpha=1,c.lineWidth=.5,c.lineStyle="none",c.fillText(d,0,a.height),c.strokeText(d,0,a.height),this._cx=this._c.createTexture(),this._dv(this._cx,a),this._do=e/a.width,this._dn=f/a.height,this._k=e,this._m=f},_dv:function(a,b){var c=this._c;c.pixelStorei(c.UNPACK_FLIP_Y_WEBGL,!0),c.bindTexture(c.TEXTURE_2D,a),c.texImage2D(c.TEXTURE_2D,0,c.RGBA,c.RGBA,c.UNSIGNED_BYTE,b),c.texParameteri(c.TEXTURE_2D,c.TEXTURE_MAG_FILTER,c.NEAREST),c.texParameteri(c.TEXTURE_2D,c.TEXTURE_MIN_FILTER,c.NEAREST),c.generateMipmap(c.TEXTURE_2D),c.bindTexture(c.TEXTURE_2D,null)},bind:function(){var a=this._c;a.bindBuffer(a.ARRAY_BUFFER,this._dT),a.activeTexture(a.TEXTURE0),a.bindTexture(a.TEXTURE_2D,this._cx),this._p||(a.bufferData(a.ARRAY_BUFFER,this._g,a.STATIC_DRAW),this._p=!0)},draw:function(a,b,c,d){if(this._N&&"normal"===d){var e=b.text;a.bind(e),this.bind();var f=this._c,g=a.upsamplingFactor();f.uniform1f(f.getUniformLocation(e,"xScale"),this._do),f.uniform1f(f.getUniformLocation(e,"yScale"),this._dn),f.uniform1f(f.getUniformLocation(e,"width"),2*g*this._k/a.viewportWidth()),f.uniform1f(f.getUniformLocation(e,"height"),2*g*this._m/a.viewportHeight()),f.uniform1i(f.getUniformLocation(e,"sampler"),0);var h=f.getAttribLocation(e,"attrCenter");f.enableVertexAttribArray(h),f.vertexAttribPointer(h,3,f.FLOAT,!1,20,0);var i=f.getAttribLocation(e,"attrCorner");f.vertexAttribPointer(i,2,f.FLOAT,!1,20,12),f.enableVertexAttribArray(i),f.enable(f.BLEND),f.blendFunc(f.SRC_ALPHA,f.ONE_MINUS_SRC_ALPHA),f.drawArrays(f.TRIANGLES,0,6),f.disableVertexAttribArray(h),f.disableVertexAttribArray(i),f.disable(f.BLEND)}}}),a}(),y=function(c){function e(){this._d=[],this._C=[],this._P=0}function f(a,b,d,f){O.call(this,b),this._z=d,this._E=f,this._A=new e,this._dC=new c.ProtoSphere(8,8),this._dD=new c.ProtoCylinder(8),this._U=null,this._p=!1}function g(a,b,c){for(var d=0;c-1>d;++d)a.addTriangle(b,b+1+d,b+2+d);a.addTriangle(b,b+c,b+1)}function h(a,b,c){for(var d=b+c,e=0;c-1>e;++e)a.addTriangle(d,b+e+1,b+e);a.addTriangle(d,b,b+c-1)}var i=a.vec3,j=a.mat3,k=b.forceRGB;return e.prototype={numVerts:function(){return this._P},addVertex:function(a,b,c,d){this._P+=1,this._d.push(a[0],a[1],a[2],b[0],b[1],b[2],c[0],c[1],c[2],c[3],d)},addTriangle:function(a,b,c){this._C.push(a,b,c)},numIndices:function(){return this._C.length},indexData:function(){return this._C},vertData:function(){return this._d}},d.derive(f,O,{updateProjectionIntervals:function(){},updateSquaredSphereRadius:function(a,b){return b},addTube:function(){var a=i.create(),b=i.create(),c=i.create(),d=i.create(),e=j.create();return function(f,j,m,n){n=n||{};var o=k(n.color||"white"),p=!0;void 0!==n.cap&&(p=n.cap),i.sub(d,j,f);var q=i.length(d);if(i.normalize(d,d),i.add(a,f,j),i.scale(a,a,.5),l.buildRotation(e,d,b,c,!1),p){var r=this._A.numVerts();this._A.addVertex(f,[-d[0],-d[1],-d[2]],o,0),g(this._A,r,8)}if(this._dD.addTransformed(this._A,a,q,m,e,o,o,0,0),p){var s=this._A.numVerts();this._A.addVertex(j,d,o,0),h(this._A,s-8,8)}this._p=!1}}(),addSphere:function(a,b,c){c=c||{};var d=k(c.color||"white");
+this._dC.addTransformed(this._A,a,b,d,0),this._p=!1},_dE:function(){this._p=!0,null!==this._U&&this._U.destroy(),this._U=new Q(this._c,this._A.numVerts(),this._A.numIndices(),this._z,this._E),this._U.setIndexData(this._A.indexData()),this._U.setVertData(this._A.vertData())},draw:function(a,b,c,d){if(this._N){this._p||this._dE();var e=this.shaderForStyleAndPass(b,c,d);if(e){a.bind(e),this._c.uniform1i(e.symId,255);var f=this._U;f.bind(e),f.draw(),f.releaseAttribs(e)}}},shaderForStyleAndPass:function(a,b,c){if("normal"===c)return a.hemilight;if("select"===c)return null;if("outline"===c)return a.outline;var d=a[c];return void 0!==d?d:null}}),f}(m),z=function(){function b(a,b,c){this._cb=a,this._bO=b,this._bc=c,this._eq=c,this._bj=Date.now(),this._cP=!1,this._cc=!1}function c(a,c,d){b.call(this,o.clone(a),o.clone(c),d),this._Q=o.clone(a)}function e(a,c,d){var e=q.create(),f=q.create();q.fromMat4(e,a),q.fromMat4(f,c);var g=p.create(),h=p.create();p.fromMat3(g,e),p.fromMat3(h,f),this._Q=q.create(),b.call(this,g,h,d)}function f(a,c){b.call(this,null,null,c),this._cq=o.clone(a),this.setLooping(!0),this._cG=0}function g(a,c){var d=1e3*(2*Math.PI/c);b.call(this,null,null,d),this._cq=o.clone(a),this.setLooping(!0),this._eo=c,this._cF=0}function h(){this._bf=[]}function i(a,b,d){return new c(a,b,d)}function j(a,b,c){return new e(a,b,c)}function k(a,c,d){return new b(a,c,d)}function m(a,b){return new g(a,b)}function n(){return new f([0,1,0],2e3)}var o=a.vec3,p=a.quat,q=a.mat3;return b.prototype={setLooping:function(a){this._cP=a},step:function(a){var b,c=Date.now(),d=c-this._bj;if(0===this._bc)b=1;else if(this._cP){var e=Math.floor(d/this._bc);b=(d-e*this._bc)/this._bc}else d=Math.min(this._bc,d),b=d/this._bc,this._cc=1===b;return this.apply(a,b),this._cc},apply:function(a,b){var c=(1-Math.cos(b*Math.PI))/2;this._Q=this._cb*(1-c)+this._bO*c,a.setZoom(this._Q)},finished:function(){return this._cc}},d.derive(c,b,{apply:function(a,b){var c=(1-Math.cos(b*Math.PI))/2;o.lerp(this._Q,this._cb,this._bO,c),a.setCenter(this._Q)}}),d.derive(e,b,{apply:function(){var a=p.create();return function(b,c){p.slerp(a,this._cb,this._bO,c),q.fromQuat(this._Q,a),b.setRotation(this._Q)}}()}),d.derive(f,b,{apply:function(){var a=q.create(),b=q.create();return function(c,d){q.fromMat4(b,c.rotation());var e=.2*Math.sin(2*d*Math.PI),f=e-this._cG;this._cG=e,l.axisRotation(a,this._cq,f),q.mul(b,a,b),c.setRotation(b)}}()}),d.derive(g,b,{apply:function(){var a=q.create(),b=q.create();return function(c,d){q.fromMat4(b,c.rotation());var e=2*Math.PI*(d-this._cF);this._cF=d,l.axisRotation(a,this._cq,e),q.mul(b,a,b),c.setRotation(b)}}()}),h.prototype={run:function(a){var b=Date.now();return this._bf=this._bf.filter(function(c){return!c.step(a,b)}),this._bf.length>0},add:function(a){this._bf.push(a)},remove:function(a){this._bf=this._bf.filter(function(b){return b!==a})}},{AnimationControl:h,move:i,rotate:j,zoom:k,rockAndRoll:n,spin:m}}(),A=function(){function a(a,b){this.near=a,this.far=b}function b(a){a=a||{},this._8=a.near||.1,this._2=a.far||400}function c(){this._2=100}return b.prototype.update=function(){return new a(this._8,this._2)},c.prototype.update=function(b,c){for(var d=c.center(),e=null,f=0;f<b.length;++f){var g=b[f];g.visible()&&(e=g.updateSquaredSphereRadius(d,e))}if(null===e)return null;e=Math.sqrt(e);var h=c.zoom(),i=1.05*(e+h),j=.1;return new a(j,i)},{FixedSlab:b,AutoSlab:c,Slab:a}}(),B=function(c,e,f,g,h,i,j,k,l,m,n,o){function p(){return/(iPad|iPhone|iPod)/g.test(navigator.userAgent)}function q(a,b){return a=a||"auto","fixed"===a?new A.FixedSlab(b):"auto"===a?new A.AutoSlab(b):null}function r(a,b,c){this._dI=a,this._dx=b,this._ds=c}function s(a,b){this._b=this._dW(b,a),this._bI=!1,this._l=[],this._H=a,this._bT=!1,this._W=!1,this._dR=null,this._cJ=new c,this._bk=null,this._bm=null,this.listenerMap={},this._S=new o.AnimationControl,this._b5(),this.quality(this._b.quality),null!==this._b.atomDoubleClicked&&this.addListener("atomDoubleClicked",this._b.atomDoubleClicked),null!==this._b.atomClick&&this.addListener("atomClicked",this._b.atomClick),"complete"===document.readyState||"loaded"===document.readyState||"interactive"===document.readyState?this._cU():document.addEventListener("DOMContentLoaded",d.bind(this,this._cU))}function t(a,b,c){return b in a?a[b]:c}var u='<div style="vertical-align:middle; text-align:center;"><h1>WebGL not supported</h1><p>Your browser does not support WebGL. You might want to try Chrome, Firefox, IE 11, or newer versions of Safari</p><p>If you are using a recent version of one of the above browsers, your graphic card might be blocked. Check the browser documentation for details on how to unblock it.</p></div>',v=a.vec3,w=a.mat4,x=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||function(a){window.setTimeout(a,1e3/60)}}();return r.prototype={object:function(){return this._dI},symIndex:function(){return this._dx},transform:function(){return this._ds}},s.prototype={_dW:function(a,c){a=a||{};var d={width:a.width||500,height:a.height||500,animateTime:a.animateTime||0,antialias:a.antialias,quality:t(a,"quality","low"),style:t(a,"style","hemilight"),background:b.forceRGB(a.background||"white"),slabMode:q(a.slabMode),atomClick:a.atomClicked||a.atomClick||null,outline:t(a,"outline",!0),atomDoubleClicked:t(a,"atomDoubleClicked",t(a,"atomDoubleClick","center")),fog:t(a,"fog",!0)},e=c.getBoundingClientRect();return"auto"===d.width&&(d.width=e.width),"auto"===d.height&&(d.height=e.height),d},_ce:function(){this._W&&(this._W=!1,this._e.setViewportSize(this._.viewportWidth(),this._.viewportHeight()),this._bV.resize(this._b.width,this._b.height))},resize:function(a,b){(a!==this._b.width||b!==this._b.height)&&(this._.resize(a,b),this._W=!0,this._b.width=a,this._b.height=b,this.requestRedraw())},fitParent:function(){var a=this._H.getBoundingClientRect();this.resize(a.width,a.height)},gl:function(){return this._.gl()},ok:function(){return this._bI},options:function(a,b){return void 0!==b?("fog"===a?(this._e.fog(b),this._b.fog=b,this.requestRedraw()):this._b[a]=b,b):this._b[a]},quality:function(a){return this._b.quality=a,"high"===a?(this._b.arcDetail=4,this._b.sphereDetail=16,void(this._b.splineDetail=8)):"medium"===a?(this._b.arcDetail=3,this._b.sphereDetail=10,void(this._b.splineDetail=4)):"low"===a?(this._b.arcDetail=2,this._b.sphereDetail=8,void(this._b.splineDetail=2)):void 0},imageData:function(){return this._.imageData()},_dV:function(){var a={width:this._b.width,height:this._b.height};this._bV=new f(this._.gl(),a)},_cU:function(){if(!this._.initGL())return this._H.removeChild(this._),this._H.innerHTML=u,this._H.style.width=this._b.width+"px",this._H.style.height=this._b.height+"px",!1;this._dV(),this._em=this._by.getContext("2d"),this._z=new g(Float32Array),this._E=new g(Uint16Array),this._e=new h(this._.gl()),this._e.setUpsamplingFactor(this._.superSamplingFactor()),this._e.fog(this._b.fog),this._e.setFogColor(this._b.background),this._b0.setCam(this._e);var a=this._,b=p()?"highp":"mediump";return this._dy={hemilight:a.initShader(i.HEMILIGHT_VS,i.HEMILIGHT_FS,b),outline:a.initShader(i.OUTLINE_VS,i.OUTLINE_FS,b),lines:a.initShader(i.HEMILIGHT_VS,i.LINES_FS,b),text:a.initShader(i.TEXT_VS,i.TEXT_FS,b),select:a.initShader(i.SELECT_VS,i.SELECT_FS,b)},this._ed=d.bind(this,this._d6),this._en=new j(this._.domElement(),this,this._e),this._bI||(this._bI=!0,this._ch({name:"viewerReadyEvent"},"viewerReady",this)),!0},requestRedraw:function(){this._bT||(this._bT=!0,x(this._ed))},_cf:function(a){for(var b=0,c=this._l.length;b!==c;++b)this._l[b].draw(this._e,this._dy,this._b.style,a)},_b5:function(){var a={antialias:this._b.antialias,height:this._b.height,width:this._b.width,backgroundColor:this._b.background};this._=new e.Canvas(this._H,a),this._by=document.createElement("canvas"),this._by.style.display="none",this._H.appendChild(this._by),this._b0=new k(this._,this,this._e,this._b.animateTime)},setRotation:function(a,b){if(b|=0,0===b)return this._e.setRotation(a),void this.requestRedraw();var c;9===a.length?(c=w.create(),w.fromMat3(c,a)):c=w.clone(a),this._S.add(o.rotate(this._e.rotation(),c,b)),this.requestRedraw()},setCamera:function(a,b,c,d){d|=0,this.setCenter(b,d),this.setRotation(a,d),this.setZoom(c,d)},_ef:function(){var a=this._S.run(this._e);a&&this.requestRedraw()},_d6:function(){if(null!==this._){this._bT=!1,this._ef(),this._.bind(),this._ce();var a=this._.gl();a.clear(a.COLOR_BUFFER_BIT|a.DEPTH_BUFFER_BIT);var b=this._b.slabMode.update(this._l,this._e);null!==b&&this._e.setNearFar(b.near,b.far),a.enable(a.CULL_FACE),this._b.outline&&(a.cullFace(a.BACK),a.enable(a.CULL_FACE),this._cf("outline")),a.cullFace(a.FRONT),a.enable(a.BLEND),this._cf("normal")}},setCenter:function(a,b){return b|=0,0===b?void this._e.setCenter(a):(this._S.add(o.move(this._e.center(),v.clone(a),b)),void this.requestRedraw())},setZoom:function(a,b){return b|=0,0===b?void this._e.setZoom(a):(this._S.add(o.zoom(this._e.zoom(),a,b)),void this.requestRedraw())},centerOn:function(a,b){this.setCenter(a.center(),b)},clear:function(){for(var a=0;a<this._l.length;++a)this._l[a].destroy();this._l=[]},addListener:function(a,b){var c=this.listenerMap[a];if("undefined"==typeof c&&(c=[],this.listenerMap[a]=c),"center"===b){var e=d.bind(this._b0,this._b0._d9);c.push(e)}else c.push(b);this._bI&&"viewerReady"===a&&b(this,null)},_ch:function(a,b,c){var d=this.listenerMap[b];d&&d.forEach(function(b){b(c,a)})},RENDER_MODES:["sline","lines","trace","lineTrace","cartoon","tube","spheres","ballsAndSticks"],renderAs:function(a,b,c,d){for(var e=!1,f=0;f<this.RENDER_MODES.length;++f)if(this.RENDER_MODES[f]===c){e=!0;break}return e?this[c](a,b,d):void 0},_0:function(a,b){return a=this._b9(a),a.showRelated=a.showRelated||"asym",a.showRelated&&"asym"!==a.showRelated&&null===b.assembly(a.showRelated)&&(a.showRelated="asym"),a},_b9:function(a){return a=d.copy(a),a.float32Allocator=this._z,a.uint16Allocator=this._E,a.idPool=this._cJ,a},lineTrace:function(a,c,d){var e=this._0(d,c);e.color=e.color||b.uniform([1,0,1]),e.lineWidth=e.lineWidth||4;var f=l.lineTrace(c,this._.gl(),e);return this.add(a,f)},spheres:function(a,c,d){var e=this._0(d,c);e.color=e.color||b.byElement(),e.sphereDetail=this.options("sphereDetail"),e.radiusMultiplier=e.radiusMultiplier||1;var f=l.spheres(c,this._.gl(),e);return this.add(a,f)},sline:function(a,c,d){var e=this._0(d,c);e.color=e.color||b.uniform([1,0,1]),e.splineDetail=e.splineDetail||this.options("splineDetail"),e.strength=e.strength||1,e.lineWidth=e.lineWidth||4;var f=l.sline(c,this._.gl(),e);return this.add(a,f)},cartoon:function(a,c,d){var e=this._0(d,c);e.color=e.color||b.bySS(),e.strength=e.strength||1,e.splineDetail=e.splineDetail||this.options("splineDetail"),e.arcDetail=e.arcDetail||this.options("arcDetail"),e.radius=e.radius||.3,e.forceTube=e.forceTube||!1;var f=l.cartoon(c,this._.gl(),e),g=this.add(a,f);return g},surface:function(a,b,c){var d=this._b9(c),e=l.surface(b,this._.gl(),d);return this.add(a,e)},tube:function(a,b,c){return c=c||{},c.forceTube=!0,this.cartoon(a,b,c)},ballsAndSticks:function(a,c,d){var e=this._0(d,c);e.color=e.color||b.byElement(),e.radius=e.radius||.3,e.arcDetail=2*(e.arcDetail||this.options("arcDetail")),e.sphereDetail=e.sphereDetail||this.options("sphereDetail");var f=l.ballsAndSticks(c,this._.gl(),e);return this.add(a,f)},lines:function(a,c,d){var e=this._0(d,c);e.color=e.color||b.byElement(),e.lineWidth=e.lineWidth||4;var f=l.lines(c,this._.gl(),e);return this.add(a,f)},trace:function(a,c,d){var e=this._0(d,c);e.color=e.color||b.uniform([1,0,0]),e.radius=e.radius||.3,e.arcDetail=2*(e.arcDetail||this.options("arcDetail")),e.sphereDetail=e.sphereDetail||this.options("sphereDetail");var f=l.trace(c,this._.gl(),e);return this.add(a,f)},fitTo:function(a){var b=this._e.mainAxes(),c=[new d.Range,new d.Range,new d.Range];if(a instanceof O)a.updateProjectionIntervals(b[0],b[1],b[2],c[0],c[1],c[2]);else if(void 0!==a.eachAtom){a.eachAtom(function(a){for(var d=a.pos(),e=0;3>e;++e)c[e].update(v.dot(d,b[e]))});for(var e=0;3>e;++e)c[e].extend(1.5)}this._c8(b,c)},_c8:function(a,b){if(!(b[0].empty()||b[1].empty()||b[2].empty())){var c=b[0].center(),d=b[1].center(),e=b[2].center(),f=[c*a[0][0]+d*a[1][0]+e*a[2][0],c*a[0][1]+d*a[1][1]+e*a[2][1],c*a[0][2]+d*a[1][2]+e*a[2][2]],g=this._e.fieldOfViewY(),h=this._e.aspectRatio(),i=b[0].length()/h,j=b[1].length(),k=.5*Math.max(i,j),l=k/Math.tan(.5*g),m=l+.5*b[2].length(),n=.5,o=Math.max(l-n,.1),p=2*n+l+b[2].length();this._e.setNearFar(o,p),this.setCamera(this._e.rotation(),f,m,this._b.animateTime),this.requestRedraw()}},autoZoom:function(){var a=this._e.mainAxes(),b=[new d.Range,new d.Range,new d.Range];this.forEach(function(c){c.visible()&&c.updateProjectionIntervals(a[0],a[1],a[2],b[0],b[1],b[2])}),this._c8(a,b)},slabInterval:function(){},autoSlab:function(){var a=this._b._ep.update(this._l,this._e);null!==a&&this._e.setNearFar(a.near,a.far),this.requestRedraw()},rockAndRoll:function(a){return void 0===a?null!==this._bm:a?(this._bm=o.rockAndRoll(),this._S.add(this._bm),this.requestRedraw(),!0):(this._S.remove(this._bm),this._bm=null,this.requestRedraw(),!1)},spin:function(a,b){return void 0===a?null!==this._bk:a===!1?(this._S.remove(this._bk),this._bk=null,this.requestRedraw(),!1):(a===!0&&(a=Math.PI/8),b=b||[0,1,0],this._bk=o.spin(b,a),this._S.add(this._bk),this.requestRedraw(),!0)},slabMode:function(a,b){b=b||{};var c=q(a,b),d=c.update(this._l,this._e);null!==d&&this._e.setNearFar(d.near,d.far),this._b.slabMode=c,this.requestRedraw()},label:function(a,b,c,d){var e=new m(this._.gl(),this._by,this._em,c,b,d);return this.add(a,e),e},customMesh:function(a,b){var c=this._b9(b),d=new n(a,this._.gl(),c.float32Allocator,c.uint16Allocator);return this.add(a,d),d},_d5:function(){var a=this._.gl();a.clearColor(0,0,0,0),a.disable(a.BLEND),a.clear(a.COLOR_BUFFER_BIT|a.DEPTH_BUFFER_BIT),a.clearColor(this._b.background[0],this._b.background[1],this._b.background[2],1),a.cullFace(a.FRONT),a.enable(a.CULL_FACE),this._cf("select")},pick:function(a){this._bV.bind(),this._d5();var b=new Uint8Array(4),c=this._.gl();c.readPixels(a.x,this._b.height-a.y,1,1,c.RGBA,c.UNSIGNED_BYTE,b),this._bV.release(),b.data&&(b=b.data);var d=b[0]|b[1]<<8|b[2]<<16,e=b[3],f=this._cJ.objectForId(d);if(void 0===f)return null;var g=null;return 255!==e&&(g=f.geom.symWithIndex(e)),new r(f,255>e?e:null,g)},add:function(a,b){return b.name(a),this._l.push(b),this._l.sort(function(a,b){return a.order()-b.order()}),this.requestRedraw(),b},_c1:function(a){var b=a.replace(".","\\.").replace("*",".*");return new RegExp("^"+b+"$")},forEach:function(){var a,b="*";2===arguments.length?(a=arguments[1],b=arguments[0]):a=arguments[0];for(var c=this._c1(b),d=0;d<this._l.length;++d){var e=this._l[d];c.test(e.name())&&a(e,d)}},get:function(a){for(var b=0;b<this._l.length;++b)if(this._l[b].name()===a)return this._l[b];return null},hide:function(a){this.forEach(a,function(a){a.hide()})},show:function(a){this.forEach(a,function(a){a.show()})},rm:function(a){for(var b=[],c=this._c1(a),d=0;d<this._l.length;++d){var e=this._l[d];c.test(e.name())?e.destroy():b.push(e)}this._l=b},all:function(){return this._l},isWebGLSupported:function(){return this._.isWebGLSupported()},destroy:function(){this.clear(),this._.destroy(),this._=null}},s.prototype.on=s.prototype.addListener,{Viewer:function(a,b){return new s(a,b)},isWebGLSupported:e.isWebGLSupported}}(c,e,f,g,h,i,j,k,w,x,y,z),C=function(){function a(a,b){this._j=a||[],this._b1=b||[]}function b(a){this._G=a,this._ca=[]}return a.prototype={addChain:function(a){this._j.push(a)},chains:function(){return this._j},addMatrix:function(a){this._b1.push(a)},matrices:function(){return this._b1},matrix:function(a){return this._b1[a]}},b.prototype={name:function(){return this._G},generators:function(){return this._ca},generator:function(a){return this._ca[a]},addGenerator:function(a){this._ca.push(a)}},{SymGenerator:a,Assembly:b}}(),D=function(){function a(){}function b(b,c,d,e,f,g,h,i){a.call(this),this._t=b,this._co=[],this._dS=!!g,this._G=c,this._cH=d,this._b6=f,this._bb=e,this._dH=void 0!==h?h:null,this._dw=void 0!==i?i:null}function c(b,c){a.call(this),this._dA=b,this._J=c,this._co=[]}return a.prototype={bondCount:function(){return this.bonds().length},eachBond:function(a){for(var b=this.bonds(),c=0,d=b.length;d>c;++c)a(b[c])},isConnectedTo:function(a){if(null===a)return!1;for(var b=a.full(),c=this.full(),d=this.bonds(),e=0,f=d.length;f>e;++e){var g=d[e];if(g.atom_one()===c&&g.atom_two()===b||g.atom_one()===b&&g.atom_two()===c)return!0}return!1}},d.derive(b,a,{addBond:function(a){this._co.push(a)},name:function(){return this._G},bonds:function(){return this._co},residue:function(){return this._t},structure:function(){return this._t.structure()},full:function(){return this},qualifiedName:function(){return this.residue().qualifiedName()+"."+this.name()},pos:function(){return this._cH},element:function(){return this._bb},index:function(){return this._b6},prop:function(a){return this[a]()},occupancy:function(){return this._dH},tempFactor:function(){return this._dw},isHetatm:function(){return this._dS}}),d.derive(c,a,{full:function(){return this._J},name:function(){return this._J.name()},pos:function(){return this._J.pos()},element:function(){return this._J.element()},residue:function(){return this._dA},bonds:function(){return this._J.bonds()},index:function(){return this._J.index()},occupancy:function(){return this._J.occupancy()},tempFactor:function(){return this._J.tempFactor()},qualifiedName:function(){return this._J.qualifiedName()},isHetatm:function(){return this._J.isHetatm()}}),{Atom:b,AtomView:c}}(),E=function(b){function c(){}function e(a,b,d,e){c.call(this),this._G=b,this._dJ=d,this._dU=e,this._B=[],this._cy="C",this._I=a,this._cS=!1,this._cR=!1,this._b6=a.residues().length}function f(a,b){c.call(this),this._d8=a,this._B=[],this._t=b}var g=a.vec3,h=b.Atom,i=b.AtomView;return c.prototype={prop:function(a){return this[a]()},isWater:function(){return"HOH"===this.name()||"DOD"===this.name()},eachAtom:function(a,b){b|=0;for(var c=0;c<this._B.length;c+=1){if(a(this._B[c],b)===!1)return!1;b+=1}return b},qualifiedName:function(){var a=this.chain().name()+"."+this.name()+this.num();return"\x00"===this.insCode()?a:a+this.insCode()},atom:function(a){if("string"==typeof a){for(var b=0;b<this._B.length;++b)if(this._B[b].name()===a)return this._B[b];return null}return a>=this._B.length&&0>a?null:this._B[a]},centralAtom:function(){return this.isAminoacid()?this.atom("CA"):this.isNucleotide()?this.atom("C3'"):null},center:function(){var a=0,b=g.create();return this.eachAtom(function(c){g.add(b,b,c.pos()),a+=1}),a>0&&g.scale(b,b,1/a),b},isAminoacid:function(){return this._cS},isNucleotide:function(){return this._cR}},d.derive(e,c,{_d7:function(){this._cR=null!==this.atom("P")&&null!==this.atom("C3'"),this._cS=null!==this.atom("N")&&null!==this.atom("CA")&&null!==this.atom("C")&&null!==this.atom("O")},name:function(){return this._G},insCode:function(){return this._dU},num:function(){return this._dJ},full:function(){return this},addAtom:function(a,b,c,d,e,f){var g=new h(this,a,b,c,this.structure().nextAtomIndex(),d,e,f);return this._B.push(g),g},ss:function(){return this._cy},setSS:function(a){this._cy=a},index:function(){return this._b6},atoms:function(){return this._B},chain:function(){return this._I},structure:function(){return this._I.structure()}}),d.derive(f,c,{addAtom:function(a){var b=new i(this,a.full());this._B.push(b)},full:function(){return this._t},num:function(){return this._t.num()},insCode:function(){return this._t.insCode()},ss:function(){return this._t.ss()},index:function(){return this._t.index()},chain:function(){return this._d8},name:function(){return this._t.name()},atoms:function(){return this._B},qualifiedName:function(){return this._t.qualifiedName()},containsResidue:function(a){return this._t.full()===a.full()},isAminoacid:function(){return this._t.isAminoacid()},isNucleotide:function(){return this._t.isNucleotide()},isWater:function(){return this._t.isWater()}}),{ResidueView:f,Residue:e}}(D),F=function(){function b(){this._s=[]}function c(a,b,c){this._bJ=a,this._1=b,this._c2=c,this._b3=0===this._1,this._b4=this._bJ.length()===this._c2;var d=this._c2-this._1;this._b4||++d,this._b3||(++d,this._1-=1),this._b2=d}var d=a.vec3;return b.prototype={push:function(a){this._s.push(a)},length:function(){return this._s.length},residueAt:function(a){return this._s[a]},posAt:function(a,b){return d.copy(a,this._s[b].centralAtom().pos()),a},normalAt:function(a,b){var c=this._s[b];return c.isAminoacid()&&d.sub(a,c.atom("O").pos(),c.atom("C").pos()),d.normalize(a,a),a},centralAtomAt:function(a){return this._s[a].centralAtom()},tangentAt:function(){var a=d.create(),b=d.create();return function(c,e){e>0?this.posAt(a,e-1):this.posAt(a,e),e<this._s.length-1?this.posAt(b,e+1):this.posAt(b,e),d.sub(c,b,a)}}(),fullTraceIndex:function(a){return a},subsets:function(a){for(var b=0,d=0,e=[];d<a.length&&b<this._s.length;){for(var f=a[d].full().index();this._s.length>b&&this._s[b].index()<f;)++b;if(b>=this._s.length)break;for(var g=this._s[b].index();a.length>d&&a[d].full().index()<g;)++d;if(d>=a.length)break;for(var h=b;a.length>d&&this._s.length>b&&a[d].full().index()===this._s[b].index();)++d,++b;var i=b;e.push(new c(this,h,i))}return e}},b.prototype.smoothPosAt=b.prototype.posAt,b.prototype.smoothNormalAt=b.prototype.normalAt,c.prototype={length:function(){return this._b2},residueAt:function(a){return this._bJ.residueAt(this._1+a)},_cT:function(){var a=d.create(),b=d.create();return function(c,e,f,g){return this.tangentAt(a,e),this.tangentAt(b,f),d.scale(a,a,g),d.scale(b,b,g),l.cubicHermiteInterpolate(c,this.centralAtomAt(e).pos(),a,this.centralAtomAt(f).pos(),b,.5,0),c}}(),smoothPosAt:function(){return function(a,b,c){if(0===b&&!this._b3)return this._cT(a,b,b+1,c);if(b===this._b2-1&&!this._b4)return this._cT(a,b-1,b,c);var e=this.centralAtomAt(b);return d.copy(a,e.pos()),a}}(),smoothNormalAt:function(){return function(a,b){return this._bJ.normalAt(a,b+this._1),a}}(),posAt:function(a,b){var c=this.centralAtomAt(b),e=null;return d.copy(a,c.pos()),0!==b||this._b3||(e=this.centralAtomAt(b+1),d.add(a,a,e.pos()),d.scale(a,a,.5)),b!==this._b2-1||this._b4||(e=this.centralAtomAt(b-1),d.add(a,a,e.pos()),d.scale(a,a,.5)),a},centralAtomAt:function(a){return this.residueAt(a).centralAtom()},fullTraceIndex:function(a){return this._1+a},tangentAt:function(a,b){return this._bJ.tangentAt(a,b+this._1)}},{TraceSubset:c,BackboneTrace:b}}(),G=function(b,c){function e(a,b){return a<<8|b.charCodeAt(0)}function f(a,b){return a.num()<b.num()}function g(a){return{num:function(){return a}}}function h(){}function i(a,b){h.call(this),this._i=a,this._G=b,this._be=[],this._q=[],this._V=!0}function j(a,b,c){var d,e;if(a?(d=b.atom("C"),e=c.atom("N")):(d=b.atom("O3'"),e=c.atom("P")),d.isConnectedTo(e))return!1;var f=n.sqrDist(d.pos(),e.pos());return Math.abs(f-2.25)>1}function k(a,b){b.length()<2||a.push(b)}function l(a,b,c){if(0===a.length)return!0;if(!b)return!1;var d=e(c.num(),c.insCode()),f=a[a.length-1],g=e(f.num(),f.insCode());return d>g}function m(a,b){h.call(this),this._I=b,this._q=[],this._dQ=a,this._cC={},this._V=!0}var n=a.vec3,o=b.Residue,p=b.ResidueView;return h.prototype={eachAtom:function(a,b){b|=0;for(var c=0;c<this._q.length;c+=1)if(b=this._q[c].eachAtom(a,b),b===!1)return!1;return b},atomCount:function(){for(var a=0,b=this.residues(),c=0;c<b.length;++c)a+=b[c].atoms().length;return a},eachResidue:function(a){for(var b=0;b<this._q.length;b+=1)if(a(this._q[b])===!1)return!1},residues:function(){return this._q},structure:function(){return this._i},asView:function(){var a=this.structure().createEmptyView();return a.addChain(this,!0),a},residueByRnum:function(a){var b=this.residues();if(this._V){var c=d.binarySearch(b,g(a),f);return-1===c?null:b[c]}for(var e=0;e<b.length;++e)if(b[e].num()===a)return b[e];return null},residuesInRnumRange:function(a,b){var c,e,h=[],i=this.residues();if(this._V===!0){var j=d.indexFirstLargerEqualThan(i,g(a),f);if(-1===j)return h;var k=d.indexLastSmallerEqualThan(i,g(b),f);if(-1===k)return h;for(c=j;k>=c;++c)h.push(this._q[c])}else for(c=0,e=i.length;c!==e;++c){var l=i[c];l.num()>=a&&l.num()<=b&&h.push(l)}return h},prop:function(a){return this[a]()}},d.derive(i,h,{name:function(){return this._G},full:function(){return this},addResidue:function(a,b,c){c=c||"\x00";var d=new o(this,a,b,c);return this._V=l(this._q,this._V,d),this._q.push(d),d},assignSS:function(a,b,c){for(var d=e(a[0],a[1]),f=e(b[0],b[1]),g=1;g<this._q.length-1;++g){var h=this._q[g],i=e(h.num(),h.insCode());d>=i||i>=f||h.setSS(c)}},eachBackboneTrace:function(a){this._eb();for(var b=0;b<this._be.length;++b)a(this._be[b])},_eb:function(){if(!(this._be.length>0)){for(var a=new c.BackboneTrace,b=null,d=0;d<this._q.length;d+=1){var e=this._q[d],f=e.isAminoacid(),g=e.isNucleotide();if(b===!0&&!f||b===!1&&!g||null===b&&!g&&!f)k(this._be,a),b=null,a=new c.BackboneTrace;else if(0!==a.length()){var h=this._q[d-1];j(b,h,e)&&(k(this._be,a),a=new c.BackboneTrace),a.push(e)}else a.push(e),b=e.isAminoacid()}k(this._be,a)}},backboneTraces:function(){var a=[];return this.eachBackboneTrace(function(b){a.push(b)}),a}}),d.derive(m,h,{addResidue:function(a,b){var c=new p(this,a.full());if(this._V=l(this._q,this._V,a),this._q.push(c),this._cC[a.full().index()]=c,b)for(var d=a.atoms(),e=0;e<d.length;++e)c.addAtom(d[e].full());return c},containsResidue:function(a){var b=this._cC[a.full().index()];return void 0===b?!1:b.full()===a.full()},eachBackboneTrace:function(a){for(var b=this._I.backboneTraces(),c=0;c<b.length;++c)for(var d=b[c].subsets(this._q),e=0;e<d.length;++e)a(d[e])},backboneTraces:function(){var a=[];return this.eachBackboneTrace(function(b){a.push(b)}),a},full:function(){return this._I},name:function(){return this._I.name()},structure:function(){return this._dQ}}),{Chain:i,ChainView:m}}(E,F),H=function(){var b=a.vec3,c=function(a,c){var d={atom_one:a,atom_two:c};return{atom_one:function(){return d.atom_one},atom_two:function(){return d.atom_two},mid_point:function(a){return a||(a=b.create()),b.add(a,d.atom_one.pos(),d.atom_two.pos()),b.scale(a,a,.5),a}}};return{Bond:c}}(),I=function(){function a(a,b){for(var c=0;c<b.length;++c)if(!b[c](a))return!1;return!0}function b(a){var b=[];return void 0!==a.aname&&b.push(function(b){return b.name()===a.aname}),void 0!==a.hetatm&&b.push(function(b){return b.isHetatm()===a.hetatm}),void 0!==a.anames&&b.push(function(b){for(var c=b.name(),d=0;d<a.anames.length;++d)if(c===a.anames[d])return!0;return!1}),b}function c(a){var b=[];if(void 0!==a.rname&&b.push(function(b){return b.name()===a.rname}),void 0!==a.rnames&&b.push(function(b){for(var c=b.name(),d=0;d<a.rnames.length;++d)if(c===a.rnames[d])return!0;return!1}),void 0!==a.rnums){for(var c={},d=0;d<a.rnums.length;++d)c[a.rnums[d]]=!0;b.push(function(a){var b=a.num();return c[b]===!0})}return void 0!==a.rnum&&b.push(function(b){return b.num()===a.rnum}),b}function d(a){var b=[];return void 0!==a.cname&&(a.chain=a.cname),void 0!==a.cnames&&(a.chains=a.cnames),void 0!==a.chain&&b.push(function(b){return b.name()===a.chain}),void 0!==a.chains&&b.push(function(b){for(var c=b.name(),d=0;d<a.chains.length;++d)if(c===a.chains[d])return!0;return!1}),b}function e(a,b){var c=a.residues();b.rnumRange&&(c=a.residuesInRnumRange(b.rnumRange[0],b.rnumRange[1]));var d,e,f=[];if(void 0!==b.rindexRange){for(d=b.rindexRange[0],e=Math.min(c.length-1,b.rindexRange[1]);e>=d;++d)f.push(c[d]);return f}if(b.rindices&&void 0!==b.rindices.length){for(f=[],d=0;d<b.rindices.length;++d)f.push(c[b.rindices[d]]);return f}return c}function f(f,g,h){var i=c(h),j=b(h),k=d(h);h.rindex&&(h.rindices=[h.rindex]);for(var l=0;l<f._j.length;++l){var m=f._j[l];if(a(m,k))for(var n=e(m,h),o=null,p=0;p<n.length;++p)if(a(n[p],i)){o||(o=g.addChain(m,!1));for(var q=null,r=n[p].atoms(),s=0;s<r.length;++s)a(r[s],j)&&(q||(q=o.addResidue(n[p],!1)),q.addAtom(r[s]))}}return g}return{dict:f}}(),J=function(b,c,e){function f(a){var b=q[a.toUpperCase()];return void 0!==b?b:1.5}function g(a,b,c){var d=b.atom("C"),e=c.atom("N");if(d&&e){var f=m.sqrDist(d.pos(),e.pos());1.6*1.6>f&&a.connect(e,d)}}function h(a,b,c){var d=b.atom("O3'"),e=c.atom("P");if(d&&e){var f=m.sqrDist(d.pos(),e.pos());1.7*1.7>f&&a.connect(d,e)}}function i(){}function j(){i.call(this),this._j=[],this._L=[],this._cK=0}function k(a){i.call(this),this._cM=a,this._j=[]
+}var m=a.vec3,n=b.Chain,o=b.ChainView,p=c.Bond,q={H:.31,HE:.28,LI:1.28,BE:.96,B:.84,C:.76,N:.71,O:.66,F:.57,NE:.58,NA:1.66,MG:1.41,AL:1.21,SI:1.11,P:1.07,S:1.05,CL:1.02,AR:1.06,K:2.03,CA:1.76,SC:1.7,TI:1.6,V:1.53,CR:1.39,MN:1.39,FE:1.32,CO:1.26,NI:1.24,CU:1.32,ZN:1.22,GA:1.22,GE:1.2,AS:1.19,SE:1.2,BR:1.2,KR:1.16,RB:2.2,SR:1.95,Y:1.9,ZR:1.75,NB:1.64,MO:1.54,TC:1.47,RU:1.46,RH:1.42,PD:1.39,AG:1.45,CD:1.44,IN:1.42,SN:1.39,SB:1.39,TE:1.38,I:1.39,XE:1.4,CS:2.44,BA:2.15,LA:2.07,CE:2.04,PR:2.03,ND:2.01,PM:1.99,SM:1.98,EU:1.98,GD:1.96,TB:1.94,DY:1.92,HO:1.92,ER:1.89,TM:1.9,YB:1.87,LU:1.87,HF:1.75,TA:1.7,W:1.62,RE:1.51,OS:1.44,IR:1.41,PT:1.36,AU:1.36,HG:1.32,TL:1.45,PB:1.46,BI:1.48,PO:1.4,AT:1.5,RN:1.5,FR:2.6,RA:2.21,AC:2.15,TH:2.06,PA:2,U:1.96,NP:1.9,PU:1.87,AM:1.8,CM:1.69};return i.prototype={eachResidue:function(a){for(var b=0;b<this._j.length;b+=1)if(this._j[b].eachResidue(a)===!1)return!1},eachAtom:function(a,b){b|=0;for(var c=0;c<this._j.length;c+=1)if(b=this._j[c].eachAtom(a,b),b===!1)return!1},residueCount:function(){for(var a=this.chains(),b=0,c=0;c<a.length;++c)b+=a[c].residues().length;return b},eachChain:function(a){for(var b=this.chains(),c=0;c<b.length;++c)if(a(b[c])===!1)return},atomCount:function(){for(var a=this.chains(),b=0,c=0;c<a.length;++c)b+=a[c].atomCount();return b},atoms:function(){var a=[];return this.eachAtom(function(b){a.push(b)}),a},atom:function(a){var b=a.split("."),c=this.chain(b[0]);if(null===c)return null;var d=c.residueByRnum(parseInt(b[1],10));return null===d?null:d.atom(b[2])},center:function(){var a=m.create(),b=0;return this.eachAtom(function(c){m.add(a,a,c.pos()),b+=1}),b&&m.scale(a,a,1/b),a},boundingSphere:function(){var a=this.center(),b=0;return this.eachAtom(function(c){b=Math.max(b,m.sqrDist(a,c.pos()))}),new l.Sphere(a,Math.sqrt(b))},backboneTraces:function(){for(var a=this.chains(),b=[],c=0;c<a.length;++c)Array.prototype.push.apply(b,a[c].backboneTraces());return b},select:function(a){return"protein"===a?this.residueSelect(function(a){return a.isAminoacid()}):"water"===a?this.residueSelect(function(a){return a.isWater()}):"ligand"===a?this.residueSelect(function(a){return!a.isAminoacid()&&!a.isWater()}):e.dict(this,new k(this),a||{})},residueSelect:function(a){for(var b=new k(this.full()),c=0;c<this._j.length;++c)for(var d=this._j[c],e=null,f=d.residues(),g=0;g<f.length;++g)a(f[g])&&(e||(e=b.addChain(d,!1)),e.addResidue(f[g],!0));return b},atomSelect:function(a){for(var b=new k(this.full()),c=0;c<this._j.length;++c)for(var d=this._j[c],e=null,f=d.residues(),g=0;g<f.length;++g)for(var h=null,i=f[g],j=i.atoms(),l=0;l<j.length;++l)a(j[l])&&(e||(e=b.addChain(d,!1)),h||(h=e.addResidue(i,!1)),h.addAtom(j[l]));return b},assembly:function(a){for(var b=this.assemblies(),c=0;c<b.length;++c)if(b[c].name()===a)return b[c];return null},chainsByName:function(a){for(var b={},c=this.chains(),d=0;d<c.length;++d)b[c[d].name()]=c[d];for(var e=[],f=0;f<a.length;++f){var g=b[a[f]];void 0!==g&&e.push(g)}return e},selectWithin:function(){var a=m.create();return function(b,c){c=c||{};var d=c.radius||4,e=d*d,f=!!c.matchResidues,g=[];b.eachAtom(function(a){g.push(a)});for(var h=new k(this.full()),i=null,j=null,l=this.chains(),n=!1,o=0;o<l.length;++o){var p=l[o].residues();j=null;for(var q=0;q<p.length;++q){i=null,n=!1;for(var r=p[q].atoms(),s=0;s<r.length&&!n;++s)for(var t=0;t<g.length;++t)if(m.sub(a,r[s].pos(),g[t].pos()),!(m.sqrLen(a)>e)){if(j||(j=h.addChain(l[o].full(),!1)),i||(i=j.addResidue(p[q].full(),f)),f){n=!0;break}i.addAtom(r[s].full());break}}}return h}}(),createEmptyView:function(){return new k(this.full())}},d.derive(j,i,{addAssembly:function(a){this._L.push(a)},setAssemblies:function(a){this._L=a},assemblies:function(){return this._L},chains:function(){return this._j},full:function(){return this},containsResidue:function(a){return a.full().structure()===this},chainByName:function(a){for(var b=0;b<this._j.length;++b)if(this._j[b].name()===a)return this._j[b];return null},chain:function(a){return this.chainByName(a)},nextAtomIndex:function(){var a=this._cK;return this._cK+=1,a},addChain:function(a){var b=new n(this,a);return this._j.push(b),b},connect:function(a,b){var c=new p(a,b);return a.addBond(c),b.addBond(c),c},deriveConnectivity:function(){var a=this,b=null;this.eachResidue(function(c){for(var d,e=c.atoms(),i=e.length,j=0;i>j;j+=1)for(var k=e[j],l=k.pos(),n=f(k.element()),o=0;j>o;o+=1){var p=e[o],q=f(p.element());d=m.sqrDist(l,p.pos());var r=n+q-.3,s=n+q+.3;s*s>d&&d>r*r&&a.connect(k,p)}c._d7(),null!==b&&(c.isAminoacid()&&b.isAminoacid()&&g(a,b,c),c.isNucleotide()&&b.isNucleotide()&&h(a,b,c)),b=c})}}),d.derive(k,i,{full:function(){return this._cM},assemblies:function(){return this._cM.assemblies()},addChain:function(a,b){var c=new o(this,a.full());if(this._j.push(c),b)for(var d=a.residues(),e=0;e<d.length;++e)c.addResidue(d[e],!0);return c},containsResidue:function(a){if(!a)return!1;var b=this.chain(a.chain().name());return b?b.containsResidue(a):!1},chains:function(){return this._j},chain:function(a){for(var b=0;b<this._j.length;++b)if(this._j[b].name()===a)return this._j[b];return null}}),{MolView:k,Mol:j}}(G,H,I),K=S=function(b){function c(a){for(var b=0;b<a.length();++b)a.residueAt(b).setSS(g(a,b)?"H":h(a,b)?"E":"C")}function d(a){for(var b=a.chains(),d=0;d<b.length;++d){var e=b[d];e.eachBackboneTrace(c)}}var e=a.vec3,f=function(){var a=e.create(),b=e.create();return function(c,d,f,g){for(var h=Math.max(0,d-2);d>=h;++h)for(var i=2;5>i;++i)if(!(h+i>=c.length())){var j=e.dist(c.posAt(a,h),c.posAt(b,h+i));if(Math.abs(j-f[i-2])>g)return!1}return!0}}(),g=function(a,b){var c=[5.45,5.18,6.37],d=2.1;return f(a,b,c,d)},h=function(a,b){var c=[6.1,10.4,13],d=1.42;return f(a,b,c,d)};return{Mol:b.Mol,assignHelixSheet:d}}(J),L=function(b){function c(){this._L={},this._Q=null}function d(a){if(" "!==a[0]){var b=a.trim();if(4===b.length)for(var c=0,d=b.charCodeAt(c);4>c&&(65>d||d>122||d>90&&97>d);)++c,d=b.charCodeAt(c);return b.substr(0,2)}return a[1]}function e(a){this._b8=[],this._bQ=[],this._cl=[],this._bR={},this._i=new S.Mol,this._cE=new c,this._bM=null,this._br=null,this._es=null,this._b={},this._b.conectRecords=!!a.conectRecords}function f(a){return a.split(/\r\n|\r|\n/g)}function g(a,b){for(var c=b||{},d=f(a),g=new e(c),h=0;h<d.length&&g.processLine(d[h]);h++);var i=g.finish();return i}function h(){this._i=new S.Mol,this._cD(),this._bS=!1}function i(a){for(var b=new h,c=f(a),d=0;d<c.length&&b.processLine(c[d]);d++);var e=b.finish();return e}function j(a,b){var c=new XMLHttpRequest;c.open("GET",a,!0),c.onload=function(){c.response&&b(c.response)},c.send(null)}function k(a,b,c){j(a,function(a){var d=g(a,c);b(d)})}function l(a,b){j(a,function(a){var c=i(a);b(c)})}var m=a.vec3,n=a.mat4;return c.prototype={assemblies:function(){var a=[];for(var b in this._L)this._L.hasOwnProperty(b)&&a.push(this._L[b]);return a},assembly:function(a){return this._L[a]},nextLine:function(a){if(a=a.substr(11),"B"===a[0]&&"BIOMOLECULE:"===a.substr(0,12)){var c=a.substr(13).trim();return this._dd=new b.Assembly(c),void(this._L[c]=this._dd)}if("APPLY THE FOLLOWING TO CHAINS:"!==a.substr(0,30)&&"                   AND CHAINS:"!==a.substr(0,30)){if("  BIOMT"===a.substr(0,7)){for(var d=parseInt(a[7],10)-1,e=0;" "!==a[12+e];)e+=1;var f=parseFloat(a.substr(13+e,9)),g=parseFloat(a.substr(23+e,9)),h=parseFloat(a.substr(33+e,9)),i=parseFloat(a.substr(43+e,14));return this._bd[0+d]=f,this._bd[4+d]=g,this._bd[8+d]=h,this._bd[12+d]=i,void(2===d&&(this._ci.addMatrix(this._bd),this._bd=n.create()))}}else{var j=a.substr(30).split(",");"A"===a[0]&&(this._ci=new b.SymGenerator,this._dd.addGenerator(this._ci)),this._bd=n.create();for(var k=0;k<j.length;++k){var l=j[k].trim();l.length&&this._ci.addChain(l)}}}},e.prototype={parseHelixRecord:function(a){var b=parseInt(a.substr(21,4),10),c=" "===a[25]?"\x00":a[25],d=parseInt(a.substr(33,4),10),e=" "===a[37]?"\x00":a[37],f=a[19];return this._b8.push({first:[b,c],last:[d,e],chainName:f}),!0},parseSheetRecord:function(a){var b=parseInt(a.substr(22,4),10),c=" "===a[26]?"\x00":a[26],d=parseInt(a.substr(33,4),10),e=" "===a[37]?"\x00":a[37],f=a[21];return this._bQ.push({first:[b,c],last:[d,e],chainName:f}),!0},parseAndAddAtom:function(a){var b=a[16];if(" "!==b&&"A"!==b)return!0;var c="H"===a[0],e=a[21],f=a.substr(17,3).trim(),g=a.substr(12,4),h=g.trim(),i=parseInt(a.substr(22,4),10);i!==i&&(i=1);var j=" "===a[26]?"\x00":a[26],k=!1,l=!1;this._bM&&this._bM.name()===e||(l=!0,k=!0),this._br&&this._br.num()===i&&this._br.insCode()===j||(k=!0),l&&(this._bM=this._i.chain(e)||this._i.addChain(e)),k&&(this._br=this._bM.addResidue(f,i,j));for(var n=m.create(),o=0;3>o;++o)n[o]=parseFloat(a.substr(30+8*o,8));var p=a.substr(76,2).trim();""===p&&(p=d(g));var q=parseFloat(a.substr(54,6).trim()),r=parseFloat(a.substr(60,6).trim()),s=this._br.addAtom(h,n,p,c,isNaN(q)?null:q,isNaN(r)?null:r);if(this._b.conectRecords){var t=parseInt(a.substr(6,5).trim(),10);this._bR[t]=s}return!0},parseConectRecord:function(a){for(var b=parseInt(a.substr(6,5).trim(),10),c=[],d=0;4>d;++d){var e=parseInt(a.substr(11+5*d,6).trim(),10);isNaN(e)||e>b||c.push(e)}return this._cl.push({from:b,to:c}),!0},processLine:function(a){var b=a.substr(0,6);if("ATOM  "===b||"HETATM"===b)return this.parseAndAddAtom(a);if("REMARK"===b){var c=a.substr(7,3);return"350"===c&&this._cE.nextLine(a),!0}return"HELIX "===b?this.parseHelixRecord(a):"SHEET "===b?this.parseSheetRecord(a):this._b.conectRecords&&"CONECT"===b?this.parseConectRecord(a):"END   "===b||"ENDMDL"===b?!1:!0},finish:function(){var a,b=null;for(a=0;a<this._bQ.length;++a){var c=this._bQ[a];b=this._i.chain(c.chainName),b&&b.assignSS(c.first,c.last,"E")}for(a=0;a<this._b8.length;++a){var d=this._b8[a];b=this._i.chain(d.chainName),b&&b.assignSS(d.first,d.last,"H")}return this._i.setAssemblies(this._cE.assemblies()),this._b.conectRecords&&this._ee(this._i),this._i.deriveConnectivity(),this._i},_ee:function(a){for(var b=0;b<this._cl.length;++b)for(var c=this._cl[b],d=this._bR[c.from],e=0;e<c.to.length;++e){var f=this._bR[c.to[e]];a.connect(d,f)}}},h.prototype={processLine:function(a){var b=this._5;if(3>b){if(0===b){var c=a.trim();if(0===c.length)return!1;this._cw=c}return this._bS=!1,this._5++,!0}if(3===b){if(this._cd=parseInt(a.substr(0,3).trim(),10),this._da=parseInt(a.substr(3,3).trim(),10),isNaN(this._cd)||isNaN(this._da))return!1;this._5++;var d=""+(this._i.chains().length+1);this._dc=this._i.addChain(d),this._ck=this._dc.addResidue(this._cw,1)}if(4===b){for(var e=[0,0,0],f=0;3>f;++f)if(e[f]=parseFloat(a.substr(10*f,10).trim()),isNaN(e[f]))return!1;var g=a.substr(31,3).trim();this._ck.addAtom(g,e,g,!1),this._dj++,this._dj===this._cd&&this._5++}if(5===b){var h=parseInt(a.substr(0,3).trim(),10)-1,i=parseInt(a.substr(3,3).trim(),10)-1;if(isNaN(h)||isNaN(i))return!1;var j=this._ck.atoms();this._i.connect(j[h],j[i]),this._dh++,this._dh===this._da&&this._5++}return"M  END"===a.substr(0,6)&&(this._bS=!0,this._5++),"$$$$"===a.substr(0,4)&&this._cD(),!0},_cD:function(){this._5=0,this._ck=null,this._dc=null,this._cd=null,this._er=null,this._dj=0,this._dh=0,this._cw=""},finish:function(){return this._bS?this._i:null}},{pdb:g,sdf:i,Remark350Reader:c,fetchPdb:k,fetchSdf:l}}(C),M=function(){var b=a.vec3,c=a.mat3,d=function(){var a=b.create(),c=b.create();return function(d,e){b.set(a,0,0,0);var f=0;d.eachCentralAtom(function(c,d){b.add(a,a,d),f+=1}),0!==f&&(b.scale(a,a,1/f),e[0]=0,e[1]=0,e[2]=0,e[3]=0,e[4]=0,e[5]=0,e[6]=0,e[7]=0,e[8]=0,d.eachCentralAtom(function(d,f){b.sub(c,f,a);var g=c[0],h=c[1],i=c[2];e[0]+=h*h+i*i,e[1]-=g*h,e[2]-=g*i,e[5]-=h*i,e[4]+=g*g+i*i,e[8]+=g*g+h*h}),e[3]=e[1],e[6]=e[2],e[7]=e[5])}}(),e=function(){var a=c.create(),e=c.create(),f=b.create(),g=b.create(),h=b.create(),i=b.create(),j=b.create(),k=b.create(),m=b.create();return function(n){d(n,a);var o=l.diagonalizer(a);c.fromQuat(e,o);var p=!0;n.eachCentralAtom(function(a,c){b.transformMat3(h,c,e),p?(b.copy(f,h),b.copy(g,h),p=!1):(b.min(f,f,h),b.max(g,g,h))}),b.sub(i,g,f);var q=[[i[0],0],[i[1],1],[i[2],2]];q.sort(function(a,b){return b[0]-a[0]});var r=q[0][1],s=q[1][1];b.set(j,e[r+0],e[r+3],e[r+6]),b.set(k,e[s+0],e[s+3],e[s+6]),b.cross(m,j,k);var t=c.create();return t[0]=j[0],t[1]=k[0],t[2]=m[0],t[3]=j[1],t[4]=k[1],t[5]=m[1],t[6]=j[2],t[7]=k[2],t[8]=m[2],t}}();return{principalAxes:e}}(),N=function(){return{Viewer:B.Viewer,isWebGLSupported:B.isWebGLSupported,io:L,color:b,mol:S,rgb:{setColorPalette:b.setColorPalette,hex2rgb:b.hex2rgb},vec3:a.vec3,vec4:a.vec4,mat3:a.mat3,mat4:a.mat4,quat:a.quat,viewpoint:M}}()});
+},{}],24:[function(require,module,exports){
 var _ = require('underscore');
 
 module.exports = MITab = (function() {
@@ -15484,7 +3932,7 @@ module.exports = MITab = (function() {
     
     return MITab;
 })();
-},{"underscore":75}],48:[function(require,module,exports){
+},{"underscore":54}],25:[function(require,module,exports){
 // legacy!!
 $.browser = require("jquery-browser-plugin");
 
@@ -15615,6 +4063,7 @@ $.browser = require("jquery-browser-plugin");
  */
 
 var Class = require('js-class');
+var ClipBoard = require("copy2clipboard");
 
 var EVT_ON_SELECTION_CHANGE= "onSelectionChange";
 var EVT_ON_SELECTION_CHANGED= "onSelectionChanged";
@@ -15626,7 +4075,7 @@ Sequence = Class(
 	constructor: function (options) {
 		var self = this;
 
-    this.opt = jQuery.extend(this.opt,options);
+    this.opt = jQuery.extend(true, this.opt,options);
 
     this._container = jQuery(this.opt.target );
     
@@ -15641,11 +4090,24 @@ Sequence = Class(
 
     // legacy: copy target id
     this.opt.target = this._container[0].id;
+
+    // generate a random id as a workaround
+    this.opt.divid = Math.random().toString(36).substring(7);
 		
 		// Lazy initialization 
 		this._container.ready(function() {
 			self._initialize();
 		});
+
+    this.clip = new ClipBoard();
+    // listen to selection events and update the clipboard
+    var updateClip = function(e){
+      var seq = self.opt.sequence.slice(e.start - 1, e.end);
+      self.clip.set(seq);
+    };
+    this.on(EVT_ON_SELECTION_CHANGED, updateClip);
+    this.on(EVT_ON_SELECTION_CHANGE, updateClip);
+
 	},
 	
 	/**
@@ -15675,7 +4137,12 @@ Sequence = Class(
 		backgroundColor : 'inherit',
 		width: undefined,
 		height: undefined,
-		formatSelectorVisible: true
+		formatSelectorVisible: true,
+		formatOptions: {
+      header: true,
+      title: false,
+      footer: false
+    }
 	},
 	
 	/**
@@ -15740,7 +4207,7 @@ Sequence = Class(
 	],
 
   getId : function () {
-    return this.opt.id;
+    return this.opt.divid;
   },
 
 	// internal members
@@ -15761,15 +4228,12 @@ Sequence = Class(
 		
 		// Disable text selection
 		
-		this._container.css({
-			'-moz-user-select':'none',
-			'-webkit-user-select':'none',
-			'user-select':'none'
-        });
-		
+	
 		// DIV for the format selector
-		this._buildFormatSelector();
-		
+		if(this.opt.formatOptions.header != false){
+		  this._buildFormatSelector();
+    }
+
 		// DIV for the sequence
 		this._contentDiv = jQuery('<div></div>').appendTo(this._container);
 		this._contentDiv.css({
@@ -15777,6 +4241,12 @@ Sequence = Class(
 				'font-size': this.opt.fontSize,
 				'text-align': 'left'
 			});
+
+		this._container.css({
+			'-moz-user-select':'none',
+			'-webkit-user-select':'none',
+			'user-select':'none'
+        });
 		
 		// Initialize highlighting 
 		this._highlights = this.opt.highlights;
@@ -15935,11 +4405,12 @@ Sequence = Class(
 	_buildFormatSelector: function () {
 		var self = this;
 		
+
 		this._headerDiv = jQuery('<div></div>').appendTo(this._container);
 		this._headerDiv.css({
-			'font-family': '"Heveltica Neue", Arial, "sans serif"',
-			'font-size': '14px'	
-		}).append('Format: ');
+		  	'font-family': '"Heveltica Neue", Arial, "sans serif"',
+		  	'font-size': '14px'	
+		  }).append('Format: ');
 		
 		this._formatSelector = jQuery('<select> '+
 				'<option value="FASTA">FASTA</option>'+
@@ -16773,6 +5244,7 @@ Sequence = Class(
 						"end" : self.opt.selection.end 
 					}
 				);
+				return true;
 			
 			}).mouseover(function() {
 				// Update selection
@@ -16793,6 +5265,7 @@ Sequence = Class(
 						"end" : self.opt.selection.end 
 					});
 				} 
+				return true;
 				
 			}).mouseup(function() {
 				isMouseDown = false;
@@ -16801,6 +5274,7 @@ Sequence = Class(
 					"start" : self.opt.selection.start, 
 					"end" : self.opt.selection.end 
 				});
+				return true;
 			});
 			
 			// Add a tooltip for this sequence base.
@@ -16923,7 +5397,7 @@ Sequence = Class(
 require("biojs-events").mixin(Sequence.prototype);
 module.exports = Sequence;
 
-},{"biojs-events":49,"jquery-browser-plugin":52,"js-class":54}],49:[function(require,module,exports){
+},{"biojs-events":26,"copy2clipboard":29,"jquery-browser-plugin":31,"js-class":33}],26:[function(require,module,exports){
 var events = require("backbone-events-standalone");
 
 events.onAll = function(callback,context){
@@ -16946,7 +5420,7 @@ events.mixin = function(proto) {
 
 module.exports = events;
 
-},{"backbone-events-standalone":51}],50:[function(require,module,exports){
+},{"backbone-events-standalone":28}],27:[function(require,module,exports){
 /**
  * Standalone extraction of Backbone.Events, no external dependency required.
  * Degrades nicely when Backone/underscore are already available in the current
@@ -16970,7 +5444,6 @@ module.exports = events;
 /* global exports:true, define, module */
 (function() {
   var root = this,
-      breaker = {},
       nativeForEach = Array.prototype.forEach,
       hasOwnProperty = Object.prototype.hasOwnProperty,
       slice = Array.prototype.slice,
@@ -17008,12 +5481,12 @@ module.exports = events;
           obj.forEach(iterator, context);
         } else if (obj.length === +obj.length) {
           for (var i = 0, l = obj.length; i < l; i++) {
-            if (iterator.call(context, obj[i], i, obj) === breaker) return;
+            iterator.call(context, obj[i], i, obj);
           }
         } else {
           for (var key in obj) {
             if (this.has(obj, key)) {
-              if (iterator.call(context, obj[key], key, obj) === breaker) return;
+              iterator.call(context, obj[key], key, obj);
             }
           }
         }
@@ -17211,27 +5684,144 @@ module.exports = events;
   };
 
   // Export Events as BackboneEvents depending on current context
-  if (typeof define === "function") {
-    define(function() {
-      return Events;
-    });
-  } else if (typeof exports !== 'undefined') {
+  if (typeof exports !== 'undefined') {
     if (typeof module !== 'undefined' && module.exports) {
       exports = module.exports = Events;
     }
     exports.BackboneEvents = Events;
+  }else if (typeof define === "function") {
+    define(function() {
+      return Events;
+    });
   } else {
     root.BackboneEvents = Events;
   }
 })(this);
 
-},{}],51:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 module.exports = require('./backbone-events-standalone');
 
-},{"./backbone-events-standalone":50}],52:[function(require,module,exports){
+},{"./backbone-events-standalone":27}],29:[function(require,module,exports){
+var defer = require("./defer");
+
+var Clipboard = function Clipboard() {
+  this.value = "";
+  var self = this;
+
+  var area = document.createElement("textarea");
+  area.id = "clipboard";
+  area.style.display = "none";
+  area.style.width = "1px";
+  area.style.height = "1px";
+
+  var container = document.createElement("div");
+  container.style.position = "absolute";
+  container.style.top = "-100px";
+  area.style.width = "0px";
+  area.style.height = "0px";
+  container.id = "clipboard-container";
+  container.appendChild(area);
+
+  // TODO: check for multiple
+  document.body.appendChild(container);
+
+  document.addEventListener("keydown", function(e) {
+    // only activate the clipboard if there is text and someone wants to copy
+    if (!self.value || !(e.ctrlKey || e.metaKey)) {
+      return;
+    }
+    // there is some other text that they want to 
+    var tagName = e.target.tagName;
+    if (tagName === "input" || tagName === "textarea") {
+      return;
+    }
+    
+    // check for user selections
+    var windowSel;
+    if (typeof window.getSelection === "function" ? (windowSel = window.getSelection()) != null ? windowSel.toString() : false : false) {
+      return;
+    }
+    
+    // check for user selections
+    var documentSel;
+    if ((documentSel = document.selection) != null ? documentSel.createRange().text : false) {
+      return;
+    }
+    defer(function() {
+      container.style.display = "block";
+      area.textContent = self.value;
+      area.style.display = "block";
+      area.focus();
+      area.select();
+    });
+  });
+  document.addEventListener("keyup", function(e) {
+    // inactive the clipboard
+    if (e.target.id === "clipboard") {
+      if (!(e.ctrlKey || e.metaKey)) {
+        container.style.display = "none";
+        area.textContent = "";
+      }
+    }
+  });
+};
+
+Clipboard.prototype.set = function(value) {
+  this.value = value;
+};
+
+module.exports = Clipboard;
+
+},{"./defer":30}],30:[function(require,module,exports){
+var ArrayProto = Array.prototype;
+var slice = ArrayProto.slice;
+
+var _ = {};
+
+// Determines whether to execute a function as a constructor
+// or a normal function with the provided arguments
+var executeBound = function(sourceFunc, boundFunc, context, callingContext, args) {
+  if (!(callingContext instanceof boundFunc)) return sourceFunc.apply(context, args);
+  var self = baseCreate(sourceFunc.prototype);
+  var result = sourceFunc.apply(self, args);
+  if (_.isObject(result)) return result;
+  return self;
+};
+
+// Partially apply a function by creating a version that has had some of its
+// arguments pre-filled, without changing its dynamic `this` context. _ acts
+// as a placeholder, allowing any combination of arguments to be pre-filled.
+var partial = function(func) {
+  var boundArgs = slice.call(arguments, 1);
+  return function bound() {
+    var position = 0;
+    var args = boundArgs.slice();
+    for (var i = 0, length = args.length; i < length; i++) {
+      if (args[i] === _) args[i] = arguments[position++];
+    }
+    while (position < arguments.length) args.push(arguments[position++]);
+    return executeBound(func, bound, this, this, args);
+  };
+};
+
+// Delays a function for the given number of milliseconds, and then calls
+// it with the arguments supplied.
+var delay = function(func, wait) {
+  var args = slice.call(arguments, 2);
+  return setTimeout(function() {
+    return func.apply(null, args);
+  }, wait);
+};
+
+// Defers a function, scheduling it to run after the current call stack has
+// cleared.
+var defer = partial(delay, _, 1);
+module.exports = defer;
+
+},{}],31:[function(require,module,exports){
 module.exports = require('./jquery.browser');
 
-},{"./jquery.browser":53}],53:[function(require,module,exports){
+},{"./jquery.browser":32}],32:[function(require,module,exports){
 /*!
  * jQuery Browser Plugin v0.0.6
  * https://github.com/gabceb/jquery-browser-plugin
@@ -17343,7 +5933,7 @@ browser.platform = matched.platform;
 
 module.exports = browser;
 
-},{}],54:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 (function (global){
 /** @preserve http://github.com/easeway/js-class */
 
@@ -17475,16 +6065,17 @@ if (module) {
     global.Class = Class;   // for browser
 }
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],55:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 /*!
- * Bootstrap v3.2.0 (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
+ * Bootstrap v3.3.4 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires jQuery");+function(a){"use strict";function b(){var a=document.createElement("bootstrap"),b={WebkitTransition:"webkitTransitionEnd",MozTransition:"transitionend",OTransition:"oTransitionEnd otransitionend",transition:"transitionend"};for(var c in b)if(void 0!==a.style[c])return{end:b[c]};return!1}a.fn.emulateTransitionEnd=function(b){var c=!1,d=this;a(this).one("bsTransitionEnd",function(){c=!0});var e=function(){c||a(d).trigger(a.support.transition.end)};return setTimeout(e,b),this},a(function(){a.support.transition=b(),a.support.transition&&(a.event.special.bsTransitionEnd={bindType:a.support.transition.end,delegateType:a.support.transition.end,handle:function(b){return a(b.target).is(this)?b.handleObj.handler.apply(this,arguments):void 0}})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var c=a(this),e=c.data("bs.alert");e||c.data("bs.alert",e=new d(this)),"string"==typeof b&&e[b].call(c)})}var c='[data-dismiss="alert"]',d=function(b){a(b).on("click",c,this.close)};d.VERSION="3.2.0",d.prototype.close=function(b){function c(){f.detach().trigger("closed.bs.alert").remove()}var d=a(this),e=d.attr("data-target");e||(e=d.attr("href"),e=e&&e.replace(/.*(?=#[^\s]*$)/,""));var f=a(e);b&&b.preventDefault(),f.length||(f=d.hasClass("alert")?d:d.parent()),f.trigger(b=a.Event("close.bs.alert")),b.isDefaultPrevented()||(f.removeClass("in"),a.support.transition&&f.hasClass("fade")?f.one("bsTransitionEnd",c).emulateTransitionEnd(150):c())};var e=a.fn.alert;a.fn.alert=b,a.fn.alert.Constructor=d,a.fn.alert.noConflict=function(){return a.fn.alert=e,this},a(document).on("click.bs.alert.data-api",c,d.prototype.close)}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.button"),f="object"==typeof b&&b;e||d.data("bs.button",e=new c(this,f)),"toggle"==b?e.toggle():b&&e.setState(b)})}var c=function(b,d){this.$element=a(b),this.options=a.extend({},c.DEFAULTS,d),this.isLoading=!1};c.VERSION="3.2.0",c.DEFAULTS={loadingText:"loading..."},c.prototype.setState=function(b){var c="disabled",d=this.$element,e=d.is("input")?"val":"html",f=d.data();b+="Text",null==f.resetText&&d.data("resetText",d[e]()),d[e](null==f[b]?this.options[b]:f[b]),setTimeout(a.proxy(function(){"loadingText"==b?(this.isLoading=!0,d.addClass(c).attr(c,c)):this.isLoading&&(this.isLoading=!1,d.removeClass(c).removeAttr(c))},this),0)},c.prototype.toggle=function(){var a=!0,b=this.$element.closest('[data-toggle="buttons"]');if(b.length){var c=this.$element.find("input");"radio"==c.prop("type")&&(c.prop("checked")&&this.$element.hasClass("active")?a=!1:b.find(".active").removeClass("active")),a&&c.prop("checked",!this.$element.hasClass("active")).trigger("change")}a&&this.$element.toggleClass("active")};var d=a.fn.button;a.fn.button=b,a.fn.button.Constructor=c,a.fn.button.noConflict=function(){return a.fn.button=d,this},a(document).on("click.bs.button.data-api",'[data-toggle^="button"]',function(c){var d=a(c.target);d.hasClass("btn")||(d=d.closest(".btn")),b.call(d,"toggle"),c.preventDefault()})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.carousel"),f=a.extend({},c.DEFAULTS,d.data(),"object"==typeof b&&b),g="string"==typeof b?b:f.slide;e||d.data("bs.carousel",e=new c(this,f)),"number"==typeof b?e.to(b):g?e[g]():f.interval&&e.pause().cycle()})}var c=function(b,c){this.$element=a(b).on("keydown.bs.carousel",a.proxy(this.keydown,this)),this.$indicators=this.$element.find(".carousel-indicators"),this.options=c,this.paused=this.sliding=this.interval=this.$active=this.$items=null,"hover"==this.options.pause&&this.$element.on("mouseenter.bs.carousel",a.proxy(this.pause,this)).on("mouseleave.bs.carousel",a.proxy(this.cycle,this))};c.VERSION="3.2.0",c.DEFAULTS={interval:5e3,pause:"hover",wrap:!0},c.prototype.keydown=function(a){switch(a.which){case 37:this.prev();break;case 39:this.next();break;default:return}a.preventDefault()},c.prototype.cycle=function(b){return b||(this.paused=!1),this.interval&&clearInterval(this.interval),this.options.interval&&!this.paused&&(this.interval=setInterval(a.proxy(this.next,this),this.options.interval)),this},c.prototype.getItemIndex=function(a){return this.$items=a.parent().children(".item"),this.$items.index(a||this.$active)},c.prototype.to=function(b){var c=this,d=this.getItemIndex(this.$active=this.$element.find(".item.active"));return b>this.$items.length-1||0>b?void 0:this.sliding?this.$element.one("slid.bs.carousel",function(){c.to(b)}):d==b?this.pause().cycle():this.slide(b>d?"next":"prev",a(this.$items[b]))},c.prototype.pause=function(b){return b||(this.paused=!0),this.$element.find(".next, .prev").length&&a.support.transition&&(this.$element.trigger(a.support.transition.end),this.cycle(!0)),this.interval=clearInterval(this.interval),this},c.prototype.next=function(){return this.sliding?void 0:this.slide("next")},c.prototype.prev=function(){return this.sliding?void 0:this.slide("prev")},c.prototype.slide=function(b,c){var d=this.$element.find(".item.active"),e=c||d[b](),f=this.interval,g="next"==b?"left":"right",h="next"==b?"first":"last",i=this;if(!e.length){if(!this.options.wrap)return;e=this.$element.find(".item")[h]()}if(e.hasClass("active"))return this.sliding=!1;var j=e[0],k=a.Event("slide.bs.carousel",{relatedTarget:j,direction:g});if(this.$element.trigger(k),!k.isDefaultPrevented()){if(this.sliding=!0,f&&this.pause(),this.$indicators.length){this.$indicators.find(".active").removeClass("active");var l=a(this.$indicators.children()[this.getItemIndex(e)]);l&&l.addClass("active")}var m=a.Event("slid.bs.carousel",{relatedTarget:j,direction:g});return a.support.transition&&this.$element.hasClass("slide")?(e.addClass(b),e[0].offsetWidth,d.addClass(g),e.addClass(g),d.one("bsTransitionEnd",function(){e.removeClass([b,g].join(" ")).addClass("active"),d.removeClass(["active",g].join(" ")),i.sliding=!1,setTimeout(function(){i.$element.trigger(m)},0)}).emulateTransitionEnd(1e3*d.css("transition-duration").slice(0,-1))):(d.removeClass("active"),e.addClass("active"),this.sliding=!1,this.$element.trigger(m)),f&&this.cycle(),this}};var d=a.fn.carousel;a.fn.carousel=b,a.fn.carousel.Constructor=c,a.fn.carousel.noConflict=function(){return a.fn.carousel=d,this},a(document).on("click.bs.carousel.data-api","[data-slide], [data-slide-to]",function(c){var d,e=a(this),f=a(e.attr("data-target")||(d=e.attr("href"))&&d.replace(/.*(?=#[^\s]+$)/,""));if(f.hasClass("carousel")){var g=a.extend({},f.data(),e.data()),h=e.attr("data-slide-to");h&&(g.interval=!1),b.call(f,g),h&&f.data("bs.carousel").to(h),c.preventDefault()}}),a(window).on("load",function(){a('[data-ride="carousel"]').each(function(){var c=a(this);b.call(c,c.data())})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.collapse"),f=a.extend({},c.DEFAULTS,d.data(),"object"==typeof b&&b);!e&&f.toggle&&"show"==b&&(b=!b),e||d.data("bs.collapse",e=new c(this,f)),"string"==typeof b&&e[b]()})}var c=function(b,d){this.$element=a(b),this.options=a.extend({},c.DEFAULTS,d),this.transitioning=null,this.options.parent&&(this.$parent=a(this.options.parent)),this.options.toggle&&this.toggle()};c.VERSION="3.2.0",c.DEFAULTS={toggle:!0},c.prototype.dimension=function(){var a=this.$element.hasClass("width");return a?"width":"height"},c.prototype.show=function(){if(!this.transitioning&&!this.$element.hasClass("in")){var c=a.Event("show.bs.collapse");if(this.$element.trigger(c),!c.isDefaultPrevented()){var d=this.$parent&&this.$parent.find("> .panel > .in");if(d&&d.length){var e=d.data("bs.collapse");if(e&&e.transitioning)return;b.call(d,"hide"),e||d.data("bs.collapse",null)}var f=this.dimension();this.$element.removeClass("collapse").addClass("collapsing")[f](0),this.transitioning=1;var g=function(){this.$element.removeClass("collapsing").addClass("collapse in")[f](""),this.transitioning=0,this.$element.trigger("shown.bs.collapse")};if(!a.support.transition)return g.call(this);var h=a.camelCase(["scroll",f].join("-"));this.$element.one("bsTransitionEnd",a.proxy(g,this)).emulateTransitionEnd(350)[f](this.$element[0][h])}}},c.prototype.hide=function(){if(!this.transitioning&&this.$element.hasClass("in")){var b=a.Event("hide.bs.collapse");if(this.$element.trigger(b),!b.isDefaultPrevented()){var c=this.dimension();this.$element[c](this.$element[c]())[0].offsetHeight,this.$element.addClass("collapsing").removeClass("collapse").removeClass("in"),this.transitioning=1;var d=function(){this.transitioning=0,this.$element.trigger("hidden.bs.collapse").removeClass("collapsing").addClass("collapse")};return a.support.transition?void this.$element[c](0).one("bsTransitionEnd",a.proxy(d,this)).emulateTransitionEnd(350):d.call(this)}}},c.prototype.toggle=function(){this[this.$element.hasClass("in")?"hide":"show"]()};var d=a.fn.collapse;a.fn.collapse=b,a.fn.collapse.Constructor=c,a.fn.collapse.noConflict=function(){return a.fn.collapse=d,this},a(document).on("click.bs.collapse.data-api",'[data-toggle="collapse"]',function(c){var d,e=a(this),f=e.attr("data-target")||c.preventDefault()||(d=e.attr("href"))&&d.replace(/.*(?=#[^\s]+$)/,""),g=a(f),h=g.data("bs.collapse"),i=h?"toggle":e.data(),j=e.attr("data-parent"),k=j&&a(j);h&&h.transitioning||(k&&k.find('[data-toggle="collapse"][data-parent="'+j+'"]').not(e).addClass("collapsed"),e[g.hasClass("in")?"addClass":"removeClass"]("collapsed")),b.call(g,i)})}(jQuery),+function(a){"use strict";function b(b){b&&3===b.which||(a(e).remove(),a(f).each(function(){var d=c(a(this)),e={relatedTarget:this};d.hasClass("open")&&(d.trigger(b=a.Event("hide.bs.dropdown",e)),b.isDefaultPrevented()||d.removeClass("open").trigger("hidden.bs.dropdown",e))}))}function c(b){var c=b.attr("data-target");c||(c=b.attr("href"),c=c&&/#[A-Za-z]/.test(c)&&c.replace(/.*(?=#[^\s]*$)/,""));var d=c&&a(c);return d&&d.length?d:b.parent()}function d(b){return this.each(function(){var c=a(this),d=c.data("bs.dropdown");d||c.data("bs.dropdown",d=new g(this)),"string"==typeof b&&d[b].call(c)})}var e=".dropdown-backdrop",f='[data-toggle="dropdown"]',g=function(b){a(b).on("click.bs.dropdown",this.toggle)};g.VERSION="3.2.0",g.prototype.toggle=function(d){var e=a(this);if(!e.is(".disabled, :disabled")){var f=c(e),g=f.hasClass("open");if(b(),!g){"ontouchstart"in document.documentElement&&!f.closest(".navbar-nav").length&&a('<div class="dropdown-backdrop"/>').insertAfter(a(this)).on("click",b);var h={relatedTarget:this};if(f.trigger(d=a.Event("show.bs.dropdown",h)),d.isDefaultPrevented())return;e.trigger("focus"),f.toggleClass("open").trigger("shown.bs.dropdown",h)}return!1}},g.prototype.keydown=function(b){if(/(38|40|27)/.test(b.keyCode)){var d=a(this);if(b.preventDefault(),b.stopPropagation(),!d.is(".disabled, :disabled")){var e=c(d),g=e.hasClass("open");if(!g||g&&27==b.keyCode)return 27==b.which&&e.find(f).trigger("focus"),d.trigger("click");var h=" li:not(.divider):visible a",i=e.find('[role="menu"]'+h+', [role="listbox"]'+h);if(i.length){var j=i.index(i.filter(":focus"));38==b.keyCode&&j>0&&j--,40==b.keyCode&&j<i.length-1&&j++,~j||(j=0),i.eq(j).trigger("focus")}}}};var h=a.fn.dropdown;a.fn.dropdown=d,a.fn.dropdown.Constructor=g,a.fn.dropdown.noConflict=function(){return a.fn.dropdown=h,this},a(document).on("click.bs.dropdown.data-api",b).on("click.bs.dropdown.data-api",".dropdown form",function(a){a.stopPropagation()}).on("click.bs.dropdown.data-api",f,g.prototype.toggle).on("keydown.bs.dropdown.data-api",f+', [role="menu"], [role="listbox"]',g.prototype.keydown)}(jQuery),+function(a){"use strict";function b(b,d){return this.each(function(){var e=a(this),f=e.data("bs.modal"),g=a.extend({},c.DEFAULTS,e.data(),"object"==typeof b&&b);f||e.data("bs.modal",f=new c(this,g)),"string"==typeof b?f[b](d):g.show&&f.show(d)})}var c=function(b,c){this.options=c,this.$body=a(document.body),this.$element=a(b),this.$backdrop=this.isShown=null,this.scrollbarWidth=0,this.options.remote&&this.$element.find(".modal-content").load(this.options.remote,a.proxy(function(){this.$element.trigger("loaded.bs.modal")},this))};c.VERSION="3.2.0",c.DEFAULTS={backdrop:!0,keyboard:!0,show:!0},c.prototype.toggle=function(a){return this.isShown?this.hide():this.show(a)},c.prototype.show=function(b){var c=this,d=a.Event("show.bs.modal",{relatedTarget:b});this.$element.trigger(d),this.isShown||d.isDefaultPrevented()||(this.isShown=!0,this.checkScrollbar(),this.$body.addClass("modal-open"),this.setScrollbar(),this.escape(),this.$element.on("click.dismiss.bs.modal",'[data-dismiss="modal"]',a.proxy(this.hide,this)),this.backdrop(function(){var d=a.support.transition&&c.$element.hasClass("fade");c.$element.parent().length||c.$element.appendTo(c.$body),c.$element.show().scrollTop(0),d&&c.$element[0].offsetWidth,c.$element.addClass("in").attr("aria-hidden",!1),c.enforceFocus();var e=a.Event("shown.bs.modal",{relatedTarget:b});d?c.$element.find(".modal-dialog").one("bsTransitionEnd",function(){c.$element.trigger("focus").trigger(e)}).emulateTransitionEnd(300):c.$element.trigger("focus").trigger(e)}))},c.prototype.hide=function(b){b&&b.preventDefault(),b=a.Event("hide.bs.modal"),this.$element.trigger(b),this.isShown&&!b.isDefaultPrevented()&&(this.isShown=!1,this.$body.removeClass("modal-open"),this.resetScrollbar(),this.escape(),a(document).off("focusin.bs.modal"),this.$element.removeClass("in").attr("aria-hidden",!0).off("click.dismiss.bs.modal"),a.support.transition&&this.$element.hasClass("fade")?this.$element.one("bsTransitionEnd",a.proxy(this.hideModal,this)).emulateTransitionEnd(300):this.hideModal())},c.prototype.enforceFocus=function(){a(document).off("focusin.bs.modal").on("focusin.bs.modal",a.proxy(function(a){this.$element[0]===a.target||this.$element.has(a.target).length||this.$element.trigger("focus")},this))},c.prototype.escape=function(){this.isShown&&this.options.keyboard?this.$element.on("keyup.dismiss.bs.modal",a.proxy(function(a){27==a.which&&this.hide()},this)):this.isShown||this.$element.off("keyup.dismiss.bs.modal")},c.prototype.hideModal=function(){var a=this;this.$element.hide(),this.backdrop(function(){a.$element.trigger("hidden.bs.modal")})},c.prototype.removeBackdrop=function(){this.$backdrop&&this.$backdrop.remove(),this.$backdrop=null},c.prototype.backdrop=function(b){var c=this,d=this.$element.hasClass("fade")?"fade":"";if(this.isShown&&this.options.backdrop){var e=a.support.transition&&d;if(this.$backdrop=a('<div class="modal-backdrop '+d+'" />').appendTo(this.$body),this.$element.on("click.dismiss.bs.modal",a.proxy(function(a){a.target===a.currentTarget&&("static"==this.options.backdrop?this.$element[0].focus.call(this.$element[0]):this.hide.call(this))},this)),e&&this.$backdrop[0].offsetWidth,this.$backdrop.addClass("in"),!b)return;e?this.$backdrop.one("bsTransitionEnd",b).emulateTransitionEnd(150):b()}else if(!this.isShown&&this.$backdrop){this.$backdrop.removeClass("in");var f=function(){c.removeBackdrop(),b&&b()};a.support.transition&&this.$element.hasClass("fade")?this.$backdrop.one("bsTransitionEnd",f).emulateTransitionEnd(150):f()}else b&&b()},c.prototype.checkScrollbar=function(){document.body.clientWidth>=window.innerWidth||(this.scrollbarWidth=this.scrollbarWidth||this.measureScrollbar())},c.prototype.setScrollbar=function(){var a=parseInt(this.$body.css("padding-right")||0,10);this.scrollbarWidth&&this.$body.css("padding-right",a+this.scrollbarWidth)},c.prototype.resetScrollbar=function(){this.$body.css("padding-right","")},c.prototype.measureScrollbar=function(){var a=document.createElement("div");a.className="modal-scrollbar-measure",this.$body.append(a);var b=a.offsetWidth-a.clientWidth;return this.$body[0].removeChild(a),b};var d=a.fn.modal;a.fn.modal=b,a.fn.modal.Constructor=c,a.fn.modal.noConflict=function(){return a.fn.modal=d,this},a(document).on("click.bs.modal.data-api",'[data-toggle="modal"]',function(c){var d=a(this),e=d.attr("href"),f=a(d.attr("data-target")||e&&e.replace(/.*(?=#[^\s]+$)/,"")),g=f.data("bs.modal")?"toggle":a.extend({remote:!/#/.test(e)&&e},f.data(),d.data());d.is("a")&&c.preventDefault(),f.one("show.bs.modal",function(a){a.isDefaultPrevented()||f.one("hidden.bs.modal",function(){d.is(":visible")&&d.trigger("focus")})}),b.call(f,g,this)})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tooltip"),f="object"==typeof b&&b;(e||"destroy"!=b)&&(e||d.data("bs.tooltip",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.type=this.options=this.enabled=this.timeout=this.hoverState=this.$element=null,this.init("tooltip",a,b)};c.VERSION="3.2.0",c.DEFAULTS={animation:!0,placement:"top",selector:!1,template:'<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',trigger:"hover focus",title:"",delay:0,html:!1,container:!1,viewport:{selector:"body",padding:0}},c.prototype.init=function(b,c,d){this.enabled=!0,this.type=b,this.$element=a(c),this.options=this.getOptions(d),this.$viewport=this.options.viewport&&a(this.options.viewport.selector||this.options.viewport);for(var e=this.options.trigger.split(" "),f=e.length;f--;){var g=e[f];if("click"==g)this.$element.on("click."+this.type,this.options.selector,a.proxy(this.toggle,this));else if("manual"!=g){var h="hover"==g?"mouseenter":"focusin",i="hover"==g?"mouseleave":"focusout";this.$element.on(h+"."+this.type,this.options.selector,a.proxy(this.enter,this)),this.$element.on(i+"."+this.type,this.options.selector,a.proxy(this.leave,this))}}this.options.selector?this._options=a.extend({},this.options,{trigger:"manual",selector:""}):this.fixTitle()},c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.getOptions=function(b){return b=a.extend({},this.getDefaults(),this.$element.data(),b),b.delay&&"number"==typeof b.delay&&(b.delay={show:b.delay,hide:b.delay}),b},c.prototype.getDelegateOptions=function(){var b={},c=this.getDefaults();return this._options&&a.each(this._options,function(a,d){c[a]!=d&&(b[a]=d)}),b},c.prototype.enter=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),clearTimeout(c.timeout),c.hoverState="in",c.options.delay&&c.options.delay.show?void(c.timeout=setTimeout(function(){"in"==c.hoverState&&c.show()},c.options.delay.show)):c.show()},c.prototype.leave=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),clearTimeout(c.timeout),c.hoverState="out",c.options.delay&&c.options.delay.hide?void(c.timeout=setTimeout(function(){"out"==c.hoverState&&c.hide()},c.options.delay.hide)):c.hide()},c.prototype.show=function(){var b=a.Event("show.bs."+this.type);if(this.hasContent()&&this.enabled){this.$element.trigger(b);var c=a.contains(document.documentElement,this.$element[0]);if(b.isDefaultPrevented()||!c)return;var d=this,e=this.tip(),f=this.getUID(this.type);this.setContent(),e.attr("id",f),this.$element.attr("aria-describedby",f),this.options.animation&&e.addClass("fade");var g="function"==typeof this.options.placement?this.options.placement.call(this,e[0],this.$element[0]):this.options.placement,h=/\s?auto?\s?/i,i=h.test(g);i&&(g=g.replace(h,"")||"top"),e.detach().css({top:0,left:0,display:"block"}).addClass(g).data("bs."+this.type,this),this.options.container?e.appendTo(this.options.container):e.insertAfter(this.$element);var j=this.getPosition(),k=e[0].offsetWidth,l=e[0].offsetHeight;if(i){var m=g,n=this.$element.parent(),o=this.getPosition(n);g="bottom"==g&&j.top+j.height+l-o.scroll>o.height?"top":"top"==g&&j.top-o.scroll-l<0?"bottom":"right"==g&&j.right+k>o.width?"left":"left"==g&&j.left-k<o.left?"right":g,e.removeClass(m).addClass(g)}var p=this.getCalculatedOffset(g,j,k,l);this.applyPlacement(p,g);var q=function(){d.$element.trigger("shown.bs."+d.type),d.hoverState=null};a.support.transition&&this.$tip.hasClass("fade")?e.one("bsTransitionEnd",q).emulateTransitionEnd(150):q()}},c.prototype.applyPlacement=function(b,c){var d=this.tip(),e=d[0].offsetWidth,f=d[0].offsetHeight,g=parseInt(d.css("margin-top"),10),h=parseInt(d.css("margin-left"),10);isNaN(g)&&(g=0),isNaN(h)&&(h=0),b.top=b.top+g,b.left=b.left+h,a.offset.setOffset(d[0],a.extend({using:function(a){d.css({top:Math.round(a.top),left:Math.round(a.left)})}},b),0),d.addClass("in");var i=d[0].offsetWidth,j=d[0].offsetHeight;"top"==c&&j!=f&&(b.top=b.top+f-j);var k=this.getViewportAdjustedDelta(c,b,i,j);k.left?b.left+=k.left:b.top+=k.top;var l=k.left?2*k.left-e+i:2*k.top-f+j,m=k.left?"left":"top",n=k.left?"offsetWidth":"offsetHeight";d.offset(b),this.replaceArrow(l,d[0][n],m)},c.prototype.replaceArrow=function(a,b,c){this.arrow().css(c,a?50*(1-a/b)+"%":"")},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle();a.find(".tooltip-inner")[this.options.html?"html":"text"](b),a.removeClass("fade in top bottom left right")},c.prototype.hide=function(){function b(){"in"!=c.hoverState&&d.detach(),c.$element.trigger("hidden.bs."+c.type)}var c=this,d=this.tip(),e=a.Event("hide.bs."+this.type);return this.$element.removeAttr("aria-describedby"),this.$element.trigger(e),e.isDefaultPrevented()?void 0:(d.removeClass("in"),a.support.transition&&this.$tip.hasClass("fade")?d.one("bsTransitionEnd",b).emulateTransitionEnd(150):b(),this.hoverState=null,this)},c.prototype.fixTitle=function(){var a=this.$element;(a.attr("title")||"string"!=typeof a.attr("data-original-title"))&&a.attr("data-original-title",a.attr("title")||"").attr("title","")},c.prototype.hasContent=function(){return this.getTitle()},c.prototype.getPosition=function(b){b=b||this.$element;var c=b[0],d="BODY"==c.tagName;return a.extend({},"function"==typeof c.getBoundingClientRect?c.getBoundingClientRect():null,{scroll:d?document.documentElement.scrollTop||document.body.scrollTop:b.scrollTop(),width:d?a(window).width():b.outerWidth(),height:d?a(window).height():b.outerHeight()},d?{top:0,left:0}:b.offset())},c.prototype.getCalculatedOffset=function(a,b,c,d){return"bottom"==a?{top:b.top+b.height,left:b.left+b.width/2-c/2}:"top"==a?{top:b.top-d,left:b.left+b.width/2-c/2}:"left"==a?{top:b.top+b.height/2-d/2,left:b.left-c}:{top:b.top+b.height/2-d/2,left:b.left+b.width}},c.prototype.getViewportAdjustedDelta=function(a,b,c,d){var e={top:0,left:0};if(!this.$viewport)return e;var f=this.options.viewport&&this.options.viewport.padding||0,g=this.getPosition(this.$viewport);if(/right|left/.test(a)){var h=b.top-f-g.scroll,i=b.top+f-g.scroll+d;h<g.top?e.top=g.top-h:i>g.top+g.height&&(e.top=g.top+g.height-i)}else{var j=b.left-f,k=b.left+f+c;j<g.left?e.left=g.left-j:k>g.width&&(e.left=g.left+g.width-k)}return e},c.prototype.getTitle=function(){var a,b=this.$element,c=this.options;return a=b.attr("data-original-title")||("function"==typeof c.title?c.title.call(b[0]):c.title)},c.prototype.getUID=function(a){do a+=~~(1e6*Math.random());while(document.getElementById(a));return a},c.prototype.tip=function(){return this.$tip=this.$tip||a(this.options.template)},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".tooltip-arrow")},c.prototype.validate=function(){this.$element[0].parentNode||(this.hide(),this.$element=null,this.options=null)},c.prototype.enable=function(){this.enabled=!0},c.prototype.disable=function(){this.enabled=!1},c.prototype.toggleEnabled=function(){this.enabled=!this.enabled},c.prototype.toggle=function(b){var c=this;b&&(c=a(b.currentTarget).data("bs."+this.type),c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c))),c.tip().hasClass("in")?c.leave(c):c.enter(c)},c.prototype.destroy=function(){clearTimeout(this.timeout),this.hide().$element.off("."+this.type).removeData("bs."+this.type)};var d=a.fn.tooltip;a.fn.tooltip=b,a.fn.tooltip.Constructor=c,a.fn.tooltip.noConflict=function(){return a.fn.tooltip=d,this}}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.popover"),f="object"==typeof b&&b;(e||"destroy"!=b)&&(e||d.data("bs.popover",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.init("popover",a,b)};if(!a.fn.tooltip)throw new Error("Popover requires tooltip.js");c.VERSION="3.2.0",c.DEFAULTS=a.extend({},a.fn.tooltip.Constructor.DEFAULTS,{placement:"right",trigger:"click",content:"",template:'<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'}),c.prototype=a.extend({},a.fn.tooltip.Constructor.prototype),c.prototype.constructor=c,c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle(),c=this.getContent();a.find(".popover-title")[this.options.html?"html":"text"](b),a.find(".popover-content").empty()[this.options.html?"string"==typeof c?"html":"append":"text"](c),a.removeClass("fade top bottom left right in"),a.find(".popover-title").html()||a.find(".popover-title").hide()},c.prototype.hasContent=function(){return this.getTitle()||this.getContent()},c.prototype.getContent=function(){var a=this.$element,b=this.options;return a.attr("data-content")||("function"==typeof b.content?b.content.call(a[0]):b.content)},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".arrow")},c.prototype.tip=function(){return this.$tip||(this.$tip=a(this.options.template)),this.$tip};var d=a.fn.popover;a.fn.popover=b,a.fn.popover.Constructor=c,a.fn.popover.noConflict=function(){return a.fn.popover=d,this}}(jQuery),+function(a){"use strict";function b(c,d){var e=a.proxy(this.process,this);this.$body=a("body"),this.$scrollElement=a(a(c).is("body")?window:c),this.options=a.extend({},b.DEFAULTS,d),this.selector=(this.options.target||"")+" .nav li > a",this.offsets=[],this.targets=[],this.activeTarget=null,this.scrollHeight=0,this.$scrollElement.on("scroll.bs.scrollspy",e),this.refresh(),this.process()}function c(c){return this.each(function(){var d=a(this),e=d.data("bs.scrollspy"),f="object"==typeof c&&c;e||d.data("bs.scrollspy",e=new b(this,f)),"string"==typeof c&&e[c]()})}b.VERSION="3.2.0",b.DEFAULTS={offset:10},b.prototype.getScrollHeight=function(){return this.$scrollElement[0].scrollHeight||Math.max(this.$body[0].scrollHeight,document.documentElement.scrollHeight)},b.prototype.refresh=function(){var b="offset",c=0;a.isWindow(this.$scrollElement[0])||(b="position",c=this.$scrollElement.scrollTop()),this.offsets=[],this.targets=[],this.scrollHeight=this.getScrollHeight();var d=this;this.$body.find(this.selector).map(function(){var d=a(this),e=d.data("target")||d.attr("href"),f=/^#./.test(e)&&a(e);return f&&f.length&&f.is(":visible")&&[[f[b]().top+c,e]]||null}).sort(function(a,b){return a[0]-b[0]}).each(function(){d.offsets.push(this[0]),d.targets.push(this[1])})},b.prototype.process=function(){var a,b=this.$scrollElement.scrollTop()+this.options.offset,c=this.getScrollHeight(),d=this.options.offset+c-this.$scrollElement.height(),e=this.offsets,f=this.targets,g=this.activeTarget;if(this.scrollHeight!=c&&this.refresh(),b>=d)return g!=(a=f[f.length-1])&&this.activate(a);if(g&&b<=e[0])return g!=(a=f[0])&&this.activate(a);for(a=e.length;a--;)g!=f[a]&&b>=e[a]&&(!e[a+1]||b<=e[a+1])&&this.activate(f[a])},b.prototype.activate=function(b){this.activeTarget=b,a(this.selector).parentsUntil(this.options.target,".active").removeClass("active");var c=this.selector+'[data-target="'+b+'"],'+this.selector+'[href="'+b+'"]',d=a(c).parents("li").addClass("active");d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active")),d.trigger("activate.bs.scrollspy")};var d=a.fn.scrollspy;a.fn.scrollspy=c,a.fn.scrollspy.Constructor=b,a.fn.scrollspy.noConflict=function(){return a.fn.scrollspy=d,this},a(window).on("load.bs.scrollspy.data-api",function(){a('[data-spy="scroll"]').each(function(){var b=a(this);c.call(b,b.data())})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tab");e||d.data("bs.tab",e=new c(this)),"string"==typeof b&&e[b]()})}var c=function(b){this.element=a(b)};c.VERSION="3.2.0",c.prototype.show=function(){var b=this.element,c=b.closest("ul:not(.dropdown-menu)"),d=b.data("target");if(d||(d=b.attr("href"),d=d&&d.replace(/.*(?=#[^\s]*$)/,"")),!b.parent("li").hasClass("active")){var e=c.find(".active:last a")[0],f=a.Event("show.bs.tab",{relatedTarget:e});if(b.trigger(f),!f.isDefaultPrevented()){var g=a(d);this.activate(b.closest("li"),c),this.activate(g,g.parent(),function(){b.trigger({type:"shown.bs.tab",relatedTarget:e})})}}},c.prototype.activate=function(b,c,d){function e(){f.removeClass("active").find("> .dropdown-menu > .active").removeClass("active"),b.addClass("active"),g?(b[0].offsetWidth,b.addClass("in")):b.removeClass("fade"),b.parent(".dropdown-menu")&&b.closest("li.dropdown").addClass("active"),d&&d()}var f=c.find("> .active"),g=d&&a.support.transition&&f.hasClass("fade");g?f.one("bsTransitionEnd",e).emulateTransitionEnd(150):e(),f.removeClass("in")};var d=a.fn.tab;a.fn.tab=b,a.fn.tab.Constructor=c,a.fn.tab.noConflict=function(){return a.fn.tab=d,this},a(document).on("click.bs.tab.data-api",'[data-toggle="tab"], [data-toggle="pill"]',function(c){c.preventDefault(),b.call(a(this),"show")})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.affix"),f="object"==typeof b&&b;e||d.data("bs.affix",e=new c(this,f)),"string"==typeof b&&e[b]()})}var c=function(b,d){this.options=a.extend({},c.DEFAULTS,d),this.$target=a(this.options.target).on("scroll.bs.affix.data-api",a.proxy(this.checkPosition,this)).on("click.bs.affix.data-api",a.proxy(this.checkPositionWithEventLoop,this)),this.$element=a(b),this.affixed=this.unpin=this.pinnedOffset=null,this.checkPosition()};c.VERSION="3.2.0",c.RESET="affix affix-top affix-bottom",c.DEFAULTS={offset:0,target:window},c.prototype.getPinnedOffset=function(){if(this.pinnedOffset)return this.pinnedOffset;this.$element.removeClass(c.RESET).addClass("affix");var a=this.$target.scrollTop(),b=this.$element.offset();return this.pinnedOffset=b.top-a},c.prototype.checkPositionWithEventLoop=function(){setTimeout(a.proxy(this.checkPosition,this),1)},c.prototype.checkPosition=function(){if(this.$element.is(":visible")){var b=a(document).height(),d=this.$target.scrollTop(),e=this.$element.offset(),f=this.options.offset,g=f.top,h=f.bottom;"object"!=typeof f&&(h=g=f),"function"==typeof g&&(g=f.top(this.$element)),"function"==typeof h&&(h=f.bottom(this.$element));var i=null!=this.unpin&&d+this.unpin<=e.top?!1:null!=h&&e.top+this.$element.height()>=b-h?"bottom":null!=g&&g>=d?"top":!1;if(this.affixed!==i){null!=this.unpin&&this.$element.css("top","");var j="affix"+(i?"-"+i:""),k=a.Event(j+".bs.affix");this.$element.trigger(k),k.isDefaultPrevented()||(this.affixed=i,this.unpin="bottom"==i?this.getPinnedOffset():null,this.$element.removeClass(c.RESET).addClass(j).trigger(a.Event(j.replace("affix","affixed"))),"bottom"==i&&this.$element.offset({top:b-this.$element.height()-h}))}}};var d=a.fn.affix;a.fn.affix=b,a.fn.affix.Constructor=c,a.fn.affix.noConflict=function(){return a.fn.affix=d,this},a(window).on("load",function(){a('[data-spy="affix"]').each(function(){var c=a(this),d=c.data();d.offset=d.offset||{},d.offsetBottom&&(d.offset.bottom=d.offsetBottom),d.offsetTop&&(d.offset.top=d.offsetTop),b.call(c,d)})})}(jQuery);
-},{}],56:[function(require,module,exports){
+if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires jQuery");+function(a){"use strict";var b=a.fn.jquery.split(" ")[0].split(".");if(b[0]<2&&b[1]<9||1==b[0]&&9==b[1]&&b[2]<1)throw new Error("Bootstrap's JavaScript requires jQuery version 1.9.1 or higher")}(jQuery),+function(a){"use strict";function b(){var a=document.createElement("bootstrap"),b={WebkitTransition:"webkitTransitionEnd",MozTransition:"transitionend",OTransition:"oTransitionEnd otransitionend",transition:"transitionend"};for(var c in b)if(void 0!==a.style[c])return{end:b[c]};return!1}a.fn.emulateTransitionEnd=function(b){var c=!1,d=this;a(this).one("bsTransitionEnd",function(){c=!0});var e=function(){c||a(d).trigger(a.support.transition.end)};return setTimeout(e,b),this},a(function(){a.support.transition=b(),a.support.transition&&(a.event.special.bsTransitionEnd={bindType:a.support.transition.end,delegateType:a.support.transition.end,handle:function(b){return a(b.target).is(this)?b.handleObj.handler.apply(this,arguments):void 0}})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var c=a(this),e=c.data("bs.alert");e||c.data("bs.alert",e=new d(this)),"string"==typeof b&&e[b].call(c)})}var c='[data-dismiss="alert"]',d=function(b){a(b).on("click",c,this.close)};d.VERSION="3.3.4",d.TRANSITION_DURATION=150,d.prototype.close=function(b){function c(){g.detach().trigger("closed.bs.alert").remove()}var e=a(this),f=e.attr("data-target");f||(f=e.attr("href"),f=f&&f.replace(/.*(?=#[^\s]*$)/,""));var g=a(f);b&&b.preventDefault(),g.length||(g=e.closest(".alert")),g.trigger(b=a.Event("close.bs.alert")),b.isDefaultPrevented()||(g.removeClass("in"),a.support.transition&&g.hasClass("fade")?g.one("bsTransitionEnd",c).emulateTransitionEnd(d.TRANSITION_DURATION):c())};var e=a.fn.alert;a.fn.alert=b,a.fn.alert.Constructor=d,a.fn.alert.noConflict=function(){return a.fn.alert=e,this},a(document).on("click.bs.alert.data-api",c,d.prototype.close)}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.button"),f="object"==typeof b&&b;e||d.data("bs.button",e=new c(this,f)),"toggle"==b?e.toggle():b&&e.setState(b)})}var c=function(b,d){this.$element=a(b),this.options=a.extend({},c.DEFAULTS,d),this.isLoading=!1};c.VERSION="3.3.4",c.DEFAULTS={loadingText:"loading..."},c.prototype.setState=function(b){var c="disabled",d=this.$element,e=d.is("input")?"val":"html",f=d.data();b+="Text",null==f.resetText&&d.data("resetText",d[e]()),setTimeout(a.proxy(function(){d[e](null==f[b]?this.options[b]:f[b]),"loadingText"==b?(this.isLoading=!0,d.addClass(c).attr(c,c)):this.isLoading&&(this.isLoading=!1,d.removeClass(c).removeAttr(c))},this),0)},c.prototype.toggle=function(){var a=!0,b=this.$element.closest('[data-toggle="buttons"]');if(b.length){var c=this.$element.find("input");"radio"==c.prop("type")&&(c.prop("checked")&&this.$element.hasClass("active")?a=!1:b.find(".active").removeClass("active")),a&&c.prop("checked",!this.$element.hasClass("active")).trigger("change")}else this.$element.attr("aria-pressed",!this.$element.hasClass("active"));a&&this.$element.toggleClass("active")};var d=a.fn.button;a.fn.button=b,a.fn.button.Constructor=c,a.fn.button.noConflict=function(){return a.fn.button=d,this},a(document).on("click.bs.button.data-api",'[data-toggle^="button"]',function(c){var d=a(c.target);d.hasClass("btn")||(d=d.closest(".btn")),b.call(d,"toggle"),c.preventDefault()}).on("focus.bs.button.data-api blur.bs.button.data-api",'[data-toggle^="button"]',function(b){a(b.target).closest(".btn").toggleClass("focus",/^focus(in)?$/.test(b.type))})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.carousel"),f=a.extend({},c.DEFAULTS,d.data(),"object"==typeof b&&b),g="string"==typeof b?b:f.slide;e||d.data("bs.carousel",e=new c(this,f)),"number"==typeof b?e.to(b):g?e[g]():f.interval&&e.pause().cycle()})}var c=function(b,c){this.$element=a(b),this.$indicators=this.$element.find(".carousel-indicators"),this.options=c,this.paused=null,this.sliding=null,this.interval=null,this.$active=null,this.$items=null,this.options.keyboard&&this.$element.on("keydown.bs.carousel",a.proxy(this.keydown,this)),"hover"==this.options.pause&&!("ontouchstart"in document.documentElement)&&this.$element.on("mouseenter.bs.carousel",a.proxy(this.pause,this)).on("mouseleave.bs.carousel",a.proxy(this.cycle,this))};c.VERSION="3.3.4",c.TRANSITION_DURATION=600,c.DEFAULTS={interval:5e3,pause:"hover",wrap:!0,keyboard:!0},c.prototype.keydown=function(a){if(!/input|textarea/i.test(a.target.tagName)){switch(a.which){case 37:this.prev();break;case 39:this.next();break;default:return}a.preventDefault()}},c.prototype.cycle=function(b){return b||(this.paused=!1),this.interval&&clearInterval(this.interval),this.options.interval&&!this.paused&&(this.interval=setInterval(a.proxy(this.next,this),this.options.interval)),this},c.prototype.getItemIndex=function(a){return this.$items=a.parent().children(".item"),this.$items.index(a||this.$active)},c.prototype.getItemForDirection=function(a,b){var c=this.getItemIndex(b),d="prev"==a&&0===c||"next"==a&&c==this.$items.length-1;if(d&&!this.options.wrap)return b;var e="prev"==a?-1:1,f=(c+e)%this.$items.length;return this.$items.eq(f)},c.prototype.to=function(a){var b=this,c=this.getItemIndex(this.$active=this.$element.find(".item.active"));return a>this.$items.length-1||0>a?void 0:this.sliding?this.$element.one("slid.bs.carousel",function(){b.to(a)}):c==a?this.pause().cycle():this.slide(a>c?"next":"prev",this.$items.eq(a))},c.prototype.pause=function(b){return b||(this.paused=!0),this.$element.find(".next, .prev").length&&a.support.transition&&(this.$element.trigger(a.support.transition.end),this.cycle(!0)),this.interval=clearInterval(this.interval),this},c.prototype.next=function(){return this.sliding?void 0:this.slide("next")},c.prototype.prev=function(){return this.sliding?void 0:this.slide("prev")},c.prototype.slide=function(b,d){var e=this.$element.find(".item.active"),f=d||this.getItemForDirection(b,e),g=this.interval,h="next"==b?"left":"right",i=this;if(f.hasClass("active"))return this.sliding=!1;var j=f[0],k=a.Event("slide.bs.carousel",{relatedTarget:j,direction:h});if(this.$element.trigger(k),!k.isDefaultPrevented()){if(this.sliding=!0,g&&this.pause(),this.$indicators.length){this.$indicators.find(".active").removeClass("active");var l=a(this.$indicators.children()[this.getItemIndex(f)]);l&&l.addClass("active")}var m=a.Event("slid.bs.carousel",{relatedTarget:j,direction:h});return a.support.transition&&this.$element.hasClass("slide")?(f.addClass(b),f[0].offsetWidth,e.addClass(h),f.addClass(h),e.one("bsTransitionEnd",function(){f.removeClass([b,h].join(" ")).addClass("active"),e.removeClass(["active",h].join(" ")),i.sliding=!1,setTimeout(function(){i.$element.trigger(m)},0)}).emulateTransitionEnd(c.TRANSITION_DURATION)):(e.removeClass("active"),f.addClass("active"),this.sliding=!1,this.$element.trigger(m)),g&&this.cycle(),this}};var d=a.fn.carousel;a.fn.carousel=b,a.fn.carousel.Constructor=c,a.fn.carousel.noConflict=function(){return a.fn.carousel=d,this};var e=function(c){var d,e=a(this),f=a(e.attr("data-target")||(d=e.attr("href"))&&d.replace(/.*(?=#[^\s]+$)/,""));if(f.hasClass("carousel")){var g=a.extend({},f.data(),e.data()),h=e.attr("data-slide-to");h&&(g.interval=!1),b.call(f,g),h&&f.data("bs.carousel").to(h),c.preventDefault()}};a(document).on("click.bs.carousel.data-api","[data-slide]",e).on("click.bs.carousel.data-api","[data-slide-to]",e),a(window).on("load",function(){a('[data-ride="carousel"]').each(function(){var c=a(this);b.call(c,c.data())})})}(jQuery),+function(a){"use strict";function b(b){var c,d=b.attr("data-target")||(c=b.attr("href"))&&c.replace(/.*(?=#[^\s]+$)/,"");return a(d)}function c(b){return this.each(function(){var c=a(this),e=c.data("bs.collapse"),f=a.extend({},d.DEFAULTS,c.data(),"object"==typeof b&&b);!e&&f.toggle&&/show|hide/.test(b)&&(f.toggle=!1),e||c.data("bs.collapse",e=new d(this,f)),"string"==typeof b&&e[b]()})}var d=function(b,c){this.$element=a(b),this.options=a.extend({},d.DEFAULTS,c),this.$trigger=a('[data-toggle="collapse"][href="#'+b.id+'"],[data-toggle="collapse"][data-target="#'+b.id+'"]'),this.transitioning=null,this.options.parent?this.$parent=this.getParent():this.addAriaAndCollapsedClass(this.$element,this.$trigger),this.options.toggle&&this.toggle()};d.VERSION="3.3.4",d.TRANSITION_DURATION=350,d.DEFAULTS={toggle:!0},d.prototype.dimension=function(){var a=this.$element.hasClass("width");return a?"width":"height"},d.prototype.show=function(){if(!this.transitioning&&!this.$element.hasClass("in")){var b,e=this.$parent&&this.$parent.children(".panel").children(".in, .collapsing");if(!(e&&e.length&&(b=e.data("bs.collapse"),b&&b.transitioning))){var f=a.Event("show.bs.collapse");if(this.$element.trigger(f),!f.isDefaultPrevented()){e&&e.length&&(c.call(e,"hide"),b||e.data("bs.collapse",null));var g=this.dimension();this.$element.removeClass("collapse").addClass("collapsing")[g](0).attr("aria-expanded",!0),this.$trigger.removeClass("collapsed").attr("aria-expanded",!0),this.transitioning=1;var h=function(){this.$element.removeClass("collapsing").addClass("collapse in")[g](""),this.transitioning=0,this.$element.trigger("shown.bs.collapse")};if(!a.support.transition)return h.call(this);var i=a.camelCase(["scroll",g].join("-"));this.$element.one("bsTransitionEnd",a.proxy(h,this)).emulateTransitionEnd(d.TRANSITION_DURATION)[g](this.$element[0][i])}}}},d.prototype.hide=function(){if(!this.transitioning&&this.$element.hasClass("in")){var b=a.Event("hide.bs.collapse");if(this.$element.trigger(b),!b.isDefaultPrevented()){var c=this.dimension();this.$element[c](this.$element[c]())[0].offsetHeight,this.$element.addClass("collapsing").removeClass("collapse in").attr("aria-expanded",!1),this.$trigger.addClass("collapsed").attr("aria-expanded",!1),this.transitioning=1;var e=function(){this.transitioning=0,this.$element.removeClass("collapsing").addClass("collapse").trigger("hidden.bs.collapse")};return a.support.transition?void this.$element[c](0).one("bsTransitionEnd",a.proxy(e,this)).emulateTransitionEnd(d.TRANSITION_DURATION):e.call(this)}}},d.prototype.toggle=function(){this[this.$element.hasClass("in")?"hide":"show"]()},d.prototype.getParent=function(){return a(this.options.parent).find('[data-toggle="collapse"][data-parent="'+this.options.parent+'"]').each(a.proxy(function(c,d){var e=a(d);this.addAriaAndCollapsedClass(b(e),e)},this)).end()},d.prototype.addAriaAndCollapsedClass=function(a,b){var c=a.hasClass("in");a.attr("aria-expanded",c),b.toggleClass("collapsed",!c).attr("aria-expanded",c)};var e=a.fn.collapse;a.fn.collapse=c,a.fn.collapse.Constructor=d,a.fn.collapse.noConflict=function(){return a.fn.collapse=e,this},a(document).on("click.bs.collapse.data-api",'[data-toggle="collapse"]',function(d){var e=a(this);e.attr("data-target")||d.preventDefault();var f=b(e),g=f.data("bs.collapse"),h=g?"toggle":e.data();c.call(f,h)})}(jQuery),+function(a){"use strict";function b(b){b&&3===b.which||(a(e).remove(),a(f).each(function(){var d=a(this),e=c(d),f={relatedTarget:this};e.hasClass("open")&&(e.trigger(b=a.Event("hide.bs.dropdown",f)),b.isDefaultPrevented()||(d.attr("aria-expanded","false"),e.removeClass("open").trigger("hidden.bs.dropdown",f)))}))}function c(b){var c=b.attr("data-target");c||(c=b.attr("href"),c=c&&/#[A-Za-z]/.test(c)&&c.replace(/.*(?=#[^\s]*$)/,""));var d=c&&a(c);return d&&d.length?d:b.parent()}function d(b){return this.each(function(){var c=a(this),d=c.data("bs.dropdown");d||c.data("bs.dropdown",d=new g(this)),"string"==typeof b&&d[b].call(c)})}var e=".dropdown-backdrop",f='[data-toggle="dropdown"]',g=function(b){a(b).on("click.bs.dropdown",this.toggle)};g.VERSION="3.3.4",g.prototype.toggle=function(d){var e=a(this);if(!e.is(".disabled, :disabled")){var f=c(e),g=f.hasClass("open");if(b(),!g){"ontouchstart"in document.documentElement&&!f.closest(".navbar-nav").length&&a('<div class="dropdown-backdrop"/>').insertAfter(a(this)).on("click",b);var h={relatedTarget:this};if(f.trigger(d=a.Event("show.bs.dropdown",h)),d.isDefaultPrevented())return;e.trigger("focus").attr("aria-expanded","true"),f.toggleClass("open").trigger("shown.bs.dropdown",h)}return!1}},g.prototype.keydown=function(b){if(/(38|40|27|32)/.test(b.which)&&!/input|textarea/i.test(b.target.tagName)){var d=a(this);if(b.preventDefault(),b.stopPropagation(),!d.is(".disabled, :disabled")){var e=c(d),g=e.hasClass("open");if(!g&&27!=b.which||g&&27==b.which)return 27==b.which&&e.find(f).trigger("focus"),d.trigger("click");var h=" li:not(.disabled):visible a",i=e.find('[role="menu"]'+h+', [role="listbox"]'+h);if(i.length){var j=i.index(b.target);38==b.which&&j>0&&j--,40==b.which&&j<i.length-1&&j++,~j||(j=0),i.eq(j).trigger("focus")}}}};var h=a.fn.dropdown;a.fn.dropdown=d,a.fn.dropdown.Constructor=g,a.fn.dropdown.noConflict=function(){return a.fn.dropdown=h,this},a(document).on("click.bs.dropdown.data-api",b).on("click.bs.dropdown.data-api",".dropdown form",function(a){a.stopPropagation()}).on("click.bs.dropdown.data-api",f,g.prototype.toggle).on("keydown.bs.dropdown.data-api",f,g.prototype.keydown).on("keydown.bs.dropdown.data-api",'[role="menu"]',g.prototype.keydown).on("keydown.bs.dropdown.data-api",'[role="listbox"]',g.prototype.keydown)}(jQuery),+function(a){"use strict";function b(b,d){return this.each(function(){var e=a(this),f=e.data("bs.modal"),g=a.extend({},c.DEFAULTS,e.data(),"object"==typeof b&&b);f||e.data("bs.modal",f=new c(this,g)),"string"==typeof b?f[b](d):g.show&&f.show(d)})}var c=function(b,c){this.options=c,this.$body=a(document.body),this.$element=a(b),this.$dialog=this.$element.find(".modal-dialog"),this.$backdrop=null,this.isShown=null,this.originalBodyPad=null,this.scrollbarWidth=0,this.ignoreBackdropClick=!1,this.options.remote&&this.$element.find(".modal-content").load(this.options.remote,a.proxy(function(){this.$element.trigger("loaded.bs.modal")},this))};c.VERSION="3.3.4",c.TRANSITION_DURATION=300,c.BACKDROP_TRANSITION_DURATION=150,c.DEFAULTS={backdrop:!0,keyboard:!0,show:!0},c.prototype.toggle=function(a){return this.isShown?this.hide():this.show(a)},c.prototype.show=function(b){var d=this,e=a.Event("show.bs.modal",{relatedTarget:b});this.$element.trigger(e),this.isShown||e.isDefaultPrevented()||(this.isShown=!0,this.checkScrollbar(),this.setScrollbar(),this.$body.addClass("modal-open"),this.escape(),this.resize(),this.$element.on("click.dismiss.bs.modal",'[data-dismiss="modal"]',a.proxy(this.hide,this)),this.$dialog.on("mousedown.dismiss.bs.modal",function(){d.$element.one("mouseup.dismiss.bs.modal",function(b){a(b.target).is(d.$element)&&(d.ignoreBackdropClick=!0)})}),this.backdrop(function(){var e=a.support.transition&&d.$element.hasClass("fade");d.$element.parent().length||d.$element.appendTo(d.$body),d.$element.show().scrollTop(0),d.adjustDialog(),e&&d.$element[0].offsetWidth,d.$element.addClass("in").attr("aria-hidden",!1),d.enforceFocus();var f=a.Event("shown.bs.modal",{relatedTarget:b});e?d.$dialog.one("bsTransitionEnd",function(){d.$element.trigger("focus").trigger(f)}).emulateTransitionEnd(c.TRANSITION_DURATION):d.$element.trigger("focus").trigger(f)}))},c.prototype.hide=function(b){b&&b.preventDefault(),b=a.Event("hide.bs.modal"),this.$element.trigger(b),this.isShown&&!b.isDefaultPrevented()&&(this.isShown=!1,this.escape(),this.resize(),a(document).off("focusin.bs.modal"),this.$element.removeClass("in").attr("aria-hidden",!0).off("click.dismiss.bs.modal").off("mouseup.dismiss.bs.modal"),this.$dialog.off("mousedown.dismiss.bs.modal"),a.support.transition&&this.$element.hasClass("fade")?this.$element.one("bsTransitionEnd",a.proxy(this.hideModal,this)).emulateTransitionEnd(c.TRANSITION_DURATION):this.hideModal())},c.prototype.enforceFocus=function(){a(document).off("focusin.bs.modal").on("focusin.bs.modal",a.proxy(function(a){this.$element[0]===a.target||this.$element.has(a.target).length||this.$element.trigger("focus")},this))},c.prototype.escape=function(){this.isShown&&this.options.keyboard?this.$element.on("keydown.dismiss.bs.modal",a.proxy(function(a){27==a.which&&this.hide()},this)):this.isShown||this.$element.off("keydown.dismiss.bs.modal")},c.prototype.resize=function(){this.isShown?a(window).on("resize.bs.modal",a.proxy(this.handleUpdate,this)):a(window).off("resize.bs.modal")},c.prototype.hideModal=function(){var a=this;this.$element.hide(),this.backdrop(function(){a.$body.removeClass("modal-open"),a.resetAdjustments(),a.resetScrollbar(),a.$element.trigger("hidden.bs.modal")})},c.prototype.removeBackdrop=function(){this.$backdrop&&this.$backdrop.remove(),this.$backdrop=null},c.prototype.backdrop=function(b){var d=this,e=this.$element.hasClass("fade")?"fade":"";if(this.isShown&&this.options.backdrop){var f=a.support.transition&&e;if(this.$backdrop=a('<div class="modal-backdrop '+e+'" />').appendTo(this.$body),this.$element.on("click.dismiss.bs.modal",a.proxy(function(a){return this.ignoreBackdropClick?void(this.ignoreBackdropClick=!1):void(a.target===a.currentTarget&&("static"==this.options.backdrop?this.$element[0].focus():this.hide()))},this)),f&&this.$backdrop[0].offsetWidth,this.$backdrop.addClass("in"),!b)return;f?this.$backdrop.one("bsTransitionEnd",b).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION):b()}else if(!this.isShown&&this.$backdrop){this.$backdrop.removeClass("in");var g=function(){d.removeBackdrop(),b&&b()};a.support.transition&&this.$element.hasClass("fade")?this.$backdrop.one("bsTransitionEnd",g).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION):g()}else b&&b()},c.prototype.handleUpdate=function(){this.adjustDialog()},c.prototype.adjustDialog=function(){var a=this.$element[0].scrollHeight>document.documentElement.clientHeight;this.$element.css({paddingLeft:!this.bodyIsOverflowing&&a?this.scrollbarWidth:"",paddingRight:this.bodyIsOverflowing&&!a?this.scrollbarWidth:""})},c.prototype.resetAdjustments=function(){this.$element.css({paddingLeft:"",paddingRight:""})},c.prototype.checkScrollbar=function(){var a=window.innerWidth;if(!a){var b=document.documentElement.getBoundingClientRect();a=b.right-Math.abs(b.left)}this.bodyIsOverflowing=document.body.clientWidth<a,this.scrollbarWidth=this.measureScrollbar()},c.prototype.setScrollbar=function(){var a=parseInt(this.$body.css("padding-right")||0,10);this.originalBodyPad=document.body.style.paddingRight||"",this.bodyIsOverflowing&&this.$body.css("padding-right",a+this.scrollbarWidth)},c.prototype.resetScrollbar=function(){this.$body.css("padding-right",this.originalBodyPad)},c.prototype.measureScrollbar=function(){var a=document.createElement("div");a.className="modal-scrollbar-measure",this.$body.append(a);var b=a.offsetWidth-a.clientWidth;return this.$body[0].removeChild(a),b};var d=a.fn.modal;a.fn.modal=b,a.fn.modal.Constructor=c,a.fn.modal.noConflict=function(){return a.fn.modal=d,this},a(document).on("click.bs.modal.data-api",'[data-toggle="modal"]',function(c){var d=a(this),e=d.attr("href"),f=a(d.attr("data-target")||e&&e.replace(/.*(?=#[^\s]+$)/,"")),g=f.data("bs.modal")?"toggle":a.extend({remote:!/#/.test(e)&&e},f.data(),d.data());d.is("a")&&c.preventDefault(),f.one("show.bs.modal",function(a){a.isDefaultPrevented()||f.one("hidden.bs.modal",function(){d.is(":visible")&&d.trigger("focus")})}),b.call(f,g,this)})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tooltip"),f="object"==typeof b&&b;(e||!/destroy|hide/.test(b))&&(e||d.data("bs.tooltip",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.type=null,this.options=null,this.enabled=null,this.timeout=null,this.hoverState=null,this.$element=null,this.init("tooltip",a,b)};c.VERSION="3.3.4",c.TRANSITION_DURATION=150,c.DEFAULTS={animation:!0,placement:"top",selector:!1,template:'<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',trigger:"hover focus",title:"",delay:0,html:!1,container:!1,viewport:{selector:"body",padding:0}},c.prototype.init=function(b,c,d){if(this.enabled=!0,this.type=b,this.$element=a(c),this.options=this.getOptions(d),this.$viewport=this.options.viewport&&a(this.options.viewport.selector||this.options.viewport),this.$element[0]instanceof document.constructor&&!this.options.selector)throw new Error("`selector` option must be specified when initializing "+this.type+" on the window.document object!");for(var e=this.options.trigger.split(" "),f=e.length;f--;){var g=e[f];if("click"==g)this.$element.on("click."+this.type,this.options.selector,a.proxy(this.toggle,this));else if("manual"!=g){var h="hover"==g?"mouseenter":"focusin",i="hover"==g?"mouseleave":"focusout";this.$element.on(h+"."+this.type,this.options.selector,a.proxy(this.enter,this)),this.$element.on(i+"."+this.type,this.options.selector,a.proxy(this.leave,this))}}this.options.selector?this._options=a.extend({},this.options,{trigger:"manual",selector:""}):this.fixTitle()},c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.getOptions=function(b){return b=a.extend({},this.getDefaults(),this.$element.data(),b),b.delay&&"number"==typeof b.delay&&(b.delay={show:b.delay,hide:b.delay}),b},c.prototype.getDelegateOptions=function(){var b={},c=this.getDefaults();return this._options&&a.each(this._options,function(a,d){c[a]!=d&&(b[a]=d)}),b},c.prototype.enter=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c&&c.$tip&&c.$tip.is(":visible")?void(c.hoverState="in"):(c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),clearTimeout(c.timeout),c.hoverState="in",c.options.delay&&c.options.delay.show?void(c.timeout=setTimeout(function(){"in"==c.hoverState&&c.show()},c.options.delay.show)):c.show())},c.prototype.leave=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),clearTimeout(c.timeout),c.hoverState="out",c.options.delay&&c.options.delay.hide?void(c.timeout=setTimeout(function(){"out"==c.hoverState&&c.hide()},c.options.delay.hide)):c.hide()},c.prototype.show=function(){var b=a.Event("show.bs."+this.type);if(this.hasContent()&&this.enabled){this.$element.trigger(b);var d=a.contains(this.$element[0].ownerDocument.documentElement,this.$element[0]);if(b.isDefaultPrevented()||!d)return;var e=this,f=this.tip(),g=this.getUID(this.type);this.setContent(),f.attr("id",g),this.$element.attr("aria-describedby",g),this.options.animation&&f.addClass("fade");var h="function"==typeof this.options.placement?this.options.placement.call(this,f[0],this.$element[0]):this.options.placement,i=/\s?auto?\s?/i,j=i.test(h);j&&(h=h.replace(i,"")||"top"),f.detach().css({top:0,left:0,display:"block"}).addClass(h).data("bs."+this.type,this),this.options.container?f.appendTo(this.options.container):f.insertAfter(this.$element);var k=this.getPosition(),l=f[0].offsetWidth,m=f[0].offsetHeight;if(j){var n=h,o=this.options.container?a(this.options.container):this.$element.parent(),p=this.getPosition(o);h="bottom"==h&&k.bottom+m>p.bottom?"top":"top"==h&&k.top-m<p.top?"bottom":"right"==h&&k.right+l>p.width?"left":"left"==h&&k.left-l<p.left?"right":h,f.removeClass(n).addClass(h)}var q=this.getCalculatedOffset(h,k,l,m);this.applyPlacement(q,h);var r=function(){var a=e.hoverState;e.$element.trigger("shown.bs."+e.type),e.hoverState=null,"out"==a&&e.leave(e)};a.support.transition&&this.$tip.hasClass("fade")?f.one("bsTransitionEnd",r).emulateTransitionEnd(c.TRANSITION_DURATION):r()}},c.prototype.applyPlacement=function(b,c){var d=this.tip(),e=d[0].offsetWidth,f=d[0].offsetHeight,g=parseInt(d.css("margin-top"),10),h=parseInt(d.css("margin-left"),10);isNaN(g)&&(g=0),isNaN(h)&&(h=0),b.top=b.top+g,b.left=b.left+h,a.offset.setOffset(d[0],a.extend({using:function(a){d.css({top:Math.round(a.top),left:Math.round(a.left)})}},b),0),d.addClass("in");var i=d[0].offsetWidth,j=d[0].offsetHeight;"top"==c&&j!=f&&(b.top=b.top+f-j);var k=this.getViewportAdjustedDelta(c,b,i,j);k.left?b.left+=k.left:b.top+=k.top;var l=/top|bottom/.test(c),m=l?2*k.left-e+i:2*k.top-f+j,n=l?"offsetWidth":"offsetHeight";d.offset(b),this.replaceArrow(m,d[0][n],l)},c.prototype.replaceArrow=function(a,b,c){this.arrow().css(c?"left":"top",50*(1-a/b)+"%").css(c?"top":"left","")},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle();a.find(".tooltip-inner")[this.options.html?"html":"text"](b),a.removeClass("fade in top bottom left right")},c.prototype.hide=function(b){function d(){"in"!=e.hoverState&&f.detach(),e.$element.removeAttr("aria-describedby").trigger("hidden.bs."+e.type),b&&b()}var e=this,f=a(this.$tip),g=a.Event("hide.bs."+this.type);return this.$element.trigger(g),g.isDefaultPrevented()?void 0:(f.removeClass("in"),a.support.transition&&f.hasClass("fade")?f.one("bsTransitionEnd",d).emulateTransitionEnd(c.TRANSITION_DURATION):d(),this.hoverState=null,this)},c.prototype.fixTitle=function(){var a=this.$element;(a.attr("title")||"string"!=typeof a.attr("data-original-title"))&&a.attr("data-original-title",a.attr("title")||"").attr("title","")},c.prototype.hasContent=function(){return this.getTitle()},c.prototype.getPosition=function(b){b=b||this.$element;var c=b[0],d="BODY"==c.tagName,e=c.getBoundingClientRect();null==e.width&&(e=a.extend({},e,{width:e.right-e.left,height:e.bottom-e.top}));var f=d?{top:0,left:0}:b.offset(),g={scroll:d?document.documentElement.scrollTop||document.body.scrollTop:b.scrollTop()},h=d?{width:a(window).width(),height:a(window).height()}:null;return a.extend({},e,g,h,f)},c.prototype.getCalculatedOffset=function(a,b,c,d){return"bottom"==a?{top:b.top+b.height,left:b.left+b.width/2-c/2}:"top"==a?{top:b.top-d,left:b.left+b.width/2-c/2}:"left"==a?{top:b.top+b.height/2-d/2,left:b.left-c}:{top:b.top+b.height/2-d/2,left:b.left+b.width}},c.prototype.getViewportAdjustedDelta=function(a,b,c,d){var e={top:0,left:0};if(!this.$viewport)return e;var f=this.options.viewport&&this.options.viewport.padding||0,g=this.getPosition(this.$viewport);if(/right|left/.test(a)){var h=b.top-f-g.scroll,i=b.top+f-g.scroll+d;h<g.top?e.top=g.top-h:i>g.top+g.height&&(e.top=g.top+g.height-i)}else{var j=b.left-f,k=b.left+f+c;j<g.left?e.left=g.left-j:k>g.width&&(e.left=g.left+g.width-k)}return e},c.prototype.getTitle=function(){var a,b=this.$element,c=this.options;return a=b.attr("data-original-title")||("function"==typeof c.title?c.title.call(b[0]):c.title)},c.prototype.getUID=function(a){do a+=~~(1e6*Math.random());while(document.getElementById(a));return a},c.prototype.tip=function(){return this.$tip=this.$tip||a(this.options.template)},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".tooltip-arrow")},c.prototype.enable=function(){this.enabled=!0},c.prototype.disable=function(){this.enabled=!1},c.prototype.toggleEnabled=function(){this.enabled=!this.enabled},c.prototype.toggle=function(b){var c=this;b&&(c=a(b.currentTarget).data("bs."+this.type),c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c))),c.tip().hasClass("in")?c.leave(c):c.enter(c)},c.prototype.destroy=function(){var a=this;clearTimeout(this.timeout),this.hide(function(){a.$element.off("."+a.type).removeData("bs."+a.type)})};var d=a.fn.tooltip;a.fn.tooltip=b,a.fn.tooltip.Constructor=c,a.fn.tooltip.noConflict=function(){return a.fn.tooltip=d,this}}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.popover"),f="object"==typeof b&&b;(e||!/destroy|hide/.test(b))&&(e||d.data("bs.popover",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.init("popover",a,b)};if(!a.fn.tooltip)throw new Error("Popover requires tooltip.js");c.VERSION="3.3.4",c.DEFAULTS=a.extend({},a.fn.tooltip.Constructor.DEFAULTS,{placement:"right",trigger:"click",content:"",template:'<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'}),c.prototype=a.extend({},a.fn.tooltip.Constructor.prototype),c.prototype.constructor=c,c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle(),c=this.getContent();a.find(".popover-title")[this.options.html?"html":"text"](b),a.find(".popover-content").children().detach().end()[this.options.html?"string"==typeof c?"html":"append":"text"](c),a.removeClass("fade top bottom left right in"),a.find(".popover-title").html()||a.find(".popover-title").hide()},c.prototype.hasContent=function(){return this.getTitle()||this.getContent()},c.prototype.getContent=function(){var a=this.$element,b=this.options;return a.attr("data-content")||("function"==typeof b.content?b.content.call(a[0]):b.content)},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".arrow")};var d=a.fn.popover;a.fn.popover=b,a.fn.popover.Constructor=c,a.fn.popover.noConflict=function(){return a.fn.popover=d,this}}(jQuery),+function(a){"use strict";function b(c,d){this.$body=a(document.body),this.$scrollElement=a(a(c).is(document.body)?window:c),this.options=a.extend({},b.DEFAULTS,d),this.selector=(this.options.target||"")+" .nav li > a",this.offsets=[],this.targets=[],this.activeTarget=null,this.scrollHeight=0,this.$scrollElement.on("scroll.bs.scrollspy",a.proxy(this.process,this)),this.refresh(),this.process()}function c(c){return this.each(function(){var d=a(this),e=d.data("bs.scrollspy"),f="object"==typeof c&&c;e||d.data("bs.scrollspy",e=new b(this,f)),"string"==typeof c&&e[c]()})}b.VERSION="3.3.4",b.DEFAULTS={offset:10},b.prototype.getScrollHeight=function(){return this.$scrollElement[0].scrollHeight||Math.max(this.$body[0].scrollHeight,document.documentElement.scrollHeight)},b.prototype.refresh=function(){var b=this,c="offset",d=0;this.offsets=[],this.targets=[],this.scrollHeight=this.getScrollHeight(),a.isWindow(this.$scrollElement[0])||(c="position",d=this.$scrollElement.scrollTop()),this.$body.find(this.selector).map(function(){var b=a(this),e=b.data("target")||b.attr("href"),f=/^#./.test(e)&&a(e);return f&&f.length&&f.is(":visible")&&[[f[c]().top+d,e]]||null}).sort(function(a,b){return a[0]-b[0]}).each(function(){b.offsets.push(this[0]),b.targets.push(this[1])})},b.prototype.process=function(){var a,b=this.$scrollElement.scrollTop()+this.options.offset,c=this.getScrollHeight(),d=this.options.offset+c-this.$scrollElement.height(),e=this.offsets,f=this.targets,g=this.activeTarget;if(this.scrollHeight!=c&&this.refresh(),b>=d)return g!=(a=f[f.length-1])&&this.activate(a);if(g&&b<e[0])return this.activeTarget=null,this.clear();for(a=e.length;a--;)g!=f[a]&&b>=e[a]&&(void 0===e[a+1]||b<e[a+1])&&this.activate(f[a])},b.prototype.activate=function(b){this.activeTarget=b,this.clear();var c=this.selector+'[data-target="'+b+'"],'+this.selector+'[href="'+b+'"]',d=a(c).parents("li").addClass("active");d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active")),d.trigger("activate.bs.scrollspy")},b.prototype.clear=function(){a(this.selector).parentsUntil(this.options.target,".active").removeClass("active")};var d=a.fn.scrollspy;a.fn.scrollspy=c,a.fn.scrollspy.Constructor=b,a.fn.scrollspy.noConflict=function(){return a.fn.scrollspy=d,this},a(window).on("load.bs.scrollspy.data-api",function(){a('[data-spy="scroll"]').each(function(){var b=a(this);c.call(b,b.data())})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tab");e||d.data("bs.tab",e=new c(this)),"string"==typeof b&&e[b]()})}var c=function(b){this.element=a(b)};c.VERSION="3.3.4",c.TRANSITION_DURATION=150,c.prototype.show=function(){var b=this.element,c=b.closest("ul:not(.dropdown-menu)"),d=b.data("target");if(d||(d=b.attr("href"),d=d&&d.replace(/.*(?=#[^\s]*$)/,"")),!b.parent("li").hasClass("active")){var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a.Event("show.bs.tab",{relatedTarget:e[0]});
+if(e.trigger(f),b.trigger(g),!g.isDefaultPrevented()&&!f.isDefaultPrevented()){var h=a(d);this.activate(b.closest("li"),c),this.activate(h,h.parent(),function(){e.trigger({type:"hidden.bs.tab",relatedTarget:b[0]}),b.trigger({type:"shown.bs.tab",relatedTarget:e[0]})})}}},c.prototype.activate=function(b,d,e){function f(){g.removeClass("active").find("> .dropdown-menu > .active").removeClass("active").end().find('[data-toggle="tab"]').attr("aria-expanded",!1),b.addClass("active").find('[data-toggle="tab"]').attr("aria-expanded",!0),h?(b[0].offsetWidth,b.addClass("in")):b.removeClass("fade"),b.parent(".dropdown-menu").length&&b.closest("li.dropdown").addClass("active").end().find('[data-toggle="tab"]').attr("aria-expanded",!0),e&&e()}var g=d.find("> .active"),h=e&&a.support.transition&&(g.length&&g.hasClass("fade")||!!d.find("> .fade").length);g.length&&h?g.one("bsTransitionEnd",f).emulateTransitionEnd(c.TRANSITION_DURATION):f(),g.removeClass("in")};var d=a.fn.tab;a.fn.tab=b,a.fn.tab.Constructor=c,a.fn.tab.noConflict=function(){return a.fn.tab=d,this};var e=function(c){c.preventDefault(),b.call(a(this),"show")};a(document).on("click.bs.tab.data-api",'[data-toggle="tab"]',e).on("click.bs.tab.data-api",'[data-toggle="pill"]',e)}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.affix"),f="object"==typeof b&&b;e||d.data("bs.affix",e=new c(this,f)),"string"==typeof b&&e[b]()})}var c=function(b,d){this.options=a.extend({},c.DEFAULTS,d),this.$target=a(this.options.target).on("scroll.bs.affix.data-api",a.proxy(this.checkPosition,this)).on("click.bs.affix.data-api",a.proxy(this.checkPositionWithEventLoop,this)),this.$element=a(b),this.affixed=null,this.unpin=null,this.pinnedOffset=null,this.checkPosition()};c.VERSION="3.3.4",c.RESET="affix affix-top affix-bottom",c.DEFAULTS={offset:0,target:window},c.prototype.getState=function(a,b,c,d){var e=this.$target.scrollTop(),f=this.$element.offset(),g=this.$target.height();if(null!=c&&"top"==this.affixed)return c>e?"top":!1;if("bottom"==this.affixed)return null!=c?e+this.unpin<=f.top?!1:"bottom":a-d>=e+g?!1:"bottom";var h=null==this.affixed,i=h?e:f.top,j=h?g:b;return null!=c&&c>=e?"top":null!=d&&i+j>=a-d?"bottom":!1},c.prototype.getPinnedOffset=function(){if(this.pinnedOffset)return this.pinnedOffset;this.$element.removeClass(c.RESET).addClass("affix");var a=this.$target.scrollTop(),b=this.$element.offset();return this.pinnedOffset=b.top-a},c.prototype.checkPositionWithEventLoop=function(){setTimeout(a.proxy(this.checkPosition,this),1)},c.prototype.checkPosition=function(){if(this.$element.is(":visible")){var b=this.$element.height(),d=this.options.offset,e=d.top,f=d.bottom,g=a(document.body).height();"object"!=typeof d&&(f=e=d),"function"==typeof e&&(e=d.top(this.$element)),"function"==typeof f&&(f=d.bottom(this.$element));var h=this.getState(g,b,e,f);if(this.affixed!=h){null!=this.unpin&&this.$element.css("top","");var i="affix"+(h?"-"+h:""),j=a.Event(i+".bs.affix");if(this.$element.trigger(j),j.isDefaultPrevented())return;this.affixed=h,this.unpin="bottom"==h?this.getPinnedOffset():null,this.$element.removeClass(c.RESET).addClass(i).trigger(i.replace("affix","affixed")+".bs.affix")}"bottom"==h&&this.$element.offset({top:g-b-f})}};var d=a.fn.affix;a.fn.affix=b,a.fn.affix.Constructor=c,a.fn.affix.noConflict=function(){return a.fn.affix=d,this},a(window).on("load",function(){a('[data-spy="affix"]').each(function(){var c=a(this),d=c.data();d.offset=d.offset||{},null!=d.offsetBottom&&(d.offset.bottom=d.offsetBottom),null!=d.offsetTop&&(d.offset.top=d.offsetTop),b.call(c,d)})})}(jQuery);
+},{}],35:[function(require,module,exports){
 /*!
- * This file is part of Cytoscape.js 2.3.10.
+ * This file is part of Cytoscape.js 2.3.11.
  * 
  * Cytoscape.js is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the Free
@@ -17514,7 +6105,7 @@ var cytoscape;
     return cytoscape.init.apply(cytoscape, arguments);
   };
 
-  $$.version = '2.3.10';
+  $$.version = '2.3.11';
   
   // allow functional access to cytoscape.js
   // e.g. var cyto = $.cytoscape({ selector: "#foo", ... });
@@ -23789,13 +12380,15 @@ var cytoscape;
 
       // parse the selector
       var selectorStr = selAndBlock[1];
-      var selector = new $$.Selector( selectorStr );
-      if( selector._private.invalid && selectorStr !== 'core' ){
-        $$.util.error('Skipping parsing of block: Invalid selector found in string stylesheet: ' + selectorStr);
+      if( selectorStr !== 'core' ){
+        var selector = new $$.Selector( selectorStr );
+        if( selector._private.invalid ){
+          $$.util.error('Skipping parsing of block: Invalid selector found in string stylesheet: ' + selectorStr);
 
-        // skip this selector and block
-        removeSelAndBlockFromRemaining();
-        continue; 
+          // skip this selector and block
+          removeSelAndBlockFromRemaining();
+          continue; 
+        }
       }
 
       // parse the block of properties and values
@@ -30807,7 +19400,7 @@ var cytoscape;
     }
   };
 
-  $$.heapfn.delete = function (eles) {
+  $$.heapfn.remove = function (eles) {
     var elements = this.getArgumentAsCollection(eles);
     
     for (var i = 0; i < elements.length; i += 1) {
@@ -31590,7 +20183,7 @@ var cytoscape;
         return false;
       };
 
-      if (rs.edgeType === 'self') {
+      if (rs.edgeType === 'self' || rs.edgeType === 'compound') {
         if(
             (
               (inEdgeBB = $$.math.inBezierVicinity(x, y, rs.startX, rs.startY, rs.cp2ax, rs.cp2ay, rs.selfEdgeMidX, rs.selfEdgeMidY, widthSq))
@@ -31979,7 +20572,7 @@ var cytoscape;
 
       bpts.push( mid );
 
-      if( rs.edgeType === 'self' ){
+      if( rs.edgeType === 'self' || rs.edgeType === 'compound' ){
         rs.midX = rs.selfEdgeMidX;
         rs.midY = rs.selfEdgeMidY;
       } else {
@@ -32271,6 +20864,8 @@ var cytoscape;
   CanvasRenderer.prototype.findEdgeControlPoints = function(edges) {
     if( !edges || edges.length === 0 ){ return; }
 
+    var cy = this.data.cy;
+    var hasCompounds = cy.hasCompoundNodes();
     var hashTable = {};
     var pairIds = [];
     var haystackEdges = [];
@@ -32504,12 +21099,59 @@ var cytoscape;
           rs.cp2ax = srcPos.x;
           rs.cp2ay = srcPos.y - (1 + Math.pow(srcH, 1.12) / 100) * loopDist * (j / 3 + 1);
           
-          rs.cp2cx = src._private.position.x - (1 + Math.pow(srcW, 1.12) / 100) * loopDist * (j / 3 + 1);
+          rs.cp2cx = srcPos.x - (1 + Math.pow(srcW, 1.12) / 100) * loopDist * (j / 3 + 1);
           rs.cp2cy = srcPos.y;
           
           rs.selfEdgeMidX = (rs.cp2ax + rs.cp2cx) / 2.0;
           rs.selfEdgeMidY = (rs.cp2ay + rs.cp2cy) / 2.0;
+        
+        // Compound edge
+        } else if(
+          hasCompounds &&
+          ( src.isParent() || src.isChild() || tgt.isParent() || tgt.isChild() ) &&
+          ( src.parents().anySame(tgt) || tgt.parents().anySame(src) )
+        ){
+
+          rs.edgeType = 'compound';
+
+          // because the line approximation doesn't apply for compound beziers
+          // (loop/self edges are already elided b/c of cheap src==tgt check)
+          rs.badBezier = false;
+
+          var j = i;
+          var loopDist = stepSize;
+
+          if( edgeIsUnbundled ){
+            j = 0;
+            loopDist = stepDist;
+          }
+
           
+          var loopW = 50;
+
+          var loopaPos = {
+            x: srcPos.x - srcW/2,
+            y: srcPos.y - srcH/2
+          };
+
+          var loopbPos = {
+            x: tgtPos.x - tgtW/2,
+            y: tgtPos.y - tgtH/2
+          };
+
+          var minCompoundStretch = 1;
+
+          rs.cp2ax = loopaPos.x;
+          rs.compoundStretchA = Math.max( minCompoundStretch, Math.log(srcW * 0.01) ); // avoids cases with impossible beziers
+          rs.cp2ay = loopaPos.y - (1 + Math.pow(loopW, 1.12) / 100) * loopDist * (j / 3 + 1) * rs.compoundStretchA;
+          
+          rs.compoundStretchB = Math.max( minCompoundStretch, Math.log(tgtW * 0.01) ); // avoids cases with impossible beziers
+          rs.cp2cx = loopbPos.x - (1 + Math.pow(loopW, 1.12) / 100) * loopDist * (j / 3 + 1) * rs.compoundStretchB;
+          rs.cp2cy = loopbPos.y;
+          
+          rs.selfEdgeMidX = (rs.cp2ax + rs.cp2cx) / 2.0;
+          rs.selfEdgeMidY = (rs.cp2ay + rs.cp2cy) / 2.0;
+
         // Straight edge
         } else if (pairEdges.length % 2 === 1
           && i === Math.floor(pairEdges.length / 2)
@@ -32708,7 +21350,7 @@ var cytoscape;
 
     var rs = edge._private.rscratch;
     
-    if (edge._private.rscratch.edgeType == 'self') {
+    if (rs.edgeType == 'self' || rs.edgeType == 'compound') {
       
       var cp = [rs.cp2cx, rs.cp2cy];
       
@@ -33013,7 +21655,7 @@ var cytoscape;
         lineStyle,
         edgeWidth
       );
-    } else if (rs.edgeType === 'self') {
+    } else if (rs.edgeType === 'self' || rs.edgeType === 'compound') {
       
       var details = edge._private.rscratch;
       var points = [details.startX, details.startY, details.cp2ax,
@@ -33021,7 +21663,6 @@ var cytoscape;
         details.selfEdgeMidX, details.selfEdgeMidY,
         details.cp2cx, details.cp2cy, details.endX, details.endY];
 
-      var details = edge._private.rscratch;
       this.drawStyledEdge(edge, context, points, lineStyle, edgeWidth);
       
     } else if (rs.edgeType === 'straight') {
@@ -34719,6 +23360,8 @@ var cytoscape;
         return;
       }
 
+      if( opts.inDragLayer == null && opts.addToList == null ){ return; } // nothing to do
+
       var listHasId = getDragListIds( opts );
 
       var innerNodes = node.descendants();
@@ -34772,13 +23415,16 @@ var cytoscape;
 
       // also add nodes and edges related to the topmost ancestor
       updateAncestorsInDragLayer( node, {
-        inDragLayer: true
+        inDragLayer: opts.inDragLayer
       } );
     };
 
     // helper function to determine which ancestor nodes and edges should go
     // to the drag layer (or should be removed from drag layer).
     var updateAncestorsInDragLayer = function(node, opts) {
+
+      if( opts.inDragLayer == null && opts.addToList == null ){ return; } // nothing to do
+
       // find top-level parent
       var parent = node;
 
@@ -35054,7 +23700,9 @@ var cytoscape;
                 y: pos[1]
               };
 
-              checkForTaphold();
+              r.hoverData.dragging = true;
+
+              //checkForTaphold();
 
               r.data.canvasNeedsRedraw[CanvasRenderer.SELECT_BOX] = true;
       
@@ -35066,7 +23714,9 @@ var cytoscape;
               y: pos[1]
             };
 
-            checkForTaphold();
+            r.hoverData.dragging = true;
+
+            //checkForTaphold();
 
             r.data.canvasNeedsRedraw[CanvasRenderer.SELECT_BOX] = true;
     
@@ -35074,6 +23724,8 @@ var cytoscape;
           }
           
         }
+      
+        checkForTaphold();
       
       } 
       
@@ -35118,7 +23770,6 @@ var cytoscape;
 
       var cy = r.data.cy;
       var zoom = cy.zoom();
-      var pan = cy.pan();
       var pos = r.projectIntoViewport(e.clientX, e.clientY);
       var select = r.data.select;
       
@@ -35281,7 +23932,7 @@ var cytoscape;
 
       } else {
         // deactivate bg on box selection
-        if (cy.boxSelectionEnabled() && Math.pow(select[2] - select[0], 2) + Math.pow(select[3] - select[1], 2) > 7 && select[4]){
+        if (cy.boxSelectionEnabled() && !r.hoverData.dragging && Math.pow(select[2] - select[0], 2) + Math.pow(select[3] - select[1], 2) > 7 && select[4]){
           clearTimeout( r.bgActiveTimeout );
           r.data.bgActivePosistion = undefined;
           r.hoverData.selecting = true;
@@ -38224,7 +26875,7 @@ var cytoscape;
 
   // default layout options
   var defaults = {
-    animate: true, // whether to show the layout as it's running
+    animate: false, // whether to show the layout as it's running
     refresh: 1, // number of ticks per frame; higher is faster but more jerky
     maxSimulationTime: 4000, // max length in ms to run the layout
     ungrabifyWhileSimulating: false, // so you can't drag nodes during layout
@@ -38299,22 +26950,32 @@ var cytoscape;
           var node = nodes[i];
           var scratch = node._private.scratch.cola;
 
-          x.min = Math.min( x.min, scratch.x );
-          x.max = Math.max( x.max, scratch.x );
+          x.min = Math.min( x.min, scratch.x || 0 );
+          x.max = Math.max( x.max, scratch.x || 0 );
 
-          y.min = Math.min( y.min, scratch.y );
-          y.max = Math.max( y.max, scratch.y );
+          y.min = Math.min( y.min, scratch.y || 0 );
+          y.max = Math.max( y.max, scratch.y || 0 );
         }
 
         nodes.positions(function(i, node){
-          var pos = node._private.position;
           var scratch = node._private.scratch.cola;
+          var retPos;
 
-          if( !node.grabbed() ){
-            pos.x = bb.x1 + scratch.x - x.min;
-            pos.y = bb.y1 + scratch.y - y.min;
+          if( !node.grabbed() && !node.isParent() ){
+            retPos = {
+              x: bb.x1 + scratch.x - x.min,
+              y: bb.y1 + scratch.y - y.min
+            };
+
+            if( !$$.is.number(retPos.x) || !$$.is.number(retPos.y) ){
+              retPos = undefined;
+            }
           }
+
+          return retPos;
         });
+
+        nodes.updateCompoundBounds(); // because the way this layout sets positions is buggy for some reason; ref #878
 
         if( !ready ){
           onReady();
@@ -38546,7 +27207,7 @@ var cytoscape;
         node._private.scratch.cola = {
           index: i,
 
-          leaves: node.children().stdFilter(function( child ){
+          leaves: node.descendants().stdFilter(function( child ){
             return !child.isParent();
           }).map(function( child ){
             return child[0]._private.scratch.cola.index;
@@ -38555,7 +27216,7 @@ var cytoscape;
 
         return node;
       }).map(function( node ){ // add subgroups
-        node._private.scratch.cola.groups = node.children().stdFilter(function( child ){
+        node._private.scratch.cola.groups = node.descendants().stdFilter(function( child ){
           return child.isParent();
         }).map(function( child ){
           return child._private.scratch.cola.index;
@@ -40601,6 +29262,8 @@ var cytoscape;
       var drawnNodes = 1;
       var fdRenderer = new Springy.Renderer(sim,
         function clear() {
+          if( self.stopped ){ return; } // because springy is a buggy layout
+          
           if( movedNodes.length > 0 && options.animate ){
             simUpdatingPos = true;
 
@@ -40621,6 +29284,8 @@ var cytoscape;
         },
 
         function drawNode(node, p) {
+          if( self.stopped ){ return; } // because springy is a buggy layout
+
           var v = toScreen(p);
           var element = node.data.element;
           
@@ -40675,6 +29340,8 @@ var cytoscape;
       var grabbableNodes = nodes.filter(":grabbable");
       
       function start(){
+        self.stopped = false;
+
         // disable grabbing if so set
         if( options.ungrabifyWhileSimulating ){
           grabbableNodes.ungrabify();
@@ -40684,6 +29351,8 @@ var cytoscape;
       }
       
       self.stopSystem = function(){
+        self.stopped = true;
+
         graph.filterNodes(function(){
           return false; // remove all nodes
         });
@@ -40746,9 +29415,9 @@ var cytoscape;
   
 })( cytoscape );
 
-},{}],57:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 
-},{}],58:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 "use strict";
 /*globals Handlebars: true */
 var Handlebars = require("./handlebars.runtime")["default"];
@@ -40786,7 +29455,7 @@ Handlebars = create();
 Handlebars.create = create;
 
 exports["default"] = Handlebars;
-},{"./handlebars.runtime":59,"./handlebars/compiler/ast":61,"./handlebars/compiler/base":62,"./handlebars/compiler/compiler":63,"./handlebars/compiler/javascript-compiler":64}],59:[function(require,module,exports){
+},{"./handlebars.runtime":38,"./handlebars/compiler/ast":40,"./handlebars/compiler/base":41,"./handlebars/compiler/compiler":42,"./handlebars/compiler/javascript-compiler":43}],38:[function(require,module,exports){
 "use strict";
 /*globals Handlebars: true */
 var base = require("./handlebars/base");
@@ -40819,7 +29488,7 @@ var Handlebars = create();
 Handlebars.create = create;
 
 exports["default"] = Handlebars;
-},{"./handlebars/base":60,"./handlebars/exception":68,"./handlebars/runtime":69,"./handlebars/safe-string":70,"./handlebars/utils":71}],60:[function(require,module,exports){
+},{"./handlebars/base":39,"./handlebars/exception":47,"./handlebars/runtime":48,"./handlebars/safe-string":49,"./handlebars/utils":50}],39:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -41000,7 +29669,7 @@ exports.log = log;var createFrame = function(object) {
   return obj;
 };
 exports.createFrame = createFrame;
-},{"./exception":68,"./utils":71}],61:[function(require,module,exports){
+},{"./exception":47,"./utils":50}],40:[function(require,module,exports){
 "use strict";
 var Exception = require("../exception")["default"];
 
@@ -41228,7 +29897,7 @@ var AST = {
 // Must be exported as an object rather than the root of the module as the jison lexer
 // most modify the object to operate properly.
 exports["default"] = AST;
-},{"../exception":68}],62:[function(require,module,exports){
+},{"../exception":47}],41:[function(require,module,exports){
 "use strict";
 var parser = require("./parser")["default"];
 var AST = require("./ast")["default"];
@@ -41244,7 +29913,7 @@ function parse(input) {
 }
 
 exports.parse = parse;
-},{"./ast":61,"./parser":65}],63:[function(require,module,exports){
+},{"./ast":40,"./parser":44}],42:[function(require,module,exports){
 "use strict";
 var Exception = require("../exception")["default"];
 
@@ -41714,7 +30383,7 @@ exports.precompile = precompile;function compile(input, options, env) {
 }
 
 exports.compile = compile;
-},{"../exception":68}],64:[function(require,module,exports){
+},{"../exception":47}],43:[function(require,module,exports){
 "use strict";
 var COMPILER_REVISION = require("../base").COMPILER_REVISION;
 var REVISION_CHANGES = require("../base").REVISION_CHANGES;
@@ -42657,7 +31326,7 @@ JavaScriptCompiler.isValidJavaScriptVariableName = function(name) {
 };
 
 exports["default"] = JavaScriptCompiler;
-},{"../base":60,"../exception":68}],65:[function(require,module,exports){
+},{"../base":39,"../exception":47}],44:[function(require,module,exports){
 "use strict";
 /* jshint ignore:start */
 /* Jison generated parser */
@@ -43148,7 +31817,7 @@ function Parser () { this.yy = {}; }Parser.prototype = parser;parser.Parser = Pa
 return new Parser;
 })();exports["default"] = handlebars;
 /* jshint ignore:end */
-},{}],66:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 "use strict";
 var Visitor = require("./visitor")["default"];
 
@@ -43287,7 +31956,7 @@ PrintVisitor.prototype.content = function(content) {
 PrintVisitor.prototype.comment = function(comment) {
   return this.pad("{{! '" + comment.comment + "' }}");
 };
-},{"./visitor":67}],67:[function(require,module,exports){
+},{"./visitor":46}],46:[function(require,module,exports){
 "use strict";
 function Visitor() {}
 
@@ -43300,7 +31969,7 @@ Visitor.prototype = {
 };
 
 exports["default"] = Visitor;
-},{}],68:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 "use strict";
 
 var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
@@ -43329,7 +31998,7 @@ function Exception(message, node) {
 Exception.prototype = new Error();
 
 exports["default"] = Exception;
-},{}],69:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 "use strict";
 var Utils = require("./utils");
 var Exception = require("./exception")["default"];
@@ -43467,7 +32136,7 @@ exports.program = program;function invokePartial(partial, name, context, helpers
 exports.invokePartial = invokePartial;function noop() { return ""; }
 
 exports.noop = noop;
-},{"./base":60,"./exception":68,"./utils":71}],70:[function(require,module,exports){
+},{"./base":39,"./exception":47,"./utils":50}],49:[function(require,module,exports){
 "use strict";
 // Build out our basic SafeString type
 function SafeString(string) {
@@ -43479,7 +32148,7 @@ SafeString.prototype.toString = function() {
 };
 
 exports["default"] = SafeString;
-},{}],71:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 "use strict";
 /*jshint -W004 */
 var SafeString = require("./safe-string")["default"];
@@ -43556,7 +32225,7 @@ exports.escapeExpression = escapeExpression;function isEmpty(value) {
 }
 
 exports.isEmpty = isEmpty;
-},{"./safe-string":70}],72:[function(require,module,exports){
+},{"./safe-string":49}],51:[function(require,module,exports){
 // USAGE:
 // var handlebars = require('handlebars');
 
@@ -43583,9 +32252,9 @@ if (typeof require !== 'undefined' && require.extensions) {
   require.extensions[".hbs"] = extension;
 }
 
-},{"../dist/cjs/handlebars":58,"../dist/cjs/handlebars/compiler/printer":66,"../dist/cjs/handlebars/compiler/visitor":67,"fs":57}],73:[function(require,module,exports){
+},{"../dist/cjs/handlebars":37,"../dist/cjs/handlebars/compiler/printer":45,"../dist/cjs/handlebars/compiler/visitor":46,"fs":36}],52:[function(require,module,exports){
 /*!
- * jQuery JavaScript Library v2.1.1
+ * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -43595,19 +32264,19 @@ if (typeof require !== 'undefined' && require.extensions) {
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-05-01T17:11Z
+ * Date: 2014-12-18T15:11Z
  */
 
 (function( global, factory ) {
 
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
-		// For CommonJS and CommonJS-like environments where a proper window is present,
-		// execute the factory and get jQuery
-		// For environments that do not inherently posses a window with a document
-		// (such as Node.js), expose a jQuery-making factory as module.exports
-		// This accentuates the need for the creation of a real window
+		// For CommonJS and CommonJS-like environments where a proper `window`
+		// is present, execute the factory and get jQuery.
+		// For environments that do not have a `window` with a `document`
+		// (such as Node.js), expose a factory as module.exports.
+		// This accentuates the need for the creation of a real `window`.
 		// e.g. var jQuery = require("jquery")(window);
-		// See ticket #14549 for more info
+		// See ticket #14549 for more info.
 		module.exports = global.document ?
 			factory( global, true ) :
 			function( w ) {
@@ -43623,10 +32292,10 @@ if (typeof require !== 'undefined' && require.extensions) {
 // Pass this if window is not defined yet
 }(typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
 
-// Can't do this because several apps including ASP.NET trace
+// Support: Firefox 18+
+// Can't be in strict mode, several libs including ASP.NET trace
 // the stack via arguments.caller.callee and Firefox dies if
 // you try to trace through "use strict" call chains. (#13335)
-// Support: Firefox 18+
 //
 
 var arr = [];
@@ -43653,7 +32322,7 @@ var
 	// Use the correct document accordingly with window argument (sandbox)
 	document = window.document,
 
-	version = "2.1.1",
+	version = "2.1.3",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -43771,7 +32440,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 	if ( typeof target === "boolean" ) {
 		deep = target;
 
-		// skip the boolean and the target
+		// Skip the boolean and the target
 		target = arguments[ i ] || {};
 		i++;
 	}
@@ -43781,7 +32450,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 		target = {};
 	}
 
-	// extend jQuery itself if only one argument is passed
+	// Extend jQuery itself if only one argument is passed
 	if ( i === length ) {
 		target = this;
 		i--;
@@ -43838,9 +32507,6 @@ jQuery.extend({
 
 	noop: function() {},
 
-	// See test/unit/core.js for details concerning isFunction.
-	// Since version 1.3, DOM methods and functions like alert
-	// aren't supported. They return false on IE (#2968).
 	isFunction: function( obj ) {
 		return jQuery.type(obj) === "function";
 	},
@@ -43855,7 +32521,8 @@ jQuery.extend({
 		// parseFloat NaNs numeric-cast false positives (null|true|false|"")
 		// ...but misinterprets leading-number strings, particularly hex literals ("0x...")
 		// subtraction forces infinities to NaN
-		return !jQuery.isArray( obj ) && obj - parseFloat( obj ) >= 0;
+		// adding 1 corrects loss of precision from parseFloat (#15100)
+		return !jQuery.isArray( obj ) && (obj - parseFloat( obj ) + 1) >= 0;
 	},
 
 	isPlainObject: function( obj ) {
@@ -43889,7 +32556,7 @@ jQuery.extend({
 		if ( obj == null ) {
 			return obj + "";
 		}
-		// Support: Android < 4.0, iOS < 6 (functionish RegExp)
+		// Support: Android<4.0, iOS<6 (functionish RegExp)
 		return typeof obj === "object" || typeof obj === "function" ?
 			class2type[ toString.call(obj) ] || "object" :
 			typeof obj;
@@ -43919,6 +32586,7 @@ jQuery.extend({
 	},
 
 	// Convert dashed to camelCase; used by the css and data modules
+	// Support: IE9-11+
 	// Microsoft forgot to hump their vendor prefix (#9572)
 	camelCase: function( string ) {
 		return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
@@ -44134,14 +32802,14 @@ function isArraylike( obj ) {
 }
 var Sizzle =
 /*!
- * Sizzle CSS Selector Engine v1.10.19
+ * Sizzle CSS Selector Engine v2.2.0-pre
  * http://sizzlejs.com/
  *
- * Copyright 2013 jQuery Foundation, Inc. and other contributors
+ * Copyright 2008, 2014 jQuery Foundation, Inc. and other contributors
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-04-18
+ * Date: 2014-12-16
  */
 (function( window ) {
 
@@ -44168,7 +32836,7 @@ var i,
 	contains,
 
 	// Instance-specific data
-	expando = "sizzle" + -(new Date()),
+	expando = "sizzle" + 1 * new Date(),
 	preferredDoc = window.document,
 	dirruns = 0,
 	done = 0,
@@ -44183,7 +32851,6 @@ var i,
 	},
 
 	// General-purpose constants
-	strundefined = typeof undefined,
 	MAX_NEGATIVE = 1 << 31,
 
 	// Instance methods
@@ -44193,12 +32860,13 @@ var i,
 	push_native = arr.push,
 	push = arr.push,
 	slice = arr.slice,
-	// Use a stripped-down indexOf if we can't use a native one
-	indexOf = arr.indexOf || function( elem ) {
+	// Use a stripped-down indexOf as it's faster than native
+	// http://jsperf.com/thor-indexof-vs-for/5
+	indexOf = function( list, elem ) {
 		var i = 0,
-			len = this.length;
+			len = list.length;
 		for ( ; i < len; i++ ) {
-			if ( this[i] === elem ) {
+			if ( list[i] === elem ) {
 				return i;
 			}
 		}
@@ -44238,6 +32906,7 @@ var i,
 		")\\)|)",
 
 	// Leading and non-escaped trailing whitespace, capturing some non-whitespace characters preceding the latter
+	rwhitespace = new RegExp( whitespace + "+", "g" ),
 	rtrim = new RegExp( "^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" + whitespace + "+$", "g" ),
 
 	rcomma = new RegExp( "^" + whitespace + "*," + whitespace + "*" ),
@@ -44289,6 +32958,14 @@ var i,
 				String.fromCharCode( high + 0x10000 ) :
 				// Supplemental Plane codepoint (surrogate pair)
 				String.fromCharCode( high >> 10 | 0xD800, high & 0x3FF | 0xDC00 );
+	},
+
+	// Used for iframes
+	// See setDocument()
+	// Removing the function wrapper causes a "Permission Denied"
+	// error in IE
+	unloadHandler = function() {
+		setDocument();
 	};
 
 // Optimize for push.apply( _, NodeList )
@@ -44331,19 +33008,18 @@ function Sizzle( selector, context, results, seed ) {
 
 	context = context || document;
 	results = results || [];
+	nodeType = context.nodeType;
 
-	if ( !selector || typeof selector !== "string" ) {
+	if ( typeof selector !== "string" || !selector ||
+		nodeType !== 1 && nodeType !== 9 && nodeType !== 11 ) {
+
 		return results;
 	}
 
-	if ( (nodeType = context.nodeType) !== 1 && nodeType !== 9 ) {
-		return [];
-	}
+	if ( !seed && documentIsHTML ) {
 
-	if ( documentIsHTML && !seed ) {
-
-		// Shortcuts
-		if ( (match = rquickExpr.exec( selector )) ) {
+		// Try to shortcut find operations when possible (e.g., not under DocumentFragment)
+		if ( nodeType !== 11 && (match = rquickExpr.exec( selector )) ) {
 			// Speed-up: Sizzle("#ID")
 			if ( (m = match[1]) ) {
 				if ( nodeType === 9 ) {
@@ -44375,7 +33051,7 @@ function Sizzle( selector, context, results, seed ) {
 				return results;
 
 			// Speed-up: Sizzle(".CLASS")
-			} else if ( (m = match[3]) && support.getElementsByClassName && context.getElementsByClassName ) {
+			} else if ( (m = match[3]) && support.getElementsByClassName ) {
 				push.apply( results, context.getElementsByClassName( m ) );
 				return results;
 			}
@@ -44385,7 +33061,7 @@ function Sizzle( selector, context, results, seed ) {
 		if ( support.qsa && (!rbuggyQSA || !rbuggyQSA.test( selector )) ) {
 			nid = old = expando;
 			newContext = context;
-			newSelector = nodeType === 9 && selector;
+			newSelector = nodeType !== 1 && selector;
 
 			// qSA works strangely on Element-rooted queries
 			// We can work around this by specifying an extra ID on the root
@@ -44572,7 +33248,7 @@ function createPositionalPseudo( fn ) {
  * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
  */
 function testContext( context ) {
-	return context && typeof context.getElementsByTagName !== strundefined && context;
+	return context && typeof context.getElementsByTagName !== "undefined" && context;
 }
 
 // Expose support vars for convenience
@@ -44596,9 +33272,8 @@ isXML = Sizzle.isXML = function( elem ) {
  * @returns {Object} Returns the current document
  */
 setDocument = Sizzle.setDocument = function( node ) {
-	var hasCompare,
-		doc = node ? node.ownerDocument || node : preferredDoc,
-		parent = doc.defaultView;
+	var hasCompare, parent,
+		doc = node ? node.ownerDocument || node : preferredDoc;
 
 	// If no document and documentElement is available, return
 	if ( doc === document || doc.nodeType !== 9 || !doc.documentElement ) {
@@ -44608,9 +33283,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// Set our document
 	document = doc;
 	docElem = doc.documentElement;
-
-	// Support tests
-	documentIsHTML = !isXML( doc );
+	parent = doc.defaultView;
 
 	// Support: IE>8
 	// If iframe document is assigned to "document" variable and if iframe has been reloaded,
@@ -44619,21 +33292,22 @@ setDocument = Sizzle.setDocument = function( node ) {
 	if ( parent && parent !== parent.top ) {
 		// IE11 does not have attachEvent, so all must suffer
 		if ( parent.addEventListener ) {
-			parent.addEventListener( "unload", function() {
-				setDocument();
-			}, false );
+			parent.addEventListener( "unload", unloadHandler, false );
 		} else if ( parent.attachEvent ) {
-			parent.attachEvent( "onunload", function() {
-				setDocument();
-			});
+			parent.attachEvent( "onunload", unloadHandler );
 		}
 	}
+
+	/* Support tests
+	---------------------------------------------------------------------- */
+	documentIsHTML = !isXML( doc );
 
 	/* Attributes
 	---------------------------------------------------------------------- */
 
 	// Support: IE<8
-	// Verify that getAttribute really returns attributes and not properties (excepting IE8 booleans)
+	// Verify that getAttribute really returns attributes and not properties
+	// (excepting IE8 booleans)
 	support.attributes = assert(function( div ) {
 		div.className = "i";
 		return !div.getAttribute("className");
@@ -44648,17 +33322,8 @@ setDocument = Sizzle.setDocument = function( node ) {
 		return !div.getElementsByTagName("*").length;
 	});
 
-	// Check if getElementsByClassName can be trusted
-	support.getElementsByClassName = rnative.test( doc.getElementsByClassName ) && assert(function( div ) {
-		div.innerHTML = "<div class='a'></div><div class='a i'></div>";
-
-		// Support: Safari<4
-		// Catch class over-caching
-		div.firstChild.className = "i";
-		// Support: Opera<10
-		// Catch gEBCN failure to find non-leading classes
-		return div.getElementsByClassName("i").length === 2;
-	});
+	// Support: IE<9
+	support.getElementsByClassName = rnative.test( doc.getElementsByClassName );
 
 	// Support: IE<10
 	// Check if getElementById returns elements by name
@@ -44672,7 +33337,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// ID find and filter
 	if ( support.getById ) {
 		Expr.find["ID"] = function( id, context ) {
-			if ( typeof context.getElementById !== strundefined && documentIsHTML ) {
+			if ( typeof context.getElementById !== "undefined" && documentIsHTML ) {
 				var m = context.getElementById( id );
 				// Check parentNode to catch when Blackberry 4.6 returns
 				// nodes that are no longer in the document #6963
@@ -44693,7 +33358,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		Expr.filter["ID"] =  function( id ) {
 			var attrId = id.replace( runescape, funescape );
 			return function( elem ) {
-				var node = typeof elem.getAttributeNode !== strundefined && elem.getAttributeNode("id");
+				var node = typeof elem.getAttributeNode !== "undefined" && elem.getAttributeNode("id");
 				return node && node.value === attrId;
 			};
 		};
@@ -44702,14 +33367,20 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// Tag
 	Expr.find["TAG"] = support.getElementsByTagName ?
 		function( tag, context ) {
-			if ( typeof context.getElementsByTagName !== strundefined ) {
+			if ( typeof context.getElementsByTagName !== "undefined" ) {
 				return context.getElementsByTagName( tag );
+
+			// DocumentFragment nodes don't have gEBTN
+			} else if ( support.qsa ) {
+				return context.querySelectorAll( tag );
 			}
 		} :
+
 		function( tag, context ) {
 			var elem,
 				tmp = [],
 				i = 0,
+				// By happy coincidence, a (broken) gEBTN appears on DocumentFragment nodes too
 				results = context.getElementsByTagName( tag );
 
 			// Filter out possible comments
@@ -44727,7 +33398,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 	// Class
 	Expr.find["CLASS"] = support.getElementsByClassName && function( className, context ) {
-		if ( typeof context.getElementsByClassName !== strundefined && documentIsHTML ) {
+		if ( documentIsHTML ) {
 			return context.getElementsByClassName( className );
 		}
 	};
@@ -44756,13 +33427,15 @@ setDocument = Sizzle.setDocument = function( node ) {
 			// setting a boolean content attribute,
 			// since its presence should be enough
 			// http://bugs.jquery.com/ticket/12359
-			div.innerHTML = "<select msallowclip=''><option selected=''></option></select>";
+			docElem.appendChild( div ).innerHTML = "<a id='" + expando + "'></a>" +
+				"<select id='" + expando + "-\f]' msallowcapture=''>" +
+				"<option selected=''></option></select>";
 
 			// Support: IE8, Opera 11-12.16
 			// Nothing should be selected when empty strings follow ^= or $= or *=
 			// The test attribute must be unknown in Opera but "safe" for WinRT
 			// http://msdn.microsoft.com/en-us/library/ie/hh465388.aspx#attribute_section
-			if ( div.querySelectorAll("[msallowclip^='']").length ) {
+			if ( div.querySelectorAll("[msallowcapture^='']").length ) {
 				rbuggyQSA.push( "[*^$]=" + whitespace + "*(?:''|\"\")" );
 			}
 
@@ -44772,11 +33445,23 @@ setDocument = Sizzle.setDocument = function( node ) {
 				rbuggyQSA.push( "\\[" + whitespace + "*(?:value|" + booleans + ")" );
 			}
 
+			// Support: Chrome<29, Android<4.2+, Safari<7.0+, iOS<7.0+, PhantomJS<1.9.7+
+			if ( !div.querySelectorAll( "[id~=" + expando + "-]" ).length ) {
+				rbuggyQSA.push("~=");
+			}
+
 			// Webkit/Opera - :checked should return selected option elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
 			// IE8 throws error here and will not see later tests
 			if ( !div.querySelectorAll(":checked").length ) {
 				rbuggyQSA.push(":checked");
+			}
+
+			// Support: Safari 8+, iOS 8+
+			// https://bugs.webkit.org/show_bug.cgi?id=136851
+			// In-page `selector#id sibing-combinator selector` fails
+			if ( !div.querySelectorAll( "a#" + expando + "+*" ).length ) {
+				rbuggyQSA.push(".#.+[+~]");
 			}
 		});
 
@@ -44894,7 +33579,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 			// Maintain original order
 			return sortInput ?
-				( indexOf.call( sortInput, a ) - indexOf.call( sortInput, b ) ) :
+				( indexOf( sortInput, a ) - indexOf( sortInput, b ) ) :
 				0;
 		}
 
@@ -44921,7 +33606,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 				aup ? -1 :
 				bup ? 1 :
 				sortInput ?
-				( indexOf.call( sortInput, a ) - indexOf.call( sortInput, b ) ) :
+				( indexOf( sortInput, a ) - indexOf( sortInput, b ) ) :
 				0;
 
 		// If the nodes are siblings, we can do a quick check
@@ -44984,7 +33669,7 @@ Sizzle.matchesSelector = function( elem, expr ) {
 					elem.document && elem.document.nodeType !== 11 ) {
 				return ret;
 			}
-		} catch(e) {}
+		} catch (e) {}
 	}
 
 	return Sizzle( expr, document, null, [ elem ] ).length > 0;
@@ -45203,7 +33888,7 @@ Expr = Sizzle.selectors = {
 			return pattern ||
 				(pattern = new RegExp( "(^|" + whitespace + ")" + className + "(" + whitespace + "|$)" )) &&
 				classCache( className, function( elem ) {
-					return pattern.test( typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== strundefined && elem.getAttribute("class") || "" );
+					return pattern.test( typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== "undefined" && elem.getAttribute("class") || "" );
 				});
 		},
 
@@ -45225,7 +33910,7 @@ Expr = Sizzle.selectors = {
 					operator === "^=" ? check && result.indexOf( check ) === 0 :
 					operator === "*=" ? check && result.indexOf( check ) > -1 :
 					operator === "$=" ? check && result.slice( -check.length ) === check :
-					operator === "~=" ? ( " " + result + " " ).indexOf( check ) > -1 :
+					operator === "~=" ? ( " " + result.replace( rwhitespace, " " ) + " " ).indexOf( check ) > -1 :
 					operator === "|=" ? result === check || result.slice( 0, check.length + 1 ) === check + "-" :
 					false;
 			};
@@ -45345,7 +34030,7 @@ Expr = Sizzle.selectors = {
 							matched = fn( seed, argument ),
 							i = matched.length;
 						while ( i-- ) {
-							idx = indexOf.call( seed, matched[i] );
+							idx = indexOf( seed, matched[i] );
 							seed[ idx ] = !( matches[ idx ] = matched[i] );
 						}
 					}) :
@@ -45384,6 +34069,8 @@ Expr = Sizzle.selectors = {
 				function( elem, context, xml ) {
 					input[0] = elem;
 					matcher( input, null, xml, results );
+					// Don't keep the element (issue #299)
+					input[0] = null;
 					return !results.pop();
 				};
 		}),
@@ -45395,6 +34082,7 @@ Expr = Sizzle.selectors = {
 		}),
 
 		"contains": markFunction(function( text ) {
+			text = text.replace( runescape, funescape );
 			return function( elem ) {
 				return ( elem.textContent || elem.innerText || getText( elem ) ).indexOf( text ) > -1;
 			};
@@ -45816,7 +34504,7 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 				i = matcherOut.length;
 				while ( i-- ) {
 					if ( (elem = matcherOut[i]) &&
-						(temp = postFinder ? indexOf.call( seed, elem ) : preMap[i]) > -1 ) {
+						(temp = postFinder ? indexOf( seed, elem ) : preMap[i]) > -1 ) {
 
 						seed[temp] = !(results[temp] = elem);
 					}
@@ -45851,13 +34539,16 @@ function matcherFromTokens( tokens ) {
 			return elem === checkContext;
 		}, implicitRelative, true ),
 		matchAnyContext = addCombinator( function( elem ) {
-			return indexOf.call( checkContext, elem ) > -1;
+			return indexOf( checkContext, elem ) > -1;
 		}, implicitRelative, true ),
 		matchers = [ function( elem, context, xml ) {
-			return ( !leadingRelative && ( xml || context !== outermostContext ) ) || (
+			var ret = ( !leadingRelative && ( xml || context !== outermostContext ) ) || (
 				(checkContext = context).nodeType ?
 					matchContext( elem, context, xml ) :
 					matchAnyContext( elem, context, xml ) );
+			// Avoid hanging onto element (issue #299)
+			checkContext = null;
+			return ret;
 		} ];
 
 	for ( ; i < len; i++ ) {
@@ -46107,7 +34798,7 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 // Sort stability
 support.sortStable = expando.split("").sort( sortOrder ).join("") === expando;
 
-// Support: Chrome<14
+// Support: Chrome 14-35+
 // Always assume duplicates if they aren't passed to the comparison function
 support.detectDuplicates = !!hasDuplicate;
 
@@ -46316,7 +35007,7 @@ var rootjQuery,
 				if ( match[1] ) {
 					context = context instanceof jQuery ? context[0] : context;
 
-					// scripts is true for back-compat
+					// Option to run scripts is true for back-compat
 					// Intentionally let the error be thrown if parseHTML is not present
 					jQuery.merge( this, jQuery.parseHTML(
 						match[1],
@@ -46344,8 +35035,8 @@ var rootjQuery,
 				} else {
 					elem = document.getElementById( match[2] );
 
-					// Check parentNode to catch when Blackberry 4.6 returns
-					// nodes that are no longer in the document #6963
+					// Support: Blackberry 4.6
+					// gEBID returns nodes no longer in the document (#6963)
 					if ( elem && elem.parentNode ) {
 						// Inject the element directly into the jQuery object
 						this.length = 1;
@@ -46398,7 +35089,7 @@ rootjQuery = jQuery( document );
 
 
 var rparentsprev = /^(?:parents|prev(?:Until|All))/,
-	// methods guaranteed to produce a unique set when starting from a unique set
+	// Methods guaranteed to produce a unique set when starting from a unique set
 	guaranteedUnique = {
 		children: true,
 		contents: true,
@@ -46478,8 +35169,7 @@ jQuery.fn.extend({
 		return this.pushStack( matched.length > 1 ? jQuery.unique( matched ) : matched );
 	},
 
-	// Determine the position of an element within
-	// the matched set of elements
+	// Determine the position of an element within the set
 	index: function( elem ) {
 
 		// No argument, return index in parent
@@ -46487,7 +35177,7 @@ jQuery.fn.extend({
 			return ( this[ 0 ] && this[ 0 ].parentNode ) ? this.first().prevAll().length : -1;
 		}
 
-		// index in selector
+		// Index in selector
 		if ( typeof elem === "string" ) {
 			return indexOf.call( jQuery( elem ), this[ 0 ] );
 		}
@@ -46903,7 +35593,7 @@ jQuery.extend({
 
 			progressValues, progressContexts, resolveContexts;
 
-		// add listeners to Deferred subordinates; treat others as resolved
+		// Add listeners to Deferred subordinates; treat others as resolved
 		if ( length > 1 ) {
 			progressValues = new Array( length );
 			progressContexts = new Array( length );
@@ -46920,7 +35610,7 @@ jQuery.extend({
 			}
 		}
 
-		// if we're not waiting on anything, resolve the master
+		// If we're not waiting on anything, resolve the master
 		if ( !remaining ) {
 			deferred.resolveWith( resolveContexts, resolveValues );
 		}
@@ -46999,7 +35689,7 @@ jQuery.ready.promise = function( obj ) {
 		readyList = jQuery.Deferred();
 
 		// Catch cases where $(document).ready() is called after the browser event has already occurred.
-		// we once tried to use readyState "interactive" here, but it caused issues like the one
+		// We once tried to use readyState "interactive" here, but it caused issues like the one
 		// discovered by ChrisS here: http://bugs.jquery.com/ticket/12282#comment:15
 		if ( document.readyState === "complete" ) {
 			// Handle it asynchronously to allow scripts the opportunity to delay ready
@@ -47093,7 +35783,7 @@ jQuery.acceptData = function( owner ) {
 
 
 function Data() {
-	// Support: Android < 4,
+	// Support: Android<4,
 	// Old WebKit does not have Object.preventExtensions/freeze method,
 	// return new empty object instead with no [[set]] accessor
 	Object.defineProperty( this.cache = {}, 0, {
@@ -47102,7 +35792,7 @@ function Data() {
 		}
 	});
 
-	this.expando = jQuery.expando + Math.random();
+	this.expando = jQuery.expando + Data.uid++;
 }
 
 Data.uid = 1;
@@ -47130,7 +35820,7 @@ Data.prototype = {
 				descriptor[ this.expando ] = { value: unlock };
 				Object.defineProperties( owner, descriptor );
 
-			// Support: Android < 4
+			// Support: Android<4
 			// Fallback to a less secure definition
 			} catch ( e ) {
 				descriptor[ this.expando ] = unlock;
@@ -47270,17 +35960,16 @@ var data_user = new Data();
 
 
 
-/*
-	Implementation Summary
+//	Implementation Summary
+//
+//	1. Enforce API surface and semantic compatibility with 1.9.x branch
+//	2. Improve the module's maintainability by reducing the storage
+//		paths to a single mechanism.
+//	3. Use the same single mechanism to support "private" and "user" data.
+//	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
+//	5. Avoid exposing implementation details on user objects (eg. expando properties)
+//	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 
-	1. Enforce API surface and semantic compatibility with 1.9.x branch
-	2. Improve the module's maintainability by reducing the storage
-		paths to a single mechanism.
-	3. Use the same single mechanism to support "private" and "user" data.
-	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
-	5. Avoid exposing implementation details on user objects (eg. expando properties)
-	6. Provide a clear path for implementation upgrade to WeakMap in 2014
-*/
 var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
 	rmultiDash = /([A-Z])/g;
 
@@ -47485,7 +36174,7 @@ jQuery.extend({
 				queue.unshift( "inprogress" );
 			}
 
-			// clear up the last queue stop function
+			// Clear up the last queue stop function
 			delete hooks.stop;
 			fn.call( elem, next, hooks );
 		}
@@ -47495,7 +36184,7 @@ jQuery.extend({
 		}
 	},
 
-	// not intended for public consumption - generates a queueHooks object, or returns the current one
+	// Not public - generate a queueHooks object, or return the current one
 	_queueHooks: function( elem, type ) {
 		var key = type + "queueHooks";
 		return data_priv.get( elem, key ) || data_priv.access( elem, key, {
@@ -47525,7 +36214,7 @@ jQuery.fn.extend({
 			this.each(function() {
 				var queue = jQuery.queue( this, type, data );
 
-				// ensure a hooks for this queue
+				// Ensure a hooks for this queue
 				jQuery._queueHooks( this, type );
 
 				if ( type === "fx" && queue[0] !== "inprogress" ) {
@@ -47592,21 +36281,22 @@ var rcheckableType = (/^(?:checkbox|radio)$/i);
 		div = fragment.appendChild( document.createElement( "div" ) ),
 		input = document.createElement( "input" );
 
-	// #11217 - WebKit loses check when the name is after the checked attribute
+	// Support: Safari<=5.1
+	// Check state lost if the name is set (#11217)
 	// Support: Windows Web Apps (WWA)
-	// `name` and `type` need .setAttribute for WWA
+	// `name` and `type` must use .setAttribute for WWA (#14901)
 	input.setAttribute( "type", "radio" );
 	input.setAttribute( "checked", "checked" );
 	input.setAttribute( "name", "t" );
 
 	div.appendChild( input );
 
-	// Support: Safari 5.1, iOS 5.1, Android 4.x, Android 2.3
-	// old WebKit doesn't clone checked state correctly in fragments
+	// Support: Safari<=5.1, Android<4.2
+	// Older WebKit doesn't clone checked state correctly in fragments
 	support.checkClone = div.cloneNode( true ).cloneNode( true ).lastChild.checked;
 
+	// Support: IE<=11+
 	// Make sure textarea (and checkbox) defaultValue is properly cloned
-	// Support: IE9-IE11+
 	div.innerHTML = "<textarea>x</textarea>";
 	support.noCloneChecked = !!div.cloneNode( true ).lastChild.defaultValue;
 })();
@@ -47984,8 +36674,8 @@ jQuery.event = {
 			j = 0;
 			while ( (handleObj = matched.handlers[ j++ ]) && !event.isImmediatePropagationStopped() ) {
 
-				// Triggered event must either 1) have no namespace, or
-				// 2) have namespace(s) a subset or equal to those in the bound event (both can have no namespace).
+				// Triggered event must either 1) have no namespace, or 2) have namespace(s)
+				// a subset or equal to those in the bound event (both can have no namespace).
 				if ( !event.namespace_re || event.namespace_re.test( handleObj.namespace ) ) {
 
 					event.handleObj = handleObj;
@@ -48135,7 +36825,7 @@ jQuery.event = {
 			event.target = document;
 		}
 
-		// Support: Safari 6.0+, Chrome < 28
+		// Support: Safari 6.0+, Chrome<28
 		// Target should not be a text node (#504, #13143)
 		if ( event.target.nodeType === 3 ) {
 			event.target = event.target.parentNode;
@@ -48240,7 +36930,7 @@ jQuery.Event = function( src, props ) {
 		// by a handler lower down the tree; reflect the correct value.
 		this.isDefaultPrevented = src.defaultPrevented ||
 				src.defaultPrevented === undefined &&
-				// Support: Android < 4.0
+				// Support: Android<4.0
 				src.returnValue === false ?
 			returnTrue :
 			returnFalse;
@@ -48330,8 +37020,8 @@ jQuery.each({
 	};
 });
 
-// Create "bubbling" focus and blur events
 // Support: Firefox, Chrome, Safari
+// Create "bubbling" focus and blur events
 if ( !support.focusinBubbles ) {
 	jQuery.each({ focus: "focusin", blur: "focusout" }, function( orig, fix ) {
 
@@ -48484,7 +37174,7 @@ var
 	// We have to close these tags to support XHTML (#13200)
 	wrapMap = {
 
-		// Support: IE 9
+		// Support: IE9
 		option: [ 1, "<select multiple='multiple'>", "</select>" ],
 
 		thead: [ 1, "<table>", "</table>" ],
@@ -48495,7 +37185,7 @@ var
 		_default: [ 0, "", "" ]
 	};
 
-// Support: IE 9
+// Support: IE9
 wrapMap.optgroup = wrapMap.option;
 
 wrapMap.tbody = wrapMap.tfoot = wrapMap.colgroup = wrapMap.caption = wrapMap.thead;
@@ -48585,7 +37275,7 @@ function getAll( context, tag ) {
 		ret;
 }
 
-// Support: IE >= 9
+// Fix IE bugs, see support tests
 function fixInput( src, dest ) {
 	var nodeName = dest.nodeName.toLowerCase();
 
@@ -48605,8 +37295,7 @@ jQuery.extend({
 			clone = elem.cloneNode( true ),
 			inPage = jQuery.contains( elem.ownerDocument, elem );
 
-		// Support: IE >= 9
-		// Fix Cloning issues
+		// Fix IE cloning issues
 		if ( !support.noCloneChecked && ( elem.nodeType === 1 || elem.nodeType === 11 ) &&
 				!jQuery.isXMLDoc( elem ) ) {
 
@@ -48657,8 +37346,8 @@ jQuery.extend({
 
 				// Add nodes directly
 				if ( jQuery.type( elem ) === "object" ) {
-					// Support: QtWebKit
-					// jQuery.merge because push.apply(_, arraylike) throws
+					// Support: QtWebKit, PhantomJS
+					// push.apply(_, arraylike) throws on ancient WebKit
 					jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
 				// Convert non-html into a text node
@@ -48680,15 +37369,14 @@ jQuery.extend({
 						tmp = tmp.lastChild;
 					}
 
-					// Support: QtWebKit
-					// jQuery.merge because push.apply(_, arraylike) throws
+					// Support: QtWebKit, PhantomJS
+					// push.apply(_, arraylike) throws on ancient WebKit
 					jQuery.merge( nodes, tmp.childNodes );
 
 					// Remember the top-level container
 					tmp = fragment.firstChild;
 
-					// Fixes #12346
-					// Support: Webkit, IE
+					// Ensure the created nodes are orphaned (#12392)
 					tmp.textContent = "";
 				}
 			}
@@ -49050,7 +37738,7 @@ function actualDisplay( name, doc ) {
 		// getDefaultComputedStyle might be reliably used only on attached element
 		display = window.getDefaultComputedStyle && ( style = window.getDefaultComputedStyle( elem[ 0 ] ) ) ?
 
-			// Use of this method is a temporary fix (more like optmization) until something better comes along,
+			// Use of this method is a temporary fix (more like optimization) until something better comes along,
 			// since it was removed from specification and supported only in FF
 			style.display : jQuery.css( elem[ 0 ], "display" );
 
@@ -49100,7 +37788,14 @@ var rmargin = (/^margin/);
 var rnumnonpx = new RegExp( "^(" + pnum + ")(?!px)[a-z%]+$", "i" );
 
 var getStyles = function( elem ) {
-		return elem.ownerDocument.defaultView.getComputedStyle( elem, null );
+		// Support: IE<=11+, Firefox<=30+ (#15098, #14150)
+		// IE throws on elements created in popups
+		// FF meanwhile throws on frame elements through "defaultView.getComputedStyle"
+		if ( elem.ownerDocument.defaultView.opener ) {
+			return elem.ownerDocument.defaultView.getComputedStyle( elem, null );
+		}
+
+		return window.getComputedStyle( elem, null );
 	};
 
 
@@ -49112,7 +37807,7 @@ function curCSS( elem, name, computed ) {
 	computed = computed || getStyles( elem );
 
 	// Support: IE9
-	// getPropertyValue is only needed for .css('filter') in IE9, see #12537
+	// getPropertyValue is only needed for .css('filter') (#12537)
 	if ( computed ) {
 		ret = computed.getPropertyValue( name ) || computed[ name ];
 	}
@@ -49158,15 +37853,13 @@ function addGetHookIf( conditionFn, hookFn ) {
 	return {
 		get: function() {
 			if ( conditionFn() ) {
-				// Hook not needed (or it's not possible to use it due to missing dependency),
-				// remove it.
-				// Since there are no other hooks for marginRight, remove the whole object.
+				// Hook not needed (or it's not possible to use it due
+				// to missing dependency), remove it.
 				delete this.get;
 				return;
 			}
 
 			// Hook needed; redefine it so that the support test is not executed again.
-
 			return (this.get = hookFn).apply( this, arguments );
 		}
 	};
@@ -49183,6 +37876,8 @@ function addGetHookIf( conditionFn, hookFn ) {
 		return;
 	}
 
+	// Support: IE9-11+
+	// Style of cloned element affects source element cloned (#8908)
 	div.style.backgroundClip = "content-box";
 	div.cloneNode( true ).style.backgroundClip = "";
 	support.clearCloneStyle = div.style.backgroundClip === "content-box";
@@ -49215,6 +37910,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 	if ( window.getComputedStyle ) {
 		jQuery.extend( support, {
 			pixelPosition: function() {
+
 				// This test is executed only once but we still do memoizing
 				// since we can use the boxSizingReliable pre-computing.
 				// No need to check if the test was already performed, though.
@@ -49228,6 +37924,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 				return boxSizingReliableVal;
 			},
 			reliableMarginRight: function() {
+
 				// Support: Android 2.3
 				// Check if div with explicit width and no margin-right incorrectly
 				// gets computed margin-right based on width of container. (#3333)
@@ -49249,6 +37946,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 				ret = !parseFloat( window.getComputedStyle( marginDiv, null ).marginRight );
 
 				docElem.removeChild( container );
+				div.removeChild( marginDiv );
 
 				return ret;
 			}
@@ -49280,8 +37978,8 @@ jQuery.swap = function( elem, options, callback, args ) {
 
 
 var
-	// swappable if display is none or starts with table except "table", "table-cell", or "table-caption"
-	// see here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
+	// Swappable if display is none or starts with table except "table", "table-cell", or "table-caption"
+	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
 	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
 	rnumsplit = new RegExp( "^(" + pnum + ")(.*)$", "i" ),
 	rrelNum = new RegExp( "^([+-])=(" + pnum + ")", "i" ),
@@ -49294,15 +37992,15 @@ var
 
 	cssPrefixes = [ "Webkit", "O", "Moz", "ms" ];
 
-// return a css property mapped to a potentially vendor prefixed property
+// Return a css property mapped to a potentially vendor prefixed property
 function vendorPropName( style, name ) {
 
-	// shortcut for names that are not vendor prefixed
+	// Shortcut for names that are not vendor prefixed
 	if ( name in style ) {
 		return name;
 	}
 
-	// check for vendor prefixed names
+	// Check for vendor prefixed names
 	var capName = name[0].toUpperCase() + name.slice(1),
 		origName = name,
 		i = cssPrefixes.length;
@@ -49335,7 +38033,7 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 		val = 0;
 
 	for ( ; i < 4; i += 2 ) {
-		// both box models exclude margin, so add it if we want it
+		// Both box models exclude margin, so add it if we want it
 		if ( extra === "margin" ) {
 			val += jQuery.css( elem, extra + cssExpand[ i ], true, styles );
 		}
@@ -49346,15 +38044,15 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 				val -= jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 			}
 
-			// at this point, extra isn't border nor margin, so remove border
+			// At this point, extra isn't border nor margin, so remove border
 			if ( extra !== "margin" ) {
 				val -= jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 			}
 		} else {
-			// at this point, extra isn't content, so add padding
+			// At this point, extra isn't content, so add padding
 			val += jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 
-			// at this point, extra isn't content nor padding, so add border
+			// At this point, extra isn't content nor padding, so add border
 			if ( extra !== "padding" ) {
 				val += jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
 			}
@@ -49372,7 +38070,7 @@ function getWidthOrHeight( elem, name, extra ) {
 		styles = getStyles( elem ),
 		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
 
-	// some non-html elements return undefined for offsetWidth, so check for null/undefined
+	// Some non-html elements return undefined for offsetWidth, so check for null/undefined
 	// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
 	// MathML - https://bugzilla.mozilla.org/show_bug.cgi?id=491668
 	if ( val <= 0 || val == null ) {
@@ -49387,7 +38085,7 @@ function getWidthOrHeight( elem, name, extra ) {
 			return val;
 		}
 
-		// we need the check for style in case a browser which returns unreliable values
+		// Check for style in case a browser which returns unreliable values
 		// for getComputedStyle silently falls back to the reliable elem.style
 		valueIsBorderBox = isBorderBox &&
 			( support.boxSizingReliable() || val === elem.style[ name ] );
@@ -49396,7 +38094,7 @@ function getWidthOrHeight( elem, name, extra ) {
 		val = parseFloat( val ) || 0;
 	}
 
-	// use the active box-sizing model to add/subtract irrelevant styles
+	// Use the active box-sizing model to add/subtract irrelevant styles
 	return ( val +
 		augmentWidthOrHeight(
 			elem,
@@ -49460,12 +38158,14 @@ function showHide( elements, show ) {
 }
 
 jQuery.extend({
+
 	// Add in style property hooks for overriding the default
 	// behavior of getting and setting a style property
 	cssHooks: {
 		opacity: {
 			get: function( elem, computed ) {
 				if ( computed ) {
+
 					// We should always get a number back from opacity
 					var ret = curCSS( elem, "opacity" );
 					return ret === "" ? "1" : ret;
@@ -49493,12 +38193,12 @@ jQuery.extend({
 	// Add in properties whose names you wish to fix before
 	// setting or getting the value
 	cssProps: {
-		// normalize float css property
 		"float": "cssFloat"
 	},
 
 	// Get and set the style property on a DOM Node
 	style: function( elem, name, value, extra ) {
+
 		// Don't set styles on text and comment nodes
 		if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style ) {
 			return;
@@ -49511,33 +38211,32 @@ jQuery.extend({
 
 		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = vendorPropName( style, origName ) );
 
-		// gets hook for the prefixed version
-		// followed by the unprefixed version
+		// Gets hook for the prefixed version, then unprefixed version
 		hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
 
 		// Check if we're setting a value
 		if ( value !== undefined ) {
 			type = typeof value;
 
-			// convert relative number strings (+= or -=) to relative numbers. #7345
+			// Convert "+=" or "-=" to relative numbers (#7345)
 			if ( type === "string" && (ret = rrelNum.exec( value )) ) {
 				value = ( ret[1] + 1 ) * ret[2] + parseFloat( jQuery.css( elem, name ) );
 				// Fixes bug #9237
 				type = "number";
 			}
 
-			// Make sure that null and NaN values aren't set. See: #7116
+			// Make sure that null and NaN values aren't set (#7116)
 			if ( value == null || value !== value ) {
 				return;
 			}
 
-			// If a number was passed in, add 'px' to the (except for certain CSS properties)
+			// If a number, add 'px' to the (except for certain CSS properties)
 			if ( type === "number" && !jQuery.cssNumber[ origName ] ) {
 				value += "px";
 			}
 
-			// Fixes #8908, it can be done more correctly by specifying setters in cssHooks,
-			// but it would mean to define eight (for every problematic property) identical functions
+			// Support: IE9-11+
+			// background-* props affect original clone's values
 			if ( !support.clearCloneStyle && value === "" && name.indexOf( "background" ) === 0 ) {
 				style[ name ] = "inherit";
 			}
@@ -49565,8 +38264,7 @@ jQuery.extend({
 		// Make sure that we're working with the right name
 		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = vendorPropName( elem.style, origName ) );
 
-		// gets hook for the prefixed version
-		// followed by the unprefixed version
+		// Try prefixed name followed by the unprefixed name
 		hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
 
 		// If a hook was provided get the computed value from there
@@ -49579,12 +38277,12 @@ jQuery.extend({
 			val = curCSS( elem, name, styles );
 		}
 
-		//convert "normal" to computed value
+		// Convert "normal" to computed value
 		if ( val === "normal" && name in cssNormalTransform ) {
 			val = cssNormalTransform[ name ];
 		}
 
-		// Return, converting to number if forced or a qualifier was provided and val looks numeric
+		// Make numeric if forced or a qualifier was provided and val looks numeric
 		if ( extra === "" || extra ) {
 			num = parseFloat( val );
 			return extra === true || jQuery.isNumeric( num ) ? num || 0 : val;
@@ -49597,8 +38295,9 @@ jQuery.each([ "height", "width" ], function( i, name ) {
 	jQuery.cssHooks[ name ] = {
 		get: function( elem, computed, extra ) {
 			if ( computed ) {
-				// certain elements can have dimension info if we invisibly show them
-				// however, it must have a current display style that would benefit from this
+
+				// Certain elements can have dimension info if we invisibly show them
+				// but it must have a current display style that would benefit
 				return rdisplayswap.test( jQuery.css( elem, "display" ) ) && elem.offsetWidth === 0 ?
 					jQuery.swap( elem, cssShow, function() {
 						return getWidthOrHeight( elem, name, extra );
@@ -49626,8 +38325,6 @@ jQuery.each([ "height", "width" ], function( i, name ) {
 jQuery.cssHooks.marginRight = addGetHookIf( support.reliableMarginRight,
 	function( elem, computed ) {
 		if ( computed ) {
-			// WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
-			// Work around by temporarily setting element display to inline-block
 			return jQuery.swap( elem, { "display": "inline-block" },
 				curCSS, [ elem, "marginRight" ] );
 		}
@@ -49645,7 +38342,7 @@ jQuery.each({
 			var i = 0,
 				expanded = {},
 
-				// assumes a single number if not a string
+				// Assumes a single number if not a string
 				parts = typeof value === "string" ? value.split(" ") : [ value ];
 
 			for ( ; i < 4; i++ ) {
@@ -49768,17 +38465,18 @@ Tween.propHooks = {
 				return tween.elem[ tween.prop ];
 			}
 
-			// passing an empty string as a 3rd parameter to .css will automatically
-			// attempt a parseFloat and fallback to a string if the parse fails
-			// so, simple values such as "10px" are parsed to Float.
-			// complex values such as "rotate(1rad)" are returned as is.
+			// Passing an empty string as a 3rd parameter to .css will automatically
+			// attempt a parseFloat and fallback to a string if the parse fails.
+			// Simple values such as "10px" are parsed to Float;
+			// complex values such as "rotate(1rad)" are returned as-is.
 			result = jQuery.css( tween.elem, tween.prop, "" );
 			// Empty strings, null, undefined and "auto" are converted to 0.
 			return !result || result === "auto" ? 0 : result;
 		},
 		set: function( tween ) {
-			// use step hook for back compat - use cssHook if its there - use .style if its
-			// available and use plain properties where available
+			// Use step hook for back compat.
+			// Use cssHook if its there.
+			// Use .style if available and use plain properties where available.
 			if ( jQuery.fx.step[ tween.prop ] ) {
 				jQuery.fx.step[ tween.prop ]( tween );
 			} else if ( tween.elem.style && ( tween.elem.style[ jQuery.cssProps[ tween.prop ] ] != null || jQuery.cssHooks[ tween.prop ] ) ) {
@@ -49792,7 +38490,6 @@ Tween.propHooks = {
 
 // Support: IE9
 // Panic based approach to setting things on disconnected nodes
-
 Tween.propHooks.scrollTop = Tween.propHooks.scrollLeft = {
 	set: function( tween ) {
 		if ( tween.elem.nodeType && tween.elem.parentNode ) {
@@ -49848,16 +38545,16 @@ var
 				start = +target || 1;
 
 				do {
-					// If previous iteration zeroed out, double until we get *something*
-					// Use a string for doubling factor so we don't accidentally see scale as unchanged below
+					// If previous iteration zeroed out, double until we get *something*.
+					// Use string for doubling so we don't accidentally see scale as unchanged below
 					scale = scale || ".5";
 
 					// Adjust and apply
 					start = start / scale;
 					jQuery.style( tween.elem, prop, start + unit );
 
-				// Update scale, tolerating zero or NaN from tween.cur()
-				// And breaking the loop if scale is unchanged or perfect, or if we've just had enough
+				// Update scale, tolerating zero or NaN from tween.cur(),
+				// break the loop if scale is unchanged or perfect, or if we've just had enough
 				} while ( scale !== (scale = tween.cur() / target) && scale !== 1 && --maxIterations );
 			}
 
@@ -49889,8 +38586,8 @@ function genFx( type, includeWidth ) {
 		i = 0,
 		attrs = { height: type };
 
-	// if we include width, step value is 1 to do all cssExpand values,
-	// if we don't include width, step value is 2 to skip over Left and Right
+	// If we include width, step value is 1 to do all cssExpand values,
+	// otherwise step value is 2 to skip over Left and Right
 	includeWidth = includeWidth ? 1 : 0;
 	for ( ; i < 4 ; i += 2 - includeWidth ) {
 		which = cssExpand[ i ];
@@ -49912,7 +38609,7 @@ function createTween( value, prop, animation ) {
 	for ( ; index < length; index++ ) {
 		if ( (tween = collection[ index ].call( animation, prop, value )) ) {
 
-			// we're done with this property
+			// We're done with this property
 			return tween;
 		}
 	}
@@ -49927,7 +38624,7 @@ function defaultPrefilter( elem, props, opts ) {
 		hidden = elem.nodeType && isHidden( elem ),
 		dataShow = data_priv.get( elem, "fxshow" );
 
-	// handle queue: false promises
+	// Handle queue: false promises
 	if ( !opts.queue ) {
 		hooks = jQuery._queueHooks( elem, "fx" );
 		if ( hooks.unqueued == null ) {
@@ -49942,8 +38639,7 @@ function defaultPrefilter( elem, props, opts ) {
 		hooks.unqueued++;
 
 		anim.always(function() {
-			// doing this makes sure that the complete handler will be called
-			// before this completes
+			// Ensure the complete handler is called before this completes
 			anim.always(function() {
 				hooks.unqueued--;
 				if ( !jQuery.queue( elem, "fx" ).length ) {
@@ -49953,7 +38649,7 @@ function defaultPrefilter( elem, props, opts ) {
 		});
 	}
 
-	// height/width overflow pass
+	// Height/width overflow pass
 	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
 		// Make sure that nothing sneaks out
 		// Record all 3 overflow attributes because IE9-10 do not
@@ -50015,7 +38711,7 @@ function defaultPrefilter( elem, props, opts ) {
 			dataShow = data_priv.access( elem, "fxshow", {} );
 		}
 
-		// store state if its toggle - enables .stop().toggle() to "reverse"
+		// Store state if its toggle - enables .stop().toggle() to "reverse"
 		if ( toggle ) {
 			dataShow.hidden = !hidden;
 		}
@@ -50075,8 +38771,8 @@ function propFilter( props, specialEasing ) {
 			value = hooks.expand( value );
 			delete props[ name ];
 
-			// not quite $.extend, this wont overwrite keys already present.
-			// also - reusing 'index' from above because we have the correct "name"
+			// Not quite $.extend, this won't overwrite existing keys.
+			// Reusing 'index' because we have the correct "name"
 			for ( index in value ) {
 				if ( !( index in props ) ) {
 					props[ index ] = value[ index ];
@@ -50095,7 +38791,7 @@ function Animation( elem, properties, options ) {
 		index = 0,
 		length = animationPrefilters.length,
 		deferred = jQuery.Deferred().always( function() {
-			// don't match elem in the :animated selector
+			// Don't match elem in the :animated selector
 			delete tick.elem;
 		}),
 		tick = function() {
@@ -50104,7 +38800,8 @@ function Animation( elem, properties, options ) {
 			}
 			var currentTime = fxNow || createFxNow(),
 				remaining = Math.max( 0, animation.startTime + animation.duration - currentTime ),
-				// archaic crash bug won't allow us to use 1 - ( 0.5 || 0 ) (#12497)
+				// Support: Android 2.3
+				// Archaic crash bug won't allow us to use `1 - ( 0.5 || 0 )` (#12497)
 				temp = remaining / animation.duration || 0,
 				percent = 1 - temp,
 				index = 0,
@@ -50140,7 +38837,7 @@ function Animation( elem, properties, options ) {
 			},
 			stop: function( gotoEnd ) {
 				var index = 0,
-					// if we are going to the end, we want to run all the tweens
+					// If we are going to the end, we want to run all the tweens
 					// otherwise we skip this part
 					length = gotoEnd ? animation.tweens.length : 0;
 				if ( stopped ) {
@@ -50151,8 +38848,7 @@ function Animation( elem, properties, options ) {
 					animation.tweens[ index ].run( 1 );
 				}
 
-				// resolve when we played the last frame
-				// otherwise, reject
+				// Resolve when we played the last frame; otherwise, reject
 				if ( gotoEnd ) {
 					deferred.resolveWith( elem, [ animation, gotoEnd ] );
 				} else {
@@ -50234,7 +38930,7 @@ jQuery.speed = function( speed, easing, fn ) {
 	opt.duration = jQuery.fx.off ? 0 : typeof opt.duration === "number" ? opt.duration :
 		opt.duration in jQuery.fx.speeds ? jQuery.fx.speeds[ opt.duration ] : jQuery.fx.speeds._default;
 
-	// normalize opt.queue - true/undefined/null -> "fx"
+	// Normalize opt.queue - true/undefined/null -> "fx"
 	if ( opt.queue == null || opt.queue === true ) {
 		opt.queue = "fx";
 	}
@@ -50258,10 +38954,10 @@ jQuery.speed = function( speed, easing, fn ) {
 jQuery.fn.extend({
 	fadeTo: function( speed, to, easing, callback ) {
 
-		// show any hidden elements after setting opacity to 0
+		// Show any hidden elements after setting opacity to 0
 		return this.filter( isHidden ).css( "opacity", 0 ).show()
 
-			// animate to the value specified
+			// Animate to the value specified
 			.end().animate({ opacity: to }, speed, easing, callback );
 	},
 	animate: function( prop, speed, easing, callback ) {
@@ -50324,9 +39020,9 @@ jQuery.fn.extend({
 				}
 			}
 
-			// start the next in the queue if the last step wasn't forced
-			// timers currently will call their complete callbacks, which will dequeue
-			// but only if they were gotoEnd
+			// Start the next in the queue if the last step wasn't forced.
+			// Timers currently will call their complete callbacks, which
+			// will dequeue but only if they were gotoEnd.
 			if ( dequeue || !gotoEnd ) {
 				jQuery.dequeue( this, type );
 			}
@@ -50344,17 +39040,17 @@ jQuery.fn.extend({
 				timers = jQuery.timers,
 				length = queue ? queue.length : 0;
 
-			// enable finishing flag on private data
+			// Enable finishing flag on private data
 			data.finish = true;
 
-			// empty the queue first
+			// Empty the queue first
 			jQuery.queue( this, type, [] );
 
 			if ( hooks && hooks.stop ) {
 				hooks.stop.call( this, true );
 			}
 
-			// look for any active animations, and finish them
+			// Look for any active animations, and finish them
 			for ( index = timers.length; index--; ) {
 				if ( timers[ index ].elem === this && timers[ index ].queue === type ) {
 					timers[ index ].anim.stop( true );
@@ -50362,14 +39058,14 @@ jQuery.fn.extend({
 				}
 			}
 
-			// look for any animations in the old queue and finish them
+			// Look for any animations in the old queue and finish them
 			for ( index = 0; index < length; index++ ) {
 				if ( queue[ index ] && queue[ index ].finish ) {
 					queue[ index ].finish.call( this );
 				}
 			}
 
-			// turn off finishing flag
+			// Turn off finishing flag
 			delete data.finish;
 		});
 	}
@@ -50472,21 +39168,21 @@ jQuery.fn.delay = function( time, type ) {
 
 	input.type = "checkbox";
 
-	// Support: iOS 5.1, Android 4.x, Android 2.3
-	// Check the default checkbox/radio value ("" on old WebKit; "on" elsewhere)
+	// Support: iOS<=5.1, Android<=4.2+
+	// Default value for a checkbox should be "on"
 	support.checkOn = input.value !== "";
 
-	// Must access the parent to make an option select properly
-	// Support: IE9, IE10
+	// Support: IE<=11+
+	// Must access selectedIndex to make default options select
 	support.optSelected = opt.selected;
 
-	// Make sure that the options inside disabled selects aren't marked as disabled
-	// (WebKit marks them as disabled)
+	// Support: Android<=2.3
+	// Options inside disabled selects are incorrectly marked as disabled
 	select.disabled = true;
 	support.optDisabled = !opt.disabled;
 
-	// Check if an input maintains its value after becoming a radio
-	// Support: IE9, IE10
+	// Support: IE<=11+
+	// An input loses its value after becoming a radio
 	input = document.createElement( "input" );
 	input.value = "t";
 	input.type = "radio";
@@ -50583,8 +39279,6 @@ jQuery.extend({
 			set: function( elem, value ) {
 				if ( !support.radioValue && value === "radio" &&
 					jQuery.nodeName( elem, "input" ) ) {
-					// Setting the type on a radio button after the value resets the value in IE6-9
-					// Reset value to default in case type is set after value during creation
 					var val = elem.value;
 					elem.setAttribute( "type", value );
 					if ( val ) {
@@ -50654,7 +39348,7 @@ jQuery.extend({
 		var ret, hooks, notxml,
 			nType = elem.nodeType;
 
-		// don't get/set properties on text, comment and attribute nodes
+		// Don't get/set properties on text, comment and attribute nodes
 		if ( !elem || nType === 3 || nType === 8 || nType === 2 ) {
 			return;
 		}
@@ -50690,8 +39384,6 @@ jQuery.extend({
 	}
 });
 
-// Support: IE9+
-// Selectedness for an option in an optgroup can be inaccurate
 if ( !support.optSelected ) {
 	jQuery.propHooks.selected = {
 		get: function( elem ) {
@@ -50799,7 +39491,7 @@ jQuery.fn.extend({
 						}
 					}
 
-					// only assign if different to avoid unneeded rendering.
+					// Only assign if different to avoid unneeded rendering.
 					finalValue = value ? jQuery.trim( cur ) : "";
 					if ( elem.className !== finalValue ) {
 						elem.className = finalValue;
@@ -50826,14 +39518,14 @@ jQuery.fn.extend({
 
 		return this.each(function() {
 			if ( type === "string" ) {
-				// toggle individual class names
+				// Toggle individual class names
 				var className,
 					i = 0,
 					self = jQuery( this ),
 					classNames = value.match( rnotwhite ) || [];
 
 				while ( (className = classNames[ i++ ]) ) {
-					// check each className given, space separated list
+					// Check each className given, space separated list
 					if ( self.hasClass( className ) ) {
 						self.removeClass( className );
 					} else {
@@ -50848,7 +39540,7 @@ jQuery.fn.extend({
 					data_priv.set( this, "__className__", this.className );
 				}
 
-				// If the element has a class name or if we're passed "false",
+				// If the element has a class name or if we're passed `false`,
 				// then remove the whole classname (if there was one, the above saved it).
 				// Otherwise bring back whatever was previously saved (if anything),
 				// falling back to the empty string if nothing was stored.
@@ -50892,9 +39584,9 @@ jQuery.fn.extend({
 				ret = elem.value;
 
 				return typeof ret === "string" ?
-					// handle most common string cases
+					// Handle most common string cases
 					ret.replace(rreturn, "") :
-					// handle cases where value is null/undef or number
+					// Handle cases where value is null/undef or number
 					ret == null ? "" : ret;
 			}
 
@@ -51002,7 +39694,7 @@ jQuery.extend({
 					}
 				}
 
-				// force browsers to behave consistently when non-matching value is set
+				// Force browsers to behave consistently when non-matching value is set
 				if ( !optionSet ) {
 					elem.selectedIndex = -1;
 				}
@@ -51023,8 +39715,6 @@ jQuery.each([ "radio", "checkbox" ], function() {
 	};
 	if ( !support.checkOn ) {
 		jQuery.valHooks[ this ].get = function( elem ) {
-			// Support: Webkit
-			// "" is returned instead of "on" if a value isn't specified
 			return elem.getAttribute("value") === null ? "on" : elem.value;
 		};
 	}
@@ -51106,10 +39796,6 @@ jQuery.parseXML = function( data ) {
 
 
 var
-	// Document location
-	ajaxLocParts,
-	ajaxLocation,
-
 	rhash = /#.*$/,
 	rts = /([?&])_=[^&]*/,
 	rheaders = /^(.*?):[ \t]*([^\r\n]*)$/mg,
@@ -51138,22 +39824,13 @@ var
 	transports = {},
 
 	// Avoid comment-prolog char sequence (#10098); must appease lint and evade compression
-	allTypes = "*/".concat("*");
+	allTypes = "*/".concat( "*" ),
 
-// #8138, IE may throw an exception when accessing
-// a field from window.location if document.domain has been set
-try {
-	ajaxLocation = location.href;
-} catch( e ) {
-	// Use the href attribute of an A element
-	// since IE will modify it given document.location
-	ajaxLocation = document.createElement( "a" );
-	ajaxLocation.href = "";
-	ajaxLocation = ajaxLocation.href;
-}
+	// Document location
+	ajaxLocation = window.location.href,
 
-// Segment location into parts
-ajaxLocParts = rurl.exec( ajaxLocation.toLowerCase() ) || [];
+	// Segment location into parts
+	ajaxLocParts = rurl.exec( ajaxLocation.toLowerCase() ) || [];
 
 // Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport
 function addToPrefiltersOrTransports( structure ) {
@@ -51632,7 +40309,8 @@ jQuery.extend({
 		}
 
 		// We can fire global events as of now if asked to
-		fireGlobals = s.global;
+		// Don't fire events if jQuery.event is undefined in an AMD-usage scenario (#15118)
+		fireGlobals = jQuery.event && s.global;
 
 		// Watch for a new set of requests
 		if ( fireGlobals && jQuery.active++ === 0 ) {
@@ -51705,7 +40383,7 @@ jQuery.extend({
 			return jqXHR.abort();
 		}
 
-		// aborting is no longer a cancellation
+		// Aborting is no longer a cancellation
 		strAbort = "abort";
 
 		// Install callbacks on deferreds
@@ -51817,8 +40495,7 @@ jQuery.extend({
 					isSuccess = !error;
 				}
 			} else {
-				// We extract error from statusText
-				// then normalize statusText and status for non-aborts
+				// Extract error from statusText and normalize for non-aborts
 				error = statusText;
 				if ( status || !statusText ) {
 					statusText = "error";
@@ -51874,7 +40551,7 @@ jQuery.extend({
 
 jQuery.each( [ "get", "post" ], function( i, method ) {
 	jQuery[ method ] = function( url, data, callback, type ) {
-		// shift arguments if data argument was omitted
+		// Shift arguments if data argument was omitted
 		if ( jQuery.isFunction( data ) ) {
 			type = type || callback;
 			callback = data;
@@ -51888,13 +40565,6 @@ jQuery.each( [ "get", "post" ], function( i, method ) {
 			data: data,
 			success: callback
 		});
-	};
-});
-
-// Attach a bunch of functions for handling common AJAX events
-jQuery.each( [ "ajaxStart", "ajaxStop", "ajaxComplete", "ajaxError", "ajaxSuccess", "ajaxSend" ], function( i, type ) {
-	jQuery.fn[ type ] = function( fn ) {
-		return this.on( type, fn );
 	};
 });
 
@@ -52115,8 +40785,9 @@ var xhrId = 0,
 
 // Support: IE9
 // Open requests must be manually aborted on unload (#5280)
-if ( window.ActiveXObject ) {
-	jQuery( window ).on( "unload", function() {
+// See https://support.microsoft.com/kb/2856746 for more info
+if ( window.attachEvent ) {
+	window.attachEvent( "onunload", function() {
 		for ( var key in xhrCallbacks ) {
 			xhrCallbacks[ key ]();
 		}
@@ -52469,6 +41140,16 @@ jQuery.fn.load = function( url, params, callback ) {
 
 
 
+// Attach a bunch of functions for handling common AJAX events
+jQuery.each( [ "ajaxStart", "ajaxStop", "ajaxComplete", "ajaxError", "ajaxSuccess", "ajaxSend" ], function( i, type ) {
+	jQuery.fn[ type ] = function( fn ) {
+		return this.on( type, fn );
+	};
+});
+
+
+
+
 jQuery.expr.filters.animated = function( elem ) {
 	return jQuery.grep(jQuery.timers, function( fn ) {
 		return elem === fn.elem;
@@ -52505,7 +41186,8 @@ jQuery.offset = {
 		calculatePosition = ( position === "absolute" || position === "fixed" ) &&
 			( curCSSTop + curCSSLeft ).indexOf("auto") > -1;
 
-		// Need to be able to calculate position if either top or left is auto and position is either absolute or fixed
+		// Need to be able to calculate position if either
+		// top or left is auto and position is either absolute or fixed
 		if ( calculatePosition ) {
 			curPosition = curElem.position();
 			curTop = curPosition.top;
@@ -52562,8 +41244,8 @@ jQuery.fn.extend({
 			return box;
 		}
 
+		// Support: BlackBerry 5, iOS 3 (original iPhone)
 		// If we don't have gBCR, just use 0,0 rather than error
-		// BlackBerry 5, iOS 3 (original iPhone)
 		if ( typeof elem.getBoundingClientRect !== strundefined ) {
 			box = elem.getBoundingClientRect();
 		}
@@ -52585,7 +41267,7 @@ jQuery.fn.extend({
 
 		// Fixed elements are offset from window (parentOffset = {top:0, left: 0}, because it is its only offset parent
 		if ( jQuery.css( elem, "position" ) === "fixed" ) {
-			// We assume that getBoundingClientRect is available when computed position is fixed
+			// Assume getBoundingClientRect is there when computed position is fixed
 			offset = elem.getBoundingClientRect();
 
 		} else {
@@ -52648,16 +41330,18 @@ jQuery.each( { scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function( 
 	};
 });
 
+// Support: Safari<7+, Chrome<37+
 // Add the top/left cssHooks using jQuery.fn.position
 // Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
-// getComputedStyle returns percent when specified for top/left/bottom/right
-// rather than make the css module depend on the offset module, we just check for it here
+// Blink bug: https://code.google.com/p/chromium/issues/detail?id=229280
+// getComputedStyle returns percent when specified for top/left/bottom/right;
+// rather than make the css module depend on the offset module, just check for it here
 jQuery.each( [ "top", "left" ], function( i, prop ) {
 	jQuery.cssHooks[ prop ] = addGetHookIf( support.pixelPosition,
 		function( elem, computed ) {
 			if ( computed ) {
 				computed = curCSS( elem, prop );
-				// if curCSS returns percentage, fallback to offset
+				// If curCSS returns percentage, fallback to offset
 				return rnumnonpx.test( computed ) ?
 					jQuery( elem ).position()[ prop ] + "px" :
 					computed;
@@ -52670,7 +41354,7 @@ jQuery.each( [ "top", "left" ], function( i, prop ) {
 // Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
 jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 	jQuery.each( { padding: "inner" + name, content: type, "": "outer" + name }, function( defaultExtra, funcName ) {
-		// margin is only for outerHeight, outerWidth
+		// Margin is only for outerHeight, outerWidth
 		jQuery.fn[ funcName ] = function( margin, value ) {
 			var chainable = arguments.length && ( defaultExtra || typeof margin !== "boolean" ),
 				extra = defaultExtra || ( margin === true || value === true ? "margin" : "border" );
@@ -52761,8 +41445,8 @@ jQuery.noConflict = function( deep ) {
 	return jQuery;
 };
 
-// Expose jQuery and $ identifiers, even in
-// AMD (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
+// Expose jQuery and $ identifiers, even in AMD
+// (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
 // and CommonJS for browser emulators (#13566)
 if ( typeof noGlobal === strundefined ) {
 	window.jQuery = window.$ = jQuery;
@@ -52775,7 +41459,7 @@ return jQuery;
 
 }));
 
-},{}],74:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 /**
  * Springy v2.7.1
  *
@@ -53504,6 +42188,1554 @@ return jQuery;
   return Springy;
 }));
 
-},{}],75:[function(require,module,exports){
-module.exports=require(22)
-},{"/Users/jvillaveces/Sites/Interaction-Atlas/node_modules/backbone/node_modules/underscore/underscore.js":22}]},{},[20]);
+},{}],54:[function(require,module,exports){
+//     Underscore.js 1.8.3
+//     http://underscorejs.org
+//     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+//     Underscore may be freely distributed under the MIT license.
+
+(function() {
+
+  // Baseline setup
+  // --------------
+
+  // Establish the root object, `window` in the browser, or `exports` on the server.
+  var root = this;
+
+  // Save the previous value of the `_` variable.
+  var previousUnderscore = root._;
+
+  // Save bytes in the minified (but not gzipped) version:
+  var ArrayProto = Array.prototype, ObjProto = Object.prototype, FuncProto = Function.prototype;
+
+  // Create quick reference variables for speed access to core prototypes.
+  var
+    push             = ArrayProto.push,
+    slice            = ArrayProto.slice,
+    toString         = ObjProto.toString,
+    hasOwnProperty   = ObjProto.hasOwnProperty;
+
+  // All **ECMAScript 5** native function implementations that we hope to use
+  // are declared here.
+  var
+    nativeIsArray      = Array.isArray,
+    nativeKeys         = Object.keys,
+    nativeBind         = FuncProto.bind,
+    nativeCreate       = Object.create;
+
+  // Naked function reference for surrogate-prototype-swapping.
+  var Ctor = function(){};
+
+  // Create a safe reference to the Underscore object for use below.
+  var _ = function(obj) {
+    if (obj instanceof _) return obj;
+    if (!(this instanceof _)) return new _(obj);
+    this._wrapped = obj;
+  };
+
+  // Export the Underscore object for **Node.js**, with
+  // backwards-compatibility for the old `require()` API. If we're in
+  // the browser, add `_` as a global object.
+  if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = _;
+    }
+    exports._ = _;
+  } else {
+    root._ = _;
+  }
+
+  // Current version.
+  _.VERSION = '1.8.3';
+
+  // Internal function that returns an efficient (for current engines) version
+  // of the passed-in callback, to be repeatedly applied in other Underscore
+  // functions.
+  var optimizeCb = function(func, context, argCount) {
+    if (context === void 0) return func;
+    switch (argCount == null ? 3 : argCount) {
+      case 1: return function(value) {
+        return func.call(context, value);
+      };
+      case 2: return function(value, other) {
+        return func.call(context, value, other);
+      };
+      case 3: return function(value, index, collection) {
+        return func.call(context, value, index, collection);
+      };
+      case 4: return function(accumulator, value, index, collection) {
+        return func.call(context, accumulator, value, index, collection);
+      };
+    }
+    return function() {
+      return func.apply(context, arguments);
+    };
+  };
+
+  // A mostly-internal function to generate callbacks that can be applied
+  // to each element in a collection, returning the desired result — either
+  // identity, an arbitrary callback, a property matcher, or a property accessor.
+  var cb = function(value, context, argCount) {
+    if (value == null) return _.identity;
+    if (_.isFunction(value)) return optimizeCb(value, context, argCount);
+    if (_.isObject(value)) return _.matcher(value);
+    return _.property(value);
+  };
+  _.iteratee = function(value, context) {
+    return cb(value, context, Infinity);
+  };
+
+  // An internal function for creating assigner functions.
+  var createAssigner = function(keysFunc, undefinedOnly) {
+    return function(obj) {
+      var length = arguments.length;
+      if (length < 2 || obj == null) return obj;
+      for (var index = 1; index < length; index++) {
+        var source = arguments[index],
+            keys = keysFunc(source),
+            l = keys.length;
+        for (var i = 0; i < l; i++) {
+          var key = keys[i];
+          if (!undefinedOnly || obj[key] === void 0) obj[key] = source[key];
+        }
+      }
+      return obj;
+    };
+  };
+
+  // An internal function for creating a new object that inherits from another.
+  var baseCreate = function(prototype) {
+    if (!_.isObject(prototype)) return {};
+    if (nativeCreate) return nativeCreate(prototype);
+    Ctor.prototype = prototype;
+    var result = new Ctor;
+    Ctor.prototype = null;
+    return result;
+  };
+
+  var property = function(key) {
+    return function(obj) {
+      return obj == null ? void 0 : obj[key];
+    };
+  };
+
+  // Helper for collection methods to determine whether a collection
+  // should be iterated as an array or as an object
+  // Related: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength
+  // Avoids a very nasty iOS 8 JIT bug on ARM-64. #2094
+  var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
+  var getLength = property('length');
+  var isArrayLike = function(collection) {
+    var length = getLength(collection);
+    return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
+  };
+
+  // Collection Functions
+  // --------------------
+
+  // The cornerstone, an `each` implementation, aka `forEach`.
+  // Handles raw objects in addition to array-likes. Treats all
+  // sparse array-likes as if they were dense.
+  _.each = _.forEach = function(obj, iteratee, context) {
+    iteratee = optimizeCb(iteratee, context);
+    var i, length;
+    if (isArrayLike(obj)) {
+      for (i = 0, length = obj.length; i < length; i++) {
+        iteratee(obj[i], i, obj);
+      }
+    } else {
+      var keys = _.keys(obj);
+      for (i = 0, length = keys.length; i < length; i++) {
+        iteratee(obj[keys[i]], keys[i], obj);
+      }
+    }
+    return obj;
+  };
+
+  // Return the results of applying the iteratee to each element.
+  _.map = _.collect = function(obj, iteratee, context) {
+    iteratee = cb(iteratee, context);
+    var keys = !isArrayLike(obj) && _.keys(obj),
+        length = (keys || obj).length,
+        results = Array(length);
+    for (var index = 0; index < length; index++) {
+      var currentKey = keys ? keys[index] : index;
+      results[index] = iteratee(obj[currentKey], currentKey, obj);
+    }
+    return results;
+  };
+
+  // Create a reducing function iterating left or right.
+  function createReduce(dir) {
+    // Optimized iterator function as using arguments.length
+    // in the main function will deoptimize the, see #1991.
+    function iterator(obj, iteratee, memo, keys, index, length) {
+      for (; index >= 0 && index < length; index += dir) {
+        var currentKey = keys ? keys[index] : index;
+        memo = iteratee(memo, obj[currentKey], currentKey, obj);
+      }
+      return memo;
+    }
+
+    return function(obj, iteratee, memo, context) {
+      iteratee = optimizeCb(iteratee, context, 4);
+      var keys = !isArrayLike(obj) && _.keys(obj),
+          length = (keys || obj).length,
+          index = dir > 0 ? 0 : length - 1;
+      // Determine the initial value if none is provided.
+      if (arguments.length < 3) {
+        memo = obj[keys ? keys[index] : index];
+        index += dir;
+      }
+      return iterator(obj, iteratee, memo, keys, index, length);
+    };
+  }
+
+  // **Reduce** builds up a single result from a list of values, aka `inject`,
+  // or `foldl`.
+  _.reduce = _.foldl = _.inject = createReduce(1);
+
+  // The right-associative version of reduce, also known as `foldr`.
+  _.reduceRight = _.foldr = createReduce(-1);
+
+  // Return the first value which passes a truth test. Aliased as `detect`.
+  _.find = _.detect = function(obj, predicate, context) {
+    var key;
+    if (isArrayLike(obj)) {
+      key = _.findIndex(obj, predicate, context);
+    } else {
+      key = _.findKey(obj, predicate, context);
+    }
+    if (key !== void 0 && key !== -1) return obj[key];
+  };
+
+  // Return all the elements that pass a truth test.
+  // Aliased as `select`.
+  _.filter = _.select = function(obj, predicate, context) {
+    var results = [];
+    predicate = cb(predicate, context);
+    _.each(obj, function(value, index, list) {
+      if (predicate(value, index, list)) results.push(value);
+    });
+    return results;
+  };
+
+  // Return all the elements for which a truth test fails.
+  _.reject = function(obj, predicate, context) {
+    return _.filter(obj, _.negate(cb(predicate)), context);
+  };
+
+  // Determine whether all of the elements match a truth test.
+  // Aliased as `all`.
+  _.every = _.all = function(obj, predicate, context) {
+    predicate = cb(predicate, context);
+    var keys = !isArrayLike(obj) && _.keys(obj),
+        length = (keys || obj).length;
+    for (var index = 0; index < length; index++) {
+      var currentKey = keys ? keys[index] : index;
+      if (!predicate(obj[currentKey], currentKey, obj)) return false;
+    }
+    return true;
+  };
+
+  // Determine if at least one element in the object matches a truth test.
+  // Aliased as `any`.
+  _.some = _.any = function(obj, predicate, context) {
+    predicate = cb(predicate, context);
+    var keys = !isArrayLike(obj) && _.keys(obj),
+        length = (keys || obj).length;
+    for (var index = 0; index < length; index++) {
+      var currentKey = keys ? keys[index] : index;
+      if (predicate(obj[currentKey], currentKey, obj)) return true;
+    }
+    return false;
+  };
+
+  // Determine if the array or object contains a given item (using `===`).
+  // Aliased as `includes` and `include`.
+  _.contains = _.includes = _.include = function(obj, item, fromIndex, guard) {
+    if (!isArrayLike(obj)) obj = _.values(obj);
+    if (typeof fromIndex != 'number' || guard) fromIndex = 0;
+    return _.indexOf(obj, item, fromIndex) >= 0;
+  };
+
+  // Invoke a method (with arguments) on every item in a collection.
+  _.invoke = function(obj, method) {
+    var args = slice.call(arguments, 2);
+    var isFunc = _.isFunction(method);
+    return _.map(obj, function(value) {
+      var func = isFunc ? method : value[method];
+      return func == null ? func : func.apply(value, args);
+    });
+  };
+
+  // Convenience version of a common use case of `map`: fetching a property.
+  _.pluck = function(obj, key) {
+    return _.map(obj, _.property(key));
+  };
+
+  // Convenience version of a common use case of `filter`: selecting only objects
+  // containing specific `key:value` pairs.
+  _.where = function(obj, attrs) {
+    return _.filter(obj, _.matcher(attrs));
+  };
+
+  // Convenience version of a common use case of `find`: getting the first object
+  // containing specific `key:value` pairs.
+  _.findWhere = function(obj, attrs) {
+    return _.find(obj, _.matcher(attrs));
+  };
+
+  // Return the maximum element (or element-based computation).
+  _.max = function(obj, iteratee, context) {
+    var result = -Infinity, lastComputed = -Infinity,
+        value, computed;
+    if (iteratee == null && obj != null) {
+      obj = isArrayLike(obj) ? obj : _.values(obj);
+      for (var i = 0, length = obj.length; i < length; i++) {
+        value = obj[i];
+        if (value > result) {
+          result = value;
+        }
+      }
+    } else {
+      iteratee = cb(iteratee, context);
+      _.each(obj, function(value, index, list) {
+        computed = iteratee(value, index, list);
+        if (computed > lastComputed || computed === -Infinity && result === -Infinity) {
+          result = value;
+          lastComputed = computed;
+        }
+      });
+    }
+    return result;
+  };
+
+  // Return the minimum element (or element-based computation).
+  _.min = function(obj, iteratee, context) {
+    var result = Infinity, lastComputed = Infinity,
+        value, computed;
+    if (iteratee == null && obj != null) {
+      obj = isArrayLike(obj) ? obj : _.values(obj);
+      for (var i = 0, length = obj.length; i < length; i++) {
+        value = obj[i];
+        if (value < result) {
+          result = value;
+        }
+      }
+    } else {
+      iteratee = cb(iteratee, context);
+      _.each(obj, function(value, index, list) {
+        computed = iteratee(value, index, list);
+        if (computed < lastComputed || computed === Infinity && result === Infinity) {
+          result = value;
+          lastComputed = computed;
+        }
+      });
+    }
+    return result;
+  };
+
+  // Shuffle a collection, using the modern version of the
+  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
+  _.shuffle = function(obj) {
+    var set = isArrayLike(obj) ? obj : _.values(obj);
+    var length = set.length;
+    var shuffled = Array(length);
+    for (var index = 0, rand; index < length; index++) {
+      rand = _.random(0, index);
+      if (rand !== index) shuffled[index] = shuffled[rand];
+      shuffled[rand] = set[index];
+    }
+    return shuffled;
+  };
+
+  // Sample **n** random values from a collection.
+  // If **n** is not specified, returns a single random element.
+  // The internal `guard` argument allows it to work with `map`.
+  _.sample = function(obj, n, guard) {
+    if (n == null || guard) {
+      if (!isArrayLike(obj)) obj = _.values(obj);
+      return obj[_.random(obj.length - 1)];
+    }
+    return _.shuffle(obj).slice(0, Math.max(0, n));
+  };
+
+  // Sort the object's values by a criterion produced by an iteratee.
+  _.sortBy = function(obj, iteratee, context) {
+    iteratee = cb(iteratee, context);
+    return _.pluck(_.map(obj, function(value, index, list) {
+      return {
+        value: value,
+        index: index,
+        criteria: iteratee(value, index, list)
+      };
+    }).sort(function(left, right) {
+      var a = left.criteria;
+      var b = right.criteria;
+      if (a !== b) {
+        if (a > b || a === void 0) return 1;
+        if (a < b || b === void 0) return -1;
+      }
+      return left.index - right.index;
+    }), 'value');
+  };
+
+  // An internal function used for aggregate "group by" operations.
+  var group = function(behavior) {
+    return function(obj, iteratee, context) {
+      var result = {};
+      iteratee = cb(iteratee, context);
+      _.each(obj, function(value, index) {
+        var key = iteratee(value, index, obj);
+        behavior(result, value, key);
+      });
+      return result;
+    };
+  };
+
+  // Groups the object's values by a criterion. Pass either a string attribute
+  // to group by, or a function that returns the criterion.
+  _.groupBy = group(function(result, value, key) {
+    if (_.has(result, key)) result[key].push(value); else result[key] = [value];
+  });
+
+  // Indexes the object's values by a criterion, similar to `groupBy`, but for
+  // when you know that your index values will be unique.
+  _.indexBy = group(function(result, value, key) {
+    result[key] = value;
+  });
+
+  // Counts instances of an object that group by a certain criterion. Pass
+  // either a string attribute to count by, or a function that returns the
+  // criterion.
+  _.countBy = group(function(result, value, key) {
+    if (_.has(result, key)) result[key]++; else result[key] = 1;
+  });
+
+  // Safely create a real, live array from anything iterable.
+  _.toArray = function(obj) {
+    if (!obj) return [];
+    if (_.isArray(obj)) return slice.call(obj);
+    if (isArrayLike(obj)) return _.map(obj, _.identity);
+    return _.values(obj);
+  };
+
+  // Return the number of elements in an object.
+  _.size = function(obj) {
+    if (obj == null) return 0;
+    return isArrayLike(obj) ? obj.length : _.keys(obj).length;
+  };
+
+  // Split a collection into two arrays: one whose elements all satisfy the given
+  // predicate, and one whose elements all do not satisfy the predicate.
+  _.partition = function(obj, predicate, context) {
+    predicate = cb(predicate, context);
+    var pass = [], fail = [];
+    _.each(obj, function(value, key, obj) {
+      (predicate(value, key, obj) ? pass : fail).push(value);
+    });
+    return [pass, fail];
+  };
+
+  // Array Functions
+  // ---------------
+
+  // Get the first element of an array. Passing **n** will return the first N
+  // values in the array. Aliased as `head` and `take`. The **guard** check
+  // allows it to work with `_.map`.
+  _.first = _.head = _.take = function(array, n, guard) {
+    if (array == null) return void 0;
+    if (n == null || guard) return array[0];
+    return _.initial(array, array.length - n);
+  };
+
+  // Returns everything but the last entry of the array. Especially useful on
+  // the arguments object. Passing **n** will return all the values in
+  // the array, excluding the last N.
+  _.initial = function(array, n, guard) {
+    return slice.call(array, 0, Math.max(0, array.length - (n == null || guard ? 1 : n)));
+  };
+
+  // Get the last element of an array. Passing **n** will return the last N
+  // values in the array.
+  _.last = function(array, n, guard) {
+    if (array == null) return void 0;
+    if (n == null || guard) return array[array.length - 1];
+    return _.rest(array, Math.max(0, array.length - n));
+  };
+
+  // Returns everything but the first entry of the array. Aliased as `tail` and `drop`.
+  // Especially useful on the arguments object. Passing an **n** will return
+  // the rest N values in the array.
+  _.rest = _.tail = _.drop = function(array, n, guard) {
+    return slice.call(array, n == null || guard ? 1 : n);
+  };
+
+  // Trim out all falsy values from an array.
+  _.compact = function(array) {
+    return _.filter(array, _.identity);
+  };
+
+  // Internal implementation of a recursive `flatten` function.
+  var flatten = function(input, shallow, strict, startIndex) {
+    var output = [], idx = 0;
+    for (var i = startIndex || 0, length = getLength(input); i < length; i++) {
+      var value = input[i];
+      if (isArrayLike(value) && (_.isArray(value) || _.isArguments(value))) {
+        //flatten current level of array or arguments object
+        if (!shallow) value = flatten(value, shallow, strict);
+        var j = 0, len = value.length;
+        output.length += len;
+        while (j < len) {
+          output[idx++] = value[j++];
+        }
+      } else if (!strict) {
+        output[idx++] = value;
+      }
+    }
+    return output;
+  };
+
+  // Flatten out an array, either recursively (by default), or just one level.
+  _.flatten = function(array, shallow) {
+    return flatten(array, shallow, false);
+  };
+
+  // Return a version of the array that does not contain the specified value(s).
+  _.without = function(array) {
+    return _.difference(array, slice.call(arguments, 1));
+  };
+
+  // Produce a duplicate-free version of the array. If the array has already
+  // been sorted, you have the option of using a faster algorithm.
+  // Aliased as `unique`.
+  _.uniq = _.unique = function(array, isSorted, iteratee, context) {
+    if (!_.isBoolean(isSorted)) {
+      context = iteratee;
+      iteratee = isSorted;
+      isSorted = false;
+    }
+    if (iteratee != null) iteratee = cb(iteratee, context);
+    var result = [];
+    var seen = [];
+    for (var i = 0, length = getLength(array); i < length; i++) {
+      var value = array[i],
+          computed = iteratee ? iteratee(value, i, array) : value;
+      if (isSorted) {
+        if (!i || seen !== computed) result.push(value);
+        seen = computed;
+      } else if (iteratee) {
+        if (!_.contains(seen, computed)) {
+          seen.push(computed);
+          result.push(value);
+        }
+      } else if (!_.contains(result, value)) {
+        result.push(value);
+      }
+    }
+    return result;
+  };
+
+  // Produce an array that contains the union: each distinct element from all of
+  // the passed-in arrays.
+  _.union = function() {
+    return _.uniq(flatten(arguments, true, true));
+  };
+
+  // Produce an array that contains every item shared between all the
+  // passed-in arrays.
+  _.intersection = function(array) {
+    var result = [];
+    var argsLength = arguments.length;
+    for (var i = 0, length = getLength(array); i < length; i++) {
+      var item = array[i];
+      if (_.contains(result, item)) continue;
+      for (var j = 1; j < argsLength; j++) {
+        if (!_.contains(arguments[j], item)) break;
+      }
+      if (j === argsLength) result.push(item);
+    }
+    return result;
+  };
+
+  // Take the difference between one array and a number of other arrays.
+  // Only the elements present in just the first array will remain.
+  _.difference = function(array) {
+    var rest = flatten(arguments, true, true, 1);
+    return _.filter(array, function(value){
+      return !_.contains(rest, value);
+    });
+  };
+
+  // Zip together multiple lists into a single array -- elements that share
+  // an index go together.
+  _.zip = function() {
+    return _.unzip(arguments);
+  };
+
+  // Complement of _.zip. Unzip accepts an array of arrays and groups
+  // each array's elements on shared indices
+  _.unzip = function(array) {
+    var length = array && _.max(array, getLength).length || 0;
+    var result = Array(length);
+
+    for (var index = 0; index < length; index++) {
+      result[index] = _.pluck(array, index);
+    }
+    return result;
+  };
+
+  // Converts lists into objects. Pass either a single array of `[key, value]`
+  // pairs, or two parallel arrays of the same length -- one of keys, and one of
+  // the corresponding values.
+  _.object = function(list, values) {
+    var result = {};
+    for (var i = 0, length = getLength(list); i < length; i++) {
+      if (values) {
+        result[list[i]] = values[i];
+      } else {
+        result[list[i][0]] = list[i][1];
+      }
+    }
+    return result;
+  };
+
+  // Generator function to create the findIndex and findLastIndex functions
+  function createPredicateIndexFinder(dir) {
+    return function(array, predicate, context) {
+      predicate = cb(predicate, context);
+      var length = getLength(array);
+      var index = dir > 0 ? 0 : length - 1;
+      for (; index >= 0 && index < length; index += dir) {
+        if (predicate(array[index], index, array)) return index;
+      }
+      return -1;
+    };
+  }
+
+  // Returns the first index on an array-like that passes a predicate test
+  _.findIndex = createPredicateIndexFinder(1);
+  _.findLastIndex = createPredicateIndexFinder(-1);
+
+  // Use a comparator function to figure out the smallest index at which
+  // an object should be inserted so as to maintain order. Uses binary search.
+  _.sortedIndex = function(array, obj, iteratee, context) {
+    iteratee = cb(iteratee, context, 1);
+    var value = iteratee(obj);
+    var low = 0, high = getLength(array);
+    while (low < high) {
+      var mid = Math.floor((low + high) / 2);
+      if (iteratee(array[mid]) < value) low = mid + 1; else high = mid;
+    }
+    return low;
+  };
+
+  // Generator function to create the indexOf and lastIndexOf functions
+  function createIndexFinder(dir, predicateFind, sortedIndex) {
+    return function(array, item, idx) {
+      var i = 0, length = getLength(array);
+      if (typeof idx == 'number') {
+        if (dir > 0) {
+            i = idx >= 0 ? idx : Math.max(idx + length, i);
+        } else {
+            length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
+        }
+      } else if (sortedIndex && idx && length) {
+        idx = sortedIndex(array, item);
+        return array[idx] === item ? idx : -1;
+      }
+      if (item !== item) {
+        idx = predicateFind(slice.call(array, i, length), _.isNaN);
+        return idx >= 0 ? idx + i : -1;
+      }
+      for (idx = dir > 0 ? i : length - 1; idx >= 0 && idx < length; idx += dir) {
+        if (array[idx] === item) return idx;
+      }
+      return -1;
+    };
+  }
+
+  // Return the position of the first occurrence of an item in an array,
+  // or -1 if the item is not included in the array.
+  // If the array is large and already in sort order, pass `true`
+  // for **isSorted** to use binary search.
+  _.indexOf = createIndexFinder(1, _.findIndex, _.sortedIndex);
+  _.lastIndexOf = createIndexFinder(-1, _.findLastIndex);
+
+  // Generate an integer Array containing an arithmetic progression. A port of
+  // the native Python `range()` function. See
+  // [the Python documentation](http://docs.python.org/library/functions.html#range).
+  _.range = function(start, stop, step) {
+    if (stop == null) {
+      stop = start || 0;
+      start = 0;
+    }
+    step = step || 1;
+
+    var length = Math.max(Math.ceil((stop - start) / step), 0);
+    var range = Array(length);
+
+    for (var idx = 0; idx < length; idx++, start += step) {
+      range[idx] = start;
+    }
+
+    return range;
+  };
+
+  // Function (ahem) Functions
+  // ------------------
+
+  // Determines whether to execute a function as a constructor
+  // or a normal function with the provided arguments
+  var executeBound = function(sourceFunc, boundFunc, context, callingContext, args) {
+    if (!(callingContext instanceof boundFunc)) return sourceFunc.apply(context, args);
+    var self = baseCreate(sourceFunc.prototype);
+    var result = sourceFunc.apply(self, args);
+    if (_.isObject(result)) return result;
+    return self;
+  };
+
+  // Create a function bound to a given object (assigning `this`, and arguments,
+  // optionally). Delegates to **ECMAScript 5**'s native `Function.bind` if
+  // available.
+  _.bind = function(func, context) {
+    if (nativeBind && func.bind === nativeBind) return nativeBind.apply(func, slice.call(arguments, 1));
+    if (!_.isFunction(func)) throw new TypeError('Bind must be called on a function');
+    var args = slice.call(arguments, 2);
+    var bound = function() {
+      return executeBound(func, bound, context, this, args.concat(slice.call(arguments)));
+    };
+    return bound;
+  };
+
+  // Partially apply a function by creating a version that has had some of its
+  // arguments pre-filled, without changing its dynamic `this` context. _ acts
+  // as a placeholder, allowing any combination of arguments to be pre-filled.
+  _.partial = function(func) {
+    var boundArgs = slice.call(arguments, 1);
+    var bound = function() {
+      var position = 0, length = boundArgs.length;
+      var args = Array(length);
+      for (var i = 0; i < length; i++) {
+        args[i] = boundArgs[i] === _ ? arguments[position++] : boundArgs[i];
+      }
+      while (position < arguments.length) args.push(arguments[position++]);
+      return executeBound(func, bound, this, this, args);
+    };
+    return bound;
+  };
+
+  // Bind a number of an object's methods to that object. Remaining arguments
+  // are the method names to be bound. Useful for ensuring that all callbacks
+  // defined on an object belong to it.
+  _.bindAll = function(obj) {
+    var i, length = arguments.length, key;
+    if (length <= 1) throw new Error('bindAll must be passed function names');
+    for (i = 1; i < length; i++) {
+      key = arguments[i];
+      obj[key] = _.bind(obj[key], obj);
+    }
+    return obj;
+  };
+
+  // Memoize an expensive function by storing its results.
+  _.memoize = function(func, hasher) {
+    var memoize = function(key) {
+      var cache = memoize.cache;
+      var address = '' + (hasher ? hasher.apply(this, arguments) : key);
+      if (!_.has(cache, address)) cache[address] = func.apply(this, arguments);
+      return cache[address];
+    };
+    memoize.cache = {};
+    return memoize;
+  };
+
+  // Delays a function for the given number of milliseconds, and then calls
+  // it with the arguments supplied.
+  _.delay = function(func, wait) {
+    var args = slice.call(arguments, 2);
+    return setTimeout(function(){
+      return func.apply(null, args);
+    }, wait);
+  };
+
+  // Defers a function, scheduling it to run after the current call stack has
+  // cleared.
+  _.defer = _.partial(_.delay, _, 1);
+
+  // Returns a function, that, when invoked, will only be triggered at most once
+  // during a given window of time. Normally, the throttled function will run
+  // as much as it can, without ever going more than once per `wait` duration;
+  // but if you'd like to disable the execution on the leading edge, pass
+  // `{leading: false}`. To disable execution on the trailing edge, ditto.
+  _.throttle = function(func, wait, options) {
+    var context, args, result;
+    var timeout = null;
+    var previous = 0;
+    if (!options) options = {};
+    var later = function() {
+      previous = options.leading === false ? 0 : _.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+    return function() {
+      var now = _.now();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+      return result;
+    };
+  };
+
+  // Returns a function, that, as long as it continues to be invoked, will not
+  // be triggered. The function will be called after it stops being called for
+  // N milliseconds. If `immediate` is passed, trigger the function on the
+  // leading edge, instead of the trailing.
+  _.debounce = function(func, wait, immediate) {
+    var timeout, args, context, timestamp, result;
+
+    var later = function() {
+      var last = _.now() - timestamp;
+
+      if (last < wait && last >= 0) {
+        timeout = setTimeout(later, wait - last);
+      } else {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+          if (!timeout) context = args = null;
+        }
+      }
+    };
+
+    return function() {
+      context = this;
+      args = arguments;
+      timestamp = _.now();
+      var callNow = immediate && !timeout;
+      if (!timeout) timeout = setTimeout(later, wait);
+      if (callNow) {
+        result = func.apply(context, args);
+        context = args = null;
+      }
+
+      return result;
+    };
+  };
+
+  // Returns the first function passed as an argument to the second,
+  // allowing you to adjust arguments, run code before and after, and
+  // conditionally execute the original function.
+  _.wrap = function(func, wrapper) {
+    return _.partial(wrapper, func);
+  };
+
+  // Returns a negated version of the passed-in predicate.
+  _.negate = function(predicate) {
+    return function() {
+      return !predicate.apply(this, arguments);
+    };
+  };
+
+  // Returns a function that is the composition of a list of functions, each
+  // consuming the return value of the function that follows.
+  _.compose = function() {
+    var args = arguments;
+    var start = args.length - 1;
+    return function() {
+      var i = start;
+      var result = args[start].apply(this, arguments);
+      while (i--) result = args[i].call(this, result);
+      return result;
+    };
+  };
+
+  // Returns a function that will only be executed on and after the Nth call.
+  _.after = function(times, func) {
+    return function() {
+      if (--times < 1) {
+        return func.apply(this, arguments);
+      }
+    };
+  };
+
+  // Returns a function that will only be executed up to (but not including) the Nth call.
+  _.before = function(times, func) {
+    var memo;
+    return function() {
+      if (--times > 0) {
+        memo = func.apply(this, arguments);
+      }
+      if (times <= 1) func = null;
+      return memo;
+    };
+  };
+
+  // Returns a function that will be executed at most one time, no matter how
+  // often you call it. Useful for lazy initialization.
+  _.once = _.partial(_.before, 2);
+
+  // Object Functions
+  // ----------------
+
+  // Keys in IE < 9 that won't be iterated by `for key in ...` and thus missed.
+  var hasEnumBug = !{toString: null}.propertyIsEnumerable('toString');
+  var nonEnumerableProps = ['valueOf', 'isPrototypeOf', 'toString',
+                      'propertyIsEnumerable', 'hasOwnProperty', 'toLocaleString'];
+
+  function collectNonEnumProps(obj, keys) {
+    var nonEnumIdx = nonEnumerableProps.length;
+    var constructor = obj.constructor;
+    var proto = (_.isFunction(constructor) && constructor.prototype) || ObjProto;
+
+    // Constructor is a special case.
+    var prop = 'constructor';
+    if (_.has(obj, prop) && !_.contains(keys, prop)) keys.push(prop);
+
+    while (nonEnumIdx--) {
+      prop = nonEnumerableProps[nonEnumIdx];
+      if (prop in obj && obj[prop] !== proto[prop] && !_.contains(keys, prop)) {
+        keys.push(prop);
+      }
+    }
+  }
+
+  // Retrieve the names of an object's own properties.
+  // Delegates to **ECMAScript 5**'s native `Object.keys`
+  _.keys = function(obj) {
+    if (!_.isObject(obj)) return [];
+    if (nativeKeys) return nativeKeys(obj);
+    var keys = [];
+    for (var key in obj) if (_.has(obj, key)) keys.push(key);
+    // Ahem, IE < 9.
+    if (hasEnumBug) collectNonEnumProps(obj, keys);
+    return keys;
+  };
+
+  // Retrieve all the property names of an object.
+  _.allKeys = function(obj) {
+    if (!_.isObject(obj)) return [];
+    var keys = [];
+    for (var key in obj) keys.push(key);
+    // Ahem, IE < 9.
+    if (hasEnumBug) collectNonEnumProps(obj, keys);
+    return keys;
+  };
+
+  // Retrieve the values of an object's properties.
+  _.values = function(obj) {
+    var keys = _.keys(obj);
+    var length = keys.length;
+    var values = Array(length);
+    for (var i = 0; i < length; i++) {
+      values[i] = obj[keys[i]];
+    }
+    return values;
+  };
+
+  // Returns the results of applying the iteratee to each element of the object
+  // In contrast to _.map it returns an object
+  _.mapObject = function(obj, iteratee, context) {
+    iteratee = cb(iteratee, context);
+    var keys =  _.keys(obj),
+          length = keys.length,
+          results = {},
+          currentKey;
+      for (var index = 0; index < length; index++) {
+        currentKey = keys[index];
+        results[currentKey] = iteratee(obj[currentKey], currentKey, obj);
+      }
+      return results;
+  };
+
+  // Convert an object into a list of `[key, value]` pairs.
+  _.pairs = function(obj) {
+    var keys = _.keys(obj);
+    var length = keys.length;
+    var pairs = Array(length);
+    for (var i = 0; i < length; i++) {
+      pairs[i] = [keys[i], obj[keys[i]]];
+    }
+    return pairs;
+  };
+
+  // Invert the keys and values of an object. The values must be serializable.
+  _.invert = function(obj) {
+    var result = {};
+    var keys = _.keys(obj);
+    for (var i = 0, length = keys.length; i < length; i++) {
+      result[obj[keys[i]]] = keys[i];
+    }
+    return result;
+  };
+
+  // Return a sorted list of the function names available on the object.
+  // Aliased as `methods`
+  _.functions = _.methods = function(obj) {
+    var names = [];
+    for (var key in obj) {
+      if (_.isFunction(obj[key])) names.push(key);
+    }
+    return names.sort();
+  };
+
+  // Extend a given object with all the properties in passed-in object(s).
+  _.extend = createAssigner(_.allKeys);
+
+  // Assigns a given object with all the own properties in the passed-in object(s)
+  // (https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+  _.extendOwn = _.assign = createAssigner(_.keys);
+
+  // Returns the first key on an object that passes a predicate test
+  _.findKey = function(obj, predicate, context) {
+    predicate = cb(predicate, context);
+    var keys = _.keys(obj), key;
+    for (var i = 0, length = keys.length; i < length; i++) {
+      key = keys[i];
+      if (predicate(obj[key], key, obj)) return key;
+    }
+  };
+
+  // Return a copy of the object only containing the whitelisted properties.
+  _.pick = function(object, oiteratee, context) {
+    var result = {}, obj = object, iteratee, keys;
+    if (obj == null) return result;
+    if (_.isFunction(oiteratee)) {
+      keys = _.allKeys(obj);
+      iteratee = optimizeCb(oiteratee, context);
+    } else {
+      keys = flatten(arguments, false, false, 1);
+      iteratee = function(value, key, obj) { return key in obj; };
+      obj = Object(obj);
+    }
+    for (var i = 0, length = keys.length; i < length; i++) {
+      var key = keys[i];
+      var value = obj[key];
+      if (iteratee(value, key, obj)) result[key] = value;
+    }
+    return result;
+  };
+
+   // Return a copy of the object without the blacklisted properties.
+  _.omit = function(obj, iteratee, context) {
+    if (_.isFunction(iteratee)) {
+      iteratee = _.negate(iteratee);
+    } else {
+      var keys = _.map(flatten(arguments, false, false, 1), String);
+      iteratee = function(value, key) {
+        return !_.contains(keys, key);
+      };
+    }
+    return _.pick(obj, iteratee, context);
+  };
+
+  // Fill in a given object with default properties.
+  _.defaults = createAssigner(_.allKeys, true);
+
+  // Creates an object that inherits from the given prototype object.
+  // If additional properties are provided then they will be added to the
+  // created object.
+  _.create = function(prototype, props) {
+    var result = baseCreate(prototype);
+    if (props) _.extendOwn(result, props);
+    return result;
+  };
+
+  // Create a (shallow-cloned) duplicate of an object.
+  _.clone = function(obj) {
+    if (!_.isObject(obj)) return obj;
+    return _.isArray(obj) ? obj.slice() : _.extend({}, obj);
+  };
+
+  // Invokes interceptor with the obj, and then returns obj.
+  // The primary purpose of this method is to "tap into" a method chain, in
+  // order to perform operations on intermediate results within the chain.
+  _.tap = function(obj, interceptor) {
+    interceptor(obj);
+    return obj;
+  };
+
+  // Returns whether an object has a given set of `key:value` pairs.
+  _.isMatch = function(object, attrs) {
+    var keys = _.keys(attrs), length = keys.length;
+    if (object == null) return !length;
+    var obj = Object(object);
+    for (var i = 0; i < length; i++) {
+      var key = keys[i];
+      if (attrs[key] !== obj[key] || !(key in obj)) return false;
+    }
+    return true;
+  };
+
+
+  // Internal recursive comparison function for `isEqual`.
+  var eq = function(a, b, aStack, bStack) {
+    // Identical objects are equal. `0 === -0`, but they aren't identical.
+    // See the [Harmony `egal` proposal](http://wiki.ecmascript.org/doku.php?id=harmony:egal).
+    if (a === b) return a !== 0 || 1 / a === 1 / b;
+    // A strict comparison is necessary because `null == undefined`.
+    if (a == null || b == null) return a === b;
+    // Unwrap any wrapped objects.
+    if (a instanceof _) a = a._wrapped;
+    if (b instanceof _) b = b._wrapped;
+    // Compare `[[Class]]` names.
+    var className = toString.call(a);
+    if (className !== toString.call(b)) return false;
+    switch (className) {
+      // Strings, numbers, regular expressions, dates, and booleans are compared by value.
+      case '[object RegExp]':
+      // RegExps are coerced to strings for comparison (Note: '' + /a/i === '/a/i')
+      case '[object String]':
+        // Primitives and their corresponding object wrappers are equivalent; thus, `"5"` is
+        // equivalent to `new String("5")`.
+        return '' + a === '' + b;
+      case '[object Number]':
+        // `NaN`s are equivalent, but non-reflexive.
+        // Object(NaN) is equivalent to NaN
+        if (+a !== +a) return +b !== +b;
+        // An `egal` comparison is performed for other numeric values.
+        return +a === 0 ? 1 / +a === 1 / b : +a === +b;
+      case '[object Date]':
+      case '[object Boolean]':
+        // Coerce dates and booleans to numeric primitive values. Dates are compared by their
+        // millisecond representations. Note that invalid dates with millisecond representations
+        // of `NaN` are not equivalent.
+        return +a === +b;
+    }
+
+    var areArrays = className === '[object Array]';
+    if (!areArrays) {
+      if (typeof a != 'object' || typeof b != 'object') return false;
+
+      // Objects with different constructors are not equivalent, but `Object`s or `Array`s
+      // from different frames are.
+      var aCtor = a.constructor, bCtor = b.constructor;
+      if (aCtor !== bCtor && !(_.isFunction(aCtor) && aCtor instanceof aCtor &&
+                               _.isFunction(bCtor) && bCtor instanceof bCtor)
+                          && ('constructor' in a && 'constructor' in b)) {
+        return false;
+      }
+    }
+    // Assume equality for cyclic structures. The algorithm for detecting cyclic
+    // structures is adapted from ES 5.1 section 15.12.3, abstract operation `JO`.
+
+    // Initializing stack of traversed objects.
+    // It's done here since we only need them for objects and arrays comparison.
+    aStack = aStack || [];
+    bStack = bStack || [];
+    var length = aStack.length;
+    while (length--) {
+      // Linear search. Performance is inversely proportional to the number of
+      // unique nested structures.
+      if (aStack[length] === a) return bStack[length] === b;
+    }
+
+    // Add the first object to the stack of traversed objects.
+    aStack.push(a);
+    bStack.push(b);
+
+    // Recursively compare objects and arrays.
+    if (areArrays) {
+      // Compare array lengths to determine if a deep comparison is necessary.
+      length = a.length;
+      if (length !== b.length) return false;
+      // Deep compare the contents, ignoring non-numeric properties.
+      while (length--) {
+        if (!eq(a[length], b[length], aStack, bStack)) return false;
+      }
+    } else {
+      // Deep compare objects.
+      var keys = _.keys(a), key;
+      length = keys.length;
+      // Ensure that both objects contain the same number of properties before comparing deep equality.
+      if (_.keys(b).length !== length) return false;
+      while (length--) {
+        // Deep compare each member
+        key = keys[length];
+        if (!(_.has(b, key) && eq(a[key], b[key], aStack, bStack))) return false;
+      }
+    }
+    // Remove the first object from the stack of traversed objects.
+    aStack.pop();
+    bStack.pop();
+    return true;
+  };
+
+  // Perform a deep comparison to check if two objects are equal.
+  _.isEqual = function(a, b) {
+    return eq(a, b);
+  };
+
+  // Is a given array, string, or object empty?
+  // An "empty" object has no enumerable own-properties.
+  _.isEmpty = function(obj) {
+    if (obj == null) return true;
+    if (isArrayLike(obj) && (_.isArray(obj) || _.isString(obj) || _.isArguments(obj))) return obj.length === 0;
+    return _.keys(obj).length === 0;
+  };
+
+  // Is a given value a DOM element?
+  _.isElement = function(obj) {
+    return !!(obj && obj.nodeType === 1);
+  };
+
+  // Is a given value an array?
+  // Delegates to ECMA5's native Array.isArray
+  _.isArray = nativeIsArray || function(obj) {
+    return toString.call(obj) === '[object Array]';
+  };
+
+  // Is a given variable an object?
+  _.isObject = function(obj) {
+    var type = typeof obj;
+    return type === 'function' || type === 'object' && !!obj;
+  };
+
+  // Add some isType methods: isArguments, isFunction, isString, isNumber, isDate, isRegExp, isError.
+  _.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error'], function(name) {
+    _['is' + name] = function(obj) {
+      return toString.call(obj) === '[object ' + name + ']';
+    };
+  });
+
+  // Define a fallback version of the method in browsers (ahem, IE < 9), where
+  // there isn't any inspectable "Arguments" type.
+  if (!_.isArguments(arguments)) {
+    _.isArguments = function(obj) {
+      return _.has(obj, 'callee');
+    };
+  }
+
+  // Optimize `isFunction` if appropriate. Work around some typeof bugs in old v8,
+  // IE 11 (#1621), and in Safari 8 (#1929).
+  if (typeof /./ != 'function' && typeof Int8Array != 'object') {
+    _.isFunction = function(obj) {
+      return typeof obj == 'function' || false;
+    };
+  }
+
+  // Is a given object a finite number?
+  _.isFinite = function(obj) {
+    return isFinite(obj) && !isNaN(parseFloat(obj));
+  };
+
+  // Is the given value `NaN`? (NaN is the only number which does not equal itself).
+  _.isNaN = function(obj) {
+    return _.isNumber(obj) && obj !== +obj;
+  };
+
+  // Is a given value a boolean?
+  _.isBoolean = function(obj) {
+    return obj === true || obj === false || toString.call(obj) === '[object Boolean]';
+  };
+
+  // Is a given value equal to null?
+  _.isNull = function(obj) {
+    return obj === null;
+  };
+
+  // Is a given variable undefined?
+  _.isUndefined = function(obj) {
+    return obj === void 0;
+  };
+
+  // Shortcut function for checking if an object has a given property directly
+  // on itself (in other words, not on a prototype).
+  _.has = function(obj, key) {
+    return obj != null && hasOwnProperty.call(obj, key);
+  };
+
+  // Utility Functions
+  // -----------------
+
+  // Run Underscore.js in *noConflict* mode, returning the `_` variable to its
+  // previous owner. Returns a reference to the Underscore object.
+  _.noConflict = function() {
+    root._ = previousUnderscore;
+    return this;
+  };
+
+  // Keep the identity function around for default iteratees.
+  _.identity = function(value) {
+    return value;
+  };
+
+  // Predicate-generating functions. Often useful outside of Underscore.
+  _.constant = function(value) {
+    return function() {
+      return value;
+    };
+  };
+
+  _.noop = function(){};
+
+  _.property = property;
+
+  // Generates a function for a given object that returns a given property.
+  _.propertyOf = function(obj) {
+    return obj == null ? function(){} : function(key) {
+      return obj[key];
+    };
+  };
+
+  // Returns a predicate for checking whether an object has a given set of
+  // `key:value` pairs.
+  _.matcher = _.matches = function(attrs) {
+    attrs = _.extendOwn({}, attrs);
+    return function(obj) {
+      return _.isMatch(obj, attrs);
+    };
+  };
+
+  // Run a function **n** times.
+  _.times = function(n, iteratee, context) {
+    var accum = Array(Math.max(0, n));
+    iteratee = optimizeCb(iteratee, context, 1);
+    for (var i = 0; i < n; i++) accum[i] = iteratee(i);
+    return accum;
+  };
+
+  // Return a random integer between min and max (inclusive).
+  _.random = function(min, max) {
+    if (max == null) {
+      max = min;
+      min = 0;
+    }
+    return min + Math.floor(Math.random() * (max - min + 1));
+  };
+
+  // A (possibly faster) way to get the current timestamp as an integer.
+  _.now = Date.now || function() {
+    return new Date().getTime();
+  };
+
+   // List of HTML entities for escaping.
+  var escapeMap = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    '`': '&#x60;'
+  };
+  var unescapeMap = _.invert(escapeMap);
+
+  // Functions for escaping and unescaping strings to/from HTML interpolation.
+  var createEscaper = function(map) {
+    var escaper = function(match) {
+      return map[match];
+    };
+    // Regexes for identifying a key that needs to be escaped
+    var source = '(?:' + _.keys(map).join('|') + ')';
+    var testRegexp = RegExp(source);
+    var replaceRegexp = RegExp(source, 'g');
+    return function(string) {
+      string = string == null ? '' : '' + string;
+      return testRegexp.test(string) ? string.replace(replaceRegexp, escaper) : string;
+    };
+  };
+  _.escape = createEscaper(escapeMap);
+  _.unescape = createEscaper(unescapeMap);
+
+  // If the value of the named `property` is a function then invoke it with the
+  // `object` as context; otherwise, return it.
+  _.result = function(object, property, fallback) {
+    var value = object == null ? void 0 : object[property];
+    if (value === void 0) {
+      value = fallback;
+    }
+    return _.isFunction(value) ? value.call(object) : value;
+  };
+
+  // Generate a unique integer id (unique within the entire client session).
+  // Useful for temporary DOM ids.
+  var idCounter = 0;
+  _.uniqueId = function(prefix) {
+    var id = ++idCounter + '';
+    return prefix ? prefix + id : id;
+  };
+
+  // By default, Underscore uses ERB-style template delimiters, change the
+  // following template settings to use alternative delimiters.
+  _.templateSettings = {
+    evaluate    : /<%([\s\S]+?)%>/g,
+    interpolate : /<%=([\s\S]+?)%>/g,
+    escape      : /<%-([\s\S]+?)%>/g
+  };
+
+  // When customizing `templateSettings`, if you don't want to define an
+  // interpolation, evaluation or escaping regex, we need one that is
+  // guaranteed not to match.
+  var noMatch = /(.)^/;
+
+  // Certain characters need to be escaped so that they can be put into a
+  // string literal.
+  var escapes = {
+    "'":      "'",
+    '\\':     '\\',
+    '\r':     'r',
+    '\n':     'n',
+    '\u2028': 'u2028',
+    '\u2029': 'u2029'
+  };
+
+  var escaper = /\\|'|\r|\n|\u2028|\u2029/g;
+
+  var escapeChar = function(match) {
+    return '\\' + escapes[match];
+  };
+
+  // JavaScript micro-templating, similar to John Resig's implementation.
+  // Underscore templating handles arbitrary delimiters, preserves whitespace,
+  // and correctly escapes quotes within interpolated code.
+  // NB: `oldSettings` only exists for backwards compatibility.
+  _.template = function(text, settings, oldSettings) {
+    if (!settings && oldSettings) settings = oldSettings;
+    settings = _.defaults({}, settings, _.templateSettings);
+
+    // Combine delimiters into one regular expression via alternation.
+    var matcher = RegExp([
+      (settings.escape || noMatch).source,
+      (settings.interpolate || noMatch).source,
+      (settings.evaluate || noMatch).source
+    ].join('|') + '|$', 'g');
+
+    // Compile the template source, escaping string literals appropriately.
+    var index = 0;
+    var source = "__p+='";
+    text.replace(matcher, function(match, escape, interpolate, evaluate, offset) {
+      source += text.slice(index, offset).replace(escaper, escapeChar);
+      index = offset + match.length;
+
+      if (escape) {
+        source += "'+\n((__t=(" + escape + "))==null?'':_.escape(__t))+\n'";
+      } else if (interpolate) {
+        source += "'+\n((__t=(" + interpolate + "))==null?'':__t)+\n'";
+      } else if (evaluate) {
+        source += "';\n" + evaluate + "\n__p+='";
+      }
+
+      // Adobe VMs need the match returned to produce the correct offest.
+      return match;
+    });
+    source += "';\n";
+
+    // If a variable is not specified, place data values in local scope.
+    if (!settings.variable) source = 'with(obj||{}){\n' + source + '}\n';
+
+    source = "var __t,__p='',__j=Array.prototype.join," +
+      "print=function(){__p+=__j.call(arguments,'');};\n" +
+      source + 'return __p;\n';
+
+    try {
+      var render = new Function(settings.variable || 'obj', '_', source);
+    } catch (e) {
+      e.source = source;
+      throw e;
+    }
+
+    var template = function(data) {
+      return render.call(this, data, _);
+    };
+
+    // Provide the compiled source as a convenience for precompilation.
+    var argument = settings.variable || 'obj';
+    template.source = 'function(' + argument + '){\n' + source + '}';
+
+    return template;
+  };
+
+  // Add a "chain" function. Start chaining a wrapped Underscore object.
+  _.chain = function(obj) {
+    var instance = _(obj);
+    instance._chain = true;
+    return instance;
+  };
+
+  // OOP
+  // ---------------
+  // If Underscore is called as a function, it returns a wrapped object that
+  // can be used OO-style. This wrapper holds altered versions of all the
+  // underscore functions. Wrapped objects may be chained.
+
+  // Helper function to continue chaining intermediate results.
+  var result = function(instance, obj) {
+    return instance._chain ? _(obj).chain() : obj;
+  };
+
+  // Add your own custom functions to the Underscore object.
+  _.mixin = function(obj) {
+    _.each(_.functions(obj), function(name) {
+      var func = _[name] = obj[name];
+      _.prototype[name] = function() {
+        var args = [this._wrapped];
+        push.apply(args, arguments);
+        return result(this, func.apply(_, args));
+      };
+    });
+  };
+
+  // Add all of the Underscore functions to the wrapper object.
+  _.mixin(_);
+
+  // Add all mutator Array functions to the wrapper.
+  _.each(['pop', 'push', 'reverse', 'shift', 'sort', 'splice', 'unshift'], function(name) {
+    var method = ArrayProto[name];
+    _.prototype[name] = function() {
+      var obj = this._wrapped;
+      method.apply(obj, arguments);
+      if ((name === 'shift' || name === 'splice') && obj.length === 0) delete obj[0];
+      return result(this, obj);
+    };
+  });
+
+  // Add all accessor Array functions to the wrapper.
+  _.each(['concat', 'join', 'slice'], function(name) {
+    var method = ArrayProto[name];
+    _.prototype[name] = function() {
+      return result(this, method.apply(this._wrapped, arguments));
+    };
+  });
+
+  // Extracts the result from a wrapped and chained object.
+  _.prototype.value = function() {
+    return this._wrapped;
+  };
+
+  // Provide unwrapping proxy for some methods used in engine operations
+  // such as arithmetic and JSON stringification.
+  _.prototype.valueOf = _.prototype.toJSON = _.prototype.value;
+
+  _.prototype.toString = function() {
+    return '' + this._wrapped;
+  };
+
+  // AMD registration happens at the end for compatibility with AMD loaders
+  // that may not enforce next-turn semantics on modules. Even though general
+  // practice for AMD registration is to be anonymous, underscore registers
+  // as a named module because, like jQuery, it is a base library that is
+  // popular enough to be bundled in a third party lib, but not be part of
+  // an AMD load request. Those cases could generate an error when an
+  // anonymous define() is called outside of a loader request.
+  if (typeof define === 'function' && define.amd) {
+    define('underscore', [], function() {
+      return _;
+    });
+  }
+}.call(this));
+
+},{}]},{},[21]);
