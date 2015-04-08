@@ -16,29 +16,23 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="layout">
-    
+                <h3 id="example-heading-new">General options</a></h3>
+                
                 <form id = {{formId}}>
-                    <div class="form-group">
-                        
-                        <br>
-                        <select class="form-control" name="name">
-                            <option value="breadthfirst">Breadthfirst</option>
-                            <option value="circle">Circle</option>
-                            <option value="cola">Cola</option>
-                            <option value="concentric" selected>Concentric</option>
-                            <option value="cose">Cose</option>
-                            <option value="grid">Grid</option>
-                            <option value="random">Random</option>
-                            <option value="springy">Springy</option>
-                        </select>
+                    
+                    <div class="row">
+                        <label class="col-md-4">Background color</label>
+                        <div class="col-md-8">
+                            <input name="bgcolor" type="text" class="form-control minicolors-input" data-control="hue" value="#ffffff">
+                        </div>
                     </div>
-                    <div id="{{layoutOptsId}}"></div>
-
-                    <center>
-                        <button id="{{refreshId}}" type="button" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh</button>
-                    </center>
+                    
+                    <div class="row">
+                        <label class="col-md-4">Trim</label>
+                        <div class="col-md-8"><input name="trim" type="checkbox"></div>
+                    </div>
+                    
                 </form>
-            
             </div>
             <div role="tabpanel" class="tab-pane" id="profile"></div>
             <div role="tabpanel" class="tab-pane" id="algorithms"></div>
