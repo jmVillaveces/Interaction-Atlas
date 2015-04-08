@@ -396,6 +396,24 @@ function program1(depth0,data) {
   return buffer;
   });
 
+this["Templates"]["layout"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += " <form id = ";
+  if (helper = helpers.formId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.formId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + ">\r\n    <div class=\"form-group\">\r\n\r\n        <br>\r\n        <select class=\"form-control\" name=\"name\">\r\n            <option value=\"breadthfirst\">Breadthfirst</option>\r\n            <option value=\"circle\">Circle</option>\r\n            <option value=\"cola\">Cola</option>\r\n            <option value=\"concentric\" selected>Concentric</option>\r\n            <option value=\"cose\">Cose</option>\r\n            <option value=\"grid\">Grid</option>\r\n            <option value=\"random\">Random</option>\r\n            <option value=\"springy\">Springy</option>\r\n        </select>\r\n    </div>\r\n    <div id=\"";
+  if (helper = helpers.layoutOptsId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.layoutOptsId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\"><br><br><br><br></div>\r\n</form>\r\n     ";
+  return buffer;
+  });
+
 this["Templates"]["main"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -415,7 +433,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.importId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.importId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Import Network from database\"><span class=\"glyphicon glyphicon-import\" aria-hidden=\"true\"></span> Import Network</a></li>\n              <li><a href=\"#\">Contact</a></li>\n              <li class=\"dropdown\">\n                <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></a>\n                <ul class=\"dropdown-menu\" role=\"menu\">\n                  <li><a href=\"#\">Action</a></li>\n                  <li><a href=\"#\">Another action</a></li>\n                  <li><a href=\"#\">Something else here</a></li>\n                  <li class=\"divider\"></li>\n                  <li class=\"dropdown-header\">Nav header</li>\n                  <li><a href=\"#\">Separated link</a></li>\n                  <li><a href=\"#\">One more separated link</a></li>\n                </ul>\n              </li>\n            </ul>\n            <form class=\"navbar-form navbar-left\" role=\"search\">\n                <div class=\"form-group\">\n                    <input type=\"text\" id=\"";
+    + "\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Import Network from database\"><span class=\"glyphicon glyphicon-import\" aria-hidden=\"true\"></span> Import Network</a></li>\n              <li><a href=\"#\">Contact</a></li>\n              <li class=\"dropdown\">\n                <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Layout <span class=\"caret\"></span></a>\n                <ul id=";
+  if (helper = helpers.layoutId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.layoutId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " class=\"dropdown-menu\" role=\"menu\">\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Puts nodes in a hierarchy, based on a breadthfirst traversal of the graph.\" href=\"breadthfirst\">Breadthfirst <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in a circle\" href=\"circle\">Circle <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"cola\">Cola <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in concentric circles creating levels based on node degree\" href=\"concentric\">Concentric <span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"cose\">Cose <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in a Grid\" href=\"grid\">Grid <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes randomly\" href=\"random\">Random <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"springy\">Springy <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li class=\"divider\"></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Advanced layout options\" href=\"#\">Advanced</a></li>\n                </ul>\n              </li>\n            </ul>\n            <form class=\"navbar-form navbar-left\" role=\"search\">\n                <div class=\"form-group\">\n                    <input type=\"text\" id=\"";
   if (helper = helpers.findId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.findId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -692,19 +714,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<!-- Sliding div starts here -->\n\n<div class=\"side_content\">\n    \n    <div role=\"tabpanel\">\n\n        <br>\n        \n        <!-- Nav tabs -->\n        <ul class=\"nav nav-tabs\" role=\"tablist\">\n            <li role=\"presentation\" class=\"active\"><a href=\"#layout\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">Layout</a></li>\n            <li role=\"presentation\"><a href=\"#profile\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Options</a></li>\n            <li role=\"presentation\"><a href=\"#algorithms\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Algorithms</a></li>\n        </ul>\n\n        <!-- Tab panes -->\n        <div class=\"tab-content\">\n            <div role=\"tabpanel\" class=\"tab-pane active\" id=\"layout\">\n    \n                <form id = ";
+  buffer += "<!-- Sliding div starts here -->\n\n<div class=\"side_content\">\n    \n    <div role=\"tabpanel\">\n\n        <br>\n        \n        <!-- Nav tabs -->\n        <ul class=\"nav nav-tabs\" role=\"tablist\">\n            <li role=\"presentation\" class=\"active\"><a href=\"#layout\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">Layout</a></li>\n            <li role=\"presentation\"><a href=\"#profile\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Options</a></li>\n            <li role=\"presentation\"><a href=\"#algorithms\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Algorithms</a></li>\n        </ul>\n\n        <!-- Tab panes -->\n        <div class=\"tab-content\">\n            <div role=\"tabpanel\" class=\"tab-pane active\" id=\"layout\">\n                <h3 id=\"example-heading-new\">General options</a></h3>\n                \n                <form id = ";
   if (helper = helpers.formId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.formId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + ">\n                    <div class=\"form-group\">\n                        \n                        <br>\n                        <select class=\"form-control\" name=\"name\">\n                            <option value=\"breadthfirst\">Breadthfirst</option>\n                            <option value=\"circle\">Circle</option>\n                            <option value=\"cola\">Cola</option>\n                            <option value=\"concentric\" selected>Concentric</option>\n                            <option value=\"cose\">Cose</option>\n                            <option value=\"grid\">Grid</option>\n                            <option value=\"random\">Random</option>\n                            <option value=\"springy\">Springy</option>\n                        </select>\n                    </div>\n                    <div id=\"";
-  if (helper = helpers.layoutOptsId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.layoutOptsId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\"></div>\n\n                    <center>\n                        <button id=\"";
-  if (helper = helpers.refreshId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.refreshId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\" type=\"button\" class=\"btn btn-info btn-lg\"><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span> Refresh</button>\n                    </center>\n                </form>\n            \n            </div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\"></div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"algorithms\"></div>\n        </div>\n\n    </div>\n</div>\n<!-- Sliding div ends here -->";
+    + ">\n                    \n                    <div class=\"row\">\n                        <label class=\"col-md-4\">Background color</label>\n                        <div class=\"col-md-8\">\n                            <input name=\"bgcolor\" type=\"text\" class=\"form-control minicolors-input\" data-control=\"hue\" value=\"#ffffff\">\n                        </div>\n                    </div>\n                    \n                    <div class=\"row\">\n                        <label class=\"col-md-4\">Trim</label>\n                        <div class=\"col-md-8\"><input name=\"trim\" type=\"checkbox\"></div>\n                    </div>\n                    \n                </form>\n            </div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\"></div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"algorithms\"></div>\n        </div>\n\n    </div>\n</div>\n<!-- Sliding div ends here -->";
   return buffer;
   });
 
