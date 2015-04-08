@@ -36,7 +36,7 @@ module.exports = Backbone.View.extend({
         $('#' + _dialId).modal('show');
         
         tpl = templates.import({servers:App.model.servers.toJSON(), exampleId : _exampleId, logId : _logId});
-        $('.modal-body').html(tpl);
+        $(('#' + _dialId + ' .modal-body').html(tpl);
     },
 
     onExampleClick : function(e){
