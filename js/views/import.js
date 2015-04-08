@@ -16,6 +16,11 @@ module.exports = Backbone.View.extend({
     
     render: function(){
         
+        if ($('#' + _dialId).length){
+            $('#' + _dialId).modal('show');
+            return;
+        }
+        
         var options = {
             title : 'Import Network', 
             icon : 'glyphicon-import', 
@@ -25,11 +30,9 @@ module.exports = Backbone.View.extend({
             okBtnId : _okBtnId
         };
         
-        
-        
         var tpl = templates.dialog(options);    
         
-        $(this.options.el).html(tpl);
+        $(this.options.el).append(tpl);
         $('#' + _dialId).modal('show');
         
         tpl = templates.import({servers:App.model.servers.toJSON(), exampleId : _exampleId, logId : _logId});
