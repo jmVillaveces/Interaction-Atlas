@@ -120,6 +120,9 @@ module.exports = Backbone.View.extend({
         //update cy
         if(this.cy) this.cy.layout(_layout);
         
+        //trigger layout changed
+        Backbone.trigger('layout_changed', _layout);
+        
         return this;
     },
     

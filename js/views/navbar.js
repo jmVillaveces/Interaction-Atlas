@@ -13,6 +13,9 @@ module.exports = Backbone.View.extend({
         this.events['click #' + _saveId] = 'onSave';
         this.events['click #' + _importId] = 'onImport';
         this.events['click #' + _layoutId + ' a'] = 'onLayout';
+        
+        // Update when graph is ready
+        this.listenTo(Backbone, 'layout_changed', this.onLayoutChanged);
     },
     
     events: {},
@@ -67,12 +70,26 @@ module.exports = Backbone.View.extend({
     onLayout: function(e){
         e.preventDefault();
         
-        var layout = $(e.target).text().toLowerCase();
+        var layout = $(e.target).text().toLowerCase().trim();
         
         if(layout !== 'advanced'){
             App.views.graph.layout({name:layout});
         }else{
-            console.log("TODO: layout dialog!");
+            App.views.layout.render();
         }
+    },
+    
+    onLayoutChanged : function(l){
+        console.log(l);
+        $('#' + _layoutId + ' a').each(function(){
+            var link = $(this);
+            var layout = link.text().toLowerCase().trim();
+            
+            if(layout === l.name){
+                link.children().addClass('glyphicon-ok');
+            }else{
+                link.children().removeClass('glyphicon-ok');
+            }
+        });
     }
 });
