@@ -33,6 +33,7 @@ App.init = function(options){
     var Options = require('./js/views/options');
     var UPDialog = require('./js/views/UPdialog');
     var Import = require('./js/views/import');
+    var Layout = require('./js/views/layout');
 
     App.views = {};
 
@@ -53,6 +54,7 @@ App.init = function(options){
     //Dialogs
     App.views.UPDialog = new UPDialog({el:'#dialog'});
     App.views.import = new Import({el:'#dialog'});
+    App.views.layout = new Layout({el:'#dialog'});
 
     //Logger
     App.views.logger = new Logger({el:'#logger'});
