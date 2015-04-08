@@ -16,9 +16,10 @@ module.exports = Backbone.View.extend({
     },
     
     events:{
-        'change select[name=name]': 'onSelectChange',
+        /*'change select[name=name]': 'onSelectChange',*/
         'change select[name=algorithm]': 'onAlgorithmChange',
-        'click #play': 'onPlayClick'
+        'click #play': 'onPlayClick',
+        'change input[name=bgcolor]': 'onBgColorChange'
     },
     
     render: function(){
@@ -93,6 +94,10 @@ module.exports = Backbone.View.extend({
             $('#source').show();
             $('#target').show();
         }
+    },
+    
+    onBgColorChange:function(e){
+        App.views.graph.bgColor($(e.target).val());
     },
     
     serializeForm : function(){

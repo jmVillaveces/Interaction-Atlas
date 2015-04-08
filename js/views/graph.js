@@ -1,7 +1,7 @@
 var templates = require('../templates');
 var cytoscape = require('cytoscape');
 
-var _trim = true;
+var _trim = false;
 
 var _layout = {
     name: 'concentric',
@@ -12,30 +12,65 @@ var _layout = {
 
 var _color = ['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#e6550d', '#fd8d3c', '#fdae6b', '#fdd0a2', '#31a354', '#74c476', '#a1d99b', '#c7e9c0', '#756bb1', '#9e9ac8', '#bcbddc', '#dadaeb', '#636363', '#969696', '#bdbdbd', '#d9d9d9'];
 
-var _nodes = [], _links = [], _visnodes = [], _vislinks = [], _legend = 'data(id)', _score = ['none', 'width'];
+var _nodes = [], _links = [], _visnodes = [], _vislinks = [], _legend = 'data(id)', _score = ['none', 'width'], _bgColor = '#fff';
 
-var _nodeStyle = {
-    'font-size': 10,
-    'content': _legend,
-    'text-valign': 'bottom',
-    'min-zoomed-font-size': 8,
-    'width': 'mapData(weight, 0, 100, 10, 60)',
-    'height': 'mapData(weight, 0, 100, 10, 60)',
-    'pie-size': '100%'
-};
-
-var _edgeStyle = {
-    'opacity': 0.666,
-    'width': 1,
-    'line-color': '#ddd',
-    'curve-style': 'haystack'
-};
-
-var _selectedStyle = {
-        'background-color': 'black',
-        'opacity': 1,
-        'pie-size': '80%'
-};
+var _style = [
+    {
+        selector:'node',
+        css: {
+            'font-size': 10,
+            'content': _legend,
+            'text-valign': 'bottom',
+            'min-zoomed-font-size': 8,
+            'width': 'mapData(weight, 0, 100, 10, 60)',
+            'height': 'mapData(weight, 0, 100, 10, 60)',
+            'pie-size': '100%'
+        }
+    },
+    {
+        selector:'edge',
+        css: {
+            'opacity': 0.666,
+            'width': 1,
+            'line-color': '#ddd',
+            'curve-style': 'haystack'
+        }
+    },
+    {
+        selector:':selected',
+        css: {
+            'background-color': 'black',
+            'opacity': 1,
+            'pie-size': '80%'
+        }
+    },
+    {
+        selector:'node.highlighted',
+        css: {
+            'background-color': '#E8747C',
+            'pie-size': '0%',
+            'transition-property': 'pie-size, background-color',
+            'transition-duration': '0.5s'
+        }
+    },
+    {
+        selector:'edge.highlighted',
+        css: {
+            'background-color': '#E8747C',
+            'line-color': '#E8747C',
+            'width': 4,
+            'transition-property': 'background-color, line-color, width',
+            'transition-duration': '0.5s'
+        }
+    },
+    {
+        selector:'core',
+        css: {
+            'active-bg-color': '#000',
+            'active-bg-opacity': 0.333
+        }
+    }
+];
 
 var _save = function(){
     
@@ -106,6 +141,8 @@ module.exports = Backbone.View.extend({
         
         this.cy = null;
         
+        this.bgColor(_bgColor);
+        
         // Update tags when model changes
         this.listenTo(Backbone, 'got_data', _processData);
         
@@ -126,11 +163,12 @@ module.exports = Backbone.View.extend({
         return this;
     },
     
-    trim : function(_){
-        if (!arguments.length) return _trim;
+    bgColor : function(_){
+        if (!arguments.length) return _bgColor;
         
-        _trim = _;
+        _bgColor = _;
         
+        $('#' + this.options.el).css('background-color', _);
         return this;
     },
     
@@ -141,11 +179,8 @@ module.exports = Backbone.View.extend({
         
         //update cy
         if(this.cy){
-            _nodeStyle.content = _legend;
-            
-            
-            var style = cytoscape.stylesheet().selector('node').css(_nodeStyle).selector('edge').css(_edgeStyle).selector(':selected').css(_selectedStyle);
-            this.cy.style(style);
+            _style[0].css.content = _legend;
+            this.cy.style(_style);
         }
         
         return this;
@@ -156,21 +191,21 @@ module.exports = Backbone.View.extend({
         if (!arguments.length) return _score;
         _score = _;
         
-        _edgeStyle.opacity = 0.666;
-        _edgeStyle.width = 1;
-        _edgeStyle['line-color'] = '#ddd';
+        var edgeStyle = _style[1].css;
+        edgeStyle.opacity = 0.666;
+        edgeStyle.width = 1;
+        edgeStyle['line-color'] = '#ddd';
         
         if(_score[0] !== 'none'){ 
             if(_score[1] === 'opacity'){
-                _edgeStyle.opacity = 'mapData(scre.'+_score[0]+', 0, 1, 0, 1)';
-                _edgeStyle['line-color'] = '#000';
+                edgeStyle.opacity = 'mapData(scre.'+_score[0]+', 0, 1, 0, 1)';
+                edgeStyle['line-color'] = '#000';
             }else if(_score[1] === 'width'){
-                _edgeStyle.width = 'mapData(scre.'+_score[0]+', 0, 1, 1, 5)';
+                edgeStyle.width = 'mapData(scre.'+_score[0]+', 0, 1, 1, 5)';
             }
         }
         
-        var style = cytoscape.stylesheet().selector('node').css(_nodeStyle).selector('edge').css(_edgeStyle).selector(':selected').css(_selectedStyle);
-        if(this.cy) this.cy.style(style);
+        if(this.cy) this.cy.style(_style);
         
         return this;
     },
@@ -230,29 +265,8 @@ module.exports = Backbone.View.extend({
             ks.cut.addClass('highlighted');
             
         }else if(algorithm === 'kruskal'){
-            
            this.cy.elements().kruskal().addClass('highlighted');
-            
         }
-    },
-    
-    dijkstra : function(source, target){
-        var dijkstra = this.cy.elements().dijkstra('#'+source);
-        var path = dijkstra.pathTo(this.cy.$('#'+target));
-        
-        this.cy.elements().removeClass('highlighted');
-        
-        var i = 0;
-        var highlightNextEle = function(){
-            
-            if( i < path.length ){
-                path[i].addClass('highlighted');
-                i++;
-                setTimeout(highlightNextEle, 800);
-            }
-        };
-        
-        highlightNextEle();
     },
     
     update: function(){
@@ -286,13 +300,13 @@ module.exports = Backbone.View.extend({
         
         var nodes = _.map(_visnodes, function(n){ return {data:n}; });
         var links = _.map(_vislinks, function(n){ return {data:n}; });
-        
         var taxonomies = _.union.apply(_, _.pluck(_.pluck(nodes, 'data'), 'taxonomy'));
+        var nodeStyle = _style[0].css;
         
         if(taxonomies.length < 16){
             _.each(taxonomies, function(t,i){
-                _nodeStyle['pie-' + (i+1) + '-background-color'] = _color[i];
-                _nodeStyle['pie-' + (i+1) + '-background-size'] = 'mapData(taxa.' + t + ', 0, 10, 0, 100)';
+                nodeStyle['pie-' + (i+1) + '-background-color'] = _color[i];
+                nodeStyle['pie-' + (i+1) + '-background-size'] = 'mapData(taxa.' + t + ', 0, 10, 0, 100)';
             }, this);
         }
         
@@ -300,36 +314,13 @@ module.exports = Backbone.View.extend({
         
         var options = {
             container: div,
-            
             // this is an alternative that uses a bitmap during interaction
             textureOnViewport: true,
             // interpolate on high density displays instead of increasing resolution
             pixelRatio: 1,
             // a motion blur effect that increases perceived performance for little or no cost
             motionBlur: true,
-
-
-            style: cytoscape.stylesheet().selector('node')
-            .css(_nodeStyle)
-            .selector('edge')
-            .css(_edgeStyle)
-            .selector(':selected')
-            .css(_selectedStyle)
-            .selector('node.highlighted')
-            .css({
-                'background-color': '#E8747C',
-                'pie-size': '0%',
-                'transition-property': 'pie-size, background-color',
-                'transition-duration': '0.5s'
-            })
-            .selector('edge.highlighted')
-            .css({
-                'background-color': '#E8747C',
-                'line-color': '#E8747C',
-                'width': 4,
-                'transition-property': 'background-color, line-color, width',
-                'transition-duration': '0.5s'
-            })
+            style: _style
         };
         
         options.layout = _layout;
@@ -342,14 +333,5 @@ module.exports = Backbone.View.extend({
         this.cy.on('tap', 'node', _onNodeTapped);
         this.cy.on('mouseover ', 'node', function(){ $('body').attr('style', 'cursor:pointer'); });
         this.cy.on('mouseout ', 'node', function(){ $('body').attr('style', 'cursor:auto'); });
-        
-        
-        
-        /*var dijkstra = this.cy.elements().dijkstra('#P52701');
-        var bfs = dijkstra.pathTo(this.cy.$('#P04116') );
-        
-        console.log(bfs.length);
-        _.each(bfs, function(e){ console.log(e.id()); });*/
-        //console.log(bfs.path.length);
     }
 });
