@@ -7,6 +7,7 @@ _ = require('underscore');
 
 require('./js/helpers.js'); // Handelbars helpers
 require('bootstrap/dist/js/bootstrap.min.js'); // bootstrap
+require('./js/lib/jquery.minicolors.min.js'); // minicolors
 
 App = {};
 
@@ -69,6 +70,9 @@ App.init = function(options){
 
     //Import additional layout libraries
     Springy = require('springy');
+    
+    //Init minicolors
+    $('.minicolors-input').minicolors({ theme:'bootstrap'});
 };
 
 App.init();
