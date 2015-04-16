@@ -28,15 +28,11 @@ module.exports = Backbone.Collection.extend({
             arr[arr.length - 1] = 'current/search/query/';
             i.url = arr.join('/');
         });
-        
-        function compare(a,b) {
-          
-        }
 
         items.sort(function(a,b){
-            if (a.name < b.name)
+            if (a.name.toLowerCase() < b.name.toLowerCase())
                 return -1;
-            if (a.name > b.name)
+            if (a.name.toLowerCase() > b.name.toLowerCase())
                 return 1;
             return 0;
         });
