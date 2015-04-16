@@ -26,7 +26,7 @@ module.exports = Backbone.Model.extend({
          
         var query = (this.attributes.ids.length) ? this.attributes.ids.join(' OR ') : this.attributes.query;
          
-        query = (this.attributes.orgs.length) ? query + ' AND taxId:(' + this.attributes.orgs.join(' OR ') + ')' : query;
+        query = (this.attributes.orgs.length) ? 'id:(' + query + ') AND species:(' + this.attributes.orgs.join(' OR ') + ')' : query;
         query += '?firstResult=0&maxResults=3000';
         
         url = (this.attributes.proxy) ? this.attributes.proxy + this.attributes.server + query : this.attributes.server + query;
