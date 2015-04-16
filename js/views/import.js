@@ -35,7 +35,8 @@ module.exports = Backbone.View.extend({
         $(this.options.el).append(tpl);
         $('#' + _dialId).modal('show');
         
-        tpl = templates.import({servers:App.model.servers.toJSON(), exampleId : _exampleId, logId : _logId});
+        var isFileSupported = (window.File && window.FileReader && window.FileList && window.Blob) ? true : false;
+        tpl = templates.import({servers:App.model.servers.toJSON(), exampleId : _exampleId, logId : _logId, isFileSupported: isFileSupported});
         $('#' + _dialId + ' .modal-body').html(tpl);
     },
 
