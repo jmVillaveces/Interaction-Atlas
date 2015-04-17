@@ -19,7 +19,8 @@ module.exports = Backbone.View.extend({
         /*'change select[name=name]': 'onSelectChange',*/
         'change select[name=algorithm]': 'onAlgorithmChange',
         'click #play': 'onPlayClick',
-        'change input[name=bgcolor]': 'onBgColorChange'
+        'change input[name=bgcolor]': 'onBgColorChange',
+        'change input[name=hcolor]': 'onHColorChange'
     },
     
     render: function(){
@@ -65,16 +66,15 @@ module.exports = Backbone.View.extend({
             tpl = templates.shortestpath({nodes : nodes});
             $('#algorithms').html(tpl);
         }
+        
+        //Init minicolors
+        $('.minicolors-input').minicolors({ theme:'bootstrap'});
     },
     
     onPlayClick : function(e){
        
         var source = $('select[name=source]').val(), target  = $('select[name=target]').val(), algorithm = $('select[name=algorithm]').val();
-        
-        
         App.views.graph.algorithm(algorithm, {source: source, target: target});
-        //if(source !== 'none' && target !== 'none')
-            //App.views.graph.dijkstra(source, target);
     },
     
     onAlgorithmChange : function(){
@@ -98,6 +98,10 @@ module.exports = Backbone.View.extend({
     
     onBgColorChange:function(e){
         App.views.graph.bgColor($(e.target).val());
+    },
+    
+    onHColorChange:function(e){
+        App.views.graph.hColor($(e.target).val());
     },
     
     serializeForm : function(){

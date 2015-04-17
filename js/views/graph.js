@@ -56,7 +56,6 @@ var _style = [
     {
         selector:'edge.highlighted',
         css: {
-            'background-color': '#E8747C',
             'line-color': '#E8747C',
             'width': 4,
             'transition-property': 'background-color, line-color, width',
@@ -169,6 +168,17 @@ module.exports = Backbone.View.extend({
         _bgColor = _;
         
         $('#' + this.options.el).css('background-color', _);
+        return this;
+    },
+    
+    hColor : function(_){
+        if (!arguments.length) return _style[3].css['background-color'];
+        
+        _style[3].css['background-color'] = _;
+        _style[4].css['line-color'] = _;
+        
+        //update cy
+        if(this.cy) this.cy.style(_style);
         return this;
     },
     
