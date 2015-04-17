@@ -369,7 +369,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "\n                <option value=\"";
+  buffer += "\n                        <option value=\"";
   if (helper = helpers.url) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.url); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -377,22 +377,61 @@ function program1(depth0,data) {
   if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</option>\n            ";
+    + "</option>\n                    ";
   return buffer;
   }
 
-  buffer += "\n    <div class=\"form-group\">\n        <label>Database</label>\n        <select class=\"form-control\" name=\"db\">\n            ";
+function program3(depth0,data) {
+  
+  
+  return " \n                <div class=\"form-group\">\n                    <label>Nodes</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"nodes\" name=\"nodes\">\n                </div>\n                \n                <div class=\"form-group\">\n                    <label>Interactions</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"interactions\" name=\"interactions\">\n                </div>\n            \n            ";
+  }
+
+function program5(depth0,data) {
+  
+  
+  return "\n                <h1 class=\"text-danger\"> Sorry, the File APIs are not fully supported in this browser.</h1>\n            ";
+  }
+
+  buffer += "<div role=\"tabpanel\">\n    \n    \n    <!-- Nav tabs -->\n    <ul class=\"nav nav-tabs\" role=\"tablist\">\n        <li role=\"presentation\" class=\"active\"><a href=\"#";
+  if (helper = helpers.dbId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.dbId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" aria-controls=\"";
+  if (helper = helpers.dbId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.dbId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" role=\"tab\" data-toggle=\"tab\">From Database</a></li>\n        <li role=\"presentation\"><a href=\"#";
+  if (helper = helpers.fileId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.fileId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" aria-controls=\"";
+  if (helper = helpers.fileId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.fileId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" role=\"tab\" data-toggle=\"tab\">From File</a></li>\n    </ul>\n\n    \n    <!-- Tab panes -->\n    <div class=\"tab-content\">\n        \n        <div role=\"tabpanel\" class=\"tab-pane active\" id=\"";
+  if (helper = helpers.dbId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.dbId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">\n        \n            <div class=\"form-group\">\n                <label>Database</label>\n                <select class=\"form-control\" name=\"db\">\n                    ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.servers), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n        </select>\n    </div>\n    \n    \n    <div class=\"row\">\n        <div class=\"col-md-5\">\n        \n            <div class=\"form-group\">\n                <label>Query Type</label><br>\n                <label class=\"radio-inline\">\n                    <input type=\"radio\" name=\"queryType\" value=\"ids\" checked>Ids list\n                </label>\n                <label class=\"radio-inline\">\n                    <input type=\"radio\" name=\"queryType\" value=\"query\">Query\n                </label>\n            </div>\n            \n            \n            <div class=\"form-group\">\n                <label>Organism</label>\n                <select class=\"form-control\" name=\"org\" multiple>\n                    <option  value=\"\" selected>All</option>\n                    <option  value=\"9606\">Homo sapiens</option>\n                    <option  value=\"10090\">Mus musculus</option>\n                    <option  value=\"10116\">Rattus norvegicus</option>\n                    <option  value=\"9913\">Bos taurus</option>\n                    <option  value=\"9031\">Gallus gallus</option>\n                    <option  value=\"9823\">Sus scrofa</option>\n                    <option  value=\"9615\">Canis familiaris</option>\n                    <option  value=\"7227\">Drosophila melanogaster</option>\n                    <option  value=\"6239\">Caenorhabditis elegans</option>\n                    <option  value=\"4932\">Saccharomyces cerevisiae</option>\n                    <option  value=\"7955\">Danio rerio</option>\n                    <option  value=\"4896\">Schizosaccharomyces pombe</option>\n                    <option  value=\"592\">Escherichia coli</option>\n                    <option  value=\"11676\">Human immunodeficiency virus 1</option>\n                    <option  value=\"11320\">Influenza A virus</option>\n                    <option  value=\"1491\">Clostridium botulinum</option>\n                    <option  value=\"3702\">Arabidopsis thaliana</option>\n                    <option  value=\"5833\">Plasmodium falciparum</option>\n                    <option  value=\"44689\">Dictyostelium discoideum</option>\n                    <option  value=\"1773\">Mycobacterium tuberculosis</option>\n                    <option  value=\"491\">Neisseria meningitidis serogroup B</option>\n                    <option  value=\"813\">Chlamydia trachomatis</option>\n                    <option  value=\"4530\">Oryza sativa</option>\n                    <option  value=\"5811\">Toxoplasma gondii</option>\n                    <option  value=\"8364\">Xenopus tropicalis</option>\n                    <option  value=\"90371\">Salmonella typhimurium</option>\n                    <option  value=\"59729\">Taeniopygia guttata</option>\n                    <option  value=\"158879\">Staphylococcus aureus N315</option>\n                </select>\n            </div>\n        \n        </div>\n        <div class=\"col-md-7\">\n            <a href=\"#\" id=\"";
+  buffer += "\n                </select>\n            </div>\n\n            <div class=\"row\">\n                <div class=\"col-md-5\">\n\n                    <div class=\"form-group\">\n                        <label>Query Type</label><br>\n                        <label class=\"radio-inline\">\n                            <input type=\"radio\" name=\"queryType\" value=\"ids\" checked>Ids list\n                        </label>\n                        <label class=\"radio-inline\">\n                            <input type=\"radio\" name=\"queryType\" value=\"query\">Query\n                        </label>\n                    </div>\n\n\n                    <div class=\"form-group\">\n                        <label>Organism</label>\n                        <select class=\"form-control\" name=\"org\" multiple>\n                            <option  value=\"\" selected>All</option>\n                            <option  value=\"9606\">Homo sapiens</option>\n                            <option  value=\"10090\">Mus musculus</option>\n                            <option  value=\"10116\">Rattus norvegicus</option>\n                            <option  value=\"9913\">Bos taurus</option>\n                            <option  value=\"9031\">Gallus gallus</option>\n                            <option  value=\"9823\">Sus scrofa</option>\n                            <option  value=\"9615\">Canis familiaris</option>\n                            <option  value=\"7227\">Drosophila melanogaster</option>\n                            <option  value=\"6239\">Caenorhabditis elegans</option>\n                            <option  value=\"4932\">Saccharomyces cerevisiae</option>\n                            <option  value=\"7955\">Danio rerio</option>\n                            <option  value=\"4896\">Schizosaccharomyces pombe</option>\n                            <option  value=\"592\">Escherichia coli</option>\n                            <option  value=\"11676\">Human immunodeficiency virus 1</option>\n                            <option  value=\"11320\">Influenza A virus</option>\n                            <option  value=\"1491\">Clostridium botulinum</option>\n                            <option  value=\"3702\">Arabidopsis thaliana</option>\n                            <option  value=\"5833\">Plasmodium falciparum</option>\n                            <option  value=\"44689\">Dictyostelium discoideum</option>\n                            <option  value=\"1773\">Mycobacterium tuberculosis</option>\n                            <option  value=\"491\">Neisseria meningitidis serogroup B</option>\n                            <option  value=\"813\">Chlamydia trachomatis</option>\n                            <option  value=\"4530\">Oryza sativa</option>\n                            <option  value=\"5811\">Toxoplasma gondii</option>\n                            <option  value=\"8364\">Xenopus tropicalis</option>\n                            <option  value=\"90371\">Salmonella typhimurium</option>\n                            <option  value=\"59729\">Taeniopygia guttata</option>\n                            <option  value=\"158879\">Staphylococcus aureus N315</option>\n                        </select>\n                    </div>\n\n                </div>\n                <div class=\"col-md-7\">\n                    <a href=\"#\" id=\"";
   if (helper = helpers.exampleId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.exampleId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\">Example</a><br>\n            <textarea class=\"form-control\" name=\"query\" placeholder=\"Comma separated list of identifiers\"></textarea>\n        </div>\n    </div>\n\n    <div class=\"row\">\n        <div id=\"";
+    + "\">Example</a><br>\n                    <textarea class=\"form-control\" name=\"query\" placeholder=\"Comma separated list of identifiers\"></textarea>\n                </div>\n            </div>\n\n        </div>\n        <div role=\"tabpanel\" class=\"tab-pane\" id=\"";
+  if (helper = helpers.fileId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.fileId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">\n            ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.isFileSupported), {hash:{},inverse:self.program(5, program5, data),fn:self.program(3, program3, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n        </div>\n        \n        <div class=\"row\">\n            <div id=\"";
   if (helper = helpers.logId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.logId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" class=\"col-md-10\"></div>\n    </div>";
+    + "\" class=\"col-md-10\"></div>\n        </div>\n    </div>\n    \n</div>";
   return buffer;
   });
 
