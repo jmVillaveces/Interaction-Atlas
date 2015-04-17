@@ -38,8 +38,8 @@ module.exports = Backbone.Model.extend({
         
         var mitab = require('biojs-io-mitab').parse(response);
         
-        this.attributes.interactors = new Interactors().add(mitab.nodes);
-        this.attributes.interactions = new Interactions().add(mitab.links);
+        this.attributes.interactors.set(mitab.nodes);
+        this.attributes.interactions.set(mitab.links);
         this.attributes.scores = mitab.scores;
         
         var taxa = {};
