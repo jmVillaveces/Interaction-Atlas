@@ -44,7 +44,7 @@ module.exports = Backbone.Model.extend({
         
         var taxa = {};
         if(mitab.taxa.length > 0){
-            $.ajax({
+            /*$.ajax({
                 type: 'GET',
                 url: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?retmode=json&db=taxonomy&id='+mitab.taxa.join(','),
                 async: false,
@@ -56,7 +56,7 @@ module.exports = Backbone.Model.extend({
                         taxa[taxId] = results[taxId] || { scientificname: taxId, commonname: taxId, taxid: taxId };
                     });
                 }
-            });
+            });*/
             
             this.attributes.taxa = taxa;
         }
