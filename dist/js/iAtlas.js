@@ -338,7 +338,7 @@ module.exports = Backbone.Model.extend({
         
         var taxa = {};
         if(mitab.taxa.length > 0){
-            $.ajax({
+            /*$.ajax({
                 type: 'GET',
                 url: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?retmode=json&db=taxonomy&id='+mitab.taxa.join(','),
                 async: false,
@@ -350,7 +350,7 @@ module.exports = Backbone.Model.extend({
                         taxa[taxId] = results[taxId] || { scientificname: taxId, commonname: taxId, taxid: taxId };
                     });
                 }
-            });
+            });*/
             
             this.attributes.taxa = taxa;
         }
@@ -1191,7 +1191,7 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   
-  return " \n                <div class=\"form-group\">\n                    <label>Nodes</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"nodes\" name=\"nodes\">\n                </div>\n                \n                <div class=\"form-group\">\n                    <label>Interactions</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"interactions\" name=\"interactions\">\n                </div>\n            \n            ";
+  return "\n                \n                <div class=\"form-group\">\n                    <label>Nodes</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"nodes\" name=\"nodes\">\n                </div>\n                <blockquote id=\"algoquote\" class=\"form-group col-xs-12\">\n                    <footer>File containing node <mark>ids</mark> and attributes</footer>\n                </blockquote>\n                \n                <div class=\"form-group\">\n                    <label>Interactions</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"interactions\" name=\"interactions\">\n                </div>\n                <blockquote id=\"algoquote\" class=\"form-group col-xs-12\">\n                    <footer>File containing link <mark>source, target</mark> attributes.</footer>\n                </blockquote>\n            \n            ";
   }
 
 function program5(depth0,data) {
@@ -1550,7 +1550,7 @@ function program1(depth0,data) {
   buffer += "\n            </select>\n        </div>\n    </div>\n    \n    <div id=\"target\" class=\"form-group col-xs-12\">                        \n        <label class=\"col-xs-3\">Target</label>\n        <div class=\"col-xs-9\">\n            <select class=\"form-control\" name=\"target\">\n                <option value=\"none\" selected>None</option>\n                ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.nodes), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n            </select>\n        </div>\n    </div>\n    \n    <center>\n        <button id=\"play\" type=\"button\" class=\"btn btn-info btn-lg\"><span class=\"glyphicon glyphicon-play\" aria-hidden=\"true\"></span> Calculate</button>\n    </center>\n    \n</form>       ";
+  buffer += "\n            </select>\n        </div>\n    </div>\n    \n    <div class=\"form-group col-xs-12\">                        \n        <label class=\"col-xs-3\">Highlight Color</label>\n        <div class=\"col-xs-9\">\n            <input name=\"hcolor\" type=\"text\" class=\"form-control minicolors-input\" data-control=\"hue\" value=\"#E8747C\">\n        </div>\n    </div>\n    \n    <center>\n        <button id=\"play\" type=\"button\" class=\"btn btn-info btn-lg\"><span class=\"glyphicon glyphicon-play\" aria-hidden=\"true\"></span> Calculate</button>\n    </center>\n    \n</form>       ";
   return buffer;
   });
 
@@ -1722,7 +1722,6 @@ var _style = [
     {
         selector:'edge.highlighted',
         css: {
-            'background-color': '#E8747C',
             'line-color': '#E8747C',
             'width': 4,
             'transition-property': 'background-color, line-color, width',
@@ -1835,6 +1834,17 @@ module.exports = Backbone.View.extend({
         _bgColor = _;
         
         $('#' + this.options.el).css('background-color', _);
+        return this;
+    },
+    
+    hColor : function(_){
+        if (!arguments.length) return _style[3].css['background-color'];
+        
+        _style[3].css['background-color'] = _;
+        _style[4].css['line-color'] = _;
+        
+        //update cy
+        if(this.cy) this.cy.style(_style);
         return this;
     },
     
@@ -2076,7 +2086,6 @@ module.exports = Backbone.View.extend({
         var active = $('#'+_dialId).find('.tab-pane.active').attr('id');
         var logger = $('#'+_logId);
         
-        console.log(active, _dbId);
         if(active === _dbId){
         
             var db = $('select[name=db]').val();
@@ -2458,7 +2467,8 @@ module.exports = Backbone.View.extend({
         /*'change select[name=name]': 'onSelectChange',*/
         'change select[name=algorithm]': 'onAlgorithmChange',
         'click #play': 'onPlayClick',
-        'change input[name=bgcolor]': 'onBgColorChange'
+        'change input[name=bgcolor]': 'onBgColorChange',
+        'change input[name=hcolor]': 'onHColorChange'
     },
     
     render: function(){
@@ -2504,16 +2514,15 @@ module.exports = Backbone.View.extend({
             tpl = templates.shortestpath({nodes : nodes});
             $('#algorithms').html(tpl);
         }
+        
+        //Init minicolors
+        $('.minicolors-input').minicolors({ theme:'bootstrap'});
     },
     
     onPlayClick : function(e){
        
         var source = $('select[name=source]').val(), target  = $('select[name=target]').val(), algorithm = $('select[name=algorithm]').val();
-        
-        
         App.views.graph.algorithm(algorithm, {source: source, target: target});
-        //if(source !== 'none' && target !== 'none')
-            //App.views.graph.dijkstra(source, target);
     },
     
     onAlgorithmChange : function(){
@@ -2537,6 +2546,10 @@ module.exports = Backbone.View.extend({
     
     onBgColorChange:function(e){
         App.views.graph.bgColor($(e.target).val());
+    },
+    
+    onHColorChange:function(e){
+        App.views.graph.hColor($(e.target).val());
     },
     
     serializeForm : function(){

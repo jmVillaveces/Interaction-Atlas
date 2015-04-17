@@ -384,7 +384,7 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   
-  return " \n                <div class=\"form-group\">\n                    <label>Nodes</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"nodes\" name=\"nodes\">\n                </div>\n                \n                <div class=\"form-group\">\n                    <label>Interactions</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"interactions\" name=\"interactions\">\n                </div>\n            \n            ";
+  return "\n                \n                <div class=\"form-group\">\n                    <label>Nodes</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"nodes\" name=\"nodes\">\n                </div>\n                <blockquote id=\"algoquote\" class=\"form-group col-xs-12\">\n                    <footer>File containing node <mark>ids</mark> and attributes</footer>\n                </blockquote>\n                \n                <div class=\"form-group\">\n                    <label>Interactions</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"interactions\" name=\"interactions\">\n                </div>\n                <blockquote id=\"algoquote\" class=\"form-group col-xs-12\">\n                    <footer>File containing link <mark>source, target</mark> attributes.</footer>\n                </blockquote>\n            \n            ";
   }
 
 function program5(depth0,data) {
@@ -743,7 +743,7 @@ function program1(depth0,data) {
   buffer += "\n            </select>\n        </div>\n    </div>\n    \n    <div id=\"target\" class=\"form-group col-xs-12\">                        \n        <label class=\"col-xs-3\">Target</label>\n        <div class=\"col-xs-9\">\n            <select class=\"form-control\" name=\"target\">\n                <option value=\"none\" selected>None</option>\n                ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.nodes), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n            </select>\n        </div>\n    </div>\n    \n    <center>\n        <button id=\"play\" type=\"button\" class=\"btn btn-info btn-lg\"><span class=\"glyphicon glyphicon-play\" aria-hidden=\"true\"></span> Calculate</button>\n    </center>\n    \n</form>       ";
+  buffer += "\n            </select>\n        </div>\n    </div>\n    \n    <div class=\"form-group col-xs-12\">                        \n        <label class=\"col-xs-3\">Highlight Color</label>\n        <div class=\"col-xs-9\">\n            <input name=\"hcolor\" type=\"text\" class=\"form-control minicolors-input\" data-control=\"hue\" value=\"#E8747C\">\n        </div>\n    </div>\n    \n    <center>\n        <button id=\"play\" type=\"button\" class=\"btn btn-info btn-lg\"><span class=\"glyphicon glyphicon-play\" aria-hidden=\"true\"></span> Calculate</button>\n    </center>\n    \n</form>       ";
   return buffer;
   });
 
