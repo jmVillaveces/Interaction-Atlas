@@ -1,6 +1,7 @@
 var templates = require('../templates');
+var fileReader = require('../services/fileReader');
 
-var _dialId = _.uniqueId('dial_'), _exampleId = _.uniqueId('example_'), _okBtnId = _.uniqueId('ok_'), _logId = _.uniqueId('log_');
+var _dialId = _.uniqueId('dial_'), _exampleId = _.uniqueId('example_'), _okBtnId = _.uniqueId('ok_'), _logId = _.uniqueId('log_'),  _dbId = _.uniqueId('db_'),  _fileId = _.uniqueId('file_');
 
 module.exports = Backbone.View.extend({
     
@@ -36,7 +37,7 @@ module.exports = Backbone.View.extend({
         $('#' + _dialId).modal('show');
         
         var isFileSupported = (window.File && window.FileReader && window.FileList && window.Blob) ? true : false;
-        tpl = templates.import({servers:App.model.servers.toJSON(), exampleId : _exampleId, logId : _logId, isFileSupported: isFileSupported});
+        tpl = templates.import({servers:App.model.servers.toJSON(), exampleId : _exampleId, logId : _logId, isFileSupported: isFileSupported, fileId : _fileId, dbId : _dbId});
         $('#' + _dialId + ' .modal-body').html(tpl);
     },
 
@@ -68,47 +69,82 @@ module.exports = Backbone.View.extend({
     
     onOkButton : function(e){
         
-        var db = $('select[name=db]').val();
-        var qType = $('input[name=queryType]:checked').val();
-        var query = $('textarea[name=query]').val();
-        var orgs = $('select[name=org]').val();
-        
+        var active = $('#'+_dialId).find('.tab-pane.active').attr('id');
         var logger = $('#'+_logId);
-        if(query.length){
+        
+        if(active === _dbId){
+        
+            var db = $('select[name=db]').val();
+            var qType = $('input[name=queryType]:checked').val();
+            var query = $('textarea[name=query]').val();
+            var orgs = $('select[name=org]').val();
+
+            if(query.length){
+
+                logger.html('<p class="text-info"> Fetching interactions from ' + db + '</p>');
+
+                var model = App.model;
+                model.attributes.server = db;
+
+                if(qType === 'ids'){
+                    model.attributes.ids = query.split(',');
+                    model.attributes.query = '';
+                    model.attributes.orgs = (orgs[0].length) ? orgs : [];
+                }else {
+                    model.attributes.ids = [];
+                    model.attributes.query = query;
+                    model.attributes.orgs = [];
+                }
+
+
+                model.fetch({
+                    error: function (errorResponse, a) {
+                        console.error('Ajax Error, could not fetch interactions from', db);
+                        logger.html('<p class="text-danger">Ajax Error, could not fetch interactions from ' + db + '</p>');
+                    }
+                })
+                .done(function(){
+                    if(App.model.get('interactions').length === 0){
+                        logger.html('<p class="text-warning"> No interactions found </p>');
+                    }else{
+                        $('#' + _dialId).modal('hide');
+                        Backbone.trigger('got_data');
+                    }
+                });
+            }
+        }else{
+            var nodesfile = document.getElementById('nodes').files[0];
+            var edgesfile = document.getElementById('interactions').files[0];
             
-            logger.html('<p class="text-info"> Fetching interactions from ' + db + '</p>');
-            
-            var model = App.model;
-            model.attributes.server = db;
-            
-            if(qType === 'ids'){
-                model.attributes.ids = query.split(',');
-                model.attributes.query = '';
-                model.attributes.orgs = (orgs[0].length) ? orgs : [];
-            }else {
-                model.attributes.ids = [];
-                model.attributes.query = query;
-                model.attributes.orgs = [];
+            if(!(nodesfile && edgesfile)){
+                logger.html('<p class="text-danger">Please select the required files</p>');
+                return;
             }
             
-            
-            model.fetch({
-                error: function (errorResponse, a) {
-                    console.error('Ajax Error, could not fetch interactions from', db);
-                    logger.html('<p class="text-danger">Ajax Error, could not fetch interactions from ' + db + '</p>');
+            fileReader.file(nodesfile).parseNodes(function(err, nodes){
+                if(err){ 
+                    console.warn(err);
+                    logger.html('<p class="text-danger">' + err + '</p>');
+                    return;
                 }
-            })
-            .done(function(){
-                if(App.model.get('interactions').length === 0){
-                    logger.html('<p class="text-warning"> No interactions found </p>');
-                }else{
+                
+                
+                fileReader.file(edgesfile).parseEdges(function(err, edges){
+                    if(err){ 
+                        console.warn(err);
+                        logger.html('<p class="text-danger">' + err + '</p>');
+                        return;
+                    }
+                    
+                    //TODO import network
+                    var model = App.model;
+                    model.attributes.interactors.set(nodes);
+                    model.attributes.interactions.set(edges);
+                    
                     $('#' + _dialId).modal('hide');
                     Backbone.trigger('got_data');
-                }
+                });
             });
         }
-        
-        
-        
     }
 });

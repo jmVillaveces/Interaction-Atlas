@@ -3,15 +3,15 @@
     
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#dbs" aria-controls="dbs" role="tab" data-toggle="tab">From Database</a></li>
-        <li role="presentation"><a href="#file" aria-controls="file" role="tab" data-toggle="tab">From File</a></li>
+        <li role="presentation" class="active"><a href="#{{dbId}}" aria-controls="{{dbId}}" role="tab" data-toggle="tab">From Database</a></li>
+        <li role="presentation"><a href="#{{fileId}}" aria-controls="{{fileId}}" role="tab" data-toggle="tab">From File</a></li>
     </ul>
 
     
     <!-- Tab panes -->
     <div class="tab-content">
         
-        <div role="tabpanel" class="tab-pane active" id="dbs">
+        <div role="tabpanel" class="tab-pane active" id="{{dbId}}">
         
             <div class="form-group">
                 <label>Database</label>
@@ -79,7 +79,7 @@
             </div>
 
         </div>
-        <div role="tabpanel" class="tab-pane" id="file">
+        <div role="tabpanel" class="tab-pane" id="{{fileId}}">
             {{#if isFileSupported}} 
                 <div class="form-group">
                     <label>Nodes</label>
