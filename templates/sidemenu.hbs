@@ -8,7 +8,7 @@
         
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#layout" aria-controls="home" role="tab" data-toggle="tab">Layout</a></li>
+            <li role="presentation" class="active"><a href="#layout" aria-controls="home" role="tab" data-toggle="tab">Visualization</a></li>
             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Options</a></li>
             <li role="presentation"><a href="#algorithms" aria-controls="profile" role="tab" data-toggle="tab">Algorithms</a></li>
         </ul>
@@ -16,8 +16,16 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="layout">
-                <h3 id="example-heading-new">General options</a></h3>
+                <br>
+                <div class="form-group col-xs-12">                        
+                    <select class="form-control" name="vizopt">
+                        <option value="general" selected="">General</option>
+                        <option value="node">Node</option>
+                        <option value="edge">Edge</option>
+                    </select>
+                </div>
                 
+                <!--
                 <form id = {{formId}}>
                     
                     <div class="row">
@@ -32,7 +40,7 @@
                         <div class="col-md-8"><input name="trim" type="checkbox"></div>
                     </div>
                     
-                </form>
+                </form>-->
             </div>
             <div role="tabpanel" class="tab-pane" id="profile"></div>
             <div role="tabpanel" class="tab-pane" id="algorithms"></div>
