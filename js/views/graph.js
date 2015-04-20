@@ -1,6 +1,9 @@
 var templates = require('../templates');
 var cytoscape = require('cytoscape');
 
+
+var _isTouchDevice = 'ontouchstart' in window /* works on most browsers*/ || 'onmsgesturechange' in window; /* works on ie10*/
+
 var _trim = false;
 
 var _layout = {
@@ -12,7 +15,7 @@ var _layout = {
 
 var _color = ['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#e6550d', '#fd8d3c', '#fdae6b', '#fdd0a2', '#31a354', '#74c476', '#a1d99b', '#c7e9c0', '#756bb1', '#9e9ac8', '#bcbddc', '#dadaeb', '#636363', '#969696', '#bdbdbd', '#d9d9d9'];
 
-var _nodes = [], _links = [], _visnodes = [], _vislinks = [], _legend = 'data(id)', _score = ['none', 'width'], _bgColor = '#fff';
+var _nodes = [], _links = [], _visnodes = [], _vislinks = [], _legend = 'data(id)', _score = ['none', 'width'], _bgColor = '#fff', _boxSelectionEnabled = false;
 
 var _style = [
     {
@@ -39,9 +42,9 @@ var _style = [
     {
         selector:':selected',
         css: {
+            'pie-size': '0%',
             'background-color': 'black',
-            'opacity': 1,
-            'pie-size': '80%'
+            'opacity': 1
         }
     },
     {
@@ -196,6 +199,23 @@ module.exports = Backbone.View.extend({
         return this;
     },
     
+    boxSelectionEnabled : function(_){
+        if (!arguments.length) return _boxSelectionEnabled;
+        
+        _boxSelectionEnabled = _;
+        
+        //update cy
+        if(this.cy){
+            this.cy.boxSelectionEnabled(_boxSelectionEnabled);
+        }
+        
+        return this;
+    },
+    
+    cy : function(){
+        return cy;
+    },
+    
     score : function(_){
         
         if (!arguments.length) return _score;
@@ -330,6 +350,22 @@ module.exports = Backbone.View.extend({
             pixelRatio: 1,
             // a motion blur effect that increases perceived performance for little or no cost
             motionBlur: true,
+            
+            // interaction options:
+            minZoom: 1e-50,
+            maxZoom: 1e50,
+            zoomingEnabled: true,
+            userZoomingEnabled: true,
+            panningEnabled: true,
+            userPanningEnabled: true,
+            boxSelectionEnabled: _boxSelectionEnabled,
+            selectionType: _isTouchDevice ? 'additive' : 'single',
+            touchTapThreshold: 8,
+            desktopTapThreshold: 4,
+            autolock: false,
+            autoungrabify: false,
+            autounselectify: false,
+            
             style: _style
         };
         
