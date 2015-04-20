@@ -1,9 +1,5 @@
 var templates = require('../templates');
 
-var _refreshId = _.uniqueId('refresh_');
-var _layoutOptsId = _.uniqueId('layout_opts_');
-var _formId = _.uniqueId('form_');
-
 module.exports = Backbone.View.extend({
     
     initialize: function(options){
@@ -11,8 +7,6 @@ module.exports = Backbone.View.extend({
         
         // Update when graph is ready
         this.listenTo(Backbone, 'graph_ready', this.onGraphReady);
-        
-        this.events['click #' + _refreshId] = 'refresh';
     },
     
     events:{
@@ -20,19 +14,16 @@ module.exports = Backbone.View.extend({
         'change select[name=algorithm]': 'onAlgorithmChange',
         'click #play': 'onPlayClick',
         'change input[name=bgcolor]': 'onBgColorChange',
-        'change input[name=hcolor]': 'onHColorChange'
+        'change input[name=hcolor]': 'onHColorChange',
+        'change select[name=shape]': 'onShapeChange',
     },
     
     render: function(){
-        var tpl = templates.sidemenu({ refreshId: _refreshId, layoutOptsId : _layoutOptsId, formId : _formId });
+        var tpl = templates.sidemenu({ });
         $(this.options.el).append(tpl);
-        this.setOptions('concentric');
-        
-        tpl = templates.shortestpath({});
-        $('#algorithms').html(tpl);
     },
     
-    tooglevisible: function(){
+    togglevisible: function(){
         var hidden = $('.side_container');
         if (hidden.hasClass('visible')){
             hidden.animate({'right':'-342px'}, 'slow').removeClass('visible');
@@ -44,18 +35,6 @@ module.exports = Backbone.View.extend({
     onSelectChange : function(e){
         var layoutName = $('select[name=name]').val().toLowerCase();
         this.setOptions(layoutName);
-    },
-    
-    setOptions : function(name){
-        var tpl = templates[name]();
-        $('#'+_layoutOptsId).html(tpl);
-        
-        //Init tooltips
-        $('[data-toggle="tooltip"]').tooltip();
-    },
-    
-    refresh : function(e){
-        App.views.graph.layout(this.serializeForm());
     },
     
     onGraphReady : function(){
@@ -104,28 +83,8 @@ module.exports = Backbone.View.extend({
         App.views.graph.hColor($(e.target).val());
     },
     
-    serializeForm : function(){
-        var serial = _.object($('#'+_formId).serializeArray().map(function(v) {return [v.name, v.value];} ));
-        
-        var blacklist = [];
-        _.each(serial, function(e,k){
-            
-            if(e === 'true'){ 
-                serial[k] = true;
-            }else if(e === 'false'){ 
-                serial[k] = false;
-            }else if(k !== 'name'){
-                var i = parseInt(e);
-                if(_.isNaN(i)){ 
-                    blacklist.push(k);
-                }else{
-                    serial[k] = i;
-                }
-            }
-        });
-        
-        serial = _.omit(serial, blacklist);
-        return serial;
+    onShapeChange : function(e){
+        var nodes = (App.views.graph.cy.$('node:selected').length) ? App.views.graph.cy.$('node:selected') : App.views.graph.cy.nodes();
+        nodes.css('shape', $(e.target).val());
     }
-    
 });
