@@ -18,7 +18,9 @@ module.exports = Backbone.View.extend({
         this.listenTo(Backbone, 'layout_changed', this.onLayoutChanged);
     },
     
-    events: {},
+    events: {
+        'change input[name=move]': 'onMoveChange'
+    },
     
     render: function(){
         
@@ -52,7 +54,7 @@ module.exports = Backbone.View.extend({
     onSettingsClick : function(e){
         e.stopPropagation();
         e.preventDefault();
-        App.views.side.tooglevisible();
+        App.views.side.togglevisible();
     },
     
     onFind : function(e){
@@ -91,5 +93,10 @@ module.exports = Backbone.View.extend({
                 link.children().removeClass('glyphicon-ok');
             }
         });
+    },
+    
+    onMoveChange:function(e){
+        var val = ($(e.target).val() === 'select') ? true : false;
+        App.views.graph.boxSelectionEnabled(val);
     }
 });

@@ -31,27 +31,21 @@
               </li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
+                
                 <div class="form-group">
                     <input type="text" id="{{findId}}" class="form-control" placeholder="Search">
+                </div>
+                <div class="form-group btn-group" data-toggle="buttons">
+                    <label class="btn btn-default active" data-toggle="tooltip" data-placement="bottom" title="Move">
+                        <input type="radio" name="move" value="move" autocomplete="off" checked> <span class="glyphicon glyphicon-move"></span>
+                    </label>
+                    <label class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Select">
+                        <input type="radio" name="move" value="select" autocomplete="off"> <span class="glyphicon glyphicon-screenshot"></span>
+                    </label>
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li><a id="{{saveId}}" href="#save"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Save" ></span></a></li>
-                <!--<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span data-toggle="tooltip" data-placement="bottom" title="Search" class="glyphicon glyphicon-search"></span></a>
-                    <div class="dropdown-menu" style="padding:12px;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form id="tagsform" class="navbar-form navbar-left">
-                                    <div class="form-group">
-                                        <input id="{{tagId}}" type="text" class="form-control" placeholder="identifier">
-                                    </div>
-                                    <div id="{{searchTagsId}}" class="tagsbox"></div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </li>-->
                 <li><a id="{{pathwayId}}" href="#"><span class="glyphicon glyphicon-th-list" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Pathway Analysis" ></span></a></li>
                 <li><a id="{{settingsId}}" href="#"><span class="glyphicon glyphicon-transfer" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Settings" ></span></a></li>
             </ul>
