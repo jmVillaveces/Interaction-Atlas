@@ -1283,23 +1283,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.layoutId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.layoutId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + " class=\"dropdown-menu\" role=\"menu\">\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Puts nodes in a hierarchy, based on a breadthfirst traversal of the graph.\" href=\"breadthfirst\">Breadthfirst <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in a circle\" href=\"circle\">Circle <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"cola\">Cola <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in concentric circles creating levels based on node degree\" href=\"concentric\">Concentric <span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"cose\">Cose <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in a Grid\" href=\"grid\">Grid <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes randomly\" href=\"random\">Random <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"springy\">Springy <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li class=\"divider\"></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Advanced layout options\" href=\"#\">Advanced</a></li>\n                </ul>\n              </li>\n            </ul>\n            <form class=\"navbar-form navbar-left\" role=\"search\">\n                <div class=\"form-group\">\n                    <input type=\"text\" id=\"";
+    + " class=\"dropdown-menu\" role=\"menu\">\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Puts nodes in a hierarchy, based on a breadthfirst traversal of the graph.\" href=\"breadthfirst\">Breadthfirst <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in a circle\" href=\"circle\">Circle <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"cola\">Cola <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in concentric circles creating levels based on node degree\" href=\"concentric\">Concentric <span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"cose\">Cose <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in a Grid\" href=\"grid\">Grid <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes randomly\" href=\"random\">Random <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"springy\">Springy <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li class=\"divider\"></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Advanced layout options\" href=\"#\">Advanced</a></li>\n                </ul>\n              </li>\n            </ul>\n            <form class=\"navbar-form navbar-left\" role=\"search\">\n                \n                <div class=\"form-group\">\n                    <input type=\"text\" id=\"";
   if (helper = helpers.findId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.findId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" class=\"form-control\" placeholder=\"Search\">\n                </div>\n            </form>\n            <ul class=\"nav navbar-nav navbar-right\">\n                <li><a id=\"";
+    + "\" class=\"form-control\" placeholder=\"Search\">\n                </div>\n                <div class=\"form-group btn-group\" data-toggle=\"buttons\">\n                    <label class=\"btn btn-default active\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Move\">\n                        <input type=\"radio\" name=\"move\" value=\"move\" autocomplete=\"off\" checked> <span class=\"glyphicon glyphicon-move\"></span>\n                    </label>\n                    <label class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Select\">\n                        <input type=\"radio\" name=\"move\" value=\"select\" autocomplete=\"off\"> <span class=\"glyphicon glyphicon-screenshot\"></span>\n                    </label>\n                </div>\n            </form>\n            <ul class=\"nav navbar-nav navbar-right\">\n                <li><a id=\"";
   if (helper = helpers.saveId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.saveId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" href=\"#save\"><span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Save\" ></span></a></li>\n                <!--<li class=\"dropdown\">\n                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\"><span data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Search\" class=\"glyphicon glyphicon-search\"></span></a>\n                    <div class=\"dropdown-menu\" style=\"padding:12px;\">\n                        <div class=\"row\">\n                            <div class=\"col-md-12\">\n                                <form id=\"tagsform\" class=\"navbar-form navbar-left\">\n                                    <div class=\"form-group\">\n                                        <input id=\"";
-  if (helper = helpers.tagId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.tagId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\" type=\"text\" class=\"form-control\" placeholder=\"identifier\">\n                                    </div>\n                                    <div id=\"";
-  if (helper = helpers.searchTagsId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.searchTagsId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\" class=\"tagsbox\"></div>\n                                </form>\n                            </div>\n                        </div>\n                    </div>\n                </li>-->\n                <li><a id=\"";
+    + "\" href=\"#save\"><span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Save\" ></span></a></li>\n                <li><a id=\"";
   if (helper = helpers.pathwayId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.pathwayId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -1557,15 +1549,10 @@ function program1(depth0,data) {
 this["Templates"]["sidemenu"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+  
 
 
-  buffer += "<!-- Sliding div starts here -->\n\n<div class=\"side_content\">\n    \n    <div role=\"tabpanel\">\n\n        <br>\n        \n        <!-- Nav tabs -->\n        <ul class=\"nav nav-tabs\" role=\"tablist\">\n            <li role=\"presentation\" class=\"active\"><a href=\"#layout\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">Layout</a></li>\n            <li role=\"presentation\"><a href=\"#profile\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Options</a></li>\n            <li role=\"presentation\"><a href=\"#algorithms\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Algorithms</a></li>\n        </ul>\n\n        <!-- Tab panes -->\n        <div class=\"tab-content\">\n            <div role=\"tabpanel\" class=\"tab-pane active\" id=\"layout\">\n                <h3 id=\"example-heading-new\">General options</a></h3>\n                \n                <form id = ";
-  if (helper = helpers.formId) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.formId); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + ">\n                    \n                    <div class=\"row\">\n                        <label class=\"col-md-4\">Background color</label>\n                        <div class=\"col-md-8\">\n                            <input name=\"bgcolor\" type=\"text\" class=\"form-control minicolors-input\" data-control=\"hue\" value=\"#ffffff\">\n                        </div>\n                    </div>\n                    \n                    <div class=\"row\">\n                        <label class=\"col-md-4\">Trim</label>\n                        <div class=\"col-md-8\"><input name=\"trim\" type=\"checkbox\"></div>\n                    </div>\n                    \n                </form>\n            </div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\"></div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"algorithms\"></div>\n        </div>\n\n    </div>\n</div>\n<!-- Sliding div ends here -->";
-  return buffer;
+  return "<!-- Sliding div starts here -->\n\n<div class=\"side_content\">\n    \n    <div role=\"tabpanel\">\n\n        <br>\n        \n        <!-- Nav tabs -->\n        <ul class=\"nav nav-tabs\" role=\"tablist\">\n            <li role=\"presentation\" class=\"active\"><a href=\"#layout\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">Visualization</a></li>\n            <li role=\"presentation\"><a href=\"#profile\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Options</a></li>\n            <li role=\"presentation\"><a href=\"#algorithms\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Algorithms</a></li>\n        </ul>\n\n        <!-- Tab panes -->\n        <div class=\"tab-content\">\n            <div role=\"tabpanel\" class=\"tab-pane active\" id=\"layout\">\n                <br>\n                <div class=\"form-group col-xs-12\">                        \n                    <select class=\"form-control\" name=\"vizopt\">\n                        <option value=\"general\">General</option>\n                        <option value=\"node\">Node</option>\n                        <option value=\"edge\">Edge</option>\n                    </select>\n                </div>\n                \n                <form>\n                    <div id=\"general\" >\n\n\n                            <div class=\"form-group col-xs-12\">                        \n                                <label class=\"col-xs-4\">Background color</label>\n                                <div class=\"col-xs-8\">\n                                    <input name=\"bgcolor\" type=\"text\" class=\"form-control minicolors-input\" data-control=\"hue\" value=\"#ffffff\">\n                                </div>\n                            </div>\n\n                            <div class=\"form-group col-xs-12\">\n                                <label class=\"col-xs-4\">Trim</label>\n                                <div class=\"col-xs-8\"><input name=\"trim\" type=\"checkbox\"></div>\n                            </div>\n                    </div>\n                    \n                    \n                    <div id=\"node\">\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Color</label>\n                            <div class=\"col-xs-4\">\n                                <input name=\"ncolor\" type=\"text\" class=\"form-control minicolors-input\" data-control=\"hue\" value=\"#ffffff\">\n                            </div>\n                            <div class=\"btn-group col-xs-5\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-eye-open\"></span></button>\n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Shape</label>\n                            <div class=\"col-xs-4\">\n                                 <select class=\"form-control\" name=\"shape\">\n                                    <option value=\"ellipse\">Ellipse</option>\n                                    <option value=\"hexagon\">Hexagon</option>\n                                    <option value=\"heptagon\">Heptagon</option>\n                                    <option value=\"octagon\">Octagon</option>\n                                    <option value=\"pentagon\">Pentagon</option>\n                                    <option value=\"rectangle\">Rectangle</option>\n                                    <option value=\"roundrectangle\">Round rectangle</option>\n                                    <option value=\"star\">Star</option>\n                                    <option value=\"triangle\">Triangle</option>\n                                </select>\n                            </div>\n                            <div class=\"btn-group col-xs-5\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-eye-open\"></span></button>\n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Width</label>\n                            <div class=\"col-xs-4\">\n                                <input name=\"width\" class=\"form-control\" type=\"number\" min=\"1\" value=\"20\">\n                            </div>\n                            <div class=\"btn-group col-xs-5\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-eye-open\"></span></button>\n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Height</label>\n                            <div class=\"col-xs-4\">\n                                <input name=\"height\" class=\"form-control\" type=\"number\" min=\"1\" value=\"20\">\n                            </div>\n                            <div class=\"btn-group col-xs-5\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-eye-open\"></span></button>\n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Opacity</label>\n                            <div class=\"col-xs-4\">\n                                <input name=\"background-opacity\" type=\"number\" class=\"form-control\" min=\"0\" max=\"1\" value=\"1\">\n                            </div>\n                            <div class=\"btn-group col-xs-5\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-eye-open\"></span></button>\n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border width</label>\n                            <div class=\"col-xs-4\">\n                                <input name=\"border-width\" class=\"form-control\" type=\"number\" min=\"0\" value=\"0\">\n                            </div>\n                            <div class=\"btn-group col-xs-5\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-eye-open\"></span></button>\n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border Style</label>\n                            <div class=\"col-xs-4\">\n                                <select class=\"form-control\" name=\"border-style\">\n                                    <option value=\"dashed\">Dashed</option>\n                                    <option value=\"dotted\">Dotted</option>\n                                    <option value=\"double\">Double</option>\n                                    <option value=\"solid\">Solid</option>                                  \n                                </select>\n                            </div>\n                            <div class=\"btn-group col-xs-5\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-eye-open\"></span></button>\n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border Color</label>\n                            <div class=\"col-xs-4\">\n                                <input name=\"border-color\" type=\"text\" class=\"form-control minicolors-input\" data-control=\"hue\" value=\"#ffffff\">\n                            </div>\n                            <div class=\"btn-group col-xs-5\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-eye-open\"></span></button>\n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border Opacity</label>\n                            <div class=\"col-xs-4\">\n                                <input name=\"border-opacity\" type=\"number\" class=\"form-control\" min=\"0\" max=\"1\" value=\"1\">\n                            </div>\n                            <div class=\"btn-group col-xs-5\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-eye-open\"></span></button>\n                            </div>\n                        </div>\n                        \n                    </div>\n                </form>\n            </div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"profile\"></div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"algorithms\"></div>\n        </div>\n\n    </div>\n</div>\n<!-- Sliding div ends here -->";
   });
 
 this["Templates"]["springy"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -1667,6 +1654,9 @@ module.exports = Backbone.View.extend({
 var templates = require('../templates');
 var cytoscape = require('cytoscape');
 
+
+var _isTouchDevice = 'ontouchstart' in window /* works on most browsers*/ || 'onmsgesturechange' in window; /* works on ie10*/
+
 var _trim = false;
 
 var _layout = {
@@ -1678,7 +1668,7 @@ var _layout = {
 
 var _color = ['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#e6550d', '#fd8d3c', '#fdae6b', '#fdd0a2', '#31a354', '#74c476', '#a1d99b', '#c7e9c0', '#756bb1', '#9e9ac8', '#bcbddc', '#dadaeb', '#636363', '#969696', '#bdbdbd', '#d9d9d9'];
 
-var _nodes = [], _links = [], _visnodes = [], _vislinks = [], _legend = 'data(id)', _score = ['none', 'width'], _bgColor = '#fff';
+var _nodes = [], _links = [], _visnodes = [], _vislinks = [], _legend = 'data(id)', _score = ['none', 'width'], _bgColor = '#fff', _boxSelectionEnabled = false;
 
 var _style = [
     {
@@ -1705,9 +1695,9 @@ var _style = [
     {
         selector:':selected',
         css: {
+            'pie-size': '0%',
             'background-color': 'black',
-            'opacity': 1,
-            'pie-size': '80%'
+            'opacity': 1
         }
     },
     {
@@ -1862,6 +1852,23 @@ module.exports = Backbone.View.extend({
         return this;
     },
     
+    boxSelectionEnabled : function(_){
+        if (!arguments.length) return _boxSelectionEnabled;
+        
+        _boxSelectionEnabled = _;
+        
+        //update cy
+        if(this.cy){
+            this.cy.boxSelectionEnabled(_boxSelectionEnabled);
+        }
+        
+        return this;
+    },
+    
+    cy : function(){
+        return cy;
+    },
+    
     score : function(_){
         
         if (!arguments.length) return _score;
@@ -1996,6 +2003,22 @@ module.exports = Backbone.View.extend({
             pixelRatio: 1,
             // a motion blur effect that increases perceived performance for little or no cost
             motionBlur: true,
+            
+            // interaction options:
+            minZoom: 1e-50,
+            maxZoom: 1e50,
+            zoomingEnabled: true,
+            userZoomingEnabled: true,
+            panningEnabled: true,
+            userPanningEnabled: true,
+            boxSelectionEnabled: _boxSelectionEnabled,
+            selectionType: _isTouchDevice ? 'additive' : 'single',
+            touchTapThreshold: 8,
+            desktopTapThreshold: 4,
+            autolock: false,
+            autoungrabify: false,
+            autounselectify: false,
+            
             style: _style
         };
         
@@ -2310,7 +2333,9 @@ module.exports = Backbone.View.extend({
         this.listenTo(Backbone, 'layout_changed', this.onLayoutChanged);
     },
     
-    events: {},
+    events: {
+        'change input[name=move]': 'onMoveChange'
+    },
     
     render: function(){
         
@@ -2344,7 +2369,7 @@ module.exports = Backbone.View.extend({
     onSettingsClick : function(e){
         e.stopPropagation();
         e.preventDefault();
-        App.views.side.tooglevisible();
+        App.views.side.togglevisible();
     },
     
     onFind : function(e){
@@ -2383,6 +2408,11 @@ module.exports = Backbone.View.extend({
                 link.children().removeClass('glyphicon-ok');
             }
         });
+    },
+    
+    onMoveChange:function(e){
+        var val = ($(e.target).val() === 'select') ? true : false;
+        App.views.graph.boxSelectionEnabled(val);
     }
 });
 },{"../templates":15}],23:[function(require,module,exports){
@@ -2448,10 +2478,6 @@ module.exports = Backbone.View.extend({
 },{"../templates":15}],24:[function(require,module,exports){
 var templates = require('../templates');
 
-var _refreshId = _.uniqueId('refresh_');
-var _layoutOptsId = _.uniqueId('layout_opts_');
-var _formId = _.uniqueId('form_');
-
 module.exports = Backbone.View.extend({
     
     initialize: function(options){
@@ -2459,8 +2485,6 @@ module.exports = Backbone.View.extend({
         
         // Update when graph is ready
         this.listenTo(Backbone, 'graph_ready', this.onGraphReady);
-        
-        this.events['click #' + _refreshId] = 'refresh';
     },
     
     events:{
@@ -2468,19 +2492,16 @@ module.exports = Backbone.View.extend({
         'change select[name=algorithm]': 'onAlgorithmChange',
         'click #play': 'onPlayClick',
         'change input[name=bgcolor]': 'onBgColorChange',
-        'change input[name=hcolor]': 'onHColorChange'
+        'change input[name=hcolor]': 'onHColorChange',
+        'change select[name=shape]': 'onShapeChange',
     },
     
     render: function(){
-        var tpl = templates.sidemenu({ refreshId: _refreshId, layoutOptsId : _layoutOptsId, formId : _formId });
+        var tpl = templates.sidemenu({ });
         $(this.options.el).append(tpl);
-        this.setOptions('concentric');
-        
-        tpl = templates.shortestpath({});
-        $('#algorithms').html(tpl);
     },
     
-    tooglevisible: function(){
+    togglevisible: function(){
         var hidden = $('.side_container');
         if (hidden.hasClass('visible')){
             hidden.animate({'right':'-342px'}, 'slow').removeClass('visible');
@@ -2492,18 +2513,6 @@ module.exports = Backbone.View.extend({
     onSelectChange : function(e){
         var layoutName = $('select[name=name]').val().toLowerCase();
         this.setOptions(layoutName);
-    },
-    
-    setOptions : function(name){
-        var tpl = templates[name]();
-        $('#'+_layoutOptsId).html(tpl);
-        
-        //Init tooltips
-        $('[data-toggle="tooltip"]').tooltip();
-    },
-    
-    refresh : function(e){
-        App.views.graph.layout(this.serializeForm());
     },
     
     onGraphReady : function(){
@@ -2552,30 +2561,10 @@ module.exports = Backbone.View.extend({
         App.views.graph.hColor($(e.target).val());
     },
     
-    serializeForm : function(){
-        var serial = _.object($('#'+_formId).serializeArray().map(function(v) {return [v.name, v.value];} ));
-        
-        var blacklist = [];
-        _.each(serial, function(e,k){
-            
-            if(e === 'true'){ 
-                serial[k] = true;
-            }else if(e === 'false'){ 
-                serial[k] = false;
-            }else if(k !== 'name'){
-                var i = parseInt(e);
-                if(_.isNaN(i)){ 
-                    blacklist.push(k);
-                }else{
-                    serial[k] = i;
-                }
-            }
-        });
-        
-        serial = _.omit(serial, blacklist);
-        return serial;
+    onShapeChange : function(e){
+        var nodes = (App.views.graph.cy.$('node:selected').length) ? App.views.graph.cy.$('node:selected') : App.views.graph.cy.nodes();
+        nodes.css('shape', $(e.target).val());
     }
-    
 });
 },{"../templates":15}],25:[function(require,module,exports){
 jQuery = $ = require('jquery');
