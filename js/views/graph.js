@@ -8,14 +8,14 @@ var _trim = false;
 
 var _layout = {
     name: 'concentric',
-    concentric: function(){ return this.data('weight'); },
+    concentric: function(){ return this.data('degree'); },
     levelWidth: function( nodes ){ return 10; },
     padding: 10
 };
 
 var _color = ['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#e6550d', '#fd8d3c', '#fdae6b', '#fdd0a2', '#31a354', '#74c476', '#a1d99b', '#c7e9c0', '#756bb1', '#9e9ac8', '#bcbddc', '#dadaeb', '#636363', '#969696', '#bdbdbd', '#d9d9d9'];
 
-var _nodes = [], _links = [], _visnodes = [], _vislinks = [], _legend = 'data(id)', _score = ['none', 'width'], _bgColor = '#fff', _boxSelectionEnabled = false;
+var _visnodes = [], _vislinks = [], _legend = 'data(id)', _score = ['none', 'width'], _bgColor = '#fff', _boxSelectionEnabled = false;
 
 var _style = [
     {
@@ -25,9 +25,8 @@ var _style = [
             'content': _legend,
             'text-valign': 'bottom',
             'min-zoomed-font-size': 8,
-            'width': 'mapData(weight, 0, 100, 10, 60)',
-            'height': 'mapData(weight, 0, 100, 10, 60)',
-            'pie-size': '100%'
+            'width': 'mapData(degree, 0, 100, 10, 60)',
+            'height': 'mapData(degree, 0, 100, 10, 60)'
         }
     },
     {
@@ -42,7 +41,6 @@ var _style = [
     {
         selector:':selected',
         css: {
-            'pie-size': '0%',
             'background-color': 'black',
             'opacity': 1
         }
@@ -51,8 +49,7 @@ var _style = [
         selector:'node.highlighted',
         css: {
             'background-color': '#E8747C',
-            'pie-size': '0%',
-            'transition-property': 'pie-size, background-color',
+            'transition-property': 'background-color',
             'transition-duration': '0.5s'
         }
     },
@@ -95,42 +92,6 @@ var _onNodeTapped = function(e){
     App.views.UPDialog.render(node);
 };
 
-var _processData = function(){
-    
-    _nodes = App.model.attributes.interactors.map(function(i){
-        var n = i.attributes;
-        n.weight = 0;
-        
-        //Create taxa attr for pie mapping
-         _.each(n.taxonomy, function(t){
-             n.taxa = (n.taxa) ? n.taxa : {};
-             n.taxa[t] = 10/n.taxonomy.length;
-         });
-        
-        return n;
-    });
-    
-    //Calculate node degree
-    _links = App.model.attributes.interactions.map(function(i){
-        var l = i.attributes;
-        
-        var t = _.find(_nodes, function(n){return n.id === l.target;});
-        var s = _.find(_nodes, function(n){return n.id === l.source;});
-                
-        t.weight = t.weight + 1;
-        s.weight = s.weight + 1;
-        
-        //Create scre attr for score mapping
-        _.each(l.scores, function(s){
-            l.scre = (l.scre) ? l.scre : {};
-            l.scre[s.name] = s.score;
-        });
-        
-        return l;
-    });
-    this.update();
-};
-
 var _ready = function(e){
     Backbone.trigger('graph_ready', e, {nodes:_visnodes, links:_vislinks});
 };
@@ -146,7 +107,7 @@ module.exports = Backbone.View.extend({
         this.bgColor(_bgColor);
         
         // Update tags when model changes
-        this.listenTo(Backbone, 'got_data', _processData);
+        this.listenTo(Backbone, 'got_data', this.update);
         
         this.listenTo(Backbone, 'save', _save);
     },
@@ -301,8 +262,8 @@ module.exports = Backbone.View.extend({
     
     update: function(){
         
-        _visnodes = _nodes; 
-        _vislinks = _links;
+        _visnodes = App.model.attributes.interactors.toJSON(); 
+        _vislinks = App.model.attributes.interactions.toJSON();
         
         //Trim the graph
         if(_trim){
@@ -330,20 +291,13 @@ module.exports = Backbone.View.extend({
         
         var nodes = _.map(_visnodes, function(n){ return {data:n}; });
         var links = _.map(_vislinks, function(n){ return {data:n}; });
-        var taxonomies = _.union.apply(_, _.pluck(_.pluck(nodes, 'data'), 'taxonomy'));
-        var nodeStyle = _style[0].css;
-        
-        if(taxonomies.length < 16){
-            _.each(taxonomies, function(t,i){
-                nodeStyle['pie-' + (i+1) + '-background-color'] = _color[i];
-                nodeStyle['pie-' + (i+1) + '-background-size'] = 'mapData(taxa.' + t + ', 0, 10, 0, 100)';
-            }, this);
-        }
         
         var div = document.getElementById(this.options.el);
         
-        var options = {
+        // create cy
+        this.cy = cytoscape({
             container: div,
+            
             // this is an alternative that uses a bitmap during interaction
             textureOnViewport: true,
             // interpolate on high density displays instead of increasing resolution
@@ -366,18 +320,22 @@ module.exports = Backbone.View.extend({
             autoungrabify: false,
             autounselectify: false,
             
-            style: _style
-        };
-        
-        options.layout = _layout;
-        options.elements = { nodes : nodes, edges : links };
-        options.ready = _ready;
-        
-        this.cy = cytoscape(options);
+            style: _style,
+            layout: _layout,
+            ready: _ready,
+            elements: {nodes : nodes, edges : links}
+        });
         
         //Events
         this.cy.on('tap', 'node', _onNodeTapped);
         this.cy.on('mouseover ', 'node', function(){ $('body').attr('style', 'cursor:pointer'); });
         this.cy.on('mouseout ', 'node', function(){ $('body').attr('style', 'cursor:auto'); });
+        
+        var cy = this.cy;
+        this.cy.batch(function(){
+            _.each(cy.nodes(),function(n){ 
+                n.data('degree', n.degree());
+            });
+        });
     }
 });
