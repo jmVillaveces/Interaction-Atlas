@@ -31,7 +31,6 @@ App.init = function(options){
     var SideMenu = require('./js/views/sidemenu');
     var Logger = require('./js/views/logger');
     var Graph = require('./js/views/graph');
-    var Options = require('./js/views/options');
     var UPDialog = require('./js/views/UPdialog');
     var Import = require('./js/views/import');
     var Layout = require('./js/views/layout');
@@ -49,9 +48,6 @@ App.init = function(options){
     App.views.side = new SideMenu({el:'#sidemenu'});
     App.views.side.render();
 
-    App.views.options = new Options({el:'#profile'});
-    App.views.options.render();
-
     //Dialogs
     App.views.UPDialog = new UPDialog({el:'#dialog'});
     App.views.import = new Import({el:'#dialog'});
@@ -62,11 +58,6 @@ App.init = function(options){
 
     //Graph
     App.views.graph = new Graph({el:'network'});
-
-    //Router
-    var Router = require('./js/router/router');
-    App.router = new Router();
-    Backbone.history.start();
 
     //Import additional layout libraries
     Springy = require('springy');
