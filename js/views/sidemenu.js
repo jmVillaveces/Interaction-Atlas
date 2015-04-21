@@ -16,10 +16,11 @@ module.exports = Backbone.View.extend({
         'change input[name=bgcolor]': 'onBgColorChange',
         'change input[name=hcolor]': 'onHColorChange',
         'change .graph_attribute': 'onAttrChange',
+        'change select[name=vizopt]': 'onVizOptChange',
     },
     
     render: function(){
-        var tpl = templates.sidemenu({ });
+        var tpl = templates.sidemenu({});
         $(this.options.el).append(tpl);
     },
     
@@ -82,7 +83,20 @@ module.exports = Backbone.View.extend({
     },
     
     onAttrChange : function(e){
-        var nodes = (App.views.graph.cy.$('node:selected').length) ? App.views.graph.cy.$('node:selected') : App.views.graph.cy.nodes();
-        nodes.css($(e.target).attr('name'), $(e.target).val());
+        
+        var eles = null;
+        if($('select[name=vizopt]').val() === 'edge'){
+            eles = (App.views.graph.cy.edges(':selected').length) ? App.views.graph.cy.edges(':selected') : App.views.graph.cy.edges();
+        }else{
+            eles = (App.views.graph.cy.nodes(':selected').length) ? App.views.graph.cy.nodes(':selected') : App.views.graph.cy.nodes();
+        }
+        
+        eles.css($(e.target).attr('name'), $(e.target).val());
+    },
+    
+    onVizOptChange : function(e){
+        $('.vizopt').hide();
+        $('#' + $(e.target).val()).show();
     }
+    
 });

@@ -9,7 +9,6 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#layout" aria-controls="home" role="tab" data-toggle="tab">Visualization</a></li>
-            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Options</a></li>
             <li role="presentation"><a href="#algorithms" aria-controls="profile" role="tab" data-toggle="tab">Algorithms</a></li>
         </ul>
 
@@ -26,28 +25,147 @@
                 </div>
                 
                 <form>
-                    <div id="general" >
-
-
-                            <div class="form-group col-xs-12">                        
-                                <label class="col-xs-4">Background color</label>
-                                <div class="col-xs-8">
-                                    <input name="bgcolor" type="text" class="form-control minicolors-input" data-control="hue" value="#ffffff">
-                                </div>
+                    <div id="general" class="vizopt">
+                        <div class="form-group col-xs-12">                        
+                            <label class="col-xs-4">Background color</label>
+                            <div class="col-xs-8">
+                                <input name="bgcolor" type="text" class="form-control minicolors-input" data-control="hue" value="#ffffff">
                             </div>
+                        </div>
 
-                            <div class="form-group col-xs-12">
-                                <label class="col-xs-4">Trim</label>
-                                <div class="col-xs-8"><input name="trim" type="checkbox"></div>
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-4">Trim</label>
+                            <div class="col-xs-8">
+                                <input name="trim" type="checkbox">
                             </div>
+                        </div>
+                        
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-4">Legend</label>
+                            <div class="col-xs-8">
+                                <input name="legend" type="checkbox" value="data(id)" checked="checked">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group col-xs-12">                        
+                            <label class="col-xs-3">Label Color</label>
+                            <div class="col-xs-4">
+                                <input name="color" type="text" class="form-control minicolors-input graph_attribute" data-control="hue" value="#000000">
+                            </div>
+                            <div class="btn-group col-xs-5" role="group">
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>                  
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group col-xs-12">                        
+                            <label class="col-xs-3">Label Content</label>
+                            <div class="col-xs-4">
+                                <select class="form-control graph_attribute" name="content">
+                                    <option value="ellipse">Ellipse</option>
+                                    <option value="hexagon">Hexagon</option>
+                                    <option value="heptagon">Heptagon</option>
+                                    <option value="octagon">Octagon</option>
+                                    <option value="pentagon">Pentagon</option>
+                                    <option value="rectangle">Rectangle</option>
+                                    <option value="roundrectangle">Round rectangle</option>
+                                    <option value="star">Star</option>
+                                    <option value="triangle">Triangle</option>
+                                </select>
+                            </div>
+                            <div class="btn-group col-xs-5" role="group">
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>                  
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                        </div>
+                        
+                         <div class="form-group col-xs-12">                        
+                            <label class="col-xs-3">Horizontal Align</label>
+                            <div class="col-xs-4">
+                                <select class="form-control graph_attribute" name="text-halign">
+                                    <option value="left">Left</option>
+                                    <option value="center" selected>Center</option>
+                                    <option value="right">Right</option>
+                                </select>
+                            </div>
+                            <div class="btn-group col-xs-5" role="group">
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>                  
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group col-xs-12">                        
+                            <label class="col-xs-3">Vertical Align</label>
+                            <div class="col-xs-4">
+                                <select class="form-control graph_attribute" name="text-valign">
+                                    <option value="left">Top</option>
+                                    <option value="center">Center</option>
+                                    <option value="bottom" selected>Bottom</option>
+                                </select>
+                            </div>
+                            <div class="btn-group col-xs-5" role="group">
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>                  
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                        </div>
+                        
                     </div>
                     
-                    
-                    <div id="node">
+                    <div id="edge" class="vizopt" style="display:none">
                         <div class="form-group col-xs-12">                        
                             <label class="col-xs-3">Color</label>
                             <div class="col-xs-4">
-                                <input name="background-color" type="text" class="form-control minicolors-input graph_attribute" data-control="hue" value="#ffffff">
+                                <input name="line-color" type="text" class="form-control minicolors-input graph_attribute" data-control="hue" value="#dddddd">
+                            </div>
+                            <div class="btn-group col-xs-5" role="group">
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>                  
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12">                        
+                            <label class="col-xs-3">Width</label>
+                            <div class="col-xs-4">
+                                <input name="width" class="form-control graph_attribute" type="number" min="1" value="1">
+                            </div>
+                            <div class="btn-group col-xs-5" role="group">
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>                  
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12">                        
+                            <label class="col-xs-3">Curve Style</label>
+                            <div class="col-xs-4">
+                                <select class="form-control graph_attribute" name="curve-style">
+                                    <option value="bezier">Bezier</option>
+                                    <option value="haystack" selected>Haystack</option>
+                                </select>
+                            </div>
+                            <div class="btn-group col-xs-5" role="group">
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>                  
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12">                        
+                            <label class="col-xs-3">Curve Style</label>
+                            <div class="col-xs-4">
+                                <select class="form-control graph_attribute" name="line-style">
+                                    <option value="dashed">Dashed</option>
+                                    <option value="dotted">Dotted</option>
+                                    <option value="solid" selected>Solid</option>
+                                </select>
+                            </div>
+                            <div class="btn-group col-xs-5" role="group">
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>                  
+                                <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="node" class="vizopt" style="display:none">
+                        <div class="form-group col-xs-12">                        
+                            <label class="col-xs-3">Color</label>
+                            <div class="col-xs-4">
+                                <input name="background-color" type="text" class="form-control minicolors-input graph_attribute" data-control="hue" value="#dddddd">
                             </div>
                             <div class="btn-group col-xs-5" role="group">
                                 <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>                  
@@ -77,7 +195,7 @@
                         <div class="form-group col-xs-12">                        
                             <label class="col-xs-3">Width</label>
                             <div class="col-xs-4">
-                                <input name="width" class="form-control" type="number" min="1" value="20">
+                                <input name="width" class="form-control graph_attribute" type="number" min="1" value="20">
                             </div>
                             <div class="btn-group col-xs-5" role="group">
                                 <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>                  
@@ -136,7 +254,7 @@
                         <div class="form-group col-xs-12">                        
                             <label class="col-xs-3">Border Color</label>
                             <div class="col-xs-4">
-                                <input name="border-color" type="text" class="form-control minicolors-input graph_attribute" data-control="hue" value="#ffffff">
+                                <input name="border-color" type="text" class="form-control minicolors-input graph_attribute" data-control="hue" value="#000000">
                             </div>
                             <div class="btn-group col-xs-5" role="group">
                                 <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span></button>                  
@@ -154,11 +272,9 @@
                                 <button style="height:34px" type="button" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button>
                             </div>
                         </div>
-                        
                     </div>
                 </form>
             </div>
-            <div role="tabpanel" class="tab-pane" id="profile"></div>
             <div role="tabpanel" class="tab-pane" id="algorithms"></div>
         </div>
 
