@@ -42,7 +42,8 @@ var _style = [
         selector:':selected',
         css: {
             'background-color': 'black',
-            'opacity': 1
+            'opacity': 1,
+            'line-color':'#000'
         }
     },
     {
