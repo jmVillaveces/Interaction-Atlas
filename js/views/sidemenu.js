@@ -15,7 +15,7 @@ module.exports = Backbone.View.extend({
         'click #play': 'onPlayClick',
         'change input[name=bgcolor]': 'onBgColorChange',
         'change input[name=hcolor]': 'onHColorChange',
-        'change select[name=shape]': 'onShapeChange',
+        'change .graph_attribute': 'onAttrChange',
     },
     
     render: function(){
@@ -51,14 +51,12 @@ module.exports = Backbone.View.extend({
     },
     
     onPlayClick : function(e){
-       
         var source = $('select[name=source]').val(), target  = $('select[name=target]').val(), algorithm = $('select[name=algorithm]').val();
         App.views.graph.algorithm(algorithm, {source: source, target: target});
     },
     
     onAlgorithmChange : function(){
         var algorithm = $('select[name=algorithm]').val();
-        //var i = $('select[name=algorithm]')[0].selectedIndex;
         
         $('#algoquote footer').hide();
         $('#algoquote footer[name='+algorithm+']').show();
@@ -83,8 +81,8 @@ module.exports = Backbone.View.extend({
         App.views.graph.hColor($(e.target).val());
     },
     
-    onShapeChange : function(e){
+    onAttrChange : function(e){
         var nodes = (App.views.graph.cy.$('node:selected').length) ? App.views.graph.cy.$('node:selected') : App.views.graph.cy.nodes();
-        nodes.css('shape', $(e.target).val());
+        nodes.css($(e.target).attr('name'), $(e.target).val());
     }
 });
