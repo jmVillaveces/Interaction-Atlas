@@ -66,13 +66,12 @@ var _style = [
     {
         selector:'core',
         css: {
-            'active-bg-color': '#000',
-            'active-bg-opacity': 0.333,
+            'active-bg-color': 'steelblue',
+            'active-bg-opacity': 0.45,
             'selection-box-color': 'steelblue',
             'selection-box-border-color': 'steelblue',
-            'selection-box-border-width': 2, 
-            'selection-box-opacity': 0.45
-            
+            'selection-box-border-width': 2,
+            'selection-box-opacity': 0.45   
         }
     }
 ];

@@ -46,7 +46,6 @@
         } else {
             return options.inverse(this);
         }
-
     });
     
     

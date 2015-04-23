@@ -21,9 +21,7 @@ App.init = function(options){
     var Servers = require('./js/collections/psicquicServers.js');
     App.model.servers = new Servers();
     
-    
     App.model.servers.fetch();
-    
     
     //Views
     var Main = require('./js/views/main');
