@@ -112,7 +112,8 @@ module.exports = Backbone.View.extend({
         this.attrSetter.render({
             elements : this.getElements(),
             attributeName : parent.find('label').text(),
-            control : parent.find('.form-control')
+            control : parent.find('.form-control'),
+            properties : ($('select[name=vizopt]').val() === 'edge') ? App.model.attributes.edgeAttributes : App.model.attributes.nodeAttributes
         });
     }
 });
