@@ -1,0 +1,28 @@
+<table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>{{property}}</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        {{#each values}}
+            <tr>
+                <td>{{this}}</td>
+                <td>
+                    {{#with ../control}}
+                        {{#compare tag '===' 'SELECT'}} 
+                            <select class="form-control" name="mappings">
+                                {{#each attributes}}
+                                    <option value="{{@key}}">{{this}}</option>
+                                {{/each}}
+                            </select>
+                        {{/compare}}
+                        
+                        {{#compare tag '===' 'INPUT'}} 
+                            <input class="form-control {{#if ../color}}minicolors-input{{/if}}" {{#each attributes}} {{#compare this '!==' ''}}{{@key}}="{{this}}" {{/compare}} {{/each}}>
+                        {{/compare}}
+                    {{/with}}
+                </td>
+            </tr>
+        {{/each}}
+    </table>
