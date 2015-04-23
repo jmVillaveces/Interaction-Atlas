@@ -1,0 +1,25 @@
+<div class="form-group row">                        
+    <label class="col-md-2">Attribute</label>
+    <div class="col-md-4">
+        <select class="form-control" name="attrs">
+            {{#each properties}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">                        
+    <label class="col-md-2">Mapping type</label>
+    <div class="col-md-4">
+        <select class="form-control" name="mappings">
+            <option value="direct">Direct</option>
+            <option value="transform">Transform</option>
+            <option value="discrete">Discrete</option>
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    <div id="discrete" style="display:none" class="col-md-offset-2 col-md-8"></div>
+</div>
