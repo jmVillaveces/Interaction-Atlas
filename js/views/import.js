@@ -140,6 +140,8 @@ module.exports = Backbone.View.extend({
                     var model = App.model;
                     model.attributes.interactors.set(nodes);
                     model.attributes.interactions.set(edges);
+                    model.attributes.edgeAttributes = (edges.length) ? _.keys(edges[0]) : [];
+                    model.attributes.nodeAttributes = (nodes.length) ? _.keys(nodes[0]) : [];
                     
                     $('#' + _dialId).modal('hide');
                     Backbone.trigger('got_data');
