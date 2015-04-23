@@ -57,14 +57,26 @@ module.exports = Backbone.View.extend({
         $('#' + _dialId).modal('show');
         
         $('#' + _dialId + ' .modal-body').html(templates.attributeSetter({ 
-            properties : ['id', 'geneName', 'uniprot', 'taxonomy']    
+            properties : render.properties
         }));
         
-        $('#discrete').html(templates.discreteTable({
-            property : 'id',
-            control : this.control,
-            values : _.uniq(_.map(this.elements, function(e){ return e.data('id'); }))
+        this.renderContent(render.properties[0]);
+    },
+    
+    renderContent : function(prop){
+        
+        var values = _.uniq(_.map(this.elements, function(e){
+            var val = e.data(prop);
+            return _.isArray(val) ? _.sortBy(val, function(e){ return e; }).join(',') : val;
         }));
+        
+        console.log(values);
+        $('#discrete').html(templates.discreteTable({
+            property : prop, 
+            control : this.control,
+            values : values
+        }));
+        
         if(this.control.color) $('#discrete .minicolors-input').minicolors({ theme:'bootstrap'});
     },
     
@@ -81,17 +93,7 @@ module.exports = Backbone.View.extend({
     },
     
     onAttrsChange : function(e){
-        var attr = $(e.target).val();
-        
-        $('#discrete').html(templates.discreteTable({
-            property : attr, 
-            control : this.control,
-            values : _.uniq(_.map(this.elements, function(e){
-                var val = e.data(attr);
-                return _.isArray(val) ? _.sortBy(val, function(e){ return e; }).join(',') : val;
-            }))
-        })).show();
-        
-        if(this.control.color) $('#discrete .minicolors-input').minicolors({ theme:'bootstrap'});
+        this.renderContent($(e.target).val());
+        $('#discrete').show();
     }
 });
