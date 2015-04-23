@@ -1,4 +1,5 @@
 var templates = require('../templates');
+var ASetter = require('./attributeSetter');
 
 module.exports = Backbone.View.extend({
     
@@ -7,16 +8,18 @@ module.exports = Backbone.View.extend({
         
         // Update when graph is ready
         this.listenTo(Backbone, 'graph_ready', this.onGraphReady);
+        
+        this.attrSetter = new ASetter({el:'#attr_dialog'});
     },
     
     events:{
-        /*'change select[name=name]': 'onSelectChange',*/
         'change select[name=algorithm]': 'onAlgorithmChange',
         'click #play': 'onPlayClick',
         'change input[name=bgcolor]': 'onBgColorChange',
         'change input[name=hcolor]': 'onHColorChange',
         'change .graph_attribute': 'onAttrChange',
         'change select[name=vizopt]': 'onVizOptChange',
+        'click #layout button' : 'onButtClick'
     },
     
     render: function(){
@@ -82,8 +85,7 @@ module.exports = Backbone.View.extend({
         App.views.graph.hColor($(e.target).val());
     },
     
-    onAttrChange : function(e){
-        
+    getElements : function(){
         var eles = null;
         if($('select[name=vizopt]').val() === 'edge'){
             eles = (App.views.graph.cy.edges(':selected').length) ? App.views.graph.cy.edges(':selected') : App.views.graph.cy.edges();
@@ -91,12 +93,26 @@ module.exports = Backbone.View.extend({
             eles = (App.views.graph.cy.nodes(':selected').length) ? App.views.graph.cy.nodes(':selected') : App.views.graph.cy.nodes();
         }
         
-        eles.css($(e.target).attr('name'), $(e.target).val());
+        return eles;
+    },
+    
+    onAttrChange : function(e){
+        this.getElements().css($(e.target).attr('name'), $(e.target).val());
     },
     
     onVizOptChange : function(e){
         $('.vizopt').hide();
         $('#' + $(e.target).val()).show();
-    }
+    },
     
+    onButtClick : function(e){
+        var parent = $(e.currentTarget).parent().parent();
+        var control = parent.find('.form-control');
+        
+        this.attrSetter.render({
+            elements : this.getElements(),
+            attributeName : parent.find('label').text(),
+            control : parent.find('.form-control')
+        });
+    }
 });
