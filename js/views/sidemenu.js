@@ -121,7 +121,8 @@ module.exports = Backbone.View.extend({
             elements : this.getElements(),
             attributeName : parent.find('label').text(),
             control : parent.find('.form-control'),
-            properties : ($('select[name=vizopt]').val() === 'edge') ? App.model.attributes.edgeAttributes : App.model.attributes.nodeAttributes
+            properties : ($('select[name=vizopt]').val() === 'edge') ? App.model.attributes.edgeAttributes : App.model.attributes.nodeAttributes,
+            group : ($('select[name=vizopt]').val() === 'edge') ? 'edge' : 'node'
         });
     }
 });
