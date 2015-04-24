@@ -969,7 +969,7 @@ this["Templates"]["attributeSetter"] = Handlebars.template({"1":function(depth0,
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.properties : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "        </select>\n    </div>\n</div>\n\n<div class=\"form-group row\">                        \n    <label class=\"col-md-2\">Mapping type</label>\n    <div class=\"col-md-4\">\n        <select class=\"form-control\" name=\"mappings\">\n            <option value=\"direct\">Direct</option>\n            "
     + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.transform : depth0),{"name":"if","hash":{},"fn":this.program(3, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "\n            <option value=\"discrete\">Discrete</option>\n        </select>\n    </div>\n</div>\n\n<div class=\"log alert alert-danger\" style=\"display:none\" role=\"alert\">Can't apply transform to selected attribute.</div>\n\n<div class=\"transform\" style=\"display:none\">\n    \n"
+    + "\n            <option value=\"discrete\">Discrete</option>\n        </select>\n    </div>\n</div>\n\n<div class=\"log row\" style=\"display:none\"><p class=\"alert alert-danger col-md-6 col-md-offset-2\" role=\"alert\">Can't apply transform to selected attribute.</p></div>\n\n<div class=\"transform\" style=\"display:none\">\n    \n    <div class=\"row\">\n        <p class=\"alert alert-warning col-md-6 col-md-offset-2\" role=\"alert\">\n            <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span> Transform mappings are applied to the whole network!\n        </p>\n    </div>\n    \n"
     + ((stack1 = helpers['with'].call(depth0,(depth0 != null ? depth0.control : depth0),{"name":"with","hash":{},"fn":this.program(5, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "</div>\n\n<div class=\"row\">\n    <div id=\"discrete\" style=\"display:none\" class=\"col-md-offset-2 col-md-8\"></div>\n</div>";
 },"useData":true});
@@ -1436,6 +1436,7 @@ module.exports = Backbone.View.extend({
         this.cssAttr = render.control.prop('name');
         
         this.elements = render.elements;
+        this.group = render.group;
  
         if(this.control.tag === 'INPUT'){
             
@@ -1508,12 +1509,19 @@ module.exports = Backbone.View.extend({
                 return e.data(attr);
             });
             
+            this.transform = {
+                min : min,
+                max : max
+            };
+            
             if(_.isNumber(min.value) && _.isFinite(min.value) && _.isNumber(max.value) && _.isFinite(max.value)){
                 $('.log').hide();
                 $('.transform').show();
+                this.transform.able = true;
             }else{
                 $('.log').show();
                 $('.transform').hide();
+                this.transform.able = false;
             }
             
         }else{
@@ -1552,14 +1560,14 @@ module.exports = Backbone.View.extend({
             });
         }else if(mapping === 'discrete'){
             App.views.graph.cy.batch(function(){
-                
                 _.each($('#discrete input'), function(i){
-                    //$(i).val();
-                     elements.filter('[' + attr + '="' + $(i).prop('name') + '"]').forEach(function(ele){
+                    elements.filter('[' + attr + '="' + $(i).prop('name') + '"]').forEach(function(ele){
                         ele.css(cssAttr, $(i).val());
                     });
                 });
             });
+        }else if(mapping === 'transform' && this.transform.able){
+            App.views.graph.applyTransform(this.group, attr, cssAttr, this.transform.min.value, this.transform.max.value, $('input[name=min]').val(), $('input[name=max]').val());
         }
     }
 });
@@ -1744,6 +1752,19 @@ module.exports = Backbone.View.extend({
         return this;
     },
     
+    applyTransform : function(group, attribute, style, min, max, mint, maxt){
+        console.log(arguments);
+        
+        var css = (group === 'edge') ? _style[1].css : _style[0].css;
+        css[style] = 'mapData(' + attribute + ',' + min + ',' + max + ',' + mint + ',' + maxt + ')';
+        
+        console.log(css[style], _style[0].css);
+        //update cy
+        if(this.cy){
+            this.cy.style(_style);
+        }
+    },
+    
     score : function(_){
         
         if (!arguments.length) return _score;
@@ -1886,7 +1907,6 @@ module.exports = Backbone.View.extend({
             autolock: false,
             autoungrabify: false,
             autounselectify: false,
-            
             
             style: _style,
             layout: _layout,
@@ -2414,7 +2434,8 @@ module.exports = Backbone.View.extend({
             elements : this.getElements(),
             attributeName : parent.find('label').text(),
             control : parent.find('.form-control'),
-            properties : ($('select[name=vizopt]').val() === 'edge') ? App.model.attributes.edgeAttributes : App.model.attributes.nodeAttributes
+            properties : ($('select[name=vizopt]').val() === 'edge') ? App.model.attributes.edgeAttributes : App.model.attributes.nodeAttributes,
+            group : ($('select[name=vizopt]').val() === 'edge') ? 'edge' : 'node'
         });
     }
 });
