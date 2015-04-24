@@ -14,10 +14,31 @@
     <div class="col-md-4">
         <select class="form-control" name="mappings">
             <option value="direct">Direct</option>
-            <option value="transform">Transform</option>
+            {{#if transform}} <option value="transform">Transform</option> {{/if}}
             <option value="discrete">Discrete</option>
         </select>
     </div>
+</div>
+
+<div class="log alert alert-danger" style="display:none" role="alert">Can't apply transform to selected attribute.</div>
+
+<div class="transform" style="display:none">
+    
+    {{#with control}}
+        <div class="form-group row">                        
+            <label class="col-md-2">Min</label>
+            <div class="col-md-4">
+                <input name="min" class="form-control {{#if color}}minicolors-input{{/if}}" {{#each attributes}} {{#compare this '!==' ''}}{{@key}}="{{this}}" {{/compare}} {{/each}}>
+            </div>
+        </div>
+
+        <div class="form-group row">                        
+            <label class="col-md-2">Max</label>
+            <div class="col-md-4">
+                <input name="max" class="form-control {{#if color}}minicolors-input{{/if}}" {{#each attributes}} {{#compare this '!==' ''}}{{@key}}="{{this}}" {{/compare}} {{/each}}>
+            </div>
+        </div>
+    {{/with}}
 </div>
 
 <div class="row">
