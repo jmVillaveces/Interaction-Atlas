@@ -50,6 +50,14 @@ module.exports = Backbone.View.extend({
             $('#algorithms').html(tpl);
         }
         
+        
+        //Update label content properties
+        var strOpt = ''; 
+        _.each(App.model.attributes.nodeAttributes, function(prop){
+            strOpt += '<option value="'+prop+'">'+prop+'</option>';
+        });
+        $('select[name=content]').html(strOpt);
+        
         //Init minicolors
         $('.minicolors-input').minicolors({ theme:'bootstrap'});
     },
