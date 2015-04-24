@@ -20,9 +20,15 @@
     </div>
 </div>
 
-<div class="log alert alert-danger" style="display:none" role="alert">Can't apply transform to selected attribute.</div>
+<div class="log row" style="display:none"><p class="alert alert-danger col-md-6 col-md-offset-2" role="alert">Can't apply transform to selected attribute.</p></div>
 
 <div class="transform" style="display:none">
+    
+    <div class="row">
+        <p class="alert alert-warning col-md-6 col-md-offset-2" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Transform mappings are applied to the whole network!
+        </p>
+    </div>
     
     {{#with control}}
         <div class="form-group row">                        

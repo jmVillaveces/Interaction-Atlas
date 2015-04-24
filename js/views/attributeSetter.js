@@ -27,6 +27,7 @@ module.exports = Backbone.View.extend({
         this.cssAttr = render.control.prop('name');
         
         this.elements = render.elements;
+        this.group = render.group;
  
         if(this.control.tag === 'INPUT'){
             
@@ -99,12 +100,19 @@ module.exports = Backbone.View.extend({
                 return e.data(attr);
             });
             
+            this.transform = {
+                min : min,
+                max : max
+            };
+            
             if(_.isNumber(min.value) && _.isFinite(min.value) && _.isNumber(max.value) && _.isFinite(max.value)){
                 $('.log').hide();
                 $('.transform').show();
+                this.transform.able = true;
             }else{
                 $('.log').show();
                 $('.transform').hide();
+                this.transform.able = false;
             }
             
         }else{
@@ -144,12 +152,13 @@ module.exports = Backbone.View.extend({
         }else if(mapping === 'discrete'){
             App.views.graph.cy.batch(function(){
                 _.each($('#discrete input'), function(i){
-                    //$(i).val();
-                     elements.filter('[' + attr + '="' + $(i).prop('name') + '"]').forEach(function(ele){
+                    elements.filter('[' + attr + '="' + $(i).prop('name') + '"]').forEach(function(ele){
                         ele.css(cssAttr, $(i).val());
                     });
                 });
             });
+        }else if(mapping === 'transform' && this.transform.able){
+            App.views.graph.applyTransform(this.group, attr, cssAttr, this.transform.min.value, this.transform.max.value, $('input[name=min]').val(), $('input[name=max]').val());
         }
     }
 });
