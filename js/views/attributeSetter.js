@@ -70,7 +70,6 @@ module.exports = Backbone.View.extend({
             return _.isArray(val) ? _.sortBy(val, function(e){ return e; }).join(',') : val;
         }));
         
-        console.log(values);
         $('#discrete').html(templates.discreteTable({
             property : prop, 
             control : this.control,
@@ -94,6 +93,5 @@ module.exports = Backbone.View.extend({
     
     onAttrsChange : function(e){
         this.renderContent($(e.target).val());
-        $('#discrete').show();
     }
 });
