@@ -178,10 +178,6 @@ module.exports = Backbone.View.extend({
         return this;
     },
     
-    cy : function(){
-        return cy;
-    },
-    
     score : function(_){
         
         if (!arguments.length) return _score;
@@ -324,7 +320,6 @@ module.exports = Backbone.View.extend({
             autolock: false,
             autoungrabify: false,
             autounselectify: false,
-            
             
             
             style: _style,
