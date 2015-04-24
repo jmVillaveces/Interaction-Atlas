@@ -19,7 +19,7 @@ module.exports = Backbone.Model.extend({
         interactions: new Interactions(),
         taxa : {},
         scores : [],
-        nodeAttributes : ['id', 'taxonomy', 'uniprot', 'geneName'],
+        nodeAttributes : ['id', 'degree', 'taxonomy', 'uniprot', 'geneName'],
         edgeAttributes : ['detMethods', 'intTypes', 'sourceDbs']
     },
     
