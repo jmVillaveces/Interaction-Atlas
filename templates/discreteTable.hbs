@@ -5,9 +5,9 @@
                 <th>Value</th>
             </tr>
         </thead>
-        {{#each values}}
+        {{#each values as |val valId|}}
             <tr>
-                <td>{{this}}</td>
+                <td>{{val}}</td>
                 <td>
                     {{#with ../control}}
                         {{#compare tag '===' 'SELECT'}} 
@@ -19,7 +19,7 @@
                         {{/compare}}
                         
                         {{#compare tag '===' 'INPUT'}} 
-                            <input class="form-control {{#if ../color}}minicolors-input{{/if}}" {{#each attributes}} {{#compare this '!==' ''}}{{@key}}="{{this}}" {{/compare}} {{/each}}>
+                            <input name="{{val}}" class="form-control {{#if ../color}}minicolors-input{{/if}}" {{#each attributes}} {{#compare this '!==' ''}}{{@key}}="{{this}}" {{/compare}} {{/each}}>
                         {{/compare}}
                     {{/with}}
                 </td>
