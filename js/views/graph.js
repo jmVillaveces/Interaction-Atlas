@@ -189,30 +189,6 @@ module.exports = Backbone.View.extend({
         }
     },
     
-    score : function(_){
-        
-        if (!arguments.length) return _score;
-        _score = _;
-        
-        var edgeStyle = _style[1].css;
-        edgeStyle.opacity = 0.666;
-        edgeStyle.width = 1;
-        edgeStyle['line-color'] = '#ddd';
-        
-        if(_score[0] !== 'none'){ 
-            if(_score[1] === 'opacity'){
-                edgeStyle.opacity = 'mapData(scre.'+_score[0]+', 0, 1, 0, 1)';
-                edgeStyle['line-color'] = '#000';
-            }else if(_score[1] === 'width'){
-                edgeStyle.width = 'mapData(scre.'+_score[0]+', 0, 1, 1, 5)';
-            }
-        }
-        
-        if(this.cy) this.cy.style(_style);
-        
-        return this;
-    },
-    
     find : function(searchTerm){
         
         if(!this.cy) return;
