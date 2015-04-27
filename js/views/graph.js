@@ -179,7 +179,6 @@ module.exports = Backbone.View.extend({
     },
     
     applyTransform : function(group, attribute, style, min, max, mint, maxt){
-        console.log(arguments);
         
         var css = (group === 'edge') ? _style[1].css : _style[0].css;
         css[style] = 'mapData(' + attribute + ',' + min + ',' + max + ',' + mint + ',' + maxt + ')';
