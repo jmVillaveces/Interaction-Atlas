@@ -40,36 +40,19 @@ module.exports = Backbone.Model.extend({
         
         var mitab = require('biojs-io-mitab').parse(response);
         
-        _.each(this.attributes.edgeAttributes, function(attr){
-            _.each(mitab.links, function(l){
+        mitab.links = _.map(mitab.links, function(l){
+            _.each(this.attributes.edgeAttributes, function(attr){
                 l[attr] = _.map(l[attr], function(e){
                     return e.value;
-                });
+                }, this).join(', '); 
             });
-        });
+            
+            return l;
+        }, this);
         
         this.attributes.interactors.set(mitab.nodes);
         this.attributes.interactions.set(mitab.links);
         this.attributes.scores = mitab.scores;
-        
-        var taxa = {};
-        if(mitab.taxa.length > 0){
-            /*$.ajax({
-                type: 'GET',
-                url: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?retmode=json&db=taxonomy&id='+mitab.taxa.join(','),
-                async: false,
-                success : function(data) {
-                    
-                    var results = data.result || {};
-                    
-                    _.each(mitab.taxa, function(taxId){
-                        taxa[taxId] = results[taxId] || { scientificname: taxId, commonname: taxId, taxid: taxId };
-                    });
-                }
-            });*/
-            
-            this.attributes.taxa = taxa;
-        }
 
         return this.attributes;
     },
