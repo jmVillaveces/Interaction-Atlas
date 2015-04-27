@@ -160,5 +160,7 @@ module.exports = Backbone.View.extend({
         }else if(mapping === 'transform' && this.transform.able){
             App.views.graph.applyTransform(this.group, attr, cssAttr, this.transform.min.value, this.transform.max.value, $('input[name=min]').val(), $('input[name=max]').val());
         }
+        
+        $('#' + _dialId).modal('hide');
     }
 });
