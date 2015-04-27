@@ -105,7 +105,18 @@ module.exports = Backbone.View.extend({
     },
     
     onAttrChange : function(e){
-        this.getElements().css($(e.target).attr('name'), $(e.target).val());
+        var attr = $(e.target).attr('name'), val = $(e.target).val();
+        
+        if(attr !== 'content'){
+            this.getElements().css(attr, val);
+        }else{
+            var elements = this.getElements();
+            App.views.graph.cy.batch(function(){
+                elements.filter('[' + val + ']').forEach(function(ele){
+                    ele.css(attr, ele.data(val));
+                });
+            });
+        }
     },
     
     onVizOptChange : function(e){
