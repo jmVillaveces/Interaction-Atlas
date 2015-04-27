@@ -16,27 +16,18 @@ module.exports = Backbone.View.extend({
     
     render: function(node){
         
-        var tax = _.map(node.taxonomy, function(t){
-            var taxonomy = App.model.attributes.taxa[t];
-
-            var taxStr = taxonomy.scientificname;
-            taxStr = (taxonomy.commonname.length) ? taxStr + ' (' + taxonomy.commonname + ')' : taxStr;
-
-            return taxStr;
-        });
-        
-        
-        var tpl = templates.dialog({title : node.id, subtitle: tax.join(' - '), dialId : _dialId});    
+        var title = (node.uniprot.length) ? node.id +' - (' + node.uniprot +')' : node.id;
+        var tpl = templates.dialog({title : title, dialId : _dialId});    
         $(this.container).html(tpl);
         $('#' + _dialId).modal('show');
-        
         
         if(!_.has(_map, node.id)){
             
             var self = this;
-            var protein = new UPprotein({ id:node.id });
+            var protein = new UPprotein({ id: (node.uniprot.length) ? node.uniprot : node.id });
             protein.fetch({
                 error : function (errorResponse, a) {
+                    $('#' + _dialId + ' .modal-body').html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">No UniProt information available for '+ (node.uniprot.length) ? node.uniprot : node.id+'</span></div>');
                     console.error(errorResponse, a);
                 },
                 contentType : 'text/xml',
