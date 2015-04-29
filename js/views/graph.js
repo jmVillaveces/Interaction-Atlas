@@ -189,23 +189,6 @@ module.exports = Backbone.View.extend({
         }
     },
     
-    find : function(searchTerm){
-        
-        if(!this.cy) return;
-        
-        var searchRegEx = new RegExp(searchTerm.toLowerCase());
-        
-        this.cy.nodes().unselect();
-        
-        if(searchTerm.length === 0) return;
-        
-        _.each(this.cy.nodes(), function(n, i){
-            if(n.id().toLocaleLowerCase().search(searchRegEx) >= 0){
-                n.select();
-            }
-        });
-    },
-    
     algorithm : function(algorithm, options){
         
         this.cy.elements().removeClass('highlighted');
