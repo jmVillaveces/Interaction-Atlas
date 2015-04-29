@@ -333,36 +333,19 @@ module.exports = Backbone.Model.extend({
         
         var mitab = require('biojs-io-mitab').parse(response);
         
-        _.each(this.attributes.edgeAttributes, function(attr){
-            _.each(mitab.links, function(l){
+        mitab.links = _.map(mitab.links, function(l){
+            _.each(this.attributes.edgeAttributes, function(attr){
                 l[attr] = _.map(l[attr], function(e){
                     return e.value;
-                });
+                }, this).join(', '); 
             });
-        });
+            
+            return l;
+        }, this);
         
         this.attributes.interactors.set(mitab.nodes);
         this.attributes.interactions.set(mitab.links);
         this.attributes.scores = mitab.scores;
-        
-        var taxa = {};
-        if(mitab.taxa.length > 0){
-            /*$.ajax({
-                type: 'GET',
-                url: 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?retmode=json&db=taxonomy&id='+mitab.taxa.join(','),
-                async: false,
-                success : function(data) {
-                    
-                    var results = data.result || {};
-                    
-                    _.each(mitab.taxa, function(taxId){
-                        taxa[taxId] = results[taxId] || { scientificname: taxId, commonname: taxId, taxid: taxId };
-                    });
-                }
-            });*/
-            
-            this.attributes.taxa = taxa;
-        }
 
         return this.attributes;
     },
@@ -1161,11 +1144,13 @@ this["Templates"]["navbar"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.
 
   return "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n    <div class=\"container\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Protein Interaction Atlas\" href=\"#\"><img src=\"favicon.ico\"> iAtlas</a>\n        </div>\n        <div id=\"navbar\" class=\"navbar-collapse collapse\">\n            <ul class=\"nav navbar-nav\">\n              <!--<li class=\"active\"><a href=\"#\">Home</a></li>-->\n              <li><a href=\"#\" id=\""
     + alias3(((helper = (helper = helpers.importId || (depth0 != null ? depth0.importId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"importId","hash":{},"data":data}) : helper)))
-    + "\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Import Network from database\"><span class=\"glyphicon glyphicon-import\" aria-hidden=\"true\"></span> Import Network</a></li>\n              <li><a href=\"#\">Contact</a></li>\n              <li class=\"dropdown\">\n                <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Layout <span class=\"caret\"></span></a>\n                <ul id="
+    + "\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Import Network from database\"><span class=\"glyphicon glyphicon-import\" aria-hidden=\"true\"></span> Import Network</a></li>\n              <li class=\"dropdown\">\n                <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Layout <span class=\"caret\"></span></a>\n                <ul id="
     + alias3(((helper = (helper = helpers.layoutId || (depth0 != null ? depth0.layoutId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"layoutId","hash":{},"data":data}) : helper)))
-    + " class=\"dropdown-menu\" role=\"menu\">\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Puts nodes in a hierarchy, based on a breadthfirst traversal of the graph.\" href=\"breadthfirst\">Breadthfirst <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in a circle\" href=\"circle\">Circle <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"cola\">Cola <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in concentric circles creating levels based on node degree\" href=\"concentric\">Concentric <span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"cose\">Cose <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in a Grid\" href=\"grid\">Grid <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes randomly\" href=\"random\">Random <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"springy\">Springy <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li class=\"divider\"></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Advanced layout options\" href=\"#\">Advanced</a></li>\n                </ul>\n              </li>\n            </ul>\n            <form class=\"navbar-form navbar-left\" role=\"search\">\n                \n                <div class=\"form-group\">\n                    <input type=\"text\" id=\""
+    + " class=\"dropdown-menu\" role=\"menu\">\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Puts nodes in a hierarchy, based on a breadthfirst traversal of the graph.\" href=\"breadthfirst\">Breadthfirst <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in a circle\" href=\"circle\">Circle <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"cola\">Cola <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in concentric circles creating levels based on node degree\" href=\"concentric\">Concentric <span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"cose\">Cose <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes in a Grid\" href=\"grid\">Grid <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Positions nodes randomly\" href=\"random\">Random <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Force-directed physics simulation\" href=\"springy\">Springy <span class=\"glyphicon\" aria-hidden=\"true\"></span></a></li>\n                    <li class=\"divider\"></li>\n                    <li><a data-toggle=\"tooltip\" data-placement=\"right\" title=\"Advanced layout options\" href=\"#\">Advanced</a></li>\n                </ul>\n              </li>\n            </ul>\n            <form class=\"navbar-form navbar-left\" role=\"search\">\n                \n                <div class=\"input-group\">\n                    <div class=\"input-group-btn\">\n                        <button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\">Attribute <span class=\"caret\"></span></button>\n                        <ul id=\""
+    + alias3(((helper = (helper = helpers.attrListId || (depth0 != null ? depth0.attrListId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"attrListId","hash":{},"data":data}) : helper)))
+    + "\" class=\"dropdown-menu\" role=\"menu\"></ul>\n                    </div>\n                    <input type=\"text\" id=\""
     + alias3(((helper = (helper = helpers.findId || (depth0 != null ? depth0.findId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"findId","hash":{},"data":data}) : helper)))
-    + "\" class=\"form-control\" placeholder=\"Search\">\n                </div>\n                <div class=\"form-group btn-group\" data-toggle=\"buttons\">\n                    <label class=\"btn btn-default active\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Move\">\n                        <input type=\"radio\" name=\"move\" value=\"move\" autocomplete=\"off\" checked> <span class=\"glyphicon glyphicon-move\"></span>\n                    </label>\n                    <label class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Select\">\n                        <input type=\"radio\" name=\"move\" value=\"select\" autocomplete=\"off\"> <span class=\"glyphicon glyphicon-screenshot\"></span>\n                    </label>\n                </div>\n            </form>\n            <ul class=\"nav navbar-nav navbar-right\">\n                <li><a id=\""
+    + "\" class=\"form-control\" placeholder=\"Search\">\n                </div>\n                \n                <div class=\"form-group btn-group\" data-toggle=\"buttons\">\n                    <label class=\"btn btn-default active\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Move\">\n                        <input type=\"radio\" name=\"move\" value=\"move\" autocomplete=\"off\" checked> <span class=\"glyphicon glyphicon-move\"></span>\n                    </label>\n                    <label class=\"btn btn-default\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Select\">\n                        <input type=\"radio\" name=\"move\" value=\"select\" autocomplete=\"off\"> <span class=\"glyphicon glyphicon-screenshot\"></span>\n                    </label>\n                </div>\n            </form>\n            <ul class=\"nav navbar-nav navbar-right\">\n                <li><a id=\""
     + alias3(((helper = (helper = helpers.saveId || (depth0 != null ? depth0.saveId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"saveId","hash":{},"data":data}) : helper)))
     + "\" href=\"#save\"><span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Save\" ></span></a></li>\n                <li><a id=\""
     + alias3(((helper = (helper = helpers.pathwayId || (depth0 != null ? depth0.pathwayId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"pathwayId","hash":{},"data":data}) : helper)))
@@ -1313,7 +1298,7 @@ this["Templates"]["shortestpath"] = Handlebars.template({"1":function(depth0,hel
 },"useData":true});
 
 this["Templates"]["sidemenu"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<!-- Sliding div starts here -->\n\n<div class=\"side_content\">\n    \n    <div role=\"tabpanel\">\n\n        <br>\n        \n        <!-- Nav tabs -->\n        <ul class=\"nav nav-tabs\" role=\"tablist\">\n            <li role=\"presentation\" class=\"active\"><a href=\"#layout\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">Visualization</a></li>\n            <li role=\"presentation\"><a href=\"#algorithms\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Algorithms</a></li>\n        </ul>\n\n        <!-- Tab panes -->\n        <div class=\"tab-content\">\n            <div role=\"tabpanel\" class=\"tab-pane active\" id=\"layout\">\n                <br>\n                <div class=\"form-group col-xs-12\">                        \n                    <select class=\"form-control\" name=\"vizopt\">\n                        <option value=\"general\">General</option>\n                        <option value=\"node\">Node</option>\n                        <option value=\"edge\">Edge</option>\n                    </select>\n                </div>\n                \n                <form>\n                    <div id=\"general\" class=\"vizopt\">\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-4\">Background color</label>\n                            <div class=\"col-xs-8\">\n                                <input name=\"bgcolor\" type=\"text\" class=\"form-control minicolors-input\" data-control=\"hue\" value=\"#ffffff\">\n                            </div>\n                        </div>\n\n                        <div class=\"form-group col-xs-12\">\n                            <label class=\"col-xs-4\">Trim</label>\n                            <div class=\"col-xs-8\">\n                                <input name=\"trim\" type=\"checkbox\">\n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">\n                            <label class=\"col-xs-4\">Legend</label>\n                            <div class=\"col-xs-8\">\n                                <input name=\"legend\" type=\"checkbox\" value=\"data(id)\" checked=\"checked\">\n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Label Color</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"color\" type=\"text\" class=\"form-control minicolors-input graph_attribute\" data-control=\"hue\" value=\"#000000\">\n                            </div>\n                            <div class=\"col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Label Content</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"content\">\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                        \n                         <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Horizontal Align</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"text-halign\">\n                                    <option value=\"left\">Left</option>\n                                    <option value=\"center\" selected>Center</option>\n                                    <option value=\"right\">Right</option>\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Vertical Align</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"text-valign\">\n                                    <option value=\"left\">Top</option>\n                                    <option value=\"center\">Center</option>\n                                    <option value=\"bottom\" selected>Bottom</option>\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                        \n                    </div>\n                    \n                    <div id=\"edge\" class=\"vizopt\" style=\"display:none\">\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Color</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"line-color\" type=\"text\" class=\"form-control minicolors-input graph_attribute\" data-control=\"hue\" value=\"#dddddd\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Width</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"width\" class=\"form-control graph_attribute\" type=\"number\" min=\"1\" value=\"1\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Curve Style</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"curve-style\">\n                                    <option value=\"bezier\">Bezier</option>\n                                    <option value=\"haystack\" selected>Haystack</option>\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Line Style</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"line-style\">\n                                    <option value=\"dashed\">Dashed</option>\n                                    <option value=\"dotted\">Dotted</option>\n                                    <option value=\"solid\" selected>Solid</option>\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                    </div>\n                    \n                    <div id=\"node\" class=\"vizopt\" style=\"display:none\">\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Color</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"background-color\" type=\"text\" class=\"form-control minicolors-input graph_attribute\" data-control=\"hue\" value=\"#dddddd\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Shape</label>\n                            <div class=\"col-xs-7\">\n                                 <select class=\"form-control graph_attribute\" name=\"shape\">\n                                    <option value=\"ellipse\">Ellipse</option>\n                                    <option value=\"hexagon\">Hexagon</option>\n                                    <option value=\"heptagon\">Heptagon</option>\n                                    <option value=\"octagon\">Octagon</option>\n                                    <option value=\"pentagon\">Pentagon</option>\n                                    <option value=\"rectangle\">Rectangle</option>\n                                    <option value=\"roundrectangle\">Round rectangle</option>\n                                    <option value=\"star\">Star</option>\n                                    <option value=\"triangle\">Triangle</option>\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Width</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"width\" class=\"form-control graph_attribute\" type=\"number\" min=\"1\" value=\"20\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Height</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"height\" class=\"form-control graph_attribute\" type=\"number\" min=\"1\" value=\"20\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Opacity</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"background-opacity\" type=\"number\" class=\"form-control graph_attribute\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border width</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"border-width\" class=\"form-control graph_attribute\" type=\"number\" min=\"0\" value=\"0\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border Style</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"border-style\">\n                                    <option value=\"dashed\">Dashed</option>\n                                    <option value=\"dotted\">Dotted</option>\n                                    <option value=\"double\">Double</option>\n                                    <option value=\"solid\" selected>Solid</option>                                  \n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border Color</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"border-color\" type=\"text\" class=\"form-control minicolors-input graph_attribute\" data-control=\"hue\" value=\"#000000\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border Opacity</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"border-opacity\" type=\"number\" class=\"form-control graph_attribute\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                    </div>\n                </form>\n            </div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"algorithms\"></div>\n        </div>\n\n    </div>\n</div>\n<!-- Sliding div ends here -->";
+    return "<!-- Sliding div starts here -->\n\n<div class=\"side_content\">\n    \n    <div role=\"tabpanel\">\n\n        <br>\n        \n        <!-- Nav tabs -->\n        <ul class=\"nav nav-tabs\" role=\"tablist\">\n            <li role=\"presentation\" class=\"active\"><a href=\"#layout\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">Visualization</a></li>\n            <li role=\"presentation\"><a href=\"#algorithms\" aria-controls=\"profile\" role=\"tab\" data-toggle=\"tab\">Algorithms</a></li>\n        </ul>\n\n        <!-- Tab panes -->\n        <div class=\"tab-content\">\n            <div role=\"tabpanel\" class=\"tab-pane active\" id=\"layout\">\n                <br>\n                <div class=\"form-group col-xs-12\">                        \n                    <select class=\"form-control\" name=\"vizopt\">\n                        <option value=\"general\">General</option>\n                        <option value=\"node\">Node</option>\n                        <option value=\"edge\">Edge</option>\n                    </select>\n                </div>\n                \n                <form>\n                    <div id=\"general\" class=\"vizopt\">\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-4\">Background color</label>\n                            <div class=\"col-xs-8\">\n                                <input name=\"bgcolor\" type=\"text\" class=\"form-control minicolors-input\" data-control=\"hue\" value=\"#ffffff\">\n                            </div>\n                        </div>\n\n                        <!--<div class=\"form-group col-xs-12\">\n                            <label class=\"col-xs-4\">Trim</label>\n                            <div class=\"col-xs-8\">\n                                <input name=\"trim\" type=\"checkbox\">\n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">\n                            <label class=\"col-xs-4\">Legend</label>\n                            <div class=\"col-xs-8\">\n                                <input name=\"legend\" type=\"checkbox\" value=\"data(id)\" checked=\"checked\">\n                            </div>\n                        </div>-->\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Label Color</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"color\" type=\"text\" class=\"form-control minicolors-input graph_attribute\" data-control=\"hue\" value=\"#000000\">\n                            </div>\n                            <div class=\"col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Label Content</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"content\">\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                        \n                         <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Horizontal Align</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"text-halign\">\n                                    <option value=\"left\">Left</option>\n                                    <option value=\"center\" selected>Center</option>\n                                    <option value=\"right\">Right</option>\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Vertical Align</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"text-valign\">\n                                    <option value=\"left\">Top</option>\n                                    <option value=\"center\">Center</option>\n                                    <option value=\"bottom\" selected>Bottom</option>\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                        \n                    </div>\n                    \n                    <div id=\"edge\" class=\"vizopt\" style=\"display:none\">\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Color</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"line-color\" type=\"text\" class=\"form-control minicolors-input graph_attribute\" data-control=\"hue\" value=\"#dddddd\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Width</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"width\" class=\"form-control graph_attribute\" type=\"number\" min=\"1\" value=\"1\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Curve Style</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"curve-style\">\n                                    <option value=\"bezier\">Bezier</option>\n                                    <option value=\"haystack\" selected>Haystack</option>\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Line Style</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"line-style\">\n                                    <option value=\"dashed\">Dashed</option>\n                                    <option value=\"dotted\">Dotted</option>\n                                    <option value=\"solid\" selected>Solid</option>\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                            </div>\n                        </div>\n                    </div>\n                    \n                    <div id=\"node\" class=\"vizopt\" style=\"display:none\">\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Color</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"background-color\" type=\"text\" class=\"form-control minicolors-input graph_attribute\" data-control=\"hue\" value=\"#dddddd\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Shape</label>\n                            <div class=\"col-xs-7\">\n                                 <select class=\"form-control graph_attribute\" name=\"shape\">\n                                    <option value=\"ellipse\">Ellipse</option>\n                                    <option value=\"hexagon\">Hexagon</option>\n                                    <option value=\"heptagon\">Heptagon</option>\n                                    <option value=\"octagon\">Octagon</option>\n                                    <option value=\"pentagon\">Pentagon</option>\n                                    <option value=\"rectangle\">Rectangle</option>\n                                    <option value=\"roundrectangle\">Round rectangle</option>\n                                    <option value=\"star\">Star</option>\n                                    <option value=\"triangle\">Triangle</option>\n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Width</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"width\" class=\"form-control graph_attribute\" type=\"number\" min=\"1\" value=\"20\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Height</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"height\" class=\"form-control graph_attribute\" type=\"number\" min=\"1\" value=\"20\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Opacity</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"background-opacity\" type=\"number\" class=\"form-control graph_attribute\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border width</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"border-width\" class=\"form-control graph_attribute\" type=\"number\" min=\"0\" value=\"0\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border Style</label>\n                            <div class=\"col-xs-7\">\n                                <select class=\"form-control graph_attribute\" name=\"border-style\">\n                                    <option value=\"dashed\">Dashed</option>\n                                    <option value=\"dotted\">Dotted</option>\n                                    <option value=\"double\">Double</option>\n                                    <option value=\"solid\" selected>Solid</option>                                  \n                                </select>\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border Color</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"border-color\" type=\"text\" class=\"form-control minicolors-input graph_attribute\" data-control=\"hue\" value=\"#000000\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                        \n                        <div class=\"form-group col-xs-12\">                        \n                            <label class=\"col-xs-3\">Border Opacity</label>\n                            <div class=\"col-xs-7\">\n                                <input name=\"border-opacity\" type=\"number\" class=\"form-control graph_attribute\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n                            </div>\n                            <div class=\" col-xs-2\" role=\"group\">\n                                <button style=\"height:34px\" type=\"button\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-cog\"></span></button>                  \n                                \n                            </div>\n                        </div>\n                    </div>\n                </form>\n            </div>\n            <div role=\"tabpanel\" class=\"tab-pane\" id=\"algorithms\"></div>\n        </div>\n\n    </div>\n</div>\n<!-- Sliding div ends here -->";
 },"useData":true});
 
 this["Templates"]["springy"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
@@ -1341,27 +1326,18 @@ module.exports = Backbone.View.extend({
     
     render: function(node){
         
-        var tax = _.map(node.taxonomy, function(t){
-            var taxonomy = App.model.attributes.taxa[t];
-
-            var taxStr = taxonomy.scientificname;
-            taxStr = (taxonomy.commonname.length) ? taxStr + ' (' + taxonomy.commonname + ')' : taxStr;
-
-            return taxStr;
-        });
-        
-        
-        var tpl = templates.dialog({title : node.id, subtitle: tax.join(' - '), dialId : _dialId});    
+        var title = (node.uniprot.length) ? node.id +' - (' + node.uniprot +')' : node.id;
+        var tpl = templates.dialog({title : title, dialId : _dialId});    
         $(this.container).html(tpl);
         $('#' + _dialId).modal('show');
-        
         
         if(!_.has(_map, node.id)){
             
             var self = this;
-            var protein = new UPprotein({ id:node.id });
+            var protein = new UPprotein({ id: (node.uniprot.length) ? node.uniprot : node.id });
             protein.fetch({
                 error : function (errorResponse, a) {
+                    $('#' + _dialId + ' .modal-body').html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">No UniProt information available for '+ (node.uniprot.length) ? node.uniprot : node.id+'</span></div>');
                     console.error(errorResponse, a);
                 },
                 contentType : 'text/xml',
@@ -1569,6 +1545,8 @@ module.exports = Backbone.View.extend({
         }else if(mapping === 'transform' && this.transform.able){
             App.views.graph.applyTransform(this.group, attr, cssAttr, this.transform.min.value, this.transform.max.value, $('input[name=min]').val(), $('input[name=max]').val());
         }
+        
+        $('#' + _dialId).modal('hide');
     }
 });
 },{"../templates":14}],17:[function(require,module,exports){
@@ -1753,57 +1731,14 @@ module.exports = Backbone.View.extend({
     },
     
     applyTransform : function(group, attribute, style, min, max, mint, maxt){
-        console.log(arguments);
         
         var css = (group === 'edge') ? _style[1].css : _style[0].css;
         css[style] = 'mapData(' + attribute + ',' + min + ',' + max + ',' + mint + ',' + maxt + ')';
         
-        console.log(css[style], _style[0].css);
         //update cy
         if(this.cy){
             this.cy.style(_style);
         }
-    },
-    
-    score : function(_){
-        
-        if (!arguments.length) return _score;
-        _score = _;
-        
-        var edgeStyle = _style[1].css;
-        edgeStyle.opacity = 0.666;
-        edgeStyle.width = 1;
-        edgeStyle['line-color'] = '#ddd';
-        
-        if(_score[0] !== 'none'){ 
-            if(_score[1] === 'opacity'){
-                edgeStyle.opacity = 'mapData(scre.'+_score[0]+', 0, 1, 0, 1)';
-                edgeStyle['line-color'] = '#000';
-            }else if(_score[1] === 'width'){
-                edgeStyle.width = 'mapData(scre.'+_score[0]+', 0, 1, 1, 5)';
-            }
-        }
-        
-        if(this.cy) this.cy.style(_style);
-        
-        return this;
-    },
-    
-    find : function(searchTerm){
-        
-        if(!this.cy) return;
-        
-        var searchRegEx = new RegExp(searchTerm.toLowerCase());
-        
-        this.cy.nodes().unselect();
-        
-        if(searchTerm.length === 0) return;
-        
-        _.each(this.cy.nodes(), function(n, i){
-            if(n.id().toLocaleLowerCase().search(searchRegEx) >= 0){
-                n.select();
-            }
-        });
     },
     
     algorithm : function(algorithm, options){
@@ -2210,7 +2145,7 @@ module.exports = Backbone.View.extend({
 },{"../templates":14}],22:[function(require,module,exports){
 var templates = require('../templates');
 
-var _pathwayId = _.uniqueId('pathway_'), _settingsId = _.uniqueId('settings_'), _findId = _.uniqueId('find_'), _saveId = _.uniqueId('save_'), _importId = _.uniqueId('import_'), _layoutId = _.uniqueId('layout_');
+var _pathwayId = _.uniqueId('pathway_'), _settingsId = _.uniqueId('settings_'), _findId = _.uniqueId('find_'), _saveId = _.uniqueId('save_'), _importId = _.uniqueId('import_'), _layoutId = _.uniqueId('layout_'), _attrListId = _.uniqueId('attrList_');
 
 module.exports = Backbone.View.extend({
     
@@ -2223,9 +2158,11 @@ module.exports = Backbone.View.extend({
         this.events['click #' + _saveId] = 'onSave';
         this.events['click #' + _importId] = 'onImport';
         this.events['click #' + _layoutId + ' a'] = 'onLayout';
+        this.events['click #' + _attrListId + ' a'] = 'onSearchAttrClick';
         
         // Update when graph is ready
         this.listenTo(Backbone, 'layout_changed', this.onLayoutChanged);
+        this.listenTo(Backbone, 'got_data', this.onGotData);
     },
     
     events: {
@@ -2240,8 +2177,8 @@ module.exports = Backbone.View.extend({
             settingsId : _settingsId,
             findId : _findId,
             saveId : _saveId,
-            layoutId:_layoutId
-        
+            layoutId : _layoutId,
+            attrListId : _attrListId
         });
         $(this.options.el).append(tpl);
     },
@@ -2269,7 +2206,17 @@ module.exports = Backbone.View.extend({
     
     onFind : function(e){
         var searchTerm = $('#' + _findId).val();
-        App.views.graph.find(searchTerm);
+        var attr = $('#' + _attrListId + ' .glyphicon-ok').parent().text();
+        
+        var cy = App.views.graph.cy;
+        if(cy){
+            cy.elements().unselect();
+            
+            if(searchTerm.length){
+                searchTerm = (_.isNaN(+searchTerm)) ? '"' + searchTerm + '"' : +searchTerm;
+                cy.elements('[' + attr + ' *= ' + searchTerm + ']').select();
+            }
+        }      
     },
     
     onImport: function(e){
@@ -2292,7 +2239,6 @@ module.exports = Backbone.View.extend({
     },
     
     onLayoutChanged : function(l){
-        console.log(l);
         $('#' + _layoutId + ' a').each(function(){
             var link = $(this);
             var layout = link.text().toLowerCase().trim();
@@ -2308,6 +2254,23 @@ module.exports = Backbone.View.extend({
     onMoveChange:function(e){
         var val = ($(e.target).val() === 'select') ? true : false;
         App.views.graph.boxSelectionEnabled(val);
+    },
+    
+    onSearchAttrClick : function(e){
+        $('#' + _attrListId + ' span').removeClass('glyphicon-ok');
+        $(e.target).children().addClass('glyphicon-ok');
+    },
+    
+    onGotData : function(e){
+        var attrs = [].concat(App.model.attributes.nodeAttributes, App.model.attributes.edgeAttributes);
+        attrs = _.uniq(attrs);
+        
+        var aStr = '';
+        _.each(attrs, function(a, i){
+            var cl = (i === 0) ? 'glyphicon-ok' : '';
+            aStr += '<li><a href="#">' + a + ' <span class="glyphicon ' + cl + '" aria-hidden="true"></span></a></li>';
+        });
+        $('#' + _attrListId).html(aStr);
     }
 });
 },{"../templates":14}],23:[function(require,module,exports){
@@ -2418,7 +2381,18 @@ module.exports = Backbone.View.extend({
     },
     
     onAttrChange : function(e){
-        this.getElements().css($(e.target).attr('name'), $(e.target).val());
+        var attr = $(e.target).attr('name'), val = $(e.target).val();
+        
+        if(attr !== 'content'){
+            this.getElements().css(attr, val);
+        }else{
+            var elements = this.getElements();
+            App.views.graph.cy.batch(function(){
+                elements.filter('[' + val + ']').forEach(function(ele){
+                    ele.css(attr, ele.data(val));
+                });
+            });
+        }
     },
     
     onVizOptChange : function(e){
@@ -4153,14 +4127,16 @@ module.exports = MITab = (function() {
         var gNameStr = _.find(aliases, function(a){ return a.match(geneName);});
         gNameStr = (gNameStr === undefined) ? _.find(aliases, function(a){ return a.match(geneNameSynonym); }) : gNameStr;
         
-        var ids = _.map(idStr.split('|'), _mapPub);
+        
+        var ids = [].concat(idStr.split('|'), altIdsStr.split('|'), aliasStr.split('|'));
+        ids = _.map(ids, _mapPub);
         
         //Find Uniprot if there
         var id = _.find(ids, function(id){
             return id.name === 'uniprotkb';
         });
         var node = {
-            id: (id === undefined) ? ids[0].value : id.value,
+            id: ids[0].value,
             ids: ids,
             uniprot: (id === undefined) ? '' : id.value,
             geneName: (gNameStr === undefined) ? '' : gNameStr.match(textInTax)[1],
