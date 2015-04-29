@@ -13,7 +13,6 @@
             <ul class="nav navbar-nav">
               <!--<li class="active"><a href="#">Home</a></li>-->
               <li><a href="#" id="{{importId}}" data-toggle="tooltip" data-placement="bottom" title="Import Network from database"><span class="glyphicon glyphicon-import" aria-hidden="true"></span> Import Network</a></li>
-              <li><a href="#">Contact</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Layout <span class="caret"></span></a>
                 <ul id={{layoutId}} class="dropdown-menu" role="menu">
@@ -32,9 +31,14 @@
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 
-                <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Attribute <span class="caret"></span></button>
+                        <ul id="{{attrListId}}" class="dropdown-menu" role="menu"></ul>
+                    </div>
                     <input type="text" id="{{findId}}" class="form-control" placeholder="Search">
                 </div>
+                
                 <div class="form-group btn-group" data-toggle="buttons">
                     <label class="btn btn-default active" data-toggle="tooltip" data-placement="bottom" title="Move">
                         <input type="radio" name="move" value="move" autocomplete="off" checked> <span class="glyphicon glyphicon-move"></span>
