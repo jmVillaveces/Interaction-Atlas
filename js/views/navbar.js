@@ -42,8 +42,7 @@ module.exports = Backbone.View.extend({
         e.stopPropagation();
         e.preventDefault();
         
-        console.warn('TODO: PathwayClicked');
-        Backbone.trigger('pathway');
+        App.views.pathway.render();
     },
     
     onSave : function(e){
