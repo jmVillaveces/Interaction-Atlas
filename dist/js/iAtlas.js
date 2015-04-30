@@ -349,6 +349,12 @@ module.exports = Backbone.Model.extend({
             return l;
         }, this);
         
+        mitab.nodes = _.map(mitab.nodes, function(n){
+            n.taxonomy = n.taxonomy.join(', ');
+            n.taxonomy = (_.isNaN(n.taxonomy)) ? n.taxonomy : +n.taxonomy;
+            return n;
+        });
+        
         this.attributes.interactors.set(mitab.nodes);
         this.attributes.interactions.set(mitab.links);
         this.attributes.scores = mitab.scores;
@@ -1148,7 +1154,7 @@ this["Templates"]["main"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"
 this["Templates"]["navbar"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
-  return "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n    <div class=\"container\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Protein Interaction Atlas\" href=\"#\"><img src=\"favicon.ico\"> iAtlas</a>\n        </div>\n        <div id=\"navbar\" class=\"navbar-collapse collapse\">\n            <ul class=\"nav navbar-nav\">\n              <!--<li class=\"active\"><a href=\"#\">Home</a></li>-->\n              <li><a href=\"#\" id=\""
+  return "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n    <div class=\"container\">\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Protein Interaction Atlas\" href=\"#\"><img class=\"rotate\" src=\"favicon.ico\"> iAtlas</a>\n        </div>\n        <div id=\"navbar\" class=\"navbar-collapse collapse\">\n            <ul class=\"nav navbar-nav\">\n              <!--<li class=\"active\"><a href=\"#\">Home</a></li>-->\n              <li><a href=\"#\" id=\""
     + alias3(((helper = (helper = helpers.importId || (depth0 != null ? depth0.importId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"importId","hash":{},"data":data}) : helper)))
     + "\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Import Network from database\"><span class=\"glyphicon glyphicon-import\" aria-hidden=\"true\"></span> Import Network</a></li>\n              <li class=\"dropdown\">\n                <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Layout <span class=\"caret\"></span></a>\n                <ul id="
     + alias3(((helper = (helper = helpers.layoutId || (depth0 != null ? depth0.layoutId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"layoutId","hash":{},"data":data}) : helper)))
@@ -1519,7 +1525,8 @@ module.exports = Backbone.View.extend({
         }else if(mapping === 'discrete'){
             App.views.graph.cy.batch(function(){
                 _.each($('#discrete input'), function(i){
-                    elements.filter('[' + attr + '="' + $(i).prop('name') + '"]').forEach(function(ele){
+                    var searchTerm = (_.isNaN(+$(i).prop('name'))) ? '"' + $(i).prop('name') + '"' : +$(i).prop('name');
+                    elements.filter('[' + attr + '=' + searchTerm + ']').forEach(function(ele){
                         ele.css(cssAttr, $(i).val());
                     });
                 });
@@ -2291,7 +2298,7 @@ module.exports = Backbone.View.extend({
         });
         
         $.ajax({
-            url: "http://www.reactosme.org:80/AnalysisService/identifiers/?pageSize=20&page=1&sortBy=ENTITIES_PVALUE&order=ASC&resource=TOTAL",
+            url: "http://www.reactome.org:80/AnalysisService/identifiers/?pageSize=20&page=1&sortBy=ENTITIES_PVALUE&order=ASC&resource=TOTAL",
             type:'text/plain',
             method: 'POST',
             data: data.join('\n'),
