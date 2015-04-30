@@ -110,6 +110,7 @@ module.exports = Backbone.View.extend({
                 .done(function(){
                     if(App.model.get('interactions').length === 0){
                         logger.html('<p class="text-warning"> No interactions found </p>');
+                        $btn.button('reset');
                     }else{
                         $('#' + _dialId).modal('hide');
                         logger.html('');
