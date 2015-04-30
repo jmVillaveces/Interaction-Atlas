@@ -403,43 +403,19 @@ this["Templates"]["network"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta
 },"usePartial":true,"useData":true});
 
 this["Templates"]["pathway"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
-    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression, alias4=this.lambda;
+    var stack1, helper, alias1=this.lambda, alias2=this.escapeExpression, alias3=helpers.helperMissing, alias4="function";
 
-  return "    <div class='panel panel-default'>\n        <div class='panel-heading' role='tab' id='heading"
-    + alias3(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"key","hash":{},"data":data}) : helper)))
-    + "'>\n            <h4 class='panel-title text-capitalize'>\n                <a class='collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapse"
-    + alias3(((helper = (helper = helpers.stId || (depth0 != null ? depth0.stId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"stId","hash":{},"data":data}) : helper)))
-    + "' aria-expanded='false' aria-controls='collapse"
-    + alias3(((helper = (helper = helpers.stId || (depth0 != null ? depth0.stId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"stId","hash":{},"data":data}) : helper)))
-    + "'>\n                    "
-    + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
-    + " <span class='badge pull-right'> "
-    + alias3(alias4(((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.found : stack1), depth0))
+  return "            <tr>\n                <td><span class='badge pull-right'> "
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.found : stack1), depth0))
     + " / "
-    + alias3(alias4(((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.total : stack1), depth0))
-    + " </span>\n                </a>\n            </h4>\n        </div>\n        <div id='collapse"
-    + alias3(((helper = (helper = helpers.stId || (depth0 != null ? depth0.stId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"stId","hash":{},"data":data}) : helper)))
-    + "' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading"
-    + alias3(((helper = (helper = helpers.stId || (depth0 != null ? depth0.stId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"stId","hash":{},"data":data}) : helper)))
-    + "'>\n            <div class='panel-body'>\n                \n                <div class=\"row\">\n                    <div class=\"col-md-6\">\n                        <h5>Entities</h5>\n                        <p>\n                            <strong>Fdr:</strong> "
-    + alias3(alias4(((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.fdr : stack1), depth0))
-    + "<br>\n                            <strong>pValue:</strong> "
-    + alias3(alias4(((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.pValue : stack1), depth0))
-    + "<br>\n                            <strong>Ratio:</strong> "
-    + alias3(alias4(((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.ratio : stack1), depth0))
-    + "<br>\n                            Found <strong>"
-    + alias3(alias4(((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.found : stack1), depth0))
-    + "</strong> out of <strong>"
-    + alias3(alias4(((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.total : stack1), depth0))
-    + "</strong><br>\n                        </p>\n                    </div>\n                    <div class=\"col-md-6\">\n                        <h5>Reactions</h5>\n                        <p>\n                            <strong>Ratio:</strong> "
-    + alias3(alias4(((stack1 = (depth0 != null ? depth0.reactions : depth0)) != null ? stack1.ratio : stack1), depth0))
-    + "<br>\n                            Found <strong>"
-    + alias3(alias4(((stack1 = (depth0 != null ? depth0.reactions : depth0)) != null ? stack1.found : stack1), depth0))
-    + "</strong> out of <strong>"
-    + alias3(alias4(((stack1 = (depth0 != null ? depth0.reactions : depth0)) != null ? stack1.total : stack1), depth0))
-    + "</strong><br>\n                        </p>\n                    </div>\n                </div>\n                \n                <p>\n                    <a href='http://www.reactome.org/content/detail/"
-    + alias3(((helper = (helper = helpers.stId || (depth0 != null ? depth0.stId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"stId","hash":{},"data":data}) : helper)))
-    + "' target='_blank'>\n                        <button type='button' class='btn btn-info' aria-label='Left Align'>\n                          <span class='glyphicon glyphicon glyphicon-share-alt' aria-hidden='true'></span> See in Reactome\n                        </button>\n                    </a>\n                </p>\n            </div>\n        </div>\n    </div>\n";
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.total : stack1), depth0))
+    + " </span></td>\n                <td>"
+    + alias2(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</td>\n                <td>"
+    + alias2((helpers.toFixed || (depth0 && depth0.toFixed) || alias3).call(depth0,((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.pValue : stack1),5,{"name":"toFixed","hash":{},"data":data}))
+    + "</td>\n                <td><a class=\"btn btn-info\" href=\"http://www.reactome.org/content/detail/"
+    + alias2(((helper = (helper = helpers.stId || (depth0 != null ? depth0.stId : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(depth0,{"name":"stId","hash":{},"data":data}) : helper)))
+    + "\" target='_blank' role=\"button\"><span class=\"glyphicon glyphicon-new-window\" aria-hidden=\"true\"></span></a></td>\n            </tr>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=this.escapeExpression, alias2=helpers.helperMissing, alias3="function";
 
@@ -449,9 +425,9 @@ this["Templates"]["pathway"] = Handlebars.template({"1":function(depth0,helpers,
     + alias1(((helper = (helper = helpers.pathwaysFound || (depth0 != null ? depth0.pathwaysFound : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(depth0,{"name":"pathwaysFound","hash":{},"data":data}) : helper)))
     + "</strong>.\n    </div>\n    <div class='col-md-6'>\n        <span style='color:red'><strong>"
     + alias1(((helper = (helper = helpers.identifiersNotFound || (depth0 != null ? depth0.identifiersNotFound : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(depth0,{"name":"identifiersNotFound","hash":{},"data":data}) : helper)))
-    + "</strong></span> identifiers not found.<br> \n    </div>\n</div>\n\n<div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>\n\n"
+    + "</strong></span> identifiers not found.<br> \n    </div>\n</div>\n\n<table class=\"table table-hover\">\n    <thead>\n        <tr>\n            <th>Found</th>\n            <th>Pathway</th>\n            <th>P-value</th>\n            <th></th>\n        </tr>\n    </thead>\n    <tbody>\n"
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.pathways : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "    \n</div>";
+    + "    </tbody>\n</table>";
 },"useData":true});
 
 this["Templates"]["portfolio"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
