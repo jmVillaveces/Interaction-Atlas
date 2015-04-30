@@ -18,7 +18,6 @@ module.exports = Backbone.Model.extend({
         interactors: new Interactors(),
         interactions: new Interactions(),
         taxa : {},
-        scores : [],
         nodeAttributes : ['id', 'degree', 'taxonomy', 'uniprot', 'geneName'],
         edgeAttributes : ['detMethods', 'intTypes', 'sourceDbs']
     },
@@ -40,13 +39,20 @@ module.exports = Backbone.Model.extend({
         
         var mitab = require('biojs-io-mitab').parse(response);
         
+        var scores = [];
         mitab.links = _.map(mitab.links, function(l){
             _.each(this.attributes.edgeAttributes, function(attr){
                 l[attr] = _.map(l[attr], function(e){
                     return e.value;
                 }, this).join(', '); 
             });
-            
+        
+            _.each(l.scores, function(s){
+                if(!_.isNaN(s.score)){
+                    l[s.name] = (_.isNaN(+s.score)) ? s.score : +s.score;
+                    scores.push(s.name);
+                }
+            });
             return l;
         }, this);
         
@@ -56,9 +62,9 @@ module.exports = Backbone.Model.extend({
             return n;
         });
         
+        this.attributes.edgeAttributes = this.attributes.edgeAttributes.concat(_.uniq(scores));
         this.attributes.interactors.set(mitab.nodes);
         this.attributes.interactions.set(mitab.links);
-        this.attributes.scores = mitab.scores;
 
         return this.attributes;
     },
