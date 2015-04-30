@@ -152,7 +152,8 @@ module.exports = Backbone.View.extend({
         }else if(mapping === 'discrete'){
             App.views.graph.cy.batch(function(){
                 _.each($('#discrete input'), function(i){
-                    elements.filter('[' + attr + '="' + $(i).prop('name') + '"]').forEach(function(ele){
+                    var searchTerm = (_.isNaN(+$(i).prop('name'))) ? '"' + $(i).prop('name') + '"' : +$(i).prop('name');
+                    elements.filter('[' + attr + '=' + searchTerm + ']').forEach(function(ele){
                         ele.css(cssAttr, $(i).val());
                     });
                 });
