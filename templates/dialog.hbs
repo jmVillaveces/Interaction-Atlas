@@ -13,7 +13,7 @@
             </div>
             <div class='modal-footer'>
                 {{#if okBtn}}
-                    <button id="{{okBtnId}}" type='button' class='btn btn-info'>{{#if okBtnIcon}}<span class='glyphicon {{okBtnIcon}}'></span> {{/if}}{{okBtn}}</button>
+                    <button id="{{okBtnId}}" {{#if loading}} data-loading-text="{{loading}}" {{/if}} type='button' class='btn btn-info'>{{#if okBtnIcon}}<span class='glyphicon {{okBtnIcon}}'></span> {{/if}}{{okBtn}}</button>
                 {{/if}}
                 <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
             </div>
