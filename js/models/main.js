@@ -50,6 +50,12 @@ module.exports = Backbone.Model.extend({
             return l;
         }, this);
         
+        mitab.nodes = _.map(mitab.nodes, function(n){
+            n.taxonomy = n.taxonomy.join(', ');
+            n.taxonomy = (_.isNaN(n.taxonomy)) ? n.taxonomy : +n.taxonomy;
+            return n;
+        });
+        
         this.attributes.interactors.set(mitab.nodes);
         this.attributes.interactions.set(mitab.links);
         this.attributes.scores = mitab.scores;
