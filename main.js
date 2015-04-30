@@ -30,6 +30,7 @@ App.init = function(options){
     var Logger = require('./js/views/logger');
     var Graph = require('./js/views/graph');
     var UPDialog = require('./js/views/UPdialog');
+    var Pathway = require('./js/views/pathway');
     var Import = require('./js/views/import');
     var Layout = require('./js/views/layout');
 
@@ -50,6 +51,7 @@ App.init = function(options){
     App.views.UPDialog = new UPDialog({el:'#dialog'});
     App.views.import = new Import({el:'#dialog'});
     App.views.layout = new Layout({el:'#dialog'});
+    App.views.pathway = new Pathway({el:'#dialog'});
 
     //Logger
     App.views.logger = new Logger({el:'#logger'});
