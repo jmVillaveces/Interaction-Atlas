@@ -8,6 +8,12 @@
         }).join( sep );
     });
     
+    //round numbers
+    Handlebars.registerHelper('toFixed', function (value, digits, options) {
+        digits = (digits) ? digits : 3;
+        return value.toFixed(digits);
+    });
+    
     //Comparator
     Handlebars.registerHelper('compare', function (lvalue, operator, rvalue, options) {
         
