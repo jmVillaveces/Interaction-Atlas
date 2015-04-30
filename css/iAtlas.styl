@@ -2,7 +2,6 @@
 @import 'jquery.minicolors.css'
 
 body{
-    /*background-image: embedurl('../img/bg-t.jpg');*/
     overflow: hidden;
 }
 
@@ -17,66 +16,6 @@ body{
 .poiret{
     font-family: 'Poiret One';
 }
-
-
-/* Expression 
-div.GeneExpressionSummary {
-  margin:0px;
-  padding:0px;
-}
-
-div.GeneExpressionSummary_title {
-	font-size:120%;
-	font-weight: bold;
-	margin-bottom:15px;
-}
-
-.GeneExpressionSummary_table{
-	margin: 0;
-    padding: 0;
-    border: 0;
-}
-
-div.GeneExpressionSummary table tr td {
-	vertical-align:top;
-}
-
-div.GeneExpressionSummary table {
-	padding-left:20px;
-}
-
-div.GeneExpressionSummary_image {
-  border: thin silver solid;
-}
-
-div.GeneExpressionSummary_image p {
-  text-align: justify;
-  font-style: italic;
-  font-size:85%;
-  text-indent: 0;
-  margin:10px;
-}
-
-.GeneExpressionSummary_subtitle {
-	text-transform: uppercase;
-	font-size:85%;
-	font-weight:bold;
-}
-.GeneExpressionSummary_feature{
-	margin-top:5px;
-	margin-bottom:15px;
-}
-
-div.GeneExpressionSummary_summary {
-
-}
-
-div.GeneExpressionSummary_footer {
-  text-align: justify;
-  font-style: italic;
-  font-size: 85%;
-  text-indent: 0;
-}*/
 
 /* Side Menu */
 .side_container {
@@ -93,7 +32,7 @@ div.GeneExpressionSummary_footer {
     position:absolute;
     right:0;
     margin-left:40px;
-    background-color:#f8f8f8;
+    background-color:#fff;
     overflow-y:scroll;
     padding-left:5px;
     
@@ -137,4 +76,15 @@ div.GeneExpressionSummary_footer {
     min-width: 100px;
     margin-top: 55px;
     margin-right: 10px;
+}
+
+/* Rotate image */
+.rotate {
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
+}
+
+.rotate:hover {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
