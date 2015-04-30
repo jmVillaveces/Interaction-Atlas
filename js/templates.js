@@ -229,11 +229,19 @@ this["Templates"]["dialog"] = Handlebars.template({"1":function(depth0,helpers,p
 
   return "                    <button id=\""
     + alias3(((helper = (helper = helpers.okBtnId || (depth0 != null ? depth0.okBtnId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"okBtnId","hash":{},"data":data}) : helper)))
-    + "\" type='button' class='btn btn-info'>"
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.okBtnIcon : depth0),{"name":"if","hash":{},"fn":this.program(6, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "\" "
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.loading : depth0),{"name":"if","hash":{},"fn":this.program(6, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + " type='button' class='btn btn-info'>"
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.okBtnIcon : depth0),{"name":"if","hash":{},"fn":this.program(8, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + alias3(((helper = (helper = helpers.okBtn || (depth0 != null ? depth0.okBtn : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"okBtn","hash":{},"data":data}) : helper)))
     + "</button>\n";
 },"6":function(depth0,helpers,partials,data) {
+    var helper;
+
+  return " data-loading-text=\""
+    + this.escapeExpression(((helper = (helper = helpers.loading || (depth0 != null ? depth0.loading : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"loading","hash":{},"data":data}) : helper)))
+    + "\" ";
+},"8":function(depth0,helpers,partials,data) {
     var helper;
 
   return "<span class='glyphicon "
