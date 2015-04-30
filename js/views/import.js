@@ -27,6 +27,7 @@ module.exports = Backbone.View.extend({
             icon : 'glyphicon-import', 
             okBtn : 'Update', 
             okBtnIcon : 'glyphicon-refresh',
+            loading : 'Loading ...',
             dialId : _dialId,
             okBtnId : _okBtnId
         };
@@ -69,6 +70,8 @@ module.exports = Backbone.View.extend({
     
     onOkButton : function(e){
         
+        var $btn = $(e.target).button('loading');
+        
         var active = $('#'+_dialId).find('.tab-pane.active').attr('id');
         var logger = $('#'+_logId);
         
@@ -101,6 +104,7 @@ module.exports = Backbone.View.extend({
                     error: function (errorResponse, a) {
                         console.error('Ajax Error, could not fetch interactions from', db);
                         logger.html('<p class="text-danger">Ajax Error, could not fetch interactions from ' + db + '</p>');
+                        $btn.button('reset');
                     }
                 })
                 .done(function(){
@@ -108,6 +112,8 @@ module.exports = Backbone.View.extend({
                         logger.html('<p class="text-warning"> No interactions found </p>');
                     }else{
                         $('#' + _dialId).modal('hide');
+                        logger.html('');
+                        $btn.button('reset');
                         Backbone.trigger('got_data');
                     }
                 });
@@ -144,6 +150,8 @@ module.exports = Backbone.View.extend({
                     model.attributes.nodeAttributes = (nodes.length) ? _.keys(nodes[0]) : [];
                     
                     $('#' + _dialId).modal('hide');
+                    logger.html('');
+                    $btn.button('reset');
                     Backbone.trigger('got_data');
                 });
             });
