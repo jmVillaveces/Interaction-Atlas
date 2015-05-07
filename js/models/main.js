@@ -1,6 +1,8 @@
 var Interactors = require('../collections/interactors.js');
 var Interactions = require('../collections/interactions.js');
 
+var _edgeAttributes = ['detMethods', 'intTypes', 'sourceDbs'];
+
 module.exports = Backbone.Model.extend({
     
     initialize: function(){
@@ -24,13 +26,12 @@ module.exports = Backbone.Model.extend({
     
      url: function() {
          
-         
         var query = (this.attributes.ids.length) ? this.attributes.ids.join(' OR ') : this.attributes.query;
          
         query = (this.attributes.orgs.length) ? 'id:(' + query + ') AND species:(' + this.attributes.orgs.join(' OR ') + ')' : query;
         query += '?firstResult=0&maxResults=3000';
         
-        url = (this.attributes.proxy) ? this.attributes.proxy + this.attributes.server + query : this.attributes.server + query;
+        var url = (this.attributes.proxy) ? this.attributes.proxy + this.attributes.server + query : this.attributes.server + query;
         
         return url;
     },
@@ -48,9 +49,12 @@ module.exports = Backbone.Model.extend({
             });
         
             _.each(l.scores, function(s){
+                var name = s.name.replace(/ |-/g,'_');
+                var val = (_.isNaN(+s.score)) ? (s.score.length) ? s.score : NaN : +s.score;
+                
                 if(!_.isNaN(s.score)){
-                    l[s.name] = (_.isNaN(+s.score)) ? s.score : +s.score;
-                    scores.push(s.name);
+                    l[name] = val;
+                    scores.push(name);
                 }
             });
             return l;
@@ -58,11 +62,11 @@ module.exports = Backbone.Model.extend({
         
         mitab.nodes = _.map(mitab.nodes, function(n){
             n.taxonomy = n.taxonomy.join(', ');
-            n.taxonomy = (_.isNaN(n.taxonomy)) ? n.taxonomy : +n.taxonomy;
+            n.taxonomy = (_.isNaN(n.taxonomy)) ? n.taxonomy : + n.taxonomy;
             return n;
         });
         
-        this.attributes.edgeAttributes = this.attributes.edgeAttributes.concat(_.uniq(scores));
+        this.attributes.edgeAttributes = _edgeAttributes.concat(_.uniq(scores));
         this.attributes.interactors.set(mitab.nodes);
         this.attributes.interactions.set(mitab.links);
 
