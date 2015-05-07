@@ -1,5 +1,5 @@
 var Sequence = require('biojs-vis-sequence');
-var Structure = require('bio-pv');
+//var Structure = require('bio-pv');
 var templates = require('../templates');
 var UPprotein = require('../models/UPprotein');
 
