@@ -64,6 +64,9 @@ App.init = function(options){
     
     //Init minicolors
     $('.minicolors-input').minicolors({ theme:'bootstrap'});
+    
+    //Init tooltips
+    $('[data-toggle="tooltip"]').tooltip();
 };
 
 App.init();
