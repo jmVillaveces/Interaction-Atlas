@@ -1,4 +1,5 @@
 var templates = require('../templates');
+var pSetter = require('../models/propertySetter');
 
 var _dialId = _.uniqueId('dial_'), _okBtnId = _.uniqueId('ok_');
 
@@ -10,6 +11,8 @@ module.exports = Backbone.View.extend({
         this.options = options;
         
         this.events['click #' + _okBtnId ] = 'onOkButton';
+        
+        this.listenTo(Backbone, 'got_data', this.clearPropSetter);
     },
     
     events : {
@@ -140,28 +143,37 @@ module.exports = Backbone.View.extend({
     },
     
     onOkButton : function(e){
-        var attr = $('select[name=attrs]').val(), mapping = $('select[name=mappings]').val();
         
-        var elements = this.elements, cssAttr = this.cssAttr;
-        if(mapping === 'direct'){
-            App.views.graph.cy.batch(function(){
-                elements.filter('[' + attr + ']').forEach(function(ele){
-                    ele.css(cssAttr, ele.data(attr));
-                });
+        var property = {
+            elements: this.elements,
+            cssAttr : this.cssAttr,
+            attr: $('select[name=attrs]').val(),
+            mapping: $('select[name=mappings]').val()
+        };
+        
+        if(property.mapping === 'discrete'){
+            property.searchTerms = _.map($('#discrete input'), function(i){
+                return  { 
+                    search: (_.isNaN(+$(i).prop('name'))) ? '"' + $(i).prop('name') + '"' : +$(i).prop('name'),
+                    val: $(i).val()
+                };
             });
-        }else if(mapping === 'discrete'){
-            App.views.graph.cy.batch(function(){
-                _.each($('#discrete input'), function(i){
-                    var searchTerm = (_.isNaN(+$(i).prop('name'))) ? '"' + $(i).prop('name') + '"' : +$(i).prop('name');
-                    elements.filter('[' + attr + '=' + searchTerm + ']').forEach(function(ele){
-                        ele.css(cssAttr, $(i).val());
-                    });
-                });
-            });
-        }else if(mapping === 'transform' && this.transform.able){
-            App.views.graph.applyTransform(this.group, attr, cssAttr, this.transform.min.value, this.transform.max.value, $('input[name=min]').val(), $('input[name=max]').val());
+        }else if(property.mapping === 'transform'){
+            if(!this.transform.able) return;
+            
+            property.group = this.group;
+            property.min = this.transform.min.value;
+            property.max = this.transform.max.value;
+            property.mint = $('input[name=min]').val();
+            property.maxt = $('input[name=max]').val();
         }
         
+        pSetter.set(property);
+        
         $('#' + _dialId).modal('hide');
+    },
+    
+    clearPropSetter: function(d){
+        pSetter.clear();
     }
 });
