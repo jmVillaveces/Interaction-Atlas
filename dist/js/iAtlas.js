@@ -300,7 +300,7 @@ module.exports = Backbone.Model.extend({
 var Interactors = require('../collections/interactors.js');
 var Interactions = require('../collections/interactions.js');
 
-var _edgeAttributes = ['detMethods', 'intTypes', 'sourceDbs'];
+var _edgeAttributes = ['detMethods', 'intTypes', 'sourceDbs'], _maxResults = 10000;
 
 module.exports = Backbone.Model.extend({
     
@@ -328,7 +328,7 @@ module.exports = Backbone.Model.extend({
         var query = (this.attributes.ids.length) ? this.attributes.ids.join(' OR ') : this.attributes.query;
          
         query = (this.attributes.orgs.length) ? 'id:(' + query + ') AND species:(' + this.attributes.orgs.join(' OR ') + ')' : query;
-        query += '?firstResult=0&maxResults=3000';
+        query += '?firstResult=0&maxResults='+_maxResults;
         
         var url = (this.attributes.proxy) ? this.attributes.proxy + this.attributes.server + query : this.attributes.server + query;
         
@@ -1800,6 +1800,10 @@ module.exports = Backbone.View.extend({
     
     applyTransform : function(group, attribute, style, min, max, mint, maxt){
         
+        console.log(style);
+        //remove style before applying transform
+        this.cy.elements(group).removeCss(style);
+        
         var css = (group === 'edge') ? _style[1].css : _style[0].css;
         css[style] = 'mapData(' + attribute + ',' + min + ',' + max + ',' + mint + ',' + maxt + ')';
         
@@ -2510,11 +2514,13 @@ module.exports = Backbone.View.extend({
     
     onAttrChange : function(e){
         var attr = $(e.target).attr('name'), val = $(e.target).val();
+        var elements = this.getElements();
+        
         
         if(attr !== 'content'){
-            this.getElements().css(attr, val);
+            elements.css(attr, val);
         }else{
-            var elements = this.getElements();
+            //elements.removeStyle(attr);
             App.views.graph.cy.batch(function(){
                 elements.filter('[' + val + ']').forEach(function(ele){
                     ele.css(attr, ele.data(val));

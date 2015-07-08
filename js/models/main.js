@@ -1,7 +1,7 @@
 var Interactors = require('../collections/interactors.js');
 var Interactions = require('../collections/interactions.js');
 
-var _edgeAttributes = ['detMethods', 'intTypes', 'sourceDbs'];
+var _edgeAttributes = ['detMethods', 'intTypes', 'sourceDbs'], _maxResults = 10000;
 
 module.exports = Backbone.Model.extend({
     
@@ -29,7 +29,7 @@ module.exports = Backbone.Model.extend({
         var query = (this.attributes.ids.length) ? this.attributes.ids.join(' OR ') : this.attributes.query;
          
         query = (this.attributes.orgs.length) ? 'id:(' + query + ') AND species:(' + this.attributes.orgs.join(' OR ') + ')' : query;
-        query += '?firstResult=0&maxResults=3000';
+        query += '?firstResult=0&maxResults='+_maxResults;
         
         var url = (this.attributes.proxy) ? this.attributes.proxy + this.attributes.server + query : this.attributes.server + query;
         
