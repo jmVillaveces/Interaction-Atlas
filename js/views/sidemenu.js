@@ -106,11 +106,12 @@ module.exports = Backbone.View.extend({
     
     onAttrChange : function(e){
         var attr = $(e.target).attr('name'), val = $(e.target).val();
+        var elements = this.getElements();
+        
         
         if(attr !== 'content'){
-            this.getElements().css(attr, val);
+            elements.css(attr, val);
         }else{
-            var elements = this.getElements();
             App.views.graph.cy.batch(function(){
                 elements.filter('[' + val + ']').forEach(function(ele){
                     ele.css(attr, ele.data(val));
