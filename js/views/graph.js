@@ -180,6 +180,9 @@ module.exports = Backbone.View.extend({
     
     applyTransform : function(group, attribute, style, min, max, mint, maxt){
         
+        //remove style before applying transform
+        this.cy.elements(group).removeCss(style);
+        
         var css = (group === 'edge') ? _style[1].css : _style[0].css;
         css[style] = 'mapData(' + attribute + ',' + min + ',' + max + ',' + mint + ',' + maxt + ')';
         
