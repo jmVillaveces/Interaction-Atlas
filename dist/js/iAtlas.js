@@ -78,6 +78,11 @@ module.exports = Backbone.Collection.extend({
         return value.toFixed(digits);
     });
     
+    //show scientific notation
+    Handlebars.registerHelper('toExponential', function (value, digits, options) {
+        return value.toExponential(digits);
+    });
+    
     //Comparator
     Handlebars.registerHelper('compare', function (lvalue, operator, rvalue, options) {
         
@@ -1256,7 +1261,7 @@ this["Templates"]["pathway"] = Handlebars.template({"1":function(depth0,helpers,
     + " </span></td>\n                <td>"
     + alias2(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "</td>\n                <td>"
-    + alias2((helpers.toFixed || (depth0 && depth0.toFixed) || alias3).call(depth0,((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.pValue : stack1),5,{"name":"toFixed","hash":{},"data":data}))
+    + alias2((helpers.toExponential || (depth0 && depth0.toExponential) || alias3).call(depth0,((stack1 = (depth0 != null ? depth0.entities : depth0)) != null ? stack1.pValue : stack1),{"name":"toExponential","hash":{},"data":data}))
     + "</td>\n                <td><a class=\"btn btn-info\" href=\"http://www.reactome.org/content/detail/"
     + alias2(((helper = (helper = helpers.stId || (depth0 != null ? depth0.stId : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(depth0,{"name":"stId","hash":{},"data":data}) : helper)))
     + "\" target='_blank' role=\"button\"><span class=\"glyphicon glyphicon-new-window\" aria-hidden=\"true\"></span></a></td>\n            </tr>\n";
@@ -1800,7 +1805,6 @@ module.exports = Backbone.View.extend({
     
     applyTransform : function(group, attribute, style, min, max, mint, maxt){
         
-        console.log(style);
         //remove style before applying transform
         this.cy.elements(group).removeCss(style);
         
@@ -2520,7 +2524,6 @@ module.exports = Backbone.View.extend({
         if(attr !== 'content'){
             elements.css(attr, val);
         }else{
-            //elements.removeStyle(attr);
             App.views.graph.cy.batch(function(){
                 elements.filter('[' + val + ']').forEach(function(ele){
                     ele.css(attr, ele.data(val));
