@@ -14,6 +14,11 @@
         return value.toFixed(digits);
     });
     
+    //show scientific notation
+    Handlebars.registerHelper('toExponential', function (value, digits, options) {
+        return value.toExponential(digits);
+    });
+    
     //Comparator
     Handlebars.registerHelper('compare', function (lvalue, operator, rvalue, options) {
         
