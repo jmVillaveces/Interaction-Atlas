@@ -21,7 +21,7 @@
             <tr>
                 <td><span class='badge pull-right'> {{this.entities.found}} / {{this.entities.total}} </span></td>
                 <td>{{name}}</td>
-                <td>{{toFixed entities.pValue 5}}</td>
+                <td>{{toExponential entities.pValue }}</td>
                 <td><a class="btn btn-info" href="http://www.reactome.org/content/detail/{{stId}}" target='_blank' role="button"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></td>
             </tr>
         {{/each}}
