@@ -8,6 +8,7 @@ _ = require('underscore');
 require('./js/helpers.js'); // Handelbars helpers
 require('bootstrap/dist/js/bootstrap.min.js'); // bootstrap
 require('./js/lib/jquery.minicolors.min.js'); // minicolors
+require('./js/lib/jLouvain.js'); // Community detection
 
 App = {};
 
