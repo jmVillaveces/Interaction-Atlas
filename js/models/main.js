@@ -20,11 +20,11 @@ module.exports = Backbone.Model.extend({
         interactors: new Interactors(),
         interactions: new Interactions(),
         taxa : {},
-        nodeAttributes : ['id', 'degree', 'taxonomy', 'uniprot', 'geneName'],
+        nodeAttributes : ['id', 'degree', 'community', 'geneName', 'taxonomy', 'uniprot'],
         edgeAttributes : ['detMethods', 'intTypes', 'sourceDbs']
     },
     
-     url: function() {
+    url: function() {
          
         var query = (this.attributes.ids.length) ? this.attributes.ids.join(' OR ') : this.attributes.query;
          
