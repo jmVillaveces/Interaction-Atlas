@@ -82,7 +82,7 @@ module.exports = Backbone.View.extend({
             var query = $('textarea[name=query]').val();
             var orgs = $('select[name=org]').val();
 
-            if(query.length){
+            if(query.length > 0){
 
                 logger.html('<p class="text-info"> Fetching interactions from ' + db + '</p>');
 
@@ -118,13 +118,18 @@ module.exports = Backbone.View.extend({
                         Backbone.trigger('got_data');
                     }
                 });
+            }else{
+                logger.html('<p class="text-danger">The query field must not be empty</p>');
+                $btn.button('reset');
             }
+            
         }else{
             var nodesfile = document.getElementById('nodes').files[0];
             var edgesfile = document.getElementById('interactions').files[0];
             
             if(!(nodesfile && edgesfile)){
                 logger.html('<p class="text-danger">Please select the required files</p>');
+                $btn.button('reset');
                 return;
             }
             
@@ -132,6 +137,7 @@ module.exports = Backbone.View.extend({
                 if(err){ 
                     console.warn(err);
                     logger.html('<p class="text-danger">' + err + '</p>');
+                    $btn.button('reset');
                     return;
                 }
                 
@@ -143,7 +149,7 @@ module.exports = Backbone.View.extend({
                         return;
                     }
                     
-                    //TODO import network
+                    //import network
                     var model = App.model;
                     model.attributes.interactors.set(nodes);
                     model.attributes.interactions.set(edges);
