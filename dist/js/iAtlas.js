@@ -908,6 +908,7 @@ module.exports =  function FileNavigator (file, encoding) {
     };
 };
 },{"./line-navigator":15}],14:[function(require,module,exports){
+var SIFJS = require('sif.js');
 var FileNavigator = require('../services/file-navigator');
 var _navigator = null;
 
@@ -1026,9 +1027,30 @@ reader.parseEdges = function(cb){
     });
 };
 
+// callback: function(err, elements)
+reader.parseSIF = function(cb){
+    _navigator = new FileNavigator(_file);
+    var linesArr = [];
+    
+    _navigator.readSomeLines(1, function linesHandler(err,index,lines,eof,progress){
+        if(err){ 
+            cb(err);
+            return;
+        }
+        
+        linesArr = linesArr.concat(lines);
+        
+        if(eof){
+            cb(null, SIFJS.parse(linesArr.join('\n')));    
+            return;
+        }
+        _navigator.readSomeLines(index + lines.length, linesReadHandler);  
+    });
+};
+
 
 module.exports = reader;
-},{"../services/file-navigator":13}],15:[function(require,module,exports){
+},{"../services/file-navigator":13,"sif.js":75}],15:[function(require,module,exports){
 // Allows to navigate given sources lines, saving milestones to optimize random reading
 // options = {
 //        milestones: [],         // optional: array of milestones, which can be obtained by getMilestones() method and stored to speed up random reading in future
@@ -1557,9 +1579,11 @@ this["Templates"]["import"] = Handlebars.template({"1":function(depth0,helpers,p
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "</option>\n";
 },"3":function(depth0,helpers,partials,data) {
-    return "                \n                <div class=\"form-group\">\n                    <label>Nodes</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"nodes\" name=\"nodes\">\n                </div>\n                <blockquote id=\"algoquote\" class=\"form-group col-xs-12\">\n                    <footer>File containing node <mark>ids</mark> and attributes</footer>\n                </blockquote>\n                \n                <div class=\"form-group\">\n                    <label>Interactions</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"interactions\" name=\"interactions\">\n                </div>\n                <blockquote id=\"algoquote\" class=\"form-group col-xs-12\">\n                    <footer>File containing link <mark>source, target</mark> attributes.</footer>\n                </blockquote>\n            \n";
+    return "                \n                <div class=\"form-group\">\n                    <label>Sif file</label>\n                    <input type=\"file\" accept=\".sif,.txt,.tab\" id=\"sif\" name=\"sif\">\n                </div>\n                <blockquote id=\"algoquote\" class=\"form-group col-xs-12\">\n                    <footer>File containing node <mark>ids</mark> and attributes</footer>\n                </blockquote>\n";
 },"5":function(depth0,helpers,partials,data) {
     return "                <h1 class=\"text-danger\"> Sorry, the File APIs are not fully supported in this browser.</h1>\n";
+},"7":function(depth0,helpers,partials,data) {
+    return "                \n                <div class=\"form-group\">\n                    <label>Nodes</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"nodes\" name=\"nodes\">\n                </div>\n                <blockquote id=\"algoquote\" class=\"form-group col-xs-12\">\n                    <footer>File containing node <mark>ids</mark> and attributes</footer>\n                </blockquote>\n                \n                <div class=\"form-group\">\n                    <label>Interactions</label>\n                    <input type=\"file\" accept=\"text/plain,text/csv\" id=\"interactions\" name=\"interactions\">\n                </div>\n                <blockquote id=\"algoquote\" class=\"form-group col-xs-12\">\n                    <footer>File containing link <mark>source, target</mark> attributes.</footer>\n                </blockquote>\n            \n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
@@ -1568,19 +1592,27 @@ this["Templates"]["import"] = Handlebars.template({"1":function(depth0,helpers,p
     + "\" aria-controls=\""
     + alias3(((helper = (helper = helpers.dbId || (depth0 != null ? depth0.dbId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"dbId","hash":{},"data":data}) : helper)))
     + "\" role=\"tab\" data-toggle=\"tab\">From Database</a></li>\n        <li role=\"presentation\"><a href=\"#"
+    + alias3(((helper = (helper = helpers.sifFileId || (depth0 != null ? depth0.sifFileId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"sifFileId","hash":{},"data":data}) : helper)))
+    + "\" aria-controls=\""
+    + alias3(((helper = (helper = helpers.sifFileId || (depth0 != null ? depth0.sifFileId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"sifFileId","hash":{},"data":data}) : helper)))
+    + "\" role=\"tab\" data-toggle=\"tab\">From SIF File</a></li>\n        <li role=\"presentation\"><a href=\"#"
     + alias3(((helper = (helper = helpers.fileId || (depth0 != null ? depth0.fileId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"fileId","hash":{},"data":data}) : helper)))
     + "\" aria-controls=\""
     + alias3(((helper = (helper = helpers.fileId || (depth0 != null ? depth0.fileId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"fileId","hash":{},"data":data}) : helper)))
-    + "\" role=\"tab\" data-toggle=\"tab\">From File</a></li>\n    </ul>\n\n    \n    <!-- Tab panes -->\n    <div class=\"tab-content\">\n        \n        <div role=\"tabpanel\" class=\"tab-pane active\" id=\""
+    + "\" role=\"tab\" data-toggle=\"tab\">From Tabulated Files</a></li>\n    </ul>\n\n    \n    <!-- Tab panes -->\n    <div class=\"tab-content\">\n        \n        <div role=\"tabpanel\" class=\"tab-pane active\" id=\""
     + alias3(((helper = (helper = helpers.dbId || (depth0 != null ? depth0.dbId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"dbId","hash":{},"data":data}) : helper)))
     + "\">\n        \n            <div class=\"form-group\">\n                <label>Database</label>\n                <select class=\"form-control\" name=\"db\">\n"
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.servers : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "                </select>\n            </div>\n\n            <div class=\"row\">\n                <div class=\"col-md-5\">\n\n                    <div class=\"form-group\">\n                        <label>Query Type</label><br>\n                        <label class=\"radio-inline\">\n                            <input type=\"radio\" name=\"queryType\" value=\"ids\" checked>Ids list\n                        </label>\n                        <label class=\"radio-inline\">\n                            <input type=\"radio\" name=\"queryType\" value=\"query\">Query\n                        </label>\n                    </div>\n\n\n                    <div class=\"form-group\">\n                        <label>Organism</label>\n                        <select class=\"form-control\" name=\"org\" multiple>\n                            <option  value=\"\" selected>All</option>\n                            <option  value=\"9606\">Homo sapiens</option>\n                            <option  value=\"10090\">Mus musculus</option>\n                            <option  value=\"10116\">Rattus norvegicus</option>\n                            <option  value=\"9913\">Bos taurus</option>\n                            <option  value=\"9031\">Gallus gallus</option>\n                            <option  value=\"9823\">Sus scrofa</option>\n                            <option  value=\"9615\">Canis familiaris</option>\n                            <option  value=\"7227\">Drosophila melanogaster</option>\n                            <option  value=\"6239\">Caenorhabditis elegans</option>\n                            <option  value=\"4932\">Saccharomyces cerevisiae</option>\n                            <option  value=\"7955\">Danio rerio</option>\n                            <option  value=\"4896\">Schizosaccharomyces pombe</option>\n                            <option  value=\"592\">Escherichia coli</option>\n                            <option  value=\"11676\">Human immunodeficiency virus 1</option>\n                            <option  value=\"11320\">Influenza A virus</option>\n                            <option  value=\"1491\">Clostridium botulinum</option>\n                            <option  value=\"3702\">Arabidopsis thaliana</option>\n                            <option  value=\"5833\">Plasmodium falciparum</option>\n                            <option  value=\"44689\">Dictyostelium discoideum</option>\n                            <option  value=\"1773\">Mycobacterium tuberculosis</option>\n                            <option  value=\"491\">Neisseria meningitidis serogroup B</option>\n                            <option  value=\"813\">Chlamydia trachomatis</option>\n                            <option  value=\"4530\">Oryza sativa</option>\n                            <option  value=\"5811\">Toxoplasma gondii</option>\n                            <option  value=\"8364\">Xenopus tropicalis</option>\n                            <option  value=\"90371\">Salmonella typhimurium</option>\n                            <option  value=\"59729\">Taeniopygia guttata</option>\n                            <option  value=\"158879\">Staphylococcus aureus N315</option>\n                        </select>\n                    </div>\n\n                </div>\n                <div class=\"col-md-7\">\n                    <a href=\"#\" id=\""
     + alias3(((helper = (helper = helpers.exampleId || (depth0 != null ? depth0.exampleId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"exampleId","hash":{},"data":data}) : helper)))
     + "\">Example</a><br>\n                    <textarea class=\"form-control\" name=\"query\" placeholder=\"Comma separated list of identifiers\"></textarea>\n                </div>\n            </div>\n\n        </div>\n        <div role=\"tabpanel\" class=\"tab-pane\" id=\""
-    + alias3(((helper = (helper = helpers.fileId || (depth0 != null ? depth0.fileId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"fileId","hash":{},"data":data}) : helper)))
+    + alias3(((helper = (helper = helpers.sifFileId || (depth0 != null ? depth0.sifFileId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"sifFileId","hash":{},"data":data}) : helper)))
     + "\">\n"
     + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isFileSupported : depth0),{"name":"if","hash":{},"fn":this.program(3, data, 0),"inverse":this.program(5, data, 0),"data":data})) != null ? stack1 : "")
+    + "        </div>\n        \n        <div role=\"tabpanel\" class=\"tab-pane\" id=\""
+    + alias3(((helper = (helper = helpers.fileId || (depth0 != null ? depth0.fileId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"fileId","hash":{},"data":data}) : helper)))
+    + "\">\n"
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.isFileSupported : depth0),{"name":"if","hash":{},"fn":this.program(7, data, 0),"inverse":this.program(5, data, 0),"data":data})) != null ? stack1 : "")
     + "        </div>\n        \n        <div class=\"row\">\n            <div id=\""
     + alias3(((helper = (helper = helpers.logId || (depth0 != null ? depth0.logId : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"logId","hash":{},"data":data}) : helper)))
     + "\" class=\"col-md-10\"></div>\n        </div>\n    </div>\n    \n</div>";
@@ -2321,7 +2353,7 @@ module.exports = Backbone.View.extend({
 var templates = require('../templates');
 var fileReader = require('../services/fileReader');
 
-var _dialId = _.uniqueId('dial_'), _exampleId = _.uniqueId('example_'), _okBtnId = _.uniqueId('ok_'), _logId = _.uniqueId('log_'),  _dbId = _.uniqueId('db_'),  _fileId = _.uniqueId('file_');
+var _dialId = _.uniqueId('dial_'), _exampleId = _.uniqueId('example_'), _okBtnId = _.uniqueId('ok_'), _logId = _.uniqueId('log_'),  _dbId = _.uniqueId('db_'),  _fileId = _.uniqueId('file_'), _sifFileId = _.uniqueId('file_');
 
 module.exports = Backbone.View.extend({
     
@@ -2358,7 +2390,7 @@ module.exports = Backbone.View.extend({
         $('#' + _dialId).modal('show');
         
         var isFileSupported = (window.File && window.FileReader && window.FileList && window.Blob) ? true : false;
-        tpl = templates.import({servers:App.model.servers.toJSON(), exampleId : _exampleId, logId : _logId, isFileSupported: isFileSupported, fileId : _fileId, dbId : _dbId});
+        tpl = templates.import({servers:App.model.servers.toJSON(), exampleId : _exampleId, logId : _logId, isFileSupported: isFileSupported, fileId : _fileId, sifFileId:_sifFileId, dbId : _dbId});
         $('#' + _dialId + ' .modal-body').html(tpl);
     },
 
@@ -2402,7 +2434,7 @@ module.exports = Backbone.View.extend({
             var query = $('textarea[name=query]').val();
             var orgs = $('select[name=org]').val();
 
-            if(query.length){
+            if(query.length > 0){
 
                 logger.html('<p class="text-info"> Fetching interactions from ' + db + '</p>');
 
@@ -2438,13 +2470,18 @@ module.exports = Backbone.View.extend({
                         Backbone.trigger('got_data');
                     }
                 });
+            }else{
+                logger.html('<p class="text-danger">The query field must not be empty</p>');
+                $btn.button('reset');
             }
-        }else{
+            
+        }else if(active === _fileId){
             var nodesfile = document.getElementById('nodes').files[0];
             var edgesfile = document.getElementById('interactions').files[0];
             
             if(!(nodesfile && edgesfile)){
                 logger.html('<p class="text-danger">Please select the required files</p>');
+                $btn.button('reset');
                 return;
             }
             
@@ -2452,6 +2489,7 @@ module.exports = Backbone.View.extend({
                 if(err){ 
                     console.warn(err);
                     logger.html('<p class="text-danger">' + err + '</p>');
+                    $btn.button('reset');
                     return;
                 }
                 
@@ -2463,7 +2501,7 @@ module.exports = Backbone.View.extend({
                         return;
                     }
                     
-                    //TODO import network
+                    //import network
                     var model = App.model;
                     model.attributes.interactors.set(nodes);
                     model.attributes.interactions.set(edges);
@@ -2475,6 +2513,34 @@ module.exports = Backbone.View.extend({
                     $btn.button('reset');
                     Backbone.trigger('got_data');
                 });
+            });
+        }else if(active === _sifFileId){
+            var sifFile = document.getElementById('sif').files[0];
+            
+            if(!sifFile){
+                logger.html('<p class="text-danger">Please select the required file</p>');
+                $btn.button('reset');
+                return;
+            }
+            
+            fileReader.file(sifFile).parseSIF(function(err, elements){
+                if(err){ 
+                    console.warn(err);
+                    logger.html('<p class="text-danger">' + err + '</p>');
+                    return;
+                }
+                    
+                //import network
+                var model = App.model;
+                model.attributes.interactors.set(elements.nodes);
+                model.attributes.interactions.set(elements.links);
+                model.attributes.edgeAttributes = (elements.links.length) ? _.keys(elements.links[0]) : [];
+                model.attributes.nodeAttributes = (elements.nodes.length) ? _.keys(elements.nodes[0]) : [];
+                    
+                $('#' + _dialId).modal('hide');
+                logger.html('');
+                $btn.button('reset');
+                Backbone.trigger('got_data');
             });
         }
     }
@@ -3050,7 +3116,7 @@ App.init = function(options){
 };
 
 App.init();
-},{"./js/collections/psicquicServers.js":3,"./js/helpers.js":4,"./js/lib/jLouvain.js":5,"./js/lib/jquery.minicolors.min.js":6,"./js/models/main.js":10,"./js/views/UPdialog":17,"./js/views/graph":19,"./js/views/import":20,"./js/views/layout":21,"./js/views/logger":22,"./js/views/main":23,"./js/views/navbar":24,"./js/views/pathway":25,"./js/views/sidemenu":26,"backbone":28,"bootstrap/dist/js/bootstrap.min.js":39,"handlebars":62,"jquery":74,"springy":75,"underscore":76}],28:[function(require,module,exports){
+},{"./js/collections/psicquicServers.js":3,"./js/helpers.js":4,"./js/lib/jLouvain.js":5,"./js/lib/jquery.minicolors.min.js":6,"./js/models/main.js":10,"./js/views/UPdialog":17,"./js/views/graph":19,"./js/views/import":20,"./js/views/layout":21,"./js/views/logger":22,"./js/views/main":23,"./js/views/navbar":24,"./js/views/pathway":25,"./js/views/sidemenu":26,"backbone":28,"bootstrap/dist/js/bootstrap.min.js":39,"handlebars":62,"jquery":74,"springy":76,"underscore":77}],28:[function(require,module,exports){
 //     Backbone.js 1.1.2
 
 //     (c) 2010-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -4660,7 +4726,7 @@ App.init();
 
 }));
 
-},{"underscore":76}],29:[function(require,module,exports){
+},{"underscore":77}],29:[function(require,module,exports){
 var _ = require('underscore');
 
 module.exports = MITab = (function() {
@@ -4806,7 +4872,7 @@ module.exports = MITab = (function() {
     
     return MITab;
 })();
-},{"underscore":76}],30:[function(require,module,exports){
+},{"underscore":77}],30:[function(require,module,exports){
 // legacy!!
 $.browser = require("jquery-browser-plugin");
 
@@ -46447,6 +46513,53 @@ return jQuery;
 }));
 
 },{}],75:[function(require,module,exports){
+//private members
+var nodes = {}, links = {};
+    
+var _getNode = function(id){
+    if(!nodes[id]) nodes[id] = {id:id};
+    return nodes[id];
+}
+    
+var _parse = function(line, i){
+    line = (line.split('\t').length > 1) ? line.split('\t') : line.split(' ');
+    
+    if(line.length < 3){
+        console.warn('SIFJS cannot parse line ' + i + ' "' + line + '"');
+        return;
+    }
+    
+    var source = _getNode(line[0]), intType = line[1], j, length;
+    for (j = 2, length = line.length; j < length; j++) {
+        var target = _getNode(line[j]);
+            
+        if(source < target){
+            links[source.id + target.id + intType] = {target: target.id, source: source.id, intType: intType};
+        }else{
+            links[target.id + source.id + intType] = {target: target.id, source: source.id, intType: intType};
+        }
+    }        
+}
+
+var _toArr = function(obj){
+    var arr = [];
+    for (var key in obj) arr.push(obj[key]);
+    return arr;
+}    
+    
+//public
+function SIFJS() {};
+    
+SIFJS.parse = function(text){
+    
+    var lines = text.split('\n'), i, length;
+    for (i = 0, length = lines.length; i < length; i++) _parse(lines[i], i);
+    
+    return {nodes:_toArr(nodes), links:_toArr(links)};
+};
+
+module.exports = SIFJS;
+},{}],76:[function(require,module,exports){
 /**
  * Springy v2.7.1
  *
@@ -47175,7 +47288,7 @@ return jQuery;
   return Springy;
 }));
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
