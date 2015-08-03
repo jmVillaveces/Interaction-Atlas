@@ -58,7 +58,9 @@ module.exports = Backbone.Collection.extend({
         var options = opt || {};
         options.dataType = 'text';
         
-        return Backbone.Model.prototype.fetch.call(this, options);
+        var x = Backbone.Model.prototype.fetch.call(this, options);
+        console.log(x);
+        return x;
     }
 });
 },{"../models/psicquicServer.js":12}],4:[function(require,module,exports){
