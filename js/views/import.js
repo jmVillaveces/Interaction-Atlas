@@ -123,7 +123,7 @@ module.exports = Backbone.View.extend({
                 $btn.button('reset');
             }
             
-        }else{
+        }else if(active === _fileId){
             var nodesfile = document.getElementById('nodes').files[0];
             var edgesfile = document.getElementById('interactions').files[0];
             
@@ -161,6 +161,34 @@ module.exports = Backbone.View.extend({
                     $btn.button('reset');
                     Backbone.trigger('got_data');
                 });
+            });
+        }else if(active === _sifFileId){
+            var sifFile = document.getElementById('sif').files[0];
+            
+            if(!sifFile){
+                logger.html('<p class="text-danger">Please select the required file</p>');
+                $btn.button('reset');
+                return;
+            }
+            
+            fileReader.file(sifFile).parseSIF(function(err, elements){
+                if(err){ 
+                    console.warn(err);
+                    logger.html('<p class="text-danger">' + err + '</p>');
+                    return;
+                }
+                    
+                //import network
+                var model = App.model;
+                model.attributes.interactors.set(elements.nodes);
+                model.attributes.interactions.set(elements.links);
+                model.attributes.edgeAttributes = (elements.links.length) ? _.keys(elements.links[0]) : [];
+                model.attributes.nodeAttributes = (elements.nodes.length) ? _.keys(elements.nodes[0]) : [];
+                    
+                $('#' + _dialId).modal('hide');
+                logger.html('');
+                $btn.button('reset');
+                Backbone.trigger('got_data');
             });
         }
     }
