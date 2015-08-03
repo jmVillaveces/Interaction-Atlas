@@ -339,7 +339,7 @@ this["Templates"]["import"] = Handlebars.template({"1":function(depth0,helpers,p
     + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
     + "</option>\n";
 },"3":function(depth0,helpers,partials,data) {
-    return "                \n                <div class=\"form-group\">\n                    <label>Sif file</label>\n                    <input type=\"file\" accept=\".sif,.txt,.tab\" id=\"sif\" name=\"sif\">\n                </div>\n                <blockquote id=\"algoquote\" class=\"form-group col-xs-12\">\n                    <footer>File containing node <mark>ids</mark> and attributes</footer>\n                </blockquote>\n";
+    return "                \n                <div class=\"form-group\">\n                    <label>Sif file</label>\n                    <input type=\"file\" accept=\".sif,.txt,.tab\" id=\"sif\" name=\"sif\">\n                </div>\n                <blockquote id=\"algoquote\" class=\"form-group col-xs-12\">\n                    <footer><mark>Cytoscape</mark> SIF file. More info <a href=\"http://wiki.cytoscape.org/Cytoscape_User_Manual/Network_Formats\" target=\"_blank\">here</a>. </footer>\n                </blockquote>\n";
 },"5":function(depth0,helpers,partials,data) {
     return "                <h1 class=\"text-danger\"> Sorry, the File APIs are not fully supported in this browser.</h1>\n";
 },"7":function(depth0,helpers,partials,data) {
