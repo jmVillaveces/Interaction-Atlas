@@ -1,7 +1,7 @@
 var templates = require('../templates');
 var fileReader = require('../services/fileReader');
 
-var _dialId = _.uniqueId('dial_'), _exampleId = _.uniqueId('example_'), _okBtnId = _.uniqueId('ok_'), _logId = _.uniqueId('log_'),  _dbId = _.uniqueId('db_'),  _fileId = _.uniqueId('file_');
+var _dialId = _.uniqueId('dial_'), _exampleId = _.uniqueId('example_'), _okBtnId = _.uniqueId('ok_'), _logId = _.uniqueId('log_'),  _dbId = _.uniqueId('db_'),  _fileId = _.uniqueId('file_'), _sifFileId = _.uniqueId('file_');
 
 module.exports = Backbone.View.extend({
     
@@ -38,7 +38,7 @@ module.exports = Backbone.View.extend({
         $('#' + _dialId).modal('show');
         
         var isFileSupported = (window.File && window.FileReader && window.FileList && window.Blob) ? true : false;
-        tpl = templates.import({servers:App.model.servers.toJSON(), exampleId : _exampleId, logId : _logId, isFileSupported: isFileSupported, fileId : _fileId, dbId : _dbId});
+        tpl = templates.import({servers:App.model.servers.toJSON(), exampleId : _exampleId, logId : _logId, isFileSupported: isFileSupported, fileId : _fileId, sifFileId:_sifFileId, dbId : _dbId});
         $('#' + _dialId + ' .modal-body').html(tpl);
     },
 

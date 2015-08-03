@@ -4,7 +4,8 @@
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#{{dbId}}" aria-controls="{{dbId}}" role="tab" data-toggle="tab">From Database</a></li>
-        <li role="presentation"><a href="#{{fileId}}" aria-controls="{{fileId}}" role="tab" data-toggle="tab">From File</a></li>
+        <li role="presentation"><a href="#{{sifFileId}}" aria-controls="{{sifFileId}}" role="tab" data-toggle="tab">From SIF File</a></li>
+        <li role="presentation"><a href="#{{fileId}}" aria-controls="{{fileId}}" role="tab" data-toggle="tab">From Tabulated Files</a></li>
     </ul>
 
     
@@ -79,6 +80,21 @@
             </div>
 
         </div>
+        <div role="tabpanel" class="tab-pane" id="{{sifFileId}}">
+            {{#if isFileSupported}}
+                
+                <div class="form-group">
+                    <label>Sif file</label>
+                    <input type="file" accept="text/plain" id="sif" name="sif">
+                </div>
+                <blockquote id="algoquote" class="form-group col-xs-12">
+                    <footer>File containing node <mark>ids</mark> and attributes</footer>
+                </blockquote>
+            {{else}}
+                <h1 class="text-danger"> Sorry, the File APIs are not fully supported in this browser.</h1>
+            {{/if}}
+        </div>
+        
         <div role="tabpanel" class="tab-pane" id="{{fileId}}">
             {{#if isFileSupported}}
                 
