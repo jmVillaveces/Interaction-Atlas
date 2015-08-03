@@ -1,3 +1,4 @@
+var SIFJS = require('sif.js');
 var FileNavigator = require('../services/file-navigator');
 var _navigator = null;
 
@@ -113,6 +114,27 @@ reader.parseEdges = function(cb){
             _navigator.readSomeLines(index + lines.length, linesReadHandler);
             
         });
+    });
+};
+
+// callback: function(err, elements)
+reader.parseSIF = function(cb){
+    _navigator = new FileNavigator(_file);
+    var linesArr = [];
+    
+    _navigator.readSomeLines(1, function linesHandler(err,index,lines,eof,progress){
+        if(err){ 
+            cb(err);
+            return;
+        }
+        
+        linesArr = linesArr.concat(lines);
+        
+        if(eof){
+            cb(null, SIFJS.parse(linesArr.join('\n')));    
+            return;
+        }
+        _navigator.readSomeLines(index + lines.length, linesReadHandler);  
     });
 };
 
