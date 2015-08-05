@@ -18,9 +18,10 @@ App.init = function(options){
     var Model = require('./js/models/main.js');
     App.model = new Model(options);
     
+    var serverLst = require('./js/collections/serversList.js'); //JSON list of servers in case of error
     //Server collection
     var Servers = require('./js/collections/psicquicServers.js');
-    App.model.servers = new Servers();
+    App.model.servers = new Servers(serverLst);
     
     App.model.servers.fetch();
     
