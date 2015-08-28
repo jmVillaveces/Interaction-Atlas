@@ -8,7 +8,7 @@ module.exports = Backbone.Collection.extend({
        
         var url = 'http://www.ebi.ac.uk/Tools/webservices/psicquic/registry/registry?action=ACTIVE&format=txt';
         
-        url = (App.model.attributes.proxy) ? App.model.attributes.proxy + url : url;
+        url = (App.model.attributes.proxy) ? App.model.attributes.proxy(url) : url;
         
         return url;
     },
