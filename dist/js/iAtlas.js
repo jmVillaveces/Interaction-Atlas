@@ -19,7 +19,7 @@ module.exports = Backbone.Collection.extend({
        
         var url = 'http://www.ebi.ac.uk/Tools/webservices/psicquic/registry/registry?action=ACTIVE&format=txt';
         
-        url = (App.model.attributes.proxy) ? App.model.attributes.proxy + url : url;
+        url = (App.model.attributes.proxy) ? App.model.attributes.proxy(url) : url;
         
         return url;
     },
@@ -694,7 +694,8 @@ module.exports = Backbone.Model.extend({
 
     defaults: {
         server:'http://dachstein.biochem.mpg.de:8080/iatlas/webservices/current/search/query/',
-        proxy : 'https://cors-anywhere.herokuapp.com/',
+        //proxy : function(url){ return 'https://cors-anywhere.herokuapp.com/' + url; },
+        proxy : function(url){ return 'http://dachstein.biochem.mpg.de:8080/proxy/'+url; },
         exampleIds: ['P49959','P25454','Q54KD8','O74773','Q8IV36','Q96B01','Q54CS9','P52701','Q9CXE6','Q7T6Y0','Q682D3'],
         exampleQuery:'"physical association" AND identifier:(brca1 OR brca2) AND species:human',
         ids : [],
@@ -712,9 +713,10 @@ module.exports = Backbone.Model.extend({
         var query = (this.attributes.ids.length) ? this.attributes.ids.join(' OR ') : this.attributes.query;
          
         query = (this.attributes.orgs.length) ? 'id:(' + query + ') AND species:(' + this.attributes.orgs.join(' OR ') + ')' : query;
-        query += '?firstResult=0&maxResults='+_maxResults;
+        //query += '?firstResult=0&maxResults='+_maxResults;
         
-        var url = (this.attributes.proxy) ? this.attributes.proxy + this.attributes.server + query : this.attributes.server + query;
+        var url = this.attributes.server + query;
+        url = (this.attributes.proxy) ? this.attributes.proxy(url) : url;
         
         return url;
     },
@@ -3068,7 +3070,7 @@ App.init = function(options){
     var serverLst = require('./js/collections/serversList.js'); //JSON list of servers in case of error
     //Server collection
     var Servers = require('./js/collections/psicquicServers.js');
-    App.model.servers = new Servers(serverLst);
+    App.model.servers = new Servers();
     
     App.model.servers.fetch();
     
